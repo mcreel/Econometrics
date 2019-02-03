@@ -205,25 +205,6 @@ LatexCommand tableofcontents
 About this document
 \end_layout
 
-\begin_layout Standard
-Note to self: 
-\end_layout
-
-\begin_layout Itemize
-For econometrics.pdf on the github page, save to econometrics.lyx, , replace
- all instances of 
-\family typewriter
-\color blue
-https://github.com/mcreel/Econometrics/blob/master
-\family default
-\color inherit
- with
-\family typewriter
- 
-\color blue
-https://github.com/mcreel/Econometrics/blob/master
-\end_layout
-
 \begin_layout Section
 Prerequisites
 \end_layout
@@ -377,7 +358,7 @@ literal "false"
 ) are an important part of these notes.
  Julia 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -390,6 +371,8 @@ htmladdnormallink{(julialang.org)}{https://julialang.org}
 
  has been used for most of the example programs, which are scattered though
  the document.
+ The examples and code use the current stable version of Julia, version
+ 1.x.
  This choice is motivated by several factors.
  Julia runs on all of the popular operating systems, it is free, and it
  is fast, thanks to just-in-time compilation.
@@ -618,29 +601,44 @@ literal "false"
 
 \end_inset
 
-, and you also need the support code in the archive 
+, and you also need to add files of the 
 \begin_inset CommandInset href
 LatexCommand href
-name "Econometrics.jl"
-target "https://github.com/mcreel/Econometrics.jl"
+name "github repository"
+target "https://github.com/mcreel/Econometrics"
 literal "false"
 
 \end_inset
 
-.
- To use that code, from the Julia prompt, execute the following command:
- 
+ as a Julia package.
+ See the README.md file on the web page.you need to install Julia and then
+ install this repository as a Julia package.
+ Do this as follows:
+\end_layout
+
+\begin_layout Enumerate
+git clone the repository
+\end_layout
+
+\begin_layout Enumerate
+add the package to Julia by doing 
 \family typewriter
-Pkg.clone("https://github.com/mcreel/Econometrics.jl.git")
+] add <path where you downloaded the repo>
 \family default
-.
- This will install the code to your Julia home directory.
- Then, when running Julia, access the code by typing 
+, for example, if you cloned it into the git directory of your home directory,
+ you would do 
 \family typewriter
-using Econometrics.
- 
+] add ~/git/Econometrics
+\end_layout
+
+\begin_layout Enumerate
+then do 
+\family typewriter
+using Econometrics
 \family default
-Having done that, the examples will be executable.
+ in Julia to use the package.
+ To run examples, cd into the relevant subdirectory of Econometrics/Examples,
+ and then just include the script you would like to run.
 \end_layout
 
 \begin_layout Standard
@@ -687,26 +685,6 @@ the result will be an econometrics_local.pdf file
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Old version which uses Octave/Matlab
-\series default
-: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/mcreel/Econometrics/tree/v1.0
-\end_layout
-
-\end_inset
-
-.
- This archive has all of the examples as .m files.
- The code may be of use to people who don't want to use Julia, but the contents
- of the text in that version have not been updated since the transition
- to Julia.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -4292,9 +4270,11 @@ What do you think about RTS?
 \end_layout
 
 \begin_layout Standard
-While we will most often use Julia programs as examples in this document,
- since following the programming statements is a useful way of learning
- how theory is put into practice, you may be interested in a more 
+We will most often use Julia programs that more or less directly implement
+ the theory we learn in examples in this document.
+ This is because following such transparent programming statements is a
+ useful way of learning how theory is put into practice.
+ Nevertheless, you may be interested in a more 
 \begin_inset Quotes sld
 \end_inset
 
@@ -4302,8 +4282,36 @@ user-friendly
 \begin_inset Quotes srd
 \end_inset
 
- environment for doing econometrics.
- I heartily recommend 
+ environment for doing econometrics, especially after you have mastered
+ the theory.
+ Julia itself offers packages such as DataFrames.jl and GLM.jl which will
+ allow you to avoid some of the nuts and bolts of econometric modeling.
+ For example, see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{NerloveDF.jl}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/OLS/NerloveDF.jl} 
+\end_layout
+
+\end_inset
+
+ for estimating the Nerlove model using these packages.
+ If you run that, you will see that the estimated standard errors differ
+ from what Nerlove.jl reports, we will get to the reason for that later.
+ For a 
+\begin_inset Quotes sld
+\end_inset
+
+canned
+\begin_inset Quotes srd
+\end_inset
+
+ package, apart from what Julia offers, I heartily recommend 
 \begin_inset ERT
 status collapsed
 
@@ -4317,6 +4325,7 @@ htmladdnormallink{Gretl}{http://gretl.sourceforge.net}
 \end_inset
 
 , the Gnu Regression, Econometrics, and Time-Series Library.
+ Gretl is free software.
  This is an easy to use program, available in English, French, and Spanish,
  and it comes with a lot of data ready to use.
  It even has an option to save output as \SpecialChar LaTeX
@@ -4345,7 +4354,6 @@ filename "Examples/OLS/NerloveGretl.tex"
 \end_inset
 
  Fortunately, Gretl and my OLS program agree upon the results.
- Gretl is included in the bootable CD mentioned in the introduction.
  I recommend using GRETL to repeat the examples that are done using Julia.
  
 \end_layout
@@ -49974,6 +49982,8 @@ amples/DSGE/MCMC/DoMCMC.jl}
  and two of the other parameters are still outside of the 90% HPD intervals.
  The point estimation is working pretty well, but inference still has some
  weaknesses.
+ This is only for a single sample, though, it may be that things work better
+ on average! It wouldn't be too hard to find out.
 \end_layout
 
 \begin_layout Standard
@@ -61108,7 +61118,7 @@ MSM and II
 \begin_layout Standard
 The Julia script 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -61127,8 +61137,8 @@ reference "subsec:Stochastic-volatility"
 
 \end_inset
 
- by indirect inference and by MSM, using ad-hoc moments.
- It illustrates the fact that the choice of moments is important.
+ by indirect inference.
+ It is a bit of work in progress...
 \end_layout
 
 \begin_layout Standard
@@ -63150,7 +63160,9 @@ the ecosystem is still developing, some features like DataFrames and plotting
  are not as complete stable as in other languages.
  However, I have been using it happily since 2014, and have been getting
  work done.
- Once the 1.0 release is out, 
+ 
+\strikeout on
+Once the 1.0 release is out, 
 \begin_inset Quotes sld
 \end_inset
 
@@ -63158,7 +63170,10 @@ real soon now
 \begin_inset Quotes srd
 \end_inset
 
-, things will stabilize.
+, things will stabilize
+\strikeout default
+ Strike that! Julia 1.0 was released in August 2018.
+ 
 \end_layout
 
 \begin_layout Standard
