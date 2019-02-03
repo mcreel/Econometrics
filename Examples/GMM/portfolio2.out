@@ -1,0 +1,27 @@
+julia> include("portfolio.jl")
+WARNING: imported binding for names overwritten in module Main
+************************************************************
+Two step GMM estimation of portfolio model
+GMM Estimation Results    BFGS convergence: Normal
+Observations: 93
+Hansen-Sargan statistic: 10.44107
+Hansen-Sargan p-value: 0.16493
+
+                estimate     st. err      t-stat     p-value
+        beta     0.86394     0.02155    40.09031     0.00000
+       gamma    -2.20139     0.42680    -5.15785     0.00000
+
+************************************************************
+************************************************************
+CUE GMM estimation of portfolio model
+GMM Estimation Results    BFGS convergence: Normal
+Observations: 93
+Hansen-Sargan statistic: 24.33766
+Hansen-Sargan p-value: 0.00099
+
+                estimate     st. err      t-stat     p-value
+        beta     0.91947     0.01489    61.73498     0.00000
+       gamma     1.03452     0.70396     1.46957     0.14513
+
+************************************************************
+

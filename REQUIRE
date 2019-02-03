@@ -1,0 +1,14 @@
+julia 0.7
+StatsPlots
+GR
+Distributions
+Distances
+NLopt
+StatsBase
+StatsFuns
+SpecialFunctions
+Calculus
+KernelDensity
+Optim
+StatsModels
+DataFrames

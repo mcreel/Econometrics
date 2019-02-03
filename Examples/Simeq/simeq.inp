@@ -1,0 +1,36 @@
+scalar n = 50
+nulldata n --preserve
+set seed 1234
+# structural form parameters
+# demand
+a1 = 10
+a2 = -1
+a3 = 1
+# supply
+b1 = 1
+b2 = 1
+# structural errors
+sig11 = 1
+sig22 = 1
+sig12 = 0.5
+matrix Sig = {sig11, sig12; sig12, sig22}
+matrix P = cholesky(Sig)
+genr income = exp(normal()) # generate income (positive)
+loop 1000 --progressive --quiet
+    # generate errors with desired covariance        
+    matrix U = mnormal(n, 2)
+    U *= P' # don't forget the '!
+    series u1 = U[,1]
+    series u2 = U[,2]
+    # generate P from reduced form
+    genr price = (a1-b1 + a3*income + u1-u2)/(b2-a2)
+    # given P, generate Q from supply
+    genr quantity = b1 + b2*price + u2
+    # OLS estimator
+    ols quantity const price
+    genr bhatOLS = $coeff(price)
+    tsls quantity const price; const income 
+    genr bhatIV = $coeff(price)
+    # save the results
+    store SimEq.gdt bhatOLS bhatIV
+endloop

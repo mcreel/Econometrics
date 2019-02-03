@@ -1,0 +1,24 @@
+julia> include("EstimatePoisson.jl");
+************************************************************
+Poisson model, OBDV,  MEPS 1996 full data set
+MLE Estimation Results
+BFGS convergence: Normal convergence
+Average Log-L: -3.67109
+Observations: 4564
+
+            estimate   st. err    t-stat   p-value
+  constant    -0.791     0.149    -5.290     0.000
+ pub. ins.     0.848     0.076    11.092     0.000
+priv. ins.     0.294     0.071     4.136     0.000
+       sex     0.487     0.055     8.796     0.000
+       age     0.024     0.002    11.470     0.000
+       edu     0.029     0.010     3.060     0.002
+       inc    -0.001     0.001    -0.978     0.328
+
+Information Criteria
+               Crit.    Crit/n
+      CAIC 33575.688     7.357
+       BIC 33568.688     7.355
+       AIC 33523.706     7.345
+************************************************************
+

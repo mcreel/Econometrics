@@ -1,0 +1,26 @@
+julia> include("portfolio.jl")
+************************************************************
+Two step GMM estimation of portfolio model
+GMM Estimation Results    BFGS convergence: Normal
+Observations: 94
+Hansen-Sargan statistic: 7.81392
+Hansen-Sargan p-value: 0.05002
+
+                estimate     st. err      t-stat     p-value
+        beta     0.91712     0.00933    98.34885     0.00000
+       gamma     0.46783     0.32089     1.45789     0.14828
+
+************************************************************
+************************************************************
+CUE GMM estimation of portfolio model
+GMM Estimation Results    BFGS convergence: Normal
+Observations: 94
+Hansen-Sargan statistic: 8.02361
+Hansen-Sargan p-value: 0.04553
+
+                estimate     st. err      t-stat     p-value
+        beta     0.91677     0.00781   117.31563     0.00000
+       gamma     0.49275     0.26499     1.85949     0.06615
+
+************************************************************
+

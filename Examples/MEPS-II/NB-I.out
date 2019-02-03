@@ -1,0 +1,25 @@
+******************************************************
+Negative Binomial model, MEPS 1996 full data set
+
+MLE Estimation Results
+BFGS convergence: Normal convergence
+
+Average Log-L: -2.185730
+Observations: 4564
+
+              estimate     st. err      t-stat     p-value  
+constant        -0.523       0.104      -5.005       0.000
+pub. ins.        0.765       0.054      14.198       0.000
+priv. ins.       0.451       0.049       9.196       0.000
+sex              0.458       0.034      13.512       0.000
+age              0.016       0.001      11.869       0.000
+edu              0.027       0.007       3.979       0.000
+inc              0.000       0.000       0.000       1.000
+alpha            5.555       0.296      18.752       0.000
+
+Information Criteria 
+CAIC : 20026.7513      Avg. CAIC:   4.3880
+ BIC : 20018.7513       Avg. BIC:   4.3862
+ AIC : 19967.3437       Avg. AIC:   4.3750
+******************************************************
+

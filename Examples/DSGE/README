@@ -1,0 +1,11 @@
+dsgedata.txt, in the GenData directory, is a data set of 160 observations drawn
+from the simple DSGE model at the true parameter values, in the second
+column of parameters.m
+
+To re-generate the data, go to the GenData directory, and run
+"octave-cli --eval make_simdata"
+
+In the GMM directory, EstimateDSGE_GMM.m illustrates how moments can be
+otained from the theoretical model, and it show the difficulty of obtaining
+parameter estimates using GMM.
+

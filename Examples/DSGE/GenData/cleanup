@@ -1,0 +1,6 @@
+#!/bin/bash
+rm -R -f SimpleModel*
+rm parameterfile*
+if [ -f octave-workspace ]; then
+	rm octave-workspace
+fi

@@ -1,0 +1,13 @@
+#!/bin/bash
+for i in {1..32}
+do
+	cp TEMPLATEMODFILE.mod SimpleModel"$i".mod
+	cp TEMPLATEMODFILE_steadystate.m SimpleModel"$i"_steadystate.m
+	sync
+	sed -i "s/parameterfile1/parameterfile$i/"g SimpleModel"$i".mod
+	sed -i "s/state1/state$i/g" SimpleModel"$i".mod
+	sed -i "s/TEMPLATE/SimpleModel$i/g" SimpleModel"$i"_steadystate.m
+
+done
+
+	 

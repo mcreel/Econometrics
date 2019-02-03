@@ -1,0 +1,31 @@
+print(Unquoted, "Negative Binomial SNP Density");
+
+print(Unquoted, "First define the NB density");
+f(y,a,b):= gamma(a+y) / gamma(a) / gamma(y+1) * (a/(b+a))^a *  (b/(b + a))^y;
+
+print(Unquoted, "Verify that it sums to 1");
+simplify(sum(f(y,a,b),y=0..infinity));
+
+print(Unquoted, "Define the MGF");
+mgf(a,b,t) := simplify(sum(exp(t*y)*f(y,a,b),y=0..infinity));
+
+print(Unquoted, "Print the MGF in TeX format");
+generate::TeX(%2);
+
+print(Unquoted, "Find the first moment (which we know is b (lambda))");
+normal(simplify(limit(diff(mgf(a,b,t),t $ 1),t=0)));
+
+print(Unquoted, "Find the fifth moment (which we probably don't know)");
+m5 := normal(simplify(limit(diff(mgf(a,b,t),t $ 5),t=0)));
+
+print(Unquoted, "Print the fifth moment in fortran form, to program ln L");
+generate::fortran(m5);
+
+print(Unquoted, "Print the fifth moment in TeX form");
+generate::TeX(m5);
+
+
+print(Unquoted, "To get the normalizing factor, we need expressions of the");
+print(Unquoted, "form of the following");
+sum(sum(a(i)*b(j)*m(i+j), j = 0..3),i = 0..3);
+quit;

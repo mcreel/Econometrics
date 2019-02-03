@@ -1,0 +1,3 @@
+This directory generates the data for the DSGE examples. The script that
+generates the data is "make_simdata.m". This requires Dynare, and thus,
+Octave, too.

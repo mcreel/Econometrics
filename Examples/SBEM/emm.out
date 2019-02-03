@@ -1,0 +1,44 @@
+Score generator results:
+=====================================================
+BFGSMIN final results
+
+Used analytic gradient
+
+------------------------------------------------------
+STRONG CONVERGENCE
+Function conv 1  Param conv 1  Gradient conv 1
+------------------------------------------------------
+Objective function value 0.281571
+Stepsize 0.0279
+15 iterations
+------------------------------------------------------
+
+ param    gradient  change
+  1.8979   0.0000   0.0000
+  1.6648  -0.0000   0.0000
+  1.9125  -0.0000   0.0000
+  1.8875  -0.0000   0.0000
+  1.7433  -0.0000   0.0000
+
+======================================================
+
+Model results:
+******************************************************
+EMM example
+
+GMM Estimation Results
+BFGS convergence: Normal convergence
+
+Objective function value: 0.000000
+Observations: 1000
+
+Exactly identified, no spec. test
+
+      estimate     st. err      t-stat     p-value  
+p1       1.069       0.022      47.618       0.000
+p2       0.935       0.022      42.240       0.000
+p3       1.085       0.022      49.630       0.000
+p4       1.080       0.022      49.047       0.000
+p5       0.978       0.023      41.643       0.000
+******************************************************
+

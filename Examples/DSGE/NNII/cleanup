@@ -1,0 +1,10 @@
+#!/bin/bash
+mv SimpleModel.mod backup
+mv SimpleModel_steadystate.m backup2
+rm -R -f SimpleModel*
+rm parameterfile*
+if [ -f octave-workspace ]; then
+	rm octave-workspace
+fi
+mv backup SimpleModel.mod
+mv backup2 SimpleModel_steadystate.m

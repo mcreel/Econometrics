@@ -1,0 +1,17 @@
+octave:8> CO2Example
+warning: load: file found in load path
+
+*********************************************************
+OLS estimation results
+Observations 468
+R-squared 0.979239
+Sigma-squared 5.696791
+
+Results (Het. consistent var-cov estimator)
+
+     estimate     st.err.     t-stat.     p-value
+1     316.918       0.227    1394.406       0.000
+2       0.121       0.001     141.521       0.000
+
+*********************************************************
+ 

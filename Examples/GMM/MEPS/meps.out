@@ -1,0 +1,50 @@
+
+OBDV
+
+
+******************************************************
+IV
+
+GMM Estimation Results
+BFGS convergence: Normal convergence
+
+Objective function value: 0.004273
+Observations: 4564
+No moment covariance supplied, assuming efficient weight matrix
+
+               Value          df     p-value
+X^2 test      19.502       3.000       0.000
+
+              estimate     st. err      t-stat     p-value
+constant        -0.441       0.213      -2.072       0.038
+pub. ins.       -0.127       0.149      -0.851       0.395
+priv. ins.      -1.429       0.254      -5.624       0.000
+sex              0.537       0.053      10.133       0.000
+age              0.031       0.002      13.431       0.000
+edu              0.072       0.011       6.535       0.000
+inc              0.000       0.000       4.500       0.000
+******************************************************
+
+
+******************************************************
+Poisson QML
+
+GMM Estimation Results
+BFGS convergence: Normal convergence
+
+Objective function value: 0.000000
+Observations: 4564
+No moment covariance supplied, assuming efficient weight matrix
+
+Exactly identified, no spec. test
+
+              estimate     st. err      t-stat     p-value
+constant        -0.791       0.149      -5.289       0.000
+pub. ins.        0.848       0.076      11.092       0.000
+priv. ins.       0.294       0.071       4.136       0.000
+sex              0.487       0.055       8.796       0.000
+age              0.024       0.002      11.469       0.000
+edu              0.029       0.010       3.060       0.002
+inc             -0.000       0.000      -0.978       0.328
+******************************************************
+

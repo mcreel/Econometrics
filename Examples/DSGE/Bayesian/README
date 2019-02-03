@@ -1,0 +1,7 @@
+dsgedata.m is a draw of 160 observations on the 5 observed variables from the model CGHK, at the true
+parameter values. 
+
+When estimating by ML using Dynare, you can use only one or two variables,
+even if order=2. This is due to the "stochastic singularity" problem, for
+linearized models. I'm not sure why it applies to the second order solution,
+that is a Dynare particularity, I think.

@@ -1,0 +1,19 @@
+#open nerlove
+
+scalar b0 = 0.0
+scalar bq = 0.0
+scalar bl = 0.0
+scalar bk = 0.0
+scalar bf = 0.0
+scalar sig = 1
+
+
+mle ll = -log(sig) -log(sqrt(2*pi)) - 0.5*(e^2)/(sig^2)
+  series e = log(cost) - b0 - bq*log(output) - bl*log(labor) - bf*log(fuel) - bk*log(capital)
+  params b0 bq bl bf bk sig
+end mle
+
+
+
+
+
