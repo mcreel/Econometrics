@@ -1,15 +1,11 @@
 julia 0.7
-Plots
+StatsKit
 StatsPlots
-GR
-Distributions
-Distances
-NLopt
-StatsBase
 StatsFuns
+StatsModels
+Plots
+GR
+Optim
+NLopt
 SpecialFunctions
 Calculus
-KernelDensity
-Optim
-StatsModels
-DataFrames
