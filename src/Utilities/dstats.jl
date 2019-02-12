@@ -1,4 +1,3 @@
-using StatsBase
 function dstats(x, rnames="";short=false)
     k = size(x,2)
     if rnames==""
