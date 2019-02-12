@@ -1,7 +1,8 @@
 module Econometrics
-using LinearAlgebra, Printf
+using Statistics, LinearAlgebra, Printf
 using NLopt, SpecialFunctions
-using StatsKit, StatsBase, StatsPlots, StatsFuns, StatsModels
+using StatsBase, StatsPlots, StatsFuns, StatsModels
+using Distributions, Distances, DataFrames, KernelDensity
 using Calculus, Optim, GR
 # Utilities
 include("Utilities/stnorm.jl")
