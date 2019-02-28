@@ -1,6 +1,7 @@
 # shows some data analysis using DataFrames
 using CSV, DataFrames, GLM
-nerlove = CSV.read("nerlove.csv")
+dir = dirname(dirname(pathof(Econometrics)))
+nerlove = CSV.read(dir*"/Examples/Data/nerlove.csv")
 nerlove[:lnC] = log.(nerlove[:cost])
 nerlove[:lnQ] = log.(nerlove[:output])
 nerlove[:lnPL] = log.(nerlove[:labor])
