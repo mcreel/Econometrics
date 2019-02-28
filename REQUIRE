@@ -3,6 +3,7 @@ Distances
 Distributions
 KernelDensity
 DataFrames
+DataFramesMeta
 StatsBase
 StatsPlots
 StatsFuns
@@ -14,3 +15,6 @@ Optim
 NLopt
 SpecialFunctions
 Calculus
+CSV
+DelimitedFiles
+
