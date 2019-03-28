@@ -9,7 +9,6 @@ StatsPlots
 StatsFuns
 StatsModels
 GLM
-Plots
 GR
 Optim
 NLopt
