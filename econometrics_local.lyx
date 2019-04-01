@@ -61805,7 +61805,7 @@ For
 \end_layout
 
 \begin_layout Section
-Convergenge modes 
+Convergence modes 
 \end_layout
 
 \begin_layout Standard
@@ -63093,6 +63093,12 @@ help numhessian
 
 \begin_layout Chapter
 Introduction to Julia
+\end_layout
+
+\begin_layout Standard
+Note: this is out of date and very incomplete.
+ There are much better introductory materials from other sources.
+ I'm keeping it here in case I decide to improve it at some point.
 \end_layout
 
 \begin_layout Standard
