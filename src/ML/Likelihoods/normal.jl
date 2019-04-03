@@ -6,5 +6,5 @@ function normal(theta, y, x)
     b = theta[1:end-1]
     s = theta[end]
     e = (y - x*b)./s
-    logdensity = -log.(sqrt.(2.0*pi)) .- log(s) .- 0.5*e.*e
+    logdensity = -log.(sqrt.(2.0*pi)) .- 0.5*log(s.^2) .- 0.5*e.*e
 end
