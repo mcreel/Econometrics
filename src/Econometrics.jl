@@ -3,7 +3,7 @@ using Statistics, LinearAlgebra, Printf
 using NLopt, SpecialFunctions
 using StatsBase, StatsPlots, StatsFuns, StatsModels
 using Distributions, Distances, DataFrames, KernelDensity
-using Calculus, Optim, GR
+using Calculus, Optim, GR, DataFramesMeta, CSV
 # Utilities
 include("Utilities/stnorm.jl")
 include("Utilities/trim.jl")

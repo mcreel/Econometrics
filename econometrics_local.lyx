@@ -158,13 +158,6 @@ Michael Creel
 \end_inset
 
 
-\begin_inset Graphics
-	filename bgselogo.jpg
-	width 8cm
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -703,6 +696,549 @@ lyx -e pdf2 econometrics_local.lyx
 the result will be an econometrics_local.pdf file
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction to Julia
+\end_layout
+
+\begin_layout Standard
+This document uses the 
+\begin_inset CommandInset href
+LatexCommand href
+name " Julia programming language"
+target "https://julialang.org/"
+literal "false"
+
+\end_inset
+
+ for most of the examples.
+ This chapter gives a very bare bones introduction to Julia.
+ There are much better introductory materials from other sources, some of
+ which are noted below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Why Julia?
+\end_layout
+
+\begin_layout Itemize
+free: free in terms of $$$, and also, source code is free, so you can know
+ exactly what it does, and you can modify it and contribute to it
+\end_layout
+
+\begin_layout Itemize
+multi-platform: runs on all the popular operating systems.
+ For teaching econometrics, this is nice, because all students have equal
+ access to the materials.
+\end_layout
+
+\begin_layout Itemize
+fast: speed of well-written code is close to C or Fortan.
+ Code is relatively easy to write and to read, similar to Matlab or other
+ matrix scripting languages
+\end_layout
+
+\begin_layout Itemize
+the above 3 considerations are essentially necessary for a language for
+ modern science, which requires accessibility, verifiability, and performance
+\end_layout
+
+\begin_layout Itemize
+also, it's fun: the ecosystem is still developing rapidly, plenty of room
+ to contribute
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Why not Julia?
+\end_layout
+
+\begin_layout Itemize
+Julia code is compiled before it's run.
+ This means that first calls to functions take a bit of time, as they are
+ compiled.
+ The second call will be much faster-Interactive use may frustrate quite
+ a bit, at least until you learn to work around this particularity.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+this will get better over time, as support for pre-compilation improves
+\end_layout
+
+\begin_layout Itemize
+can be dealt with quite easily by warming up functions with toy usages,
+ which you might include in your startup file.
+\end_layout
+
+\begin_layout Itemize
+Also, keep your Julia session running, and the things you use often will
+ already be compiled from previous uses.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+the speed is only needed if your work is computationally demanding.
+ Dividing epsilon by 2 is not very important when epsilon is small.
+ For getting fast results for linear models, you may prefer a more complete
+ canned package, e.g., Stata, etc.
+\end_layout
+
+\begin_layout Itemize
+the ecosystem is still developing, some features like DataFrames and plotting
+ are not as complete or stable as in other languages.
+ However, I have been using it happily since 2014, and have been getting
+ work done.
+ 
+\strikeout on
+Once the 1.0 release is out, 
+\begin_inset Quotes sld
+\end_inset
+
+real soon now
+\begin_inset Quotes srd
+\end_inset
+
+, things will stabilize
+\strikeout default
+ Strike that! Julia 1.0 was released in August 2018.
+ The basic language is now quite stable, though packages are still developing
+ at a quick rate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Resources
+\end_layout
+
+\begin_layout Itemize
+Julia language: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://julialang.org/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+tutorials:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recommended! 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/PaulSoderlind/JuliaTutorial
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+More detailed.
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://ucidatascienceinitiative.github.io/IntroToJulia/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Recommended! Quantitative Economics: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://lectures.quantecon.org/jl/index.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Installation of Julia and packages
+\end_layout
+
+\begin_layout Itemize
+install Julia stable version from 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://julialang.org/downloads/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Getting started: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://docs.julialang.org/en/v1/manual/getting-started/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Package manager documentation: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://docs.julialang.org/en/v1/stdlib/Pkg/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The first thing you will need to do to make full use of this document is
+ to install the examples and the support code.
+ The main commands for packages:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+from the REPL, press ] to enter package mode.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+]?
+\family default
+ : help for package mode.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+] add
+\family default
+ : Add a package.
+ e.g., to add the package that supports these notes, do the following
+\family typewriter
+: ] add https://github.com/mcreel/Econometrics.git
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+That will install the code and the required packages.
+ If you see an error about missing some package, just install what's missing.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Recommended packages (amongst many others):
+\family typewriter
+ ] add OhMyREPL Revise
+\end_layout
+
+\begin_layout Itemize
+Recommended: put 
+\family typewriter
+using Revise; using OhMyREPL; using Econometrics
+\family default
+ in your 
+\family typewriter
+~/.julia/config/startup.jl
+\family default
+ file so that they are automatically used when you start Julia
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Running Julia and the work flow
+\end_layout
+
+\begin_layout Subsection
+REPL and text editor
+\end_layout
+
+\begin_layout Itemize
+The REPL (
+\begin_inset Quotes sld
+\end_inset
+
+read-eval-print loop
+\begin_inset Quotes srd
+\end_inset
+
+ ), or in more plain parlance, the Julia command prompt, is my main way
+ of working for research.
+ Simple and easy to replicate.
+ On Linux, just open a terminal and type 
+\begin_inset Quotes sld
+\end_inset
+
+julia
+\begin_inset Quotes srd
+\end_inset
+
+.
+ You can run your code in one window, and edit it in another.
+\end_layout
+
+\begin_layout Subsection
+IJulia/Jupyter notebooks
+\end_layout
+
+\begin_layout Itemize
+Good for presentations, but I find it cumbersome for research and daily
+ work
+\end_layout
+
+\begin_layout Itemize
+Show it by doing 
+\family typewriter
+] add IJulia using IJulia; notebook()
+\end_layout
+
+\begin_layout Subsection
+Juno/Atom
+\end_layout
+
+\begin_layout Itemize
+If you want something more modern (?) and integrated looking than the REPL
+ and a text editor, check out the Juno editor :
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://junolab.org/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Loading/saving data
+\end_layout
+
+\begin_layout Standard
+The examples that follow in later chapters provide some examples.
+ Relevant commands are:
+\end_layout
+
+\begin_layout Itemize
+using DelimitedFiles; ?readdlm, ?writedlm
+\end_layout
+
+\begin_layout Itemize
+using CSV; ?read for reading CSV files into with variable names in the first
+ row into a dataframe
+\end_layout
+
+\begin_layout Itemize
+writeldlm, CSV.write
+\end_layout
+
+\begin_layout Itemize
+For more information, see 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://github.com/PaulSoderlind/JuliaTutorial/blob/master/Tutorial_09_LoadSaveData.ipynb"
+target "https://github.com/PaulSoderlind/JuliaTutorial/blob/master/Tutorial_09_LoadSaveData.ipynb"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Example data sets to practice on:
+\end_layout
+
+\begin_layout Standard
+CSV with names: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/mcreel/Econometrics/blob/master/Examples/Data/card.csv
+\end_layout
+
+\end_inset
+
+, and
+\end_layout
+
+\begin_layout Standard
+plain text, space delimited: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/mcreel/Econometrics/blob/master/Examples/Data/nerlove.data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Exploratory analysis and plotting
+\end_layout
+
+\begin_layout Standard
+This section needs work, but the following two examples can give you ideas:
+\end_layout
+
+\begin_layout Itemize
+Using DataFrames and StatPlots for exploratory analysis: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{BasicDataAnalysis.jl}{file:///home/michael/Mystuff/Econometrics
+/Examples/Julia/BasicDataAnalysis.jl} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Data wrangling: transforming, adding variables, etc.: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{DataWrangling.jl}{file:///home/michael/Mystuff/Econometrics/Exa
+mples/Julia/DataWrangling.jl} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.juliabloggers.com/data-wrangling-in-julia-based-on-dplyr-flights-tutor
+ials/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/piever/JuliaDBTutorial/blob/master/hflights.ipynb
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -63089,779 +63625,6 @@ help numhessian
 \end_inset
 
 
-\end_layout
-
-\begin_layout Chapter
-Introduction to Julia
-\end_layout
-
-\begin_layout Standard
-Note: this is out of date and very incomplete.
- There are much better introductory materials from other sources.
- I'm keeping it here in case I decide to improve it at some point.
-\end_layout
-
-\begin_layout Standard
-This chapter gives a brief introduction to Julia, explaining how to get
- it running, and giving some basic examples relevant to econometrics.
- There are also some pointers to sources of additional information.
- This is written for Julia version 0.6.x, and will be updated (hopefully)
- to keep up with developments.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Why Julia?
-\end_layout
-
-\begin_layout Itemize
-free: free in terms of $$$, and also, source code is free, so you can know
- exactly what it does, and you can modify it and contribute to it
-\end_layout
-
-\begin_layout Itemize
-multi-platform: runs on all the popular operating systems
-\end_layout
-
-\begin_layout Itemize
-fast: speed of well-written code is close to C or Fortan.
- Code relatively easy to write, similar to Matlab.
-\end_layout
-
-\begin_layout Itemize
-these 3 considerations are essentially necessary for a language for modern
- science that seeks to be verifiable and open
-\end_layout
-
-\begin_layout Itemize
-also, it's fun: the ecosystem is still developing rapidly, plenty of room
- to contribute
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Why not Julia?
-\end_layout
-
-\begin_layout Itemize
-JIT requires warming up, first calls to functions take a bit of time.
- Interactive use may frustrate, unless you work around this.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-will get better in time, as support for pre-compilation improves
-\end_layout
-
-\begin_layout Itemize
-can be dealt with quite easily by warming up functions with toy usages
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-the speed is only needed if your work is computationally demanding.
- For getting fast results for linear models, you may prefer a more complete
- canned package, e.g., Stata, etc.
-\end_layout
-
-\begin_layout Itemize
-the ecosystem is still developing, some features like DataFrames and plotting
- are not as complete stable as in other languages.
- However, I have been using it happily since 2014, and have been getting
- work done.
- 
-\strikeout on
-Once the 1.0 release is out, 
-\begin_inset Quotes sld
-\end_inset
-
-real soon now
-\begin_inset Quotes srd
-\end_inset
-
-, things will stabilize
-\strikeout default
- Strike that! Julia 1.0 was released in August 2018.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Resources
-\end_layout
-
-\begin_layout Itemize
-Julia language: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://julialang.org/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Juno editor :
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://junolab.org/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-packages: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://pkg.julialang.org/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-tutorials:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/PaulSoderlind/JuliaTutorial
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://ucidatascienceinitiative.github.io/IntroToJulia/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://www.analyticsvidhya.com/blog/2017/10/comprehensive-tutorial-learn-data-sci
-ence-julia-from-scratch/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Quantitative Economics: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://lectures.quantecon.org/jl/index.html
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Julia Economics blog: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://juliaeconomics.com/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-comparison of programming languages for economics: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://economics.sas.upenn.edu/~jesusfv/comparison_languages.pdf
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Installation of Julia and packages
-\end_layout
-
-\begin_layout Itemize
-install Julia stable version from 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://julialang.org/downloads/
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-main commands for packages: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-Pkg.update()
-\family default
-.
- Find out what has been updated.
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-Pkg.add() 
-\family default
-Add a new package.
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-Pkg.checkout()
-\family default
- Get the 
-\begin_inset Quotes srd
-\end_inset
-
-main
-\begin_inset Quotes srd
-\end_inset
-
- git branch version, instead of the last release.
- Could have new features, or might not work!
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-Pkg.clone() 
-\family default
-Obtain a package that is not registered in the Julia package system.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-install PyPlot.jl.
- It needs a pre-existing python installation.
- On Linux, use it by executing
-\family typewriter
- ENV["PYTHON"]="/usr/bin/python";Pkg.build("PyCall")
-\end_layout
-
-\begin_layout Itemize
-get the support software from 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/mcreel/Econometrics.jl
-\end_layout
-
-\end_inset
-
- Execute, from the Julia prompt
-\family typewriter
- Pkg.clone("https://github.com/mcreel/Econometrics.jl.git") 
-\family default
-which will pull in a lot of required packages.
- TAKES QUITE A BIT OF TIME!
-\end_layout
-
-\begin_layout Itemize
-install Juno from 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://junolab.org/
-\end_layout
-
-\end_inset
-
-.
- This is a GUI editor environment which has some nice features for combining
- scripted and interactive usage.
- I will use it in my explanation.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Running Julia and the work flow
-\end_layout
-
-\begin_layout Subsection
-REPL and text editor
-\end_layout
-
-\begin_layout Itemize
-My main way of working for research.
- Simple and easy to replicate.
- 
-\end_layout
-
-\begin_layout Itemize
-Show it.
-\end_layout
-
-\begin_layout Subsection
-IJulia/Jupyter notebooks
-\end_layout
-
-\begin_layout Itemize
-Good for presentations, but I find it cumbersome for research.
-\end_layout
-
-\begin_layout Itemize
-Show it by doing 
-\family typewriter
-Pkg.add("IJulia"); using IJulia; notebook()
-\end_layout
-
-\begin_layout Subsection
-Juno/Atom
-\end_layout
-
-\begin_layout Standard
-This is what I will use to present this introduction.
- Nice, because it allows evaluation line-by-line, or by blocks of code.
-\end_layout
-
-\begin_layout Subsection
-JuliaBox
-\end_layout
-
-\begin_layout Standard
-A way to try Julia out, without installation .
- Uses IJulia.
- See 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-www.juliabox.com
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Loading/saving data
-\end_layout
-
-\begin_layout Standard
-Example data sets:
-\end_layout
-
-\begin_layout Standard
-CSV with names: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/mcreel/Econometrics/blob/master/Examples/Data/card.csv
-\end_layout
-
-\end_inset
-
-, and
-\end_layout
-
-\begin_layout Standard
-plain text, space delimited: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/mcreel/Econometrics/blob/master/Examples/Data/nerlove.data
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-readdlm, writedlm.
- 
-\end_layout
-
-\begin_layout Itemize
-CSV.jl: readtable() for reading CSV files with variable names in the first
- row
-\end_layout
-
-\begin_layout Itemize
-writeldlm, CSV.write
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Lab 1
-\end_layout
-
-\begin_layout Itemize
-get into REPL, and do some basic operations
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-add a package
-\end_layout
-
-\begin_layout Itemize
-define an array
-\end_layout
-
-\begin_layout Itemize
-extract a column
-\end_layout
-
-\begin_layout Itemize
-etc.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Exploratory analysis and plotting
-\end_layout
-
-\begin_layout Itemize
-Using DataFrames and StatPlots for exploratory analysis: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-htmladdnormallink{BasicDataAnalysis.jl}{file:///home/michael/Mystuff/Econometrics
-/Examples/Julia/BasicDataAnalysis.jl} 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Data wrangling: transforming, adding variables, etc.: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-htmladdnormallink{DataWrangling.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/Julia/DataWrangling.jl} 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://www.juliabloggers.com/data-wrangling-in-julia-based-on-dplyr-flights-tutor
-ials/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Lab 2
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Optimization
-\end_layout
-
-\begin_layout Itemize
-unconstrained: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/JuliaNLSolvers/Optim.jl
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-constrained: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/JuliaOpt/NLopt.jl
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-global: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Modeling
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Lab 3
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Performance considerations
-\end_layout
-
-\begin_layout Itemize
-Basic info: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://docs.julialang.org/en/stable/manual/performance-tips/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Some more details: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.stochasticlifestyle.com/7-julia-gotchas-handle/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Several examples
-\end_layout
-
-\begin_layout Itemize
-neural nets (MLP) 
-\end_layout
-
-\begin_layout Itemize
-MCMC and Chernozhukov-Hong Laplace-type estimation of QIV model 
-\end_layout
-
-\begin_layout Itemize
-MSM 
-\end_layout
-
-\begin_layout Itemize
-NN Indirect inference
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Lab 4
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Case studies
 \end_layout
 
 \begin_layout Standard
