@@ -6,14 +6,14 @@ include("DSGEmoments.jl")  # computes errors
 function main()
 include("parameters.jl") # load true parameter values
 data = readdlm("dsgedata.txt")
+n = size(data,1)
 # estimate by simulated annealing
 lb = lb_param_ub[:,1]
 ub = lb_param_ub[:,3]
 # define CUE GMM criterion
 moments = theta -> DSGEmoments(theta, data)
 m = theta -> vec(mean(moments(theta),dims=1)) # 1Xg
-momentcontrib = theta -> moments(theta) # nXg
-weight = theta -> inv(NeweyWest(momentcontrib(theta)))
+weight = theta -> inv(cov(sqrt(n)*moments(theta)))
 obj = theta -> m(theta)'*weight(theta)*m(theta)
 thetastart = (ub+lb)/2.0 # prior mean as start
 # attempt gradient based (doesn't work)
@@ -26,10 +26,10 @@ thetahat, objvalue, converged, details = samin(obj, thetastart, lb, ub; ns = 20,
 # compute the estimated standard errors and CIs
 D = (Calculus.jacobian(m, vec(thetahat), :central))
 W = weight(thetahat)
-V = inv(D'*W*D)/(size(data,1)-2.0)
+V = inv(D'*W*D)/n 
 se = sqrt.(diag(V))
 println("estimates, st. error, and limits of 95% CI")
 prettyprint([thetahat se thetahat-1.96*se thetahat+1.96*se],["estimate", "std. err.", "CI lower", "CI upper"])
-return
+return nothing
 end
 main()

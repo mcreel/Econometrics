@@ -198,10 +198,6 @@ LatexCommand tableofcontents
 About this document
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 Prerequisites
 \end_layout
@@ -1084,14 +1080,20 @@ using DelimitedFiles; ?readdlm, ?writedlm
 \end_layout
 
 \begin_layout Itemize
-using CSV; ?read for reading CSV files into with variable names in the first
- row into a dataframe
+using CSV;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+?CSV.read for reading CSV files into with variable names in the first row
+ into a dataframe
 \end_layout
 
 \begin_layout Itemize
-writeldlm, CSV.write
+?CSV.write
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 For more information, see 
 \begin_inset CommandInset href
@@ -43483,14 +43485,12 @@ mples/DSGE/GMM/DoGMM.jl}
 
 \end_inset
 
- can be used to discover several facts about GMM estimation of nonlinear
- models.
- 
+ implements CUE-GMM estimation of the model, using the selected moment condition
+s, using simulated annealing to do the minimization
 \end_layout
 
 \begin_layout Itemize
-The final estimates, standard errors, and 95% CI bounds, obtained using
- simulated annealing are
+The final estimates, standard errors, and 95% CI bounds, are
 \begin_inset Newline newline
 \end_inset
 
@@ -43533,43 +43533,49 @@ estimate std.
 \begin_layout Plain Layout
 
 \family typewriter
-0.98855 0.00018 0.98820 0.98890
+0.98992 0.00142 0.98714 0.99271
 \end_layout
 
 \begin_layout Plain Layout
 
 \family typewriter
-2.09399 0.02677 2.04152 2.14645
+2.09990 0.32135 1.47004 2.72975
 \end_layout
 
 \begin_layout Plain Layout
 
 \family typewriter
-0.95240 0.00639 0.93987 0.96493
+0.90879 0.03585 0.83851 0.97906
 \end_layout
 
 \begin_layout Plain Layout
 
 \family typewriter
-0.01911 0.00014 0.01884 0.01939
+0.01965 0.00156 0.01659 0.02271
 \end_layout
 
 \begin_layout Plain Layout
 
 \family typewriter
-0.62351 0.02425 0.57598 0.67104
+0.74954 0.41860 -0.07091 1.56999
 \end_layout
 
 \begin_layout Plain Layout
 
 \family typewriter
-0.00948 0.00039 0.00873 0.01024
+0.00883 0.00553 -0.00202 0.01968
 \end_layout
 
 \begin_layout Plain Layout
 
 \family typewriter
-0.33169 0.00015 0.33140 0.33199
+0.33277 0.00508 0.32282 0.34272
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+julia> 
 \end_layout
 
 \end_inset
@@ -43583,43 +43589,48 @@ estimate std.
 
 \begin_layout Itemize
 care is needed to obtain a real global minimum.
- If the estimation is run several times (warning, takes some time), you
- will observe that it sometimes does not converge to the global minimum
- (function value 0.18830, I think...), even when using simulated annealing with
- a conservative cooling schedule (ns = 20, rt = 0.9).
+ The attempt to use ordinary gradient-based minimization fails.
+ A person who tried these methods might conclude that the moments don't
+ identify the parameters well, but this is not the case: it is possible
+ to obtain good results using GMM.
 \end_layout
 
 \begin_layout Itemize
-using this conservative cooling schedule is time consuming, requiring many
- function evaluations.
+Simulated annealing, on the other hand, converges to the same value in repeated
+ runs.
+ It is possible that on a given run, a different outcome might be obtained,
+ if the cooling rate is to rapid, but I have yet to see this with the current
+ setup.
 \end_layout
 
 \begin_layout Itemize
-when estimation is successful, the estimates are close to the true parameter
- values (see Table 
+SA requires many function evaluations, about 30000 with the setting in the
+ example code.
+ However, it doesn't take too long, only about 11 seconds.
+ This doesn't seem like too much time to get a reliable answer.
+\end_layout
+
+\begin_layout Itemize
+The estimates are close to the true parameter values (see Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:True-parameters-and"
 
 \end_inset
 
-), and estimated standard errors are small.
- However, for the results above, the true parameter values are not in the
- 95% confidence intervals for 6 of the seven parameters! 
+).
+ Some parameters are precisely estimated, but others, especially 
+\begin_inset Formula $\rho_{\eta}$
+\end_inset
+
+ have fairly large standard errors.
+ Perhaps better moments could be found to better identify these parameters.
 \end_layout
 
 \begin_layout Itemize
-if you attempt to use a less conservative cooling schedule, e.g., ns = 5,
- rt = 0.75 estimation will rarely be successful.
+if you attempt to use a less conservative cooling schedule, e.g., setting
+ ns = 1, rt = 0.25 estimation using SA will rarely be successful.
  
-\end_layout
-
-\begin_layout Itemize
-If one tries to estimate using gradient-based methods directly (by commenting
- out the SA part), estimation will never be successful.
- A person who tried these methods might conclude that the moments don't
- identify the parameters well, but this is not the case: it is possible
- to obtain good results using GMM.
 \end_layout
 
 \begin_layout Itemize
@@ -47930,8 +47941,8 @@ In ARCH and GARCH models, the same shocks that affect the level also affect
  A simple example is
 \begin_inset Formula 
 \begin{align*}
-y_{t} & =\exp(h_{t}/2)\epsilon_{t}\\
-h_{t} & =\alpha+\rho h_{t-1}+\sigma\eta_{t}
+y_{t} & =\sigma_{\epsilon}\exp(h_{t}/2)\epsilon_{t}\\
+h_{t} & =\rho h_{t-1}+\sigma_{u}u_{t}
 \end{align*}
 
 \end_inset
@@ -47943,12 +47954,12 @@ In this model, the log of the variance of the observed sequence follows
 \end_inset
 
  and 
-\begin_inset Formula $\eta_{t}.$
+\begin_inset Formula $u_{t}.$
 \end_inset
 
  Code to generate data from this model is here: 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -48000,7 +48011,7 @@ SV model, typical data and density
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -48030,7 +48041,7 @@ Data
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -48082,7 +48093,7 @@ While the ARCH and GARCH models have a link between the shocks to
  This may be perfectly reasonable: even when volatility is high, the mean
  of shocks to the observables may be zero.
  An ARCH model could not account for an increase in volatility without having
- a realized extreme shock.
+ a realized extreme shock to the level.
  The SV model can allow for this.
  
 \end_layout
@@ -61678,7 +61689,81 @@ reference "subsec:Stochastic-volatility"
 \end_inset
 
  by indirect inference.
- It is a bit of work in progress...
+ The results for one sample of size 
+\begin_inset Formula $n=500$
+\end_inset
+
+ are
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
+true values, estimates, st.
+ error, and limits of 95% CI
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+true value estimate std.
+ err.
+ CI lower CI upper
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+0.69212 0.61397 0.05510 0.50597 0.72197
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+0.90000 0.94201 0.03898 0.86561 1.01841
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+0.36300 0.22652 0.07735 0.07491 0.37814
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+julia> 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+given that, it would be interesting to play around with the auxiliary statistics
+ and see if some others will better identify the parameters.
 \end_layout
 
 \begin_layout Standard
