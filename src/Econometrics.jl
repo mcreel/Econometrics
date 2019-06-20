@@ -6,6 +6,7 @@ using Distributions, Distances, DataFrames, KernelDensity
 using Calculus, Optim, GR, DataFramesMeta, CSV
 # Utilities
 include("Utilities/stnorm.jl")
+include("Utilities/ma.jl")
 include("Utilities/trim.jl")
 include("Utilities/prettyprint.jl")
 include("Utilities/eye.jl")
@@ -51,7 +52,7 @@ include("ML/Likelihoods/normal.jl")
 include("GMM/gmm.jl")
 include("GMM/gmmresults.jl")
 
-export stnorm, trim, prettyprint, eye, sortbyc, dstats, lag, lags, vech
+export stnorm, ma, trim, prettyprint, eye, sortbyc, dstats, lag, lags, vech
 export clc, PrintDivider, PrintEstimationResults
 export lsfit, ols, tsls, TestStatistics, NeweyWest
 export mcmc

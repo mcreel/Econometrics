@@ -61649,8 +61649,9 @@ reference "subsec:Stochastic-volatility"
 \end_inset
 
  by indirect inference, using simulated annealing to do the minimization.
- Examine the script to see what auxiliary statistics are used, and think
- about the problem to try to come up with some better ones.
+ Examine the script to see what auxiliary statistics are used (this is the
+ key to success or failure), and think about the problem to try to come
+ up with some better ones.
  The results for 
 \begin_inset ERT
 status open
@@ -61705,28 +61706,6 @@ status open
 
 \begin_layout Plain Layout
 
-\family typewriter
-true value estimate std.
- err.
- CI lower CI upper
-\end_layout
-
-\begin_layout Plain Layout
-
-\family typewriter
-0.69212 0.69932 0.05132 0.59874 0.79990
-\end_layout
-
-\begin_layout Plain Layout
-
-\family typewriter
-0.90000 0.94331 0.02696 0.89047 0.99614
-\end_layout
-
-\begin_layout Plain Layout
-
-\family typewriter
-0.36300 0.26994 0.06566 0.14124 0.39864
 \end_layout
 
 \end_inset
@@ -61742,10 +61721,6 @@ given that, it would be interesting to play around with the auxiliary statistics
 \begin_layout Itemize
 minimization use SA works fine.
  I haven't tried with gradient-based methods.
-\end_layout
-
-\begin_layout Itemize
-see the Chapter on Bayesian methods for MCMC estimation of the model.
 \end_layout
 
 \begin_layout Standard
@@ -61768,7 +61743,7 @@ htmladdnormallink{EstimateStochasticVolatilityModel_MCMC.jl}{file:///home/michae
  instead of just a point estimate.
  This is a little time consuming, with simulation used to get the likelihood,
  and then the MCMC steps.
- However, the results seem pretty good, as we see in Figure 
+ However, the results are quite good, as we see in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:MCMC-estimation-using"
