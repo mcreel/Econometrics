@@ -198,6 +198,10 @@ LatexCommand tableofcontents
 About this document
 \end_layout
 
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Section
 Prerequisites
 \end_layout
@@ -47959,20 +47963,21 @@ In this model, the log of the variance of the observed sequence follows
 
  Code to generate data from this model is here: 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
  
 \backslash
-htmladdnormallink{EstimateStochasticVolatilityModel.jl}{https://github.com/mcreel/
-Econometrics/blob/master/Examples/SBEM/EstimateStochasticVolatilityModel.jl}
+htmladdnormallink{SVmodel.jl}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/TimeSeries/SVmodel.jl}
 \end_layout
 
 \end_inset
 
 .
- Typical data look like what we see in Figure 
+ Typical data and a nonparametric density plot look like what we see in
+ Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SV-model,-typical"
@@ -47980,7 +47985,7 @@ reference "fig:SV-model,-typical"
 \end_inset
 
 .
- Note the volatility clusters and the fat tails of the density.
+ Note the volatility clusters, leptokurtosis, and the fat tails of the density.
 \end_layout
 
 \begin_layout Standard
@@ -48008,66 +48013,9 @@ SV model, typical data and density
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Data
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/TimeSeries/sv1.svg
+	filename Examples/TimeSeries/svdata.svg
 	width 10cm
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Density
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Examples/TimeSeries/sv2.svg
-	width 10cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 
@@ -48106,7 +48054,7 @@ The latent shocks complicate estimation.
  and Rossi, P.E., 2002.
  Bayesian analysis of stochastic volatility models.
  Journal of Business & Economic Statistics, 20(1), pp.69-87.
- We will see an example of estimation in the chapter on simulation-based
+ We will see an examples of estimation in the chapter on simulation-based
  estimation.
 \end_layout
 
@@ -61663,7 +61611,8 @@ Examples
 \end_layout
 
 \begin_layout Subsection
-MSM and II
+MSM and Indirect inference, and Bayesian limited information simulated likelihoo
+d
 \end_layout
 
 \begin_layout Standard
@@ -61688,12 +61637,39 @@ reference "subsec:Stochastic-volatility"
 
 \end_inset
 
- by indirect inference.
- The results for one sample of size 
-\begin_inset Formula $n=500$
+ by indirect inference, using simulated annealing to do the minimization.
+ Examine the script to see what auxiliary statistics are used (this is the
+ key to success or failure), and think about the problem to try to come
+ up with some better ones.
+ The results for 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{the sample}{https://github.com/mcreel/Econometrics/blob/master/
+Examples/TimeSeries/svdata.txt}
+\end_layout
+
 \end_inset
 
- are
+ that is pictured in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SV-model,-typical"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (
+\begin_inset Formula $n=1000$
+\end_inset
+
+) are
 \end_layout
 
 \begin_layout Itemize
@@ -61720,13 +61696,6 @@ status open
 \begin_layout Plain Layout
 
 \family typewriter
-true values, estimates, st.
- error, and limits of 95% CI
-\end_layout
-
-\begin_layout Plain Layout
-
-\family typewriter
 true value estimate std.
  err.
  CI lower CI upper
@@ -61735,25 +61704,19 @@ true value estimate std.
 \begin_layout Plain Layout
 
 \family typewriter
-0.69212 0.61397 0.05510 0.50597 0.72197
+0.69212 0.73297 0.06199 0.61146 0.85447
 \end_layout
 
 \begin_layout Plain Layout
 
 \family typewriter
-0.90000 0.94201 0.03898 0.86561 1.01841
+0.90000 0.95500 0.02430 0.90737 1.00264
 \end_layout
 
 \begin_layout Plain Layout
 
 \family typewriter
-0.36300 0.22652 0.07735 0.07491 0.37814
-\end_layout
-
-\begin_layout Plain Layout
-
-\family typewriter
-julia> 
+0.36300 0.25042 0.06463 0.12374 0.37710
 \end_layout
 
 \end_inset
@@ -61762,8 +61725,100 @@ julia>
 \end_layout
 
 \begin_layout Itemize
-given that, it would be interesting to play around with the auxiliary statistics
- and see if some others will better identify the parameters.
+check the script to see how to compute standard errors, etc.
+\end_layout
+
+\begin_layout Itemize
+minimization use SA works fine.
+ I haven't tried with gradient-based methods.
+\end_layout
+
+\begin_layout Standard
+The script 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{EstimateStochasticVolatilityModel_MCMC.jl}{https://github.com/mc
+reel/Econometrics/blob/master/Examples/SBEM/EstimateStochasticVolatilityModel_MC
+MC.jl}
+\end_layout
+
+\end_inset
+
+ estimates the same model using the same data set and the same auxiliary
+ statistics, but using MCMC, so we get a full posterior for each parameter,
+ instead of just a point estimate.
+ The likelihood is the asymptotic Gaussian likelihood of the auxiliary statistic
+s.
+ This lets us use Bayesian methods even if the small sample distribution
+ of the statistics is unknown.
+ This is a little time consuming, with simulation used to get the likelihood,
+ and then the MCMC steps.
+ However, the results are quite good, as we see in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MCMC-estimation-using"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Note that the true parameter values are 0.692, 0.9 and 0.363.
+ The posterior means are very close to the indirect inference point estimates
+ that were obtained, above.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MCMC-estimation-using"
+
+\end_inset
+
+MCMC estimation using simulated moments and limited information quasi-likelihood
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Examples/SBEM/MCMC.svg
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

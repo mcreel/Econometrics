@@ -27,7 +27,7 @@ function main()
     ub = [3.0, 1.0, 3.0]
     θinit = θtrue
     lnL = θ -> logL(θ, m, n, shocks_u, shocks_e)
-    Prior = θ -> prior(θ, lb, ub) # uniform, doesn't matter 
+    Prior = θ -> prior(θ, lb, ub) # uniform, doesn't matter
     # define things for MCMC
     verbosity = true
     burnin = 100

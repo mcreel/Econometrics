@@ -61623,7 +61623,8 @@ Examples
 \end_layout
 
 \begin_layout Subsection
-MSM and II (also Bayesian)
+MSM and Indirect inference, and Bayesian limited information simulated likelihoo
+d
 \end_layout
 
 \begin_layout Standard
@@ -61649,8 +61650,9 @@ reference "subsec:Stochastic-volatility"
 \end_inset
 
  by indirect inference, using simulated annealing to do the minimization.
- Examine the script to see what auxiliary statistics are used, and think
- about the problem to try to come up with some better ones.
+ Examine the script to see what auxiliary statistics are used (this is the
+ key to success or failure), and think about the problem to try to come
+ up with some better ones.
  The results for 
 \begin_inset ERT
 status open
@@ -61714,19 +61716,19 @@ true value estimate std.
 \begin_layout Plain Layout
 
 \family typewriter
-0.69212 0.69932 0.05132 0.59874 0.79990
+0.69212 0.73297 0.06199 0.61146 0.85447
 \end_layout
 
 \begin_layout Plain Layout
 
 \family typewriter
-0.90000 0.94331 0.02696 0.89047 0.99614
+0.90000 0.95500 0.02430 0.90737 1.00264
 \end_layout
 
 \begin_layout Plain Layout
 
 \family typewriter
-0.36300 0.26994 0.06566 0.14124 0.39864
+0.36300 0.25042 0.06463 0.12374 0.37710
 \end_layout
 
 \end_inset
@@ -61735,17 +61737,12 @@ true value estimate std.
 \end_layout
 
 \begin_layout Itemize
-given that, it would be interesting to play around with the auxiliary statistics
- and see if some others will better identify the parameters.
+check the script to see how to compute standard errors, etc.
 \end_layout
 
 \begin_layout Itemize
 minimization use SA works fine.
  I haven't tried with gradient-based methods.
-\end_layout
-
-\begin_layout Itemize
-see the Chapter on Bayesian methods for MCMC estimation of the model.
 \end_layout
 
 \begin_layout Standard
@@ -61766,9 +61763,13 @@ htmladdnormallink{EstimateStochasticVolatilityModel_MCMC.jl}{file:///home/michae
  estimates the same model using the same data set and the same auxiliary
  statistics, but using MCMC, so we get a full posterior for each parameter,
  instead of just a point estimate.
+ The likelihood is the asymptotic Gaussian likelihood of the auxiliary statistic
+s.
+ This lets us use Bayesian methods even if the small sample distribution
+ of the statistics is unknown.
  This is a little time consuming, with simulation used to get the likelihood,
  and then the MCMC steps.
- However, the results seem pretty good, as we see in Figure 
+ However, the results are quite good, as we see in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:MCMC-estimation-using"
@@ -61780,6 +61781,8 @@ noprefix "false"
 
 .
  Note that the true parameter values are 0.692, 0.9 and 0.363.
+ The posterior means are very close to the indirect inference point estimates
+ that were obtained, above.
 \end_layout
 
 \begin_layout Standard

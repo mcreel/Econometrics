@@ -16,32 +16,25 @@ function HAR(y)
 end
 
 function aux_stat(y)
-    y = abs.(y) # add 1 to avoid log(0)
-    m = mean(y)
-    s = std(y)
+    y, m, s = stnorm(log.(0.1 .+ y.^2.0))
     # look for evidence of volatility clusters
-    mm = ma(y,5)
-    mm = mm[5:end]
-    clusters5 = 0.0
-    clusters10 = 0.0
-    try
-        clusters5 = quantile(mm,0.75)/quantile(mm, 0.25)
-    catch
-        clusters5 = 1.0
-    end    
     mm = ma(y,10)
     mm = mm[10:end]
+    clusters = 0.0
     try
-        clusters10 = quantile(mm,0.75)/quantile(mm, 0.25)
+        clusters = quantile(mm,0.75)-quantile(mm, 0.25)
     catch
-        clusters10 = 1.0
+        clusters = 1.0
     end    
     ϕ = HAR(y)
-    vcat(m, s, clusters5, clusters10, ϕ)
+    vcat(m, s, clusters, ϕ)
 end
 
 # the dgp: simple discrete time stochastic volatility (SV) model
-function SVmodel(σe, ρ, σu, n, shocks_u, shocks_e, savedata=false)
+function SVmodel(θ, n, shocks_u, shocks_e, savedata=false)
+    σe = θ[1]
+    ρ = θ[2]
+    σu = θ[3]
     burnin = size(shocks_u,1) - n
     hlag = 0.0
     h = ρ.*hlag .+ σu.*shocks_u[1] # figure out type
@@ -62,35 +55,33 @@ function SVmodel(σe, ρ, σu, n, shocks_u, shocks_e, savedata=false)
 end
 
 # for GMM 
-function SVmoments(m, n, θ, randdraws)
-    S = size(randdraws, 1)
-    mm = zeros(S,size(m,1))
-    σe = θ[1]
-    ρ = θ[2]
-    σu = θ[3]
-    for s=1:S
-        mm[s,:] = SVmodel(σe, ρ, σu, n, randdraws[s,:,1], randdraws[s,:,2])
+function SVmoments(m, n, θ, shocks_u, shocks_e)
+    S = size(shocks_u, 2)
+    ms = zeros(S,size(m,1))
+    Threads.@threads for s=1:S
+        ms[s,:] = SVmodel(θ, n, shocks_u[:,s], shocks_e[:,s])
     end
-    mm .- m' # both are already scaled by root-n
+    ms .- m'
 end
 
 # asymptotic Gaussian likelihood function of statistic
-function logL(θ, m, n, shocks_u, shocks_e)
-    σe = θ[1]
-    ρ = θ[2]
-    σu = θ[3]
+function logL(θ, m, n, shocks_u, shocks_e, withdet=true)
     S = size(shocks_u,2)
     k = size(m,1)
-    ms = zeros(eltype(SVmodel(σe, ρ, σu, n, shocks_u[:,1], shocks_e[:,1])), S, k)
+    ms = zeros(eltype(SVmodel(θ, n, shocks_u[:,1], shocks_e[:,1])), S, k)
     # this loop could be parallelized!
-    for s = 1:S
-        ms[s,:] = SVmodel(σe, ρ, σu, n, shocks_u[:,s], shocks_e[:,s])
+    Threads.@threads for s = 1:S
+        ms[s,:] = SVmodel(θ, n, shocks_u[:,s], shocks_e[:,s])
     end
     mbar = mean(ms,dims=1)[:]
     Σ = cov(ms)
     x = (m .- mbar)
     logL = try
-        logL = -0.5*log(det(Σ)) - 0.5*x'*inv(Σ)*x
+        if withdet
+            logL = -0.5*log(det(Σ)) - 0.5*x'*inv(Σ)*x # for Bayesian
+        else    
+            logL = 0.5*x'*inv(Σ)*x # for classic indirect inference (note sign change)
+        end    
     catch
         logL = -Inf
     end
