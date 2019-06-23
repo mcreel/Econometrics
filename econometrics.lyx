@@ -198,10 +198,6 @@ LatexCommand tableofcontents
 About this document
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 Prerequisites
 \end_layout
@@ -61736,15 +61732,18 @@ minimization use SA works fine.
 \begin_layout Standard
 The script 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
  
 \backslash
-htmladdnormallink{EstimateStochasticVolatilityModel_MCMC.jl}{https://github.com/mc
-reel/Econometrics/blob/master/Examples/SBEM/EstimateStochasticVolatilityModel_MC
-MC.jl}
+htmladdnormallink{EstimateStochasticVolatilityModel
+\backslash
+_MCMC.jl}{https://github.com/mcreel/Econometrics/blob/master/Examples/SBEM/Estimat
+eStochasticVolatilityModel
+\backslash
+_MCMC.jl}
 \end_layout
 
 \end_inset
@@ -61781,10 +61780,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -61813,6 +61808,80 @@ MCMC estimation using simulated moments and limited information quasi-likelihood
 \end_layout
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The script 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{Analyze.jl}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/SBEM/NUTS/Analyze.jl}
+\end_layout
+
+\end_inset
+
+ also uses MCMC, but using a more sophisticated sampler, the 
+\begin_inset Quotes sld
+\end_inset
+
+No U-Turn
+\begin_inset Quotes srd
+\end_inset
+
+ sampler (NUTS), as implemented in the 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/tpapp/DynamicHMC.jl
+\end_layout
+
+\end_inset
+
+ package.
+ The two versions of MCMC give results that are pretty much the same.
+ The NUTS sampler is mostly self-tuning, which can be useful, but it is
+ slower to compute, at least for the two implementations given here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+NUTS MCMC estimation using simulated moments and limited information quasi-likel
+ihood
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Examples/SBEM/NUTS/nuts.svg
+	width 15cm
+
+\end_inset
+
 
 \end_layout
 
