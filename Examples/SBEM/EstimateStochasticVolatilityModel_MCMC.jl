@@ -1,5 +1,4 @@
-include("SVlib.jl")
-using Econometrics, LinearAlgebra, Statistics, DelimitedFiles
+using SV, Econometrics, LinearAlgebra, Statistics, DelimitedFiles
 
 function main()
     # load the example data
@@ -24,8 +23,8 @@ function main()
     shocks_e = randn(n+burnin,S) # fixed shocks for simulations
     tuning = [0.01, 0.01, 0.01] # fix this somehow
     lb = [0.0, 0.0, 0.0]
-    ub = [3.0, 1.0, 3.0]
-    θinit = θtrue
+    ub = [3.0, 0.99, 3.0]
+    θinit = (ub+lb)./2.0
     lnL = θ -> logL(θ, m, n, shocks_u, shocks_e)
     Prior = θ -> prior(θ, lb, ub) # uniform, doesn't matter
     # define things for MCMC

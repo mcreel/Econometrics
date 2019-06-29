@@ -47973,7 +47973,7 @@ In this model, the log of the variance of the observed sequence follows
 \begin_inset Formula $u_{t}.$
 \end_inset
 
- Code to generate data from this model is here: 
+ A mini-package that let's you generate data from this model is here: 
 \begin_inset ERT
 status open
 
@@ -47981,8 +47981,7 @@ status open
 
  
 \backslash
-htmladdnormallink{SVmodel.jl}{file:///home/michael/Mystuff/Econometrics/Examples/
-TimeSeries/SVmodel.jl}
+htmladdnormallink{https://github.com/mcreel/SV}{https://github.com/mcreel/SV}
 \end_layout
 
 \end_inset
@@ -61649,7 +61648,19 @@ reference "subsec:Stochastic-volatility"
 
 \end_inset
 
- by indirect inference, using simulated annealing to do the minimization.
+ by indirect inference, using simulated annealing to do the minimization
+ (To run this, you need the package 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/mcreel/SV
+\end_layout
+
+\end_inset
+
+).
  Examine the script to see what auxiliary statistics are used (this is the
  key to success or failure), and think about the problem to try to come
  up with some better ones.
