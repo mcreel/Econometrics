@@ -264,7 +264,7 @@ function samin(obj_fn, x, lb, ub; nt=5, ns=5, rt=0.5, maxevals=1e6, neps=5, func
             println()
         end
         # Check for convergence, if we have covered the parameter space
-        if (coverage_ok)
+        if (coverage_ok==1)
             # last value close enough to last neps values?
             fstar[1] = f
             test = 0
