@@ -1,4 +1,4 @@
-using Random
+using Random, Econometrics
 """
 nonparametric regression and quantile regression
 * uses pre-generated kernel weights
