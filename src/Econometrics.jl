@@ -27,6 +27,7 @@ include("LinearRegression/TestStatistics.jl")
 include("Bayesian/mcmc.jl")
 # nonparametrics
 include("NP/npreg.jl")
+include("NP/InteriorPoint.jl")
 include("NP/npdens.jl")
 include("NP/bootstrap.jl")
 include("NP/npdensity.jl")
@@ -57,7 +58,7 @@ export clc, PrintDivider, PrintEstimationResults
 export lsfit, ols, tsls, TestStatistics, NeweyWest
 export mcmc
 export npreg, npdens, kernelweights, bootstrap
-export npdensity
+export npdensity, InteriorPoint
 #export TrainNet, AnalyzeNet
 export samin, fminunc, fmincon
 export mle, mleresults
