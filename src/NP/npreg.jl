@@ -30,7 +30,7 @@ function npreg()
     k = 3 # number of regressors
     Random.seed!(1) # set seed to enable testing
     bandwidth = 0.07
-    n = 100000
+    n = 10000
     neval = 100
     x = rand(n,k)*pi*2.0
     xeval = [pi*ones(neval,k-1) range(pi/2., stop=pi*1.5, length=neval)]
