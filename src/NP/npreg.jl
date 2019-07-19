@@ -27,18 +27,17 @@ function npreg()
     println("npreg(), with no arguments, runs a simple example")
     println("execute edit(npreg,()) to see the code")
     #using Plots
-    order = 0 # 0 for local constant, 1 for local linear, 2 for local quadratic
     k = 3 # number of regressors
     Random.seed!(1) # set seed to enable testing
     bandwidth = 0.07
-    n = 100000
+    n = 1000
     neval = 100
     x = rand(n,k)*pi*2.0
     xeval = [pi*ones(neval,k-1) range(pi/2., stop=pi*1.5, length=neval)]
     y = cos.(sum(x,dims=2)) + cos.(2. * sum(x,dims=2)) + 0.5*randn(n,1)
     ytrue = cos.(sum(xeval,dims=2)) + cos.(2. * sum(xeval,dims=2))
-    weights = kernelweights(x, xeval, bandwidth, true, "gaussian", 200)
-    yhat, y50, y05, y95 = npreg(y, x, xeval, weights, order, do_median=true, do_ci=true)
+    weights = kernelweights(x, xeval, bandwidth, true, "gaussian")
+    yhat, y50, y05, y95 = npreg(y, x, xeval, weights, order=1, do_median=true, do_ci=true)
     println("true, mean, median, q05, q95")
     @show [ytrue yhat y50 y05 y95] 
 end 
