@@ -31,6 +31,7 @@ function npreg()
     Random.seed!(1) # set seed to enable testing
     n = 10000
     bandwidth = n^(-1.0/(4+k))
+    @show bandwidth
     neval = 100
     x = rand(n,k)*pi*2.0
     xeval = [pi*ones(neval,k-1) range(pi/2., stop=pi*1.5, length=neval)]
