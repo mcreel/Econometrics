@@ -30,7 +30,7 @@ function npreg()
     k = 3 # number of regressors
     Random.seed!(1) # set seed to enable testing
     n = 10000
-    bandwidth = 0.1
+    bandwidth = n^(-1.0/(4 + k))
     @show bandwidth
     neval = 100
     x = rand(n,k)*pi*2.0
@@ -41,7 +41,7 @@ function npreg()
     weights = kernelweights(x, xeval, bandwidth, true, "gaussian")
     yhat, y50, y05, y95 = npreg(y, x, xeval, weights, order=1, do_median=true, do_ci=true)
     println("true, mean, median, q05, q95")
-    prettyprint([ytrue yhat y50 y05 y95][1:10,:])
+    prettyprint([ytrue yhat y50 y05 y95])
 end 
 
 function npreg(y, x, xeval, weights; order=1, do_median=false, do_ci=false)
