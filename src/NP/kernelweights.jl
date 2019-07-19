@@ -23,7 +23,7 @@ function kernelweights(x, xeval, bandwidth, prewhiten=true, kernel="gaussian", n
     end
 
     if kernel=="knngaussian" 
-        distances = pairwise(Euclidean(),x', xeval') # get all distances
+        distances = pairwise(Euclidean(),x', xeval', dims=2) # get all distances
         @inbounds  for i = 1:neval
             di = distances[:,i]
             ind = sortperm(di) # indices of k nearest neighbors
