@@ -21,6 +21,7 @@ include("Utilities/clc.jl")
 # linear regression
 include("LinearRegression/lsfit.jl")
 include("LinearRegression/ols.jl")
+include("LinearRegression/rsq.jl")
 include("LinearRegression/tsls.jl")
 include("LinearRegression/TestStatistics.jl")
 # Bayesian
@@ -55,7 +56,7 @@ include("GMM/gmmresults.jl")
 
 export stnorm, ma, trim, prettyprint, eye, sortbyc, dstats, lag, lags, vech
 export clc, PrintDivider, PrintEstimationResults
-export lsfit, ols, tsls, TestStatistics, NeweyWest
+export lsfit, ols, rsq, tsls, TestStatistics, NeweyWest
 export mcmc
 export npreg, npdens, kernelweights, bootstrap
 export npdensity, InteriorPoint
