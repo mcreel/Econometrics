@@ -11250,6 +11250,21 @@ Stochastic restrictions and ridge regression
 \end_layout
 
 \begin_layout Standard
+Note: here's a nice introduction to ridge regression: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://towardsdatascience.com/ridge-regression-for-better-usage-2f19b3a202db
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Supposing that there is no more data or neglected restrictions, one possibility
  is to change perspectives, to Bayesian econometrics.
  One can express prior beliefs regarding the coefficients using stochastic
@@ -11666,10 +11681,11 @@ conometrics/Examples/DataProblems/RidgeRegression.jl}
 
  does a Monte Carlo study that shows that ridge regression can help to deal
  with collinearity.
- This script generates Figures and, which show the Monte Carlo sampling
- frequency of the OLS and ridge estimators, after subtracting the true parameter
- values.
- You can see that the ridge estimator has much lower RMSE.
+ This script generates the following figures, which show the Monte Carlo
+ sampling frequency of the OLS and ridge estimators, after subtracting the
+ true parameter values.
+ You can see that the ridge estimator has much lower RMSE: both histograms
+ are centered close to zero, but the ridge histogram is much tighter.
 \end_layout
 
 \begin_layout Standard
@@ -21498,8 +21514,8 @@ X_{1}^{\prime}P_{X}Y_{1} & X_{1}^{\prime}X_{1}
 
 \end_inset
 
- Therefore, the first and seconds in the variance formula cancel, so the
- 2SLS varcov estimator simplifies to 
+ Therefore, the first and second terms in the variance formula cancel, so
+ the 2SLS varcov estimator simplifies to 
 \begin_inset Formula 
 \[
 \hat{V}(\hat{\delta})=\left(Z^{\prime}\hat{Z}\right)^{-1}\hat{\sigma}_{IV}^{2}
@@ -21517,7 +21533,7 @@ X_{1}^{\prime}P_{X}Y_{1} & X_{1}^{\prime}X_{1}
 \end_inset
 
 Finally, recall that though this is presented in terms of the first equation,
- it is general since any equation can be placed first.
+ it is general, since any equation can be placed first.
 \end_layout
 
 \begin_layout Standard
