@@ -31,7 +31,7 @@ end
 
 
 # version for dataframe and formula
-function ols(f::Formula, df::DataFrame; R=[], r=[], names="", vc="white", silent=false)
+function ols(f::FormulaTerm, df::DataFrame; R=[], r=[], names="", vc="white", silent=false)
     y = df[f.lhs]
     mf = ModelFrame(f,df)
     x = ModelMatrix(mf).m
