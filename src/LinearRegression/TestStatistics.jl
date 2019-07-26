@@ -23,7 +23,7 @@
 # 		 S: the score statistic
 # 		 LR: the likelihood ratio statistic
 using StatsFuns
-function TestStatistics(y, x, R, r)
+function TestStatistics(y, x, R, r; silent=false)
     n,k = size(x)
     q = size(R,1)
 	b = x\y
@@ -48,11 +48,13 @@ function TestStatistics(y, x, R, r)
     lnl = -n/2*log(2*pi) - n/2*log(sigsqhat_mle) - ess/(2.0*sigsqhat_mle)
     lnl_r = -n/2*log(2*pi) - n/2*log(sigsqhat_mle_r) - ess_r/(2.0*sigsqhat_mle_r)
     LR = 2.0*(lnl-lnl_r)
-	tests = [q*F[1], W[1], LR[1], S[1]]
-	pvalues = chisqccdf.(tests,q)
-    tests = [tests pvalues]
-	TESTS = ["qF","Wald","LR","Score"]
-	labels = ["Value","p-value"]
-    prettyprint(tests, labels, TESTS)
+	if !silent
+        tests = [q*F[1], W[1], LR[1], S[1]]
+	    pvalues = chisqccdf.(tests,q)
+        tests = [tests pvalues]
+	    TESTS = ["qF","Wald","LR","Score"]
+	    labels = ["Value","p-value"]
+        prettyprint(tests, labels, TESTS)
+    end
     return F, W, LR, S
 end
