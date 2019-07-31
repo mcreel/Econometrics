@@ -2,10 +2,11 @@
 using CSV, DataFrames, GLM
 dir = dirname(dirname(pathof(Econometrics)))
 nerlove = CSV.read(dir*"/Examples/Data/nerlove.csv")
-nerlove[:lnC] = log.(nerlove[:cost])
-nerlove[:lnQ] = log.(nerlove[:output])
-nerlove[:lnPL] = log.(nerlove[:labor])
-nerlove[:lnPF] = log.(nerlove[:fuel])
-nerlove[:lnPK] = log.(nerlove[:capital])
-f = @formula(lnC ~ 1 + lnQ + lnPL + lnPF + lnPK)
-lm(f, nerlove)
+f = @formula(log(cost) ~ 1 + log(output) + log(labor) + log(fuel) + log(capital))
+println()
+println("using the GLM package")
+@show lm(f, nerlove)
+println()
+println("using ols from this package")
+ols(f, nerlove)
+nothing
