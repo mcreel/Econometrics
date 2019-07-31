@@ -32,8 +32,8 @@ end
 
 # version for dataframe and formula
 function ols(f::FormulaTerm, df::DataFrame; R=[], r=[], names="", vc="white", silent=false)
-    y = modelmatrix(f.lhs,d)
-    x = modelmatrix(f,d)
+    y = modelmatrix(f.lhs,df)
+    x = modelmatrix(f,df)
     ff = apply_schema(f,schema(df))
     ols(y, x, names=coefnames(ff.rhs))
 end
