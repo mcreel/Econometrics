@@ -115,9 +115,9 @@ theorems-ams-extended
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2cm
+\leftmargin 3cm
 \topmargin 2cm
-\rightmargin 2cm
+\rightmargin 3cm
 \bottommargin 2cm
 \secnumdepth 1
 \tocdepth 1
@@ -4885,7 +4885,7 @@ htmladdnormallink{Gretl}{http://gretl.sourceforge.net}
 
 \end_inset
 
-, the Gnu Regression, Econometrics, and Time-Series Library.
+, the GNU Regression, Econometrics, and Time-Series Library.
  Gretl is free software.
  This is an easy to use program, available in English, French, and Spanish,
  and it comes with a lot of data ready to use.
