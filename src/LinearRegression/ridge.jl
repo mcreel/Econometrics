@@ -6,6 +6,7 @@ function ridge(y, x, k)
             s[i] = 1.0
         end
     end    
-    x ./= s
+    x = x ./ s
     βivR = (inv(x'x + k*eye(size(x,2)))*x'y) ./ s'
+    return βivR
 end
