@@ -25,5 +25,5 @@ function ridge(y, x, k, target)
     x = x ./ s
     A = eye(size(x,2))
     A[1,1] = 0.0
-    β = (inv(x'x + k*eye(size(x,2)))*[x'y + k*target]) ./ s'
+    β = (inv(x'x + k*eye(size(x,2)))*[x'y + k.*target]) ./ s'
 end
