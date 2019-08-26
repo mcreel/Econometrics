@@ -115,9 +115,9 @@ theorems-ams-extended
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2cm
+\leftmargin 3cm
 \topmargin 2cm
-\rightmargin 2cm
+\rightmargin 3cm
 \bottommargin 2cm
 \secnumdepth 1
 \tocdepth 1
@@ -196,6 +196,10 @@ LatexCommand tableofcontents
 
 \begin_layout Chapter
 About this document
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section
@@ -410,9 +414,9 @@ Julia
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Figures/julia.png
+	filename example.png
 	lyxscale 25
-	width 4in
+	width 10in
 
 \end_inset
 
@@ -4866,7 +4870,7 @@ htmladdnormallink{Gretl}{http://gretl.sourceforge.net}
 
 \end_inset
 
-, the Gnu Regression, Econometrics, and Time-Series Library.
+, the GNU Regression, Econometrics, and Time-Series Library.
  Gretl is free software.
  This is an easy to use program, available in English, French, and Spanish,
  and it comes with a lot of data ready to use.
@@ -11231,6 +11235,21 @@ Stochastic restrictions and ridge regression
 \end_layout
 
 \begin_layout Standard
+Note: here's a nice introduction to ridge regression: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://towardsdatascience.com/ridge-regression-for-better-usage-2f19b3a202db
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Supposing that there is no more data or neglected restrictions, one possibility
  is to change perspectives, to Bayesian econometrics.
  One can express prior beliefs regarding the coefficients using stochastic
@@ -11647,10 +11666,11 @@ metrics/blob/master/Examples/DataProblems/RidgeRegression.jl}
 
  does a Monte Carlo study that shows that ridge regression can help to deal
  with collinearity.
- This script generates Figures and, which show the Monte Carlo sampling
- frequency of the OLS and ridge estimators, after subtracting the true parameter
- values.
- You can see that the ridge estimator has much lower RMSE.
+ This script generates the following figures, which show the Monte Carlo
+ sampling frequency of the OLS and ridge estimators, after subtracting the
+ true parameter values.
+ You can see that the ridge estimator has much lower RMSE: both histograms
+ are centered close to zero, but the ridge histogram is much tighter.
 \end_layout
 
 \begin_layout Standard
@@ -21479,8 +21499,8 @@ X_{1}^{\prime}P_{X}Y_{1} & X_{1}^{\prime}X_{1}
 
 \end_inset
 
- Therefore, the first and seconds in the variance formula cancel, so the
- 2SLS varcov estimator simplifies to 
+ Therefore, the first and second terms in the variance formula cancel, so
+ the 2SLS varcov estimator simplifies to 
 \begin_inset Formula 
 \[
 \hat{V}(\hat{\delta})=\left(Z^{\prime}\hat{Z}\right)^{-1}\hat{\sigma}_{IV}^{2}
@@ -21498,7 +21518,7 @@ X_{1}^{\prime}P_{X}Y_{1} & X_{1}^{\prime}X_{1}
 \end_inset
 
 Finally, recall that though this is presented in terms of the first equation,
- it is general since any equation can be placed first.
+ it is general, since any equation can be placed first.
 \end_layout
 
 \begin_layout Standard
@@ -47957,7 +47977,7 @@ In this model, the log of the variance of the observed sequence follows
 \begin_inset Formula $u_{t}.$
 \end_inset
 
- Code to generate data from this model is here: 
+ A mini-package that let's you generate data from this model is here: 
 \begin_inset ERT
 status open
 
@@ -47965,8 +47985,7 @@ status open
 
  
 \backslash
-htmladdnormallink{SVmodel.jl}{https://github.com/mcreel/Econometrics/blob/master/E
-xamples/TimeSeries/SVmodel.jl}
+htmladdnormallink{https://github.com/mcreel/SV}{https://github.com/mcreel/SV}
 \end_layout
 
 \end_inset
@@ -61633,7 +61652,19 @@ reference "subsec:Stochastic-volatility"
 
 \end_inset
 
- by indirect inference, using simulated annealing to do the minimization.
+ by indirect inference, using simulated annealing to do the minimization
+ (To run this, you need the package 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/mcreel/SV
+\end_layout
+
+\end_inset
+
+).
  Examine the script to see what auxiliary statistics are used (this is the
  key to success or failure), and think about the problem to try to come
  up with some better ones.
