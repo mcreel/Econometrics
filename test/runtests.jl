@@ -1,4 +1,5 @@
 using Test, Random
+ns
 function main()
     # OLS
     x = [ones(10,1) (1:10)]

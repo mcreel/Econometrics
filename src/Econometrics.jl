@@ -4,8 +4,9 @@ using Plots, GR, StatsPlots
 using Optim, NLopt
 using Distributions, Distances, StatsBase, StatsFuns, StatsModels
 using SpecialFunctions
-using DataFrames, KernelDensity, Calculus, DataFramesMeta, CSV
+using DataFrames, KernelDensity, Calculus, DataFramesMeta, CSV, MPI
 # Utilities
+include("Utilities/montecarlo.jl")
 include("Utilities/stnorm.jl")
 include("Utilities/ma.jl")
 include("Utilities/trim.jl")
@@ -56,7 +57,7 @@ include("ML/Likelihoods/normal.jl")
 include("GMM/gmm.jl")
 include("GMM/gmmresults.jl")
 
-export stnorm, ma, trim, prettyprint, eye, sortbyc, dstats, lag, lags, vech
+export montecarlo, stnorm, ma, trim, prettyprint, eye, sortbyc, dstats, lag, lags, vech
 export clc, PrintDivider, PrintEstimationResults
 export lsfit, ols, ridge, rsq, tsls, TestStatistics, NeweyWest
 export mcmc
