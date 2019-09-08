@@ -7,9 +7,7 @@ like to use, subject to  X-1 being an even divisor
 of 1e6, e.g., set X=5.
 =#
 
-using LinearAlgebra, Statistics
-
-include("montecarlo.jl")
+using MPI, Econometrics, LinearAlgebra, Statistics
 
 function pi_wrapper()
     4.0 * (norm(rand(2)) .< 1.0)
