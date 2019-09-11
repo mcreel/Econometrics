@@ -403,8 +403,6 @@ version = "0.5.8"
 [[Plots]]
 deps = ["Base64", "Contour", "Dates", "FFMPEG", "FixedPointNumbers", "GR", "GeometryTypes", "JSON", "LinearAlgebra", "Measures", "NaNMath", "Pkg", "PlotThemes", "PlotUtils", "Printf", "REPL", "Random", "RecipesBase", "Reexport", "Requires", "Showoff", "SparseArrays", "Statistics", "StatsBase", "UUIDs"]
 git-tree-sha1 = "59bcea95a16912abb229209c9f6e9e218df44b7c"
-repo-rev = "master"
-repo-url = "https://github.com/JuliaPlots/Plots.jl.git"
 uuid = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 version = "0.26.3"
 
@@ -548,8 +546,6 @@ version = "0.6.3"
 [[StatsPlots]]
 deps = ["Clustering", "DataStructures", "DataValues", "Distributions", "Interpolations", "KernelDensity", "Observables", "Plots", "RecipesBase", "Reexport", "StatsBase", "Tables", "Widgets"]
 git-tree-sha1 = "9f3f096a310f25debaca9dbe6b4e0df7bb428fd0"
-repo-rev = "master"
-repo-url = "https://github.com/JuliaPlots/StatsPlots.jl.git"
 uuid = "f3b207a7-027a-5e70-b257-86293d7955fd"
 version = "0.12.0"
 
@@ -599,10 +595,10 @@ uuid = "ea10d353-3f73-51f8-a26c-33c1cb351aa5"
 version = "0.6.1"
 
 [[Widgets]]
-deps = ["Colors", "Dates", "Observables", "OrderedCollections", "Test"]
-git-tree-sha1 = "c53befc70c6b91eaa2a9888c2f6ac2d92720a81b"
+deps = ["Colors", "Dates", "Observables", "OrderedCollections"]
+git-tree-sha1 = "fc0feda91b3fef7fe6948ee09bb628f882b49ca4"
 uuid = "cc8bc4a8-27d6-5769-a93b-9d913e69aa62"
-version = "0.6.1"
+version = "0.6.2"
 
 [[WoodburyMatrices]]
 deps = ["LinearAlgebra", "Random", "SparseArrays", "Test"]
