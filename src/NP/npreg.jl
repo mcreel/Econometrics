@@ -45,8 +45,7 @@ function npreg()
 end 
 
 function npreg(x::Int64)
-    println("npreg(), with a single integer argument, runs a test")
-    println("execute edit(npreg,()) to see the code")
+    #println("npreg(), with a single integer argument, runs a test, using the npreg() example")
     #using Plots
     k = 3 # number of regressors
     Random.seed!(1) # set seed to enable testing
