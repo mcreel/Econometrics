@@ -17,8 +17,7 @@ function main()
     # npreg
     @testset "npreg" begin
         yhat = npreg();
-        @show yhat
-        @test yhat[1,1] ≈ -0.8108308248103517
+        @test yhat[1,1] ≈ 0.02080984791302587
     end    
 end
 main()
