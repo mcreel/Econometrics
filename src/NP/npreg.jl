@@ -44,6 +44,27 @@ function npreg()
     return yhat[1,1] # for testing
 end 
 
+function npreg(x::Int64)
+    println("npreg(), with a single integer argument, runs a test")
+    println("execute edit(npreg,()) to see the code")
+    #using Plots
+    k = 3 # number of regressors
+    Random.seed!(1) # set seed to enable testing
+    n = 10000
+    bandwidth = 0.25*n^(-1.0/(4 + k))
+    neval = 100
+    x = rand(n,k)*pi*2.0
+    xeval = [pi*ones(neval,k-1) range(pi/2., stop=pi*1.5, length=neval)]
+    y = cos.(sum(x,dims=2))
+    y = y + 0.1*randn(size(y))
+    ytrue = cos.(sum(xeval,dims=2))
+    weights = kernelweights(x, xeval, bandwidth, true, "knngaussian", 200)
+    yhat, y50, y05, y95 = npreg(y, x, xeval, weights, order=1, do_median=true, do_ci=true)
+    return yhat[1,1] # for testing
+end 
+
+
+
 function npreg(y, x, xeval, weights; order=1, do_median=false, do_ci=false)
     weights = sqrt.(weights)
     neval, dimx = size(xeval)

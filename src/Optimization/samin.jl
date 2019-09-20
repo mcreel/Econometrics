@@ -120,6 +120,28 @@ function samin()
     return xtest, ftest
 end
 
+function samin(x:Int64)
+    println("samin(), with a single integer argument, runs a test")
+    junk=2. # shows use of obj. fun. as a closure
+    function sse(x)
+        objvalue = junk + sum(x.*x)
+    end
+    k = 5
+    Random.seed!(1)
+    x = rand(k,1)
+    lb = -ones(k,1)
+    ub = -lb
+    x = 0.5 .+ 0.5*rand(k,1)
+    xopt = samin(sse, x, lb, ub, verbosity=1)
+    lb = -ones(k,1)
+    ub = -lb
+    x[1] = 0.5
+    lb[1] = 0.5
+    ub[1] = 0.5
+    xopt = samin(sse, x, lb, ub, verbosity=0)
+    return xtest, ftest
+end
+
 function samin(obj_fn, x, lb, ub; nt=5, ns=5, rt=0.5, maxevals=1e6, neps=5, functol=1e-8, paramtol=1e-5, verbosity=1, coverage_ok=0)
     n = size(x,1) # dimension of parameter
     #  Set initial values
