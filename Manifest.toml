@@ -189,9 +189,9 @@ version = "0.21.1"
 
 [[FFMPEG]]
 deps = ["BinaryProvider", "Libdl"]
-git-tree-sha1 = "1dd2128ff10894081f30931b355dc892d1352de9"
+git-tree-sha1 = "f65cf703281fb7917beca5ead1c67e6d60ef9597"
 uuid = "c87230d0-a227-11e9-1b43-d7ebe4e7570a"
-version = "0.2.2"
+version = "0.2.3"
 
 [[FFTW]]
 deps = ["AbstractFFTs", "BinaryProvider", "Conda", "Libdl", "LinearAlgebra", "Reexport", "Test"]
@@ -201,9 +201,9 @@ version = "0.3.0"
 
 [[FillArrays]]
 deps = ["LinearAlgebra", "Random", "SparseArrays"]
-git-tree-sha1 = "8fba6ddaf66b45dec830233cea0aae43eb1261ad"
+git-tree-sha1 = "4c707c87ddd3199fc5624d5c98b2c706e4d00675"
 uuid = "1a297f60-69ca-5386-bcde-b61e274b549b"
-version = "0.6.4"
+version = "0.7.0"
 
 [[FixedPointNumbers]]
 git-tree-sha1 = "d14a6fa5890ea3a7e5dcab6811114f132fec2b4b"
@@ -356,9 +356,9 @@ version = "0.11.1"
 
 [[Optim]]
 deps = ["Calculus", "DiffEqDiffTools", "FillArrays", "ForwardDiff", "LineSearches", "LinearAlgebra", "NLSolversBase", "NaNMath", "Parameters", "PositiveFactorizations", "Printf", "Random", "SparseArrays", "StatsBase"]
-git-tree-sha1 = "ca8f8917df469d607f8cf116784e58c9c084d0b4"
+git-tree-sha1 = "2bda07c4b28036258d76729f06ef845a7d1d9daf"
 uuid = "429524aa-4258-5aef-a3af-852621145aeb"
-version = "0.19.2"
+version = "0.19.3"
 
 [[OrderedCollections]]
 deps = ["Random", "Serialization", "Test"]
@@ -368,15 +368,15 @@ version = "1.1.0"
 
 [[PDMats]]
 deps = ["Arpack", "LinearAlgebra", "SparseArrays", "SuiteSparse", "Test"]
-git-tree-sha1 = "9d6a9b3e19634612fb1edcafc4b1d75242b24bde"
+git-tree-sha1 = "035f8d60ba2a22cb1d2580b1e0e5ce0cb05e4563"
 uuid = "90014a1f-27ba-587c-ab20-58faa44d9150"
-version = "0.9.9"
+version = "0.9.10"
 
 [[Parameters]]
-deps = ["Markdown", "OrderedCollections", "REPL", "Test"]
-git-tree-sha1 = "70bdbfb2bceabb15345c0b54be4544813b3444e4"
+deps = ["OrderedCollections"]
+git-tree-sha1 = "b62b2558efb1eef1fa44e4be5ff58a515c287e38"
 uuid = "d96e819e-fc66-5662-9728-84c9c7592b0a"
-version = "0.10.3"
+version = "0.12.0"
 
 [[Parsers]]
 deps = ["Dates", "Test"]
