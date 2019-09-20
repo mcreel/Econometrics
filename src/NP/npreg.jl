@@ -41,6 +41,7 @@ function npreg()
     yhat, y50, y05, y95 = npreg(y, x, xeval, weights, order=1, do_median=true, do_ci=true)
     println("true, mean, median, q05, q95")
     prettyprint([ytrue yhat y50 y05 y95])
+    return yhat[1,1] # for testing
 end 
 
 function npreg(y, x, xeval, weights; order=1, do_median=false, do_ci=false)
