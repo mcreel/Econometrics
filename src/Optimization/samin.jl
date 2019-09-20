@@ -120,8 +120,9 @@ function samin()
     return xtest, ftest
 end
 
-function samin(x:Int64)
-    println("samin(), with a single integer argument, runs a test")
+function samin(x::Int64)
+    # samin(), with a single integer arguments, runs the same code as first example,
+    # but silently, for a test
     junk=2. # shows use of obj. fun. as a closure
     function sse(x)
         objvalue = junk + sum(x.*x)
@@ -131,14 +132,9 @@ function samin(x:Int64)
     x = rand(k,1)
     lb = -ones(k,1)
     ub = -lb
-    x = 0.5 .+ 0.5*rand(k,1)
-    xopt = samin(sse, x, lb, ub, verbosity=1)
-    lb = -ones(k,1)
-    ub = -lb
-    x[1] = 0.5
-    lb[1] = 0.5
-    ub[1] = 0.5
-    xopt = samin(sse, x, lb, ub, verbosity=0)
+    # converge to global opt, see final parameters
+    #println("normal convergence, see only final results")
+    xtest, ftest, junk = samin(sse, x, lb, ub, verbosity=0)
     return xtest, ftest
 end
 
