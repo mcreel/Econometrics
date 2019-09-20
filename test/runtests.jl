@@ -1,4 +1,4 @@
-using Test, Random
+using Econometrics, Test, Random
 function main()
     # OLS
     x = [ones(10,1) (1:10)]
