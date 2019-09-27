@@ -9,4 +9,12 @@ function vech(x)
             m += 1
         end
     end
+end
+
+# for testing vech()
+function vech()
+    a = eye(3)
+    b = vech(a)
+    c = [1.0; 0.0; 1.0; 0.0; 0.0; 1.0]
+    b == c
 end    
