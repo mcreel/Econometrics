@@ -4,4 +4,3 @@ function clc()
     end
     return
 end
-clc();
