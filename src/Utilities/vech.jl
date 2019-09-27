@@ -9,6 +9,7 @@ function vech(x)
             m += 1
         end
     end
+    a
 end
 
 # for testing vech()
