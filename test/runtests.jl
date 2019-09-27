@@ -1,5 +1,13 @@
 using Econometrics, Test, Random
 function main()
+    # dstats
+    @testset "dstats" begin
+        @test dstats()
+    end    
+    # vech
+    @testset "vech" begin
+        @test vech()
+    end    
     # OLS
     x = [ones(10,1) (1:10)]
     Random.seed!(1)
