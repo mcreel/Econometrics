@@ -18,8 +18,8 @@ function main()
     end    
     # ML
     @testset "mle" begin
-        b = mleresults()
-        @test b[1,1] ≈ 0.49467
+        b = mle()
+        @test b[1,1] ≈ 0.49466773000112035
     end    
     # samin
     xopt, fopt = samin(1)

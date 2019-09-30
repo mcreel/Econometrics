@@ -30,7 +30,12 @@ function mle(model, θ, vc=1)
     return thetahat, objvalue, V, converged
 end
 
+# with no args, runs example (also used for test)
 function mle()
-    println("mle(), with no arguments, runs mleresults(), which show usage")
-    mleresults()
+    x = [ones(10) 1:10]
+    y = [1:2;3;4;5;6;7;8;9;10]
+    β = zeros(2)
+    model = β -> poisson(β, y, x)
+    βhat, junk, junk, junk = mle(model, β)
+    βhat
 end
