@@ -10,7 +10,7 @@ you need to install Julia and then install this repository as a Julia package. D
 
 2. add the package to Julia by doing ```] add <path where you downloaded the repo>```, for example, if you cloned it into the git directory of your home directory, you would do ```] add ~/git/Econometrics```
 
-3. (optional) rudimentary testing of the package has been added. Do ```using Pkg; Pkg.test("Econometrics")``` Hopefully, this will get more complete in the future.
+3. (optional) basic testing of the package has been added. Do ```using Pkg; Pkg.test("Econometrics")```
 
 4. then do ```using Econometrics``` in Julia to use the package. You can see some examples by typing 
    ```
