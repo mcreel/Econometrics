@@ -21,6 +21,11 @@ function main()
         b = mle()
         @test b[1,1] ≈ 0.49466773000112035
     end    
+    # GMM
+    @testset "gmm" begin
+        b = gmm()
+        @test b[1,1] ≈ 0.4946717833359474
+    end    
     # samin
     xopt, fopt = samin(1)
     @testset "samin" begin
