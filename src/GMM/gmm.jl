@@ -42,21 +42,14 @@ end
 
 # called with no args runs this example
 function gmm()
-    println("simple GMM example, sampling from N(0,1)")
-    println("and using 3 moment conditions to estimate")
-    println("do edit(gmm,()) to see the example code that this is running")
-    # example of GMM: draws from N(0,1)
-    y = randn(100,1)
+    x = [ones(10) 1:10]
+    y = [1:2;3;4;5;6;7;8;9;10]
+    β = zeros(2)
     # 3 moment conditions
-    moments = theta -> [y.-theta[1] (y.^2.0).-theta[2] (y.-theta[1]).^3.0]
+    moments = β -> y - exp.(x*β)
     # first round consistent
-    W = eye(3)
-    theta = [0.0, 1.0]
-    thetahat, objvalue, D, ms, converged = gmm(moments, theta, W)
-    # second round efficient
-    W = inv(cov(ms))
-    thetahat, objvalue, D, ms, converged = gmm(moments, thetahat, W)
-    # CUE
-    thetahat, objvalue, D, ms, converged = gmm(moments, thetahat)
+    W = eye(2)
+    βhat, objvalue, D, ms, converged = gmm(moments, β, W)
+    βhat
 end    
 
