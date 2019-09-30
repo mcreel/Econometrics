@@ -16,6 +16,11 @@ function main()
     @testset "ols" begin
         @test b[1,1] ≈ 0.07655377367377458
     end    
+    # ML
+    @testset "mle" begin
+        b = mleresults()
+        @test b[1,1] ≈ 0.49467
+    end    
     # samin
     xopt, fopt = samin(1)
     @testset "samin" begin

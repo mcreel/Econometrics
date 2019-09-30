@@ -183,9 +183,9 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[Distributions]]
 deps = ["LinearAlgebra", "PDMats", "Printf", "QuadGK", "Random", "SpecialFunctions", "Statistics", "StatsBase", "StatsFuns"]
-git-tree-sha1 = "baaf9e165ba8a2d11fb4fb3511782ee070ee3694"
+git-tree-sha1 = "b7c7b78569f9a86bb00d85ef7336101869824b15"
 uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
-version = "0.21.1"
+version = "0.21.2"
 
 [[FFMPEG]]
 deps = ["BinaryProvider", "Libdl"]

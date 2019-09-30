@@ -8,17 +8,12 @@ parameter vector. call edit(mleresults()) to see a coded example.
 """
 function mleresults()
     println("execute edit(mleresults,()) to examine the example code")
-    x = randn(100,3)
-    β = rand(3)
-    println("true betas: ")
-    prettyprint(β)
-    y = zeros(100)
-    for i = 1:100
-        y[i] = rand(Poisson(exp.(x[i,:]'β)))
-    end
+    x = [ones(10) 1:10]
+    y = [1:2;3;4;5;6;7;8;9;10]
+    β = zeros(2)
     model = β -> poisson(β, y, x)
-    mleresults(model, β, "simple ML example")
-    return
+    βhat, junk, junk, junk = mleresults(model, β, "simple ML example")
+    βhat
 end
 
 function mleresults(model, θ, title="", names=""; vc=1)
