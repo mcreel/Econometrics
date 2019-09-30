@@ -46,7 +46,7 @@ function gmm()
     y = [1:2;3;4;5;6;7;8;9;10]
     β = zeros(2)
     # 3 moment conditions
-    moments = β -> y - exp.(x*β)
+    moments = β -> x.*(y - exp.(x*β))
     # first round consistent
     W = eye(2)
     βhat, objvalue, D, ms, converged = gmm(moments, β, W)
