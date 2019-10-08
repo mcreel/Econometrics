@@ -1709,7 +1709,7 @@ quantify
 \begin_inset Formula 
 \begin{align*}
 q_{t} & =\alpha_{1}+\alpha_{2}p_{t}+\alpha_{3}m_{t}+\varepsilon_{t1}\\
-q_{t} & =\beta_{1}+\beta_{2}p_{t}+\varepsilon_{t1}
+q_{t} & =\beta_{1}+\beta_{2}p_{t}+\varepsilon_{t2}
 \end{align*}
 
 \end_inset
