@@ -16,8 +16,8 @@ function npdens()
     x = rand(Chisq(5),1000)
     xeval, d = npdens(x)
     dt = pdf.(Ref(Chisq(5)), xeval)
-    plot(xeval, d, label="kernel")
-    plot!(xeval, dt, label="true")
+    Plots.plot(xeval, d, label="kernel")
+    Plots.plot!(xeval, dt, label="true")
 end 
 
 function npdens(x::Array{Float64,1}; points::Int=1000)
