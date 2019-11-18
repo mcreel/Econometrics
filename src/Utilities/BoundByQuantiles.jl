@@ -1,4 +1,4 @@
-
+using Statistics
 function BoundByQuantiles!(data, margin=0.005)
 for j = 1:size(data,2)
     q = quantile(data[:,j],margin)
