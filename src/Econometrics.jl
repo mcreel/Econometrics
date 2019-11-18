@@ -20,6 +20,7 @@ include("Utilities/vech.jl")
 include("Utilities/PrintDivider.jl")
 include("Utilities/PrintEstimationResults.jl")
 include("Utilities/clc.jl")
+include("Utilities/BoundByQuantiles.jl")
 # linear regression
 include("LinearRegression/lsfit.jl")
 include("LinearRegression/ols.jl")
@@ -58,7 +59,7 @@ include("GMM/gmm.jl")
 include("GMM/gmmresults.jl")
 
 export montecarlo, stnorm, ma, trim, prettyprint, eye, sortbyc, dstats, lag, lags, vech
-export clc, PrintDivider, PrintEstimationResults
+export clc, PrintDivider, PrintEstimationResults, BoundByQuantiles!
 export lsfit, ols, ridge, rsq, tsls, TestStatistics, NeweyWest
 export mcmc
 export npreg, npdens, kernelweights, bootstrap
