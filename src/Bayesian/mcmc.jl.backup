@@ -54,7 +54,7 @@ function mcmc(θ, reps, burnin, Prior, lnL, Proposal::Function, ProposalDensity:
             Prior(θᵗ)/Prior(θ)*
             ProposalDensity(θ,θᵗ)/ProposalDensity(θᵗ,θ)
         if accept
-            θ = θᵗ
+            θ = copy(θᵗ)
             lnLθ = lnLθᵗ 
         end
         naccept = naccept .+ changed .* Int.(accept)
