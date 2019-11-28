@@ -1,12 +1,7 @@
 using SV, Econometrics, LinearAlgebra, Statistics, DelimitedFiles
 
 function main()
-    # load the example data
-    y = readdlm("svdata.txt")
-    y = y[:]
-    n = size(y,1)
-    m =  sqrt(n)*aux_stat(y) # generate the sample and save the data
-    # these are the true params
+    # these are the true params that generated the data
     σe = exp(-0.736/2.0)
     ρ = 0.9
     σu = 0.363
@@ -14,16 +9,17 @@ function main()
     n = 1000 # sample size
     burnin = 100
     S = 100 # number of simulations
+    # load the example data
+    y = readdlm("svdata.txt")
+    m =  sqrt(n)*aux_stat(y[:]) # generate the statistic
     # or generate some new data, if you prefer
-    #shocks_u = randn(n+burnin,1)
-    #shocks_e = randn(n+burnin,1)
-    # m = SVmodel(σe, ρ, σu, n, shocks_u, shocks_e, true)
+    #m = sqrt(n)*aux_stat(SVmodel([σe, ρ, σu], n, burnin)[1])
     # set up MCMC
     shocks_u = randn(n+burnin,S) # fixed shocks for simulations
     shocks_e = randn(n+burnin,S) # fixed shocks for simulations
     tuning = [0.01, 0.01, 0.01] # fix this somehow
     lb = [0.0, 0.0, 0.0]
-    ub = [3.0, 0.99, 3.0]
+    ub = [2.0, 0.99, 1.0]
     θinit = (ub+lb)./2.0
     lnL = θ -> logL(θ, m, n, shocks_u, shocks_e)
     Prior = θ -> prior(θ, lb, ub) # uniform, doesn't matter

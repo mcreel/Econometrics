@@ -5,12 +5,13 @@ function main()
 # setup
 θtrue = [exp(-0.736/2.0), 0.9, 0.363] # true param values, on param space
 lb = [0.0, 0.0, 0.0]
-ub = [3.0, 0.99, 3.0]
+ub = [2.0, 0.99, 1.0]
 n = 1000
 burnin = 100
 # load the example data
 y = readdlm("svdata.txt")
 m0 =  sqrt(n)*aux_stat(y) # statistic
+@show m0
 # or use a new draw
 #m0 = SVmodel(θtrue, n, randn(n+100), randn(n+100), true)   
 # Estimation by indirect inference
