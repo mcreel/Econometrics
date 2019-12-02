@@ -1,6 +1,6 @@
 using Printf
 # formatted print of array, with column names
-function prettyprint(a::Array{Float64}, cnames="", rnames="",digits=12, decimals=5)
+function prettyprint(a, cnames="", rnames="",digits=12, decimals=5)
     # TBD: try to use this to allow using specified digits and decimals
     #fmt = @sprintf("%d",digits)"."@sprintf("%d",decimals)"%f"
     #@eval dofmt(x) = @sprintf($fmt, x)
