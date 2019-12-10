@@ -13,5 +13,5 @@ function PrintEstimationResults(results, names)
                        (results, j) -> (results[j,4] .< 0.1) & (results[j,4] .> 0.05) ,
                       foreground = :yellow
                      );
-    prettyprint(results, clabels, names; highlighters=(h2, h5, h10))
+    prettyprint(results, clabels, names; highlighters=(h1, h5, h10))
 end
