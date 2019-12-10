@@ -1,7 +1,8 @@
 using PrettyTables
 
-function prettyprint(a, cnames="", rnames="",digits=12, decimals=5)
+function prettyprint(a, cnames="", rnames="")
 if rnames !=""
+    rnames = rnames[:]
     a = [rnames a]
 end
 if cnames !=""
