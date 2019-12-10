@@ -1,6 +1,6 @@
 using PrettyTables
 
-function prettyprint(a, cnames="", rnames="")
+function prettyprint(a, cnames="", rnames=""; highlighters="")
 if rnames !=""
     rnames = rnames[:]
     a = [rnames a]
@@ -10,9 +10,9 @@ if rnames !=""
     end    
 end
 if cnames !=""
-    pretty_table(a, cnames; formatter=ft_printf("%12.5f"))
+    pretty_table(a, cnames; formatter=ft_printf("%12.5f"); highlighters)
 else
-    pretty_table(a; formatter=ft_printf("%12.5f"))
+    pretty_table(a; formatter=ft_printf("%12.5f"), highlighters)
 end
 end
 
