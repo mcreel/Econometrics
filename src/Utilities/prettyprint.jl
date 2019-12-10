@@ -1,4 +1,18 @@
-using Printf
+using PrettyTables
+
+function prettyprint(a, cnames="", rnames="",digits=12, decimals=5)
+if rnames !=""
+    a = [rnames a]
+end
+if cnames !=""
+    pretty_table(a, cnames; formatter=ft_printf("%12.5f"))
+else
+    pretty_table(a; formatter=ft_printf("%12.5f"))
+end
+end
+
+#=
+#using Printf
 # formatted print of array, with column names
 function prettyprint(a, cnames="", rnames="",digits=12, decimals=5)
     # TBD: try to use this to allow using specified digits and decimals
@@ -28,4 +42,5 @@ function prettyprint(a, cnames="", rnames="",digits=12, decimals=5)
         @printf("\n")
     end
     return
-end  
+end
+=#
