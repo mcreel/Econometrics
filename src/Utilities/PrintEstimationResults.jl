@@ -1,15 +1,15 @@
 using PrettyTables
 function PrintEstimationResults(results, names)
     clabels = ["estimate", "st. err", "t-stat", "p-value"]
-    h1 = Hightlighter(
+    h1 = Highlighter(
                       (results, j) -> results[j,4] .< 0.01,
                       foreground = :green
                      );
-    h5 = Hightlighter(
+    h5 = Highlighter(
                       (results, j) -> (results[j,4] .< 0.05) & (results[j,4] .> 0.01) ,
                       foreground = :blue
                      );
-    h10 = Hightlighter(
+    h10 = Highlighter(
                        (results, j) -> (results[j,4] .< 0.1) & (results[j,4] .> 0.05) ,
                       foreground = :yellow
                      );
