@@ -4,6 +4,10 @@ function prettyprint(a, cnames="", rnames="")
 if rnames !=""
     rnames = rnames[:]
     a = [rnames a]
+    if cnames != ""
+        cnames = cnames[:]
+        cnames = vcat("", cnames)
+    end    
 end
 if cnames !=""
     pretty_table(a, cnames; formatter=ft_printf("%12.5f"))
