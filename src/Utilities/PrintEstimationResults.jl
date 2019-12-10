@@ -1,3 +1,4 @@
+using PrettyTables
 function PrintEstimationResults(results, names)
     clabels = ["estimate", "st. err", "t-stat", "p-value"]
     h1 = Hightlighter(
