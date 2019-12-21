@@ -47,19 +47,19 @@ function mcmc(θ, reps, burnin, Prior, lnL, Proposal::Function, ProposalDensity:
     for rep = 1:reps+burnin
         θᵗ = Proposal(θ) # new trial value
         changed = Int.(.!(θᵗ .== θ)) # find which changed
-        lnLθᵗ = lnL(θᵗ)
         # MH accept/reject: only evaluate logL if proposal is in support of prior (avoid crashes)
         pt = Prior(θᵗ)
         accept = false
         if pt > 0.0
+            lnLθᵗ = lnL(θᵗ)
             accept = rand() < 
             exp(lnLθᵗ-lnLθ)*
             pt/Prior(θ)*
             ProposalDensity(θ,θᵗ)/ProposalDensity(θᵗ,θ)
-        end
-        if accept
-            θ = θᵗ
-            lnLθ = lnLθᵗ 
+            if accept
+                θ = θᵗ
+                lnLθ = lnLθᵗ 
+            end
         end
         naccept = naccept .+ changed .* Int.(accept)
         if (mod(rep,reportevery)==0 && report)
