@@ -52789,6 +52789,17 @@ literal "false"
 
 ).
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The examples dir for this chapter has the file Elasticity.jl, which is a
+ beginning of replicating this first section.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
