@@ -15,7 +15,7 @@ function ols()
     ols(y,x)
     ols(y,x,names=names)
     ols(y,x,names=names, vc="nw")
-    b,junk,junk,junk = ols(y,x,silent=true)
+    b = ols(y,x,silent=true)[1]
     show(b)
     # restricted LS
     R = [1 0 0 0]
