@@ -996,7 +996,17 @@ from the REPL, press ] to enter package mode.
 \begin_deeper
 \begin_layout Itemize
 That will install the code and the required packages.
- If you see an error about missing some package, just install what's missing.
+ 
+\emph on
+The first time you do this, it will take quite some time! 
+\emph default
+This is normal.
+ Many supporting packages must be downloaded and built.
+ 
+\end_layout
+
+\begin_layout Itemize
+If you see an error about missing some package, just install what's missing.
 \end_layout
 
 \end_deeper
