@@ -18,7 +18,7 @@ function dstats(x, rnames="";short=false)
     if short == false
         for i = 1:size(x,2) q05[i], q25[i], q75[i],q95[i] = quantile(x[:,i], [0.05,0.25,0.75,0.95]) end
         cnames = ["  mean", " median","  std", "IQR", "min", "max", "q05", "q95"]
-        stats = [m' mm' s' (q75-q25)' mn' mx' q05 q95] 
+        stats = [m' mm' s' (q75-q25) mn' mx' q05 q95] 
         prettyprint(stats, cnames, rnames)
     else
         cnames = ["  mean", " median", "  std", "min", "max"]
