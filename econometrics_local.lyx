@@ -86,9 +86,9 @@ theorems-ams-extended
 \pdf_breaklinks true
 \pdf_pdfborder true
 \pdf_colorlinks true
-\pdf_backref false
+\pdf_backref page
 \pdf_pdfusetitle true
-\pdf_quoted_options "colorlinks=true,citecolor=blue"
+\pdf_quoted_options "colorlinks=true,allcolors=blue"
 \papersize a4paper
 \use_geometry true
 \use_package amsmath 2
@@ -4818,7 +4818,7 @@ OLS/Nerlove.jl}
 \begin_inset CommandInset href
 LatexCommand href
 name "ols.jl"
-target "https://github.com/mcreel/Econometrics.jl/blob/master/src/LinearRegression/ols.jl"
+target "https://github.com/mcreel/Econometrics/blob/master/src/LinearRegression/ols.jl"
 literal "false"
 
 \end_inset
@@ -24492,7 +24492,7 @@ samin()
 \family default
  (with the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package installed) to see an example, and see the 
 \begin_inset CommandInset href
@@ -25247,7 +25247,7 @@ Exercises
 \begin_layout Enumerate
 In Julia (with the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package installed), type 
 \family typewriter
@@ -25263,7 +25263,7 @@ fminunc
 \begin_layout Enumerate
 In Julia (with the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package installed), type 
 \family typewriter
@@ -25279,7 +25279,7 @@ fmincon
 \begin_layout Enumerate
 In Julia (with the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package installed), type 
 \family typewriter
@@ -36543,7 +36543,7 @@ OLS/Nerlove.jl}
 \end_layout
 
 \begin_layout Enumerate
-Using the fmincon routinge in Econometrics.jl
+Using the fmincon routine in Econometrics
 \begin_inset Separator latexpar
 \end_inset
 
@@ -39450,13 +39450,13 @@ literal "true"
 \begin_layout Itemize
 A Julia implementation is in the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package, at 
 \begin_inset CommandInset href
 LatexCommand href
 name "NeweyWest.jl"
-target "https://github.com/mcreel/Econometrics.jl/blob/master/src/NP/NeweyWest.jl"
+target "https://github.com/mcreel/Econometrics/blob/master/src/NP/NeweyWest.jl"
 literal "false"
 
 \end_inset
@@ -39568,7 +39568,7 @@ gmmresults()
 \family default
 , which is included in the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package.
 \end_layout
@@ -39640,7 +39640,7 @@ gmmresults()
 \family default
 , which is included in the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package.
 \begin_inset Newpage newpage

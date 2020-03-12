@@ -86,9 +86,9 @@ theorems-ams-extended
 \pdf_breaklinks true
 \pdf_pdfborder true
 \pdf_colorlinks true
-\pdf_backref false
+\pdf_backref page
 \pdf_pdfusetitle true
-\pdf_quoted_options "colorlinks=true,citecolor=blue"
+\pdf_quoted_options "colorlinks=true,allcolors=blue"
 \papersize a4paper
 \use_geometry true
 \use_package amsmath 2
@@ -196,10 +196,6 @@ LatexCommand tableofcontents
 
 \begin_layout Chapter
 About this document
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Section
@@ -981,7 +977,17 @@ from the REPL, press ] to enter package mode.
 \begin_deeper
 \begin_layout Itemize
 That will install the code and the required packages.
- If you see an error about missing some package, just install what's missing.
+ 
+\emph on
+The first time you do this, it will take quite some time! 
+\emph default
+This is normal.
+ Many supporting packages must be downloaded and built.
+ 
+\end_layout
+
+\begin_layout Itemize
+If you see an error about missing some package, just install what's missing.
 \end_layout
 
 \end_deeper
@@ -4793,7 +4799,7 @@ xamples/OLS/Nerlove.jl}
 \begin_inset CommandInset href
 LatexCommand href
 name "ols.jl"
-target "https://github.com/mcreel/Econometrics.jl/blob/master/src/LinearRegression/ols.jl"
+target "https://github.com/mcreel/Econometrics/blob/master/src/LinearRegression/ols.jl"
 literal "false"
 
 \end_inset
@@ -24468,7 +24474,7 @@ samin()
 \family default
  (with the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package installed) to see an example, and see the 
 \begin_inset CommandInset href
@@ -25223,7 +25229,7 @@ Exercises
 \begin_layout Enumerate
 In Julia (with the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package installed), type 
 \family typewriter
@@ -25239,7 +25245,7 @@ fminunc
 \begin_layout Enumerate
 In Julia (with the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package installed), type 
 \family typewriter
@@ -25255,7 +25261,7 @@ fmincon
 \begin_layout Enumerate
 In Julia (with the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package installed), type 
 \family typewriter
@@ -36521,7 +36527,7 @@ xamples/OLS/Nerlove.jl}
 \end_layout
 
 \begin_layout Enumerate
-Using the fmincon routinge in Econometrics.jl
+Using the fmincon routine in Econometrics
 \begin_inset Separator latexpar
 \end_inset
 
@@ -39428,13 +39434,13 @@ literal "true"
 \begin_layout Itemize
 A Julia implementation is in the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package, at 
 \begin_inset CommandInset href
 LatexCommand href
 name "NeweyWest.jl"
-target "https://github.com/mcreel/Econometrics.jl/blob/master/src/NP/NeweyWest.jl"
+target "https://github.com/mcreel/Econometrics/blob/master/src/NP/NeweyWest.jl"
 literal "false"
 
 \end_inset
@@ -39546,7 +39552,7 @@ gmmresults()
 \family default
 , which is included in the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package.
 \end_layout
@@ -39618,7 +39624,7 @@ gmmresults()
 \family default
 , which is included in the 
 \family typewriter
-Econometrics.jl
+Econometrics
 \family default
  package.
 \begin_inset Newpage newpage
@@ -52777,6 +52783,17 @@ literal "false"
 
 ).
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The examples dir for this chapter has the file Elasticity.jl, which is a
+ beginning of replicating this first section.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
