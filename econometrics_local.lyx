@@ -22,6 +22,7 @@
 \definecolor{colIdentifier}{rgb}{0,0,0}
 \definecolor{colComments}{rgb}{1,0,0}
 \definecolor{colString}{rgb}{0,0.5,0}
+\let\endtitlepage\relax
 
 \lstset{%
    morekeywords={AND,ASC,avg,CHECK,COMMIT,count,DECODE,DESC,DISTINCT,%
@@ -139,18 +140,47 @@ theorems-ams-extended
 
 \begin_body
 
-\begin_layout Title
+\begin_layout Standard
+\align center
+
+\size larger
 Econometrics
+\end_layout
+
+\begin_layout Standard
+\align center
+Michael Creel
+\end_layout
+
+\begin_layout Address
+These notes have been online for many years, at least since 2002.
+ If you have any inclination to express thanks, and you have the opportunity,
+ please consider visiting the INOUT Hostel or its restaurant, in the mountains
+ surrounding Barcelona.
+ The hostel and its restaurant are run by a non-profit organization, and
+ 90% of the workers have disabilities.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://inouthostel.com/en"
+target "http://inouthostel.com/en"
+literal "false"
+
+\end_inset
+
+ for more information about the initiative and reservations.
+\end_layout
+
+\begin_layout Address
+With the problems from COVID-19, the business is currently closed.
+ Once the crisis is over, this great social initiative will get back to
+ normal more quickly if we can give it our business.
+ Thanks!
 \end_layout
 
 \begin_layout Author
 
 \size small
-Michael Creel
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset Graphics
 	filename logoUAB.jpg
 	width 8cm
