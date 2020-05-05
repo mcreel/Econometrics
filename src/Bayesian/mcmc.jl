@@ -46,7 +46,9 @@ function mcmc(θ, reps, burnin, Prior, lnL, Proposal::Function, ProposalDensity:
     naccept = zeros(size(θ))
     for rep = 1:reps+burnin
         θᵗ = Proposal(θ) # new trial value
-        changed = Int.(.!(θᵗ .== θ)) # find which changed
+        if report
+            changed = Int.(.!(θᵗ .== θ)) # find which changed
+        end    
         # MH accept/reject: only evaluate logL if proposal is in support of prior (avoid crashes)
         pt = Prior(θᵗ)
         accept = false
@@ -61,7 +63,9 @@ function mcmc(θ, reps, burnin, Prior, lnL, Proposal::Function, ProposalDensity:
                 lnLθ = lnLθᵗ 
             end
         end
-        naccept = naccept .+ changed .* Int.(accept)
+        if report
+            naccept = naccept .+ changed .* Int.(accept)
+        end    
         if (mod(rep,reportevery)==0 && report)
             println("current parameters: ", round.(θ,digits=3))
             println("  acceptance rates: ", round.(naccept/reportevery,digits=3))
