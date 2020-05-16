@@ -5,25 +5,28 @@
 # converted to Julia 25 Aug. 2017
 # 
 # purpose: calculates qF, Wald, Score and Likelihood Ratio tests for
-# linear model						 y=XB+e
-# 									 e~N(0,sig^2*I_n)
-# subject to linear restrictions  	 RB=r
+# linear model
+#       y=XB+e
+#       e~N(0,sig^2*I_n)
+# subject to linear restrictions
+#       RB=r
 # 
 # format: [qF, W, LR, S] = TestStatistics(y,x,R,r)
 # 
 # inputs:
-# 		 y: nx1 dependent variable
-# 		 x: nxk regressor matrix
-# 		 R: R above, a qxk matrix
-# 		 r: r above, a qx1 vector
+#       y: nx1 dependent variable
+#       x: nxk regressor matrix
+#       R: R above, a qxk matrix
+#       r: r above, a qx1 vector
 # 
 # returns: 
-#        qF: the qF statistic
-# 		 W: the Wald statistic
-# 		 S: the score statistic
-# 		 LR: the likelihood ratio statistic
+#       qF: the qF statistic
+#       W: the Wald statistic
+#       S: the score statistic
+#       LR: the likelihood ratio statistic
 using StatsFuns
 
+# with no args, run an example
 function TestStatistics()
     n = 30
     k = 3
