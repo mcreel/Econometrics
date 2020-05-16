@@ -23,6 +23,17 @@
 # 		 S: the score statistic
 # 		 LR: the likelihood ratio statistic
 using StatsFuns
+
+function TestStatistics()
+    n = 30
+    k = 3
+    x = [ones(n) randn(n,k)]
+    y = x*ones(k,1) + randn(n)
+    R = ones(k) # restriction (true) is that coefs add up to k
+    r = k
+    TestStatistics(y,x,R,r)
+end
+
 function TestStatistics(y, x, R, r; silent=false)
     n,k = size(x)
     q = size(R,1)
