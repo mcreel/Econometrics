@@ -64,7 +64,7 @@ function TestStatistics(y, x, R, r; silent=false)
     LR = 2.0*(lnl-lnl_r)
 	if !silent
         tests = [q*F[1], W[1], LR[1], S[1]]
-	    pvalues = chisqccdf.(tests,q)
+	    pvalues = chisqccdf.(q,tests)
         tests = [tests pvalues]
 	    TESTS = ["qF","Wald","LR","Score"]
 	    labels = ["Value","p-value"]
