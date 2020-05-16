@@ -27,7 +27,7 @@ using StatsFuns
 function TestStatistics()
     n = 30
     k = 3
-    x = [ones(n) randn(n,k)]
+    x = [ones(n) randn(n,k-1)]
     y = x*ones(k,1) + randn(n)
     R = ones(k) # restriction (true) is that coefs add up to k
     r = k
@@ -50,9 +50,9 @@ function TestStatistics(y, x, R, r; silent=false)
     sigsqhat_mle_r = ess_r/(n)
     # F-test
     F = (ess_r-ess)/(q*sigsqhat_ols)
-    # Wald test (uses unrestricted model's est. of sig^2
+    # Wald test (uses unrestricted model's est. of sig^2)
     W = (R*b.-r)'*P_inv*(R*b.-r)/sigsqhat_mle
-    # Score test (uses restricted model's est. of sig^2 
+    # Score test (uses restricted model's est. of sig^2)
     P_x = x * xx_inv * x'
     S = e_r' * P_x * e_r/(sigsqhat_mle_r)
     # LR test
