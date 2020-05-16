@@ -29,7 +29,7 @@ function TestStatistics()
     k = 3
     x = [ones(n) randn(n,k-1)]
     y = x*ones(k,1) + randn(n)
-    R = ones(k) # restriction (true) is that coefs add up to k
+    R = ones(1,k) # restriction (true) is that coefs add up to k
     r = k
     TestStatistics(y,x,R,r)
 end
