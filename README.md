@@ -10,9 +10,12 @@ The hostel and its restaurant are run by a non-profit organization,
 and 90% of the workers have disabilities. http://inouthostel.com/en
 for more information about the initiative and reservations.
 
-With the problems from COVID-19, the business is currently closed,
+~~With the problems from COVID-19, the business is currently closed,
 Once the crisis is over, this great social initiative will get
-back to normal more quickly if we can give it our business.
+back to normal more quickly if we can give it our business.~~
+
+UPDATE: INOUT hostel and restaurant are now open for business!
+
 Thanks!
 ____________________________________________________________________
 
