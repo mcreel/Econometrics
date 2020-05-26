@@ -172,10 +172,22 @@ literal "false"
 \end_layout
 
 \begin_layout Address
+
+\strikeout on
 With the problems from COVID-19, the business is currently closed.
  Once the crisis is over, this great social initiative will get back to
  normal more quickly if we can give it our business.
- Thanks!
+
+\strikeout default
+ 
+\end_layout
+
+\begin_layout Address
+UPDATE: The INOUT hostel and restaurant are now open for business!
+\end_layout
+
+\begin_layout Address
+Thanks!
 \end_layout
 
 \begin_layout Author
