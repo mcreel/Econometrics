@@ -44,6 +44,8 @@ function npreg()
     return yhat[1,1] # for testing
 end 
 
+#=
+# to do testing, should use nonrandom data
 function npreg(x::Int64)
     #println("npreg(), with a single integer argument, runs a test, using the npreg() example")
     #using Plots
@@ -61,7 +63,7 @@ function npreg(x::Int64)
     yhat, y50, y05, y95 = npreg(y, x, xeval, weights, order=1, do_median=true, do_ci=true)
     return yhat[1,1] # for testing
 end 
-
+=#
 
 
 function npreg(y, x, xeval, weights; order=1, do_median=false, do_ci=false)
