@@ -32,9 +32,22 @@ function mcmc()
     return
 end
 
+
+# method using threads and symmetric proposal
+function mcmc(θ, reps, burnin, Prior, lnL, Proposal, report=true, nthreads=1)
+    perthread = Int(round(reps/nthreads))
+    reps = Int(perthread*nthreads)
+    chain = zeros(reps, size(θ,1)+1)
+    Threads.@threads for t = 1:nthreads # collect the results from the threads
+        chain[t*perthread-perthread+1:t*perthread,:] = mcmc(θ, perthread, burnin, Prior, lnL, Proposal, report) 
+    end    
+    return chain
+end
+
+
 # method symmetric proposal
 # the main loop
-function mcmc(θ::Array{Float64}, reps::Int64, burnin::Int64, Prior::Function, lnL::Function, Proposal::Function, report=true::Bool)
+function mcmc(θ, reps, burnin, Prior, lnL, Proposal, report=true)
     reportevery = Int((reps+burnin)/10)
     lnLθ = lnL(θ)
     chain = zeros(reps, size(θ,1)+1)
@@ -70,20 +83,7 @@ function mcmc(θ::Array{Float64}, reps::Int64, burnin::Int64, Prior::Function, l
     return chain
 end
 
-
-# method using threads and symmetric proposal
-function mcmc(θ::Array{Float64}, reps::Int64, burnin::Int64, Prior::Function, lnL::Function, Proposal::Function, report=true::Bool, nthreads=1::Int)
-    perthread = Int(round(reps/nthreads))
-    reps = Int(perthread*nthreads)
-    chain = zeros(reps, size(θ,1)+1)
-    Threads.@threads for t = 1:nthreads # collect the results from the threads
-        chain[t*perthread-perthread+1:t*perthread,:] = mcmc(θ, perthread, burnin, Prior, lnL, Proposal, report) 
-    end    
-    return chain
-end
-
-
-
+#=
 # the main loop
 function mcmc(θ, reps, burnin, Prior, lnL, Proposal::Function, ProposalDensity::Function, report=true::Bool)
     reportevery = Int((reps+burnin)/10)
@@ -123,5 +123,5 @@ function mcmc(θ, reps, burnin, Prior, lnL, Proposal::Function, ProposalDensity:
     end
     return chain
 end
-
+=#
 
