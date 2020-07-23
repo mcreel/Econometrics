@@ -75,7 +75,7 @@ end
 function mcmc(θ::Array{Float64}, reps::Int64, burnin::Int64, Prior::Function, lnL::Function, Proposal::Function, report=true::Bool, nthreads=1::Int)
     perthread = Int(round(reps/nthreads))
     reps = Int(perthread*nthreads)
-    chain = zeros(, size(θ,1)+1)
+    chain = zeros(reps, size(θ,1)+1)
     Threads.@threads for t = 1:nthreads # collect the results from the threads
         chain[t*perthread-perthread+1:t*perthread,:] = mcmc(θ, perthread, burnin, Prior, lnL, Proposal, report) 
     end    
