@@ -35,11 +35,9 @@ end
 
 # method using threads and symmetric proposal
 function mcmc(θ, reps, burnin, Prior, lnL, Proposal, report=true, nthreads=1)
-    perthread = Int(round(reps/nthreads))
-    reps = Int(perthread*nthreads)
-    chain = zeros(reps, size(θ,1)+1)
+    chain = zeros(Int(reps*nthreads), size(θ,1)+1)
     Threads.@threads for t = 1:nthreads # collect the results from the threads
-        chain[t*perthread-perthread+1:t*perthread,:] = mcmc(θ, perthread, burnin, Prior, lnL, Proposal, report) 
+        chain[t*reps-reps+1:t*reps,:] = mcmc(θ, reps, burnin, Prior, lnL, Proposal, report) 
     end    
     return chain
 end
