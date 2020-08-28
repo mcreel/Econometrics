@@ -140,54 +140,14 @@ theorems-ams-extended
 
 \begin_body
 
-\begin_layout Standard
-\align center
+\begin_layout Title
 
 \size larger
 Econometrics
 \end_layout
 
-\begin_layout Standard
-\align center
+\begin_layout Author
 Michael Creel
-\end_layout
-
-\begin_layout Address
-These notes have been online for many years, at least since 2002.
- If you have any inclination to express thanks, and you have the opportunity,
- please consider visiting the INOUT Hostel or its restaurant, in the mountains
- surrounding Barcelona.
- The hostel and its restaurant are run by a non-profit organization, and
- 90% of the workers have disabilities.
- 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://inouthostel.com/en"
-target "http://inouthostel.com/en"
-literal "false"
-
-\end_inset
-
- for more information about the initiative and reservations.
-\end_layout
-
-\begin_layout Address
-
-\strikeout on
-With the problems from COVID-19, the business is currently closed.
- Once the crisis is over, this great social initiative will get back to
- normal more quickly if we can give it our business.
-
-\strikeout default
- 
-\end_layout
-
-\begin_layout Address
-UPDATE: The INOUT hostel and restaurant are now open for business!
-\end_layout
-
-\begin_layout Address
-Thanks!
 \end_layout
 
 \begin_layout Author
@@ -54357,9 +54317,9 @@ deep learning
  nets that are popular nowadays.
  The discussion below is based on 
 \begin_inset CommandInset citation
-LatexCommand cite
-key "creel2016neural"
-literal "true"
+LatexCommand citet
+key "creel2017neural"
+literal "false"
 
 \end_inset
 
@@ -54937,25 +54897,42 @@ A neural net indirect inference estimator is not an extremum estimator:
 
 \begin_deeper
 \begin_layout Itemize
-bootstrapping?
+bootstrapping? 
+\emph on
+Update
+\emph default
+: based on my experimentation, no.
+ Inference requires accurate estimation of tail quantiles, and this is difficult
+ to do based on a training sample drawn from the prior.
+ Likewise, neural quantile regression does not lead to good estimation of
+ tail quantiles, for the same reason (one would need an enormous sample
+ from the prior).
 \end_layout
 
 \begin_layout Itemize
 One can use the NN estimator as a statistic for indirect inference or related
  methods, and then use the asymptotic theory for those methods.
- This works pretty well - see the table.
-\end_layout
+ This works pretty well - see 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://github.com/mcreel/SNM"
+target "https://github.com/mcreel/SNM"
+literal "false"
 
-\end_deeper
-\begin_layout Itemize
-We use a NN to identify which are the important variables for explaining
- 
-\begin_inset Formula $y$
+\end_inset
+
+ and the working paper 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "creel2020inference"
+literal "false"
+
 \end_inset
 
 .
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -54964,11 +54941,7 @@ We use a NN to identify which are the important variables for explaining
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Neural net indirect inference
-\series default
-: see 
+References and code: see 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "creel2017neural"
@@ -54976,23 +54949,24 @@ literal "true"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-the code archive for the paper is 
-\begin_inset CommandInset href
-LatexCommand href
-name "here"
-target "https://github.com/mcreel/NeuralNetsForIndirectInference.jl"
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "creel2020inference"
 literal "false"
 
 \end_inset
 
-.
- It contains some example code for estimating a simple discrete time stochastic
- volatility model.
- See the README.md file for more information.
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://github.com/mcreel/SNM"
+target "https://github.com/mcreel/SNM"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

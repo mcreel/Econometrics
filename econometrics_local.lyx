@@ -140,54 +140,14 @@ theorems-ams-extended
 
 \begin_body
 
-\begin_layout Standard
-\align center
+\begin_layout Title
 
 \size larger
 Econometrics
 \end_layout
 
-\begin_layout Standard
-\align center
+\begin_layout Author
 Michael Creel
-\end_layout
-
-\begin_layout Address
-These notes have been online for many years, at least since 2002.
- If you have any inclination to express thanks, and you have the opportunity,
- please consider visiting the INOUT Hostel or its restaurant, in the mountains
- surrounding Barcelona.
- The hostel and its restaurant are run by a non-profit organization, and
- 90% of the workers have disabilities.
- 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://inouthostel.com/en"
-target "http://inouthostel.com/en"
-literal "false"
-
-\end_inset
-
- for more information about the initiative and reservations.
-\end_layout
-
-\begin_layout Address
-
-\strikeout on
-With the problems from COVID-19, the business is currently closed.
- Once the crisis is over, this great social initiative will get back to
- normal more quickly if we can give it our business.
-
-\strikeout default
- 
-\end_layout
-
-\begin_layout Address
-UPDATE: The INOUT hostel and restaurant are now open for business!
-\end_layout
-
-\begin_layout Address
-Thanks!
 \end_layout
 
 \begin_layout Author
@@ -60370,136 +60330,6 @@ Files/Count/ProbitDGP.m}
  estimation of the probit model.
  Investigate how the number of simulations affect the two simulation-based
  estimators.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter
-Worked Example: Simulated Neural Moments
-\end_layout
-
-\begin_layout Standard
-As an example which ties together elements of GMM, simulation-based estimation,
- nonparametric estimation in the form of neural nets, and Bayesian methods,
- this chapter works through estimation of a continuous time stochastic volatilit
-y model for S&P 500 returns.
- The model is what is referred to as jump diffusion model.This chapter is
- being written at the same time as I am revising the working paper 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "creel2020inference"
-literal "false"
-
-\end_inset
-
-, and documents how to analyze and refine a simulation based estimator that
- relies on a neural net and auxiliary statistics.
- The presentation is going to be informal, and is focused on the practical
- aspects.
- The theory is in the working paper.
- The code is at 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://github.com/mcreel/SNM"
-target "https://github.com/mcreel/SNM"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The jump diffusion model is
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-dp_{t} & =\mu dt+\sqrt{\exp h_{t}}dW_{1t}+J_{t}dN_{t}\\
-dh_{t} & =\kappa(\alpha-h_{t})+\sigma dW_{2t}
-\end{align*}
-
-\end_inset
-
-where 
-\begin_inset Formula $p_{t}$
-\end_inset
-
- is log price, 
-\begin_inset Formula $h_{t}$
-\end_inset
-
- is log volatility, 
-\begin_inset Formula $J_{t}$
-\end_inset
-
- is jump size, and 
-\begin_inset Formula $N_{t}$
-\end_inset
-
- is a Poisson process with jump intensity 
-\begin_inset Formula $\lambda_{0}$
-\end_inset
-
-.
- 
-\begin_inset Formula $W_{1t}$
-\end_inset
-
- and 
-\begin_inset Formula $W_{2t}$
-\end_inset
-
- are two standard Brownian motions with correlation 
-\begin_inset Formula $\rho$
-\end_inset
-
-.
- When a jump occurs, its size is 
-\begin_inset Formula $J_{t}=a\lambda_{1}\sqrt{\exp h_{t}}$
-\end_inset
-
-, where 
-\begin_inset Formula $a$
-\end_inset
-
- is 
-\begin_inset Formula $1$
-\end_inset
-
- with probability 
-\begin_inset Formula $0.5$
-\end_inset
-
- and 
-\begin_inset Formula $-1$
-\end_inset
-
- with probability 
-\begin_inset Formula $0.5.$
-\end_inset
-
- So, the absolute magnitude of a jump is 
-\begin_inset Formula $\lambda_{1}$
-\end_inset
-
- times the current standard deviation, and jumps are positive or negative
- with equal probability.
- The seven parameters are 
-\begin_inset Formula $\theta=(\mu,\kappa,\alpha,\sigma,\rho,\lambda_{0},\lambda_{1}).$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
