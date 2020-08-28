@@ -1,25 +1,6 @@
 # Econometrics
 Graduate level econometrics notes with embedded examples using the Julia language.
 
-____________________________________________________________________
-(27 March 2020) These notes have been online for many years, at
-least since 2002. If you have any inclination to express thanks,
-and you have the opportunity, please consider visiting the INOUT
-Hostel or its restaurant, in the mountains surrounding Barcelona.
-The hostel and its restaurant are run by a non-profit organization,
-and 90% of the workers have disabilities. http://inouthostel.com/en
-for more information about the initiative and reservations.
-
-~~With the problems from COVID-19, the business is currently closed,
-Once the crisis is over, this great social initiative will get
-back to normal more quickly if we can give it our business.~~
-
-UPDATE: INOUT hostel and restaurant are now open for business!
-
-Thanks!
-____________________________________________________________________
-
-
 To get just the notes, click on econometrics.pdf, and then on Download, at the upper R of the page, which will download only the pdf. Links in the pdf point to files here on github, and will open in your browser.
 
 ## To run the examples
