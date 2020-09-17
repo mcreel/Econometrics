@@ -25,7 +25,7 @@ function mcmc()
     tuning = 0.5
     Proposal = θ -> rand(LogNormal(log(θ),tuning))
     # get the chain, plot posterior, and descriptive stats
-    chain = mcmc(1.0, 100000, 10000, Prior, lnL, Proposal, true) # start value, chain length, and burnin 
+    chain = mcmc([1.0], 100000, 10000, Prior, lnL, Proposal, true) # start value, chain length, and burnin 
     p = npdensity(chain[:,1]) # nonparametric plot of posterior density 
     plot!(p, title="posterior density, simple MCMC example: true value = 3.0", show=true) # add a title
     dstats(chain)
