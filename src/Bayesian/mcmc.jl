@@ -34,7 +34,7 @@ end
 
 
 # method using threads and symmetric proposal
-function mcmc(θ, reps, burnin, Prior, lnL, Proposal, report=true, nthreads=1)
+function mcmc(θ::Array{Float64}, reps::Int64, burnin::Int64, Prior::Function, lnL::Function, Proposal::Function, report::Bool, nthreads::Int64)
     chain = zeros(Int(reps*nthreads), size(θ,1)+1)
     Threads.@threads for t = 1:nthreads # collect the results from the threads
         chain[t*reps-reps+1:t*reps,:] = mcmc(θ, reps, burnin, Prior, lnL, Proposal, report) 
@@ -45,7 +45,7 @@ end
 
 # method symmetric proposal
 # the main loop
-function mcmc(θ, reps, burnin, Prior, lnL, Proposal, report=true)
+function mcmc(θ::Array{Float64}, reps::Int64, burnin::Int64, Prior::Function, lnL::Function, Proposal::Function, report::Bool=true)
     reportevery = Int((reps+burnin)/10)
     lnLθ = lnL(θ)
     chain = zeros(reps, size(θ,1)+1)
