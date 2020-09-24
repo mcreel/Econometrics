@@ -36,9 +36,9 @@ for i = 1:reps
 end
 
 histogram(betas[:,1], label="", nbins=30, show=true)
-#savefig("efficiency-1.svg")
+#savefig("efficiency1.svg")
 histogram(betas[:,2], label="", nbins=30, reuse=false, show=true)
-#savefig("efficiency-2.svg")
+#savefig("efficiency2.svg")
 return
 end
 main()

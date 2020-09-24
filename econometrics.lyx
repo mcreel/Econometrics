@@ -4287,7 +4287,7 @@ Gauss-Markov Result: The OLS estimator
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/OLS/efficiency-1.svg
+	filename Examples/OLS/efficiency1.svg
 	lyxscale 25
 	width 12cm
 
@@ -4325,7 +4325,7 @@ name "cap:Gauss-Markov-Result: split sample"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/OLS/efficiency-2.svg
+	filename Examples/OLS/efficiency2.svg
 	lyxscale 25
 	width 12cm
 
