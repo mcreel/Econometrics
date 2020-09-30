@@ -8,9 +8,9 @@ version = "0.5.0"
 
 [[Adapt]]
 deps = ["LinearAlgebra"]
-git-tree-sha1 = "95f8bda0555209f122bc796b0382ea4a3a121720"
+git-tree-sha1 = "42c42f2221906892ceb765dbcb1a51deeffd86d7"
 uuid = "79e6a3ab-5dfb-504d-930d-738a2a938a0e"
-version = "2.1.0"
+version = "2.3.0"
 
 [[Arpack]]
 deps = ["Arpack_jll", "Libdl", "LinearAlgebra"]
@@ -26,9 +26,9 @@ version = "3.5.0+3"
 
 [[ArrayInterface]]
 deps = ["LinearAlgebra", "Requires", "SparseArrays"]
-git-tree-sha1 = "b3d3169e63585457f38b38b9c0d53855ee1258ab"
+git-tree-sha1 = "a7110d4291700c0d9ddbeb5fa41c3b9c4659c2aa"
 uuid = "4fba245c-0d91-5ea0-9b3e-6abc04ee57a9"
-version = "2.13.2"
+version = "2.13.3"
 
 [[AxisAlgorithms]]
 deps = ["LinearAlgebra", "Random", "SparseArrays", "WoodburyMatrices"]
@@ -71,9 +71,9 @@ version = "0.14.1"
 
 [[ColorSchemes]]
 deps = ["ColorTypes", "Colors", "FixedPointNumbers", "Random", "StaticArrays"]
-git-tree-sha1 = "950f477dfe152a0dd2221124986a5722db385199"
+git-tree-sha1 = "5d472aa8908568bc198564db06983913a6c2c8e7"
 uuid = "35d6a980-a343-548e-a6ea-1d62b119f2f4"
-version = "3.10.0"
+version = "3.10.1"
 
 [[ColorTypes]]
 deps = ["FixedPointNumbers", "Random"]
@@ -95,9 +95,9 @@ version = "0.3.0"
 
 [[Compat]]
 deps = ["Base64", "Dates", "DelimitedFiles", "Distributed", "InteractiveUtils", "LibGit2", "Libdl", "LinearAlgebra", "Markdown", "Mmap", "Pkg", "Printf", "REPL", "Random", "SHA", "Serialization", "SharedArrays", "Sockets", "SparseArrays", "Statistics", "Test", "UUIDs", "Unicode"]
-git-tree-sha1 = "7c7f4cda0d58ec999189d70f5ee500348c4b4df1"
+git-tree-sha1 = "043647e66a6effa7473e98a5370faa4deb6dce90"
 uuid = "34da2185-b29b-5c13-b0c7-acf172513d20"
-version = "3.16.0"
+version = "3.17.0"
 
 [[CompilerSupportLibraries_jll]]
 deps = ["Libdl", "Pkg"]
@@ -286,6 +286,11 @@ git-tree-sha1 = "34bfa994967e893ab2f17b864eec221b3521ba4d"
 uuid = "4d00f742-c7ba-57c2-abde-4428a4b178cb"
 version = "0.8.3"
 
+[[Grisu]]
+git-tree-sha1 = "03d381f65183cb2d0af8b3425fde97263ce9a995"
+uuid = "42e2da0e-8278-4e71-bc24-59509adca0fe"
+version = "1.0.0"
+
 [[HTTP]]
 deps = ["Base64", "Dates", "IniFile", "MbedTLS", "Sockets"]
 git-tree-sha1 = "c7ec02c4c6a039a98a15f955462cd7aea5df4508"
@@ -463,9 +468,9 @@ uuid = "510215fc-4207-5dde-b226-833fc4488ee2"
 version = "0.3.1"
 
 [[OffsetArrays]]
-git-tree-sha1 = "9011c7c98769c451f83869a4d66461e2f23bc80b"
+git-tree-sha1 = "3fdfca8a532507d65f39ff0ad34fe81097a55337"
 uuid = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
-version = "1.2.1"
+version = "1.3.0"
 
 [[Ogg_jll]]
 deps = ["Libdl", "Pkg"]
@@ -538,15 +543,15 @@ version = "2.0.0"
 
 [[PlotUtils]]
 deps = ["ColorSchemes", "Colors", "Dates", "Printf", "Random", "Reexport", "Statistics"]
-git-tree-sha1 = "8d23333aee2e2733a5cd4e1985462df8203f47f7"
+git-tree-sha1 = "4e098f88dad9a2b518b83124a116be1c49e2b2bf"
 uuid = "995b91a9-d308-5afd-9ec6-746e21dbc043"
-version = "1.0.6"
+version = "1.0.7"
 
 [[Plots]]
 deps = ["Base64", "Contour", "Dates", "FFMPEG", "FixedPointNumbers", "GR", "GeometryBasics", "GeometryTypes", "JSON", "LinearAlgebra", "Measures", "NaNMath", "PlotThemes", "PlotUtils", "Printf", "REPL", "Random", "RecipesBase", "RecipesPipeline", "Reexport", "Requires", "Showoff", "SparseArrays", "Statistics", "StatsBase", "UUIDs"]
-git-tree-sha1 = "a4546c4046fe2a16042305006694a079d34e8f0b"
+git-tree-sha1 = "b179dff12ef580cbf1c0a68eadae18f6683475bc"
 uuid = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
-version = "1.6.6"
+version = "1.6.7"
 
 [[PooledArrays]]
 deps = ["DataAPI"]
@@ -608,9 +613,9 @@ version = "0.2.0"
 
 [[Requires]]
 deps = ["UUIDs"]
-git-tree-sha1 = "2fc2e1ab606a5dca7bbad9036a694553c3a57926"
+git-tree-sha1 = "28faf1c963ca1dc3ec87f166d92982e3c4a1f66d"
 uuid = "ae029012-a4dd-5104-9daa-d747884805df"
-version = "1.0.3"
+version = "1.1.0"
 
 [[Rmath]]
 deps = ["Random", "Rmath_jll"]
@@ -646,10 +651,10 @@ uuid = "1277b4bf-5013-50f5-be3d-901d8477a67a"
 version = "1.0.0"
 
 [[Showoff]]
-deps = ["Dates"]
-git-tree-sha1 = "e032c9df551fb23c9f98ae1064de074111b7bc39"
+deps = ["Dates", "Grisu"]
+git-tree-sha1 = "ee010d8f103468309b8afac4abb9be2e18ff1182"
 uuid = "992d4aef-0814-514b-bc4d-f2e9a6c4116f"
-version = "0.3.1"
+version = "0.3.2"
 
 [[Sockets]]
 uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
