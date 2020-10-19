@@ -25,7 +25,7 @@ for rep = 1:reps
 	y = ystar + sig*randn(n)
 	# now do GMM, using the data with meas. error in both dep. var. and regressor
 	data = [y lag(y,1) x lags(x,2)];
-    data = data[3:end,:] # drop first obs, missing due to lag
+    data = data[3:end,:] # drop first obsns, missing due to lags
     y = data[:,1]
     ylag = data[:,2]
     x = data[:,3]
