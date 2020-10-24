@@ -1617,7 +1617,7 @@ Price and Quantity, colored by income (blue is low, violet is high)
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Intro/PriceQuantity.svg
+	filename Examples/Intro/PriceQuantity.png
 	width 15cm
 
 \end_inset
@@ -2195,7 +2195,7 @@ Typical data, Classical Model
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/OLS/TypicalData.svg
+	filename Examples/OLS/TypicalData.png
 
 \end_inset
 
@@ -2494,7 +2494,7 @@ Example OLS Fit
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/OLS/OlsFit.svg
+	filename Examples/OLS/OlsFit.png
 
 \end_inset
 
@@ -3129,7 +3129,7 @@ Detection of influential observations
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/OLS/InfluentialObservation.svg
+	filename Examples/OLS/InfluentialObservation.png
 
 \end_inset
 
@@ -3824,7 +3824,7 @@ Unbiasedness of OLS under classical assumptions: replications of
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/OLS/Unbiased.svg
+	filename Examples/OLS/Unbiased.png
 
 \end_inset
 
@@ -3908,7 +3908,7 @@ Biasedness of OLS when an assumption fails: : replications of
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/OLS/Biased.svg
+	filename Examples/OLS/Biased.png
 
 \end_inset
 
@@ -4287,7 +4287,7 @@ Gauss-Markov Result: The OLS estimator
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/OLS/efficiency1.svg
+	filename Examples/OLS/efficiency1.png
 	lyxscale 25
 	width 12cm
 
@@ -4325,7 +4325,7 @@ name "cap:Gauss-Markov-Result: split sample"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/OLS/efficiency2.svg
+	filename Examples/OLS/efficiency2.png
 	lyxscale 25
 	width 12cm
 
@@ -8528,7 +8528,7 @@ RTS as a function of firm size
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Restrictions/rts.svg
+	filename Examples/Restrictions/rts.png
 
 \end_inset
 
@@ -11128,7 +11128,7 @@ Collinearity: Monte Carlo results
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/DataProblems/collin.svg
+	filename Examples/DataProblems/collin.png
 	width 15cm
 
 \end_inset
@@ -11719,7 +11719,7 @@ OLS and Ridge regression
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/DataProblems/RidgeExample.svg
+	filename Examples/DataProblems/RidgeExample.png
 	width 15cm
 
 \end_inset
@@ -12230,7 +12230,7 @@ with measurement error:
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/DataProblems/ylag_n100.svg
+	filename Examples/DataProblems/ylag_n100.png
 	lyxscale 25
 	width 10cm
 
@@ -12265,7 +12265,7 @@ without measurement error:
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/DataProblems/ylag_n100_no_error.svg
+	filename Examples/DataProblems/ylag_n100_no_error.png
 	lyxscale 25
 	width 10cm
 
@@ -12678,7 +12678,7 @@ Sample selection bias
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/DataProblems/sampsel.svg
+	filename Examples/DataProblems/sampsel.png
 
 \end_inset
 
@@ -14740,7 +14740,7 @@ Rejection frequency of 10% t-test, H0 is true.
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/GLS/EffectsOLS.svg
+	filename Examples/GLS/EffectsOLS.png
 	lyxscale 50
 	width 15cm
 
@@ -23286,7 +23286,7 @@ Grid search, one dimension
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/NonlinearOptimization/gridsearch.svg
+	filename Examples/NonlinearOptimization/gridsearch.png
 	lyxscale 25
 	width 15cm
 
@@ -24634,7 +24634,7 @@ Trace of SA path to minimize sum of squared errors
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/NonlinearOptimization/OLSviaSA.svg
+	filename Examples/NonlinearOptimization/OLSviaSA.png
 	width 15cm
 
 \end_inset
@@ -25810,7 +25810,7 @@ OLS objective function contours
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/NonlinearOptimization/OLScontours.svg
+	filename Examples/NonlinearOptimization/OLScontours.png
 	width 15cm
 
 \end_inset
@@ -31043,7 +31043,7 @@ The DSGE data
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/DSGE/GenData/dsgedata.svg
+	filename Examples/DSGE/GenData/dsgedata.png
 	width 15cm
 
 \end_inset
@@ -33308,7 +33308,7 @@ Alternative variance computations for the OBDV Poisson model
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/MLE/AlternativeVariances.svg
+	filename Examples/MLE/AlternativeVariances.png
 	width 15cm
 	height 15cm
 
@@ -36022,7 +36022,7 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename Examples/DSGE/ML/dsgeml.svg
+	filename Examples/DSGE/ML/dsgeml.png
 	width 15cm
 
 \end_inset
@@ -38466,7 +38466,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/GMM/Asnorm_n30.svg
+	filename Examples/GMM/Asnorm_n30.png
 	lyxscale 50
 	width 10cm
 
@@ -38504,7 +38504,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/GMM/Asnorm_n1000.svg
+	filename Examples/GMM/Asnorm_n1000.png
 	lyxscale 50
 	width 10cm
 
@@ -39026,7 +39026,7 @@ Inefficient and Efficient GMM estimators,
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/GMM/Efficient.svg
+	filename Examples/GMM/Efficient.png
 	lyxscale 50
 	width 10cm
 
@@ -40958,7 +40958,7 @@ GIV estimation results for
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/GMM/givrho.svg
+	filename Examples/GMM/givrho.png
 	lyxscale 25
 	width 12cm
 
@@ -41962,7 +41962,7 @@ OLS and IV
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/GMM/Hausman/olsiv.svg
+	filename Examples/GMM/Hausman/olsiv.png
 	width 12cm
 
 \end_inset
@@ -47313,7 +47313,7 @@ log differences
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/TimeSeries/nyse.svg
+	filename Examples/TimeSeries/nyse.png
 	width 12cm
 
 \end_inset
@@ -48051,7 +48051,7 @@ SV model, typical data and density
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/TimeSeries/svdata.svg
+	filename Examples/TimeSeries/svdata.png
 	width 10cm
 
 \end_inset
@@ -48319,7 +48319,7 @@ Returns from jump-diffusion model
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Figures/rets.svg
+	filename Examples/Figures/rets.png
 	lyxscale 25
 	width 12cm
 
@@ -48373,7 +48373,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Figures/spotvol.svg
+	filename Examples/Figures/spotvol.png
 	lyxscale 25
 	width 12cm
 
@@ -49331,7 +49331,7 @@ N=10
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Bayesian/BayesExampleN10.svg
+	filename Examples/Bayesian/BayesExampleN10.png
 	lyxscale 25
 	width 8cm
 
@@ -49362,7 +49362,7 @@ N=50
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Bayesian/BayesExampleN50.svg
+	filename Examples/Bayesian/BayesExampleN50.png
 	lyxscale 25
 	width 8cm
 
@@ -50169,7 +50169,7 @@ chain, last 1000 draws
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Bayesian/chain.svg
+	filename Examples/Bayesian/chain.png
 	width 10cm
 
 \end_inset
@@ -50203,7 +50203,7 @@ posterior
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Bayesian/posterior.svg
+	filename Examples/Bayesian/posterior.png
 	width 10cm
 
 \end_inset
@@ -50524,7 +50524,7 @@ amples/DSGE/MCMC/DoMCMC.jl}
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename Examples/DSGE/MCMC/gamma.svg
+	filename Examples/DSGE/MCMC/gamma.png
 	width 15cm
 
 \end_inset
@@ -55044,7 +55044,7 @@ blob/master/Examples/Nonparametric/ExampleKernelDensity.jl}
 
 \begin_layout Example
 \begin_inset Graphics
-	filename Examples/Nonparametric/NPdensity.svg
+	filename Examples/Nonparametric/NPdensity.png
 	width 10cm
 
 \end_inset
@@ -56684,7 +56684,7 @@ Inverse CDF for N(0,1)
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Quantile/norminv.svg
+	filename Examples/Quantile/norminv.png
 	width 12cm
 
 \end_inset
@@ -57757,7 +57757,7 @@ Independent proposals, poor mixing
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Quantile/chain1.svg
+	filename Examples/Quantile/chain1.png
 	width 20cm
 
 \end_inset
@@ -57790,7 +57790,7 @@ Correlated proposals, better mixing
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Quantile/chain2.svg
+	filename Examples/Quantile/chain2.png
 	width 20cm
 
 \end_inset
@@ -57956,7 +57956,7 @@ Estimated
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Quantile/Educ.svg
+	filename Examples/Quantile/Educ.png
 	width 12cm
 
 \end_inset
@@ -57994,7 +57994,7 @@ Estimated
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/Quantile/Constant.svg
+	filename Examples/Quantile/Constant.png
 	width 12cm
 
 \end_inset
@@ -59947,7 +59947,7 @@ MCMC estimation using simulated moments and limited information quasi-likelihood
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/SBEM/MCMC.svg
+	filename Examples/SBEM/MCMC.png
 	width 15cm
 
 \end_inset
@@ -60025,7 +60025,7 @@ ihood
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/SBEM/NUTS/nuts.svg
+	filename Examples/SBEM/NUTS/nuts.png
 	width 15cm
 
 \end_inset
