@@ -40,7 +40,7 @@ p2 = histogram(data[:,5],title="Drop X3")
 p3 = histogram(data[:,7],title="Restricted LS")
 plot(p1,p2,p3, layout=(3,1), show=true, legend=false)
 gui()
-savefig("collin.svg")
+savefig("collin.png")
 return
 end
 main()

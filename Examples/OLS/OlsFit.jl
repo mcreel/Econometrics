@@ -19,5 +19,5 @@ plot(x,PopRegLine, label = "population regression line")
 plot!(x, fit, label = "OLS fitted line")
 xlabel= "X"
 scatter!(x, y, label = "data")
-#savefig("OlsFit.svg")
+#savefig("OlsFit.png")
 gui()

@@ -37,7 +37,7 @@ rts = 1 ./ output
 group = 1:5
 group = group
 plot(group, rts, label = "", yaxis="RTS", xaxis = "Output Group", show=true)
-#savefig("rts.svg")
+#savefig("rts.png")
 
 # Chow test
 R = Matrix{Float64}(I, 5, 5)

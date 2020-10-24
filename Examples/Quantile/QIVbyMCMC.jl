@@ -45,7 +45,7 @@ lb = EducEffect[:,2]
 ub = EducEffect[:,3]
 plot!(τ, [educ educ], fillrange=[lb ub], fillalpha=0.3, c=:green, legend=:none)
 xticks!((1:9)/10)
-#savefig("EducJUNK.svg")
+#savefig("EducJUNK.png")
 # constant
 τ = (1:9)/10
 plot(reuse=false)
@@ -54,7 +54,7 @@ lb = Constant[:,2]
 ub = Constant[:,3]
 plot!(τ, [c c], fillrange=[lb ub], fillalpha=0.3, c=:green, legend=:none)
 xticks!((1:9)/10)
-#savefig("ConstantJUNK.svg")
+#savefig("ConstantJUNK.png")
 return
 end
 main()

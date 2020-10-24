@@ -20,7 +20,7 @@ plot!(p1, title="Inefficient")
 p2 = npdensity(results[:,2])
 plot!(p2, title="Efficient")
 plot(p1,p2,layout=(2,1),xlims=(-10,20))
-savefig("Efficient.svg")
+savefig("Efficient.png")
 gui()
 println("Monte Carlo covariance: (1,1) is inefficient GMM, (2,2) is efficient")
 

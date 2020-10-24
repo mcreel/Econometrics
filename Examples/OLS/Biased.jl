@@ -22,7 +22,7 @@ for i = 1:reps
 end
 betas = betas .- truebetas[2]
 histogram(betas, label="", show=true)
-#savefig("Biased.svg")
+#savefig("Biased.png")
 return
 end
 main()

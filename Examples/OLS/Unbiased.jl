@@ -17,5 +17,5 @@ betas = inv(x'x)*x'y
 betas[2,:] .-=  2.0
 histogram(betas[2,:], label = "")
 gui()
-#savefig("Unbiased.svg")
+#savefig("Unbiased.png")
 	

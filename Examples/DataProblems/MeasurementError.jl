@@ -42,7 +42,7 @@ for rep = 1:reps
 end
 # analyze results
 histogram(bs[:,2])
-sig != 0.0 ? savefig("ylag_n100.svg") : savefig("ylag_n100_no_error.svg")
+sig != 0.0 ? savefig("ylag_n100.png") : savefig("ylag_n100_no_error.png")
 gui()
 dstats(bs);
 return

@@ -48,9 +48,9 @@ for rep = 1:reps
 end
 
 histogram(results[:,1],nbins = 30)
-#savefig("givconstant.svg")
+#savefig("givconstant.png")
 histogram(results[:,2],nbins = 30)
-#savefig("givrho.svg")
+#savefig("givrho.png")
 dstats(results)	
 return
 end

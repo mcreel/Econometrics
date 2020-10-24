@@ -10,7 +10,7 @@ plot!(p2, Distributions.Normal(mean(y),std(y)), show=true, leg=false)
 p3 = npdensity(y)
 plot(p1,p2,p3, layout = (3,1))
 gui()
-savefig("nyse.svg")
+savefig("nyse.png")
 return
 end
 main()

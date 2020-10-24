@@ -17,5 +17,5 @@ b = inv(X'*X)*X'*y
 plot(x,PopRegLine, label = "population regression line")
 xlabel= "X"
 scatter!(x, y, label = "data")
-#savefig("TypicalData.svg")
+#savefig("TypicalData.png")
 gui()

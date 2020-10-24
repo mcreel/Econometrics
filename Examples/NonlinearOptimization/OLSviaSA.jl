@@ -1,6 +1,7 @@
 # plots the contours of the OLS objective function,
 # with the true and estimated coefficients
 # generate data
+using Plots, Econometrics
 n = 20
 x = [ones(n) randn(n)]
 beta = randn(2)

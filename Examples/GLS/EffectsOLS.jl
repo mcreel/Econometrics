@@ -37,7 +37,7 @@ println("intercept: ", sum(test[:,1]/reps))
 println("slope: ", sum(test[:,2]/reps))
 
 plot([0.0; 1.0],sum(test,dims=1)'/1000, linetype=:bar, label="0 is intercept, 1 is slope")
-#savefig("EffectsOLS.svg")
+#savefig("EffectsOLS.png")
 gui()
 return
 end

@@ -29,7 +29,7 @@ bs = bs .- [truebeta' truebeta'] # take away true, so centered around 0
 p1 = histogram(bs[:,2], title="OLS")
 p2 = histogram(bs[:,5],title="Ridge")
 plot(p1,p2,layout=(1,2), legend=false)
-#savefig("RidgeExample.svg")
+#savefig("RidgeExample.png")
 gui()
 return
 end

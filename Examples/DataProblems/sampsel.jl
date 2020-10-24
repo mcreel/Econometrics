@@ -22,6 +22,6 @@ scatter(x,y, label = "data")
 plot!(xx,yy,label = "population regression line")
 plot!(xx,yhat,label = "fitted regression line")
 gui()
-savefig("sampsel.svg")
+savefig("sampsel.png")
 
 
