@@ -258,9 +258,7 @@ literal "true"
 
 \end_inset
 
- Cameron, A.C.
- and P.K.
- Trivedi, 
+, 
 \emph on
 Microeconometrics - Methods and Applications.
  
@@ -1360,7 +1358,7 @@ A theoretical model is a key ingredient to assign causal relationships (which
 It turns out that the variables we're looking at are QUANTITY (q), PRICE
  (p), and INCOME (m), and the data were generated using 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1372,7 +1370,7 @@ s/Intro/SupplyDemand.jl}
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -1637,6 +1635,7 @@ Price and Quantity, colored by income (blue is low, violet is high)
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/Intro/PriceQuantity.png
+	lyxscale 25
 	width 15cm
 
 \end_inset
@@ -4831,13 +4830,13 @@ literal "false"
 \begin_layout Standard
 \paragraph_spacing single
 The results are 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-\paragraph_spacing single
-\begin_inset CommandInset include
-LatexCommand verbatiminput
-filename "Examples/OLS/nerlove.out"
+
+\begin_inset Graphics
+	filename Examples/OLS/Nerlove.png
+	width 15cm
 
 \end_inset
 
@@ -4934,13 +4933,14 @@ htmladdnormallink{nerlove.gdt}{file:///home/michael/Mystuff/Econometrics/Example
 
 .
  Here the results of the Nerlove model from GRETL: 
-\begin_inset CommandInset include
-LatexCommand input
-filename "Examples/OLS/NerloveGretl.tex"
+\begin_inset Graphics
+	filename Examples/OLS/NerloveGretl.png
+	lyxscale 25
+	width 12cm
 
 \end_inset
 
- Fortunately, Gretl and my OLS program agree upon the results.
+Fortunately, Gretl and my OLS program agree upon the results.
  I recommend using GRETL to repeat the examples that are done using Julia.
  
 \end_layout
@@ -8224,13 +8224,24 @@ cs/Examples/Restrictions/NerloveRestrictions.jl}
 \end_inset
 
  imposes and tests CRTS and then HOD1.
- From it we obtain the results that follow: 
-\end_layout
+ From it we obtain the results that follow:
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand verbatiminput
-filename "Examples/Restrictions/NerloveRestrictions.out"
+
+\begin_inset Graphics
+	filename Examples/Restrictions/CRTS.png
+	width 15cm
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Examples/Restrictions/HOD1.png
 
 \end_inset
 
@@ -45612,11 +45623,11 @@ http://wps.pearsoned.co.uk/ema_ge_stock_ieupdate_3/251/64413/16489878.cw/index.h
 .
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
- 
+
 \backslash
 htmladdnormallink{The data file}{file:///home/michael/Mystuff/Econometrics/Examp
 les/Data/us
@@ -45631,11 +45642,11 @@ _quarterly.gdt}
 , in GRETL format.
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
- 
+
 \backslash
 htmladdnormallink{The data description file.}{file:///home/michael/Mystuff/Econom
 etrics/Examples/Data/usmacro
@@ -45647,7 +45658,6 @@ _description.pdf}
 
 \end_inset
 
-.
  Use GRETL to:
 \end_layout
 
@@ -46565,10 +46575,12 @@ status open
 
 \begin_layout Plain Layout
 
- 
+
 \backslash
-htmladdnormallink{S&W US quarterly macro data.}{file:///home/michael/Mystuff/Econ
-ometrics/Examples/Data/us
+htmladdnormallink{S
+\backslash
+&W US quarterly macro data.}{file:///home/michael/Mystuff/Econometrics/Examples/D
+ata/us
 \backslash
 _macro
 \backslash
@@ -47089,8 +47101,8 @@ status open
 
  
 \backslash
-htmladdnormallink{S&W US quarterly macro data.}{file:///home/michael/Mystuff/Econ
-ometrics/Examples/Data/us
+htmladdnormallink{Stock and Watson US quarterly macro data.}{file:///home/michael
+/Mystuff/Econometrics/Examples/Data/us
 \backslash
 _macro
 \backslash
