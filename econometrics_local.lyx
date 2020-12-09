@@ -50720,10 +50720,10 @@ The problem here is that there are more parameters than observations, so
  on the problem at hand, and a single model is unlikely to be appropriate
  for all situations.
  For example, one could have time and cross-sectional dummies, and slopes
- that vary by time:
+ that are constant over time and across agents:
 \begin_inset Formula 
 \[
-y_{it}=\alpha_{i}+\gamma_{t}+x_{it}\beta_{t}+\epsilon_{it}
+y_{it}=\alpha_{i}+\gamma_{t}+x_{it}\beta+\epsilon_{it}
 \]
 
 \end_inset
@@ -50769,6 +50769,11 @@ simple linear panel model
 \end_inset
 
 .
+ We assume that the regressors 
+\begin_inset Formula $x_{it}$
+\end_inset
+
+ are exogenous, with no correlation with the error term.
 \end_layout
 
 \begin_layout Itemize
@@ -50786,11 +50791,6 @@ This is the model most often encountered in the applied literature.
 \end_inset
 
  (some individual heterogeneity).
- The 
-\begin_inset Formula $\beta's$
-\end_inset
-
- are fixed over time, which is a testable restriction, of course.
 \end_layout
 
 \begin_layout Itemize
@@ -50857,7 +50857,7 @@ which could be estimated for each
 \begin_inset Formula $i$
 \end_inset
 
- in turn.
+ in turn, using time series data.
  Why use the panel approach?
 \end_layout
 
@@ -50917,8 +50917,19 @@ tional unit.
  will require other forms of restrictions in order to be estimable.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
-Another important reason is that 
+A 
+\series bold
+very important reason
+\series default
+ is that 
 \begin_inset Formula $\alpha_{i}$
 \end_inset
 
@@ -50932,30 +50943,160 @@ Another important reason is that
 \end_inset
 
 .
- This may help to obtain consistent estimates of 
-\begin_inset Formula $\beta,$
+ For example, suppose we have the model
+\begin_inset Formula 
+\begin{equation}
+y_{it}=\alpha+x_{it}\beta+z_{i}\gamma+\epsilon_{it}\label{eq:simple panel model}
+\end{equation}
+
 \end_inset
 
- if any missing variables are correlated with 
-\begin_inset Formula $x_{it}.$
+where the variables in 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ are unobserved, but are
+\bar under
+ constant over time
+\bar default
+.
+ Assume that, as is usually the case, there is some correlation between
+ the variables in 
+\begin_inset Formula $x_{it}$
+\end_inset
+
+ and 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+.
+ That is to say, there is some ordinary collinearity of the regressors.
+\end_layout
+
+\begin_layout Itemize
+If we have only one time period, then we have to estimate the model 
+\begin_inset Formula 
+\[
+y_{i}=\alpha+x_{i}\beta+z_{i}\gamma+\epsilon_{i}
+\]
+
+\end_inset
+
+using the observations 
+\begin_inset Formula $i=1,2,...,n$
+\end_inset
+
+,
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Because 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ is unobserved, we have to let it be absorbed in the error term.
+ For convenience, and to keep the notation simple, assume that the mean
+ of 
+\begin_inset Formula $z_{i}\gamma$
+\end_inset
+
+ is zero (this does not affect the argument in any important way), so the
+ model we can actually estimate is 
+\begin_inset Formula 
+\begin{align*}
+y_{i} & =\text{\ensuremath{\alpha}}+x_{i}\beta+v_{i}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $v_{i}=z_{i}\gamma+\epsilon_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+This model has correlation between the regressors and the error, so the
+ OLS estimates would be inconsistent.
+ Furthermore, we don't have any natural instruments to estimate the model
+ by IV.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-Exercise: write the form of the regressor matrix for the above model, under
- the assumption of only time series or only cross sectional data.
- Show that there is perfect collinearity in each case.
+However, 
+\series bold
+suppose we have at least two time periods
+\series default
+ of data, and 
+\begin_inset Formula $n$
+\end_inset
+
+ cross-sectional observations.
+ Then, we can let 
+\begin_inset Formula $z_{i}\gamma$
+\end_inset
+
+ move into the constant, and we get the model
+\begin_inset Formula 
+\begin{align*}
+y_{it} & =\alpha+x_{it}\beta+z_{i}\gamma+\epsilon_{it}\\
+y_{it} & =\alpha_{i}+x_{it}\beta+\epsilon_{it}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha_{i}=\alpha+z_{i}\gamma$
+\end_inset
+
+.
+ This is the simple linear panel data model.
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Notice that the problematic 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ have now disappeared!
+\end_layout
+
+\begin_layout Itemize
+It turns out that OLS estimation of this model will give consistent estimates
+ of the 
+\begin_inset Formula $\beta$
+\end_inset
+
+ parameters, as the cross sectional size of the sample, 
+\begin_inset Formula $n$
+\end_inset
+
+ increases, as long as the regressors are exogenous.
+ If it's not clear how this can be estimated by OLS, then consider estimating
+ it using first differences: that model is pretty obviously consistently
+ estimable using OLS.
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
-
+Returing to panel data in general,
 \series bold
-The main issues are:
+ the main issues are:
 \end_layout
 
 \begin_layout Itemize
@@ -50995,7 +51136,7 @@ are the
 \begin_inset Formula $x_{it}$
 \end_inset
 
-?
+? This is very likely the case.
 \end_layout
 
 \begin_layout Itemize
@@ -51011,15 +51152,29 @@ does the presence of
 \end_layout
 
 \begin_layout Standard
-what about the covariance structure? We're likely to have HET and AUT, so
- GLS issues will probably be relevant.
- Potential for efficiency gains.
+what about the covariance structure?
+\end_layout
+
+\begin_layout Itemize
+We're likely to have both HET and AUT, in the original model, so GLS issues
+ will probably be relevant.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Potential for efficiency gains
+\end_layout
+
+\begin_layout Itemize
+need to take care of it to obtain valid standard errors.
 \begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Static models and correlations between variables
 \end_layout
@@ -51424,7 +51579,10 @@ fixed effects
 \end_inset
 
 .
- The 
+\end_layout
+
+\begin_layout Standard
+The 
 \begin_inset Quotes sld
 \end_inset
 
@@ -51432,8 +51590,15 @@ within
 \begin_inset Quotes srd
 \end_inset
 
- estimator is a solution - this involves subtracting the time series average
- from each cross sectional unit.
+ estimator is a solution.
+ First, go back to the original formulation of the model: 
+\begin_inset Formula $y_{it}=\alpha_{i}+x_{it}\beta+\epsilon_{it}$
+\end_inset
+
+ .
+ The withing estimator  involves subtracting the time series average from
+ each cross sectional unit.
+ 
 \begin_inset Formula 
 \begin{align}
 \overline{x}_{i} & =\frac{1}{T}\sum_{t=1}^{T}x_{it}\nonumber \\
@@ -51555,7 +51720,7 @@ if
 an equivalent approach is to estimate the model
 \begin_inset Formula 
 \[
-y_{it}=\sum_{j=1}^{n}d_{j,it}\alpha_{i}+x_{it}\beta+\epsilon_{it}
+y_{it}=\sum_{j=1}^{n}d_{j,it}\alpha_{j}+x_{it}\beta+\epsilon_{it}
 \]
 
 \end_inset
@@ -51583,9 +51748,56 @@ y_{it}=\sum_{j=1}^{n}d_{j,it}\alpha_{i}+x_{it}\beta+\epsilon_{it}
 
  zero otherwise.
  They are indicators of the cross sectional unit of the observation.
- (Write out form of regressor matrix on blackboard).
- Estimating this model by OLS gives numerically exactly the same results
- as the 
+ For example, with 3 cross sectional units and 3 time periods, and a single
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ regressor, the model in matrix form would look like 
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+y_{11}\\
+y_{12}\\
+y_{13}\\
+y_{21}\\
+y_{22}\\
+y_{23}\\
+y_{31}\\
+y_{32}\\
+y_{33}
+\end{array}\right]=\left[\begin{array}{cccc}
+1 & 0 & 0 & x_{11}\\
+1 & 0 & 0 & x_{12}\\
+1 & 0 & 0 & x_{13}\\
+0 & 1 & 0 & x_{21}\\
+0 & 1 & 0 & x_{22}\\
+0 & 1 & 0 & x_{23}\\
+0 & 0 & 1 & x_{31}\\
+0 & 0 & 1 & x_{32}\\
+0 & 0 & 1 & x_{33}
+\end{array}\right]\left[\begin{array}{c}
+\alpha_{1}\\
+\alpha_{2}\\
+\alpha_{3}\\
+\beta
+\end{array}\right]+\left[\begin{array}{c}
+\epsilon_{11}\\
+\epsilon_{12}\\
+\epsilon_{13}\\
+\epsilon_{21}\\
+\epsilon_{22}\\
+\epsilon_{23}\\
+\epsilon_{31}\\
+\epsilon_{32}\\
+\epsilon_{33}
+\end{array}\right]
+\]
+
+\end_inset
+
+Estimating this model directly by OLS gives numerically exactly the same
+ results as the OLS version of the 
 \begin_inset Quotes sld
 \end_inset
 
@@ -51666,7 +51878,19 @@ One needs to estimate the covariance matrix of the parameter estimates taking
  this into account
 \emph default
 .
- It is possible to use GLS corrections if you make assumptions regarding
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+at a minimum, robust standard errors will be needed, to be able to get valid
+ standard errors and to be able to test restrictions.
+ We need panel robust standard errors, which are also referred to as cluster
+ robust standard errors.
+\end_layout
+
+\begin_layout Itemize
+It is possible to use GLS corrections if you make assumptions regarding
  the het.
  and autocor.
  Quasi-GLS, using a possibly misspecified model of the error covariance,
@@ -51696,6 +51920,7 @@ One needs to estimate the covariance matrix of the parameter estimates taking
 
 \end_layout
 
+\end_deeper
 \begin_layout Subsection
 Estimation with random effects
 \end_layout
