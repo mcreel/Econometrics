@@ -58,7 +58,7 @@ for j = 1:5
     P = (cholesky(Σ)).U
     proposal = θ -> proposal2(θ,tuning*P)
     θinit = vec(mean(chain[:,1:3],dims=1))
-    if j == 2
+    if j == 5
         ChainLength = 10000
     end    
     chain = mcmc(θinit, ChainLength, 0, prior, obj, proposal, verbosity)
@@ -69,16 +69,9 @@ for j = 1:5
     elseif accept < 0.25
         tuning *= 0.5
     end
-    # keep every 10th
-    i = 1:size(chain,1)
-    keep = mod.(i,10.0).==0
     θinit = vec(mean(chain[:,1:3],dims=1))
     Σ = 0.5*Σ + 0.5*cov(chain[:,1:3])
 end
-# keep every 10th to reduce autocorrelation
-i = 1:size(chain,1)
-j = mod.(i,10.0).==0
-chain = chain[j,:] 
 # plain MCMC fit
 posmean = vec(mean(chain[:,1:3],dims=1))
 inci = zeros(3)
