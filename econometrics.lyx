@@ -47995,8 +47995,8 @@ In ARCH and GARCH models, the same shocks that affect the level also affect
  A simple example is
 \begin_inset Formula 
 \begin{align*}
-y_{t} & =\sigma_{\epsilon}\exp(h_{t}/2)\epsilon_{t}\\
-h_{t} & =\rho h_{t-1}+\sigma_{u}u_{t}
+y_{t} & =\phi\exp(h_{t}/2)\epsilon_{t}\\
+h_{t} & =\rho h_{t-1}+\sigma u_{t}
 \end{align*}
 
 \end_inset
@@ -48011,7 +48011,7 @@ In this model, the log of the variance of the observed sequence follows
 \begin_inset Formula $u_{t}.$
 \end_inset
 
- A mini-package that let's you generate data from this model is here: 
+ This model is used as an example in the 
 \begin_inset ERT
 status open
 
@@ -48019,12 +48019,13 @@ status open
 
  
 \backslash
-htmladdnormallink{https://github.com/mcreel/SV}{https://github.com/mcreel/SV}
+htmladdnormallink{SimulatedNeuralMoments}{https://github.com/mcreel/SimulatedNeur
+alMoments.jl}
 \end_layout
 
 \end_inset
 
-.
+ package, which can be used to generate data from the model.
  Typical data and a nonparametric density plot look like what we see in
  Figure 
 \begin_inset CommandInset ref
@@ -59976,12 +59977,78 @@ reference "simulated moments"
 \end_layout
 
 \begin_layout Section
-Examples
+Example: stochastic volatility - MSM and Bayesian MSM
 \end_layout
 
-\begin_layout Subsection
-MSM and Indirect inference, and Bayesian limited information simulated likelihoo
-d
+\begin_layout Standard
+The simple stochastic volatility model from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Stochastic-volatility"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{align*}
+y_{t} & =\phi\exp(h_{t}/2)\epsilon_{t}\\
+h_{t} & =\rho h_{t-1}+\sigma u_{t}
+\end{align*}
+
+\end_inset
+
+Typical data and a nonparametric density plot looks like what we see in
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SV-model,-typical-1"
+
+\end_inset
+
+.
+ Note the volatility clusters, leptokurtosis, and the fat tails of the density.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SV-model,-typical-1"
+
+\end_inset
+
+SV model, typical data and density
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Examples/TimeSeries/svdata.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -59993,36 +60060,43 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimateStochasticVolatilityModel.jl}{https://github.com/mcreel/
-Econometrics/blob/master/Examples/SBEM/EstimateStochasticVolatilityModel.jl}
+htmladdnormallink{EstimateSV.jl}{https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/SBEM/EstimateSV.jl}
 \end_layout
 
 \end_inset
 
- estimates the stochastic volatility model considered in Subsection 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Stochastic-volatility"
-
-\end_inset
-
- by indirect inference, using simulated annealing to do the minimization
- (To run this, you need the package 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/mcreel/SV
+ estimates the stochastic volatility model by MSM, implemented as a two
+ step GMM estimator, and then goes on to do the Chernozhukhov-Hong MCMC
+ version of MSM.
 \end_layout
 
+\begin_layout Itemize
+The minimization is by simulated annealing, to ensure robustness against
+ numerical problems.
+ I haven't tried with gradient-based methods.
+\end_layout
+
+\begin_layout Itemize
+Examine the script to see how the objective function is 
+\begin_inset Quotes sld
 \end_inset
 
-).
- Examine the script to see what auxiliary statistics are used (this is the
- key to success or failure), and think about the problem to try to come
- up with some better ones.
- The results for 
+bullet-proofed
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Study what auxiliary statistics are used to define the moments (this is
+ the key to success or failure when doing moment-based estimation), and
+ think about the problem to try to come up with some better ones.
+\end_layout
+
+\begin_layout Itemize
+The results use 
 \begin_inset ERT
 status open
 
@@ -60039,70 +60113,14 @@ Examples/TimeSeries/svdata.txt}
  that is pictured in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:SV-model,-typical"
+reference "fig:SV-model,-typical-1"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- (
-\begin_inset Formula $n=1000$
-\end_inset
-
-) are
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\family typewriter
-true value estimate std.
- err.
- CI lower CI upper
-\end_layout
-
-\begin_layout Plain Layout
-
-\family typewriter
-0.69212 0.73297 0.06199 0.61146 0.85447
-\end_layout
-
-\begin_layout Plain Layout
-
-\family typewriter
-0.90000 0.95500 0.02430 0.90737 1.00264
-\end_layout
-
-\begin_layout Plain Layout
-
-\family typewriter
-0.36300 0.25042 0.06463 0.12374 0.37710
-\end_layout
-
-\end_inset
-
-
+ (or, you have the option of generating a new sample).
 \end_layout
 
 \begin_layout Itemize
@@ -60110,39 +60128,23 @@ check the script to see how to compute standard errors, etc.
 \end_layout
 
 \begin_layout Itemize
-minimization use SA works fine.
- I haven't tried with gradient-based methods.
-\end_layout
-
-\begin_layout Standard
-The script 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-htmladdnormallink{EstimateStochasticVolatilityModel
-\backslash
-_MCMC.jl}{https://github.com/mcreel/Econometrics/blob/master/Examples/SBEM/Estimat
-eStochasticVolatilityModel
-\backslash
-_MCMC.jl}
-\end_layout
+the results for extremum MSM are in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MSM-for-SV"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
- estimates the same model using the same data set and the same auxiliary
- statistics, but using MCMC, so we get a full posterior for each parameter,
- instead of just a point estimate.
- The likelihood is the asymptotic Gaussian likelihood of the auxiliary statistic
-s.
- This lets us use Bayesian methods even if the small sample distribution
- of the statistics is unknown.
- This is a little time consuming, with simulation used to get the likelihood,
- and then the MCMC steps.
- However, the results are quite good, as we see in Figure 
+.
+\end_layout
+
+\begin_layout Itemize
+MCMC gives us a full posterior for the parameters, and we can use posterior
+ quantiles to define alternative confidence intervals.
+ For this sample, we get the results in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:MCMC-estimation-using"
@@ -60153,12 +60155,64 @@ noprefix "false"
 \end_inset
 
 .
- Note that the true parameter values are 0.692, 0.9 and 0.363.
- The posterior means are very close to the indirect inference point estimates
- that were obtained, above.
+\end_layout
+
+\begin_layout Itemize
+If you compare the MSM and Bayesian MSM results, you'll see that the point
+ estimates are very similar, but there are some differences in the CIs:
+ the extremum estimator CIs are broader, in this case.
+ Note that there are papers that give evidence that confidence intervals
+ for overidentified GMM estimators may not be reliable.
+ For references and more evidence on this point, and an alternative procedure
+ that seems to solve the problem, see 
+\begin_inset CommandInset href
+LatexCommand href
+name "this working paper."
+target "http://research.barcelonagse.eu/research/working-papers/inference-using-simulated-neural-moments"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MSM-for-SV"
+
+\end_inset
+
+MSM for SV model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Examples/SBEM/msm.png
+	width 20cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float figure
 wide false
 sideways false
@@ -60184,7 +60238,7 @@ MCMC estimation using simulated moments and limited information quasi-likelihood
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/SBEM/MCMC.png
+	filename Examples/SBEM/mcmc.png
 	width 15cm
 
 \end_inset
@@ -60199,293 +60253,6 @@ MCMC estimation using simulated moments and limited information quasi-likelihood
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-The script 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-htmladdnormallink{Analyze.jl}{https://github.com/mcreel/Econometrics/blob/master/E
-xamples/SBEM/NUTS/Analyze.jl}
-\end_layout
-
-\end_inset
-
- also uses MCMC, but using a more sophisticated sampler, the 
-\begin_inset Quotes sld
-\end_inset
-
-No U-Turn
-\begin_inset Quotes srd
-\end_inset
-
- sampler (NUTS), as implemented in the 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/tpapp/DynamicHMC.jl
-\end_layout
-
-\end_inset
-
- package.
- The two versions of MCMC give results that are pretty much the same.
- The NUTS sampler is mostly self-tuning, which can be useful, but it is
- slower to compute, at least for the two implementations given here.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-NUTS MCMC estimation using simulated moments and limited information quasi-likel
-ihood
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Examples/SBEM/NUTS/nuts.png
-	width 15cm
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-MA model, AR auxiliary model 
-\end_layout
-
-\begin_layout Standard
-An example of estimation using the MSM is given in the script file 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-htmladdnormallink{MSM
-\backslash
-_Example.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/SBEM/MSM
-\backslash
-_Example.m}
-\end_layout
-
-\end_inset
-
-.
- The first order moving average (MA(1)) model has been widely used to investigat
-e the performance of the indirect inference estimator, and a 
-\begin_inset Formula $pth$
-\end_inset
-
--order autoregressive model is often used to generate the auxiliary statistic
- (see, for example, Gouriéroux
-\emph on
-, 
-\emph default
-Monfort and Renault, 1993; Chumacero, 2001).
- In this section we estimate the MA(1) model
-\begin_inset Formula 
-\begin{eqnarray*}
-y_{t} & = & \epsilon_{t}+\psi\epsilon_{t-1}\\
-\epsilon_{t} & \sim & i.i.d.\,N(0,\sigma^{2})
-\end{eqnarray*}
-
-\end_inset
-
-The parameter vector is 
-\begin_inset Formula $\theta=(\psi,\sigma).$
-\end_inset
-
- We set the parameter space for the initial simulated annealing stage (to
- get good start values for the gradient-based algorithm) to 
-\begin_inset Formula $\Theta=\left(-1,1\right)\times\left(0,2\right)$
-\end_inset
-
-, which imposes invertibility, which is needed for the parameter to be identifie
-d.
- The statistic 
-\begin_inset Formula $Z_{n}$
-\end_inset
-
- is the vector of estimated parameters 
-\begin_inset Formula $\left(\rho_{0},\rho_{1},...,\rho_{P},\sigma_{\upsilon}^{2}\right)$
-\end_inset
-
- of an AR(
-\begin_inset Formula $P$
-\end_inset
-
-) model 
-\begin_inset Formula $y_{t}=\rho_{0}+\sum_{p=1}^{P}\rho_{p}y_{t-p}+\upsilon_{t}$
-\end_inset
-
-, fit to the data using ordinary least squares.
- 
-\end_layout
-
-\begin_layout Standard
-We estimate 
-\begin_inset Formula $\theta$
-\end_inset
-
- using MSM implemented as II, using continuously updated GMM (Hanson, Heaton
- and Yaron,
-\emph on
- 
-\emph default
-1996).
- The moment conditions that define the continuously updated indirect inference
- (CU-II) estimator are 
-\begin_inset Formula $\bar{m}_{n}(\theta)=Z_{n}-\bar{Z}_{S,n}(\theta)$
-\end_inset
-
- where 
-\begin_inset Formula $\bar{Z}_{S,n}(\theta)=\frac{1}{S}\sum_{s=1}^{S}Z_{n}^{s}(\theta)$
-\end_inset
-
-, and the weight matrix at each iteration is the inverse of 
-\begin_inset Formula $\Omega_{n}^{S}(\theta)=\frac{1}{S}\sum_{s=1}^{S}\left[Z_{n}^{s}\left(\theta\right)-\bar{Z}_{S,n}(\theta)\right]\left[Z_{n}^{s}\left(\theta\right)-\bar{Z}_{S,n}(\theta)\right]^{\prime}$
-\end_inset
-
-, where 
-\begin_inset Formula $S=100.$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Subsection
-SML of a Poisson model with latent heterogeneity
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:SML-Poisson-Latent"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We have seen (see equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:negbindensity"
-
-\end_inset
-
-) that a Poisson model with latent heterogeneity that follows an exponential
- distribution leads to the negative binomial model.
- To illustrate SML, we can integrate out the latent heterogeneity using
- Monte Carlo, rather than the analytical approach which leads to the negative
- binomial model.
- In actual practice, one would not want to use SML in this case, but it
- is a nice example since it allows us to compare SML to the actual ML estimator.
- The Octave function defined by 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
- 
-\backslash
-htmladdnormallink{PoissonLatentHet.m}{https://github.com/mcreel/Econometrics/blob/
-master/Examples/SBEM/PoissonLatentHet.m}
-\end_layout
-
-\end_inset
-
- calculates the simulated log likelihood for a Poisson model where 
-\begin_inset Formula $\lambda=\exp x_{t}^{\prime}\beta+\sigma\eta)$
-\end_inset
-
-, where 
-\begin_inset Formula $\eta\sim N(0,1)$
-\end_inset
-
-.
- This model is similar to the negative binomial model, except that the latent
- variable is normally distributed rather than gamma distributed.
- The Octave script 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
- 
-\backslash
-htmladdnormallink{EstimatePoissonLatentHet.m}{https://github.com/mcreel/Econometri
-cs/blob/master/Examples/SBEM/EstimatePoissonLatentHet.m}
-\end_layout
-
-\end_inset
-
- estimates this model using the MEPS OBDV data that has already been discussed.
- Note that simulated annealing is used to maximize the log likelihood function.
- Attempting to use BFGS leads to trouble.
- If you run this script, you will see that it takes a long time to get the
- estimation results, which are:
-\begin_inset CommandInset include
-LatexCommand verbatiminput
-filename "Examples/SBEM/plh.out"
-
-\end_inset
-
-If you compare these results to the results for the negative binomial model,
- given in subsection (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Infinite-mixture-models:"
-
-\end_inset
-
-), you can see that the present model fits better according to the CAIC
- criterion.
- It also fits better than the seminonparametric negative binomial model,
- presented in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Semi-nonparametric-maximum-likel"
-
-\end_inset
-
-, which has more parameters.
- The present model is considerably less convenient to work with, however,
- due to the computational requirements.
- The chapter on parallel computing is relevant if you wish to use models
- of this sort.
 \end_layout
 
 \begin_layout Standard
@@ -60502,32 +60269,8 @@ Exercises
 \end_layout
 
 \begin_layout Enumerate
-(basic) Examine the Octave script and function discussed in subsection 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:SML-Poisson-Latent"
-
-\end_inset
-
- and describe what they do.
-\end_layout
-
-\begin_layout Enumerate
-(basic) Examine the Octave scripts and functions discussed in subsection
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:EMM-estimation-of"
-
-\end_inset
-
- and describe what they do.
-\end_layout
-
-\begin_layout Enumerate
 (advanced, but even if you don't do this you should be able to describe
- what needs to be done) Write Octave code to do SML estimation of the probit
- model.
+ what needs to be done) Writecode to do SML estimation of the probit model.
  Do an estimation using data generated by a probit model (
 \begin_inset ERT
 status open
