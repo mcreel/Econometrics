@@ -4,7 +4,7 @@ Graduate level econometrics notes with embedded examples using the Julia languag
 To get just the notes, click on econometrics.pdf, and then on Download, at the upper R of the page, which will download only the pdf. Links in the pdf point to files here on github, and will open in your browser.
 
 ## To run the examples
-you need to install Julia and then install this repository as a Julia package. Do this as follows:
+You need to install this repository as a Julia package. Do this as follows:
 
 1. git clone this repo
 

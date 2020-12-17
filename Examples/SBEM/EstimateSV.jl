@@ -1,4 +1,3 @@
-# note: do "] activate . " if the following packages are not in your working Julia environment
 using Econometrics, Plots, Statistics, Calculus, LinearAlgebra, DelimitedFiles
 
 include("SVlib.jl") # library of functions for the SV model
