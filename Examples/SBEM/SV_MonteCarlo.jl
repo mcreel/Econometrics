@@ -106,20 +106,21 @@ Threads.@threads for rep = 1:mcreps
             ]
    results[rep,:] = vcat(converged, θhat, extremum_inci, bayes_inci)
 end
-extremum_inci = mean(results[:,5:13],dims=2)
-bayes_inci = mean(results[:,14:22],dims=2)
-println("99% CI, extremum")
-prettyprint(extremum_inci[:,1:3], ["ϕ", "ρ", "σ"])
-println("99% CI, Bayes")
-prettyprint(bayes_inci[:,1:3], ["ϕ", "ρ", "σ"])
-println("95% CI, extremum")
-prettyprint(extremum_inci[:,4:6], ["ϕ", "ρ", "σ"]) 
-println("95% CI, Bayes")
-prettyprint(bayes_inci[:,4:6], ["ϕ", "ρ", "σ"])
-println("90% CI, extremum")
-prettyprint(extremum_inci[:,7:9], ["ϕ", "ρ", "σ"]) 
-println("90% CI, Bayes")
-prettyprint(bayes_inci[:,7:9], ["ϕ", "ρ", "σ"])
 return results
 end
-results = main();
+results = main()
+extremum_inci = mean(results[:,5:13],dims=1)
+bayes_inci = mean(results[:,14:22],dims=1)
+println("99% CI, extremum")
+prettyprint(extremum_inci[1:3], ["ϕ"; "ρ"; "σ"])
+println("99% CI, Bayes")
+prettyprint(bayes_inci[1:3], ["ϕ"; "ρ"; "σ"])
+println("95% CI, extremum")
+prettyprint(extremum_inci[4:6], ["ϕ"; "ρ"; "σ"]) 
+println("95% CI, Bayes")
+prettyprint(bayes_inci[4:6], ["ϕ"; "ρ"; "σ"])
+println("90% CI, extremum")
+prettyprint(extremum_inci[7:9], ["ϕ"; "ρ"; "σ"]) 
+println("90% CI, Bayes")
+prettyprint(bayes_inci[7:9], ["ϕ"; "ρ"; "σ"])
+
