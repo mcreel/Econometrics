@@ -59993,7 +59993,11 @@ reference "simulated moments"
 \end_layout
 
 \begin_layout Section
-Example: stochastic volatility - MSM and Bayesian MSM
+Example: stochastic volatility
+\end_layout
+
+\begin_layout Subsection
+MSM and Bayesian MSM
 \end_layout
 
 \begin_layout Standard
@@ -60070,7 +60074,7 @@ SV model, typical data and density
 \begin_layout Standard
 The Julia script 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -60106,9 +60110,23 @@ bullet-proofed
 \end_layout
 
 \begin_layout Itemize
-Study what auxiliary statistics are used to define the moments (this is
- the key to success or failure when doing moment-based estimation), and
- think about the problem to try to come up with some better ones.
+Study what auxiliary statistics are used to define the moments, in the file
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{SVlib.jl}{file:///home/michael/Mystuff/Econometrics/Examples/SB
+EM/SVlib.jl}
+\end_layout
+
+\end_inset
+
+ (this is the key to success or failure when doing moment-based estimation),
+ and think about the problem to try to come up with some better ones.
 \end_layout
 
 \begin_layout Itemize
@@ -60177,19 +60195,7 @@ noprefix "false"
 If you compare the MSM and Bayesian MSM results, you'll see that the point
  estimates are very similar, but there are some differences in the CIs:
  the extremum estimator CIs are broader, in this case.
- Note that there are papers that give evidence that confidence intervals
- for overidentified GMM estimators may not be reliable.
- For references and more evidence on this point, and an alternative procedure
- that seems to solve the problem, see 
-\begin_inset CommandInset href
-LatexCommand href
-name "this working paper."
-target "http://research.barcelonagse.eu/research/working-papers/inference-using-simulated-neural-moments"
-literal "false"
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -60262,7 +60268,192 @@ MCMC estimation using simulated moments and limited information quasi-likelihood
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Unfortunately, inferences using overidentified GMM-type estimators are often
+ not reliable in finite samples (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "DonaldImbensNewey2009"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "HansenHeatonYaron1996"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Tauchen1986"
+literal "false"
+
+\end_inset
+
+).
+ The script 
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{SV
+\backslash
+_MonteCarlo.jl}{file:///home/michael/Mystuff/Econometrics/Examples/SBEM/SV
+\backslash
+_MonteCarlo.jl}
+\end_layout
+
+\end_inset
+
+ runs 1000 replications of estimation of the same model and computes confidence
+ intervals using both asymptotic theory for MSM estimators, and using quantiles
+ of the MCMC chain.
+ Confidence interval coverage, which is the proportion of times the true
+ parameters are inside the computed confidence intervals, is reported in
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CI-coverage,-SV"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ In all cases, the true parameters are over-rejected, which is to say, the
+ confidence intervals are tighter than they should be.
+ This applies to both the extremum and Baysesian versions.
+ The Bayesian version could perhaps be improved somewhat by more careful
+ tuning of the MCMC algorithm (see below) but the extremum version does
+ not use tuning, so the results are not dependent on this sort of qualification.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CI-coverage,-SV"
+
+\end_inset
+
+CI coverage, SV model, MSM and Bayesian MSM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Examples/SBEM/cicoverage.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Simulated Neural Moments
+\end_layout
+
+\begin_layout Standard
+A solution to this problem is to reduce the dimension of the statistics
+ by passing them through a trained neural net.
+ This can be done using the package 
+\begin_inset CommandInset href
+LatexCommand href
+name "SimulatedNeuralMoments.jl"
+target "https://github.com/mcreel/SimulatedNeuralMoments.jl"
+literal "false"
+
+\end_inset
+
+.
+ Using methods discussed there, one can obtain the CI coverage for the same
+ SV model presented above that is seen in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:95%-CI-coverage,"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Note that when the neural statistics are used (column labeled Z), the coverage
+ is correct (the same is true for 99 and 90% CIs - see the working paper
+ mentioned on the package web site).
+ The Bayesian results are a little better than what's in the previous figure.
+ There are some differences in the Monte Carlo design which may explain
+ these differences.
+ For the results here, the criterion function was the continuous updating
+ version of GMM, whereas the previous results used two step GMM.
+ These results also use more careful (and costly) tuning of the MCMC algorithm.
+ The results, though, are qualitatively the same: without use of the neural
+ net, the confidence intervals over-reject the true values, in some cases
+ by serious margins.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:95%-CI-coverage,"
+
+\end_inset
+
+95% CI coverage, SV model, using simulated neural moments
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Examples/SBEM/snm.png
+	width 20cm
+
+\end_inset
+
 
 \end_layout
 
