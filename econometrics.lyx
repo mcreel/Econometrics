@@ -627,6 +627,23 @@ add the package to Julia by doing
 \begin_layout Enumerate
 then do 
 \family typewriter
+using Pkg; Pkg.activate(
+\begin_inset Quotes sld
+\end_inset
+
+.
+\begin_inset Quotes srd
+\end_inset
+
+); Pkg.instantiate()
+\family default
+ This may take some time, depending on what packages you have previously
+ installed, as Econometrics relies on a number of other packages.
+\end_layout
+
+\begin_layout Enumerate
+then do 
+\family typewriter
 using Econometrics
 \family default
  in Julia to use the package.
@@ -60397,12 +60414,14 @@ noprefix "false"
  Note that when the neural statistics are used (column labeled Z), the coverage
  is correct (the same is true for 99 and 90% CIs - see the working paper
  mentioned on the package web site).
- The Bayesian results are a little better than what's in the previous figure.
+ The results using the original statistics, without the neural net (the
+ column labeled W) are a little better than what's in the previous figure,
+ but are still far from correct.
  There are some differences in the Monte Carlo design which may explain
  these differences.
- For the results here, the criterion function was the continuous updating
- version of GMM, whereas the previous results used two step GMM.
- These results also use more careful (and costly) tuning of the MCMC algorithm.
+ The main difference is that, for the results here, the criterion function
+ was the continuous updating version of GMM, whereas the previous results
+ used two step GMM.
  The results, though, are qualitatively the same: without use of the neural
  net, the confidence intervals over-reject the true values, in some cases
  by serious margins.
