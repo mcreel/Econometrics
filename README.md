@@ -10,9 +10,11 @@ You need to install this repository as a Julia package. Do this as follows:
 
 2. add the package to Julia by doing ```] add <path where you downloaded the repo>```, for example, if you cloned it into the git directory of your home directory, you would do ```] add ~/git/Econometrics```  This will install many supporting packages, so be patient.
 
-3. (optional, only if you're curious) basic testing of the package has been added. Do ```using Pkg; Pkg.test("Econometrics")```
+3. go to the location of the Econometrics code, start Julia, and do ```] activate .; instantiate```  This will install a last few packages.
 
-4. then do ```using Econometrics``` in Julia to use the package. You can see some examples by typing 
+4. (optional, only if you're curious) basic testing of the package has been added. Do ```using Pkg; Pkg.test("Econometrics")```
+
+5. then do ```using Econometrics``` in Julia to use the package. You can see some examples by typing 
    ```
    ols()
    mleresults()
@@ -23,7 +25,7 @@ You need to install this repository as a Julia package. Do this as follows:
    ```
    
 
-5. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
+6. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
 
 ## There are a couple of unusual thing about these notes:
 - they are available in editable form (econometrics.lyx), so that you can modify them to suit your needs: see the first chapter for more information, and get LyX from  www.lyx.org. 
