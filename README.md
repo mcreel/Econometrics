@@ -6,15 +6,13 @@ To get just the notes, click on econometrics.pdf, and then on Download, at the u
 ## To run the examples
 You need to install this repository as a Julia package. Do this as follows:
 
-1. git clone this repo
+1. git clone this repo to some convenient place on your storage media
 
-2. add the package to Julia by doing ```] add <path where you downloaded the repo>```, for example, if you cloned it into the git directory of your home directory, you would do ```] add ~/git/Econometrics```
+2. add the package to Julia by doing ```] add <path where you downloaded the repo>```, for example, if you cloned it into the git directory of your home directory, you would do ```] add ~/git/Econometrics```  This will install many supporting packages, so be patient.
 
-3. go to the directory of the package, start Julia, and do ```using Pkg; Pkg.activate("."); Pkg.instantiate()```  This may
-   take a while, as Econometrics depends on quite a few packages.
-4. (optional) basic testing of the package has been added. Do ```using Pkg; Pkg.test("Econometrics")```
+3. (optional, only if you're curious) basic testing of the package has been added. Do ```using Pkg; Pkg.test("Econometrics")```
 
-5. then do ```using Econometrics``` in Julia to use the package. You can see some examples by typing 
+4. then do ```using Econometrics``` in Julia to use the package. You can see some examples by typing 
    ```
    ols()
    mleresults()
@@ -25,7 +23,7 @@ You need to install this repository as a Julia package. Do this as follows:
    ```
    
 
-6. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
+5. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
 
 ## There are a couple of unusual thing about these notes:
 - they are available in editable form (econometrics.lyx), so that you can modify them to suit your needs: see the first chapter for more information, and get LyX from  www.lyx.org. 
