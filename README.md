@@ -25,7 +25,9 @@ You need to install this repository as a Julia package. Do this as follows:
    ```
    
 
-6. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
+6. To see the source code for those examples, type ```edit(ols,())```, to see the OLS source code.
+
+7. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
 
 ## There are a couple of unusual thing about these notes:
 - they are available in editable form (econometrics.lyx), so that you can modify them to suit your needs: see the first chapter for more information, and get LyX from  www.lyx.org. 
