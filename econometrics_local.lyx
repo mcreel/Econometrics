@@ -586,6 +586,12 @@ All materials are copyrighted by Michael Creel with the date that appears
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Obtaining-the-materials"
+
+\end_inset
+
 Obtaining the materials
 \end_layout
 
@@ -624,7 +630,6 @@ literal "false"
 \end_inset
 
  as a Julia package.
- You need to install Julia and then install this repository as a Julia package.
  Do this as follows:
 \end_layout
 
@@ -833,25 +838,12 @@ the speed is only needed if your work is computationally demanding.
 \end_layout
 
 \begin_layout Itemize
-the ecosystem is still developing, some features like DataFrames and plotting
- are not as complete or stable as in other languages.
- However, I have been using it happily since 2014, and have been getting
- work done.
+the ecosystem is still developing, though the basic language is now quite
+ stable, and packages are getting more and more complete and mature every
+ day.
+ There are packages for GLM, deep learning, data frames, etc., etc.
+ So, the newness of the language is only a problem for certain use cases.
  
-\strikeout on
-Once the 1.0 release is out, 
-\begin_inset Quotes sld
-\end_inset
-
-real soon now
-\begin_inset Quotes srd
-\end_inset
-
-, things will stabilize
-\strikeout default
- Strike that! Julia 1.0 was released in August 2018.
- The basic language is now quite stable, though packages are still developing
- at a quick rate.
 \end_layout
 
 \begin_layout Standard
@@ -1005,28 +997,11 @@ from the REPL, press ] to enter package mode.
 ] add
 \family default
  : Add a package.
- e.g., to add the package that supports these notes, do the following
+ e.g., to add a popular plotting package, do
 \family typewriter
-: ] add https://github.com/mcreel/Econometrics.git
+ ] add Plots
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-That will install the code and the required packages.
- 
-\emph on
-The first time you do this, it will take quite some time! 
-\emph default
-This is normal.
- Many supporting packages must be downloaded and built.
- 
-\end_layout
-
-\begin_layout Itemize
-If you see an error about missing some package, just install what's missing.
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 Recommended packages (amongst many others):
 \family typewriter
@@ -1036,13 +1011,28 @@ Recommended packages (amongst many others):
 \begin_layout Itemize
 Recommended: put 
 \family typewriter
-using Revise; using OhMyREPL; using Econometrics
+using Revise; using OhMyREPL
 \family default
  in your 
 \family typewriter
 ~/.julia/config/startup.jl
 \family default
- file so that they are automatically used when you start Julia
+ file so that they are automatically used when you start Julia.
+ If you installed the Econometric package (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Obtaining-the-materials"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), you can add 
+\family typewriter
+using Econometrics
+\family default
+, too.
 \begin_inset Newpage newpage
 \end_inset
 
