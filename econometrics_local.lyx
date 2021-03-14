@@ -611,7 +611,11 @@ literal "false"
  sources, which will allow you to
  create your own version, if you like, or send error corrections and contributio
 ns.
- To run the examples embedded in the document, you need to install the 
+ To run the examples embedded in the document, you need to 
+\end_layout
+
+\begin_layout Itemize
+install the 
 \begin_inset CommandInset href
 LatexCommand href
 name "Julia language"
@@ -620,7 +624,11 @@ literal "false"
 
 \end_inset
 
-, and you also need to add files of the 
+
+\end_layout
+
+\begin_layout Itemize
+and add files of the 
 \begin_inset CommandInset href
 LatexCommand href
 name "github repository"
@@ -634,7 +642,7 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
-git clone the repository
+git clone the repository or download a zip of the repo, and uncompress it
 \end_layout
 
 \begin_layout Enumerate
@@ -649,7 +657,8 @@ add the package to Julia by doing
 \end_layout
 
 \begin_layout Enumerate
-then do 
+then, after starting Julia in the directory where the econometrics.pdf file
+ is located, do 
 \family typewriter
 using Pkg; Pkg.activate(
 \begin_inset Quotes sld
