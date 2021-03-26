@@ -55191,54 +55191,10 @@ literal "false"
 
 \end_inset
 
- and the working paper 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "creel2020inference"
-literal "false"
-
-\end_inset
-
-.
+ and the working paper referenced there .
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-References and code: see 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "creel2017neural"
-literal "true"
-
-\end_inset
-
- and 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "creel2020inference"
-literal "false"
-
-\end_inset
-
- and 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://github.com/mcreel/SNM"
-target "https://github.com/mcreel/SNM"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset

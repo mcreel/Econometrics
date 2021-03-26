@@ -324,6 +324,12 @@ git-tree-sha1 = "bd1dbf065d7a4a0bdf7e74dd26cf932dda22b929"
 uuid = "0656b61e-2033-5cc2-a64a-77c0f6c09b89"
 version = "3.3.3+0"
 
+[[GLM]]
+deps = ["Distributions", "LinearAlgebra", "Printf", "Random", "Reexport", "SparseArrays", "SpecialFunctions", "Statistics", "StatsBase", "StatsFuns", "StatsModels"]
+git-tree-sha1 = "5e64763ced3fc6d94ec5f927e3b391a1e94303d0"
+uuid = "38e38edf-8417-5370-95a0-9cbb8c7f171a"
+version = "1.4.1"
+
 [[GR]]
 deps = ["Base64", "DelimitedFiles", "GR_jll", "HTTP", "JSON", "LinearAlgebra", "Pkg", "Printf", "Random", "Serialization", "Sockets", "Test", "UUIDs"]
 git-tree-sha1 = "12d971c928b7ecf19b748a2c7df6a365690dbf2c"
