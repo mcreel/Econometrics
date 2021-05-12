@@ -36,7 +36,7 @@ shocks_e = randn(n+burnin,S)
 # define the moments
 ms = θ -> m0' .- auxstat(θ, shocks_e, shocks_u)  # moment contributions: sample stats minus simulated stats
 # do two-step GMM
-# first stet
+# first step
 W = eye(size(m0,1))
 m = θ -> vec(mean(ms(θ),dims=1)) # use average of moment contributions
 obj = θ -> InSupport(θ) ? m(θ)'*W*m(θ) : Inf
@@ -47,7 +47,7 @@ W = inv((1.0 + 1.0/S).*cov(ms(θhat))) # get the optimal weight matrix
 obj = θ -> InSupport(θ) ? m(θ)'*W*m(θ) : Inf
 θhat, objvalue, converged, details = samin(obj, θhat, lb, ub; ns = 5, verbosity = 3, rt = 0.5)
 # compute the estimated standard errors and CIs
-D = (Calculus.jacobian(m, vec(θhat), :central))
+D = Calculus.jacobian(m, vec(θhat), :central)
 V = inv(D'*W*D)
 se = sqrt.(diag(V))
 

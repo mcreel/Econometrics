@@ -23384,7 +23384,7 @@ the iteration method for choosing
 \begin_inset Formula $\theta^{k+1}$
 \end_inset
 
- given that we're at 
+, given that we're at 
 \begin_inset Formula $\theta^{k}$
 \end_inset
 
@@ -23503,9 +23503,15 @@ For small enough
 \end_inset
 
  is to be an increasing direction, we need 
-\begin_inset Formula $g(\theta)^{\prime}d>0.$
+\begin_inset Formula $g(\theta)^{\prime}d>0,$
 \end_inset
 
+ because this term is proportional to the directional derivative in direction
+ 
+\begin_inset Formula $d$
+\end_inset
+
+.
  Defining 
 \begin_inset Formula $d=Qg(\theta),$
 \end_inset
@@ -23686,12 +23692,12 @@ status collapsed
 
 \end_inset
 
-fast - doesn't require anything more than first derivatives.
+fast, per iteration - doesn't require anything more than first derivatives.
 \end_layout
 
 \begin_layout Itemize
-Disadvantages: This doesn't always work too well however: see the Rosenbrock,
- or 
+Disadvantages: May not be fast after all, as we may need many iterations:
+ see the Rosenbrock, or 
 \begin_inset Quotes sld
 \end_inset
 
@@ -24170,6 +24176,8 @@ IMPORTANT in practice.
 \begin_layout Itemize
 an alternative is to use a global optimization algorithm, e.g., simulated
  annealing or others, which may or may not be gradient based.
+ This may be slow, but is more likely to give you the correct answer, if
+ your problem is difficult.
 \end_layout
 
 \begin_layout Standard
@@ -24182,138 +24190,37 @@ Calculating derivatives
 \end_layout
 
 \begin_layout Standard
-The Newton-Raphson algorithm requires first and second derivatives.
+Gradient-based methods obviously require first and possibly second derivatives.
  It is often difficult to calculate derivatives (especially the Hessian)
  analytically if the function 
 \begin_inset Formula $s_{n}(\cdot)$
 \end_inset
 
  is complicated.
- Possible solutions are to calculate derivatives numerically, or to use
- programs such as MuPAD or Mathematica to calculate analytic derivatives.
- For example, Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Using-Sage-to"
-
-\end_inset
-
- shows Sage 
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Sage is free software that has both symbolic and numeric computational capabilit
-ies.
- See 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.sagemath.org/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- calculating a couple of derivatives.
- The KAIST Sage cell server will let you try Sage online, its address is
- 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://aleph.sagemath.org/
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Newpage newpage
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Using-Sage-to"
-
-\end_inset
-
-Using Sage to get analytic derivatives
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/NonlinearOptimization/sage.png
-	width 15cm
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newpage newpage
-\end_inset
-
-
+ Fortunately, there are some good options:
 \end_layout
 
 \begin_layout Itemize
-Numeric derivatives are less accurate than analytic derivatives, and are
- usually more costly to evaluate.
+symbolic differentiation: Mathematica and many other similar packages can
+ give analytic solutions in many cases
+\end_layout
+
+\begin_layout Itemize
+automatic differentiation: this is now a common way to compute derivatives,
+ and should probably be the default way to go
+\end_layout
+
+\begin_layout Itemize
+numeric derivatives based on finite differences were historically widely
+ used.
+ They are less accurate than analytic derivatives, and are usually more
+ costly to evaluate.
  Both factors usually cause optimization programs to be less successful
  when numeric derivatives are used.
- 
+ However, numeric derivatives provide a reasonably reliable fall-back option
+ if other methods don't work, for some reason.
 \end_layout
 
-\begin_layout Itemize
-One advantage of numeric derivatives is that you don't have to worry about
- having made an error in calculating the analytic derivative.
- When programming analytic derivatives it's a good idea to check that they
- are correct by using numeric derivatives.
- This is a lesson I learned the hard way when writing my thesis.
-\end_layout
-
-\begin_layout Itemize
-there are also methods for 
-\emph on
-automatic differentiation
-\emph default
-.
- This will probably become important in the future, but existing econometric
- software makes little use of it.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-update as of 2017: the Optim.jl and MXNet.jl packages for Julia can use automatic
- differentiation.
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -24322,8 +24229,9 @@ update as of 2017: the Optim.jl and MXNet.jl packages for Julia can use automati
 \end_layout
 
 \begin_layout Itemize
-Numeric second derivatives are much more accurate if the data are scaled
- so that the elements of the gradient are of the same order of magnitude.
+Gradient based optimization methods are much more likely to be successful
+ and give accurate results if the data are scaled so that the elements of
+ the gradient are of the same order of magnitude.
  Example: if the model is 
 \begin_inset Formula $y_{t}=h(\alpha x_{t}+\beta z_{t})+\varepsilon_{t},$
 \end_inset
@@ -24433,7 +24341,8 @@ In general, estimation programs always work better if data is scaled in
 This is important in practice.
  
 \emph default
-In the future, if you start to do empirical work and get results that seem
+It is easy to loose precision in calculation if you don't take care.
+ In the future, if you start to do empirical work and get results that seem
  meaningless or crazy, try to remember this point.
  
 \begin_inset Newpage newpage
