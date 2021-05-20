@@ -24202,12 +24202,12 @@ Gradient-based methods obviously require first and possibly second derivatives.
 
 \begin_layout Itemize
 symbolic differentiation: Mathematica and many other similar packages can
- give analytic solutions in many cases
+ give analytic solutions, in many cases.
 \end_layout
 
 \begin_layout Itemize
 automatic differentiation: this is now a common way to compute derivatives,
- and should probably be the default way to go
+ and should probably be your default way to go.
 \end_layout
 
 \begin_layout Itemize
@@ -24219,6 +24219,64 @@ numeric derivatives based on finite differences were historically widely
  when numeric derivatives are used.
  However, numeric derivatives provide a reasonably reliable fall-back option
  if other methods don't work, for some reason.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Computing some derivaties.
+ Here's an example of computing the exact gradient using automatic differentiati
+on, and the approximate gradient using finite differences.
+ You will see that the finite difference version has some error.
+ If you replace 
+\begin_inset Quotes sld
+\end_inset
+
+gradient
+\begin_inset Quotes srd
+\end_inset
+
+ with 
+\begin_inset Quotes sld
+\end_inset
+
+hessian
+\begin_inset Quotes srd
+\end_inset
+
+, you can get the Hessian matrix.
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+using ForwardDiff, Calculus
+\end_layout
+
+\begin_layout Plain Layout
+
+rosenbrock(x) =  (1.0 - x[1])^2 + 100.0 * (x[2] - x[1]^2)^2
+\end_layout
+
+\begin_layout Plain Layout
+
+ForwardDiff.gradient(rosenbrock, 2.0*ones(2))
+\end_layout
+
+\begin_layout Plain Layout
+
+Calculus.gradient(rosenbrock, 2.0*ones(2)) 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24297,7 +24355,12 @@ suppose that
 \begin_inset Formula $D_{\beta}s_{n}(\cdot)=0.001.$
 \end_inset
 
- One could define 
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One could define 
 \begin_inset Formula $\alpha^{\ast}=1000\alpha;$
 \end_inset
 
@@ -24312,17 +24375,20 @@ suppose that
  
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 then 
 \begin_inset Formula $D_{\alpha^{*}}s_{n}(\cdot)=\frac{1}{n}\sum_{t}2\left(y_{t}-h(\alpha^{*}x_{t}^{*}+\beta^{*}z_{t}^{*})\right)g(\alpha^{*}x_{t}^{*}+\beta^{*}z_{t}^{*})x_{t}^{*}$
 \end_inset
 
 .
- Everything is the same as before, except there is an 
+ Everything is the same as before, because the 1000s cancel out, except
+ there is an 
 \begin_inset Formula $x_{t}^{*}$
 \end_inset
 
- at the end, which causes the derivative to be 1 now.
+ at the end, which causes the derivative to be 1 now, where it was 1000
+ before.
 \end_layout
 
 \begin_layout Itemize
@@ -24335,7 +24401,9 @@ this scaling causes the derivatives to be of the same order.
 
 \begin_layout Standard
 In general, estimation programs always work better if data is scaled in
- this way, since roundoff errors are less likely to become important.
+ this way, regardless of what type of derivatives you are using (analytic,
+ automatic, finite difference) since roundoff errors are less likely to
+ become important.
  
 \emph on
 This is important in practice.
@@ -24352,6 +24420,54 @@ It is easy to loose precision in calculation if you don't take care.
 \end_layout
 
 \end_deeper
+\begin_layout Example
+Here's some Hessian computations, using the same Rosenbrock function, but
+ with 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ scaled differently from the previous example .
+\end_layout
+
+\begin_layout Example
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+using ForwardDiff, Calculus
+\end_layout
+
+\begin_layout Plain Layout
+
+rosenbrock(x) =  (1.0 - 1000x[1])^2 + 100.0 * (x[2] - (1000x[1])^2)^2
+\end_layout
+
+\begin_layout Plain Layout
+
+ForwardDiff.hessian(rosenbrock, 2.0*ones(2))
+\end_layout
+
+\begin_layout Plain Layout
+
+Calculus.hessian(rosenbrock, 2.0*ones(2)) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Look at the (2,2) element: the finite difference version is off by 6 orders
+ of magnitude! The off diagonal elements are not too good, either.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 There are algorithms (such as BFGS and DFP) that use the sequential gradient
  evaluations to build up an approximation to the Hessian.
@@ -24371,9 +24487,14 @@ Switching between algorithms during iterations is sometimes useful.
 
 \begin_layout Example
 The Nerlove model via numeric minimization.
- The example code 
+ This is a linear model with linear restrictions, and one would not normally
+ use an iterative optimization program to compute the solution, because
+ an analytic solution is available.
+ This is just an example, and if you're curious, try comparing with the
+ analytic solution.
+ Here's the code: 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -24385,7 +24506,7 @@ ometrics/Examples/NonlinearOptimization/EstimateRestrictedNerlove.jl}
 
 \end_inset
 
- shows how to use unconstrained and constrained minimization to estimate
+ which shows how to use unconstrained and constrained minimization to estimate
  the simple Nerlove model (equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24406,14 +24527,17 @@ reference "simple nerlove model"
 \end_layout
 
 \begin_layout Section
-Simulated Annealing
+Global methods: simulated annealing
 \end_layout
 
 \begin_layout Standard
 Simulated annealing is an algorithm which can find an optimum in the presence
  of nonconcavities, discontinuities and multiple local minima/maxima.
- Basically, the algorithm randomly selects evaluation points, accepts all
- points that yield an increase in the objective function, but also accepts
+ It is an example of a global optimization algorithm.
+ There are many others, so we'll just focus on this one to get the basic
+ idea.
+ Essentially, the algorithm randomly selects evaluation points, accepts
+ all points that yield an increase in the objective function, but also accepts
  some points that decrease the objective function.
  This allows the algorithm to escape from local minima.
  As more and more points are tried, periodically the algorithm focuses on
@@ -24456,12 +24580,27 @@ edit(samin,())
 \end_layout
 
 \begin_layout Example
-Paste this code into Julia to see an example of simulated annealing.
+Paste this code into Julia to see an example of simulated annealing, using
+ the version in the package Optim.jl
+\begin_inset CommandInset href
+LatexCommand href
+name "Optim.jl"
+target "https://julianlsolvers.github.io/Optim.jl/stable/"
+literal "false"
+
+\end_inset
+
+.
  Try experimenting by passing rt=0.9 or rt=0.25 as arguments, and see what
  happens.
 \begin_inset listings
 inline false
 status open
+
+\begin_layout Plain Layout
+
+	using Optim
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -24513,15 +24652,13 @@ status open
 
 \begin_layout Plain Layout
 
-    @time xopt = samin(sse, x, lb, ub, verbosity=2)
+	xopt= (Optim.optimize(sse, lb, ub, x, SAMIN(verbosity=2),Optim.Options(iterations
+=10^6))).minimizer
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -24543,8 +24680,10 @@ htmladdnormallink{OLSviaSA.jl}{file:///home/michael/Mystuff/Econometrics/Example
 
 \end_inset
 
-, which uses SA to compute the OLS estimator, and plots the trace of the
- improvements as they are found.
+, which uses SA (the version the code accompanying these notes, which is
+ functionally equivalent to the version in Optim.jl, but with a different
+ interface) to compute the OLS estimator, and plots the trace of the improvement
+s as they are found.
  You can see how SA narrows in on the solution, in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25730,8 +25869,12 @@ les/NonlinearOptimization/OLScontours.jl}
  This illustrates the idea that an extremum estimator minimizes or maximizes
  a function, and that the estimate and parameters that we are trying to
  estimate are distinct points.
- As the sample gets large, the two points get close together, if the estimator
- is consistent.
+ As the sample gets large, the two points will get close together, as we
+ will see, if the estimator is 
+\emph on
+consistent
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -25938,6 +26081,7 @@ where
  These concepts are explained later, for now the point is that Bayesian
  estimators can be thought of as extremum estimators, and the theory for
  extremum estimators will apply.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -26328,7 +26472,7 @@ By uniform convergence and continuity of the limiting objective function,
  
 \begin_inset Formula 
 \[
-\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})=s_{\infty}(\hat{\theta}).
+{\color{green}\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})}={\color{red}s_{\infty}(\hat{\theta})}.
 \]
 
 \end_inset
@@ -26394,7 +26538,7 @@ s_{n_{m}}(\hat{\theta}_{n_{m}})\geq s_{n_{m}}(\theta^{0})
  which holds in the limit, so 
 \begin_inset Formula 
 \[
-\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})\geq\lim_{m\rightarrow\infty}s_{n_{m}}(\theta^{0}).
+{\color{green}\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})}\geq{\color{blue}\lim_{m\rightarrow\infty}s_{n_{m}}(\theta^{0})}.
 \]
 
 \end_inset
@@ -26406,7 +26550,7 @@ s_{n_{m}}(\hat{\theta}_{n_{m}})\geq s_{n_{m}}(\theta^{0})
 However, for the left hand side, the previous slide showed that
 \begin_inset Formula 
 \[
-\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})=s_{\infty}(\hat{\theta}),
+{\color{green}\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})}={\color{red}s_{\infty}(\hat{\theta})},
 \]
 
 \end_inset
@@ -26414,7 +26558,7 @@ However, for the left hand side, the previous slide showed that
  For the right hand side, a similar argument gives
 \begin_inset Formula 
 \[
-\lim_{m\rightarrow\infty}s_{n_{m}}(\theta^{0})=s_{\infty}(\theta^{0})
+{\color{blue}\lim_{m\rightarrow\infty}s_{n_{m}}(\theta^{0})}={\color{magenta}s_{\infty}(\theta^{0})}
 \]
 
 \end_inset
@@ -26422,7 +26566,7 @@ However, for the left hand side, the previous slide showed that
  by uniform convergence, so the above inequality can be written as
 \begin_inset Formula 
 \[
-s_{\infty}(\hat{\theta})\geq s_{\infty}(\theta^{0}).
+{\color{red}s_{\infty}(\hat{\theta})}\geq{\color{magenta}s_{\infty}(\theta^{0})}.
 \]
 
 \end_inset
@@ -26825,7 +26969,7 @@ We suppose that data is generated by random sampling of
 \begin{eqnarray*}
 s_{n}(\theta) & = & \frac{1}{n}\sum_{t=1}^{n}\left(y_{t}-\beta x_{t}\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}\left(\beta_{0}x_{t}+\varepsilon_{t}-\beta x_{t}\right)^{2}\\
  & = & \frac{1}{n}\sum_{i=1}^{n}\left((\beta_{0}-\beta)x_{t}+\varepsilon_{t}\right)^{2}\\
- & = & \frac{1}{n}\sum_{t=1}^{n}\left((\beta_{0}-\beta)x_{t}\right)^{2}+\frac{2}{n}\sum_{t=1}^{n}(\beta_{0}-\beta)x_{t}\varepsilon_{t}+\frac{1}{n}\sum_{t=1}^{n}\varepsilon_{t}^{2}
+ & = & {\color{green}\frac{1}{n}\sum_{t=1}^{n}\left((\beta_{0}-\beta)x_{t}\right)^{2}}+\frac{2}{n}\sum_{t=1}^{n}(\beta_{0}-\beta)x_{t}\varepsilon_{t}+{\color{blue}\frac{1}{n}\sum_{t=1}^{n}\varepsilon_{t}^{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -26837,7 +26981,7 @@ s_{n}(\theta) & = & \frac{1}{n}\sum_{t=1}^{n}\left(y_{t}-\beta x_{t}\right)^{2}=
 Considering the last term, by the SLLN, 
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{t=1}^{n}\varepsilon_{t}^{2}\stackrel{a.s.}{\rightarrow}\int_{\mathcal{X}}\int_{\mathcal{E}}\varepsilon^{2}d\mu_{\mathcal{X}}d\mu_{\mathcal{E}}=\sigma_{\varepsilon}^{2}.
+{\color{blue}\frac{1}{n}\sum_{t=1}^{n}\varepsilon_{t}^{2}}\stackrel{a.s.}{\rightarrow}\int_{\mathcal{X}}\int_{\mathcal{E}}\varepsilon^{2}d\mu_{\mathcal{X}}d\mu_{\mathcal{E}}=\sigma_{\varepsilon}^{2}.
 \]
 
 \end_inset
@@ -26870,7 +27014,7 @@ Finally, for the first term, for a given
 , we assume that a SLLN applies so that
 \begin_inset Formula 
 \begin{eqnarray}
-\frac{1}{n}\sum_{t=1}^{n}\left((\beta_{0}-\beta)x_{t}\right)^{2} & \stackrel{a.s.}{\rightarrow} & \int_{\mathcal{X}}\left((\beta_{0}-\beta)x\right)^{2}d\mu_{\mathcal{X}}\label{olslim}\\
+{\color{green}\frac{1}{n}\sum_{t=1}^{n}\left((\beta_{0}-\beta)x_{t}\right)^{2}} & \stackrel{a.s.}{\rightarrow} & \int_{\mathcal{X}}\left((\beta_{0}-\beta)x\right)^{2}d\mu_{\mathcal{X}}\label{olslim}\\
  & = & \left(\beta^{0}-\beta\right)^{2}\int_{\mathcal{X}}x^{2}d\mu_{\mathcal{X}}\nonumber \\
  & = & \left(\beta^{0}-\beta\right)^{2}E\left(X^{2}\right)\nonumber 
 \end{eqnarray}
@@ -26987,6 +27131,9 @@ reference "olslim"
 \end_inset
 
 , above.
+ You should know how to do this by hand, but I use software here, just to
+ illustrate that it can do this sort of thing.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -27149,7 +27296,8 @@ What is the relationship between
 \begin_inset Formula $\rho^{0}$
 \end_inset
 
-?
+? Does the econometric estimator tell us something about the true unknown
+ parameter?
 \end_layout
 
 \begin_layout Itemize
@@ -27192,7 +27340,7 @@ case 1: If knowledge of
 \begin_inset Formula $\rho^{0}$
 \end_inset
 
-, we have a correctly and fully specified model.
+, then we have a correctly and fully specified model.
  
 \begin_inset Formula $\theta^{0}$
 \end_inset
@@ -27358,8 +27506,8 @@ The sample objective function for a sample size
 \begin_inset Formula 
 \begin{eqnarray*}
 s_{n}(\gamma) & = & 1/n\sum_{t=1}^{n}\left(y_{t}-\gamma w_{t}\right)^{2}=1/n\sum_{i=1}^{n}\left(\beta_{0}x_{t}+\varepsilon_{t}-\gamma w_{t}\right)^{2}\\
- & = & 1/n\sum_{t=1}^{n}\left(\beta_{0}x_{t}\right)^{2}+1/n\sum_{t=1}^{n}\left(\gamma w_{t}\right)^{2}+1/n\sum_{t=1}^{n}\varepsilon_{t}^{2}\\
- &  & +2/n\sum_{t=1}^{n}\beta_{0}x_{t}\varepsilon_{t}-2/n\sum_{t=1}^{n}\beta_{0}\gamma x_{t}w_{t}-2/n\sum_{t=1}^{n}\varepsilon_{t}x_{t}w_{t},
+ & = & {\color{red}1/n\sum_{t=1}^{n}\left(\beta_{0}x_{t}\right)^{2}}+{\color{blue}1/n\sum_{t=1}^{n}\left(\gamma w_{t}\right)^{2}}+{\color{red}1/n\sum_{t=1}^{n}\varepsilon_{t}^{2}}\\
+ &  & +2/n\sum_{t=1}^{n}\beta_{0}x_{t}\varepsilon_{t}{\color{green}-2/n\sum_{t=1}^{n}\beta_{0}\gamma x_{t}w_{t}}-2/n\sum_{t=1}^{n}\varepsilon_{t}x_{t}w_{t},
 \end{eqnarray*}
 
 \end_inset
@@ -27368,7 +27516,7 @@ which one can verify if armed with patience.
  Using arguments similar to the correctly specified case, above, 
 \begin_inset Formula 
 \[
-s_{\infty}(\gamma)=\gamma^{2}E\left(W^{2}\right)-2\beta_{0}\gamma E(WX)+C
+s_{\infty}(\gamma)={\color{blue}\gamma^{2}E\left(W^{2}\right)}{\color{green}-2\beta_{0}\gamma E(WX)}+{\color{red}C}
 \]
 
 \end_inset
@@ -27377,11 +27525,11 @@ where
 \begin_inset Formula $C$
 \end_inset
 
- holds all terms that do not depend on 
+ holds the red terms, that do not depend on 
 \begin_inset Formula $\gamma$
 \end_inset
 
-.
+, and the terms that are not given a color converge to 0.
  So, finding the minimizer with respect to 
 \begin_inset Formula $\gamma$
 \end_inset
@@ -27399,7 +27547,11 @@ where
 \begin_inset Formula $W.$
 \end_inset
 
- The OLS estimator is not consistent for the true parameter, 
+ The OLS estimator 
+\emph on
+is not consistent
+\emph default
+ for the true parameter, 
 \begin_inset Formula $\beta_{0}$
 \end_inset
 
