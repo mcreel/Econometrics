@@ -1,0 +1,27 @@
+
+******************************************************
+Poisson Latent Heterogeneity model, SML estimation, MEPS 1996 full data set
+
+MLE Estimation Results
+BFGS convergence: Max. iters. exceeded
+
+Average Log-L: -2.171826
+Observations: 4564
+
+                estimate     st. err   t-stat        p-value
+constant        -1.592       0.146     -10.892       0.000
+pub. ins.        1.189       0.068      17.425       0.000
+priv. ins.       0.655       0.065      10.124       0.000
+sex              0.615       0.044      13.888       0.000
+age              0.018       0.002      10.865       0.000
+edu              0.024       0.010       2.523       0.012
+inc             -0.000       0.000      -0.531       0.596
+lnalpha          0.203       0.014      14.036       0.000
+
+Information Criteria
+CAIC : 19899.8396      Avg. CAIC:   4.3602
+BIC : 19891.8396       Avg. BIC:   4.3584
+AIC : 19840.4320       Avg. AIC:   4.3472
+******************************************************
+octave:3>
+

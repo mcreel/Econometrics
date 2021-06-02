@@ -1,0 +1,31 @@
+# CK 2 shock model from "Indirect Likelihood Inference"
+
+states:
+k, z, η
+end
+
+jumps:
+y, c, n, rate, w, MUC, MUL
+end
+
+shocks:
+ϵ, u
+end
+
+parameters:
+α, β, δ, γ, ρ₁ , σ₁, ρ₂, σ₂, ψ 
+end
+
+equations:
+MUC = c^(-γ)
+MUL = ψ*exp(η)
+rate = α * exp(z) * k^(α-1) * n^(1-α)
+w = (1-α)*exp(z)* k^α * n^(-α)
+MUC = β*MUC(+1) * (1 + rate(+1) - δ)
+w = MUL/MUC
+z(+1) = ρ₁*z + σ₁ * u
+η(+1) = ρ₂*η + σ₂ * ϵ
+y = exp(z) * (k^α) * (n^(1-α))
+k(+1) = y - c + (1-δ)*k
+end
+
