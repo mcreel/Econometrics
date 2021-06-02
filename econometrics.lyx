@@ -23365,7 +23365,7 @@ the iteration method for choosing
 \begin_inset Formula $\theta^{k+1}$
 \end_inset
 
- given that we're at 
+, given that we're at 
 \begin_inset Formula $\theta^{k}$
 \end_inset
 
@@ -23484,9 +23484,15 @@ For small enough
 \end_inset
 
  is to be an increasing direction, we need 
-\begin_inset Formula $g(\theta)^{\prime}d>0.$
+\begin_inset Formula $g(\theta)^{\prime}d>0,$
 \end_inset
 
+ because this term is proportional to the directional derivative in direction
+ 
+\begin_inset Formula $d$
+\end_inset
+
+.
  Defining 
 \begin_inset Formula $d=Qg(\theta),$
 \end_inset
@@ -23667,12 +23673,12 @@ status collapsed
 
 \end_inset
 
-fast - doesn't require anything more than first derivatives.
+fast, per iteration - doesn't require anything more than first derivatives.
 \end_layout
 
 \begin_layout Itemize
-Disadvantages: This doesn't always work too well however: see the Rosenbrock,
- or 
+Disadvantages: May not be fast after all, as we may need many iterations:
+ see the Rosenbrock, or 
 \begin_inset Quotes sld
 \end_inset
 
@@ -24151,6 +24157,8 @@ IMPORTANT in practice.
 \begin_layout Itemize
 an alternative is to use a global optimization algorithm, e.g., simulated
  annealing or others, which may or may not be gradient based.
+ This may be slow, but is more likely to give you the correct answer, if
+ your problem is difficult.
 \end_layout
 
 \begin_layout Standard
@@ -24163,138 +24171,95 @@ Calculating derivatives
 \end_layout
 
 \begin_layout Standard
-The Newton-Raphson algorithm requires first and second derivatives.
+Gradient-based methods obviously require first and possibly second derivatives.
  It is often difficult to calculate derivatives (especially the Hessian)
  analytically if the function 
 \begin_inset Formula $s_{n}(\cdot)$
 \end_inset
 
  is complicated.
- Possible solutions are to calculate derivatives numerically, or to use
- programs such as MuPAD or Mathematica to calculate analytic derivatives.
- For example, Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Using-Sage-to"
-
-\end_inset
-
- shows Sage 
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Sage is free software that has both symbolic and numeric computational capabilit
-ies.
- See 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.sagemath.org/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- calculating a couple of derivatives.
- The KAIST Sage cell server will let you try Sage online, its address is
- 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://aleph.sagemath.org/
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Newpage newpage
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Using-Sage-to"
-
-\end_inset
-
-Using Sage to get analytic derivatives
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/NonlinearOptimization/sage.png
-	width 15cm
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newpage newpage
-\end_inset
-
-
+ Fortunately, there are some good options:
 \end_layout
 
 \begin_layout Itemize
-Numeric derivatives are less accurate than analytic derivatives, and are
- usually more costly to evaluate.
+symbolic differentiation: Mathematica and many other similar packages can
+ give analytic solutions, in many cases.
+\end_layout
+
+\begin_layout Itemize
+automatic differentiation: this is now a common way to compute derivatives,
+ and should probably be your default way to go.
+\end_layout
+
+\begin_layout Itemize
+numeric derivatives based on finite differences were historically widely
+ used.
+ They are less accurate than analytic derivatives, and are usually more
+ costly to evaluate.
  Both factors usually cause optimization programs to be less successful
  when numeric derivatives are used.
- 
+ However, numeric derivatives provide a reasonably reliable fall-back option
+ if other methods don't work, for some reason.
 \end_layout
 
-\begin_layout Itemize
-One advantage of numeric derivatives is that you don't have to worry about
- having made an error in calculating the analytic derivative.
- When programming analytic derivatives it's a good idea to check that they
- are correct by using numeric derivatives.
- This is a lesson I learned the hard way when writing my thesis.
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-there are also methods for 
-\emph on
-automatic differentiation
-\emph default
-.
- This will probably become important in the future, but existing econometric
- software makes little use of it.
+\begin_layout Example
+Computing some derivaties.
+ Here's an example of computing the exact gradient using automatic differentiati
+on, and the approximate gradient using finite differences.
+ You will see that the finite difference version has some error.
+ If you replace 
+\begin_inset Quotes sld
+\end_inset
+
+gradient
+\begin_inset Quotes srd
+\end_inset
+
+ with 
+\begin_inset Quotes sld
+\end_inset
+
+hessian
+\begin_inset Quotes srd
+\end_inset
+
+, you can get the Hessian matrix.
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+using ForwardDiff, Calculus
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-update as of 2017: the Optim.jl and MXNet.jl packages for Julia can use automatic
- differentiation.
+\begin_layout Plain Layout
+
+rosenbrock(x) =  (1.0 - x[1])^2 + 100.0 * (x[2] - x[1]^2)^2
 \end_layout
 
-\end_deeper
+\begin_layout Plain Layout
+
+ForwardDiff.gradient(rosenbrock, 2.0*ones(2))
+\end_layout
+
+\begin_layout Plain Layout
+
+Calculus.gradient(rosenbrock, 2.0*ones(2)) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -24303,8 +24268,9 @@ update as of 2017: the Optim.jl and MXNet.jl packages for Julia can use automati
 \end_layout
 
 \begin_layout Itemize
-Numeric second derivatives are much more accurate if the data are scaled
- so that the elements of the gradient are of the same order of magnitude.
+Gradient based optimization methods are much more likely to be successful
+ and give accurate results if the data are scaled so that the elements of
+ the gradient are of the same order of magnitude.
  Example: if the model is 
 \begin_inset Formula $y_{t}=h(\alpha x_{t}+\beta z_{t})+\varepsilon_{t},$
 \end_inset
@@ -24370,7 +24336,12 @@ suppose that
 \begin_inset Formula $D_{\beta}s_{n}(\cdot)=0.001.$
 \end_inset
 
- One could define 
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One could define 
 \begin_inset Formula $\alpha^{\ast}=1000\alpha;$
 \end_inset
 
@@ -24385,17 +24356,20 @@ suppose that
  
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 then 
 \begin_inset Formula $D_{\alpha^{*}}s_{n}(\cdot)=\frac{1}{n}\sum_{t}2\left(y_{t}-h(\alpha^{*}x_{t}^{*}+\beta^{*}z_{t}^{*})\right)g(\alpha^{*}x_{t}^{*}+\beta^{*}z_{t}^{*})x_{t}^{*}$
 \end_inset
 
 .
- Everything is the same as before, except there is an 
+ Everything is the same as before, because the 1000s cancel out, except
+ there is an 
 \begin_inset Formula $x_{t}^{*}$
 \end_inset
 
- at the end, which causes the derivative to be 1 now.
+ at the end, which causes the derivative to be 1 now, where it was 1000
+ before.
 \end_layout
 
 \begin_layout Itemize
@@ -24408,13 +24382,16 @@ this scaling causes the derivatives to be of the same order.
 
 \begin_layout Standard
 In general, estimation programs always work better if data is scaled in
- this way, since roundoff errors are less likely to become important.
+ this way, regardless of what type of derivatives you are using (analytic,
+ automatic, finite difference) since roundoff errors are less likely to
+ become important.
  
 \emph on
 This is important in practice.
  
 \emph default
-In the future, if you start to do empirical work and get results that seem
+It is easy to loose precision in calculation if you don't take care.
+ In the future, if you start to do empirical work and get results that seem
  meaningless or crazy, try to remember this point.
  
 \begin_inset Newpage newpage
@@ -24424,6 +24401,54 @@ In the future, if you start to do empirical work and get results that seem
 \end_layout
 
 \end_deeper
+\begin_layout Example
+Here's some Hessian computations, using the same Rosenbrock function, but
+ with 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ scaled differently from the previous example .
+\end_layout
+
+\begin_layout Example
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+using ForwardDiff, Calculus
+\end_layout
+
+\begin_layout Plain Layout
+
+rosenbrock(x) =  (1.0 - 1000x[1])^2 + 100.0 * (x[2] - (1000x[1])^2)^2
+\end_layout
+
+\begin_layout Plain Layout
+
+ForwardDiff.hessian(rosenbrock, 2.0*ones(2))
+\end_layout
+
+\begin_layout Plain Layout
+
+Calculus.hessian(rosenbrock, 2.0*ones(2)) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Look at the (2,2) element: the finite difference version is off by 6 orders
+ of magnitude! The off diagonal elements are not too good, either.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 There are algorithms (such as BFGS and DFP) that use the sequential gradient
  evaluations to build up an approximation to the Hessian.
@@ -24443,9 +24468,14 @@ Switching between algorithms during iterations is sometimes useful.
 
 \begin_layout Example
 The Nerlove model via numeric minimization.
- The example code 
+ This is a linear model with linear restrictions, and one would not normally
+ use an iterative optimization program to compute the solution, because
+ an analytic solution is available.
+ This is just an example, and if you're curious, try comparing with the
+ analytic solution.
+ Here's the code: 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -24458,7 +24488,7 @@ rics/blob/master/Examples/NonlinearOptimization/EstimateRestrictedNerlove.jl}
 
 \end_inset
 
- shows how to use unconstrained and constrained minimization to estimate
+ which shows how to use unconstrained and constrained minimization to estimate
  the simple Nerlove model (equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24479,14 +24509,17 @@ reference "simple nerlove model"
 \end_layout
 
 \begin_layout Section
-Simulated Annealing
+Global methods: simulated annealing
 \end_layout
 
 \begin_layout Standard
 Simulated annealing is an algorithm which can find an optimum in the presence
  of nonconcavities, discontinuities and multiple local minima/maxima.
- Basically, the algorithm randomly selects evaluation points, accepts all
- points that yield an increase in the objective function, but also accepts
+ It is an example of a global optimization algorithm.
+ There are many others, so we'll just focus on this one to get the basic
+ idea.
+ Essentially, the algorithm randomly selects evaluation points, accepts
+ all points that yield an increase in the objective function, but also accepts
  some points that decrease the objective function.
  This allows the algorithm to escape from local minima.
  As more and more points are tried, periodically the algorithm focuses on
@@ -24529,12 +24562,27 @@ edit(samin,())
 \end_layout
 
 \begin_layout Example
-Paste this code into Julia to see an example of simulated annealing.
+Paste this code into Julia to see an example of simulated annealing, using
+ the version in the package Optim.jl
+\begin_inset CommandInset href
+LatexCommand href
+name "Optim.jl"
+target "https://julianlsolvers.github.io/Optim.jl/stable/"
+literal "false"
+
+\end_inset
+
+.
  Try experimenting by passing rt=0.9 or rt=0.25 as arguments, and see what
  happens.
 \begin_inset listings
 inline false
 status open
+
+\begin_layout Plain Layout
+
+	using Optim
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -24586,15 +24634,13 @@ status open
 
 \begin_layout Plain Layout
 
-    @time xopt = samin(sse, x, lb, ub, verbosity=2)
+	xopt= (Optim.optimize(sse, lb, ub, x, SAMIN(verbosity=2),Optim.Options(iterations
+=10^6))).minimizer
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -24616,8 +24662,10 @@ Examples/NonlinearOptimization/OLSviaSA.jl}
 
 \end_inset
 
-, which uses SA to compute the OLS estimator, and plots the trace of the
- improvements as they are found.
+, which uses SA (the version the code accompanying these notes, which is
+ functionally equivalent to the version in Optim.jl, but with a different
+ interface) to compute the OLS estimator, and plots the trace of the improvement
+s as they are found.
  You can see how SA narrows in on the solution, in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25803,8 +25851,12 @@ er/Examples/NonlinearOptimization/OLScontours.jl}
  This illustrates the idea that an extremum estimator minimizes or maximizes
  a function, and that the estimate and parameters that we are trying to
  estimate are distinct points.
- As the sample gets large, the two points get close together, if the estimator
- is consistent.
+ As the sample gets large, the two points will get close together, as we
+ will see, if the estimator is 
+\emph on
+consistent
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -26011,6 +26063,7 @@ where
  These concepts are explained later, for now the point is that Bayesian
  estimators can be thought of as extremum estimators, and the theory for
  extremum estimators will apply.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -26401,7 +26454,7 @@ By uniform convergence and continuity of the limiting objective function,
  
 \begin_inset Formula 
 \[
-\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})=s_{\infty}(\hat{\theta}).
+{\color{green}\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})}={\color{red}s_{\infty}(\hat{\theta})}.
 \]
 
 \end_inset
@@ -26467,7 +26520,7 @@ s_{n_{m}}(\hat{\theta}_{n_{m}})\geq s_{n_{m}}(\theta^{0})
  which holds in the limit, so 
 \begin_inset Formula 
 \[
-\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})\geq\lim_{m\rightarrow\infty}s_{n_{m}}(\theta^{0}).
+{\color{green}\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})}\geq{\color{blue}\lim_{m\rightarrow\infty}s_{n_{m}}(\theta^{0})}.
 \]
 
 \end_inset
@@ -26479,7 +26532,7 @@ s_{n_{m}}(\hat{\theta}_{n_{m}})\geq s_{n_{m}}(\theta^{0})
 However, for the left hand side, the previous slide showed that
 \begin_inset Formula 
 \[
-\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})=s_{\infty}(\hat{\theta}),
+{\color{green}\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})}={\color{red}s_{\infty}(\hat{\theta})},
 \]
 
 \end_inset
@@ -26487,7 +26540,7 @@ However, for the left hand side, the previous slide showed that
  For the right hand side, a similar argument gives
 \begin_inset Formula 
 \[
-\lim_{m\rightarrow\infty}s_{n_{m}}(\theta^{0})=s_{\infty}(\theta^{0})
+{\color{blue}\lim_{m\rightarrow\infty}s_{n_{m}}(\theta^{0})}={\color{magenta}s_{\infty}(\theta^{0})}
 \]
 
 \end_inset
@@ -26495,7 +26548,7 @@ However, for the left hand side, the previous slide showed that
  by uniform convergence, so the above inequality can be written as
 \begin_inset Formula 
 \[
-s_{\infty}(\hat{\theta})\geq s_{\infty}(\theta^{0}).
+{\color{red}s_{\infty}(\hat{\theta})}\geq{\color{magenta}s_{\infty}(\theta^{0})}.
 \]
 
 \end_inset
@@ -26898,7 +26951,7 @@ We suppose that data is generated by random sampling of
 \begin{eqnarray*}
 s_{n}(\theta) & = & \frac{1}{n}\sum_{t=1}^{n}\left(y_{t}-\beta x_{t}\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}\left(\beta_{0}x_{t}+\varepsilon_{t}-\beta x_{t}\right)^{2}\\
  & = & \frac{1}{n}\sum_{i=1}^{n}\left((\beta_{0}-\beta)x_{t}+\varepsilon_{t}\right)^{2}\\
- & = & \frac{1}{n}\sum_{t=1}^{n}\left((\beta_{0}-\beta)x_{t}\right)^{2}+\frac{2}{n}\sum_{t=1}^{n}(\beta_{0}-\beta)x_{t}\varepsilon_{t}+\frac{1}{n}\sum_{t=1}^{n}\varepsilon_{t}^{2}
+ & = & {\color{green}\frac{1}{n}\sum_{t=1}^{n}\left((\beta_{0}-\beta)x_{t}\right)^{2}}+\frac{2}{n}\sum_{t=1}^{n}(\beta_{0}-\beta)x_{t}\varepsilon_{t}+{\color{blue}\frac{1}{n}\sum_{t=1}^{n}\varepsilon_{t}^{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -26910,7 +26963,7 @@ s_{n}(\theta) & = & \frac{1}{n}\sum_{t=1}^{n}\left(y_{t}-\beta x_{t}\right)^{2}=
 Considering the last term, by the SLLN, 
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{t=1}^{n}\varepsilon_{t}^{2}\stackrel{a.s.}{\rightarrow}\int_{\mathcal{X}}\int_{\mathcal{E}}\varepsilon^{2}d\mu_{\mathcal{X}}d\mu_{\mathcal{E}}=\sigma_{\varepsilon}^{2}.
+{\color{blue}\frac{1}{n}\sum_{t=1}^{n}\varepsilon_{t}^{2}}\stackrel{a.s.}{\rightarrow}\int_{\mathcal{X}}\int_{\mathcal{E}}\varepsilon^{2}d\mu_{\mathcal{X}}d\mu_{\mathcal{E}}=\sigma_{\varepsilon}^{2}.
 \]
 
 \end_inset
@@ -26943,7 +26996,7 @@ Finally, for the first term, for a given
 , we assume that a SLLN applies so that
 \begin_inset Formula 
 \begin{eqnarray}
-\frac{1}{n}\sum_{t=1}^{n}\left((\beta_{0}-\beta)x_{t}\right)^{2} & \stackrel{a.s.}{\rightarrow} & \int_{\mathcal{X}}\left((\beta_{0}-\beta)x\right)^{2}d\mu_{\mathcal{X}}\label{olslim}\\
+{\color{green}\frac{1}{n}\sum_{t=1}^{n}\left((\beta_{0}-\beta)x_{t}\right)^{2}} & \stackrel{a.s.}{\rightarrow} & \int_{\mathcal{X}}\left((\beta_{0}-\beta)x\right)^{2}d\mu_{\mathcal{X}}\label{olslim}\\
  & = & \left(\beta^{0}-\beta\right)^{2}\int_{\mathcal{X}}x^{2}d\mu_{\mathcal{X}}\nonumber \\
  & = & \left(\beta^{0}-\beta\right)^{2}E\left(X^{2}\right)\nonumber 
 \end{eqnarray}
@@ -27060,6 +27113,9 @@ reference "olslim"
 \end_inset
 
 , above.
+ You should know how to do this by hand, but I use software here, just to
+ illustrate that it can do this sort of thing.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -27222,7 +27278,8 @@ What is the relationship between
 \begin_inset Formula $\rho^{0}$
 \end_inset
 
-?
+? Does the econometric estimator tell us something about the true unknown
+ parameter?
 \end_layout
 
 \begin_layout Itemize
@@ -27265,7 +27322,7 @@ case 1: If knowledge of
 \begin_inset Formula $\rho^{0}$
 \end_inset
 
-, we have a correctly and fully specified model.
+, then we have a correctly and fully specified model.
  
 \begin_inset Formula $\theta^{0}$
 \end_inset
@@ -27431,8 +27488,8 @@ The sample objective function for a sample size
 \begin_inset Formula 
 \begin{eqnarray*}
 s_{n}(\gamma) & = & 1/n\sum_{t=1}^{n}\left(y_{t}-\gamma w_{t}\right)^{2}=1/n\sum_{i=1}^{n}\left(\beta_{0}x_{t}+\varepsilon_{t}-\gamma w_{t}\right)^{2}\\
- & = & 1/n\sum_{t=1}^{n}\left(\beta_{0}x_{t}\right)^{2}+1/n\sum_{t=1}^{n}\left(\gamma w_{t}\right)^{2}+1/n\sum_{t=1}^{n}\varepsilon_{t}^{2}\\
- &  & +2/n\sum_{t=1}^{n}\beta_{0}x_{t}\varepsilon_{t}-2/n\sum_{t=1}^{n}\beta_{0}\gamma x_{t}w_{t}-2/n\sum_{t=1}^{n}\varepsilon_{t}x_{t}w_{t},
+ & = & {\color{red}1/n\sum_{t=1}^{n}\left(\beta_{0}x_{t}\right)^{2}}+{\color{blue}1/n\sum_{t=1}^{n}\left(\gamma w_{t}\right)^{2}}+{\color{red}1/n\sum_{t=1}^{n}\varepsilon_{t}^{2}}\\
+ &  & +2/n\sum_{t=1}^{n}\beta_{0}x_{t}\varepsilon_{t}{\color{green}-2/n\sum_{t=1}^{n}\beta_{0}\gamma x_{t}w_{t}}-2/n\sum_{t=1}^{n}\varepsilon_{t}x_{t}w_{t},
 \end{eqnarray*}
 
 \end_inset
@@ -27441,7 +27498,7 @@ which one can verify if armed with patience.
  Using arguments similar to the correctly specified case, above, 
 \begin_inset Formula 
 \[
-s_{\infty}(\gamma)=\gamma^{2}E\left(W^{2}\right)-2\beta_{0}\gamma E(WX)+C
+s_{\infty}(\gamma)={\color{blue}\gamma^{2}E\left(W^{2}\right)}{\color{green}-2\beta_{0}\gamma E(WX)}+{\color{red}C}
 \]
 
 \end_inset
@@ -27450,11 +27507,11 @@ where
 \begin_inset Formula $C$
 \end_inset
 
- holds all terms that do not depend on 
+ holds the red terms, that do not depend on 
 \begin_inset Formula $\gamma$
 \end_inset
 
-.
+, and the terms that are not given a color converge to 0.
  So, finding the minimizer with respect to 
 \begin_inset Formula $\gamma$
 \end_inset
@@ -27472,7 +27529,11 @@ where
 \begin_inset Formula $W.$
 \end_inset
 
- The OLS estimator is not consistent for the true parameter, 
+ The OLS estimator 
+\emph on
+is not consistent
+\emph default
+ for the true parameter, 
 \begin_inset Formula $\beta_{0}$
 \end_inset
 
@@ -28543,12 +28604,30 @@ literal "false"
 \end_inset
 
 , for example.
- I like the DSGE model as an example because it allow illustrating a variety
+ I like the DSGE model as an example because it allows illustrating a variety
  of econometric techniques and methods.
  Any other structural nonlinear model could serve the same purpose.
  
 \end_layout
 
+\begin_layout Itemize
+To build an econometric model and to know how to interpret the results,
+ it is very useful to have an economically meaningful model in mind, at
+ least vaguely.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+selecting variables, lags, moment conditions, instruments, etc.
+\end_layout
+
+\begin_layout Itemize
+here, we will have an explicit model as a reference point.
+ Often, the reference is not so clearly defined.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 We will investigate structural estimation methods, which attempt to estimate
  the actual parameters of the data generating process, and reduced form
@@ -29189,7 +29268,7 @@ and the accumulation of capital
 \begin_inset Formula $k_{t}=i_{t}+(1-\delta)k_{t-1}$
 \end_inset
 
- 
+ : investment and depreciation
 \end_layout
 
 \begin_layout Itemize
@@ -29207,6 +29286,12 @@ The shock evolves according to
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Itemize
+sometimes, people want to work more, and sometimes, they want to take it
+ easy.
+ There is some persistence in this mood.
 \end_layout
 
 \end_deeper
@@ -29240,7 +29325,12 @@ The competitive firm maximizes profits
 \begin_inset Formula $r_{t}$
 \end_inset
 
- as given, using the constant returns to scale technology
+ as given, using the constant returns to scale technology (remember that
+ the price of 
+\begin_inset Formula $y$
+\end_inset
+
+ is normalized to 1).
 \begin_inset Formula 
 \begin{equation}
 y_{t}=k_{t-1}^{\alpha}n_{t}^{1-\alpha}z_{t}\label{eq:DSGE production}
@@ -29249,19 +29339,6 @@ y_{t}=k_{t-1}^{\alpha}n_{t}^{1-\alpha}z_{t}\label{eq:DSGE production}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Comments:
 \end_layout
 
 \begin_layout Itemize
@@ -29275,6 +29352,19 @@ Technology shocks
 
 .
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Comments:
 \end_layout
 
 \begin_layout Itemize
@@ -29340,7 +29430,11 @@ The variables available for estimation are
 \begin_inset Formula $r.$
 \end_inset
 
- 
+ We will see that 
+\begin_inset Formula $k$
+\end_inset
+
+ can be recovered from these.
 \end_layout
 
 \begin_layout Itemize
@@ -29415,10 +29509,36 @@ literal "true"
 \end_inset
 
 .
- This is done using Dynare (Juillard, 1996).
- A first step for solving the model using Dynare is to find the deterministic
- steady state.
- Let variables without the 
+ This is done using 
+\begin_inset CommandInset href
+LatexCommand href
+name "SolveDSGE.jl"
+target "https://github.com/RJDennis/SolveDSGE.jl"
+literal "false"
+
+\end_inset
+
+, a registered Julia package which can be added using 
+\family typewriter
+]add SolveDSGE.
+
+\family default
+ A first step for solving the model is to find the deterministic steady
+ state.
+ SolveDSGE.jl can compute the steady state itself, given a reasonably good
+ starting value, but it is faster to use an analytic solution, if one can
+ be computed.
+ In this case, it can:
+\end_layout
+
+\begin_layout Itemize
+the deterministic steady state is the equilibrium value of each variable
+ that obtains when all shocks are set to 0.
+ 
+\end_layout
+
+\begin_layout Standard
+Let variables without the 
 \begin_inset Formula $t$
 \end_inset
 
@@ -29432,7 +29552,52 @@ literal "true"
 \end_inset
 
  are both 1.
- Using equations 
+ 
+\end_layout
+
+\begin_layout Itemize
+For example, take 
+\begin_inset Formula $z$
+\end_inset
+
+.
+ The assumption is that 
+\begin_inset Formula $\ln z_{t}=\rho_{z}\ln z_{t-1}+\sigma_{z}u_{t}$
+\end_inset
+
+.
+ If we set 
+\begin_inset Formula $u_{t}=0,$
+\end_inset
+
+ to make the equation deterministic, we get 
+\begin_inset Formula $\ln z_{t}=\rho_{z}\ln z_{t-1}$
+\end_inset
+
+.
+ Drop the subscript to reflect the equilibrium condition: 
+\begin_inset Formula $\ln z=\rho_{z}\ln z$
+\end_inset
+
+.
+ This only holds when 
+\begin_inset Formula $\ln z=0$
+\end_inset
+
+, for abritrary values of 
+\begin_inset Formula $\rho_{z}$
+\end_inset
+
+.
+ So, the steady state value of 
+\begin_inset Formula $z=\exp(0)=1.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using equations 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:MRS-wage"
@@ -30021,21 +30186,29 @@ technology shock
 True parameter values and priors 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 For this model, given the observable variables, we can recover 
 \begin_inset Formula $\alpha=1-\frac{wn}{y}$
 \end_inset
 
 , by substituting the production function into the MPL or MPK.
- Once we have 
+ 
+\end_layout
+
+\begin_layout Itemize
+Once we have 
 \begin_inset Formula $\alpha,$
 \end_inset
 
  we can solve for 
-\begin_inset Formula $k,$
+\begin_inset Formula $k$
 \end_inset
 
- and with 
+ 
+\end_layout
+
+\begin_layout Itemize
+with 
 \begin_inset Formula $k,$
 \end_inset
 
@@ -30044,7 +30217,10 @@ For this model, given the observable variables, we can recover
 \end_inset
 
  from the law of motion of capital.
- So, we will take 
+\end_layout
+
+\begin_layout Itemize
+So, we will take 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -30053,7 +30229,8 @@ For this model, given the observable variables, we can recover
 \end_inset
 
  as known parameters, as they can be recovered exactly from the observable
- data.
+ data (assuming there is no measurement error, which is the case we are
+ in).
  Henceforth, we set 
 \begin_inset Formula $\alpha=0.33$
 \end_inset
@@ -30066,6 +30243,13 @@ For this model, given the observable variables, we can recover
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Estimation by GMM does not require specifying a prior distribution for the
  parameters, but Bayesian methods do, so here, I discuss the true parameter
  values used for the simulations, as well as priors.
@@ -30075,13 +30259,21 @@ Estimation by GMM does not require specifying a prior distribution for the
 \begin_inset Formula $\psi.$
 \end_inset
 
- Instead, following Ruge-Murcia (2012), we may place a prior on steady state
+ 
+\end_layout
+
+\begin_layout Itemize
+Instead, following Ruge-Murcia (2012), we may place a prior on steady state
  hours, 
 \begin_inset Formula $n$
 \end_inset
 
 .
- Given that hours 
+ 
+\end_layout
+
+\begin_layout Itemize
+Given that hours 
 \begin_inset Formula $n_{t}$
 \end_inset
 
@@ -30095,7 +30287,11 @@ Estimation by GMM does not require specifying a prior distribution for the
 \end_inset
 
 .
- If steady state hours, 
+ 
+\end_layout
+
+\begin_layout Itemize
+If steady state hours, 
 \begin_inset Formula $n$
 \end_inset
 
@@ -30109,7 +30305,12 @@ Estimation by GMM does not require specifying a prior distribution for the
 \begin_inset Formula $\psi$
 \end_inset
 
-, as follows: Given 
+, as follows: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Given 
 \begin_inset Formula $n,$
 \end_inset
 
@@ -30129,7 +30330,11 @@ Estimation by GMM does not require specifying a prior distribution for the
 \begin_inset Formula $c=y-i$
 \end_inset
 
-, and finally, using equation 
+
+\end_layout
+
+\begin_layout Itemize
+finally, using equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:MRS-MPL"
@@ -30155,6 +30360,7 @@ reference "eq:MRS-MPL"
 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -30208,10 +30414,8 @@ True parameters and support of uniform priors.
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="6">
+<lyxtabular version="3" rows="8" columns="4">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -30253,24 +30457,6 @@ True value
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Prior bias 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Prior RMSE
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -30298,7 +30484,7 @@ Prior RMSE
 \begin_inset Text
 
 \begin_layout Plain Layout
-1 
+0.995 
 \end_layout
 
 \end_inset
@@ -30308,24 +30494,6 @@ Prior RMSE
 
 \begin_layout Plain Layout
 0.990 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--0.015 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.021
 \end_layout
 
 \end_inset
@@ -30371,24 +30539,6 @@ Prior RMSE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.500 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.527
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -30416,7 +30566,7 @@ Prior RMSE
 \begin_inset Text
 
 \begin_layout Plain Layout
-1 
+0.995 
 \end_layout
 
 \end_inset
@@ -30426,24 +30576,6 @@ Prior RMSE
 
 \begin_layout Plain Layout
 0.900 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--0.400 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.493
 \end_layout
 
 \end_inset
@@ -30489,24 +30621,6 @@ Prior RMSE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.030 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.042
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -30534,7 +30648,7 @@ Prior RMSE
 \begin_inset Text
 
 \begin_layout Plain Layout
-1 
+0.995
 \end_layout
 
 \end_inset
@@ -30544,24 +30658,6 @@ Prior RMSE
 
 \begin_layout Plain Layout
 0.700 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--0.200 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.351
 \end_layout
 
 \end_inset
@@ -30607,24 +30703,6 @@ Prior RMSE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.040 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.049
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -30662,24 +30740,6 @@ Prior RMSE
 
 \begin_layout Plain Layout
 1/3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--0.021 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.042
 \end_layout
 
 \end_inset
@@ -30724,12 +30784,12 @@ Given a draw of the parameters other than
 \end_inset
 
  indexes the simulations.
- The model is solved using Dynare, using a third order perturbation about
- the steady state.
- Once the model is solved, a simulation of length 260 is done, initialized
+ The model is solved using SolveDSGE.jl, using a third order perturbation
+ about the steady state.
+ Once the model is solved, a simulation of length 1160 is done, initialized
  at the steady state.
- We drop 100 observations, retaining the last 160 observations, which mimic
- 40 years of quarterly data.
+ We drop the first 1000 observations, retaining the last 160 observations,
+ which mimic 40 years of quarterly data.
  The observable variables are 
 \begin_inset Formula $y,\,c,\,n,\,w,$
 \end_inset
@@ -30739,11 +30799,6 @@ Given a draw of the parameters other than
 \end_inset
 
 .
- The capital stock 
-\begin_inset Formula $k$
-\end_inset
-
- is not observed.
  The selection of observable variables is in line with much empirical work
  (e.g., 
 \begin_inset CommandInset citation
@@ -30765,288 +30820,65 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-The Dynare mod file that is used to solve and simulate data follows (note
- that the Dynare timing regarding when 
-\begin_inset Formula $k$
-\end_inset
-
- is available for use is the same as the timing used above):
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-// The two shock model
-\end_layout
-
-\begin_layout Plain Layout
-
-// This takes steady state of hours as given, and computes the psi
-\end_layout
-
-\begin_layout Plain Layout
-
-// parameter that corresponds.
-\end_layout
-
-\begin_layout Plain Layout
-
-close all;
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-// Define variables
-\end_layout
-
-\begin_layout Plain Layout
-
-var y c k n invest z1 z2 MUC MUL r w;
-\end_layout
-
-\begin_layout Plain Layout
-
-varexo e1 e2;
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-// Parameters
-\end_layout
-
-\begin_layout Plain Layout
-
-parameters alppha betta delta gam  nss rho1 sigma1 rho2 sigma2 psi c1 iss
- yss kss css;
-\end_layout
-
-\begin_layout Plain Layout
-
-load parameterfile;
-\end_layout
-
-\begin_layout Plain Layout
-
-set_param_value('alppha',0.33)
-\end_layout
-
-\begin_layout Plain Layout
-
-set_param_value('betta',beta)
-\end_layout
-
-\begin_layout Plain Layout
-
-set_param_value('delta',0.025)
-\end_layout
-
-\begin_layout Plain Layout
-
-set_param_value('gam',gam)
-\end_layout
-
-\begin_layout Plain Layout
-
-set_param_value('rho1',rho1)
-\end_layout
-
-\begin_layout Plain Layout
-
-set_param_value('sigma1',sigma1)
-\end_layout
-
-\begin_layout Plain Layout
-
-set_param_value('rho2',rho2)
-\end_layout
-
-\begin_layout Plain Layout
-
-set_param_value('sigma2',sigma2)
-\end_layout
-
-\begin_layout Plain Layout
-
-set_param_value('nss',nss)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-// Model
-\end_layout
-
-\begin_layout Plain Layout
-
-model;
-\end_layout
-
-\begin_layout Plain Layout
-
-  MUC = (c)^(-gam);
-\end_layout
-
-\begin_layout Plain Layout
-
-  MUL = psi*exp(z2);
-\end_layout
-
-\begin_layout Plain Layout
-
-  r = alppha * exp(z1) * (k(-1))^(alppha-1) * n^(1-alppha);
-\end_layout
-
-\begin_layout Plain Layout
-
-  w = (1-alppha)*exp(z1)* (k(-1))^alppha * n^(-alppha);
-\end_layout
-
-\begin_layout Plain Layout
-
-  MUC = betta*MUC(+1) * (1 + r(+1) - delta);
-\end_layout
-
-\begin_layout Plain Layout
-
-  MUL/MUC = w;
-\end_layout
-
-\begin_layout Plain Layout
-
-  z1 = rho1*z1(-1) + sigma1*e1;
-\end_layout
-
-\begin_layout Plain Layout
-
-  z2 = rho2*z2(-1) + sigma2*e2;
-\end_layout
-
-\begin_layout Plain Layout
-
-  y = exp(z1) * ((k(-1))^alppha) * (n^(1-alppha));
-\end_layout
-
-\begin_layout Plain Layout
-
-  invest = y - c;
-\end_layout
-
-\begin_layout Plain Layout
-
-  k = invest + (1-delta)*k(-1);
-\end_layout
-
-\begin_layout Plain Layout
-
-end;
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-// Shocks
-\end_layout
-
-\begin_layout Plain Layout
-
-shocks;
-\end_layout
-
-\begin_layout Plain Layout
-
-var e1 = 1;
-\end_layout
-
-\begin_layout Plain Layout
-
-var e2 = 1;
-\end_layout
-
-\begin_layout Plain Layout
-
-end;
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-// generate data
-\end_layout
-
-\begin_layout Plain Layout
-
-stoch_simul(nograph, noprint, nomoments, order=3, periods=260, irf=0) y
- c n r w;
-\end_layout
-
-\end_inset
-
-With this file, we can generate samples at the chosen parameter values.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Generating data
-\end_layout
-
-\begin_layout Standard
-The model is solved using Dynare, which requires Matlab or GNU Octave.
- After a careful price/quality evaluation, I decided to use the free choice,
- Octave.
- Octave may not be too fast, when you don't know some tricks, but it can
- get the job done.
- The script that generates the data is 
+The model file that SolveDSGE.jl uses is 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
  
 \backslash
-htmladdnormallink{make
-\backslash
-_simdata.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/DSGE/GenDa
-ta/make
-\backslash
-_simdata.m} 
+htmladdnormallink{CK.txt}{https://github.com/mcreel/Econometrics/blob/master/Examp
+les/DSGE/GenData/CK.txt} 
 \end_layout
 
 \end_inset
 
 .
+ It's remarkably close to the way the equations were presented above, I
+ find.
+ With this file, we can generate samples at the chosen parameter values.
+ The script that generates the data file 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{dsgedata.txt}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/DSGE/GenData/dsgedata.txt} 
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{GenData.jl}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/DSGE/GenData/GenData.jl} 
+\end_layout
+
+\end_inset
+
+.
+ To use it, start Julia in the directory of the script using 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+julia --project .
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
  Here's a plot of the 160 observations of the five observed variables.
 \end_layout
 
@@ -31070,7 +30902,7 @@ The DSGE data
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/DSGE/GenData/dsgedata.png
+	filename Examples/DSGE/GenData/dsgedata.svg
 	width 15cm
 
 \end_inset
@@ -31104,6 +30936,11 @@ the interest rate is pretty much constant, hours worked is a little more
 
 \begin_layout Itemize
 wages move around quite a bit in response to shocks
+\end_layout
+
+\begin_layout Itemize
+this data file will be treated as the true sample file in the examples that
+ follow.
 \end_layout
 
 \begin_layout Standard
