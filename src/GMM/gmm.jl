@@ -1,4 +1,4 @@
-using Calculus
+using ForwardDiff
 # moments should operate on a vector and return a nXg matrix
 # of moment contributions
 
@@ -14,7 +14,7 @@ function gmm(moments, theta, weight)
     # do minimization
     thetahat, objvalue, converged = fminunc(obj, theta)
     # derivative of average moments
-    D = (Calculus.jacobian(m, vec(thetahat), :central))' 
+    D = ForwardDiff.jacobian(m, vec(thetahat))' 
     # moment contributions at estimate
     ms = momentcontrib(thetahat)
     return thetahat, objvalue, D, ms, converged
@@ -33,7 +33,7 @@ function gmm(moments, theta)
     # do minimization
     thetahat, objvalue, converged = fminunc(obj, theta)
     # derivative of average moments
-    D = (Calculus.jacobian(m, vec(thetahat), :central))' 
+    D = ForwardDiff.jacobian(m, vec(thetahat), :central)' 
     # moment contributions at estimate
     ms = momentcontrib(thetahat)
     return thetahat, objvalue, D, ms, converged
