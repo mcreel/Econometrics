@@ -20,9 +20,8 @@ end
 dgp = θ -> CKdgp(θ, dsge, rand(1:Int64(1e12)))
 
 function TrueParameters()
-[0.33,  # α 
+ [
  0.99,  # β
- 0.025, # δ 
  2.0,   # γ     
  0.9,   # ρ₁  
  0.02,  # σ₁   
@@ -32,8 +31,8 @@ function TrueParameters()
 end    
 
 function PriorSupport()
-    lb = [0.33, 0.95, 0.025, 0.0, 0.0, 0.0, 0.0, 0.0, 6.0/24.0]
-    ub = [0.33, 0.995, 0.025, 5.0, 0.995, 0.1, 0.995, 0.1, 9.0/24.0]
+    lb = [0.95, 0.0, 0.0, 0.0, 0.0, 0.0, 6.0/24.0]
+    ub = [0.995, 5.0, 0.995, 0.1, 0.995, 0.1, 9.0/24.0]
     lb,ub
 end    
 
@@ -53,7 +52,9 @@ end
 
 
 function ParamsAndSS(params)
-    α, β, δ, γ, ρ₁, σ₁, ρ₂, σ₂, nss = params
+    α = 0.33
+    δ = 0.025
+    β, γ, ρ₁, σ₁, ρ₂, σ₂, nss = params
     c1 = ((1/β  + δ - 1)/α)^(1/(1-α))
     kss = nss/c1
     iss = δ*kss
@@ -64,7 +65,7 @@ function ParamsAndSS(params)
     wss = (1-α)* (kss)^α * nss^(-α)
     MULss = wss*MUCss
     ψ =  (css^(-γ)) * (1-α) * (kss^α) * (nss^(-α))
-    p = [α, β, δ, γ,ρ₁ , σ₁, ρ₂, σ₂, ψ]
+    p = [β, γ, ρ₁ , σ₁, ρ₂, σ₂, ψ]
     ss = [0.0, 0.0, kss, yss, css, nss, rss, wss, MUCss, MULss]
     return p, ss
 end   
