@@ -1,7 +1,7 @@
 # This file illustrates how the delta method may be used
 # to calculate the covariance of a nonlinear function of
 # estimated parameters
-using Calculus, LinearAlgebra, Statistics
+using ForwardDiff LinearAlgebra, Statistics
 # this function that gives the elasticities of x*b wrt x:
 function ElasticitiesLinearModel(theta, x)
 	elasticities = (theta .* x) / (x'theta)
@@ -21,7 +21,7 @@ x = vec(mean(x,dims=1))
 
 Elasticities = theta -> vec(ElasticitiesLinearModel(theta, x))
 # want derivatives by param in the rows: kXg from GMM theory 
-J = Calculus.jacobian(Elasticities, b, :central)'
+J = ForwardDiff.jacobian(Elasticities, b)'
 elasticities = Elasticities(b)
 var_elasticities = J*varb*J'
 # Taa daa - the results!
