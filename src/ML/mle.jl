@@ -10,6 +10,7 @@ the observations
 * execute mleresults() for an example, or edit(mleresults,()) to see the code.
 
 """
+using ForwardDiff
 function mle(model, θ, vc=1)
     avg_obj = θ -> -mean(vec(model(θ))) # average log likelihood
     thetahat, objvalue, converged = fminunc(avg_obj, θ) # do the minimization of -logL
