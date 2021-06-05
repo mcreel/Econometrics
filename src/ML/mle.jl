@@ -20,7 +20,7 @@ function mle(model, θ, vc=1)
     n = size(obj(θ),1) # how many observations?
     scorecontrib = ForwardDiff.jacobian(obj, vec(thetahat))
     I = cov(scorecontrib)
-    J = Calculus.ForwardDiff(avg_obj, vec(thetahat))
+    J = ForwardDiff.hessian(avg_obj, vec(thetahat))
     Jinv = inv(J)
     if vc==2
         V = Jinv/n      # other possibilities
