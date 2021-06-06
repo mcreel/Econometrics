@@ -1,0 +1,6 @@
+DoMCMC.jl does GMM via MCMC, as in Chernozhukov-Hong, 2003.
+
+
+You can either use the default single data set, or can use the 1000 data sets
+in the compressed file: edit DoMCMC.jl accordingly.
+ 

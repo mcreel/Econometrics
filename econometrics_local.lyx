@@ -43151,6 +43151,12 @@ Translate the HallGMM.m code to run on Julia.
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:GMM-estimation-of"
+
+\end_inset
+
 GMM estimation of the DSGE example
 \end_layout
 
@@ -43410,16 +43416,42 @@ GE/GMM/DoGMM.jl}
 
  implements CUE-GMM estimation of the model, using the selected moment condition
 s, using simulated annealing to do the minimization
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 The final estimates, standard errors, and 95% CI bounds, are
 \begin_inset Newline newline
 \end_inset
 
- 
-\family typewriter
 
+\begin_inset Graphics
+	filename Examples/DSGE/GMM/gmm.png
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+the point estimates are not bad, but the standard errors of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+ are quite high.
+ The true parameters are inside the 95% confidence intervals, in all cases.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
 \begin_inset Newpage newpage
 \end_inset
 
@@ -50293,14 +50325,17 @@ status open
  
 \backslash
 htmladdnormallink{DoMCMC.jl}{file:///home/michael/Mystuff/Econometrics/Examples/D
-SGE/MCMC/DoMCMC.jl} 
+SGE/BayesianGMM/DoMCMC.jl} 
 \end_layout
 
 \end_inset
 
 .
- This can be used to compute posterior densities for the parameters, for
- example, the estimated posterior for 
+ The issue of how to come up with an effective proposal density is always
+ important when doing MH MCMC.
+ Examine the code to see what was done, which perhaps could be improved.
+ Once we have the chain, it can be used to compute posterior densities for
+ the parameters, for example, the estimated posterior for 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -50309,22 +50344,80 @@ SGE/MCMC/DoMCMC.jl}
 \begin_inset Formula $\gamma=2$
 \end_inset
 
-, so, for this sample, the method worked fairly well.
- However, the true values of 
-\begin_inset Formula $\gamma$
+, so, for this sample, the method worked reasonably well for point estimation.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Examples/DSGE/BayesianGMM/gamma.svg
+	width 15cm
+
 \end_inset
 
- and two of the other parameters are still outside of the 90% HPD intervals.
- The point estimation is working pretty well, but inference still has some
- weaknesses.
- This is only for a single sample, though, it may be that things work better
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The results for all parameters follow.
+ For all parameters except 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ (the 4th), the true parameters lie
+\emph on
+ outside
+\emph default
+ the 90% confidence intervals.
+ The point estimation is working pretty well, as point estimators are pretty
+ close to the true values, but inference has some weaknesses.
+ Recall that overidentified GMM often over-rejects true null hypotheses.
+ Perhaps this is going on here.
+ However, this is only for a single sample, it may be that things work better
  on average! It wouldn't be too hard to find out.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename Examples/DSGE/MCMC/gamma.png
-	width 15cm
+	filename Examples/DSGE/BayesianGMM/results.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For reference, here are the results from ordinary CUE-GMM (extremum estimator),
+ from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:GMM-estimation-of"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Note that the point estimates are very close to the Bayesian GMM point
+ estimates, but the standard deviations and confidence intervals are quite
+ different.
+ The standard errors from the asymptotics are about 10X larger than what
+ we get from the Bayesian version.
+ That seems excessive.
+ It seems that the Bayesian confidence intervals are too tight for correct
+ coverage, but the classical confidence intervals are too loose, and are
+ likely to contain the true parameters too often, which leads to low power
+ of hypothesis tests.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Examples/DSGE/GMM/gmm.png
 
 \end_inset
 
@@ -50339,22 +50432,19 @@ SGE/MCMC/DoMCMC.jl}
 \end_layout
 
 \begin_layout Standard
-The results for all parameters are
+The results for all parameters, with the corresponding chains, are
 \end_layout
 
 \begin_layout Standard
+:
 \begin_inset Graphics
-	filename Examples/DSGE/MCMC/results.png
+	filename Examples/DSGE/BayesianGMM/allparams.svg
 	lyxscale 75
 	width 20cm
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-The final line are statistics for the acceptance rate.
 \end_layout
 
 \begin_layout Standard
