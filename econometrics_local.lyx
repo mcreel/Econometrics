@@ -29239,7 +29239,7 @@ At the beginning of period
 \end_inset
 
 , the household owns a given amount of capital, 
-\begin_inset Formula $k_{t-1}$
+\begin_inset Formula $k_{t}$
 \end_inset
 
 , and chooses 
@@ -29267,7 +29267,7 @@ E_{t}\sum_{s=0}^{\infty}\beta^{s}\left(\frac{c_{t+s}^{1-\gamma}}{1-\gamma}+(1-n_
 
 \begin_layout Itemize
 subject to the budget constraint 
-\begin_inset Formula $c_{t}+i_{t}=r_{t}k_{t-1}+w_{t}n_{t}$
+\begin_inset Formula $c_{t}+i_{t}=r_{t}k_{t}+w_{t}n_{t}$
 \end_inset
 
 
@@ -29283,7 +29283,7 @@ available time
 
 \begin_layout Itemize
 and the accumulation of capital 
-\begin_inset Formula $k_{t}=i_{t}+(1-\delta)k_{t-1}$
+\begin_inset Formula $k_{t+1}=i_{t}+(1-\delta)k_{t}$
 \end_inset
 
  : investment and depreciation
@@ -29328,7 +29328,7 @@ Firm's problem
 
 \begin_layout Standard
 The competitive firm maximizes profits 
-\begin_inset Formula $y_{t}-w_{t}n_{t}-r_{t}k_{t-1}$
+\begin_inset Formula $y_{t}-w_{t}n_{t}-r_{t}k_{t}$
 \end_inset
 
  from production of the good 
@@ -29351,7 +29351,7 @@ The competitive firm maximizes profits
  is normalized to 1).
 \begin_inset Formula 
 \begin{equation}
-y_{t}=k_{t-1}^{\alpha}n_{t}^{1-\alpha}z_{t}\label{eq:DSGE production}
+y_{t}=k_{t}^{\alpha}n_{t}^{1-\alpha}z_{t}\label{eq:DSGE production}
 \end{equation}
 
 \end_inset
@@ -29477,8 +29477,8 @@ Four definitions are
 \textrm{marginal utility of consumption: }MUC_{t} & := & c_{t}^{-\gamma}\\
 \textrm{marginal utility of leisure: }MUL_{t} & := & \psi\eta_{t}\\
 \textrm{marginal rate of substitution: }MRS_{t} & := & MUC_{t}/MUL_{t}\\
-\textrm{marginal product of labor: }MPL_{t} & := & \left(1-\alpha\right)z_{t}k_{t-1}^{\alpha}n_{t}^{-\alpha}\\
-\textrm{marginal product of capital: }MPK_{t} & := & \alpha z_{t}k_{t-1}^{\alpha-1}n_{t}^{1-\alpha}
+\textrm{marginal product of labor: }MPL_{t} & := & \left(1-\alpha\right)z_{t}k_{t}^{\alpha}n_{t}^{-\alpha}\\
+\textrm{marginal product of capital: }MPK_{t} & := & \alpha z_{t}k_{t}^{\alpha-1}n_{t}^{1-\alpha}
 \end{eqnarray*}
 
 \end_inset
@@ -29490,7 +29490,7 @@ With these definitions, the 9 equations that characterize the solution for
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray}
-MUC_{t} & = & E\left(\beta\cdot MUC_{t+1}\left[1+MPK_{t+1}-\delta\right]\right)\label{eq:Euler}\\
+MUC_{t} & = & E\left(\beta\cdot MUC_{t+1}\left[1+r_{t+1}-\delta\right]\right)\label{eq:Euler}\\
 \textrm{ }1/MRS_{t} & = & w_{t}\label{eq:MRS-wage}\\
 w_{t} & = & MPL_{t}\label{MPL-wage}\\
 r_{t} & = & MPK_{t}\label{eq:-3}\\
@@ -29498,7 +29498,7 @@ r_{t} & = & MPK_{t}\label{eq:-3}\\
 \ln z_{t} & = & \rho_{z}\ln z_{t-1}+\sigma_{z}u_{t}\label{eq:-1}\\
 y_{t} & = & z_{t}k_{t-1}^{\alpha}n_{t}^{(1-\alpha)}\label{eq:output}\\
 i_{t} & = & y_{t}-c_{t}\label{eq:investment}\\
-k_{t} & = & i_{t}+(1-\delta)k_{t-1}\label{eq:capital}
+k_{t+1} & = & i_{t}+(1-\delta)k_{t}\label{eq:capital}
 \end{eqnarray}
 
 \end_inset
@@ -43436,8 +43436,17 @@ The final estimates, standard errors, and 95% CI bounds, are
  
 \end_layout
 
+\begin_layout Standard
+
+\family typewriter
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
-the point estimates are not bad, but the standard errors of 
+the point estimates are very good, but the standard errors of 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -43446,16 +43455,24 @@ the point estimates are not bad, but the standard errors of
 \end_inset
 
  are quite high.
- The true parameters are inside the 95% confidence intervals, in all cases.
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-\begin_inset Newpage newpage
+ Some parameters are precisely estimated, but others, especially 
+\begin_inset Formula $\rho_{\eta}$
 \end_inset
 
+ have fairly large standard errors.
+ Perhaps better moments could be found to better identify these parameters.
+\end_layout
 
+\begin_layout Itemize
+The true parameters are inside the 95% confidence intervals, in all cases.
+ (See Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:True-parameters-and"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Itemize
@@ -43472,42 +43489,25 @@ Simulated annealing, on the other hand, converges to the same value in repeated
  It is possible that on a given run, a different outcome might be obtained,
  if the cooling rate is too rapid, but I have yet to see this with the current
  setup.
-\end_layout
-
-\begin_layout Itemize
-SA requires many function evaluations, about 30000 with the setting in the
- example code.
+ SA requires many function evaluations, about 30000 with the setting in
+ the example code.
  However, it doesn't take too long, only about 11 seconds.
  This doesn't seem like too much time to get a reliable answer.
 \end_layout
 
 \begin_layout Itemize
-The estimates are close to the true parameter values (see Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:True-parameters-and"
+The take home conclusions here are:
+\end_layout
 
-\end_inset
-
-).
- Some parameters are precisely estimated, but others, especially 
-\begin_inset Formula $\rho_{\eta}$
-\end_inset
-
- have fairly large standard errors.
- Perhaps better moments could be found to better identify these parameters.
+\begin_deeper
+\begin_layout Itemize
+that GMM can give reliable estimates, but perhaps we should try to improve
+ estimation of some parameters.
 \end_layout
 
 \begin_layout Itemize
-if you attempt to use a less conservative cooling schedule, e.g., setting
- ns = 1, rt = 0.25 estimation using SA will rarely be successful.
- 
-\end_layout
-
-\begin_layout Itemize
-The take home conclusion here is that multiple local minima and irregular
- objective functions really can be a problem, even with simple models like
- this one.
+multiple local minima and irregular objective functions really can be a
+ problem, even with simple models like this one.
  Imagine what would happen with a large scale DSGE model! For similar problems
  with a model that is much more simple, see 
 \begin_inset CommandInset citation
@@ -43545,6 +43545,7 @@ noprefix "false"
 .
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -50364,26 +50365,35 @@ SGE/BayesianGMM/DoMCMC.jl}
 
 \begin_layout Standard
 The results for all parameters follow.
- For all parameters except 
-\begin_inset Formula $\sigma_{1}$
+ The point estimates (mean and 50% quantile) are very close to the true
+ values.
+ The true values of most parameters are close to the center of the 95% confidenc
+e intervals, with 
+\begin_inset Formula $\beta$
 \end_inset
 
- (the 4th), the true parameters lie
-\emph on
- outside
-\emph default
- the 90% confidence intervals.
- The point estimation is working pretty well, as point estimators are pretty
- close to the true values, but inference has some weaknesses.
- Recall that overidentified GMM often over-rejects true null hypotheses.
- Perhaps this is going on here.
- However, this is only for a single sample, it may be that things work better
- on average! It wouldn't be too hard to find out.
+ and nss being the exceptions.
+ A notable difference with respect to extremum-based GMM, which computes
+ confidence intervals using asymptotic theory, is that the confidence intervals
+ for 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+ are much tighter here.
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
 	filename Examples/DSGE/BayesianGMM/results.png
+	width 15cm
 
 \end_inset
 
@@ -50406,18 +50416,21 @@ noprefix "false"
  Note that the point estimates are very close to the Bayesian GMM point
  estimates, but the standard deviations and confidence intervals are quite
  different.
- The standard errors from the asymptotics are about 10X larger than what
+ The standard errors from the asymptotics are considerably larger than what
  we get from the Bayesian version.
- That seems excessive.
- It seems that the Bayesian confidence intervals are too tight for correct
- coverage, but the classical confidence intervals are too loose, and are
- likely to contain the true parameters too often, which leads to low power
- of hypothesis tests.
+ Which of the two versions of confidence intervals are more accurate is
+ still an open question.
+ We will return to this issue later.
+\begin_inset VSpace defskip
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
 	filename Examples/DSGE/GMM/gmm.png
+	width 15cm
 
 \end_inset
 
@@ -50432,7 +50445,8 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-The results for all parameters, with the corresponding chains, are
+Here is a summary of the chain, using the very nice MCMCChains.jl package.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -50440,7 +50454,7 @@ The results for all parameters, with the corresponding chains, are
 \begin_inset Graphics
 	filename Examples/DSGE/BayesianGMM/allparams.svg
 	lyxscale 75
-	width 20cm
+	width 12cm
 
 \end_inset
 

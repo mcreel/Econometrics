@@ -1,6 +1,6 @@
 # computes the errors as outlined in the notes. Use these to generate
 # moment conditions for estimation
-function DSGEmoments(thetas, data)
+function DSGEmoments(θ, data)
         # break out variables
         y = data[:,1]
         c = data[:,2]
@@ -8,46 +8,41 @@ function DSGEmoments(thetas, data)
         r = data[:,4]
         w = data[:,5]
         # break out params    
-        alpha = 0.33
-        delta = 0.025
-        beta = thetas[1]
-        gam = thetas[2]
-        rho_z = thetas[3]
-        sig_z = thetas[4]
-        rho_eta = thetas[5]
-        sig_eta = thetas[6]
-        nss = thetas[7]
-        # recover psi
-        c1 = ((1.0/beta + delta - 1.0)/alpha)^(1.0/(1.0-alpha))
+        α = 0.33
+        δ = 0.025
+        β = θ[1]
+        γ = θ[2]
+        ρ_z = θ[3]
+        σ_z = θ[4]
+        ρ_η = θ[5]
+        σ_η = θ[6]
+        nss = θ[7]
+        # recover ψ
+        c1 = ((1.0/β + δ - 1.0)/α)^(1.0/(1.0-α))
         kss = nss/c1
-        iss = delta*kss
-        yss = kss^alpha * nss^(1-alpha)
+        iss = δ*kss
+        yss = kss^α * nss^(1-α)
         css = yss - iss
-        psi =  (css^(-gam)) * (1-alpha) * (kss^alpha) * (nss^(-alpha))
-        # use MPL-MRS to get eta, the preference shock
-        eta = log.(w) .- gam*log.(c) .- log.(psi)
-        X = lag(eta,1)
-        u = (eta-X*rho_eta)/sig_eta
-        e1 = X.*u
+        ψ =  (css^(-γ)) * (1-α) * (kss^α) * (nss^(-α))
+        # use MPL-MRS to get η, the preference shock
+        η = log.(w) .- γ*log.(c) .- log.(ψ)
+        u = (η[2:end]-η[1:end-1]*ρ_η)/σ_η
+        e1 = η[1:end-1].*u
         e2 = u.^2.0 .- 1.0
-        pref_shock = copy(u)
+        pref_shock = u
         # now the Euler eqn
-        e3 = (1.0 .+ r .- delta).*beta.*(c.^(-gam)) .- lag(c,1).^(-gam) 
-        e3 = 100.0*e3
+        e3 = (100*((1.0 .+ r .- δ).*β.*(c.^(-γ)) .- lag(c,1).^(-γ)))[2:end] 
         # recover K from MPK/MPL
-        lagk = (alpha/(1.0-alpha))*lag(n.*w./r,1)
+        k = (α/(1.0-α))*n.*w./r
         # get z, the production shock, from the production function
-        z = log.(y) - alpha*log.(lagk) - (1.0-alpha)*log.(n)
-        X = lag(z,1)
-        u = (z-X*rho_z)/sig_z
-        e4 = X.*u
+        z = log.(y) - α*log.(k) - (1.0-α)*log.(n)
+        u = (z[2:end]-z[1:end-1]*ρ_z)/σ_z
+        e4 = z[1:end-1].*u
         e5 = u.^2.0 .- 1.0
-        tech_shock = copy(u)
+        tech_shock = u
         # make moment conditions
-        data = lag(data,1)
+        data = log.(data)[1:end-1,:]
         errors = [e1 e2 e3 e4 e5 pref_shock.*data tech_shock.*data data.*e3]
-        errors = errors[2:end,:] # need to drop 2, because lagk uses a lag, and we use lagged lagk
-        #dstats(errors);
         return errors
 end
 
