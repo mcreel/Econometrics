@@ -35903,11 +35903,8 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimateCGHK
-\backslash
-_ML.m}{file:///home/michael/Mystuff/Econometrics/Examples/DSGE/ML/EstimateCGHK
-\backslash
-_ML.m} 
+htmladdnormallink{CKml.mod}{file:///home/michael/Mystuff/Econometrics/Examples/DS
+GE/ML/CKml.mod} 
 \end_layout
 
 \end_inset
@@ -35923,6 +35920,11 @@ literal "false"
 \end_inset
 
  package.
+ To run it, start Octave/Matlab, and then enter 
+\family typewriter
+dynare CKml.mod
+\family default
+.
  Some output that can be obtained is:
 \end_layout
 
@@ -35937,7 +35939,8 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-this is pretty good! However...
+this is pretty good! And it only too 4s.
+ However...
 \end_layout
 
 \begin_layout Itemize
@@ -36029,8 +36032,7 @@ This is not a problem of the ML method, it is a problem due to the fact
 The intention of presenting this example is to show that ML may be used
  for estimation of complex models.
  The problem here is that the econometric model is not complex enough: the
- linearization throws away so much information so that estimation becomes
- impossible.
+ linearization throws information, so that estimation may be unreliable.
  A better solution is to try to actually do ML estimation for the true nonlinear
  model: see papers by Fernández-Villaverde and Rubio-Ramírez, which use
  particle filtering.
@@ -50107,7 +50109,7 @@ reference "subsec:DSGE-ML"
 , a simple DSGE model was estimated by ML.
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -50115,10 +50117,8 @@ status collapsed
 \backslash
 htmladdnormallink{EstimateCGHK
 \backslash
-_Bayes.m}{file:///home/michael/Mystuff/Econometrics/Examples/DSGE/Bayesian/Estima
-teCGHK
-\backslash
-_Bayes.m} 
+_Bayes.m}{file:///home/michael/Mystuff/Econometrics/Examples/DSGE/Bayesian/CKmcmc.
+mod} 
 \end_layout
 
 \end_inset
@@ -50126,6 +50126,9 @@ _Bayes.m}
  is a script which estimates the same model, using Bayesian methods, with
  MCMC or particle filtering.
  Adjust the .mod file mentioned in the script to change options.
+ Run it in Octave/Dynare using 
+\family typewriter
+dynare CKmcmc.mod
 \end_layout
 
 \begin_layout Standard
@@ -50146,34 +50149,15 @@ reference "fig:MCMC-results-for"
 \end_inset
 
 .
- Most of the true parameter values are inside the 90% HPD intervals, though
- this is not the case for 
-\begin_inset space ~
+ However, note that the results for the parameter 
+\begin_inset Formula $\gamma$
 \end_inset
 
-
-\begin_inset Formula $\beta,$
-\end_inset
-
-
-\begin_inset Formula $\rho_{2},$
-\end_inset
-
-and 
-\begin_inset Formula $\sigma_{2}$
-\end_inset
-
-.
- Perhaps this is in part due to the linearized model being used to specify
- the 
-\begin_inset Quotes sld
-\end_inset
-
-likelihood
-\begin_inset Quotes srd
-\end_inset
-
-.
+ change quite a bit, depending on which observable variables are used.
+ This is probably due to the stochastic singularity problem, when a first
+ order solution is used.
+ When we don't know the true parameter values, how do we choose which results
+ to use?
 \end_layout
 
 \begin_layout Itemize
@@ -50203,7 +50187,8 @@ name "fig:MCMC-results-for"
 
 \end_inset
 
-MCMC results for simple DSGE example model (two different runs)
+MCMC results for simple DSGE example model (two different runs using different
+ observed variables)
 \end_layout
 
 \end_inset
@@ -50214,6 +50199,7 @@ MCMC results for simple DSGE example model (two different runs)
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/DSGE/Bayesian/MCMC.png
+	width 20cm
 
 \end_inset
 
@@ -50223,7 +50209,7 @@ MCMC results for simple DSGE example model (two different runs)
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/DSGE/Bayesian/MCMC2.png
-	width 15cm
+	width 20cm
 
 \end_inset
 
@@ -50272,7 +50258,7 @@ CGHK model, posteriors
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/DSGE/Bayesian/posterior.png
-	width 22cm
+	width 20cm
 
 \end_inset
 

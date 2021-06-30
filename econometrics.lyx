@@ -692,7 +692,7 @@ literal "false"
 in the econometrics_local.lyx file, while editing using LyX, search for all
  instances of 
 \family typewriter
-https://github.com/mcreel/Econometrics/blob/master
+ https://github.com/mcreel/Econometrics/blob/master
 \family default
 , and replace them with 
 \family typewriter
@@ -1206,8 +1206,8 @@ status open
 
  
 \backslash
-htmladdnormallink{BasicDataAnalysis.jl}{https://github.com/mcreel/Econometrics/blo
-b/master/Examples/Julia/BasicDataAnalysis.jl} 
+htmladdnormallink{BasicDataAnalysis.jl}{ https://github.com/mcreel/Econometrics/bl
+ob/master/Examples/Julia/BasicDataAnalysis.jl} 
 \end_layout
 
 \end_inset
@@ -1228,8 +1228,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataWrangling.jl}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/Julia/DataWrangling.jl} 
+htmladdnormallink{DataWrangling.jl}{ https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/Julia/DataWrangling.jl} 
 \end_layout
 
 \end_inset
@@ -1287,8 +1287,8 @@ status open
 
  
 \backslash
-htmladdnormallink{data}{https://github.com/mcreel/Econometrics/blob/master/Exampl
-es/Intro/data.txt}
+htmladdnormallink{data}{ https://github.com/mcreel/Econometrics/blob/master/Examp
+les/Intro/data.txt}
 \end_layout
 
 \end_inset
@@ -1362,8 +1362,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{this script}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/Intro/SupplyDemand.jl}
+htmladdnormallink{this script}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/Intro/SupplyDemand.jl}
 \end_layout
 
 \end_inset
@@ -2144,8 +2144,8 @@ status open
 
  
 \backslash
-htmladdnormallink{TypicalData.jl}{https://github.com/mcreel/Econometrics/blob/mast
-er/Examples/OLS/TypicalData.jl}
+htmladdnormallink{TypicalData.jl}{ https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/OLS/TypicalData.jl}
 \end_layout
 
 \end_inset
@@ -2474,8 +2474,8 @@ status open
 
  
 \backslash
-htmladdnormallink{OlsFit.jl}{https://github.com/mcreel/Econometrics/blob/master/Ex
-amples/OLS/OlsFit.jl} 
+htmladdnormallink{OlsFit.jl}{ https://github.com/mcreel/Econometrics/blob/master/E
+xamples/OLS/OlsFit.jl} 
 \end_layout
 
 \end_inset
@@ -3107,8 +3107,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{InfluentialObservation.jl}{https://github.com/mcreel/Econometric
-s/blob/master/Examples/OLS/InfluentialObservation.jl}
+htmladdnormallink{InfluentialObservation.jl}{ https://github.com/mcreel/Econometri
+cs/blob/master/Examples/OLS/InfluentialObservation.jl}
 \end_layout
 
 \end_inset
@@ -3797,8 +3797,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Unbiased.jl}{https://github.com/mcreel/Econometrics/blob/master/
-Examples/OLS/Unbiased.jl} 
+htmladdnormallink{Unbiased.jl}{ https://github.com/mcreel/Econometrics/blob/master
+/Examples/OLS/Unbiased.jl} 
 \end_layout
 
 \end_inset
@@ -3941,8 +3941,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Biased.jl}{https://github.com/mcreel/Econometrics/blob/master/Ex
-amples/OLS/Biased.jl} 
+htmladdnormallink{Biased.jl}{ https://github.com/mcreel/Econometrics/blob/master/E
+xamples/OLS/Biased.jl} 
 \end_layout
 
 \end_inset
@@ -4244,8 +4244,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Efficiency.jl}{https://github.com/mcreel/Econometrics/blob/maste
-r/Examples/OLS/Efficiency.jl} 
+htmladdnormallink{Efficiency.jl}{ https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/OLS/Efficiency.jl} 
 \end_layout
 
 \end_inset
@@ -4698,8 +4698,8 @@ status open
 
 
 \backslash
-htmladdnormallink{nerlove.data}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/Data/nerlove.data} 
+htmladdnormallink{nerlove.data}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/Data/nerlove.data} 
 \end_layout
 
 \end_inset
@@ -4807,8 +4807,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Nerlove.jl}{https://github.com/mcreel/Econometrics/blob/master/E
-xamples/OLS/Nerlove.jl} 
+htmladdnormallink{Nerlove.jl}{ https://github.com/mcreel/Econometrics/blob/master/
+Examples/OLS/Nerlove.jl} 
 \end_layout
 
 \end_inset
@@ -4878,8 +4878,8 @@ status open
 
  
 \backslash
-htmladdnormallink{NerloveDF.jl}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/OLS/NerloveDF.jl} 
+htmladdnormallink{NerloveDF.jl}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/OLS/NerloveDF.jl} 
 \end_layout
 
 \end_inset
@@ -4923,8 +4923,8 @@ status open
 
  
 \backslash
-htmladdnormallink{nerlove.gdt}{https://github.com/mcreel/Econometrics/blob/master/
-Examples/Data/nerlove.gdt} 
+htmladdnormallink{nerlove.gdt}{ https://github.com/mcreel/Econometrics/blob/master
+/Examples/Data/nerlove.gdt} 
 \end_layout
 
 \end_inset
@@ -8066,8 +8066,8 @@ status open
 
  
 \backslash
-htmladdnormallink{ExampleDeltaMethod.jl}{https://github.com/mcreel/Econometrics/bl
-ob/master/Examples/Restrictions/ExampleDeltaMethod.jl}
+htmladdnormallink{ExampleDeltaMethod.jl}{ https://github.com/mcreel/Econometrics/b
+lob/master/Examples/Restrictions/ExampleDeltaMethod.jl}
 \end_layout
 
 \end_inset
@@ -8215,8 +8215,8 @@ status open
 
  
 \backslash
-htmladdnormallink{NerloveRestrictions.jl}{https://github.com/mcreel/Econometrics/b
-lob/master/Examples/Restrictions/NerloveRestrictions.jl} 
+htmladdnormallink{NerloveRestrictions.jl}{ https://github.com/mcreel/Econometrics/
+blob/master/Examples/Restrictions/NerloveRestrictions.jl} 
 \end_layout
 
 \end_inset
@@ -8463,8 +8463,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Restrictions/ChowTest.jl}{https://github.com/mcreel/Econometrics
-/blob/master/Examples/Restrictions/ChowTest.jl}
+htmladdnormallink{Restrictions/ChowTest.jl}{ https://github.com/mcreel/Econometric
+s/blob/master/Examples/Restrictions/ChowTest.jl}
 \end_layout
 
 \end_inset
@@ -9612,8 +9612,8 @@ status open
 
  
 \backslash
-htmladdnormallink{mortality.data}{https://github.com/mcreel/Econometrics/blob/mast
-er/Examples/Data/mortality.data} 
+htmladdnormallink{mortality.data}{ https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/Data/mortality.data} 
 \end_layout
 
 \end_inset
@@ -11066,8 +11066,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataProblems/collinearity.jl}{https://github.com/mcreel/Economet
-rics/blob/master/Examples/DataProblems/collinearity.jl} 
+htmladdnormallink{DataProblems/collinearity.jl}{ https://github.com/mcreel/Econome
+trics/blob/master/Examples/DataProblems/collinearity.jl} 
 \end_layout
 
 \end_inset
@@ -11241,8 +11241,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataProblems/NerloveCollinearity.jl}{https://github.com/mcreel/E
-conometrics/blob/master/Examples/DataProblems/NerloveCollinearity.jl} 
+htmladdnormallink{DataProblems/NerloveCollinearity.jl}{ https://github.com/mcreel/
+Econometrics/blob/master/Examples/DataProblems/NerloveCollinearity.jl} 
 \end_layout
 
 \end_inset
@@ -11708,8 +11708,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataProblems/RidgeRegression.jl}{https://github.com/mcreel/Econo
-metrics/blob/master/Examples/DataProblems/RidgeRegression.jl} 
+htmladdnormallink{DataProblems/RidgeRegression.jl}{ https://github.com/mcreel/Econ
+ometrics/blob/master/Examples/DataProblems/RidgeRegression.jl} 
 \end_layout
 
 \end_inset
@@ -12137,8 +12137,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataProblems/MeasurementError.jl}{https://github.com/mcreel/Econ
-ometrics/blob/master/Examples/DataProblems/MeasurementError.jl} 
+htmladdnormallink{DataProblems/MeasurementError.jl}{ https://github.com/mcreel/Eco
+nometrics/blob/master/Examples/DataProblems/MeasurementError.jl} 
 \end_layout
 
 \end_inset
@@ -12671,8 +12671,8 @@ status open
 
  
 \backslash
-htmladdnormallink{sampsel.jl}{https://github.com/mcreel/Econometrics/blob/master/E
-xamples/DataProblems/sampsel.jl} 
+htmladdnormallink{sampsel.jl}{ https://github.com/mcreel/Econometrics/blob/master/
+Examples/DataProblems/sampsel.jl} 
 \end_layout
 
 \end_inset
@@ -14715,8 +14715,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GLS/EffectsOLS.jl}{https://github.com/mcreel/Econometrics/blob/m
-aster/Examples/GLS/EffectsOLS.jl}
+htmladdnormallink{GLS/EffectsOLS.jl}{ https://github.com/mcreel/Econometrics/blob/
+master/Examples/GLS/EffectsOLS.jl}
 \end_layout
 
 \end_inset
@@ -14885,8 +14885,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GLS/cholesky.jl}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/GLS/cholesky.jl}
+htmladdnormallink{GLS/cholesky.jl}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/GLS/cholesky.jl}
 \end_layout
 
 \end_inset
@@ -15896,8 +15896,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GLS/Heteroscedasticity.inp}{https://github.com/mcreel/Econometri
-cs/blob/master/Examples/GLS/Heteroscedasticity.inp}
+htmladdnormallink{GLS/Heteroscedasticity.inp}{ https://github.com/mcreel/Econometr
+ics/blob/master/Examples/GLS/Heteroscedasticity.inp}
 \end_layout
 
 \end_inset
@@ -16428,8 +16428,8 @@ status open
 
  
 \backslash
-htmladdnormallink{nerlove.gdt}{https://github.com/mcreel/Econometrics/blob/master/
-Examples/Data/nerlove.gdt} 
+htmladdnormallink{nerlove.gdt}{ https://github.com/mcreel/Econometrics/blob/master
+/Examples/Data/nerlove.gdt} 
 \end_layout
 
 \end_inset
@@ -16533,8 +16533,8 @@ status open
 
  
 \backslash
-htmladdnormallink{CO2.data}{https://github.com/mcreel/Econometrics/blob/master/Exa
-mples/Data/CO2.data} 
+htmladdnormallink{CO2.data}{ https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/Data/CO2.data} 
 \end_layout
 
 \end_inset
@@ -17505,8 +17505,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GLS/AR1Errors.m}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/GLS/AR1Errors.m}
+htmladdnormallink{GLS/AR1Errors.m}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/GLS/AR1Errors.m}
 \end_layout
 
 \end_inset
@@ -18420,8 +18420,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GLS/DynamicMA.m}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/GLS/DynamicMA.m} 
+htmladdnormallink{GLS/DynamicMA.m}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/GLS/DynamicMA.m} 
 \end_layout
 
 \end_inset
@@ -18773,8 +18773,8 @@ status open
 
 
 \backslash
-htmladdnormallink{nerlove.data}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/Data/nerlove.data} 
+htmladdnormallink{nerlove.data}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/Data/nerlove.data} 
 \end_layout
 
 \end_inset
@@ -18861,8 +18861,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{hall.csv}{https://github.com/mcreel/Econometrics/blob/master/Exa
-mples/Data/hall.csv} 
+htmladdnormallink{hall.csv}{ https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/Data/hall.csv} 
 \end_layout
 
 \end_inset
@@ -18875,8 +18875,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{hall.gdt}{https://github.com/mcreel/Econometrics/blob/master/Exa
-mples/Data/hall.gdt} 
+htmladdnormallink{hall.gdt}{ https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/Data/hall.gdt} 
 \end_layout
 
 \end_inset
@@ -19418,8 +19418,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{Simeq/simeq.inp}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/Simeq/simeq.inp}
+htmladdnormallink{Simeq/simeq.inp}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/Simeq/simeq.inp}
 \end_layout
 
 \end_inset
@@ -20423,8 +20423,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{Simeq/simeq.inp}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/Simeq/simeq.inp}
+htmladdnormallink{Simeq/simeq.inp}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/Simeq/simeq.inp}
 \end_layout
 
 \end_inset
@@ -22895,8 +22895,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Simeq/Klein2SLS.m}{https://github.com/mcreel/Econometrics/blob/m
-aster/Examples/Simeq/Klein2SLS.m}
+htmladdnormallink{Simeq/Klein2SLS.m}{ https://github.com/mcreel/Econometrics/blob/
+master/Examples/Simeq/Klein2SLS.m}
 \end_layout
 
 \end_inset
@@ -23265,8 +23265,8 @@ status open
 
 
 \backslash
-htmladdnormallink{GridExample.jl}{https://github.com/mcreel/Econometrics/blob/mast
-er/Examples/NonlinearOptimization/GridExample.jl} 
+htmladdnormallink{GridExample.jl}{ https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/NonlinearOptimization/GridExample.jl} 
 \end_layout
 
 \end_inset
@@ -24482,8 +24482,8 @@ status open
 
 
 \backslash
-htmladdnormallink{EstimateRestrictedNerlove.jl}{https://github.com/mcreel/Economet
-rics/blob/master/Examples/NonlinearOptimization/EstimateRestrictedNerlove.jl}
+htmladdnormallink{EstimateRestrictedNerlove.jl}{ https://github.com/mcreel/Econome
+trics/blob/master/Examples/NonlinearOptimization/EstimateRestrictedNerlove.jl}
  
 \end_layout
 
@@ -24657,8 +24657,8 @@ status open
 
 
 \backslash
-htmladdnormallink{OLSviaSA.jl}{https://github.com/mcreel/Econometrics/blob/master/
-Examples/NonlinearOptimization/OLSviaSA.jl} 
+htmladdnormallink{OLSviaSA.jl}{ https://github.com/mcreel/Econometrics/blob/master
+/Examples/NonlinearOptimization/OLSviaSA.jl} 
 \end_layout
 
 \end_inset
@@ -24795,8 +24795,8 @@ status open
 
 
 \backslash
-htmladdnormallink{MEPS health data file}{https://github.com/mcreel/Econometrics/b
-lob/master/Examples/Data/meps1996.data} 
+htmladdnormallink{MEPS health data file}{ https://github.com/mcreel/Econometrics/
+blob/master/Examples/Data/meps1996.data} 
 \end_layout
 
 \end_inset
@@ -24862,8 +24862,8 @@ status open
 
 
 \backslash
-htmladdnormallink{ExploreMEPS.jl}{https://github.com/mcreel/Econometrics/blob/mast
-er/Examples/MEPS-I/ExploreMEPS.jl} 
+htmladdnormallink{ExploreMEPS.jl}{ https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/MEPS-I/ExploreMEPS.jl} 
 \end_layout
 
 \end_inset
@@ -25062,8 +25062,8 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimatePoisson.jl}{https://github.com/mcreel/Econometrics/blob/
-master/Examples/MEPS-I/EstimatePoisson.jl}
+htmladdnormallink{EstimatePoisson.jl}{ https://github.com/mcreel/Econometrics/blob
+/master/Examples/MEPS-I/EstimatePoisson.jl}
 \end_layout
 
 \end_inset
@@ -25118,8 +25118,8 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimatePoisson.jl}{https://github.com/mcreel/Econometrics/blob/
-master/Examples/MEPS-I/EstimatePoisson.jl}
+htmladdnormallink{EstimatePoisson.jl}{ https://github.com/mcreel/Econometrics/blob
+/master/Examples/MEPS-I/EstimatePoisson.jl}
 \end_layout
 
 \end_inset
@@ -25268,8 +25268,8 @@ status open
 
  
 \backslash
-htmladdnormallink{FoggyMountain.jl}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/NonlinearOptimization/FoggyMountain.jl}
+htmladdnormallink{FoggyMountain.jl}{ https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/NonlinearOptimization/FoggyMountain.jl}
 \end_layout
 
 \end_inset
@@ -25430,8 +25430,8 @@ status open
 
 
 \backslash
-htmladdnormallink{nerlove.data}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/Data/nerlove.data} 
+htmladdnormallink{nerlove.data}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/Data/nerlove.data} 
 \end_layout
 
 \end_inset
@@ -25848,8 +25848,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{OLScontours.jl}{https://github.com/mcreel/Econometrics/blob/mast
-er/Examples/NonlinearOptimization/OLScontours.jl} 
+htmladdnormallink{OLScontours.jl}{ https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/NonlinearOptimization/OLScontours.jl} 
 \end_layout
 
 \end_inset
@@ -30840,8 +30840,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{CK.txt}{https://github.com/mcreel/Econometrics/blob/master/Examp
-les/DSGE/GenData/CK.txt} 
+htmladdnormallink{CK.txt}{ https://github.com/mcreel/Econometrics/blob/master/Exam
+ples/DSGE/GenData/CK.txt} 
 \end_layout
 
 \end_inset
@@ -30858,8 +30858,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{dsgedata.txt}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/DSGE/GenData/dsgedata.txt} 
+htmladdnormallink{dsgedata.txt}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/DSGE/GenData/dsgedata.txt} 
 \end_layout
 
 \end_inset
@@ -30872,8 +30872,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GenData.jl}{https://github.com/mcreel/Econometrics/blob/master/E
-xamples/DSGE/GenData/GenData.jl} 
+htmladdnormallink{GenData.jl}{ https://github.com/mcreel/Econometrics/blob/master/
+Examples/DSGE/GenData/GenData.jl} 
 \end_layout
 
 \end_inset
@@ -31920,8 +31920,8 @@ status open
 
  
 \backslash
-htmladdnormallink{NormalExample.jl}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/MLE/NormalExample.jl} 
+htmladdnormallink{NormalExample.jl}{ https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/MLE/NormalExample.jl} 
 \end_layout
 
 \end_inset
@@ -32150,8 +32150,8 @@ status open
 
  
 \backslash
-htmladdnormallink{NormalExample.jl}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/MLE/NormalExample.jl} 
+htmladdnormallink{NormalExample.jl}{ https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/MLE/NormalExample.jl} 
 \end_layout
 
 \end_inset
@@ -33118,8 +33118,8 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimatePoisson.jl}{https://github.com/mcreel/Econometrics/blob/
-master/Examples/MEPS-I/EstimatePoisson.jl}
+htmladdnormallink{EstimatePoisson.jl}{ https://github.com/mcreel/Econometrics/blob
+/master/Examples/MEPS-I/EstimatePoisson.jl}
 \end_layout
 
 \end_inset
@@ -33986,8 +33986,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{LikelihoodRatioTest.jl}{https://github.com/mcreel/Econometrics/b
-lob/master/Examples/MLE/LikelihoodRatioTest.jl} 
+htmladdnormallink{LikelihoodRatioTest.jl}{ https://github.com/mcreel/Econometrics/
+blob/master/Examples/MLE/LikelihoodRatioTest.jl} 
 \end_layout
 
 \end_inset
@@ -34097,8 +34097,8 @@ status open
 
  
 \backslash
-htmladdnormallink{NerloveMLE.jl}{https://github.com/mcreel/Econometrics/blob/maste
-r/Examples/MLE/NerloveMLE.jl} 
+htmladdnormallink{NerloveMLE.jl}{ https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/MLE/NerloveMLE.jl} 
 \end_layout
 
 \end_inset
@@ -34130,8 +34130,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Nerlove.jl}{https://github.com/mcreel/Econometrics/blob/master/E
-xamples/OLS/Nerlove.jl} 
+htmladdnormallink{Nerlove.jl}{ https://github.com/mcreel/Econometrics/blob/master/
+Examples/OLS/Nerlove.jl} 
 \end_layout
 
 \end_inset
@@ -34711,8 +34711,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{LogitDGP.jl}{https://github.com/mcreel/Econometrics/blob/master/
-Examples/MLE/LogitDGP.jl} 
+htmladdnormallink{LogitDGP.jl}{ https://github.com/mcreel/Econometrics/blob/master
+/Examples/MLE/LogitDGP.jl} 
 \end_layout
 
 \end_inset
@@ -34725,8 +34725,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{logit.jl}{https://github.com/mcreel/Econometrics/blob/master/Exa
-mples/MLE/logit.jl} 
+htmladdnormallink{logit.jl}{ https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/MLE/logit.jl} 
 \end_layout
 
 \end_inset
@@ -34739,8 +34739,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{EstimateLogit.jl}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/MLE/EstimateLogit.jl} 
+htmladdnormallink{EstimateLogit.jl}{ https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/MLE/EstimateLogit.jl} 
 \end_layout
 
 \end_inset
@@ -34820,8 +34820,8 @@ status open
 
  
 \backslash
-htmladdnormallink{PoissonVariance.m}{https://github.com/mcreel/Econometrics/blob/m
-aster/Examples/MEPS-I/PoissonVariance.m}
+htmladdnormallink{PoissonVariance.m}{ https://github.com/mcreel/Econometrics/blob/
+master/Examples/MEPS-I/PoissonVariance.m}
 \end_layout
 
 \end_inset
@@ -35200,8 +35200,8 @@ status open
 
 
 \backslash
-htmladdnormallink{This program}{https://github.com/mcreel/Econometrics/blob/maste
-r/Examples/MEPS-II/EstimateNegBin.m} 
+htmladdnormallink{This program}{ https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/MEPS-II/EstimateNegBin.m} 
 \end_layout
 
 \end_inset
@@ -35525,8 +35525,8 @@ status open
 
 
 \backslash
-htmladdnormallink{this program}{https://github.com/mcreel/Econometrics/blob/maste
-r/Examples/MEPS-II/EstimateMixNegBin.m} 
+htmladdnormallink{this program}{ https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/MEPS-II/EstimateMixNegBin.m} 
 \end_layout
 
 \end_inset
@@ -35870,12 +35870,8 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimateCGHK
-\backslash
-_ML.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/DSGE/ML/Estimat
-eCGHK
-\backslash
-_ML.m} 
+htmladdnormallink{CKml.mod}{ https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/DSGE/ML/CKml.mod} 
 \end_layout
 
 \end_inset
@@ -35891,6 +35887,11 @@ literal "false"
 \end_inset
 
  package.
+ To run it, start Octave/Matlab, and then enter 
+\family typewriter
+dynare CKml.mod
+\family default
+.
  Some output that can be obtained is:
 \end_layout
 
@@ -35905,7 +35906,8 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-this is pretty good! However...
+this is pretty good! And it only too 4s.
+ However...
 \end_layout
 
 \begin_layout Itemize
@@ -35997,8 +35999,7 @@ This is not a problem of the ML method, it is a problem due to the fact
 The intention of presenting this example is to show that ML may be used
  for estimation of complex models.
  The problem here is that the econometric model is not complex enough: the
- linearization throws away so much information so that estimation becomes
- impossible.
+ linearization throws information, so that estimation may be unreliable.
  A better solution is to try to actually do ML estimation for the true nonlinear
  model: see papers by Fernández-Villaverde and Rubio-Ramírez, which use
  particle filtering.
@@ -36393,8 +36394,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{Nerlove.jl}{https://github.com/mcreel/Econometrics/blob/master/E
-xamples/OLS/Nerlove.jl} 
+htmladdnormallink{Nerlove.jl}{ https://github.com/mcreel/Econometrics/blob/master/
+Examples/OLS/Nerlove.jl} 
 \end_layout
 
 \end_inset
@@ -36452,8 +36453,8 @@ status open
 
 
 \backslash
-htmladdnormallink{EstimateLogit.jl}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/NonlinearOptimization/EstimateLogit.jl} 
+htmladdnormallink{EstimateLogit.jl}{ https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/NonlinearOptimization/EstimateLogit.jl} 
 \end_layout
 
 \end_inset
@@ -37336,8 +37337,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/chi2mm.jl}{https://github.com/mcreel/Econometrics/blob/maste
-r/Examples/GMM/chi2mm.jl}
+htmladdnormallink{GMM/chi2mm.jl}{ https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/GMM/chi2mm.jl}
 \end_layout
 
 \end_inset
@@ -37559,8 +37560,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/chi2gmm.jl}{https://github.com/mcreel/Econometrics/blob/mast
-er/Examples/GMM/chi2gmm.jl}
+htmladdnormallink{GMM/chi2gmm.jl}{ https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/GMM/chi2gmm.jl}
 \end_layout
 
 \end_inset
@@ -37742,8 +37743,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/chi2gmm.m}{https://github.com/mcreel/Econometrics/blob/maste
-r/Examples/GMM/chi2gmm.m}
+htmladdnormallink{GMM/chi2gmm.m}{ https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/GMM/chi2gmm.m}
 \end_layout
 
 \end_inset
@@ -38250,8 +38251,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/AsymptoticNormalityGMM.jl}{https://github.com/mcreel/Econome
-trics/blob/master/Examples/GMM/AsymptoticNormalityGMM.jl}
+htmladdnormallink{GMM/AsymptoticNormalityGMM.jl}{ https://github.com/mcreel/Econom
+etrics/blob/master/Examples/GMM/AsymptoticNormalityGMM.jl}
 \end_layout
 
 \end_inset
@@ -38813,8 +38814,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/EfficientGMM.jl}{https://github.com/mcreel/Econometrics/blob
-/master/Examples/GMM/EfficientGMM.jl}
+htmladdnormallink{GMM/EfficientGMM.jl}{ https://github.com/mcreel/Econometrics/blo
+b/master/Examples/GMM/EfficientGMM.jl}
 \end_layout
 
 \end_inset
@@ -40748,8 +40749,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/MeasurementErrorIV.jl}{https://github.com/mcreel/Econometric
-s/blob/master/Examples/GMM/MeasurementErrorIV.jl} 
+htmladdnormallink{GMM/MeasurementErrorIV.jl}{ https://github.com/mcreel/Econometri
+cs/blob/master/Examples/GMM/MeasurementErrorIV.jl} 
 \end_layout
 
 \end_inset
@@ -40982,8 +40983,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Simeq/KleinGMM.m}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/Simeq/KleinGMM.jl}
+htmladdnormallink{Simeq/KleinGMM.m}{ https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/Simeq/KleinGMM.jl}
 \end_layout
 
 \end_inset
@@ -41459,8 +41460,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/SpecTest.jl}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/GMM/SpecTest.jl} 
+htmladdnormallink{GMM/SpecTest.jl}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/GMM/SpecTest.jl} 
 \end_layout
 
 \end_inset
@@ -41698,8 +41699,8 @@ status open
 
  
 \backslash
-htmladdnormallink{TwoStepGMM.m}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/GMM/TwoStepGMM.m} 
+htmladdnormallink{TwoStepGMM.m}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/GMM/TwoStepGMM.m} 
 \end_layout
 
 \end_inset
@@ -41781,8 +41782,8 @@ status open
 
  
 \backslash
-htmladdnormallink{OLSvsIV.jl}{https://github.com/mcreel/Econometrics/blob/master/E
-xamples/GMM/Hausman/OLSvsIV.jl} 
+htmladdnormallink{OLSvsIV.jl}{ https://github.com/mcreel/Econometrics/blob/master/
+Examples/GMM/Hausman/OLSvsIV.jl} 
 \end_layout
 
 \end_inset
@@ -42433,8 +42434,8 @@ status open
 
  
 \backslash
-htmladdnormallink{hausman.m}{https://github.com/mcreel/Econometrics/blob/master/Ex
-amples/GMM/Hausman/hausman.m} 
+htmladdnormallink{hausman.m}{ https://github.com/mcreel/Econometrics/blob/master/E
+xamples/GMM/Hausman/hausman.m} 
 \end_layout
 
 \end_inset
@@ -43001,8 +43002,8 @@ status open
 
 
 \backslash
-htmladdnormallink{portfolio.jl}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/GMM/portfolio.jl}
+htmladdnormallink{portfolio.jl}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/GMM/portfolio.jl}
 \end_layout
 
 \end_inset
@@ -43016,8 +43017,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{tauchen.data}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/GMM/tauchen.data}
+htmladdnormallink{tauchen.data}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/GMM/tauchen.data}
 \end_layout
 
 \end_inset
@@ -43111,8 +43112,8 @@ status open
 
 
 \backslash
-htmladdnormallink{HallGMM.m}{https://github.com/mcreel/Econometrics/blob/master/Ex
-amples/GMM/HallGMM.m}
+htmladdnormallink{HallGMM.m}{ https://github.com/mcreel/Econometrics/blob/master/E
+xamples/GMM/HallGMM.m}
 \end_layout
 
 \end_inset
@@ -43361,8 +43362,8 @@ status open
 
 
 \backslash
-htmladdnormallink{dsgedata.txt}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/DSGE/GenData/dsgedata.txt}
+htmladdnormallink{dsgedata.txt}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/DSGE/GenData/dsgedata.txt}
 \end_layout
 
 \end_inset
@@ -43382,8 +43383,8 @@ status open
 
 
 \backslash
-htmladdnormallink{DSGEmoments.jl}{https://github.com/mcreel/Econometrics/blob/mast
-er/Examples/DSGE/GMM/DSGEmoments.jl}
+htmladdnormallink{DSGEmoments.jl}{ https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/DSGE/GMM/DSGEmoments.jl}
 \end_layout
 
 \end_inset
@@ -43401,8 +43402,8 @@ status open
 
 
 \backslash
-htmladdnormallink{DoGMM.jl}{https://github.com/mcreel/Econometrics/blob/master/Exa
-mples/DSGE/GMM/DoGMM.jl}
+htmladdnormallink{DoGMM.jl}{ https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/DSGE/GMM/DoGMM.jl}
 \end_layout
 
 \end_inset
@@ -43724,8 +43725,8 @@ status open
 
  
 \backslash
-htmladdnormallink{meps.m}{https://github.com/mcreel/Econometrics/blob/master/Examp
-les/GMM/MEPS/meps.m} 
+htmladdnormallink{meps.m}{ https://github.com/mcreel/Econometrics/blob/master/Exam
+ples/GMM/MEPS/meps.m} 
 \end_layout
 
 \end_inset
@@ -43747,8 +43748,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{hausman.m}{https://github.com/mcreel/Econometrics/blob/master/Ex
-amples/GMM/Hausman/hausman.m} 
+htmladdnormallink{hausman.m}{ https://github.com/mcreel/Econometrics/blob/master/E
+xamples/GMM/Hausman/hausman.m} 
 \end_layout
 
 \end_inset
@@ -43766,8 +43767,8 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimateLogit.jl}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/NonlinearOptimization/EstimateLogit.jl} 
+htmladdnormallink{EstimateLogit.jl}{ https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/NonlinearOptimization/EstimateLogit.jl} 
 \end_layout
 
 \end_inset
@@ -43889,8 +43890,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/chi2gmm.m}{https://github.com/mcreel/Econometrics/blob/maste
-r/Examples/GMM/chi2gmm.jl}
+htmladdnormallink{GMM/chi2gmm.m}{ https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/GMM/chi2gmm.jl}
 \end_layout
 
 \end_inset
@@ -44261,8 +44262,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{GMM/SpecTest.jl}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/GMM/SpecTest.jl} 
+htmladdnormallink{GMM/SpecTest.jl}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/GMM/SpecTest.jl} 
 \end_layout
 
 \end_inset
@@ -45425,8 +45426,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{The data file}{https://github.com/mcreel/Econometrics/blob/mast
-er/Examples/Data/us
+htmladdnormallink{The data file}{ https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/Data/us
 \backslash
 _macro
 \backslash
@@ -45444,8 +45445,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{The data description file.}{https://github.com/mcreel/Econometri
-cs/blob/master/Examples/Data/usmacro
+htmladdnormallink{The data description file.}{ https://github.com/mcreel/Econometr
+ics/blob/master/Examples/Data/usmacro
 \backslash
 _quarterly
 \backslash
@@ -46375,8 +46376,8 @@ status open
 \backslash
 htmladdnormallink{S
 \backslash
-&W US quarterly macro data.}{https://github.com/mcreel/Econometrics/blob/master/Ex
-amples/Data/us
+&W US quarterly macro data.}{ https://github.com/mcreel/Econometrics/blob/master/E
+xamples/Data/us
 \backslash
 _macro
 \backslash
@@ -46897,8 +46898,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Stock and Watson US quarterly macro data.}{https://github.com/mc
-reel/Econometrics/blob/master/Examples/Data/us
+htmladdnormallink{Stock and Watson US quarterly macro data.}{ https://github.com/m
+creel/Econometrics/blob/master/Examples/Data/us
 \backslash
 _macro
 \backslash
@@ -46950,8 +46951,8 @@ status open
 
  
 \backslash
-htmladdnormallink{example DSGE model}{https://github.com/mcreel/Econometrics/blob
-/master/Examples/DSGE/GenData/dsgedata.gdt} 
+htmladdnormallink{example DSGE model}{ https://github.com/mcreel/Econometrics/blo
+b/master/Examples/DSGE/GenData/dsgedata.gdt} 
 \end_layout
 
 \end_inset
@@ -47075,8 +47076,8 @@ status open
 
  
 \backslash
-htmladdnormallink{here}{https://github.com/mcreel/Econometrics/blob/master/Exampl
-es/TimeSeries/MakePlots.jl} 
+htmladdnormallink{here}{ https://github.com/mcreel/Econometrics/blob/master/Examp
+les/TimeSeries/MakePlots.jl} 
 \end_layout
 
 \end_inset
@@ -47493,8 +47494,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Garch11Example.jl}{https://github.com/mcreel/Econometrics/blob/m
-aster/Examples/TimeSeries/Garch11Example.jl} 
+htmladdnormallink{Garch11Example.jl}{ https://github.com/mcreel/Econometrics/blob/
+master/Examples/TimeSeries/Garch11Example.jl} 
 \end_layout
 
 \end_inset
@@ -48463,8 +48464,8 @@ status open
 
  
 \backslash
-htmladdnormallink{RandomWalks.inp}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/TimeSeries/RandomWalks.inp} 
+htmladdnormallink{RandomWalks.inp}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/TimeSeries/RandomWalks.inp} 
 \end_layout
 
 \end_inset
@@ -49079,8 +49080,8 @@ status open
 
  
 \backslash
-htmladdnormallink{BayesExample1.jl}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/Bayesian/BayesExample1.jl} 
+htmladdnormallink{BayesExample1.jl}{ https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/Bayesian/BayesExample1.jl} 
 \end_layout
 
 \end_inset
@@ -49416,8 +49417,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{BayesExample1.m}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/Bayesian/BayesExample1.m} 
+htmladdnormallink{BayesExample1.m}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/Bayesian/BayesExample1.m} 
 \end_layout
 
 \end_inset
@@ -49924,8 +49925,8 @@ status open
 
  
 \backslash
-htmladdnormallink{BayesExample2.jl}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/Bayesian/BayesExample2.jl} 
+htmladdnormallink{BayesExample2.jl}{ https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/Bayesian/BayesExample2.jl} 
 \end_layout
 
 \end_inset
@@ -50075,7 +50076,7 @@ reference "subsec:DSGE-ML"
 , a simple DSGE model was estimated by ML.
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -50083,10 +50084,8 @@ status collapsed
 \backslash
 htmladdnormallink{EstimateCGHK
 \backslash
-_Bayes.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/DSGE/Bayesia
-n/EstimateCGHK
-\backslash
-_Bayes.m} 
+_Bayes.m}{ https://github.com/mcreel/Econometrics/blob/master/Examples/DSGE/Bayesi
+an/CKmcmc.mod} 
 \end_layout
 
 \end_inset
@@ -50094,6 +50093,9 @@ _Bayes.m}
  is a script which estimates the same model, using Bayesian methods, with
  MCMC or particle filtering.
  Adjust the .mod file mentioned in the script to change options.
+ Run it in Octave/Dynare using 
+\family typewriter
+dynare CKmcmc.mod
 \end_layout
 
 \begin_layout Standard
@@ -50114,34 +50116,15 @@ reference "fig:MCMC-results-for"
 \end_inset
 
 .
- Most of the true parameter values are inside the 90% HPD intervals, though
- this is not the case for 
-\begin_inset space ~
+ However, note that the results for the parameter 
+\begin_inset Formula $\gamma$
 \end_inset
 
-
-\begin_inset Formula $\beta,$
-\end_inset
-
-
-\begin_inset Formula $\rho_{2},$
-\end_inset
-
-and 
-\begin_inset Formula $\sigma_{2}$
-\end_inset
-
-.
- Perhaps this is in part due to the linearized model being used to specify
- the 
-\begin_inset Quotes sld
-\end_inset
-
-likelihood
-\begin_inset Quotes srd
-\end_inset
-
-.
+ change quite a bit, depending on which observable variables are used.
+ This is probably due to the stochastic singularity problem, when a first
+ order solution is used.
+ When we don't know the true parameter values, how do we choose which results
+ to use?
 \end_layout
 
 \begin_layout Itemize
@@ -50171,7 +50154,8 @@ name "fig:MCMC-results-for"
 
 \end_inset
 
-MCMC results for simple DSGE example model (two different runs)
+MCMC results for simple DSGE example model (two different runs using different
+ observed variables)
 \end_layout
 
 \end_inset
@@ -50182,6 +50166,7 @@ MCMC results for simple DSGE example model (two different runs)
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/DSGE/Bayesian/MCMC.png
+	width 20cm
 
 \end_inset
 
@@ -50191,7 +50176,7 @@ MCMC results for simple DSGE example model (two different runs)
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/DSGE/Bayesian/MCMC2.png
-	width 15cm
+	width 20cm
 
 \end_inset
 
@@ -50240,7 +50225,7 @@ CGHK model, posteriors
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/DSGE/Bayesian/posterior.png
-	width 22cm
+	width 20cm
 
 \end_inset
 
@@ -50318,8 +50303,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DoMCMC.jl}{https://github.com/mcreel/Econometrics/blob/master/Ex
-amples/DSGE/BayesianGMM/DoMCMC.jl} 
+htmladdnormallink{DoMCMC.jl}{ https://github.com/mcreel/Econometrics/blob/master/E
+xamples/DSGE/BayesianGMM/DoMCMC.jl} 
 \end_layout
 
 \end_inset
@@ -55103,8 +55088,8 @@ status open
 
  
 \backslash
-htmladdnormallink{ExampleKernelDensity.jl}{https://github.com/mcreel/Econometrics/
-blob/master/Examples/Nonparametric/ExampleKernelDensity.jl}
+htmladdnormallink{ExampleKernelDensity.jl}{ https://github.com/mcreel/Econometrics
+/blob/master/Examples/Nonparametric/ExampleKernelDensity.jl}
 \end_layout
 
 \end_inset
@@ -55415,8 +55400,8 @@ status open
 
 
 \backslash
-htmladdnormallink{NegBinSNP.cc}{https://github.com/mcreel/Econometrics/blob/master
-/MyOctaveFiles/OctFiles/NegBinSNP.cc}
+htmladdnormallink{NegBinSNP.cc}{ https://github.com/mcreel/Econometrics/blob/maste
+r/MyOctaveFiles/OctFiles/NegBinSNP.cc}
 \end_layout
 
 \end_inset
@@ -55569,8 +55554,8 @@ status open
 
 
 \backslash
-htmladdnormallink{OBDVkernel.m}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/Nonparametric/OBDVkernel.m} 
+htmladdnormallink{OBDVkernel.m}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/Nonparametric/OBDVkernel.m} 
 \end_layout
 
 \end_inset
@@ -55772,8 +55757,8 @@ status open
 
 
 \backslash
-htmladdnormallink{rates}{https://github.com/mcreel/Econometrics/blob/master/Examp
-les/Nonparametric/SpotRate/rates}
+htmladdnormallink{rates}{ https://github.com/mcreel/Econometrics/blob/master/Exam
+ples/Nonparametric/SpotRate/rates}
 \end_layout
 
 \end_inset
@@ -55793,8 +55778,8 @@ status open
 
 
 \backslash
-htmladdnormallink{README}{https://github.com/mcreel/Econometrics/blob/master/Exam
-ples/Nonparametric/SpotRate/README}
+htmladdnormallink{README}{ https://github.com/mcreel/Econometrics/blob/master/Exa
+mples/Nonparametric/SpotRate/README}
 \end_layout
 
 \end_inset
@@ -55998,8 +55983,8 @@ status open
 
 
 \backslash
-htmladdnormallink{kernelfit.m}{https://github.com/mcreel/Econometrics/blob/master/
-Examples/Nonparametric/SpotRate/kernelfit.m}
+htmladdnormallink{kernelfit.m}{ https://github.com/mcreel/Econometrics/blob/master
+/Examples/Nonparametric/SpotRate/kernelfit.m}
 \end_layout
 
 \end_inset
@@ -56152,8 +56137,8 @@ status collapsed
 \backslash
 htmladdnormallink{kernel
 \backslash
-_example.m}{https://github.com/mcreel/Econometrics/blob/master/MyOctaveFiles/Econo
-metrics/Kernel/kernel
+_example.m}{ https://github.com/mcreel/Econometrics/blob/master/MyOctaveFiles/Econ
+ometrics/Kernel/kernel
 \backslash
 _example.m} 
 \end_layout
@@ -56180,8 +56165,8 @@ _local
 \backslash
 _linear
 \backslash
-_example.m}{https://github.com/mcreel/Econometrics/blob/master/MyOctaveFiles/Econo
-metrics/Kernel/kernel
+_example.m}{ https://github.com/mcreel/Econometrics/blob/master/MyOctaveFiles/Econ
+ometrics/Kernel/kernel
 \backslash
 _local
 \backslash
@@ -56218,8 +56203,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{EstimateNBSNP.m}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/Nonparametric/EstimateNBSNP.m} 
+htmladdnormallink{EstimateNBSNP.m}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/Nonparametric/EstimateNBSNP.m} 
 \end_layout
 
 \end_inset
@@ -56384,8 +56369,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{OBDVkernel.m}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/Nonparametric/OBDVkernel.m} 
+htmladdnormallink{OBDVkernel.m}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/Nonparametric/OBDVkernel.m} 
 \end_layout
 
 \end_inset
@@ -57201,8 +57186,8 @@ status open
 
 
 \backslash
-htmladdnormallink{quantile.gdt}{https://github.com/mcreel/Econometrics/blob/master
-/Examples/Quantile/quantile.gdt} 
+htmladdnormallink{quantile.gdt}{ https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/Quantile/quantile.gdt} 
 \end_layout
 
 \end_inset
@@ -57453,8 +57438,8 @@ status open
 
 
 \backslash
-htmladdnormallink{card.gdt}{https://github.com/mcreel/Econometrics/blob/master/Exa
-mples/Data/card.gdt} 
+htmladdnormallink{card.gdt}{ https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/Data/card.gdt} 
 \end_layout
 
 \end_inset
@@ -57732,8 +57717,8 @@ status open
 
 
 \backslash
-htmladdnormallink{QIVmodel.jl}{https://github.com/mcreel/Econometrics/blob/master/
-Examples/Quantile/QIVmodel.jl} 
+htmladdnormallink{QIVmodel.jl}{ https://github.com/mcreel/Econometrics/blob/master
+/Examples/Quantile/QIVmodel.jl} 
 \end_layout
 
 \end_inset
@@ -57746,8 +57731,8 @@ status open
 
 
 \backslash
-htmladdnormallink{QIVbyMCMC}{https://github.com/mcreel/Econometrics/blob/master/E
-xamples/Quantile/QIVbyMCMC.jl} 
+htmladdnormallink{QIVbyMCMC}{ https://github.com/mcreel/Econometrics/blob/master/
+Examples/Quantile/QIVbyMCMC.jl} 
 \end_layout
 
 \end_inset
@@ -57766,8 +57751,8 @@ status open
 
 
 \backslash
-htmladdnormallink{PlayWithMCMC.jl}{https://github.com/mcreel/Econometrics/blob/mas
-ter/Examples/Quantile/PlayWithMCMC.jl} 
+htmladdnormallink{PlayWithMCMC.jl}{ https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/Quantile/PlayWithMCMC.jl} 
 \end_layout
 
 \end_inset
@@ -59903,8 +59888,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{EstimateSV.jl}{https://github.com/mcreel/Econometrics/blob/maste
-r/Examples/SBEM/EstimateSV.jl}
+htmladdnormallink{EstimateSV.jl}{ https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/SBEM/EstimateSV.jl}
 \end_layout
 
 \end_inset
@@ -59942,8 +59927,8 @@ status open
 
  
 \backslash
-htmladdnormallink{SVlib.jl}{https://github.com/mcreel/Econometrics/blob/master/Exa
-mples/SBEM/SVlib.jl}
+htmladdnormallink{SVlib.jl}{ https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/SBEM/SVlib.jl}
 \end_layout
 
 \end_inset
@@ -59961,8 +59946,8 @@ status open
 
  
 \backslash
-htmladdnormallink{the sample}{https://github.com/mcreel/Econometrics/blob/master/
-Examples/TimeSeries/svdata.txt}
+htmladdnormallink{the sample}{ https://github.com/mcreel/Econometrics/blob/master
+/Examples/TimeSeries/svdata.txt}
 \end_layout
 
 \end_inset
@@ -60133,8 +60118,8 @@ status open
 \backslash
 htmladdnormallink{SV
 \backslash
-_MonteCarlo.jl}{https://github.com/mcreel/Econometrics/blob/master/Examples/SBEM/S
-V
+_MonteCarlo.jl}{ https://github.com/mcreel/Econometrics/blob/master/Examples/SBEM/
+SV
 \backslash
 _MonteCarlo.jl}
 \end_layout
@@ -62868,8 +62853,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{tracetest.m}{https://github.com/mcreel/Econometrics/blob/master/
-Examples/Parallel/montecarlo/tracetest.m}
+htmladdnormallink{tracetest.m}{ https://github.com/mcreel/Econometrics/blob/master
+/Examples/Parallel/montecarlo/tracetest.m}
 \end_layout
 
 \end_inset
@@ -62898,8 +62883,8 @@ status collapsed
 \backslash
 htmladdnormallink{mc
 \backslash
-_example1.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel/
-montecarlo/mc
+_example1.m}{ https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel
+/montecarlo/mc
 \backslash
 _example1.m}
 \end_layout
@@ -63007,8 +62992,8 @@ status collapsed
 \backslash
 htmladdnormallink{mle
 \backslash
-_example1.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel/
-mle/mle
+_example1.m}{ https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel
+/mle/mle
 \backslash
 _example1.m}
 \end_layout
@@ -63136,8 +63121,8 @@ status collapsed
 \backslash
 htmladdnormallink{gmm
 \backslash
-_example1.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel/
-gmm/gmm
+_example1.m}{ https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel
+/gmm/gmm
 \backslash
 _example1.m}
 \end_layout
@@ -63243,8 +63228,8 @@ status collapsed
 \backslash
 htmladdnormallink{kernel
 \backslash
-_example1.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel/
-kernel/kernel
+_example1.m}{ https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel
+/kernel/kernel
 \backslash
 _example1.m}
 \end_layout
@@ -64663,8 +64648,8 @@ status open
 
  
 \backslash
-htmladdnormallink{meps.m}{https://github.com/mcreel/Econometrics/blob/master/Examp
-les/GMM/MEPS/meps.m} 
+htmladdnormallink{meps.m}{ https://github.com/mcreel/Econometrics/blob/master/Exam
+ples/GMM/MEPS/meps.m} 
 \end_layout
 
 \end_inset
@@ -66233,8 +66218,8 @@ status open
 
 
 \backslash
-htmladdnormallink{this estimation program}{https://github.com/mcreel/Econometrics
-/blob/master/Examples/MEPS-II/estimate
+htmladdnormallink{this estimation program}{ https://github.com/mcreel/Econometric
+s/blob/master/Examples/MEPS-II/estimate
 \backslash
 _hpoisson.ox} 
 \end_layout
@@ -69275,8 +69260,8 @@ status open
 
 
 \backslash
-htmladdnormallink{this estimation program}{https://github.com/mcreel/Econometrics
-/blob/master/Examples/MEPS-II/estimate
+htmladdnormallink{this estimation program}{ https://github.com/mcreel/Econometric
+s/blob/master/Examples/MEPS-II/estimate
 \backslash
 _mixnegbin.ox} 
 \end_layout
