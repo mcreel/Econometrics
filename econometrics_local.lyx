@@ -202,6 +202,21 @@ About this document
 
 \begin_layout Standard
 Note to self: 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+remember to update the DSGE data generation files, once finalized in SimulatedNe
+uralMoments
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -389,7 +404,8 @@ htmladdnormallink{(julialang.org)}{https://julialang.org}
  This choice is motivated by several factors.
  Julia runs on all of the popular operating systems, it is free, and it
  is fast, thanks to just-in-time compilation.
- It is a relatively new language, but is already quite stable.
+ It is a relatively new language, but is stable, with performance improving
+ with each point release.
  The fundamental tools (manipulation of matrices, statistical functions,
  minimization, 
 \emph on
@@ -23528,7 +23544,7 @@ g(\theta)^{\prime}d=g(\theta)^{\prime}Qg(\theta)>0
 
 \end_inset
 
- unless 
+unless 
 \begin_inset Formula $g(\theta)=0.$
 \end_inset
 
@@ -25335,6 +25351,9 @@ fminunc()
 fminunc
 \family default
  function for unconstrained minimization, and to see a simple example.
+ This is a convenience function, for Matlab users, and uses the Julia Optim.jl
+ package in the background.
+ If you get into Julia, it's better to use Optim.jl directly.
 \end_layout
 
 \begin_layout Enumerate
@@ -25351,6 +25370,9 @@ fmincon()
 fmincon
 \family default
  function for unconstrained minimization, and to see a simple example.
+ This is a convenience function, for Matlab users, and uses the Julia NLopt.jl
+ package in the background.
+ If you get into Julia, it's better to use NLopt.jl directly.
 \end_layout
 
 \begin_layout Enumerate
@@ -26079,8 +26101,8 @@ where
 
  is the marginal likelihood of the data.
  These concepts are explained later, for now the point is that Bayesian
- estimators can be thought of as extremum estimators, and the theory for
- extremum estimators will apply.
+ point estimators can be thought of as extremum estimators, and the theory
+ for extremum estimators will apply.
  
 \end_layout
 
@@ -26171,7 +26193,7 @@ analyzing the properties
 \end_inset
 
  that generated the observed data.
- This is because we would like to find estimators that work well on average
+ This is because we would like to find estimators that work well on average,
  for any data set that can result from 
 \begin_inset Formula $\omega\in\Omega$
 \end_inset
@@ -29496,7 +29518,7 @@ w_{t} & = & MPL_{t}\label{MPL-wage}\\
 r_{t} & = & MPK_{t}\label{eq:-3}\\
 \ln\eta_{t} & = & \rho_{\eta}\ln\eta_{t-1}+\sigma_{\eta}\epsilon_{t}\label{eq:}\\
 \ln z_{t} & = & \rho_{z}\ln z_{t-1}+\sigma_{z}u_{t}\label{eq:-1}\\
-y_{t} & = & z_{t}k_{t-1}^{\alpha}n_{t}^{(1-\alpha)}\label{eq:output}\\
+y_{t} & = & z_{t}k_{t}^{\alpha}n_{t}^{(1-\alpha)}\label{eq:output}\\
 i_{t} & = & y_{t}-c_{t}\label{eq:investment}\\
 k_{t+1} & = & i_{t}+(1-\delta)k_{t}\label{eq:capital}
 \end{eqnarray}
@@ -29546,7 +29568,7 @@ literal "false"
  SolveDSGE.jl can compute the steady state itself, given a reasonably good
  starting value, but it is faster to use an analytic solution, if one can
  be computed.
- In this case, it can:
+ In this case, it can be done.
 \end_layout
 
 \begin_layout Itemize
@@ -30222,6 +30244,11 @@ Once we have
 \begin_inset Formula $k$
 \end_inset
 
+, by substituting the production function into the 
+\begin_inset Formula $r=MPK$
+\end_inset
+
+ equation.
  
 \end_layout
 
@@ -30234,7 +30261,7 @@ with
 \begin_inset Formula $\delta$
 \end_inset
 
- from the law of motion of capital.
+, from the law of motion of capital.
 \end_layout
 
 \begin_layout Itemize
@@ -30257,7 +30284,7 @@ So, we will take
 \begin_inset Formula $\delta=0.025$
 \end_inset
 
-.
+, which are commonly used in the literature.
 \end_layout
 
 \begin_layout Standard
@@ -30872,7 +30899,7 @@ s/DSGE/GenData/dsgedata.txt}
 
  is 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -30891,7 +30918,7 @@ DSGE/GenData/GenData.jl}
 
 
 \family typewriter
-julia --project .
+julia --project
 \family default
 
 \begin_inset Quotes srd
@@ -32000,7 +32027,7 @@ Remember that
 
 \begin_inset Formula 
 \[
-\mathcal{E}\left(\ln\left(\frac{L(\theta)}{L(\theta_{0})}\right)\right)\leq\ln\left(\mathcal{E}\left(\frac{L(\theta)}{L(\theta_{0})}\right)\right)
+{\color{red}\mathcal{E}\left(\ln\left(\frac{L(\theta)}{L(\theta_{0})}\right)\right)}\leq\ln\left({\color{green}\mathcal{E}\left(\frac{L(\theta)}{L(\theta_{0})}\right)}\right)
 \]
 
 \end_inset
@@ -32025,7 +32052,7 @@ literal "false"
 Now, the expectation on the RHS is 
 \begin_inset Formula 
 \[
-\mathcal{E}\left(\frac{L(\theta)}{L(\theta_{0})}\right)=\int\frac{L(\theta)}{L(\theta_{0})}L(\theta_{0})dy=1,
+{\color{green}\mathcal{E}\left(\frac{L(\theta)}{L(\theta_{0})}\right)}=\int\frac{L(\theta)}{L(\theta_{0})}L(\theta_{0})dy=1,
 \]
 
 \end_inset
@@ -32054,7 +32081,7 @@ Therefore, since
 
 \begin_inset Formula 
 \[
-\mathcal{E}\left(\ln\left(\frac{L(\theta)}{L(\theta_{0})}\right)\right)\leq0,
+{\color{red}\mathcal{E}\left(\ln\left(\frac{L(\theta)}{L(\theta_{0})}\right)\right)}\leq0,
 \]
 
 \end_inset
@@ -32290,7 +32317,7 @@ This is the expectation taken with respect to the density
 \begin_inset Formula 
 \begin{eqnarray*}
 E_{\theta}\left[g_{t}(\theta)|x_{t}\right] & = & \int[D_{\theta}\ln f(y_{t}|x_{t},\theta)]f(y_{t}|x,\theta)dy_{t}\\
- & = & \int\frac{1}{f(y_{t}|x_{t},\theta)}\left[D_{\theta}f(y_{t}|x_{t},\theta)\right]f(y_{t}|x_{t},\theta)dy_{t}\\
+ & = & \int\frac{1}{{\color{green}f(y_{t}|x_{t},\theta)}}\left[D_{\theta}f(y_{t}|x_{t},\theta)\right]{\color{green}f(y_{t}|x_{t},\theta)}dy_{t}\\
  & = & \int D_{\theta}f(y_{t}|x_{t},\theta)dy_{t}.
 \end{eqnarray*}
 
@@ -32804,16 +32831,12 @@ Let
 
 \end_inset
 
- Now differentiate again: (Note for lectures: in the second line, start
- with the term in 
-\begin_inset Formula $\left\{ \right\} $
-\end_inset
-
- and show you get what's in the first line) 
+ Now differentiate again: (Note for lectures: show that the two green terms
+ are equal) 
 \begin_inset Formula 
 \begin{eqnarray}
-0 & = & \int\left[D_{\theta}^{2}\ln f_{t}(\theta)\right]f_{t}(\theta)dy+\int\left[D_{\theta}\ln f_{t}(\theta)\right]\left\{ D_{\theta^{\prime}}f_{t}(\theta)\right\} dy\nonumber \\
- & = & \mathcal{E}_{\theta}\left[D_{\theta}^{2}\ln f_{t}(\theta)\right]+\int\left[D_{\theta}\ln f_{t}(\theta)\right]\left\{ \left[D_{\theta^{\prime}}\ln f_{t}(\theta)\right]f_{t}(\theta)\right\} dy\nonumber \\
+0 & = & \int\left[D_{\theta}^{2}\ln f_{t}(\theta)\right]f_{t}(\theta)dy+\int\left[D_{\theta}\ln f_{t}(\theta)\right]{\color{green}\left\{ D_{\theta^{\prime}}f_{t}(\theta)\right\} }dy\nonumber \\
+ & = & \mathcal{E}_{\theta}\left[D_{\theta}^{2}\ln f_{t}(\theta)\right]+\int\left[D_{\theta}\ln f_{t}(\theta)\right]{\color{green}\left\{ \left[D_{\theta^{\prime}}\ln f_{t}(\theta)\right]f_{t}(\theta)\right\} }dy\nonumber \\
  & = & \mathcal{E}_{\theta}\left[D_{\theta}^{2}\ln f_{t}(\theta)\right]+\mathcal{E}_{\theta}\left[D_{\theta}\ln f_{t}(\theta)\right]\left[D_{\theta^{\prime}}\ln f_{t}(\theta)\right]\nonumber \\
  & = & \mathcal{E}_{\theta}\left[\mathcal{J}_{t}(\theta)\right]+\mathcal{E}_{\theta}\left[g_{t}(\theta)\right]\left[g_{t}(\theta)\right]^{\prime}\label{informationmatrixequality,singleobservation}
 \end{eqnarray}
@@ -33886,7 +33909,7 @@ LR\overset{a}{=}n\left(\tilde{\theta}-\hat{\theta}\right)^{\prime}\mathcal{I}_{\
  and the information matrix equality 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\overset{a}{=}\mathcal{I}_{\infty}(\theta_{0})^{-1}n^{1/2}g(\theta_{0}).
+\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\overset{a}{=}{\color{green}\sqrt{n}\mathcal{I}_{\infty}(\theta_{0})^{-1}}{\color{magenta}I_{n}}{\color{red}g(\theta_{0})}.
 \]
 
 \end_inset
@@ -33908,15 +33931,17 @@ An analogous result for the restricted estimator is (this is unproven here,
 ): 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\tilde{\theta}-\theta_{0}\right)\overset{a}{=}\mathcal{I}_{\infty}(\theta_{0})^{-1}\left(I_{n}-R^{\prime}\left(R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right)^{-1}R\mathcal{I}_{\infty}(\theta_{0})^{-1}\right)n^{1/2}g(\theta_{0}).
+\sqrt{n}\left(\tilde{\theta}-\theta_{0}\right)\overset{a}{=}{\color{green}\sqrt{n}\mathcal{I}_{\infty}(\theta_{0})^{-1}}{\color{magenta}\left(I_{n}-R^{\prime}\left(R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right)^{-1}R\mathcal{I}_{\infty}(\theta_{0})^{-1}\right)}{\color{red}g(\theta_{0})}.
 \]
 
 \end_inset
 
- Combining the last two equations 
+Subtracting the penultimate equation from the last one, we get (the magenta
+ colored term below is the difference between the two magenta terms in the
+ last two lines, with the minus sign moved out to the front) 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\tilde{\theta}-\hat{\theta}\right)\overset{a}{=}-n^{1/2}\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\left(R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right)^{-1}R\mathcal{I}_{\infty}(\theta_{0})^{-1}g(\theta_{0})
+\sqrt{n}\left(\tilde{\theta}-\hat{\theta}\right)\overset{a}{=}-{\color{green}\sqrt{n}\mathcal{I}_{\infty}(\theta_{0})^{-1}}{\color{magenta}R^{\prime}\left(R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right)^{-1}R\mathcal{I}_{\infty}(\theta_{0})^{-1}}{\color{red}g(\theta_{0})}
 \]
 
 \end_inset
@@ -33952,9 +33977,9 @@ R\mathcal{I}_{\infty}(\theta_{0})^{-1}n^{1/2}g(\theta_{0})\overset{d}{\rightarro
 
 \end_inset
 
- We can see that LR is a quadratic form of this rv, with the inverse of
- its variance in the middle, so, by the Continuous Mapping Theorem (also
- known as the Mann-Wald Theorem) (see 
+ We can see that LR is a quadratic form of this random variable, with the
+ inverse of its variance in the middle, so, by the Continuous Mapping Theorem
+ (also known as the Mann-Wald Theorem) (see 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "gallant1997introduction"
@@ -37487,7 +37512,7 @@ where
 \end_inset
 
  with 
-\begin_inset Formula $\mathcal{E}m(\theta_{0})=0,$
+\begin_inset Formula $\mathcal{E}m(Z_{t},\theta_{0})=0,$
 \end_inset
 
 
@@ -60147,7 +60172,7 @@ _MonteCarlo.jl}
 
 \end_inset
 
- runs 1000 replications of estimation of the same model and computes confidence
+ runs 100 replications of estimation of the same model and computes confidence
  intervals using both asymptotic theory for MSM estimators, and using quantiles
  of the MCMC chain.
  Confidence interval coverage, which is the proportion of times the true

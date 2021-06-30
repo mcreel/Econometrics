@@ -1,1 +1,0 @@
-../GenData/parameters.m
