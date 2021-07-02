@@ -202,21 +202,6 @@ About this document
 
 \begin_layout Standard
 Note to self: 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-remember to update the DSGE data generation files, once finalized in SimulatedNe
-uralMoments
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -34096,6 +34081,11 @@ The presentation is for general MLE: we haven't specified the distribution
 Examples
 \end_layout
 
+\begin_layout Standard
+This section is quite long winded, with several examples of ML estimation.
+ Just focussing on a couple of examples should be sufficient for most students.
+\end_layout
+
 \begin_layout Subsection
 ML of Nerlove model, assuming normality
 \end_layout
@@ -34738,7 +34728,7 @@ p(x,\theta)=\frac{1}{1+\exp(-x^{\prime}\theta)}
 \begin_layout Standard
 You should download and examine 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -34766,7 +34756,7 @@ E/logit.jl}
 
 , which calculates the loglikelihood, and 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -34779,7 +34769,7 @@ mples/MLE/EstimateLogit.jl}
 \end_inset
 
 , which sets things up and calls the estimation routine, which uses the
- BFGS algorithm.
+ LBFGS algorithm.
  
 \end_layout
 
@@ -35114,7 +35104,20 @@ where
 \end_inset
 
  appears since it is the parameter of the gamma density.
- 
+ The above density is the 
+\emph on
+negative binomial 
+\emph default
+density.
+ See 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "gourieroux1984pseudo"
+literal "false"
+
+\end_inset
+
+ for an influential paper on the topic.
 \end_layout
 
 \begin_layout Itemize
@@ -35871,14 +35874,14 @@ Pretty clearly, the NB models are better than the Poisson.
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:DSGE-ML"
 
 \end_inset
 
-Estimation of the DSGE model
+ML estimation of the DSGE model
 \end_layout
 
 \begin_layout Standard
@@ -50087,15 +50090,8 @@ posterior
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Bayesian estimation of DSGE model
+\begin_layout Section
+Full sample Bayesian estimation of the DSGE model
 \end_layout
 
 \begin_layout Standard
@@ -50128,20 +50124,10 @@ mod}
  Adjust the .mod file mentioned in the script to change options.
  Run it in Octave/Dynare using 
 \family typewriter
-dynare CKmcmc.mod
-\end_layout
-
-\begin_layout Standard
-Some results one can obtain by playing with this:
-\end_layout
-
-\begin_layout Itemize
-MCMC is a bit time consuming...
-\end_layout
-
-\begin_layout Itemize
-Estimation of the parameters is quite good, when order=1 (linearized, which
- allows for Kalman filtering), giving the results in Figure 
+dynare CKmcmc.mod.
+ 
+\family default
+We can obtain the results in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:MCMC-results-for"
@@ -50149,7 +50135,18 @@ reference "fig:MCMC-results-for"
 \end_inset
 
 .
- However, note that the results for the parameter 
+ 
+\end_layout
+
+\begin_layout Standard
+Some conclusions we can draw:
+\end_layout
+
+\begin_layout Itemize
+Estimation of the parameters is quite good, when order=1 (linearized, which
+ allows for Kalman filtering), The first panel uses the variables c and
+ n, and the second uses two others (forgot which).
+ Note that the results for the parameter 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -50161,14 +50158,44 @@ reference "fig:MCMC-results-for"
 \end_layout
 
 \begin_layout Itemize
-Estimation by particle filtering (set order=2) will take a looong time...
+The first panel gives results that are substantially similar to those obtained
+ in the Section on ML estimation, which also used c and n as the observables.
+ This is not surprising, it just means that the sample is large enough so
+ that the prior does not have a large impact on the posterior.
+ 
 \end_layout
 
 \begin_layout Itemize
-It seems that the Bayesian estimation has given us better results than ML
- and GMM However, one still has the stochastic singularity problem, and
- the results that are obtained will depend on which variables are selected
- for estimation.
+One still has the stochastic singularity problem, and the results that are
+ obtained will depend on which variables are selected for estimation.
+\end_layout
+
+\begin_layout Itemize
+The GMM results are substantially closer to the true parameter values, for
+ the parameters 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\text{\ensuremath{\rho_{2}}}$
+\end_inset
+
+, but the standard error for 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+ is larger than what we get from ML and MCMC.
+ GMM does use all of the observable variables: c, n, y, r, w.
+ Perhaps the use of all variables improves the results in some ways.
+ Remember, all of this is for just one sample, so we don't want to take
+ any firm conclusions, it's just an observation.
+ It would not be hard to perform a Monte Carlo study to see what we can
+ actually say about the performance of the various methods....
+\end_layout
+
+\begin_layout Itemize
+MCMC can be a little time consuming, and estimation by particle filtering
+ (set order=2) will take a looong time...
 \end_layout
 
 \begin_layout Standard
@@ -50231,7 +50258,8 @@ reference "fig:CGHK-model,-posteriors"
 
  plots the priors and posteriors.
  Note that the posterior is substantially different than the prior: we learn
- a lot from the sample
+ a lot from the sample.
+ That's why MCMC and ML are substantially similar.
 \begin_inset Float figure
 wide false
 sideways false
@@ -50270,31 +50298,6 @@ CGHK model, posteriors
 
 \end_layout
 
-\begin_layout Itemize
-if the model is solved using a higher order solution, the Kalman filter
- cannot be used, and Dynare uses particle filtering instead.
- This is very time consuming, as you can check.
-\end_layout
-
-\begin_layout Itemize
-Note that you can only use two observed variables for estimation, as there
- are only two shocks in the model.
- This is because of 
-\begin_inset Quotes sld
-\end_inset
-
-stochastic singularity
-\begin_inset Quotes srd
-\end_inset
-
- of the linearized model.
- When the solution order is higher than 1, there is no reason to limit the
- number of observed variables to be the same as the number of shocks, but
- Dynare still imposes the limit (as of early 2018).
- Some researchers artificially introduce more shocks to a model by assuming
- measurement error.
-\end_layout
-
 \begin_layout Standard
 For tips on using Dynare for MCMC estimation, see 
 \begin_inset CommandInset href
@@ -50315,7 +50318,7 @@ literal "false"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Bayesian GMM for the DSGE model
 \end_layout
 
@@ -60303,6 +60306,34 @@ name "fig:95%-CI-coverage,"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Simulated Neural Moments estimation of the DSGE model
+\end_layout
+
+\begin_layout Standard
+Please see 
+\begin_inset CommandInset href
+LatexCommand href
+name "this page"
+target "https://github.com/mcreel/SimulatedNeuralMoments.jl/tree/main/examples/DSGE"
+literal "false"
+
+\end_inset
+
+ for a summary of estimation and inference using MCMC-GMM, where moments
+ are based on a neural net that is fitted using simulations from the model,
+ at parameter vectors drawn from the prior.
+ This procedure leads to parameter estimates that have low bias and RMSE,
+ and confidence intervals that have approximately proper coverage.
 \end_layout
 
 \begin_layout Standard
