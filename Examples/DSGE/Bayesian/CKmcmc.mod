@@ -58,19 +58,18 @@ end;
 
 
 estimated_params;
-betta, uniform_pdf, , ,  0.95, 0.9999; 
-gam, uniform_pdf, , , 0.0,  5.0;
-rho1, uniform_pdf, , , 0.0,  1.0; 
-sigma1, uniform_pdf, , , 0.0,  0.1;
-rho2, uniform_pdf, , ,   0.0,  1.0; 
-sigma2, uniform_pdf, , , 0.0,  0.1;
-nss, uniform_pdf, , , 6/24, 9/24; 
+ betta, uniform_pdf, , ,  0.95, 0.9999; 
+ gam, uniform_pdf, , , 0.0,  5.0;
+ rho1, uniform_pdf, , , 0.0,  1.0; 
+ sigma1, uniform_pdf, , , 0.0,  0.1;
+ rho2, uniform_pdf, , ,   0.0,  1.0; 
+ sigma2, uniform_pdf, , , 0.0,  0.1;
+ nss, uniform_pdf, , , 6/24, 9/24; 
 end;
 
 varobs c n;  // experiment choosing one or two from y c n MPK MPL (c and n work well)
 
 // short MCMC for illustration only 
-// set order=2 to see particle filter option
-estimation(datafile=dsgedata, nobs=160, order=1, mh_replic=10000, mh_nblocks=1, mh_jscale=0.8, mh_init_scale=5, irf=40) y c n r w;
+estimation(order=1, datafile=dsgedata, nobs=160, mh_replic=10000, mh_nblocks=1, mh_jscale=0.8, mh_init_scale=5, irf=40);
 
 
