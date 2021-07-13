@@ -75,8 +75,8 @@ end
             naccept = naccept - naccept
         end    
         if rep > burnin
-            chain[rep-burnin,1:end-1] .= θ
-            chain[rep-burnin,1:end] = accept
+            chain[rep-burnin,1:end-1] = θ
+            chain[rep-burnin, end] = accept
         end    
     end
     return chain
