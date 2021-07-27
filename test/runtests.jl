@@ -14,17 +14,17 @@ function main()
     y = rand(10,1)
     b = ols(y,x,silent=true)[1]
     @testset "ols" begin
-        @test b[1,1] ≈ 0.07655377367377458
+        @test b[1,1] / 0.07655377367377458 ≈ 1.0 atol=1e-5
     end    
     # ML
     @testset "mle" begin
         b = mle()
-        @test b[1,1] ≈ 0.49466773000112035
+        @test b[1,1] / 0.49466773000112035 ≈ 1.0 atol = 1e-5
     end    
     # GMM
     @testset "gmm" begin
         b = gmm()
-        @test b[1,1] ≈ 0.4946717833359474
+        @test b[1,1] / 0.4946717833359474 ≈ 1.0  atol = 1e-5
     end    
     # samin
     xopt, fopt = samin(1)
