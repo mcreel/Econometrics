@@ -32,12 +32,12 @@ function mcmc()
     return
 end
 
-
 # method using threads and symmetric proposal
-function mcmc(θ, reps::Int64, burnin::Int64, Prior::Function, lnL::Function, Proposal::Function, report::Bool, nthreads::Int64)
-    chain = zeros(Int(reps*nthreads), size(θ,1)+1)
+@views function mcmc(θ, reps::Int64, burnin::Int64, Prior::Function, lnL::Function, Proposal::Function, report::Bool, nthreads::Int64)
+    perthread = reps ÷ nthreads
+    chain = zeros(reps, size(θ,1)+1)
     Threads.@threads for t = 1:nthreads # collect the results from the threads
-        chain[t*reps-reps+1:t*reps,:] = mcmc(θ, reps, burnin, Prior, lnL, Proposal, report) 
+        chain[t*perthread-perthread+1:t*perthread,:] = mcmc(θ, perthread, burnin, Prior, lnL, Proposal, report) 
     end    
     return chain
 end
