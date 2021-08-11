@@ -60467,9 +60467,17 @@ literal "false"
 
 \end_inset
 
- for a summary of estimation and inference using MCMC-GMM, where moments
- are based on a neural net that is fitted using simulations from the model,
- at parameter vectors drawn from the prior.
+ for a summary of estimation and inference using MCMC-MSM
+\begin_inset CommandInset href
+LatexCommand href
+name "this page"
+target "https://github.com/mcreel/SNM/tree/master/DSGE"
+literal "false"
+
+\end_inset
+
+, where moments are based on a neural net that is fitted using simulations
+ from the model, at parameter vectors drawn from the prior.
  This procedure leads to parameter estimates that have low bias and RMSE,
  and confidence intervals that have approximately proper coverage.
 \end_layout
@@ -60495,8 +60503,12 @@ Exercises
 \end_layout
 
 \begin_layout Enumerate
-(more advanced) Do a little Monte Carlo study to compare ML, SML and EMM
- estimation of the probit model.
+do the same, but computing a MSM estimator of the probit model.
+\end_layout
+
+\begin_layout Enumerate
+(more advanced) Do a little Monte Carlo study to compare ML, SML and MSMestimati
+on of the probit model.
  Investigate how the number of simulations affect the two simulation-based
  estimators.
 \end_layout
