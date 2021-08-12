@@ -15,7 +15,7 @@ You need to install this repository as a Julia package. Do this as follows:
 4. (optional, only if you're curious) basic testing of the package has been added. Do ```using Pkg; Pkg.test("Econometrics")```
 
 5. then do ```using Econometrics``` in Julia to use the package. You can see some examples by typing 
-   ```
+   ```julia
    ols()
    mleresults()
    gmmresults()
