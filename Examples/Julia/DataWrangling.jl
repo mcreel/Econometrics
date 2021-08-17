@@ -5,15 +5,15 @@ on returns to education
 
 ##
 using DelimitedFiles, CSV, DataFrames, DataFramesMeta
-card = CSV.read("../Data/card.csv")
+card = CSV.read("../Data/card.csv", DataFrame)
 display(first(card,6))
 
 
 ##
 # add some variables
-card[:lnwage] = round.(log.(card[:wage]), digits=4) # round to save storage space
-card[:expsq] = (card[:exper].^2)/100
-card[:agesq] = card[:age].^2
+card[!,:lnwage] = round.(log.(card[!,:wage]), digits=4) # round to save storage space
+card[!,:expsq] = (card[!,:exper].^2)/100
+card[!,:agesq] = card[!,:age].^2
 
 ##
 # select the ones we want
@@ -26,7 +26,7 @@ CSV.write("cooked.csv", cooked)
 
 ##
 # write as plain ASCII
-data = convert(Matrix{Float32}, cooked)
+data = Matrix{Float32}(cooked)
 writedlm("cooked.txt", data)
 
-# for binary write, see JLD.jl and Feather.jl
+# for binary write, see BSON.jl

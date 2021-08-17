@@ -1054,11 +1054,16 @@ using Econometrics
 Running Julia and the work flow
 \end_layout
 
+\begin_layout Standard
+There are several ways to use Julia, here is a basic description of some
+ of them:
+\end_layout
+
 \begin_layout Subsection
 REPL and text editor
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 The REPL (
 \begin_inset Quotes sld
 \end_inset
@@ -1079,39 +1084,65 @@ julia
 \end_inset
 
 .
- You can run your code in one window, and edit it in another.
- If you put these things in panes of a screen or byobu session, it's pretty
- hard to beat for productivity.
+ You can run your code in one window, and edit it in another, using your
+ favorite text editor.
+ There are syntax highlighting schemes for many of the popular editors.
+ 
 \end_layout
 
 \begin_layout Subsection
-IJulia/Jupyter notebooks
+Julia for VSCode
 \end_layout
 
-\begin_layout Itemize
-Good for presentations, but I find it cumbersome for research and daily
- work
-\end_layout
+\begin_layout Standard
+If you want something more modern and integrated looking than the REPL and
+ a text editor, check out 
+\begin_inset CommandInset href
+LatexCommand href
+name "Julia for VSCode "
+target "https://www.julia-vscode.org/"
+literal "false"
 
-\begin_layout Itemize
-Show it by doing 
-\family typewriter
-] add IJulia using IJulia; notebook()
+\end_inset
+
+.
+ I don't have much experience with this.
+ It looks pretty neat, but needs some setting up, which I haven't taken
+ the time to learn about.
 \end_layout
 
 \begin_layout Subsection
-Juno/Atom
+Notebook interfaces
+\end_layout
+
+\begin_layout Standard
+This is a nice way to interactively explore relatively simple code.
+ Again, I don't have much experience.
 \end_layout
 
 \begin_layout Itemize
-If you want something more modern (?) and integrated looking than the REPL
- and a text editor, check out the Juno editor: 
+IJulia and Jupyter notebooks: 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-http://junolab.org/
+https://github.com/JuliaLang/IJulia.jl
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pluto notebooks: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/fonsp/Pluto.jl
 \end_layout
 
 \end_inset
@@ -60462,22 +60493,14 @@ Please see
 \begin_inset CommandInset href
 LatexCommand href
 name "this page"
-target "https://github.com/mcreel/SimulatedNeuralMoments.jl/tree/main/examples/DSGE"
-literal "false"
-
-\end_inset
-
- for a summary of estimation and inference using MCMC-MSM
-\begin_inset CommandInset href
-LatexCommand href
-name "this page"
 target "https://github.com/mcreel/SNM/tree/master/DSGE"
 literal "false"
 
 \end_inset
 
-, where moments are based on a neural net that is fitted using simulations
- from the model, at parameter vectors drawn from the prior.
+ for a summary of estimation and inference using MCMC-MSM, where moments
+ are based on a neural net that is fitted using simulations from the model,
+ at parameter vectors drawn from the prior.
  This procedure leads to parameter estimates that have low bias and RMSE,
  and confidence intervals that have approximately proper coverage.
 \end_layout
