@@ -1106,9 +1106,9 @@ literal "false"
 \end_inset
 
 .
- I don't have much experience with this.
- It looks pretty neat, but needs some setting up, which I haven't taken
- the time to learn about.
+ This combines the editting, command, and plot windows all on one interface,
+ and may be more what you're used to if coming from Matlab or RStudio, for
+ example.
 \end_layout
 
 \begin_layout Subsection
@@ -1117,7 +1117,7 @@ Notebook interfaces
 
 \begin_layout Standard
 This is a nice way to interactively explore relatively simple code.
- Again, I don't have much experience.
+ I don't have much experience.
 \end_layout
 
 \begin_layout Itemize
@@ -31545,6 +31545,14 @@ L(Y|Z;\theta)=\prod_{t=1}^{n}f(y_{t}|x_{t},\theta)
 \begin_inset Newpage newpage
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsection
+The log likelihood function
+\end_layout
+
+\begin_layout Standard
 The criterion function can be defined as the average log-likelihood function:
  
 \begin_inset Formula 
@@ -31562,7 +31570,7 @@ s_{n}(\theta)=\frac{1}{n}\ln L(Y|Z;\theta)=\frac{1}{n}\sum_{t=1}^{n}\ln f(y_{t}|
 
 \end_inset
 
- where the set maximized over is defined below.
+where the set maximized over is defined below.
  Since 
 \begin_inset Formula $\ln(\cdot)$
 \end_inset
@@ -31590,7 +31598,6 @@ s_{n}(\theta)=\frac{1}{n}\ln L(Y|Z;\theta)=\frac{1}{n}\sum_{t=1}^{n}\ln f(y_{t}|
  
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \emph on
@@ -31601,11 +31608,17 @@ There are both theoretical and practical reasons:
 
 \begin_deeper
 \begin_layout Itemize
-to get a LLN to apply
+to get a LLN to apply: LNNs apply to averages of terms, not products
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-to avoid loss of precision on a digital computer
+to avoid loss of precision on a digital computer: the likelihood function
+ in product form will tend rapidly to zero when each term is between 0 and
+ 1.
+ For a discrete r.v., this will be the case.
+ When this happens, then, as the sample size gets larger, the objective
+ function gets smaller, and, before long, will dip below machine precision.
 \end_layout
 
 \end_deeper
@@ -31730,7 +31743,7 @@ The mean is
 
 \begin_layout Itemize
 Thus, the MLE, which is the sample mean, is a consistent estimator of the
- parameter, because the population mean is the parameter.
+ parameter, because the population mean is the parameter..
  
 \end_layout
 
@@ -32003,10 +32016,10 @@ reference "Consistency of ee"
 
 \begin_layout Itemize
 The question is: what is the value that maximizes 
-\begin_inset Formula $s_{\infty}(\theta)?$
+\begin_inset Formula $s_{\infty}(\theta)$
 \end_inset
 
- 
+ when the criterion function is the average log-likelihood? 
 \end_layout
 
 \begin_layout Itemize
@@ -32186,8 +32199,8 @@ reference "Consistency of ee"
 \end_layout
 
 \begin_layout Exercise
-Verify consistency of the ML estimator of the CLRM with normality by increasing
- 
+Verify by experiment the consistency of the ML estimator of the CLRM with
+ normality by increasing 
 \begin_inset Formula $n$
 \end_inset
 
