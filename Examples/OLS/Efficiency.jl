@@ -4,7 +4,6 @@
 # 3 subsamples
 using Plots
 function main()
-pyplot()    
 reps = 10000 # number of Monte Carlo reps.
 n = 21 # sample size
 sig = 2.0  # st. dev. of errors
@@ -35,11 +34,12 @@ for i = 1:reps
 	betas[i,2] = beta_ss[2]
 end
 
-histogram(betas[:,1], label="", nbins=30, show=true)
+p1 = histogram(betas[:,1], label="", nbins=30, show=true)
 #savefig("efficiency1.png")
-histogram(betas[:,2], label="", nbins=30, reuse=false, show=true)
+p2 = histogram(betas[:,2], label="", nbins=30, reuse=false, show=true)
 #savefig("efficiency2.png")
-return
+p1, p2
 end
-main()
+p1,p2 = main()
+plot(p1, p2)
 	

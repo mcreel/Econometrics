@@ -197,6 +197,28 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Chapter
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TO DO:
+\end_layout
+
+\begin_layout Itemize
+more graphs in Julia example of data wrangling and exploratory analysis
+\end_layout
+
+\begin_layout Itemize
+logit example for ML, carried through all sections.
+ Matlab code to accompany, too.
+\end_layout
+
+\begin_layout Itemize
+similar example for GMM, + Matlab code
+\end_layout
+
+\end_inset
+
 About this document
 \end_layout
 

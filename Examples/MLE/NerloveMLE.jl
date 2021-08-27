@@ -2,7 +2,7 @@
 # this is intended to show that MLE with normality is the
 # ML estimator (for the b"s, not for sig^2)
 using Econometrics, DelimitedFiles
-data = readdlm("nerlove.data")
+data = readdlm(@__DIR__() * "/nerlove.data")
 data = data[:,2:end]
 data = log.(data)
 n = size(data,1)

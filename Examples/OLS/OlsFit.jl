@@ -20,4 +20,4 @@ plot!(x, fit, label = "OLS fitted line")
 xlabel= "X"
 scatter!(x, y, label = "data")
 #savefig("OlsFit.png")
-gui()
+#gui()

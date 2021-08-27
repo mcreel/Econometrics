@@ -1,8 +1,7 @@
 # Estimates the basic Nerlove Cobb-Douglas model
-using DelimitedFiles
+using Econometrics, DelimitedFiles
 function main()
-dir = dirname(dirname(pathof(Econometrics)))
-data = readdlm(dir*"/Examples/Data/nerlove.data")
+data = readdlm(joinpath(@__DIR__, "../Data/nerlove.data"))
 data = data[:,2:6]
 data = log.(data)
 n = size(data,1)

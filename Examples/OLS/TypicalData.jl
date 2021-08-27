@@ -18,4 +18,4 @@ plot(x,PopRegLine, label = "population regression line")
 xlabel= "X"
 scatter!(x, y, label = "data")
 #savefig("TypicalData.png")
-gui()
+#gui()
