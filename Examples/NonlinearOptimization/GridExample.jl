@@ -11,6 +11,7 @@ function GridExample(points, doprint=false)
     scatter!(x, y)
     # plot the best point found
     scatter!([x[argmin(y)]], [y[argmin(y)]], markersize=10)
-    @show plot!(legend=false)
+    p = plot!(legend=false)
     if doprint savefig("gridsearch.png") end
+    return p
 end

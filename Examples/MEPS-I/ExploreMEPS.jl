@@ -1,6 +1,6 @@
 # Read in the data
 
-data = readdlm("meps1996.data")
+data = readdlm(joinpath(@__DIR__,"../Data/meps1996.data"))
 
 #	The variables and their columns
 #	VARIABLE						column

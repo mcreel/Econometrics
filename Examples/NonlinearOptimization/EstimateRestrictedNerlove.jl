@@ -2,7 +2,7 @@
 # and fmincon, imposing that factor shares are in (0,1) and sum to 1
 using DelimitedFiles, Econometrics
 # prepare the data
-data = readdlm("nerlove.data")
+data = readdlm(joinpath(@__DIR__, "../Data/nerlove.data"))
 data = log.(data[:,2:end])
 n = size(data,1)
 y = data[:,1]

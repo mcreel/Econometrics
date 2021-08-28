@@ -1,4 +1,4 @@
-include("FoggyMountainObj.jl")
+include(@__DIR__*"FoggyMountainObj.jl")
 
 function main()
 # One BFGS run with poor starting values

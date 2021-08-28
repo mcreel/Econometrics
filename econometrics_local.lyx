@@ -24635,7 +24635,7 @@ edit(samin,())
 
 \begin_layout Example
 Paste this code into Julia to see an example of simulated annealing, using
- the version in the package Optim.jl
+ the version in the package 
 \begin_inset CommandInset href
 LatexCommand href
 name "Optim.jl"
