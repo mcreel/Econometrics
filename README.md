@@ -33,6 +33,8 @@ You need to install this repository as a Julia package. Do this as follows:
 - they are available in editable form (econometrics.lyx), so that you can modify them to suit your needs: see the first chapter for more information, and get LyX from  www.lyx.org. 
 - they contain links that point to example programs using the Julia language. The examples show how to use the methods and illustrate properties of estimators. The example code can be modified to allow exploration.
 
+## To integrate the notes and the example files, so that links are ready to run
+- the file econometrics_local.lyx allows you to create a pdf version with links that open using the example files installed on your computer. See the search and replace information at the top of the document. If you configure your system to open .jl files in your favorite editor, then the links in the pdf will open with that editor. For example, on Linux, I set KDE Plasma file associations for .jl files to open using ```code -a ~/Mystuff/Econometrics -r %F```, where code is the VScode editor executable, and ~/Mystuff/Econometrics is the location where I have the archive installed. When I click a link in econometrics_local.pdf, the link opens in the editor, with the appropriate environment, ready to run.
 To get an idea of how this works, the following figure shows an explanation in the pdf version of the notes, with a link to an example. The code of the example is visible in the lower R, and the output of running the example in Julia is at the lower L.
 
 ![example](https://github.com/mcreel/Econometrics/blob/master/example.png)
