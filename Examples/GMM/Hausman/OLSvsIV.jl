@@ -1,7 +1,7 @@
 # this is a little Monte Carlo exercise that illustrates that
 # the OLS estimator is biased and inconsistent when errors are
 # correlated with regressors, but that the IV estimator is consistent
-using Plots, LinearAlgebra
+using Econometrics, Plots, LinearAlgebra
 function main()
 reps = 1000 # number of Monte Carlo reps.
 betaols = zeros(reps,2)
@@ -33,14 +33,14 @@ p1 = npdensity(betaols[:,2])
 plot!(p1,title="OLS")
 p2 = npdensity(betaiv[:,2])
 plot!(p2,title="IV")
-plot(p1,p2,layout=(2,1))
-savefig("olsiv.png")
+p = plot(p1,p2,layout=(2,1))
+#savefig("olsiv.png")
 gui()
 println("true betas are ", truebeta)
 println("OLS results")
 dstats(betaols, short=true)
 println("IV results")
 dstats(betaiv, short=true)
-return
+return p
 end
 main()

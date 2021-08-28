@@ -5,7 +5,7 @@ on returns to education
 
 ##
 using DelimitedFiles, CSV, DataFrames, DataFramesMeta
-card = CSV.read(joinpath(@__DIR__, "../Data/card.csv"), DataFrame) # how to read CSV data into DataFrame
+card = CSV.read("../Data/card.csv", DataFrame) # how to read CSV data into DataFrame
 display(first(card,6))
 
 

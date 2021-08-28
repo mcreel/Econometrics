@@ -10,7 +10,7 @@ If using VSCode, just run the blocks.
 
 using CSV, DataFrames, DataFramesMeta, DelimitedFiles, StatsPlots
 wait_for_key(prompt) = (print(stdout, prompt); read(stdin, 1); nothing)#pyplot(reuse=false, show=true)
-card = CSV.read(joinpath(@__DIR__, "../Data/card.csv"), DataFrame) # how to read CSV data into DataFrame
+card = CSV.read("../Data/card.csv", DataFrame) # how to read CSV data into DataFrame
 size(card)
 names(card)
 # see the first 6 lines

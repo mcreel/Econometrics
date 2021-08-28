@@ -276,9 +276,9 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[Distributions]]
 deps = ["FillArrays", "LinearAlgebra", "PDMats", "Printf", "QuadGK", "Random", "SparseArrays", "SpecialFunctions", "Statistics", "StatsBase", "StatsFuns"]
-git-tree-sha1 = "b9db97ff2391603bb6411ae8a87258055e2c7de5"
+git-tree-sha1 = "f389cb8974e02d7eaa6ae2ccedbbfb43174cd8e8"
 uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
-version = "0.25.13"
+version = "0.25.14"
 
 [[DocStringExtensions]]
 deps = ["LibGit2"]
@@ -664,10 +664,16 @@ uuid = "e6f89c97-d47a-5376-807f-9c37f3926c36"
 version = "0.4.7"
 
 [[MCMCChains]]
-deps = ["AbstractFFTs", "AbstractMCMC", "AxisArrays", "Compat", "Dates", "Distributions", "Formatting", "IteratorInterfaceExtensions", "KernelDensity", "LinearAlgebra", "MLJModelInterface", "NaturalSort", "PrettyTables", "Random", "RecipesBase", "Serialization", "SpecialFunctions", "Statistics", "StatsBase", "StatsFuns", "TableTraits", "Tables"]
-git-tree-sha1 = "2cc8ea543a3dbb951e8b3310a4ab7605790aa9f1"
+deps = ["AbstractMCMC", "AxisArrays", "Compat", "Dates", "Distributions", "Formatting", "IteratorInterfaceExtensions", "KernelDensity", "LinearAlgebra", "MCMCDiagnosticTools", "MLJModelInterface", "NaturalSort", "PrettyTables", "Random", "RecipesBase", "Serialization", "SpecialFunctions", "Statistics", "StatsBase", "StatsFuns", "TableTraits", "Tables"]
+git-tree-sha1 = "49923cab8e63eedf5fbcbe85fde33e878da5792a"
 uuid = "c7f686f2-ff18-58e9-bc7b-31028e88f75d"
-version = "4.14.1"
+version = "5.0.0"
+
+[[MCMCDiagnosticTools]]
+deps = ["AbstractFFTs", "DataAPI", "Distributions", "LinearAlgebra", "MLJModelInterface", "Random", "SpecialFunctions", "Statistics", "StatsBase", "Tables"]
+git-tree-sha1 = "f6ab1e254e51ddebf9bcb45301625224291ca8e0"
+uuid = "be115224-59cd-429b-ad48-344e309966f0"
+version = "0.1.0"
 
 [[MKL_jll]]
 deps = ["Artifacts", "IntelOpenMP_jll", "JLLWrappers", "LazyArtifacts", "Libdl", "Pkg"]

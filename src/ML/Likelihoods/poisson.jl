@@ -1,3 +1,4 @@
+using SpecialFunctions
 function  poisson(theta, y, x)
 	lambda = exp.(x*theta)
     n = size(y,1)

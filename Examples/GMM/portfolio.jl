@@ -40,7 +40,7 @@ function portfolio_moments(theta, data)
 end
 
 function main()
-data = readdlm("tauchen.data")
+data = readdlm("../Data/tauchen.data")
 c = data[:,1]
 p = data[:,2]
 d = data[:,3]

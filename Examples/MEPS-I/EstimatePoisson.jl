@@ -20,7 +20,7 @@ if (which_dep == 3) dep = "IPV"    end
 if (which_dep == 4) dep = "ERV"    end
 if (which_dep == 5) dep = "DV"     end
 if (which_dep == 6) dep = "PRESCR" end
-data = readdlm(joinpath(@__DIR__,"../Data/meps1996.data"))
+data = readdlm("../Data/meps1996.data")
 y = data[:,which_dep]
 x = data[:,7:12]
 n = size(x,1)
