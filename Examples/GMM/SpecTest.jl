@@ -1,6 +1,6 @@
 # this script does a Monte Carlo that applies IV to solve inconsistency of OLS estimator
 # when there is measurement error of the regressors
-using Distributions, LinearAlgebra
+using Econometrics, Distributions, LinearAlgebra, Random
 
 function GIVmoments(theta, y, x, inst)
 	e = y - x*theta
@@ -13,10 +13,10 @@ n = 100
 sig = 1
 reps = 1000
 results = zeros(reps,3)
+ystar = zeros(n)
 for rep = 1:reps
 	x = randn(n) # an exogenous regressor
 	e = randn(n) # the error term
-	ystar = zeros(n)
 	# generate the dep var
 	for t = 2:n
 	  ystar[t] = 0.0 + 0.9*ystar[t-1] + 1.0*x[t] + e[t]

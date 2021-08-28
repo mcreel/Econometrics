@@ -66,4 +66,4 @@ wait_for_key("press enter to continue")
 # as this is usually better for more advanced
 # modeling
 data = Matrix{Float64}(card)
-writedlm("card.ascii", data) # write to plain ASCII file
+# writedlm("card.ascii", data) # write to plain ASCII file

@@ -1,6 +1,6 @@
 # this script does a Monte Carlo that applies IV to solve inconsistency of OLS estimator
 # when there is measurement error of the regressors
-using Plots
+using Econometrics, Plots
 
 function GIVmoments(theta, data)
 	data = [data lags(data,2)]
