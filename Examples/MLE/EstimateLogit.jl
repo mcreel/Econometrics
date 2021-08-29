@@ -5,7 +5,7 @@
 # true value of theta used to generate data
 
 using Econometrics
-include(@__DIR__() * "/LogitDGP.jl")
+include("LogitDGP.jl")
 n = 30 # sample size
 theta = [0, 0.5] # true theta for generating data
 (y, x) = LogitDGP(n, theta) # generate the data

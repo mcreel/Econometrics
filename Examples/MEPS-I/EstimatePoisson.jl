@@ -12,7 +12,7 @@
 # 	Dental visits			5
 # 	Prescriptions			6
 #
-using DelimitedFiles
+using Econometrics, DelimitedFiles
 which_dep = 1
 if (which_dep == 1) dep = "OBDV"   end
 if (which_dep == 2) dep = "OPV"    end

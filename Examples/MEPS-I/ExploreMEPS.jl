@@ -1,6 +1,6 @@
 # Read in the data
 
-data = readdlm(joinpath(@__DIR__,"../Data/meps1996.data"))
+data = readdlm("../Data/meps1996.data")
 
 #	The variables and their columns
 #	VARIABLE						column
@@ -24,4 +24,4 @@ n = size(data,1)
 println("MEPS data, 1996, complete data set statistics")
 println("observations: ",n)
 dstats(data, names);
-""
+
