@@ -1,3 +1,4 @@
+# this script will precompile some commonly used functions
 using Econometrics, Plots
 ols()
 mleresults()
