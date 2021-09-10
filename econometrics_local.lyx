@@ -1109,7 +1109,7 @@ julia
  You can run your code in one window, and edit it in another, using your
  favorite text editor.
  There are syntax highlighting schemes for many of the popular editors.
- 
+ This is what I use for research.
 \end_layout
 
 \begin_layout Subsection
@@ -1128,9 +1128,10 @@ literal "false"
 \end_inset
 
 .
- This combines the editting, command, and plot windows all on one interface,
+ This combines the editing, command, and plot windows all on one interface,
  and may be more what you're used to if coming from Matlab or RStudio, for
  example.
+ This is what I use when teaching.
 \end_layout
 
 \begin_layout Subsection
@@ -25142,23 +25143,9 @@ xamples/MEPS-I/EstimatePoisson.jl}
  estimates a Poisson model using the full data set.
  The results of the estimation, using OBDV as the dependent variable are
  here: 
-\begin_inset CommandInset label
-LatexCommand label
-name "OBDV ML results"
-
-\end_inset
-
-
 \begin_inset CommandInset include
 LatexCommand verbatiminput
 filename "Examples/MEPS-I/PoissonOBDV.out"
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "PoissonOBDV_results"
 
 \end_inset
 
@@ -25458,23 +25445,6 @@ Numerically minimize the function
 \end_layout
 
 \begin_layout Enumerate
-Numerically compute the OLS estimator of the Nerlove model by using an interativ
-e minimization algorithm to minimize the sum of squared residuals.
- Verify that the results coincide with those given in subsection 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:The-Nerlove-data"
-
-\end_inset
-
-.
- The important part of this problem is to learn how to minimize a function
- that depends on both parameters and data.
- Try to write your function so that it is easy to use it with an arbitrary
- data set.
-\end_layout
-
-\begin_layout Enumerate
 Numerically compute the OLS estimator of the Nerlove model 
 \begin_inset Formula 
 \[
@@ -25484,14 +25454,9 @@ Numerically compute the OLS estimator of the Nerlove model
 \end_inset
 
 by using the fminunc function in the 
-\begin_inset CommandInset href
-LatexCommand href
-name "Econometrics.jl"
-target "https://github.com/mcreel/Econometrics.jl"
-literal "false"
-
-\end_inset
-
+\family typewriter
+Econometrics
+\family default
  package to minimize the sum of squared residuals.
  The data is at the link 
 \begin_inset ERT

@@ -23,7 +23,7 @@ You need to install this repository as a Julia package. Do this as follows:
    npreg()
    samin()
    ```
-   
+  Running the script ```warmpup.jl``` will run these and other code bits, which will pre-compile many of the functions that are used in the examples. This will make the examples run more quickly. It is best to run the warmup script, and then keep the Julia session open, to run the examples when you like.
 
 6. To see the source code for those examples, type ```edit(ols,())```, to see the OLS source code.
 
