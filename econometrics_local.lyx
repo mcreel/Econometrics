@@ -1263,15 +1263,22 @@ https://github.com/mcreel/Econometrics/blob/master/Examples/Data/nerlove.data
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Exploratory-analysis-and"
+
+\end_inset
+
 Exploratory analysis and plotting
 \end_layout
 
 \begin_layout Standard
-This section needs work, but the following two examples can give you ideas:
+Here are a couple of examples of data preparation and basic analysis.
 \end_layout
 
 \begin_layout Itemize
-Using DataFrames and StatPlots for exploratory analysis: 
+Using DataFrames and StatPlots for exploratory analysis using the Card returns
+ to education data set: 
 \begin_inset ERT
 status open
 
@@ -1289,7 +1296,17 @@ htmladdnormallink{BasicDataAnalysis.jl}{file:///home/michael/Mystuff/Econometric
 \end_layout
 
 \begin_layout Itemize
-Data wrangling: transforming, adding variables, etc.: 
+Data preparation and exploration using Oxford-Man realized library data
+ on financial time series: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Oxford-Man realized library data"
+target "https://realized.oxford-man.ox.ac.uk/images/oxfordmanrealizedvolatilityindices.zip"
+literal "false"
+
+\end_inset
+
+: 
 \end_layout
 
 \begin_deeper
@@ -1301,37 +1318,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataWrangling.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/Julia/DataWrangling.jl} 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://www.juliabloggers.com/data-wrangling-in-julia-based-on-dplyr-flights-tutor
-ials/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/piever/JuliaDBTutorial/blob/master/hflights.ipynb
+htmladdnormallink{SP500.jl}{file:///home/michael/Mystuff/Econometrics/Examples/Ju
+lia/SP500.jl} 
 \end_layout
 
 \end_inset
@@ -24540,47 +24528,6 @@ Switching between algorithms during iterations is sometimes useful.
 
 \end_layout
 
-\begin_layout Example
-The Nerlove model via numeric minimization.
- This is a linear model with linear restrictions, and one would not normally
- use an iterative optimization program to compute the solution, because
- an analytic solution is available.
- This is just an example, and if you're curious, try comparing with the
- analytic solution.
- Here's the code: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-htmladdnormallink{EstimateRestrictedNerlove.jl}{file:///home/michael/Mystuff/Econ
-ometrics/Examples/NonlinearOptimization/EstimateRestrictedNerlove.jl} 
-\end_layout
-
-\end_inset
-
- which shows how to use unconstrained and constrained minimization to estimate
- the simple Nerlove model (equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "simple nerlove model"
-
-\end_inset
-
-) with and without parameter restrictions.
- You should use the objective function values to compute the 
-\begin_inset Formula $qF$
-\end_inset
-
- test.
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Global methods: simulated annealing
 \end_layout
@@ -24807,14 +24754,68 @@ Trace of SA path to minimize sum of squared errors
 \end_layout
 
 \begin_layout Section
+Examples
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:The-Nerlove-model"
+
+\end_inset
+
+The Nerlove model via numeric minimization
+\end_layout
+
+\begin_layout Standard
+This is a linear model with linear restrictions, and one would not normally
+ use an iterative optimization program to compute the solution, because
+ an analytic solution is available.
+ This is just an example, and if you're curious, try comparing with the
+ analytic solution.
+ Here's the code: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+htmladdnormallink{EstimateRestrictedNerlove.jl}{file:///home/michael/Mystuff/Econ
+ometrics/Examples/NonlinearOptimization/EstimateRestrictedNerlove.jl} 
+\end_layout
+
+\end_inset
+
+ which shows how to use unconstrained and constrained minimization to estimate
+ the simple Nerlove model (equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "simple nerlove model"
+
+\end_inset
+
+) with and without parameter restrictions.
+ You should use the objective function values to compute the 
+\begin_inset Formula $qF$
+\end_inset
+
+ test.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:MEPS data"
 
 \end_inset
 
-A practical example: Maximum likelihood estimation using count data: The
- MEPS data and the Poisson model
+Maximum likelihood estimation using count data: The MEPS data and the Poisson
+ model
 \end_layout
 
 \begin_layout Standard
@@ -25150,18 +25151,15 @@ filename "Examples/MEPS-I/PoissonOBDV.out"
 \end_inset
 
 
-\end_layout
+\begin_inset Newpage newpage
+\end_inset
 
-\begin_layout Section
-Numeric optimization: pitfalls
+
 \end_layout
 
 \begin_layout Standard
-In this section we'll examine two common problems that can be encountered
- when doing numeric optimization of nonlinear models, and some solutions.
-\end_layout
 
-\begin_layout Subsection
+\series bold
 Poor scaling of the data
 \end_layout
 
@@ -25184,6 +25182,10 @@ xamples/MEPS-I/EstimatePoisson.jl}
 
 , the data will not be scaled, and the estimation program will have difficulty
  converging (note that the likelihood value is lower with poor scaling).
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -25203,14 +25205,7 @@ reference "foggy mountain-1"
 \end_inset
 
 , but try to imagine the scene if the clouds were 2000m thicker.
- A representation is Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "foggy mountain"
-
-\end_inset
-
-).
+ A mathematical representation of a similar problem is in the second panel.
  You can go up until there's nowhere else to go up, but since you're in
  the fog you don't know if the true summit is across the gap that's at your
  feet.
@@ -25253,38 +25248,6 @@ Mountains with low fog
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "foggy mountain"
-
-\end_inset
-
-A foggy mountain
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/michael/Mystuff/Econometrics/Examples/NonlinearOptimization/FoggySurface.png
 	width 6in
@@ -25363,60 +25326,6 @@ Exercises
 \end_layout
 
 \begin_layout Enumerate
-In Julia (with the 
-\family typewriter
-Econometrics
-\family default
- package installed), type 
-\family typewriter
-fminunc()
-\family default
-, to learn a bit more about the 
-\family typewriter
-fminunc
-\family default
- function for unconstrained minimization, and to see a simple example.
- This is a convenience function, for Matlab users, and uses the Julia Optim.jl
- package in the background.
- If you get into Julia, it's better to use Optim.jl directly.
-\end_layout
-
-\begin_layout Enumerate
-In Julia (with the 
-\family typewriter
-Econometrics
-\family default
- package installed), type 
-\family typewriter
-fmincon()
-\family default
-, to learn a bit more about the 
-\family typewriter
-fmincon
-\family default
- function for unconstrained minimization, and to see a simple example.
- This is a convenience function, for Matlab users, and uses the Julia NLopt.jl
- package in the background.
- If you get into Julia, it's better to use NLopt.jl directly.
-\end_layout
-
-\begin_layout Enumerate
-In Julia (with the 
-\family typewriter
-Econometrics
-\family default
- package installed), type 
-\family typewriter
-samin()
-\family default
-, to learn a bit more about the 
-\family typewriter
-samin
-\family default
- function for minimization by simulated annealing, and to see a simple example.
-\end_layout
-
-\begin_layout Enumerate
 Numerically minimize the function 
 \begin_inset Formula $\sin(x)+0.01\left(x-a\right)^{2}$
 \end_inset
@@ -25458,6 +25367,17 @@ by using the fminunc function in the
 Econometrics
 \family default
  package to minimize the sum of squared residuals.
+ See Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-Nerlove-model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for a really good hint.
  The data is at the link 
 \begin_inset ERT
 status open
@@ -25584,6 +25504,29 @@ The important part of this problem is to learn how to minimize a function
 \end_layout
 
 \begin_layout Enumerate
+Take the code from the previous problem, and modify it to estimate the model
+ 
+\begin_inset Formula 
+\[
+\ln W=\beta_{0}+\beta_{EDUC}EDUC+\beta_{X}EXP+\beta_{EXP^{2}}\frac{EXP^{2}}{100}+\beta_{BLACK}BLACK+\beta_{SMSA}SMSA+\beta_{SOUTH}SOUTH+\epsilon
+\]
+
+\end_inset
+
+ using the Card data, which was presented in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Exploratory-analysis-and"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
 Suppose we have an 
 \begin_inset Formula $AR(1)$
 \end_inset
@@ -25610,6 +25553,60 @@ Suppose we have an
  You must define your criterion function and explain how to implement the
  grid search.
  
+\end_layout
+
+\begin_layout Enumerate
+In Julia (with the 
+\family typewriter
+Econometrics
+\family default
+ package installed), type 
+\family typewriter
+fminunc()
+\family default
+, to learn a bit more about the 
+\family typewriter
+fminunc
+\family default
+ function for unconstrained minimization, and to see a simple example.
+ This is a convenience function, for Matlab users, and uses the Julia Optim.jl
+ package in the background.
+ If you get into Julia, it's better to use Optim.jl directly.
+\end_layout
+
+\begin_layout Enumerate
+In Julia (with the 
+\family typewriter
+Econometrics
+\family default
+ package installed), type 
+\family typewriter
+fmincon()
+\family default
+, to learn a bit more about the 
+\family typewriter
+fmincon
+\family default
+ function for unconstrained minimization, and to see a simple example.
+ This is a convenience function, for Matlab users, and uses the Julia NLopt.jl
+ package in the background.
+ If you get into Julia, it's better to use NLopt.jl directly.
+\end_layout
+
+\begin_layout Enumerate
+In Julia (with the 
+\family typewriter
+Econometrics
+\family default
+ package installed), type 
+\family typewriter
+samin()
+\family default
+, to learn a bit more about the 
+\family typewriter
+samin
+\family default
+ function for minimization by simulated annealing, and to see a simple example.
 \begin_inset Newpage newpage
 \end_inset
 

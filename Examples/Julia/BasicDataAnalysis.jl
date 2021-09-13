@@ -18,6 +18,26 @@ show(first(card,6))
 # see some statistics using DataFrames functionality
 show(describe(card))
 
+##
+# add some variables
+card[!,:lnwage] = round.(log.(card[!,:wage]), digits=4) # round to save storage space
+card[!,:expsq] = (card[!,:exper].^2)/100
+card[!,:agesq] = card[!,:age].^2
+
+##
+# select the ones we want
+cooked = @select(card, :lnwage, :educ, :exper, :expsq, :black, :south, :smsa, :age, :agesq, :nearc4 )
+display(first(cooked,6))
+
+##
+# write as CSV
+CSV.write("cooked.csv", cooked)
+
+##
+# write as plain ASCII, using limited precision to reduce file size
+data = Matrix{Float32}(cooked)
+writedlm("cooked.txt", data)
+
 # a simple way of looking at geographical and racial discrimination
 # select north and white
 nw = @subset(card, :south .== 0, :black .== 0)
@@ -62,8 +82,3 @@ wait_for_key("press enter to continue")
 gui()
 wait_for_key("press enter to continue")
 
-# convert the dataframe to an ordinary array,
-# as this is usually better for more advanced
-# modeling
-data = Matrix{Float64}(card)
-# writedlm("card.ascii", data) # write to plain ASCII file

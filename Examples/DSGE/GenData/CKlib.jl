@@ -2,7 +2,7 @@ using Statistics, LinearAlgebra, SolveDSGE
 
 # this block reads and processes the file, leave it be
 #process_model("CK.txt")
-const dsge = retrieve_processed_model(joinpath(@__DIR__,"CK_processed.txt"))
+const dsge = retrieve_processed_model("CK_processed.txt")
 
 # solve model and simulate data
 function dgp(θ, dsge, reps, rndseed=1234)

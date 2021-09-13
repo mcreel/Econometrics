@@ -1,6 +1,6 @@
 # shows some data analysis using DataFrames
 using Econometrics, CSV, DataFrames, GLM
-nerlove = DataFrame(CSV.File(joinpath(@__DIR__,"../Data/nerlove.csv")))
+nerlove = DataFrame(CSV.File("../Data/nerlove.csv"))
 f = @formula(log(cost) ~ 1 + log(output) + log(labor) + log(fuel) + log(capital))
 println()
 println("using the GLM package")
