@@ -197,7 +197,48 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Chapter
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TO DO:
+\end_layout
+
+\begin_layout Itemize
+more graphs in Julia example of data wrangling and exploratory analysis
+\end_layout
+
+\begin_layout Itemize
+logit example for ML, carried through all sections.
+ Matlab code to accompany, too.
+\end_layout
+
+\begin_layout Itemize
+similar example for GMM, + Matlab code
+\end_layout
+
+\end_inset
+
 About this document
+\end_layout
+
+\begin_layout Standard
+Note to self: 
+\end_layout
+
+\begin_layout Itemize
+For econometrics.pdf on the github page, save to econometrics.lyx, , replace
+ all instances of 
+\family typewriter
+\color blue
+https://github.com/mcreel/Econometrics/blob/master
+\family default
+\color inherit
+ with
+\family typewriter
+ 
+\color blue
+https://github.com/mcreel/Econometrics/blob/master
 \end_layout
 
 \begin_layout Section
@@ -692,7 +733,7 @@ literal "false"
 in the econometrics_local.lyx file, while editing using LyX, search for all
  instances of 
 \family typewriter
-file:///home/michael/Mystuff/Econometrics
+https://github.com/mcreel/Econometrics/blob/master
 \family default
 , and replace them with 
 \family typewriter
@@ -1068,7 +1109,7 @@ julia
  You can run your code in one window, and edit it in another, using your
  favorite text editor.
  There are syntax highlighting schemes for many of the popular editors.
- 
+ This is what I use for research.
 \end_layout
 
 \begin_layout Subsection
@@ -1087,9 +1128,10 @@ literal "false"
 \end_inset
 
 .
- I don't have much experience with this.
- It looks pretty neat, but needs some setting up, which I haven't taken
- the time to learn about.
+ This combines the editing, command, and plot windows all on one interface,
+ and may be more what you're used to if coming from Matlab or RStudio, for
+ example.
+ This is what I use when teaching.
 \end_layout
 
 \begin_layout Subsection
@@ -1098,7 +1140,7 @@ Notebook interfaces
 
 \begin_layout Standard
 This is a nice way to interactively explore relatively simple code.
- Again, I don't have much experience.
+ I don't have much experience.
 \end_layout
 
 \begin_layout Itemize
@@ -1221,15 +1263,22 @@ https://github.com/mcreel/Econometrics/blob/master/Examples/Data/nerlove.data
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Exploratory-analysis-and"
+
+\end_inset
+
 Exploratory analysis and plotting
 \end_layout
 
 \begin_layout Standard
-This section needs work, but the following two examples can give you ideas:
+Here are a couple of examples of data preparation and basic analysis.
 \end_layout
 
 \begin_layout Itemize
-Using DataFrames and StatPlots for exploratory analysis: 
+Using DataFrames and StatPlots for exploratory analysis using the Card returns
+ to education data set: 
 \begin_inset ERT
 status open
 
@@ -1237,8 +1286,8 @@ status open
 
  
 \backslash
-htmladdnormallink{BasicDataAnalysis.jl}{file:///home/michael/Mystuff/Econometrics
-/Examples/Julia/BasicDataAnalysis.jl} 
+htmladdnormallink{BasicDataAnalysis.jl}{https://github.com/mcreel/Econometrics/blo
+b/master/Examples/Julia/BasicDataAnalysis.jl} 
 \end_layout
 
 \end_inset
@@ -1247,7 +1296,17 @@ htmladdnormallink{BasicDataAnalysis.jl}{file:///home/michael/Mystuff/Econometric
 \end_layout
 
 \begin_layout Itemize
-Data wrangling: transforming, adding variables, etc.: 
+Data preparation and exploration using Oxford-Man realized library data
+ on financial time series: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Oxford-Man realized library data"
+target "https://realized.oxford-man.ox.ac.uk/images/oxfordmanrealizedvolatilityindices.zip"
+literal "false"
+
+\end_inset
+
+: 
 \end_layout
 
 \begin_deeper
@@ -1259,37 +1318,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataWrangling.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/Julia/DataWrangling.jl} 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://www.juliabloggers.com/data-wrangling-in-julia-based-on-dplyr-flights-tutor
-ials/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/piever/JuliaDBTutorial/blob/master/hflights.ipynb
+htmladdnormallink{SP500.jl}{https://github.com/mcreel/Econometrics/blob/master/Exa
+mples/Julia/SP500.jl} 
 \end_layout
 
 \end_inset
@@ -1318,8 +1348,8 @@ status open
 
  
 \backslash
-htmladdnormallink{data}{file:///home/michael/Mystuff/Econometrics/Examples/Intro
-/data.txt}
+htmladdnormallink{data}{https://github.com/mcreel/Econometrics/blob/master/Exampl
+es/Intro/data.txt}
 \end_layout
 
 \end_inset
@@ -1393,8 +1423,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{this script}{file:///home/michael/Mystuff/Econometrics/Example
-s/Intro/SupplyDemand.jl}
+htmladdnormallink{this script}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/Intro/SupplyDemand.jl}
 \end_layout
 
 \end_inset
@@ -2175,8 +2205,8 @@ status open
 
  
 \backslash
-htmladdnormallink{TypicalData.jl}{file:///home/michael/Mystuff/Econometrics/Examp
-les/OLS/TypicalData.jl}
+htmladdnormallink{TypicalData.jl}{https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/OLS/TypicalData.jl}
 \end_layout
 
 \end_inset
@@ -2505,8 +2535,8 @@ status open
 
  
 \backslash
-htmladdnormallink{OlsFit.jl}{file:///home/michael/Mystuff/Econometrics/Examples/O
-LS/OlsFit.jl} 
+htmladdnormallink{OlsFit.jl}{https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/OLS/OlsFit.jl} 
 \end_layout
 
 \end_inset
@@ -3138,8 +3168,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{InfluentialObservation.jl}{file:///home/michael/Mystuff/Econome
-trics/Examples/OLS/InfluentialObservation.jl}
+htmladdnormallink{InfluentialObservation.jl}{https://github.com/mcreel/Econometric
+s/blob/master/Examples/OLS/InfluentialObservation.jl}
 \end_layout
 
 \end_inset
@@ -3828,8 +3858,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Unbiased.jl}{file:///home/michael/Mystuff/Econometrics/Examples
-/OLS/Unbiased.jl} 
+htmladdnormallink{Unbiased.jl}{https://github.com/mcreel/Econometrics/blob/master/
+Examples/OLS/Unbiased.jl} 
 \end_layout
 
 \end_inset
@@ -3972,8 +4002,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Biased.jl}{file:///home/michael/Mystuff/Econometrics/Examples/O
-LS/Biased.jl} 
+htmladdnormallink{Biased.jl}{https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/OLS/Biased.jl} 
 \end_layout
 
 \end_inset
@@ -4275,8 +4305,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Efficiency.jl}{file:///home/michael/Mystuff/Econometrics/Exampl
-es/OLS/Efficiency.jl} 
+htmladdnormallink{Efficiency.jl}{https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/OLS/Efficiency.jl} 
 \end_layout
 
 \end_inset
@@ -4729,8 +4759,8 @@ status open
 
 
 \backslash
-htmladdnormallink{nerlove.data}{file:///home/michael/Mystuff/Econometrics/Example
-s/Data/nerlove.data} 
+htmladdnormallink{nerlove.data}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/Data/nerlove.data} 
 \end_layout
 
 \end_inset
@@ -4838,8 +4868,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Nerlove.jl}{file:///home/michael/Mystuff/Econometrics/Examples/
-OLS/Nerlove.jl} 
+htmladdnormallink{Nerlove.jl}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/OLS/Nerlove.jl} 
 \end_layout
 
 \end_inset
@@ -4909,8 +4939,8 @@ status open
 
  
 \backslash
-htmladdnormallink{NerloveDF.jl}{file:///home/michael/Mystuff/Econometrics/Example
-s/OLS/NerloveDF.jl} 
+htmladdnormallink{NerloveDF.jl}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/OLS/NerloveDF.jl} 
 \end_layout
 
 \end_inset
@@ -4954,8 +4984,8 @@ status open
 
  
 \backslash
-htmladdnormallink{nerlove.gdt}{file:///home/michael/Mystuff/Econometrics/Examples
-/Data/nerlove.gdt} 
+htmladdnormallink{nerlove.gdt}{https://github.com/mcreel/Econometrics/blob/master/
+Examples/Data/nerlove.gdt} 
 \end_layout
 
 \end_inset
@@ -8097,8 +8127,8 @@ status open
 
  
 \backslash
-htmladdnormallink{ExampleDeltaMethod.jl}{file:///home/michael/Mystuff/Econometric
-s/Examples/Restrictions/ExampleDeltaMethod.jl}
+htmladdnormallink{ExampleDeltaMethod.jl}{https://github.com/mcreel/Econometrics/bl
+ob/master/Examples/Restrictions/ExampleDeltaMethod.jl}
 \end_layout
 
 \end_inset
@@ -8246,8 +8276,8 @@ status open
 
  
 \backslash
-htmladdnormallink{NerloveRestrictions.jl}{file:///home/michael/Mystuff/Econometri
-cs/Examples/Restrictions/NerloveRestrictions.jl} 
+htmladdnormallink{NerloveRestrictions.jl}{https://github.com/mcreel/Econometrics/b
+lob/master/Examples/Restrictions/NerloveRestrictions.jl} 
 \end_layout
 
 \end_inset
@@ -8494,8 +8524,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Restrictions/ChowTest.jl}{file:///home/michael/Mystuff/Economet
-rics/Examples/Restrictions/ChowTest.jl}
+htmladdnormallink{Restrictions/ChowTest.jl}{https://github.com/mcreel/Econometrics
+/blob/master/Examples/Restrictions/ChowTest.jl}
 \end_layout
 
 \end_inset
@@ -9643,8 +9673,8 @@ status open
 
  
 \backslash
-htmladdnormallink{mortality.data}{file:///home/michael/Mystuff/Econometrics/Examp
-les/Data/mortality.data} 
+htmladdnormallink{mortality.data}{https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/Data/mortality.data} 
 \end_layout
 
 \end_inset
@@ -11097,8 +11127,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataProblems/collinearity.jl}{file:///home/michael/Mystuff/Econ
-ometrics/Examples/DataProblems/collinearity.jl} 
+htmladdnormallink{DataProblems/collinearity.jl}{https://github.com/mcreel/Economet
+rics/blob/master/Examples/DataProblems/collinearity.jl} 
 \end_layout
 
 \end_inset
@@ -11272,8 +11302,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataProblems/NerloveCollinearity.jl}{file:///home/michael/Mystu
-ff/Econometrics/Examples/DataProblems/NerloveCollinearity.jl} 
+htmladdnormallink{DataProblems/NerloveCollinearity.jl}{https://github.com/mcreel/E
+conometrics/blob/master/Examples/DataProblems/NerloveCollinearity.jl} 
 \end_layout
 
 \end_inset
@@ -11739,8 +11769,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataProblems/RidgeRegression.jl}{file:///home/michael/Mystuff/E
-conometrics/Examples/DataProblems/RidgeRegression.jl} 
+htmladdnormallink{DataProblems/RidgeRegression.jl}{https://github.com/mcreel/Econo
+metrics/blob/master/Examples/DataProblems/RidgeRegression.jl} 
 \end_layout
 
 \end_inset
@@ -12168,8 +12198,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DataProblems/MeasurementError.jl}{file:///home/michael/Mystuff/
-Econometrics/Examples/DataProblems/MeasurementError.jl} 
+htmladdnormallink{DataProblems/MeasurementError.jl}{https://github.com/mcreel/Econ
+ometrics/blob/master/Examples/DataProblems/MeasurementError.jl} 
 \end_layout
 
 \end_inset
@@ -12702,8 +12732,8 @@ status open
 
  
 \backslash
-htmladdnormallink{sampsel.jl}{file:///home/michael/Mystuff/Econometrics/Examples/
-DataProblems/sampsel.jl} 
+htmladdnormallink{sampsel.jl}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/DataProblems/sampsel.jl} 
 \end_layout
 
 \end_inset
@@ -14746,8 +14776,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GLS/EffectsOLS.jl}{file:///home/michael/Mystuff/Econometrics/Ex
-amples/GLS/EffectsOLS.jl}
+htmladdnormallink{GLS/EffectsOLS.jl}{https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/GLS/EffectsOLS.jl}
 \end_layout
 
 \end_inset
@@ -14916,8 +14946,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GLS/cholesky.jl}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/GLS/cholesky.jl}
+htmladdnormallink{GLS/cholesky.jl}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/GLS/cholesky.jl}
 \end_layout
 
 \end_inset
@@ -15927,8 +15957,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GLS/Heteroscedasticity.inp}{file:///home/michael/Mystuff/Econom
-etrics/Examples/GLS/Heteroscedasticity.inp}
+htmladdnormallink{GLS/Heteroscedasticity.inp}{https://github.com/mcreel/Econometri
+cs/blob/master/Examples/GLS/Heteroscedasticity.inp}
 \end_layout
 
 \end_inset
@@ -16459,8 +16489,8 @@ status open
 
  
 \backslash
-htmladdnormallink{nerlove.gdt}{file:///home/michael/Mystuff/Econometrics/Examples
-/Data/nerlove.gdt} 
+htmladdnormallink{nerlove.gdt}{https://github.com/mcreel/Econometrics/blob/master/
+Examples/Data/nerlove.gdt} 
 \end_layout
 
 \end_inset
@@ -16564,8 +16594,8 @@ status open
 
  
 \backslash
-htmladdnormallink{CO2.data}{file:///home/michael/Mystuff/Econometrics/Examples/Da
-ta/CO2.data} 
+htmladdnormallink{CO2.data}{https://github.com/mcreel/Econometrics/blob/master/Exa
+mples/Data/CO2.data} 
 \end_layout
 
 \end_inset
@@ -17536,8 +17566,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GLS/AR1Errors.m}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/GLS/AR1Errors.m}
+htmladdnormallink{GLS/AR1Errors.m}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/GLS/AR1Errors.m}
 \end_layout
 
 \end_inset
@@ -18451,8 +18481,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GLS/DynamicMA.m}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/GLS/DynamicMA.m} 
+htmladdnormallink{GLS/DynamicMA.m}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/GLS/DynamicMA.m} 
 \end_layout
 
 \end_inset
@@ -18804,8 +18834,8 @@ status open
 
 
 \backslash
-htmladdnormallink{nerlove.data}{file:///home/michael/Mystuff/Econometrics/Example
-s/Data/nerlove.data} 
+htmladdnormallink{nerlove.data}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/Data/nerlove.data} 
 \end_layout
 
 \end_inset
@@ -18892,8 +18922,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{hall.csv}{file:///home/michael/Mystuff/Econometrics/Examples/Da
-ta/hall.csv} 
+htmladdnormallink{hall.csv}{https://github.com/mcreel/Econometrics/blob/master/Exa
+mples/Data/hall.csv} 
 \end_layout
 
 \end_inset
@@ -18906,8 +18936,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{hall.gdt}{file:///home/michael/Mystuff/Econometrics/Examples/Da
-ta/hall.gdt} 
+htmladdnormallink{hall.gdt}{https://github.com/mcreel/Econometrics/blob/master/Exa
+mples/Data/hall.gdt} 
 \end_layout
 
 \end_inset
@@ -19449,8 +19479,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{Simeq/simeq.inp}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/Simeq/simeq.inp}
+htmladdnormallink{Simeq/simeq.inp}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/Simeq/simeq.inp}
 \end_layout
 
 \end_inset
@@ -20454,8 +20484,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{Simeq/simeq.inp}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/Simeq/simeq.inp}
+htmladdnormallink{Simeq/simeq.inp}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/Simeq/simeq.inp}
 \end_layout
 
 \end_inset
@@ -22926,8 +22956,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Simeq/Klein2SLS.m}{file:///home/michael/Mystuff/Econometrics/Ex
-amples/Simeq/Klein2SLS.m}
+htmladdnormallink{Simeq/Klein2SLS.m}{https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/Simeq/Klein2SLS.m}
 \end_layout
 
 \end_inset
@@ -23296,8 +23326,8 @@ status open
 
 
 \backslash
-htmladdnormallink{GridExample.jl}{file:///home/michael/Mystuff/Econometrics/Examp
-les/NonlinearOptimization/GridExample.jl} 
+htmladdnormallink{GridExample.jl}{https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/NonlinearOptimization/GridExample.jl} 
 \end_layout
 
 \end_inset
@@ -24498,47 +24528,6 @@ Switching between algorithms during iterations is sometimes useful.
 
 \end_layout
 
-\begin_layout Example
-The Nerlove model via numeric minimization.
- This is a linear model with linear restrictions, and one would not normally
- use an iterative optimization program to compute the solution, because
- an analytic solution is available.
- This is just an example, and if you're curious, try comparing with the
- analytic solution.
- Here's the code: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-htmladdnormallink{EstimateRestrictedNerlove.jl}{file:///home/michael/Mystuff/Econ
-ometrics/Examples/NonlinearOptimization/EstimateRestrictedNerlove.jl} 
-\end_layout
-
-\end_inset
-
- which shows how to use unconstrained and constrained minimization to estimate
- the simple Nerlove model (equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "simple nerlove model"
-
-\end_inset
-
-) with and without parameter restrictions.
- You should use the objective function values to compute the 
-\begin_inset Formula $qF$
-\end_inset
-
- test.
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Global methods: simulated annealing
 \end_layout
@@ -24594,7 +24583,7 @@ edit(samin,())
 
 \begin_layout Example
 Paste this code into Julia to see an example of simulated annealing, using
- the version in the package Optim.jl
+ the version in the package 
 \begin_inset CommandInset href
 LatexCommand href
 name "Optim.jl"
@@ -24687,8 +24676,8 @@ status open
 
 
 \backslash
-htmladdnormallink{OLSviaSA.jl}{file:///home/michael/Mystuff/Econometrics/Examples
-/NonlinearOptimization/OLSviaSA.jl} 
+htmladdnormallink{OLSviaSA.jl}{https://github.com/mcreel/Econometrics/blob/master/
+Examples/NonlinearOptimization/OLSviaSA.jl} 
 \end_layout
 
 \end_inset
@@ -24765,14 +24754,69 @@ Trace of SA path to minimize sum of squared errors
 \end_layout
 
 \begin_layout Section
+Examples
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:The-Nerlove-model"
+
+\end_inset
+
+The Nerlove model via numeric minimization
+\end_layout
+
+\begin_layout Standard
+This is a linear model with linear restrictions, and one would not normally
+ use an iterative optimization program to compute the solution, because
+ an analytic solution is available.
+ This is just an example, and if you're curious, try comparing with the
+ analytic solution.
+ Here's the code: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+htmladdnormallink{EstimateRestrictedNerlove.jl}{https://github.com/mcreel/Economet
+rics/blob/master/Examples/NonlinearOptimization/EstimateRestrictedNerlove.jl}
+ 
+\end_layout
+
+\end_inset
+
+ which shows how to use unconstrained and constrained minimization to estimate
+ the simple Nerlove model (equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "simple nerlove model"
+
+\end_inset
+
+) with and without parameter restrictions.
+ You should use the objective function values to compute the 
+\begin_inset Formula $qF$
+\end_inset
+
+ test.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:MEPS data"
 
 \end_inset
 
-A practical example: Maximum likelihood estimation using count data: The
- MEPS data and the Poisson model
+Maximum likelihood estimation using count data: The MEPS data and the Poisson
+ model
 \end_layout
 
 \begin_layout Standard
@@ -24825,8 +24869,8 @@ status open
 
 
 \backslash
-htmladdnormallink{MEPS health data file}{file:///home/michael/Mystuff/Econometri
-cs/Examples/Data/meps1996.data} 
+htmladdnormallink{MEPS health data file}{https://github.com/mcreel/Econometrics/b
+lob/master/Examples/Data/meps1996.data} 
 \end_layout
 
 \end_inset
@@ -24892,8 +24936,8 @@ status open
 
 
 \backslash
-htmladdnormallink{ExploreMEPS.jl}{file:///home/michael/Mystuff/Econometrics/Examp
-les/MEPS-I/ExploreMEPS.jl} 
+htmladdnormallink{ExploreMEPS.jl}{https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/MEPS-I/ExploreMEPS.jl} 
 \end_layout
 
 \end_inset
@@ -25092,8 +25136,8 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimatePoisson.jl}{file:///home/michael/Mystuff/Econometrics/E
-xamples/MEPS-I/EstimatePoisson.jl}
+htmladdnormallink{EstimatePoisson.jl}{https://github.com/mcreel/Econometrics/blob/
+master/Examples/MEPS-I/EstimatePoisson.jl}
 \end_layout
 
 \end_inset
@@ -25101,13 +25145,6 @@ xamples/MEPS-I/EstimatePoisson.jl}
  estimates a Poisson model using the full data set.
  The results of the estimation, using OBDV as the dependent variable are
  here: 
-\begin_inset CommandInset label
-LatexCommand label
-name "OBDV ML results"
-
-\end_inset
-
-
 \begin_inset CommandInset include
 LatexCommand verbatiminput
 filename "Examples/MEPS-I/PoissonOBDV.out"
@@ -25115,25 +25152,15 @@ filename "Examples/MEPS-I/PoissonOBDV.out"
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "PoissonOBDV_results"
-
+\begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section
-Numeric optimization: pitfalls
-\end_layout
-
 \begin_layout Standard
-In this section we'll examine two common problems that can be encountered
- when doing numeric optimization of nonlinear models, and some solutions.
-\end_layout
 
-\begin_layout Subsection
+\series bold
 Poor scaling of the data
 \end_layout
 
@@ -25148,14 +25175,18 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimatePoisson.jl}{file:///home/michael/Mystuff/Econometrics/E
-xamples/MEPS-I/EstimatePoisson.jl}
+htmladdnormallink{EstimatePoisson.jl}{https://github.com/mcreel/Econometrics/blob/
+master/Examples/MEPS-I/EstimatePoisson.jl}
 \end_layout
 
 \end_inset
 
 , the data will not be scaled, and the estimation program will have difficulty
  converging (note that the likelihood value is lower with poor scaling).
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -25175,14 +25206,7 @@ reference "foggy mountain-1"
 \end_inset
 
 , but try to imagine the scene if the clouds were 2000m thicker.
- A representation is Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "foggy mountain"
-
-\end_inset
-
-).
+ A mathematical representation of a similar problem is in the second panel.
  You can go up until there's nowhere else to go up, but since you're in
  the fog you don't know if the true summit is across the gap that's at your
  feet.
@@ -25225,38 +25249,6 @@ Mountains with low fog
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "foggy mountain"
-
-\end_inset
-
-A foggy mountain
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/michael/Mystuff/Econometrics/Examples/NonlinearOptimization/FoggySurface.png
 	width 6in
@@ -25298,8 +25290,8 @@ status open
 
  
 \backslash
-htmladdnormallink{FoggyMountain.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/NonlinearOptimization/FoggyMountain.jl}
+htmladdnormallink{FoggyMountain.jl}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/NonlinearOptimization/FoggyMountain.jl}
 \end_layout
 
 \end_inset
@@ -25335,60 +25327,6 @@ Exercises
 \end_layout
 
 \begin_layout Enumerate
-In Julia (with the 
-\family typewriter
-Econometrics
-\family default
- package installed), type 
-\family typewriter
-fminunc()
-\family default
-, to learn a bit more about the 
-\family typewriter
-fminunc
-\family default
- function for unconstrained minimization, and to see a simple example.
- This is a convenience function, for Matlab users, and uses the Julia Optim.jl
- package in the background.
- If you get into Julia, it's better to use Optim.jl directly.
-\end_layout
-
-\begin_layout Enumerate
-In Julia (with the 
-\family typewriter
-Econometrics
-\family default
- package installed), type 
-\family typewriter
-fmincon()
-\family default
-, to learn a bit more about the 
-\family typewriter
-fmincon
-\family default
- function for unconstrained minimization, and to see a simple example.
- This is a convenience function, for Matlab users, and uses the Julia NLopt.jl
- package in the background.
- If you get into Julia, it's better to use NLopt.jl directly.
-\end_layout
-
-\begin_layout Enumerate
-In Julia (with the 
-\family typewriter
-Econometrics
-\family default
- package installed), type 
-\family typewriter
-samin()
-\family default
-, to learn a bit more about the 
-\family typewriter
-samin
-\family default
- function for minimization by simulated annealing, and to see a simple example.
-\end_layout
-
-\begin_layout Enumerate
 Numerically minimize the function 
 \begin_inset Formula $\sin(x)+0.01\left(x-a\right)^{2}$
 \end_inset
@@ -25417,23 +25355,6 @@ Numerically minimize the function
 \end_layout
 
 \begin_layout Enumerate
-Numerically compute the OLS estimator of the Nerlove model by using an interativ
-e minimization algorithm to minimize the sum of squared residuals.
- Verify that the results coincide with those given in subsection 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:The-Nerlove-data"
-
-\end_inset
-
-.
- The important part of this problem is to learn how to minimize a function
- that depends on both parameters and data.
- Try to write your function so that it is easy to use it with an arbitrary
- data set.
-\end_layout
-
-\begin_layout Enumerate
 Numerically compute the OLS estimator of the Nerlove model 
 \begin_inset Formula 
 \[
@@ -25443,15 +25364,21 @@ Numerically compute the OLS estimator of the Nerlove model
 \end_inset
 
 by using the fminunc function in the 
-\begin_inset CommandInset href
-LatexCommand href
-name "Econometrics.jl"
-target "https://github.com/mcreel/Econometrics.jl"
-literal "false"
+\family typewriter
+Econometrics
+\family default
+ package to minimize the sum of squared residuals.
+ See Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-Nerlove-model"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
- package to minimize the sum of squared residuals.
+ for a really good hint.
  The data is at the link 
 \begin_inset ERT
 status open
@@ -25460,8 +25387,8 @@ status open
 
 
 \backslash
-htmladdnormallink{nerlove.data}{file:///home/michael/Mystuff/Econometrics/Example
-s/Data/nerlove.data} 
+htmladdnormallink{nerlove.data}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/Data/nerlove.data} 
 \end_layout
 
 \end_inset
@@ -25578,6 +25505,29 @@ The important part of this problem is to learn how to minimize a function
 \end_layout
 
 \begin_layout Enumerate
+Take the code from the previous problem, and modify it to estimate the model
+ 
+\begin_inset Formula 
+\[
+\ln W=\beta_{0}+\beta_{EDUC}EDUC+\beta_{X}EXP+\beta_{EXP^{2}}\frac{EXP^{2}}{100}+\beta_{BLACK}BLACK+\beta_{SMSA}SMSA+\beta_{SOUTH}SOUTH+\epsilon
+\]
+
+\end_inset
+
+ using the Card data, which was presented in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Exploratory-analysis-and"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
 Suppose we have an 
 \begin_inset Formula $AR(1)$
 \end_inset
@@ -25604,6 +25554,60 @@ Suppose we have an
  You must define your criterion function and explain how to implement the
  grid search.
  
+\end_layout
+
+\begin_layout Enumerate
+In Julia (with the 
+\family typewriter
+Econometrics
+\family default
+ package installed), type 
+\family typewriter
+fminunc()
+\family default
+, to learn a bit more about the 
+\family typewriter
+fminunc
+\family default
+ function for unconstrained minimization, and to see a simple example.
+ This is a convenience function, for Matlab users, and uses the Julia Optim.jl
+ package in the background.
+ If you get into Julia, it's better to use Optim.jl directly.
+\end_layout
+
+\begin_layout Enumerate
+In Julia (with the 
+\family typewriter
+Econometrics
+\family default
+ package installed), type 
+\family typewriter
+fmincon()
+\family default
+, to learn a bit more about the 
+\family typewriter
+fmincon
+\family default
+ function for unconstrained minimization, and to see a simple example.
+ This is a convenience function, for Matlab users, and uses the Julia NLopt.jl
+ package in the background.
+ If you get into Julia, it's better to use NLopt.jl directly.
+\end_layout
+
+\begin_layout Enumerate
+In Julia (with the 
+\family typewriter
+Econometrics
+\family default
+ package installed), type 
+\family typewriter
+samin()
+\family default
+, to learn a bit more about the 
+\family typewriter
+samin
+\family default
+ function for minimization by simulated annealing, and to see a simple example.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -25878,8 +25882,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{OLScontours.jl}{file:///home/michael/Mystuff/Econometrics/Examp
-les/NonlinearOptimization/OLScontours.jl} 
+htmladdnormallink{OLScontours.jl}{https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/NonlinearOptimization/OLScontours.jl} 
 \end_layout
 
 \end_inset
@@ -30870,8 +30874,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{CK.txt}{file:///home/michael/Mystuff/Econometrics/Examples/DSGE
-/GenData/CK.txt} 
+htmladdnormallink{CK.txt}{https://github.com/mcreel/Econometrics/blob/master/Examp
+les/DSGE/GenData/CK.txt} 
 \end_layout
 
 \end_inset
@@ -30888,8 +30892,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{dsgedata.txt}{file:///home/michael/Mystuff/Econometrics/Example
-s/DSGE/GenData/dsgedata.txt} 
+htmladdnormallink{dsgedata.txt}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/DSGE/GenData/dsgedata.txt} 
 \end_layout
 
 \end_inset
@@ -30902,8 +30906,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GenData.jl}{file:///home/michael/Mystuff/Econometrics/Examples/
-DSGE/GenData/GenData.jl} 
+htmladdnormallink{GenData.jl}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/DSGE/GenData/GenData.jl} 
 \end_layout
 
 \end_inset
@@ -31526,6 +31530,14 @@ L(Y|Z;\theta)=\prod_{t=1}^{n}f(y_{t}|x_{t},\theta)
 \begin_inset Newpage newpage
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsection
+The log likelihood function
+\end_layout
+
+\begin_layout Standard
 The criterion function can be defined as the average log-likelihood function:
  
 \begin_inset Formula 
@@ -31543,7 +31555,7 @@ s_{n}(\theta)=\frac{1}{n}\ln L(Y|Z;\theta)=\frac{1}{n}\sum_{t=1}^{n}\ln f(y_{t}|
 
 \end_inset
 
- where the set maximized over is defined below.
+where the set maximized over is defined below.
  Since 
 \begin_inset Formula $\ln(\cdot)$
 \end_inset
@@ -31571,7 +31583,6 @@ s_{n}(\theta)=\frac{1}{n}\ln L(Y|Z;\theta)=\frac{1}{n}\sum_{t=1}^{n}\ln f(y_{t}|
  
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \emph on
@@ -31582,11 +31593,17 @@ There are both theoretical and practical reasons:
 
 \begin_deeper
 \begin_layout Itemize
-to get a LLN to apply
+to get a LLN to apply: LNNs apply to averages of terms, not products
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-to avoid loss of precision on a digital computer
+to avoid loss of precision on a digital computer: the likelihood function
+ in product form will tend rapidly to zero when each term is between 0 and
+ 1.
+ For a discrete r.v., this will be the case.
+ When this happens, then, as the sample size gets larger, the objective
+ function gets smaller, and, before long, will dip below machine precision.
 \end_layout
 
 \end_deeper
@@ -31711,7 +31728,7 @@ The mean is
 
 \begin_layout Itemize
 Thus, the MLE, which is the sample mean, is a consistent estimator of the
- parameter, because the population mean is the parameter.
+ parameter, because the population mean is the parameter..
  
 \end_layout
 
@@ -31950,8 +31967,8 @@ status open
 
  
 \backslash
-htmladdnormallink{NormalExample.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/MLE/NormalExample.jl} 
+htmladdnormallink{NormalExample.jl}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/MLE/NormalExample.jl} 
 \end_layout
 
 \end_inset
@@ -31984,10 +32001,10 @@ reference "Consistency of ee"
 
 \begin_layout Itemize
 The question is: what is the value that maximizes 
-\begin_inset Formula $s_{\infty}(\theta)?$
+\begin_inset Formula $s_{\infty}(\theta)$
 \end_inset
 
- 
+ when the criterion function is the average log-likelihood? 
 \end_layout
 
 \begin_layout Itemize
@@ -32167,8 +32184,8 @@ reference "Consistency of ee"
 \end_layout
 
 \begin_layout Exercise
-Verify consistency of the ML estimator of the CLRM with normality by increasing
- 
+Verify by experiment the consistency of the ML estimator of the CLRM with
+ normality by increasing 
 \begin_inset Formula $n$
 \end_inset
 
@@ -32180,8 +32197,8 @@ status open
 
  
 \backslash
-htmladdnormallink{NormalExample.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/MLE/NormalExample.jl} 
+htmladdnormallink{NormalExample.jl}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/MLE/NormalExample.jl} 
 \end_layout
 
 \end_inset
@@ -33148,8 +33165,8 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimatePoisson.jl}{file:///home/michael/Mystuff/Econometrics/E
-xamples/MEPS-I/EstimatePoisson.jl}
+htmladdnormallink{EstimatePoisson.jl}{https://github.com/mcreel/Econometrics/blob/
+master/Examples/MEPS-I/EstimatePoisson.jl}
 \end_layout
 
 \end_inset
@@ -34016,8 +34033,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{LikelihoodRatioTest.jl}{file:///home/michael/Mystuff/Econometri
-cs/Examples/MLE/LikelihoodRatioTest.jl} 
+htmladdnormallink{LikelihoodRatioTest.jl}{https://github.com/mcreel/Econometrics/b
+lob/master/Examples/MLE/LikelihoodRatioTest.jl} 
 \end_layout
 
 \end_inset
@@ -34132,8 +34149,8 @@ status open
 
  
 \backslash
-htmladdnormallink{NerloveMLE.jl}{file:///home/michael/Mystuff/Econometrics/Exampl
-es/MLE/NerloveMLE.jl} 
+htmladdnormallink{NerloveMLE.jl}{https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/MLE/NerloveMLE.jl} 
 \end_layout
 
 \end_inset
@@ -34165,8 +34182,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Nerlove.jl}{file:///home/michael/Mystuff/Econometrics/Examples/
-OLS/Nerlove.jl} 
+htmladdnormallink{Nerlove.jl}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/OLS/Nerlove.jl} 
 \end_layout
 
 \end_inset
@@ -34746,8 +34763,8 @@ status open
 
 
 \backslash
-htmladdnormallink{LogitDGP.jl}{file:///home/michael/Mystuff/Econometrics/Examples
-/MLE/LogitDGP.jl} 
+htmladdnormallink{LogitDGP.jl}{https://github.com/mcreel/Econometrics/blob/master/
+Examples/MLE/LogitDGP.jl} 
 \end_layout
 
 \end_inset
@@ -34760,8 +34777,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{logit.jl}{file:///home/michael/Mystuff/Econometrics/Examples/ML
-E/logit.jl} 
+htmladdnormallink{logit.jl}{https://github.com/mcreel/Econometrics/blob/master/Exa
+mples/MLE/logit.jl} 
 \end_layout
 
 \end_inset
@@ -34774,8 +34791,8 @@ status open
 
 
 \backslash
-htmladdnormallink{EstimateLogit.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/MLE/EstimateLogit.jl} 
+htmladdnormallink{EstimateLogit.jl}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/MLE/EstimateLogit.jl} 
 \end_layout
 
 \end_inset
@@ -34855,8 +34872,8 @@ status open
 
  
 \backslash
-htmladdnormallink{PoissonVariance.m}{file:///home/michael/Mystuff/Econometrics/Ex
-amples/MEPS-I/PoissonVariance.m}
+htmladdnormallink{PoissonVariance.m}{https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/MEPS-I/PoissonVariance.m}
 \end_layout
 
 \end_inset
@@ -35248,8 +35265,8 @@ status open
 
 
 \backslash
-htmladdnormallink{This program}{file:///home/michael/Mystuff/Econometrics/Exampl
-es/MEPS-II/EstimateNegBin.m} 
+htmladdnormallink{This program}{https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/MEPS-II/EstimateNegBin.m} 
 \end_layout
 
 \end_inset
@@ -35573,8 +35590,8 @@ status open
 
 
 \backslash
-htmladdnormallink{this program}{file:///home/michael/Mystuff/Econometrics/Exampl
-es/MEPS-II/EstimateMixNegBin.m} 
+htmladdnormallink{this program}{https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/MEPS-II/EstimateMixNegBin.m} 
 \end_layout
 
 \end_inset
@@ -35918,8 +35935,8 @@ status open
 
  
 \backslash
-htmladdnormallink{CKml.mod}{file:///home/michael/Mystuff/Econometrics/Examples/DS
-GE/ML/CKml.mod} 
+htmladdnormallink{CKml.mod}{https://github.com/mcreel/Econometrics/blob/master/Exa
+mples/DSGE/ML/CKml.mod} 
 \end_layout
 
 \end_inset
@@ -36442,8 +36459,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{Nerlove.jl}{file:///home/michael/Mystuff/Econometrics/Examples/
-OLS/Nerlove.jl} 
+htmladdnormallink{Nerlove.jl}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/OLS/Nerlove.jl} 
 \end_layout
 
 \end_inset
@@ -36501,8 +36518,8 @@ status open
 
 
 \backslash
-htmladdnormallink{EstimateLogit.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/NonlinearOptimization/EstimateLogit.jl} 
+htmladdnormallink{EstimateLogit.jl}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/NonlinearOptimization/EstimateLogit.jl} 
 \end_layout
 
 \end_inset
@@ -37385,8 +37402,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/chi2mm.jl}{file:///home/michael/Mystuff/Econometrics/Exampl
-es/GMM/chi2mm.jl}
+htmladdnormallink{GMM/chi2mm.jl}{https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/GMM/chi2mm.jl}
 \end_layout
 
 \end_inset
@@ -37608,8 +37625,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/chi2gmm.jl}{file:///home/michael/Mystuff/Econometrics/Examp
-les/GMM/chi2gmm.jl}
+htmladdnormallink{GMM/chi2gmm.jl}{https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/GMM/chi2gmm.jl}
 \end_layout
 
 \end_inset
@@ -37791,8 +37808,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/chi2gmm.m}{file:///home/michael/Mystuff/Econometrics/Exampl
-es/GMM/chi2gmm.m}
+htmladdnormallink{GMM/chi2gmm.m}{https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/GMM/chi2gmm.m}
 \end_layout
 
 \end_inset
@@ -38299,8 +38316,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/AsymptoticNormalityGMM.jl}{file:///home/michael/Mystuff/Eco
-nometrics/Examples/GMM/AsymptoticNormalityGMM.jl}
+htmladdnormallink{GMM/AsymptoticNormalityGMM.jl}{https://github.com/mcreel/Econome
+trics/blob/master/Examples/GMM/AsymptoticNormalityGMM.jl}
 \end_layout
 
 \end_inset
@@ -38862,8 +38879,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/EfficientGMM.jl}{file:///home/michael/Mystuff/Econometrics/
-Examples/GMM/EfficientGMM.jl}
+htmladdnormallink{GMM/EfficientGMM.jl}{https://github.com/mcreel/Econometrics/blob
+/master/Examples/GMM/EfficientGMM.jl}
 \end_layout
 
 \end_inset
@@ -40797,8 +40814,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/MeasurementErrorIV.jl}{file:///home/michael/Mystuff/Econome
-trics/Examples/GMM/MeasurementErrorIV.jl} 
+htmladdnormallink{GMM/MeasurementErrorIV.jl}{https://github.com/mcreel/Econometric
+s/blob/master/Examples/GMM/MeasurementErrorIV.jl} 
 \end_layout
 
 \end_inset
@@ -41031,8 +41048,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Simeq/KleinGMM.m}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/Simeq/KleinGMM.jl}
+htmladdnormallink{Simeq/KleinGMM.m}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/Simeq/KleinGMM.jl}
 \end_layout
 
 \end_inset
@@ -41508,8 +41525,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/SpecTest.jl}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/GMM/SpecTest.jl} 
+htmladdnormallink{GMM/SpecTest.jl}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/GMM/SpecTest.jl} 
 \end_layout
 
 \end_inset
@@ -41747,8 +41764,8 @@ status open
 
  
 \backslash
-htmladdnormallink{TwoStepGMM.m}{file:///home/michael/Mystuff/Econometrics/Example
-s/GMM/TwoStepGMM.m} 
+htmladdnormallink{TwoStepGMM.m}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/GMM/TwoStepGMM.m} 
 \end_layout
 
 \end_inset
@@ -41830,8 +41847,8 @@ status open
 
  
 \backslash
-htmladdnormallink{OLSvsIV.jl}{file:///home/michael/Mystuff/Econometrics/Examples/
-GMM/Hausman/OLSvsIV.jl} 
+htmladdnormallink{OLSvsIV.jl}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/GMM/Hausman/OLSvsIV.jl} 
 \end_layout
 
 \end_inset
@@ -42482,8 +42499,8 @@ status open
 
  
 \backslash
-htmladdnormallink{hausman.m}{file:///home/michael/Mystuff/Econometrics/Examples/G
-MM/Hausman/hausman.m} 
+htmladdnormallink{hausman.m}{https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/GMM/Hausman/hausman.m} 
 \end_layout
 
 \end_inset
@@ -43050,8 +43067,8 @@ status open
 
 
 \backslash
-htmladdnormallink{portfolio.jl}{file:///home/michael/Mystuff/Econometrics/Example
-s/GMM/portfolio.jl}
+htmladdnormallink{portfolio.jl}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/GMM/portfolio.jl}
 \end_layout
 
 \end_inset
@@ -43065,8 +43082,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{tauchen.data}{file:///home/michael/Mystuff/Econometrics/Example
-s/GMM/tauchen.data}
+htmladdnormallink{tauchen.data}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/GMM/tauchen.data}
 \end_layout
 
 \end_inset
@@ -43160,8 +43177,8 @@ status open
 
 
 \backslash
-htmladdnormallink{HallGMM.m}{file:///home/michael/Mystuff/Econometrics/Examples/G
-MM/HallGMM.m}
+htmladdnormallink{HallGMM.m}{https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/GMM/HallGMM.m}
 \end_layout
 
 \end_inset
@@ -43410,8 +43427,8 @@ status open
 
 
 \backslash
-htmladdnormallink{dsgedata.txt}{file:///home/michael/Mystuff/Econometrics/Example
-s/DSGE/GenData/dsgedata.txt}
+htmladdnormallink{dsgedata.txt}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/DSGE/GenData/dsgedata.txt}
 \end_layout
 
 \end_inset
@@ -43431,8 +43448,8 @@ status open
 
 
 \backslash
-htmladdnormallink{DSGEmoments.jl}{file:///home/michael/Mystuff/Econometrics/Examp
-les/DSGE/GMM/DSGEmoments.jl}
+htmladdnormallink{DSGEmoments.jl}{https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/DSGE/GMM/DSGEmoments.jl}
 \end_layout
 
 \end_inset
@@ -43450,8 +43467,8 @@ status open
 
 
 \backslash
-htmladdnormallink{DoGMM.jl}{file:///home/michael/Mystuff/Econometrics/Examples/DS
-GE/GMM/DoGMM.jl}
+htmladdnormallink{DoGMM.jl}{https://github.com/mcreel/Econometrics/blob/master/Exa
+mples/DSGE/GMM/DoGMM.jl}
 \end_layout
 
 \end_inset
@@ -43773,8 +43790,8 @@ status open
 
  
 \backslash
-htmladdnormallink{meps.m}{file:///home/michael/Mystuff/Econometrics/Examples/GMM/
-MEPS/meps.m} 
+htmladdnormallink{meps.m}{https://github.com/mcreel/Econometrics/blob/master/Examp
+les/GMM/MEPS/meps.m} 
 \end_layout
 
 \end_inset
@@ -43796,8 +43813,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{hausman.m}{file:///home/michael/Mystuff/Econometrics/Examples/G
-MM/Hausman/hausman.m} 
+htmladdnormallink{hausman.m}{https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/GMM/Hausman/hausman.m} 
 \end_layout
 
 \end_inset
@@ -43815,8 +43832,8 @@ status open
 
  
 \backslash
-htmladdnormallink{EstimateLogit.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/NonlinearOptimization/EstimateLogit.jl} 
+htmladdnormallink{EstimateLogit.jl}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/NonlinearOptimization/EstimateLogit.jl} 
 \end_layout
 
 \end_inset
@@ -43938,8 +43955,8 @@ status open
 
  
 \backslash
-htmladdnormallink{GMM/chi2gmm.m}{file:///home/michael/Mystuff/Econometrics/Exampl
-es/GMM/chi2gmm.jl}
+htmladdnormallink{GMM/chi2gmm.m}{https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/GMM/chi2gmm.jl}
 \end_layout
 
 \end_inset
@@ -44310,8 +44327,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{GMM/SpecTest.jl}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/GMM/SpecTest.jl} 
+htmladdnormallink{GMM/SpecTest.jl}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/GMM/SpecTest.jl} 
 \end_layout
 
 \end_inset
@@ -45474,8 +45491,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{The data file}{file:///home/michael/Mystuff/Econometrics/Examp
-les/Data/us
+htmladdnormallink{The data file}{https://github.com/mcreel/Econometrics/blob/mast
+er/Examples/Data/us
 \backslash
 _macro
 \backslash
@@ -45493,8 +45510,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{The data description file.}{file:///home/michael/Mystuff/Econom
-etrics/Examples/Data/usmacro
+htmladdnormallink{The data description file.}{https://github.com/mcreel/Econometri
+cs/blob/master/Examples/Data/usmacro
 \backslash
 _quarterly
 \backslash
@@ -46424,8 +46441,8 @@ status open
 \backslash
 htmladdnormallink{S
 \backslash
-&W US quarterly macro data.}{file:///home/michael/Mystuff/Econometrics/Examples/D
-ata/us
+&W US quarterly macro data.}{https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/Data/us
 \backslash
 _macro
 \backslash
@@ -46946,8 +46963,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Stock and Watson US quarterly macro data.}{file:///home/michael
-/Mystuff/Econometrics/Examples/Data/us
+htmladdnormallink{Stock and Watson US quarterly macro data.}{https://github.com/mc
+reel/Econometrics/blob/master/Examples/Data/us
 \backslash
 _macro
 \backslash
@@ -46999,8 +47016,8 @@ status open
 
  
 \backslash
-htmladdnormallink{example DSGE model}{file:///home/michael/Mystuff/Econometrics/
-Examples/DSGE/GenData/dsgedata.gdt} 
+htmladdnormallink{example DSGE model}{https://github.com/mcreel/Econometrics/blob
+/master/Examples/DSGE/GenData/dsgedata.gdt} 
 \end_layout
 
 \end_inset
@@ -47124,8 +47141,8 @@ status open
 
  
 \backslash
-htmladdnormallink{here}{file:///home/michael/Mystuff/Econometrics/Examples/TimeS
-eries/MakePlots.jl} 
+htmladdnormallink{here}{https://github.com/mcreel/Econometrics/blob/master/Exampl
+es/TimeSeries/MakePlots.jl} 
 \end_layout
 
 \end_inset
@@ -47542,8 +47559,8 @@ status open
 
  
 \backslash
-htmladdnormallink{Garch11Example.jl}{file:///home/michael/Mystuff/Econometrics/Ex
-amples/TimeSeries/Garch11Example.jl} 
+htmladdnormallink{Garch11Example.jl}{https://github.com/mcreel/Econometrics/blob/m
+aster/Examples/TimeSeries/Garch11Example.jl} 
 \end_layout
 
 \end_inset
@@ -48512,8 +48529,8 @@ status open
 
  
 \backslash
-htmladdnormallink{RandomWalks.inp}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/TimeSeries/RandomWalks.inp} 
+htmladdnormallink{RandomWalks.inp}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/TimeSeries/RandomWalks.inp} 
 \end_layout
 
 \end_inset
@@ -49128,8 +49145,8 @@ status open
 
  
 \backslash
-htmladdnormallink{BayesExample1.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/Bayesian/BayesExample1.jl} 
+htmladdnormallink{BayesExample1.jl}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/Bayesian/BayesExample1.jl} 
 \end_layout
 
 \end_inset
@@ -49465,8 +49482,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{BayesExample1.m}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/Bayesian/BayesExample1.m} 
+htmladdnormallink{BayesExample1.m}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/Bayesian/BayesExample1.m} 
 \end_layout
 
 \end_inset
@@ -49973,8 +49990,8 @@ status open
 
  
 \backslash
-htmladdnormallink{BayesExample2.jl}{file:///home/michael/Mystuff/Econometrics/Exa
-mples/Bayesian/BayesExample2.jl} 
+htmladdnormallink{BayesExample2.jl}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/Bayesian/BayesExample2.jl} 
 \end_layout
 
 \end_inset
@@ -50125,8 +50142,8 @@ status open
 \backslash
 htmladdnormallink{EstimateCGHK
 \backslash
-_Bayes.m}{file:///home/michael/Mystuff/Econometrics/Examples/DSGE/Bayesian/CKmcmc.
-mod} 
+_Bayes.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/DSGE/Bayesia
+n/CKmcmc.mod} 
 \end_layout
 
 \end_inset
@@ -50351,8 +50368,8 @@ status open
 
  
 \backslash
-htmladdnormallink{DoMCMC.jl}{file:///home/michael/Mystuff/Econometrics/Examples/D
-SGE/BayesianGMM/DoMCMC.jl} 
+htmladdnormallink{DoMCMC.jl}{https://github.com/mcreel/Econometrics/blob/master/Ex
+amples/DSGE/BayesianGMM/DoMCMC.jl} 
 \end_layout
 
 \end_inset
@@ -55136,8 +55153,8 @@ status open
 
  
 \backslash
-htmladdnormallink{ExampleKernelDensity.jl}{file:///home/michael/Mystuff/Econometr
-ics/Examples/Nonparametric/ExampleKernelDensity.jl}
+htmladdnormallink{ExampleKernelDensity.jl}{https://github.com/mcreel/Econometrics/
+blob/master/Examples/Nonparametric/ExampleKernelDensity.jl}
 \end_layout
 
 \end_inset
@@ -55448,8 +55465,8 @@ status open
 
 
 \backslash
-htmladdnormallink{NegBinSNP.cc}{file:///home/michael/Mystuff/Econometrics/MyOctav
-eFiles/OctFiles/NegBinSNP.cc}
+htmladdnormallink{NegBinSNP.cc}{https://github.com/mcreel/Econometrics/blob/master
+/MyOctaveFiles/OctFiles/NegBinSNP.cc}
 \end_layout
 
 \end_inset
@@ -55602,8 +55619,8 @@ status open
 
 
 \backslash
-htmladdnormallink{OBDVkernel.m}{file:///home/michael/Mystuff/Econometrics/Example
-s/Nonparametric/OBDVkernel.m} 
+htmladdnormallink{OBDVkernel.m}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/Nonparametric/OBDVkernel.m} 
 \end_layout
 
 \end_inset
@@ -55805,8 +55822,8 @@ status open
 
 
 \backslash
-htmladdnormallink{rates}{file:///home/michael/Mystuff/Econometrics/Examples/Nonp
-arametric/SpotRate/rates}
+htmladdnormallink{rates}{https://github.com/mcreel/Econometrics/blob/master/Examp
+les/Nonparametric/SpotRate/rates}
 \end_layout
 
 \end_inset
@@ -55826,8 +55843,8 @@ status open
 
 
 \backslash
-htmladdnormallink{README}{file:///home/michael/Mystuff/Econometrics/Examples/Non
-parametric/SpotRate/README}
+htmladdnormallink{README}{https://github.com/mcreel/Econometrics/blob/master/Exam
+ples/Nonparametric/SpotRate/README}
 \end_layout
 
 \end_inset
@@ -56031,8 +56048,8 @@ status open
 
 
 \backslash
-htmladdnormallink{kernelfit.m}{file:///home/michael/Mystuff/Econometrics/Examples
-/Nonparametric/SpotRate/kernelfit.m}
+htmladdnormallink{kernelfit.m}{https://github.com/mcreel/Econometrics/blob/master/
+Examples/Nonparametric/SpotRate/kernelfit.m}
 \end_layout
 
 \end_inset
@@ -56185,8 +56202,8 @@ status collapsed
 \backslash
 htmladdnormallink{kernel
 \backslash
-_example.m}{file:///home/michael/Mystuff/Econometrics/MyOctaveFiles/Econometrics/
-Kernel/kernel
+_example.m}{https://github.com/mcreel/Econometrics/blob/master/MyOctaveFiles/Econo
+metrics/Kernel/kernel
 \backslash
 _example.m} 
 \end_layout
@@ -56213,8 +56230,8 @@ _local
 \backslash
 _linear
 \backslash
-_example.m}{file:///home/michael/Mystuff/Econometrics/MyOctaveFiles/Econometrics/
-Kernel/kernel
+_example.m}{https://github.com/mcreel/Econometrics/blob/master/MyOctaveFiles/Econo
+metrics/Kernel/kernel
 \backslash
 _local
 \backslash
@@ -56251,8 +56268,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{EstimateNBSNP.m}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/Nonparametric/EstimateNBSNP.m} 
+htmladdnormallink{EstimateNBSNP.m}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/Nonparametric/EstimateNBSNP.m} 
 \end_layout
 
 \end_inset
@@ -56417,8 +56434,8 @@ status collapsed
 
 
 \backslash
-htmladdnormallink{OBDVkernel.m}{file:///home/michael/Mystuff/Econometrics/Example
-s/Nonparametric/OBDVkernel.m} 
+htmladdnormallink{OBDVkernel.m}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/Nonparametric/OBDVkernel.m} 
 \end_layout
 
 \end_inset
@@ -57234,8 +57251,8 @@ status open
 
 
 \backslash
-htmladdnormallink{quantile.gdt}{file:///home/michael/Mystuff/Econometrics/Example
-s/Quantile/quantile.gdt} 
+htmladdnormallink{quantile.gdt}{https://github.com/mcreel/Econometrics/blob/master
+/Examples/Quantile/quantile.gdt} 
 \end_layout
 
 \end_inset
@@ -57486,8 +57503,8 @@ status open
 
 
 \backslash
-htmladdnormallink{card.gdt}{file:///home/michael/Mystuff/Econometrics/Examples/Da
-ta/card.gdt} 
+htmladdnormallink{card.gdt}{https://github.com/mcreel/Econometrics/blob/master/Exa
+mples/Data/card.gdt} 
 \end_layout
 
 \end_inset
@@ -57765,8 +57782,8 @@ status open
 
 
 \backslash
-htmladdnormallink{QIVmodel.jl}{file:///home/michael/Mystuff/Econometrics/Examples
-/Quantile/QIVmodel.jl} 
+htmladdnormallink{QIVmodel.jl}{https://github.com/mcreel/Econometrics/blob/master/
+Examples/Quantile/QIVmodel.jl} 
 \end_layout
 
 \end_inset
@@ -57779,8 +57796,8 @@ status open
 
 
 \backslash
-htmladdnormallink{QIVbyMCMC}{file:///home/michael/Mystuff/Econometrics/Examples/
-Quantile/QIVbyMCMC.jl} 
+htmladdnormallink{QIVbyMCMC}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/Quantile/QIVbyMCMC.jl} 
 \end_layout
 
 \end_inset
@@ -57799,8 +57816,8 @@ status open
 
 
 \backslash
-htmladdnormallink{PlayWithMCMC.jl}{file:///home/michael/Mystuff/Econometrics/Exam
-ples/Quantile/PlayWithMCMC.jl} 
+htmladdnormallink{PlayWithMCMC.jl}{https://github.com/mcreel/Econometrics/blob/mas
+ter/Examples/Quantile/PlayWithMCMC.jl} 
 \end_layout
 
 \end_inset
@@ -60050,8 +60067,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{EstimateSV.jl}{file:///home/michael/Mystuff/Econometrics/Exampl
-es/SBEM/EstimateSV.jl}
+htmladdnormallink{EstimateSV.jl}{https://github.com/mcreel/Econometrics/blob/maste
+r/Examples/SBEM/EstimateSV.jl}
 \end_layout
 
 \end_inset
@@ -60089,8 +60106,8 @@ status open
 
  
 \backslash
-htmladdnormallink{SVlib.jl}{file:///home/michael/Mystuff/Econometrics/Examples/SB
-EM/SVlib.jl}
+htmladdnormallink{SVlib.jl}{https://github.com/mcreel/Econometrics/blob/master/Exa
+mples/SBEM/SVlib.jl}
 \end_layout
 
 \end_inset
@@ -60108,8 +60125,8 @@ status open
 
  
 \backslash
-htmladdnormallink{the sample}{file:///home/michael/Mystuff/Econometrics/Examples
-/TimeSeries/svdata.txt}
+htmladdnormallink{the sample}{https://github.com/mcreel/Econometrics/blob/master/
+Examples/TimeSeries/svdata.txt}
 \end_layout
 
 \end_inset
@@ -60290,7 +60307,8 @@ status open
 \backslash
 htmladdnormallink{SV
 \backslash
-_MonteCarlo.jl}{file:///home/michael/Mystuff/Econometrics/Examples/SBEM/SV
+_MonteCarlo.jl}{https://github.com/mcreel/Econometrics/blob/master/Examples/SBEM/S
+V
 \backslash
 _MonteCarlo.jl}
 \end_layout
@@ -63076,8 +63094,8 @@ status collapsed
 
  
 \backslash
-htmladdnormallink{tracetest.m}{file:///home/michael/Mystuff/Econometrics/Examples
-/Parallel/montecarlo/tracetest.m}
+htmladdnormallink{tracetest.m}{https://github.com/mcreel/Econometrics/blob/master/
+Examples/Parallel/montecarlo/tracetest.m}
 \end_layout
 
 \end_inset
@@ -63106,8 +63124,8 @@ status collapsed
 \backslash
 htmladdnormallink{mc
 \backslash
-_example1.m}{file:///home/michael/Mystuff/Econometrics/Examples/Parallel/montecar
-lo/mc
+_example1.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel/
+montecarlo/mc
 \backslash
 _example1.m}
 \end_layout
@@ -63215,7 +63233,8 @@ status collapsed
 \backslash
 htmladdnormallink{mle
 \backslash
-_example1.m}{file:///home/michael/Mystuff/Econometrics/Examples/Parallel/mle/mle
+_example1.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel/
+mle/mle
 \backslash
 _example1.m}
 \end_layout
@@ -63343,7 +63362,8 @@ status collapsed
 \backslash
 htmladdnormallink{gmm
 \backslash
-_example1.m}{file:///home/michael/Mystuff/Econometrics/Examples/Parallel/gmm/gmm
+_example1.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel/
+gmm/gmm
 \backslash
 _example1.m}
 \end_layout
@@ -63449,8 +63469,8 @@ status collapsed
 \backslash
 htmladdnormallink{kernel
 \backslash
-_example1.m}{file:///home/michael/Mystuff/Econometrics/Examples/Parallel/kernel/k
-ernel
+_example1.m}{https://github.com/mcreel/Econometrics/blob/master/Examples/Parallel/
+kernel/kernel
 \backslash
 _example1.m}
 \end_layout
@@ -64869,8 +64889,8 @@ status open
 
  
 \backslash
-htmladdnormallink{meps.m}{file:///home/michael/Mystuff/Econometrics/Examples/GMM/
-MEPS/meps.m} 
+htmladdnormallink{meps.m}{https://github.com/mcreel/Econometrics/blob/master/Examp
+les/GMM/MEPS/meps.m} 
 \end_layout
 
 \end_inset
@@ -66439,8 +66459,8 @@ status open
 
 
 \backslash
-htmladdnormallink{this estimation program}{file:///home/michael/Mystuff/Economet
-rics/Examples/MEPS-II/estimate
+htmladdnormallink{this estimation program}{https://github.com/mcreel/Econometrics
+/blob/master/Examples/MEPS-II/estimate
 \backslash
 _hpoisson.ox} 
 \end_layout
@@ -69481,8 +69501,8 @@ status open
 
 
 \backslash
-htmladdnormallink{this estimation program}{file:///home/michael/Mystuff/Economet
-rics/Examples/MEPS-II/estimate
+htmladdnormallink{this estimation program}{https://github.com/mcreel/Econometrics
+/blob/master/Examples/MEPS-II/estimate
 \backslash
 _mixnegbin.ox} 
 \end_layout
