@@ -1,0 +1,2 @@
+# don't include julia precompiled sysimage files
+*.so

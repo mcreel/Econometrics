@@ -1,6 +1,10 @@
 # Econometrics
 Graduate level econometrics notes with embedded examples using the Julia language.
 
+NEWS: there is a MakeSysimage.jl script that will precompile all of the packages and 
+some of the commonly used functions. Works from REPL, but not from VS Code. For VS Code,
+use its system for making a system image.
+
 To get just the notes, click on econometrics.pdf, and then on Download, at the upper R of the page, which will download only the pdf. Links in the pdf point to files here on github, and will open in your browser.
 
 ## To run the examples

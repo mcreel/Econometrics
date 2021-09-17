@@ -1307,10 +1307,6 @@ literal "false"
 \end_inset
 
 : 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
 \begin_inset ERT
 status open
 
@@ -1327,7 +1323,6 @@ lia/SP500.jl}
 
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
