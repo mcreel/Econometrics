@@ -1,5 +1,5 @@
 # this script will precompile some commonly used functions
-using Econometrics, Plots
+using Econometrics, StatsPlots, CSV, DataFrames
 ols()
 mleresults()
 gmmresults()
@@ -8,7 +8,11 @@ fminunc()
 fmincon()
 mcmc()
 npreg()
+dstats(rand(100,3))
 plot(1:10)
 histogram(rand(100))
 scatter(1:10)
+d = DataFrame(rand(2,2), :auto)
+CSV.write("/tmp/junk.csv", d)
+d = CSV.read("/tmp/junk.csv", DataFrame)
 clc()

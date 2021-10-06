@@ -17,7 +17,7 @@ b = xin\yin
 # plots
 xx=(0:0.05:10)
 yy=xx
-yhat = b[1]+b[2]*xx;
+yhat = b[1]+b[2]*xx
 scatter(x,y, label = "data")
 plot!(xx,yy,label = "population regression line")
 plot!(xx,yhat,label = "fitted regression line")

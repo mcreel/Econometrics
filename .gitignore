@@ -1,2 +1,3 @@
 # don't include julia precompiled sysimage files
 *.so
+Examples/Julia/oxfordmanrealizedvolatilityindices.csv
