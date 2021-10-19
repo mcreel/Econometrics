@@ -197,28 +197,6 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Chapter
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TO DO:
-\end_layout
-
-\begin_layout Itemize
-more graphs in Julia example of data wrangling and exploratory analysis
-\end_layout
-
-\begin_layout Itemize
-logit example for ML, carried through all sections.
- Matlab code to accompany, too.
-\end_layout
-
-\begin_layout Itemize
-similar example for GMM, + Matlab code
-\end_layout
-
-\end_inset
-
 About this document
 \end_layout
 
@@ -31196,7 +31174,7 @@ reference "exa:Count-data.-Suppose"
 \begin_inset Formula $\lambda$
 \end_inset
 
-.
+, because the estimator is the sample mean, and the LLN and CLT will apply.
 \end_layout
 
 \begin_layout Itemize
@@ -31239,7 +31217,7 @@ Even if we could, the
 \end_inset
 
  which solves the f.o.c.
- is a nonlinear function of the data.
+ is a nonlinear function of the data, rather than a simple average.
  How could we test hypotheses? The t and F tests developed for the classical
  linear model do not apply.
 \end_layout
@@ -31508,6 +31486,39 @@ etc
 \end_layout
 
 \begin_layout Itemize
+it is also often the case that the data is Markovian, which means that only
+ a limited number of lags of 
+\begin_inset Formula $y$
+\end_inset
+
+ affect the current value.
+ When this is the case, if 
+\begin_inset Formula $m$
+\end_inset
+
+ is the maximum lag that still matters, then 
+\begin_inset Formula 
+\[
+x_{t}=\{y_{t-m},y_{t-m+1},...,y_{t-1},Z\}
+\]
+
+\end_inset
+
+when 
+\begin_inset Formula $t>m$
+\end_inset
+
+.
+ (Treatment of the observations where 
+\begin_inset Formula $t\le m$
+\end_inset
+
+ is a bit complicated - these observations are often dropped, to keep things
+ simple.
+ Here, we will not worry about this problem.)
+\end_layout
+
+\begin_layout Itemize
 Regardless of the specific contents of 
 \begin_inset Formula $x_{t},$
 \end_inset
@@ -31590,7 +31601,6 @@ There are both theoretical and practical reasons:
 to get a LLN to apply: LNNs apply to averages of terms, not products
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 to avoid loss of precision on a digital computer: the likelihood function
  in product form will tend rapidly to zero when each term is between 0 and
@@ -31600,7 +31610,6 @@ to avoid loss of precision on a digital computer: the likelihood function
  function gets smaller, and, before long, will dip below machine precision.
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -32808,6 +32817,303 @@ The form of this expression is the same as what we saw for extremum estimators
 
 \end_layout
 
+\begin_layout Subsection
+Example, Coin flipping, again.
+ Finding 
+\begin_inset Formula $\mathcal{J}_{\infty}(p_{0})$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{I}_{\infty}(p_{0})$
+\end_inset
+
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Coin-flipping,-again"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Example:-Bernoulli-trial"
+
+\end_inset
+
+ we saw that the MLE for the parameter of a Bernoulli trial, with i.i.d.
+ data, is the sample mean: 
+\begin_inset Formula $\hat{p}=\bar{y}$
+\end_inset
+
+ (equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mle Bernoulli"
+
+\end_inset
+
+).
+ Now let's find the limiting variance of 
+\begin_inset Formula $\sqrt{n}\left(\hat{p}-p_{0}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We can do this in a simple way:
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim Var\sqrt{n}\left(\hat{p}-p_{0}\right) & = & \lim nVar\left(\hat{p}-p_{0}\right)\\
+ & = & \lim nVar\left(\hat{p}\right)\\
+ & = & \lim nVar\left(\bar{y}\right)\\
+ & = & \lim nVar\left(\frac{\sum y_{t}}{n}\right)\\
+ & = & \lim\frac{1}{n}\sum Var(y_{t})\textnormal{ (by independence of obs.)}\\
+ & = & \lim\frac{1}{n}nVar(y)\textnormal{ (by identically distributed obs.)}\\
+ & = & Var(y)\\
+ & = & p_{0}\left(1-p_{0}\right)
+\end{eqnarray*}
+
+\end_inset
+
+While that is simple, let's verify this using the methods we're studing
+ in this chapter, because this simple method is not possible to use in general.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Finding 
+\series default
+
+\begin_inset Formula $\mathcal{J}_{\infty}(p_{0})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The log-likelihood function is
+\begin_inset Formula 
+\begin{eqnarray*}
+s_{n}(p) & = & \frac{1}{n}\sum_{t=1}^{n}\left\{ y_{t}\ln p+\left(1-y_{t}\right)\ln\left(1-p\right)\right\} 
+\end{eqnarray*}
+
+\end_inset
+
+so
+\begin_inset Formula 
+\[
+\mathcal{E}_{p_{0}}s_{n}(p)=p^{0}\ln p+\left(1-p^{0}\right)\ln\left(1-p\right)
+\]
+
+\end_inset
+
+by the fact that the observations are i.i.d.
+ Note that this does not depend on the sample size, 
+\begin_inset Formula $n,$
+\end_inset
+
+ thus, 
+\begin_inset Formula 
+\[
+s_{\infty}(p)=p^{0}\ln p+\left(1-p^{0}\right)\ln\left(1-p\right).
+\]
+
+\end_inset
+
+ A bit of calculation shows that
+\begin_inset Formula 
+\[
+\left.D_{\theta}^{2}s_{\infty}(p)\right|_{p=p^{0}}\equiv\mathcal{J}_{\infty}(p^{0})=\frac{-1}{p^{0}\left(1-p^{0}\right)}.
+\]
+
+\end_inset
+
+(note: we used dominated convergence).
+ By results we've seen on MLE, 
+\begin_inset Formula $\lim Var\sqrt{n}\left(\hat{p}-p^{0}\right)=-\mathcal{J}_{\infty}^{-1}(p^{0}).$
+\end_inset
+
+ And in this case, 
+\begin_inset Formula $-\mathcal{J}_{\infty}^{-1}(p^{0})=p^{0}\left(1-p^{0}\right)$
+\end_inset
+
+.
+ So, we get the limiting variance we were expecting.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Finding 
+\series default
+
+\begin_inset Formula $\mathcal{I}_{\infty}(p_{0})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we have seen before, the score vector is 
+\begin_inset Formula 
+\[
+g_{n}(p)=\frac{\partial s_{n}(p)}{\partial p}=\frac{1}{n}\sum_{t=1}^{n}\frac{y_{t}-p}{p\left(1-p\right)}.
+\]
+
+\end_inset
+
+and we wish to compute the covariance of the score vector, after weighting
+ by root-
+\begin_inset Formula $n$
+\end_inset
+
+: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{I}_{\infty}(p_{0})=\lim_{n\rightarrow\infty}\mathcal{E}_{p_{0}}\left(n\left[g_{n}(p_{0})\right]\left[g_{n}(p_{0})\right]^{\prime}\right)$
+\end_inset
+
+.
+ Note that, playing with the 
+\begin_inset Formula $n$
+\end_inset
+
+s 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{E}_{p_{0}}\left(n\left[g_{n}(p_{0})\right]\left[g_{n}(p_{0})\right]^{\prime}\right) & ={\color{green}n}\mathcal{E}_{p_{0}}\left\{ \left({\color{green}\frac{1}{n}}\sum_{t=1}^{n}\frac{y_{t}-p_{0}}{p_{0}\left(1-p_{0}\right)}\right)^{{\color{green}2}}\right\} ,\\
+ & ={\color{green}\frac{1}{n}}{\color{purple}\mathcal{E}_{p_{0}}\sum_{t=1}^{n}\left(\frac{y_{t}-p_{0}}{p_{0}\left(1-p_{0}\right)}\right)^{2}}
+\end{align*}
+
+\end_inset
+
+Next, the terms in the sum are i.i.d., so the expection of the sum is 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color red
+
+\begin_inset Formula $n$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ times the expectations of a representatiive term, so
+\begin_inset Formula 
+\begin{align*}
+{\color{green}\frac{1}{n}}{\color{purple}\mathcal{E}_{p_{0}}\sum_{t=1}^{n}\left(\frac{y_{t}-p_{0}}{p_{0}\left(1-p_{0}\right)}\right)^{2}} & ={\color{green}\frac{1}{n}}{\color{red}n}\mathcal{E}_{p_{0}}\left(\frac{y-p_{0}}{p_{0}\left(1-p_{0}\right)}\right)^{2}\\
+ & =\mathcal{E}_{p_{0}}\left(\frac{y-p_{0}}{p_{0}\left(1-p_{0}\right)}\right)^{2}\\
+ & =\frac{1}{p_{0}^{2}\left(1-p_{0}\right)^{2}}\mathcal{E}_{p_{0}}\left(y^{2}-2yp_{0}+p_{0}^{2}\right)\\
+ & =\frac{1}{p_{0}^{2}\left(1-p_{0}\right)^{2}}(p_{0}-2p_{0}^{2}+p_{0}^{2})\\
+ & =\frac{1}{p_{0}(1-p_{0})}
+\end{align*}
+
+\end_inset
+
+which does not depend on 
+\begin_inset Formula $n,$
+\end_inset
+
+ so its limit is the same thing, and, therefore, 
+\begin_inset Formula $\mathcal{I}_{\infty}(p_{0})=\frac{1}{p_{0}(1-p_{0})}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $Var\sqrt{n}\left(\hat{p}-p^{0}\right)=$
+\end_inset
+
+
+\begin_inset Formula $\mathcal{I}_{\infty}^{-1}(p_{0})=$
+\end_inset
+
+
+\begin_inset Formula $p_{0}-p_{0}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 The information matrix equality
 \end_layout
@@ -32817,7 +33123,8 @@ We will show that
 \begin_inset Formula $\mathcal{J}_{\infty}(\theta)=-\mathcal{I}_{\infty}(\theta).$
 \end_inset
 
- 
+ The example we just looked at exhibits this property.
+ Now, we will see that it's a general property of ML estimators.
 \end_layout
 
 \begin_layout Standard
@@ -32925,7 +33232,7 @@ if the scores appear to be correlated one may question the specification
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\mathcal{E}_{\theta}\left[\mathcal{J}_{n}(\theta)\right]=-\mathcal{E}_{\theta}\left(n\left[g(\theta)\right]\left[g(\theta)\right]^{\prime}\right)
+\mathcal{E}_{\theta}\left[\mathcal{J}_{n}(\theta)\right]=-\mathcal{E}_{\theta}\left(n\left[g_{n}(\theta)\right]\left[g_{n}(\theta)\right]^{\prime}\right)
 \]
 
 \end_inset
@@ -33008,7 +33315,11 @@ reference "eq:outerproductsocrecontribs"
 \end_inset
 
 .
- Note, one can't use
+ 
+\end_layout
+
+\begin_layout Standard
+Note, one can't use
 \begin_inset Formula 
 \[
 \widehat{I_{\infty}(\theta_{0})}=n\left[g_{n}(\hat{\theta})\right]\left[g_{n}(\hat{\theta})\right]^{\prime}
@@ -33118,7 +33429,7 @@ or the inverse of the outer product of the gradient:
 
 \begin_layout Itemize
 This simplification is a special result for the MLE estimator - it doesn't
- apply to GMM estimators in general.
+ apply to extremum estimators in general.
 \end_layout
 
 \begin_layout Itemize
@@ -33240,134 +33551,6 @@ Alternative variance computations for the OBDV Poisson model
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Example, Coin flipping, again
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Coin-flipping,-again"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Example:-Bernoulli-trial"
-
-\end_inset
-
- we saw that the MLE for the parameter of a Bernoulli trial, with i.i.d.
- data, is the sample mean: 
-\begin_inset Formula $\hat{p}=\bar{y}$
-\end_inset
-
- (equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:mle Bernoulli"
-
-\end_inset
-
-).
- Now let's find the limiting variance of 
-\begin_inset Formula $\sqrt{n}\left(\hat{p}-p_{0}\right)$
-\end_inset
-
-.
- We can do this in a simple way:
-\begin_inset Formula 
-\begin{eqnarray*}
-\lim Var\sqrt{n}\left(\hat{p}-p_{0}\right) & = & \lim nVar\left(\hat{p}-p_{0}\right)\\
- & = & \lim nVar\left(\hat{p}\right)\\
- & = & \lim nVar\left(\bar{y}\right)\\
- & = & \lim nVar\left(\frac{\sum y_{t}}{n}\right)\\
- & = & \lim\frac{1}{n}\sum Var(y_{t})\textnormal{ (by independence of obs.)}\\
- & = & \lim\frac{1}{n}nVar(y)\textnormal{ (by identically distributed obs.)}\\
- & = & Var(y)\\
- & = & p_{0}\left(1-p_{0}\right)
-\end{eqnarray*}
-
-\end_inset
-
-While that is simple, let's verify this using the methods of Chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Asymptotic-properties-of"
-
-\end_inset
-
- give the same answer.
- The log-likelihood function is
-\begin_inset Formula 
-\begin{eqnarray*}
-s_{n}(p) & = & \frac{1}{n}\sum_{t=1}^{n}\left\{ y_{t}\ln p+\left(1-y_{t}\right)\ln\left(1-p\right)\right\} 
-\end{eqnarray*}
-
-\end_inset
-
-so
-\begin_inset Formula 
-\[
-Es_{n}(p)=p^{0}\ln p+\left(1-p^{0}\right)\ln\left(1-p\right)
-\]
-
-\end_inset
-
-by the fact that the observations are i.i.d.
- Note that this does not depend on the sample size, 
-\begin_inset Formula $n,$
-\end_inset
-
- thus, 
-\begin_inset Formula 
-\[
-s_{\infty}(p)=p^{0}\ln p+\left(1-p^{0}\right)\ln\left(1-p\right).
-\]
-
-\end_inset
-
- A bit of calculation shows that
-\begin_inset Formula 
-\[
-\left.D_{\theta}^{2}s_{\infty}(p)\right|_{p=p^{0}}\equiv\mathcal{J}_{\infty}(p^{0})=\frac{-1}{p^{0}\left(1-p^{0}\right)}.
-\]
-
-\end_inset
-
-By results we've seen on MLE, 
-\begin_inset Formula $\lim Var\sqrt{n}\left(\hat{p}-p^{0}\right)=-\mathcal{J}_{\infty}^{-1}(p^{0}).$
-\end_inset
-
- And in this case, 
-\begin_inset Formula $-\mathcal{J}_{\infty}^{-1}(p^{0})=p^{0}\left(1-p^{0}\right)$
-\end_inset
-
-.
- So, we get the same limiting variance using both methods.
-\end_layout
-
-\begin_layout Exercise
-For this example, find 
-\begin_inset Formula $\mathcal{I}_{\infty}(p_{0})$
-\end_inset
-
- by directly computing the covariance of the score vector, after scaling
- by 
-\begin_inset Formula $\sqrt{n}$
-\end_inset
-
-.
- By the information matrix equality, you already know what the answer should
- be, but verify that your computations give you the same result.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -33530,23 +33713,23 @@ D_{\theta^{\prime}}\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}(\tilde{\theta}-
  we can write 
 \begin_inset Formula 
 \[
-\lim_{n\rightarrow\infty}\int\left(\tilde{\theta}-\theta\right)f(\theta)D_{\theta^{\prime}}\ln f(\theta)dy+\lim_{n\rightarrow\infty}\int f(Y,\theta)D_{\theta^{\prime}}\left(\tilde{\theta}-\theta\right)dy=0.
+{\color{green}\lim_{n\rightarrow\infty}\int\left(\tilde{\theta}-\theta\right)f(\theta)D_{\theta^{\prime}}\ln f(\theta)dy}+{\color{blue}\lim_{n\rightarrow\infty}\int f(Y,\theta)D_{\theta^{\prime}}\left(\tilde{\theta}-\theta\right)dy}=0.
 \]
 
 \end_inset
 
  Now note that 
-\begin_inset Formula $D_{\theta^{\prime}}\left(\tilde{\theta}-\theta\right)=-I_{K},$
+\begin_inset Formula ${\color{blue}D_{\theta^{\prime}}\left(\tilde{\theta}-\theta\right)=-I_{K}},$
 \end_inset
 
  and 
-\begin_inset Formula $\int f(Y,\theta)(-I_{K})dy=-I_{K}.$
+\begin_inset Formula ${\color{blue}\int f(Y,\theta)(-I_{K})dy=-I_{K}}.$
 \end_inset
 
  With this we have 
 \begin_inset Formula 
 \[
-\lim_{n\rightarrow\infty}\int\left(\tilde{\theta}-\theta\right)f(\theta)D_{\theta^{\prime}}\ln f(\theta)dy=I_{K}.
+{\color{green}\lim_{n\rightarrow\infty}\int\left(\tilde{\theta}-\theta\right)f(\theta)D_{\theta^{\prime}}\ln f(\theta)dy}={\color{blue}I_{K}}.
 \]
 
 \end_inset
@@ -33558,7 +33741,7 @@ D_{\theta^{\prime}}\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}(\tilde{\theta}-
  we get 
 \begin_inset Formula 
 \begin{eqnarray*}
-\lim_{n\rightarrow\infty}\int\sqrt{n}\left(\tilde{\theta}-\theta\right)\sqrt{n}\underbrace{\frac{1}{n}\left[D_{\theta^{\prime}}\ln f(\theta)\right]}f(\theta)dy & = & I_{K}
+\lim_{n\rightarrow\infty}\int\sqrt{n}\left(\tilde{\theta}-\theta\right){\color{purple}\sqrt{n}\underbrace{\frac{1}{n}\left[D_{\theta^{\prime}}\ln f(\theta)\right]}}f(\theta)dy & = & I_{K}
 \end{eqnarray*}
 
 \end_inset
@@ -33571,7 +33754,7 @@ D_{\theta^{\prime}}\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}(\tilde{\theta}-
  so we can write 
 \begin_inset Formula 
 \[
-\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}\left[\sqrt{n}\left(\tilde{\theta}-\theta\right)\sqrt{n}g(\theta)^{\prime}\right]=I_{K}
+\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}\left[\sqrt{n}\left(\tilde{\theta}-\theta\right){\color{purple}\sqrt{n}g(\theta)^{\prime}}\right]=I_{K}
 \]
 
 \end_inset
@@ -33584,7 +33767,11 @@ D_{\theta^{\prime}}\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}(\tilde{\theta}-
 \begin_inset Formula $\tilde{\theta}$
 \end_inset
 
- any CAN
+ 
+\series bold
+any
+\series default
+ CAN
 \begin_inset ERT
 status collapsed
 
@@ -34106,7 +34293,7 @@ Examples
 
 \begin_layout Standard
 This section is quite long winded, with several examples of ML estimation.
- Just focussing on a couple of examples should be sufficient for most students.
+ Just focusing on a couple of examples should be sufficient for most students.
 \end_layout
 
 \begin_layout Subsection
