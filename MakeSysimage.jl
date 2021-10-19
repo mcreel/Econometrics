@@ -11,6 +11,6 @@
 
 using Pkg, PackageCompiler
 Pkg.activate(".")
-PackageCompiler.create_sysimage(:Econometrics; sysimage_path="EconometricsSysimage.so",
+PackageCompiler.create_sysimage(:Econometrics; sysimage_path="JuliaSysimage.so",
                                                 precompile_execution_file="warmup.jl")
 
