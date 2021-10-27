@@ -10,9 +10,9 @@ ne = 10
  
 jumps_to_approximate = [4, 6] 
  
-eqns_to_approximate = [5, 5] 
+eqns_to_approximate = [5] 
  
-variables = ["η", "z", "k", "y", "c", "n", "rate", "w", "MUC", "MUL"] 
+variables = ["η", "z", "k", "y", "c", "n", "r", "w", "MUC", "MUL"] 
  
 function nlsolve_static_equations(f::Array{T,1},x::Array{T,1},p::Array{T1,1}) where {T<:Number, T1<:Real} 
  

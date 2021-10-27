@@ -200,10 +200,6 @@ LatexCommand tableofcontents
 About this document
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 Prerequisites
 \end_layout
@@ -23278,7 +23274,7 @@ To check
 \begin_layout Standard
 The Julia function 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -23810,7 +23806,16 @@ D_{\theta}\tilde{s}(\theta)=g(\theta^{k})+H(\theta^{k})\left(\theta-\theta^{k}\r
 
 \end_inset
 
-See 
+So, the 
+\begin_inset Formula $Q^{k}$
+\end_inset
+
+ from above is set to 
+\begin_inset Formula $-H^{-1}(\theta^{k})$
+\end_inset
+
+ when we use Newton's method.
+ See 
 \begin_inset Flex URL
 status open
 
@@ -24023,14 +24028,42 @@ result = optimize(rosenbrock, zeros(2), BFGS())
 
 \end_inset
 
+Try replacing 
+\family typewriter
+BFGS()
+\family default
+ with 
+\family typewriter
+GradientDescent()
+\family default
+ and see what happens.
+ 
+\end_layout
 
+\begin_layout Standard
+Also, run the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+htmladdnormallink{RosenbrockTrace.jl}{https://github.com/mcreel/Econometrics/blob/
+master/Examples/NonlinearOptimization/RosenbrockTrace.jl} 
+\end_layout
+
+\end_inset
+
+ code to see how the path to find the optimizer changes between steepest
+ descent and Newton's method.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -24102,6 +24135,7 @@ Gradient negligibly different from zero:
 
 \begin_layout Itemize
 Or, even better, check all of these.
+ Observe that the BFSG snippet from above checks a number of criteria.
 \end_layout
 
 \begin_layout Itemize
@@ -24230,7 +24264,7 @@ numeric derivatives based on finite differences were historically widely
 \end_layout
 
 \begin_layout Example
-Computing some derivaties.
+Computing some derivatives.
  Here's an example of computing the exact gradient using automatic differentiati
 on, and the approximate gradient using finite differences.
  You will see that the finite difference version has some error.
@@ -24388,8 +24422,11 @@ then
 \begin_inset Formula $x_{t}^{*}$
 \end_inset
 
- at the end, which causes the derivative to be 1 now, where it was 1000
- before.
+ at the end, instead of 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+, which causes the derivative to be 1 now, where it was 1000 before.
 \end_layout
 
 \begin_layout Itemize
@@ -24422,8 +24459,8 @@ It is easy to loose precision in calculation if you don't take care.
 
 \end_deeper
 \begin_layout Example
-Here's some Hessian computations, using the same Rosenbrock function, but
- with 
+Here are some Hessian computations, using the same Rosenbrock function,
+ but with 
 \begin_inset Formula $x_{1}$
 \end_inset
 
@@ -24496,19 +24533,37 @@ Simulated annealing is an algorithm which can find an optimum in the presence
  It is an example of a global optimization algorithm.
  There are many others, so we'll just focus on this one to get the basic
  idea.
- Essentially, the algorithm randomly selects evaluation points, accepts
- all points that yield an increase in the objective function, but also accepts
- some points that decrease the objective function.
+ Essentially, the algorithm 
+\end_layout
+
+\begin_layout Itemize
+randomly selects evaluation points within pre-established limits
+\end_layout
+
+\begin_layout Itemize
+accepts all points that yield an increase in the objective function, but
+ also accepts some points that decrease the objective function.
  This allows the algorithm to escape from local minima.
- As more and more points are tried, periodically the algorithm focuses on
+\end_layout
+
+\begin_layout Itemize
+As more and more points are tried, periodically the algorithm focuses on
  the best point so far, and reduces the range over which random points are
  generated.
  Also, the probability that a negative move is accepted reduces.
- The algorithm relies on many evaluations, as in the search method, but
- focuses in on promising areas, which reduces function evaluations with
- respect to the search method.
+ 
+\end_layout
+
+\begin_layout Itemize
+The algorithm relies on many evaluations, as in the search method, but focuses
+ in on promising areas, which reduces function evaluations with respect
+ to the search method.
  It does not require derivatives to be evaluated.
- Run 
+ 
+\end_layout
+
+\begin_layout Itemize
+Run 
 \family typewriter
 samin()
 \family default
@@ -25627,32 +25682,53 @@ We'll begin with study of
 extremum estimators
 \emph default
  in general.
- Let 
+ 
+\end_layout
+
+\begin_layout Itemize
+Let 
 \begin_inset Formula $\mathbf{Z}_{n}=\left\{ z_{1},z_{2},...,z_{n}\right\} $
 \end_inset
 
- be the available data, arranged in a 
-\begin_inset Formula $n\times p$
-\end_inset
-
- matrix, based on a sample of size 
+ be the available data, based on a sample of size 
 \begin_inset Formula $n$
 \end_inset
 
- (there are 
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Suppose there are 
 \begin_inset Formula $p$
 \end_inset
 
- variables).
- Our paradigm is that data are generated as a draw from the joint density
+ variables, so each 
+\begin_inset Formula $z_{i},\,\text{\ensuremath{i=1,2,...,n},}$
+\end_inset
+
+ is a 
+\begin_inset Formula $p$
+\end_inset
+
+-vector.
+ 
+\end_layout
+
+\begin_layout Itemize
+Our paradigm is that data are generated as a draw from the joint density
  
 \begin_inset Formula $f_{Z_{n}}(z)$
 \end_inset
 
 .
  This density may not be known, but it exists in principle.
- The draw from the density may be thought of as the outcome of a random
- experiment that is characterized by the probability space 
+ 
+\end_layout
+
+\begin_layout Itemize
+The draw from the density may be thought of as the outcome of a random experimen
+t that is characterized by the probability space 
 \begin_inset Formula $\left\{ \Omega,\mathcal{F},P\right\} $
 \end_inset
 
@@ -25666,7 +25742,11 @@ extremum estimators
 \end_inset
 
  is the realized data.
- The probability space is rich enough to allow us to consider events defined
+ 
+\end_layout
+
+\begin_layout Itemize
+The probability space is rich enough to allow us to consider events defined
  in terms of an infinite sequence of data 
 \begin_inset Formula $\mathbf{Z}=\left\{ z_{1},z_{2},...,\right\} $
 \end_inset
@@ -25752,17 +25832,62 @@ Because the data
 \begin_inset Formula $s_{n}(\omega,\theta)$
 \end_inset
 
-.
- I'll be loose with notation and interchange when convenient.
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
+ or 
+\begin_inset Formula $s_{n}(\mathbf{Z}_{n}(\omega,\theta))$
+\end_inset
 
+.
+ I'll be loose with notation and interchange when convenient, to emphasize
+ what we're focusing on, at the moment.
+ These points of view are:
+\end_layout
+
+\begin_layout Itemize
+A data set is 
+\begin_inset Formula $\mathbf{Z}_{n}(\omega)$
+\end_inset
+
+ once 
+\begin_inset Formula $\omega$
+\end_inset
+
+ has been drawn.
+ At this point, 
+\begin_inset Formula $\mathbf{Z}_{n}(\omega)$
+\end_inset
+
+ is no longer random, and we may as well write simply 
+\begin_inset Formula $\mathbf{Z}_{n}$
+\end_inset
+
+.
+ When working with 
+\begin_inset Formula $s_{n}(\mathbf{Z}_{n},\theta)$
+\end_inset
+
+, which is not at this point a random function, we will be focused on how
+ to maximize or minimize the function, to get the estimate, and how to compute
+ estimated variances, 
+\emph on
+etc.
+\end_layout
+
+\begin_layout Itemize
+For the purposes of theory, we need to be able to analyze how well our estimator
+s perform in repeated sampling, so we want to treat the sample as random.
+ This is when we need to think about 
+\begin_inset Formula $\mathbf{Z}_{n}(\omega)$
+\end_inset
+
+, and how 
+\begin_inset Formula $s_{n}(\mathbf{Z}_{n}(\omega,\theta))$
+\end_inset
+
+ behaves with different samples.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -25919,30 +26044,13 @@ Maximum likelihood.
 \end_inset
 
 .
- If 
-\begin_inset Formula $\epsilon$
-\end_inset
-
- is a standard normal random variable, its density is 
-\begin_inset Formula 
-\[
-f_{\epsilon}(z)=\left(2\pi\right)^{-1/2}\exp\left(-\frac{z^{2}}{2}\right).
-\]
-
-\end_inset
-
- We have that 
-\begin_inset Formula $\epsilon_{t}=(Y_{t}-\mu_{0})/\sigma_{0}$
-\end_inset
-
- is standard normal, and the Jacobian 
-\begin_inset Formula $\left|\partial\epsilon_{t}/\partial y_{t}\right|=1/\sigma_{0}$
+ Suppose we have a sample 
+\begin_inset Formula $\{y_{1},y_{2},...,y_{n}\}$
 \end_inset
 
 .
- Thus, doing a change of variable, the density of a single observation on
- 
-\begin_inset Formula $Y$
+ The density at the realization 
+\begin_inset Formula $y_{t}$
 \end_inset
 
  is
@@ -25958,8 +26066,7 @@ where
 \end_inset
 
 ).
- The maximum likelihood estimator is maximizes the joint density of the
- sample.
+ The maximum likelihood estimator maximizes the joint density of the sample.
  Because the data are i.i.d., the joint density of the sample 
 \begin_inset Formula $\left\{ y_{1},y_{2},...,y_{n}\right\} $
 \end_inset
@@ -25988,7 +26095,7 @@ Because the natural logarithm is strictly increasing on
 
  as for the likelihood function.
  So, the ML estimator 
-\begin_inset Formula $\hat{\theta}\equiv\arg\max_{\Theta}s_{n}(\theta)$
+\begin_inset Formula $\hat{\theta}=\arg\max_{\Theta}s_{n}(\theta)$
 \end_inset
 
  where 
@@ -26002,7 +26109,7 @@ s_{n}(\theta) & =\left(1/n\right)\ln\mathcal{L}_{n}(\theta)=\left(1/n\right)\sum
 
 Solution of the f.o.c.
  leads to the familiar result that 
-\begin_inset Formula $\hat{\theta}=\bar{\mathbf{y}}.$
+\begin_inset Formula $\hat{\mu}=\bar{\mathbf{y}}.$
 \end_inset
 
  We'll come back to this in more detail later.
@@ -26916,7 +27023,7 @@ We suppose that data is generated by random sampling of
 \begin_inset Formula $\left(X,\varepsilon\right)$
 \end_inset
 
- has the common distribution function 
+ has the distribution function 
 \begin_inset Formula $F_{Z}=\mu_{x}\mu_{\varepsilon}$
 \end_inset
 
@@ -28638,10 +28745,15 @@ We will investigate structural estimation methods, which attempt to estimate
 \begin_layout Itemize
 Knowing the true DGP will allow us to measure sensibly how well the different
  methods work.
+ This chapter describes the dgp for a fairly simple structural model.
 \begin_inset Newpage newpage
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+The model
 \end_layout
 
 \begin_layout Standard
@@ -30766,8 +30878,12 @@ True value
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+
 \series bold
-Solution of the model and generation of simulated data
+Solution of the model and generation of data
 \end_layout
 
 \begin_layout Standard
@@ -30790,9 +30906,9 @@ Given a draw of the parameters other than
  indexes the simulations.
  The model is solved using SolveDSGE.jl, using a third order perturbation
  about the steady state.
- Once the model is solved, a simulation of length 1160 is done, initialized
+ Once the model is solved, a simulation of length 360 is done, initialized
  at the steady state.
- We drop the first 1000 observations, retaining the last 160 observations,
+ We drop the first 200 observations, retaining the last 160 observations,
  which mimic 40 years of quarterly data.
  The observable variables are 
 \begin_inset Formula $y,\,c,\,n,\,w,$
@@ -30812,7 +30928,7 @@ literal "true"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Guerron2010"
@@ -30871,18 +30987,6 @@ xamples/DSGE/GenData/GenData.jl}
 \end_inset
 
 .
- To use it, start Julia in the directory of the script using 
-\begin_inset Quotes sld
-\end_inset
-
-
-\family typewriter
-julia --project
-\family default
-
-\begin_inset Quotes srd
-\end_inset
-
  Here's a plot of the 160 observations of the five observed variables.
 \end_layout
 

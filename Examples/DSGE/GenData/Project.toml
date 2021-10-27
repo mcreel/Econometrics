@@ -1,4 +1,0 @@
-[deps]
-DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
-SolveDSGE = "00bf1f32-23ad-54cc-bf6e-3216db8a43a2"
-StatsPlots = "f3b207a7-027a-5e70-b257-86293d7955fd"

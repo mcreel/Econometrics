@@ -5,7 +5,7 @@ k, z, η
 end
 
 jumps:
-y, c, n, rate, w, MUC, MUL
+y, c, n, r, w, MUC, MUL
 end
 
 shocks:
@@ -19,9 +19,9 @@ end
 equations:
 MUC = c^(-γ)
 MUL = ψ*exp(η)
-rate = α * exp(z) * k^(α-1) * n^(1-α)
+r = α * exp(z) * k^(α-1) * n^(1-α)
 w = (1-α)*exp(z)* k^α * n^(-α)
-MUC = β*MUC(+1) * (1 + rate(+1) - δ)
+MUC = β*MUC(+1) * (1 + r(+1) - δ)
 w = MUL/MUC
 z(+1) = ρ₁*z + σ₁ * u
 η(+1) = ρ₂*η + σ₂ * ϵ
