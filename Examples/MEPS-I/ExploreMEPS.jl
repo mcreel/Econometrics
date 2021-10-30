@@ -1,5 +1,6 @@
 # Read in the data
-
+using Econometrics:dstats
+using DelimitedFiles
 data = readdlm("../Data/meps1996.data")
 
 #	The variables and their columns
@@ -23,5 +24,6 @@ data[:,12] = data[:,12]/1000.0
 n = size(data,1)
 println("MEPS data, 1996, complete data set statistics")
 println("observations: ",n)
-dstats(data, names);
+dstats(data, names)
+nothing
 

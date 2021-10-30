@@ -32,4 +32,5 @@ title = "Poisson model, "*dep* ",  MEPS 1996 full data set"
 model = theta -> poisson(theta, y, x)
 theta = zeros(size(x,2)) # start values for estimation
 # try adding the option vc=2 for "Hessian" or vc=3 for OPG
-thetahat, objvalue, V, converged = mleresults(model, theta, title, names, vc=1);
+thetahat, objvalue, V, converged = mleresults(model, theta, title, names, vc=1)
+nothing

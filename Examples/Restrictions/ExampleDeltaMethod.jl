@@ -1,7 +1,7 @@
 # This file illustrates how the delta method may be used
 # to calculate the covariance of a nonlinear function of
 # estimated parameters
-using ForwardDiff, LinearAlgebra, Statistics
+using Econometrics, ForwardDiff, LinearAlgebra, Statistics
 # this function that gives the elasticities of x*b wrt x:
 function ElasticitiesLinearModel(theta, x)
 	elasticities = (theta .* x) / (x'theta)
