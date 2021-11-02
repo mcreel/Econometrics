@@ -26056,6 +26056,12 @@ OLS objective function contours
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:Maximum-likelihood.-Suppose"
+
+\end_inset
+
 Maximum likelihood.
  Suppose that the continuous random variables 
 \begin_inset Formula $Y_{t}\sim IIN(\mu^{0},\sigma_{0}^{2}),\,t=1,2,...,n$
@@ -26345,7 +26351,7 @@ If
 \begin_inset Formula $s_{n}(\theta)$
 \end_inset
 
- is continuous.
+ is continuous, unless it is stated otherwise.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -27318,6 +27324,21 @@ Usually,
 \end_inset
 
  is an average of terms.
+ (
+\emph on
+e.g., 
+\emph default
+sum of squared errors, or the log likelihood function of Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Maximum-likelihood.-Suppose"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
@@ -27338,7 +27359,7 @@ A strong (weak) LLN says that an average of terms converges almost surely
 Supposing one holds,
 \begin_inset Formula 
 \[
-s_{\infty}(\theta)=\lim_{n\rightarrow\infty}\mathcal{E}s_{n}(Z_{n},\theta)=\lim_{n\rightarrow\infty}\int_{\mathcal{Z}_{n}}s_{n}(z,\theta)f_{Z_{n}}(z)dz
+s_{\infty}(\theta)=\lim_{n\rightarrow\infty}\mathcal{E}s_{n}(Z_{n},\theta)=\lim_{n\rightarrow\infty}\int_{\mathcal{Z}_{n}}s_{n}(z,\theta){\color{green}f_{Z_{n}}(z)}dz
 \]
 
 \end_inset
@@ -27378,7 +27399,7 @@ Now suppose that the density
  When the DGP is parametric, the limiting objective function is 
 \begin_inset Formula 
 \[
-s_{\infty}(\theta)=\lim_{n\rightarrow\infty}\mathcal{E}s_{n}(Z_{n},\theta)=\lim_{n\rightarrow\infty}\int_{\mathcal{Z}_{n}}s_{n}(z,\theta)f_{Z_{n}}(z;\rho^{0})dz
+s_{\infty}(\theta)=\lim_{n\rightarrow\infty}\mathcal{E}s_{n}(Z_{n},\theta)=\lim_{n\rightarrow\infty}\int_{\mathcal{Z}_{n}}s_{n}(z,\theta){\color{green}f_{Z_{n}}(z;\rho^{0})}dz
 \]
 
 \end_inset
@@ -27557,7 +27578,7 @@ You already know that the OLS estimator is inconsistent when relevant variables
 \begin_inset Formula $\left(X,\varepsilon\right)$
 \end_inset
 
- has the common distribution function 
+ has the distribution function 
 \begin_inset Formula $F_{Z}=\mu_{x}\mu_{\varepsilon}$
 \end_inset
 
@@ -27570,7 +27591,7 @@ You already know that the OLS estimator is inconsistent when relevant variables
 \end_inset
 
  are independent) with support 
-\begin_inset Formula $\mathcal{Z=X}\times\mathcal{E}.$
+\begin_inset Formula $Z=\mathcal{X}\times\mathcal{E}.$
 \end_inset
 
  Suppose that the variances 
@@ -31096,7 +31117,11 @@ literal "true"
 The maximum likelihood estimator is important because it uses all of the
  information in a fully specified statistical model.
  Its use of all of the information causes it to have a number of attractive
- properties, foremost of which is asymptotic efficiency.
+ properties, foremost of which is 
+\emph on
+asymptotic efficiency
+\emph default
+.
  For this reason, the ML estimator can serve as a benchmark against which
  other estimators may be measured.
  The ML estimator requires that the statistical model be fully specified,
