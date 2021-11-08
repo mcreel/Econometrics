@@ -31743,6 +31743,7 @@ to avoid loss of precision on a digital computer: the likelihood function
  function gets smaller, and, before long, will dip below machine precision.
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -31750,7 +31751,6 @@ to avoid loss of precision on a digital computer: the likelihood function
 
 \end_layout
 
-\end_deeper
 \begin_layout Example
 Example: 
 \begin_inset CommandInset label
@@ -31801,6 +31801,25 @@ For this example, the average log-likelihood function is
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Example
+* To explore the behavior of the likelihood, the log-likelihood, and the
+ average log-likelihood, see the code 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{PlainLF.jl}{file:///home/michael/Mystuff/Econometrics/Examples/
+MLE/PlainLF.jl} 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Example
@@ -32097,7 +32116,7 @@ ML
 A Julia example that shows how to compute the maximum likelihood estimator
  for data that follows the CLRM with normality is in 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
