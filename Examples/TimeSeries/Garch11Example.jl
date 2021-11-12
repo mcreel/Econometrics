@@ -33,7 +33,7 @@ thetahat, logL, junk  = fmincon(obj, thetastart, [], [], [-Inf, -1.0, 0.0, 0.0, 
 # NOTE TO SELF: this won't work when the constraints are binding
 # should add a method to mle for constrained problems.
 model = theta -> garch11(theta, y)
-thetahat, logL, junk, converged = mleresults(model, thetahat, "GARCH(1,1) example", diff="Calculus")
+thetahat, logL, junk, converged = mleresults(model, thetahat, "GARCH(1,1) example", diffpkg="Calculus")
 #return
 #end
 #main()
