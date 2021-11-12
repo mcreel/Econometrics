@@ -26038,6 +26038,12 @@ OLS objective function contours
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:Maximum-likelihood.-Suppose"
+
+\end_inset
+
 Maximum likelihood.
  Suppose that the continuous random variables 
 \begin_inset Formula $Y_{t}\sim IIN(\mu^{0},\sigma_{0}^{2}),\,t=1,2,...,n$
@@ -26327,7 +26333,7 @@ If
 \begin_inset Formula $s_{n}(\theta)$
 \end_inset
 
- is continuous.
+ is continuous, unless it is stated otherwise.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -27300,6 +27306,21 @@ Usually,
 \end_inset
 
  is an average of terms.
+ (
+\emph on
+e.g., 
+\emph default
+sum of squared errors, or the log likelihood function of Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Maximum-likelihood.-Suppose"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
@@ -27320,7 +27341,7 @@ A strong (weak) LLN says that an average of terms converges almost surely
 Supposing one holds,
 \begin_inset Formula 
 \[
-s_{\infty}(\theta)=\lim_{n\rightarrow\infty}\mathcal{E}s_{n}(Z_{n},\theta)=\lim_{n\rightarrow\infty}\int_{\mathcal{Z}_{n}}s_{n}(z,\theta)f_{Z_{n}}(z)dz
+s_{\infty}(\theta)=\lim_{n\rightarrow\infty}\mathcal{E}s_{n}(Z_{n},\theta)=\lim_{n\rightarrow\infty}\int_{\mathcal{Z}_{n}}s_{n}(z,\theta){\color{green}f_{Z_{n}}(z)}dz
 \]
 
 \end_inset
@@ -27360,7 +27381,7 @@ Now suppose that the density
  When the DGP is parametric, the limiting objective function is 
 \begin_inset Formula 
 \[
-s_{\infty}(\theta)=\lim_{n\rightarrow\infty}\mathcal{E}s_{n}(Z_{n},\theta)=\lim_{n\rightarrow\infty}\int_{\mathcal{Z}_{n}}s_{n}(z,\theta)f_{Z_{n}}(z;\rho^{0})dz
+s_{\infty}(\theta)=\lim_{n\rightarrow\infty}\mathcal{E}s_{n}(Z_{n},\theta)=\lim_{n\rightarrow\infty}\int_{\mathcal{Z}_{n}}s_{n}(z,\theta){\color{green}f_{Z_{n}}(z;\rho^{0})}dz
 \]
 
 \end_inset
@@ -27539,7 +27560,7 @@ You already know that the OLS estimator is inconsistent when relevant variables
 \begin_inset Formula $\left(X,\varepsilon\right)$
 \end_inset
 
- has the common distribution function 
+ has the distribution function 
 \begin_inset Formula $F_{Z}=\mu_{x}\mu_{\varepsilon}$
 \end_inset
 
@@ -27552,7 +27573,7 @@ You already know that the OLS estimator is inconsistent when relevant variables
 \end_inset
 
  are independent) with support 
-\begin_inset Formula $\mathcal{Z=X}\times\mathcal{E}.$
+\begin_inset Formula $Z=\mathcal{X}\times\mathcal{E}.$
 \end_inset
 
  Suppose that the variances 
@@ -31078,7 +31099,11 @@ literal "true"
 The maximum likelihood estimator is important because it uses all of the
  information in a fully specified statistical model.
  Its use of all of the information causes it to have a number of attractive
- properties, foremost of which is asymptotic efficiency.
+ properties, foremost of which is 
+\emph on
+asymptotic efficiency
+\emph default
+.
  For this reason, the ML estimator can serve as a benchmark against which
  other estimators may be measured.
  The ML estimator requires that the statistical model be fully specified,
@@ -31700,6 +31725,7 @@ to avoid loss of precision on a digital computer: the likelihood function
  function gets smaller, and, before long, will dip below machine precision.
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -31707,7 +31733,6 @@ to avoid loss of precision on a digital computer: the likelihood function
 
 \end_layout
 
-\end_deeper
 \begin_layout Example
 Example: 
 \begin_inset CommandInset label
@@ -31758,6 +31783,25 @@ For this example, the average log-likelihood function is
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Example
+* To explore the behavior of the likelihood, the log-likelihood, and the
+ average log-likelihood, see the code 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{PlainLF.jl}{https://github.com/mcreel/Econometrics/blob/master/E
+xamples/MLE/PlainLF.jl} 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Example
@@ -32054,7 +32098,7 @@ ML
 A Julia example that shows how to compute the maximum likelihood estimator
  for data that follows the CLRM with normality is in 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -32193,7 +32237,11 @@ Therefore, since
 
 \end_inset
 
- or 
+ or (both sides have implicitly been multiplied by 
+\begin_inset Formula $1/n)$
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align*}
 \mathcal{E}\left(s_{n}\left(\theta\right)\right)-\mathcal{E}\left(s_{n}\left(\theta_{0}\right)\right) & \leq0
@@ -32914,6 +32962,10 @@ Example, Coin flipping, again.
 \end_inset
 
  and 
+\begin_inset Formula $\mathcal{I}_{\infty}(p_{0})$
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -32926,10 +32978,6 @@ Example, Coin flipping, again.
 \uwave off
 \noun off
 \color none
-
-\begin_inset Formula $\mathcal{I}_{\infty}(p_{0})$
-\end_inset
-
 .
 
 \family default
@@ -32986,16 +33034,16 @@ reference "eq:mle Bernoulli"
 \begin_layout Standard
 We can do this in a simple way:
 \begin_inset Formula 
-\begin{eqnarray*}
-\lim Var\sqrt{n}\left(\hat{p}-p_{0}\right) & = & \lim nVar\left(\hat{p}-p_{0}\right)\\
- & = & \lim nVar\left(\hat{p}\right)\\
- & = & \lim nVar\left(\bar{y}\right)\\
- & = & \lim nVar\left(\frac{\sum y_{t}}{n}\right)\\
- & = & \lim\frac{1}{n}\sum Var(y_{t})\textnormal{ (by independence of obs.)}\\
- & = & \lim\frac{1}{n}nVar(y)\textnormal{ (by identically distributed obs.)}\\
- & = & Var(y)\\
- & = & p_{0}\left(1-p_{0}\right)
-\end{eqnarray*}
+\begin{eqnarray}
+\lim Var\sqrt{n}\left(\hat{p}-p_{0}\right) & = & \lim nVar\left(\hat{p}-p_{0}\right)\nonumber \\
+ & = & \lim nVar\left(\hat{p}\right)\nonumber \\
+ & = & \lim nVar\left(\bar{y}\right)\nonumber \\
+ & = & \lim nVar\left(\frac{\sum y_{t}}{n}\right)\nonumber \\
+ & = & \lim\frac{1}{n}\sum Var(y_{t})\textnormal{ (by independence of obs.)}\nonumber \\
+ & = & \lim\frac{1}{n}nVar(y)\textnormal{ (by identically distributed obs.)}\nonumber \\
+ & = & Var(y)\nonumber \\
+ & = & p_{0}\left(1-p_{0}\right)\label{eq:variance ML Bernoulli}
+\end{eqnarray}
 
 \end_inset
 
@@ -33052,22 +33100,12 @@ s_{\infty}(p)=p^{0}\ln p+\left(1-p^{0}\right)\ln\left(1-p\right).
  A bit of calculation shows that
 \begin_inset Formula 
 \[
-\left.D_{\theta}^{2}s_{\infty}(p)\right|_{p=p^{0}}\equiv\mathcal{J}_{\infty}(p^{0})=\frac{-1}{p^{0}\left(1-p^{0}\right)}.
+\mathcal{J}_{\infty}(p^{0})=\left.D_{\theta}^{2}s_{\infty}(p)\right|_{p=p^{0}}=\frac{-1}{p^{0}\left(1-p^{0}\right)}.
 \]
 
 \end_inset
 
 (note: we used dominated convergence).
- By results we've seen on MLE, 
-\begin_inset Formula $\lim Var\sqrt{n}\left(\hat{p}-p^{0}\right)=-\mathcal{J}_{\infty}^{-1}(p^{0}).$
-\end_inset
-
- And in this case, 
-\begin_inset Formula $-\mathcal{J}_{\infty}^{-1}(p^{0})=p^{0}\left(1-p^{0}\right)$
-\end_inset
-
-.
- So, we get the limiting variance we were expecting.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -33177,21 +33215,84 @@ which does not depend on
 \begin_inset Formula $n,$
 \end_inset
 
- so its limit is the same thing, and, therefore, 
-\begin_inset Formula $\mathcal{I}_{\infty}(p_{0})=\frac{1}{p_{0}(1-p_{0})}$
+ so its limit is the same thing, and, therefore,
+\begin_inset Formula 
+\[
+\mathcal{I}_{\infty}(p_{0})=\frac{1}{p_{0}(1-p_{0})}.
+\]
+
 \end_inset
 
-.
- Then, 
-\begin_inset Formula $Var\sqrt{n}\left(\hat{p}-p^{0}\right)=$
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+So, combining things, we know that the theory says that 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\rightarrow^{d}N\left[0,\mathcal{J}_{\infty}(\theta_{0})^{-1}\mathcal{I}_{\infty}(\theta_{0})\mathcal{J}_{\infty}(\theta_{0})^{-1}\right].
+\]
+
 \end_inset
 
+ In the present case, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
 
-\begin_inset Formula $\mathcal{I}_{\infty}^{-1}(p_{0})=$
+\begin_inset Formula 
+\begin{align*}
+\mathcal{J}_{\infty}(\theta_{0})^{-1}\mathcal{I}_{\infty}(\theta_{0})\mathcal{J}_{\infty}(\theta_{0})^{-1} & =p^{0}\left(1-p^{0}\right)\frac{1}{p_{0}(1-p_{0})}p^{0}\left(1-p^{0}\right)\\
+ & =p_{0}-p_{0}^{2},
+\end{align*}
+
 \end_inset
 
+which is the same limiting variance that we computed directly, above, in
+ eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:variance ML Bernoulli"
+plural "false"
+caps "false"
+noprefix "false"
 
-\begin_inset Formula $p_{0}-p_{0}^{2}$
 \end_inset
 
 .
@@ -33236,8 +33337,11 @@ Let
 
 \end_inset
 
- Now differentiate again: (Note for lectures: show that the two green terms
- are equal) 
+ Now differentiate again, using the product rule, because 
+\begin_inset Formula $\theta$
+\end_inset
+
+ appears in two terms that multiply one another:
 \begin_inset Formula 
 \begin{eqnarray}
 0 & = & \int\left[D_{\theta}^{2}\ln f_{t}(\theta)\right]f_{t}(\theta)dy+\int\left[D_{\theta}\ln f_{t}(\theta)\right]{\color{green}\left\{ D_{\theta^{\prime}}f_{t}(\theta)\right\} }dy\nonumber \\
@@ -33545,6 +33649,33 @@ Information matrix test
  information matrix: outer product of gradient or negative of the Hessian.
  If they differ by too much, this is evidence of misspecification of the
  model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+Once we have the estimated asymptotic variance, 
+\begin_inset Formula $\widehat{V_{\infty}(\theta_{0})}$
+\end_inset
+
+, the 
+\bar under
+approximate
+\bar default
+ small-sample distribution of the estimator is
+\begin_inset Formula 
+\[
+\hat{\theta}\approx N(\theta_{0},\frac{\widehat{V_{\infty}(\theta_{0})}}{n})
+\]
+
+\end_inset
+
+ and this can be used to compute confidence intervals, etc.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -33562,6 +33693,20 @@ status open
 \backslash
 htmladdnormallink{EstimatePoisson.jl}{https://github.com/mcreel/Econometrics/blob/
 master/Examples/MEPS-I/EstimatePoisson.jl}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{mle.jl}{https://github.com/mcreel/Econometrics/blob/master/src/M
+L/mle.jl}
 \end_layout
 
 \end_inset
@@ -33623,8 +33768,8 @@ Alternative variance computations for the OBDV Poisson model
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/MLE/AlternativeVariances.png
-	width 15cm
-	height 15cm
+	width 20cm
+	height 20cm
 
 \end_inset
 
@@ -35890,6 +36035,13 @@ It is worth noting that the mixture parameter is not significantly different
 
 \begin_layout Subsubsection
 Information criteria
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Information-criteria"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -47334,7 +47486,11 @@ ARCH (autoregressive conditionally heteroscedastic) models appeared in the
  literature in 1982, in Engle, Robert F.
  (1982).
  "Autoregressive Conditional Heteroscedasticity with Estimates of Variance
- of United Kingdom Inflation", Econometrica 50:987-1008.
+ of United Kingdom Inflation", 
+\emph on
+Econometrica
+\emph default
+ 50:987-1008.
  This paper stimulated a very large growth in the literature for a number
  of years afterward.
  The related GARCH (generalized ARCH) model is now one of the most widely
@@ -47500,6 +47656,9 @@ The presence of volatility clusters indicates that the variance of the series
 
 \begin_layout Itemize
 The frequency plot shows excess kurtosis and skew (leverage)
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -47514,8 +47673,8 @@ ARCH
 A basic ARCH specification is
 \begin_inset Formula 
 \begin{align*}
-y_{t} & =\mu+\rho y_{t-1}+\epsilon_{t}\\
- & \equiv g_{t}+\epsilon_{t}\\
+y_{t} & ={\color{red}\mu+\rho y_{t-1}}+\epsilon_{t}\\
+ & ={\color{red}g}_{{\color{red}t}}+\epsilon_{t}\\
 \epsilon_{t} & =\sigma_{t}u_{t}\\
 \sigma_{t}^{2} & =\omega+\sum_{i=1}^{q}\alpha_{i}\epsilon_{t-i}^{2}
 \end{align*}
@@ -47710,18 +47869,26 @@ Note that an ARCH model specifies the variance process as a moving average.
  a series instead of a high order AR or MA, one can do the same thing for
  the variance series.
  A basic GARCH(p,q) (Bollerslev, Tim (1986).
- "Generalized Autoregressive Conditional Heteroskedasticity", Journal of
- Econometrics, 31:307-327) specification is
+ "Generalized Autoregressive Conditional Heteroskedasticity", 
+\emph on
+Journal of Econometrics
+\emph default
+, 31:307-327) specification is
 \begin_inset Formula 
 \begin{align*}
 y_{t} & =\mu+\rho y_{t-1}+\epsilon_{t}\\
 \epsilon_{t} & =\sigma_{t}u_{t}\\
-\sigma_{t}^{2} & =\omega+\sum_{i=1}^{q}\alpha_{i}\epsilon_{t-i}^{2}+\sum_{i=1}^{p}\beta_{i}\sigma_{t-i}^{2}
+\sigma_{t}^{2} & =\omega+\sum_{i=1}^{q}\alpha_{i}\epsilon_{t-i}^{2}{\color{green}+\sum_{i=1}^{p}\beta_{i}\sigma_{t-i}^{2}}
 \end{align*}
 
 \end_inset
 
-The idea is that a GARCH model with low values of p and q may fit the data
+It's just an ARCH model, with an 
+\color green
+autoregressive part
+\color inherit
+ added to the specification of the conditional variance.
+ The idea is that a GARCH model with low values of p and q may fit the data
  as well or better than an ARCH model with large q.
 \end_layout
 
@@ -47966,7 +48133,17 @@ The AR(1) in the mean is probably not needed.
 \end_layout
 
 \begin_layout Itemize
-Compare BIC to ARCH(1) and ARCH(4), which you can obtain using GRETL.
+Compare BIC (see subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Information-criteria"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) to ARCH(1) and ARCH(4), which you can obtain using GRETL.
 \end_layout
 
 \begin_layout Standard
@@ -48704,8 +48881,7 @@ For Kalman filtering, see Hamilton,
 \emph on
 Time Series Analysis, 
 \emph default
-Chapter 13.
- Also, see 
+Chapter 13 and 
 \bar under
 
 \begin_inset CommandInset href
@@ -48718,7 +48894,18 @@ literal "false"
 
 
 \bar default
-, lectures 21 and 22, and also the summary in the introduction of 
+, lectures 21 and 22.
+ A tutorial with Julia code is here: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Quantitative Economics Kalman filter"
+target "https://julia.quantecon.org/tools_and_techniques/kalman.html"
+literal "false"
+
+\end_inset
+
+.
+ Another source is the summary in the introduction of 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "LopesTsayPArticleFilter2011"
@@ -48726,30 +48913,12 @@ literal "true"
 
 \end_inset
 
-.
- Additional sources are 
+
 \bar under
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Fernández-Villaverde's Kalman filter notes"
-target "http://economics.sas.upenn.edu/~jesusfv/Chapter_4_Likelihood.pdf"
-literal "false"
-
-\end_inset
-
+.
 
 \bar default
- and the 
-\begin_inset CommandInset href
-LatexCommand href
-name "Quantitative Economics Kalman filter"
-target "http://quant-econ.net/jl/linear_models.html"
-literal "false"
-
-\end_inset
-
- tutorial (includes example code using the Julia language).
+ 
 \end_layout
 
 \begin_layout Standard

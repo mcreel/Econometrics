@@ -59,7 +59,7 @@ end;
 estimated_params;
 // start values for the optimization 
 // the numbers after the comment are the true 
-// values used to generate the data. Try setting nss=0.2, gam=1, and rho1=0.5
+// values used to generate the data.
 betta, 0.99;    // 0.99
 gam, 2.0;       // 2.0
 rho1, 0.9;      // 0.9
@@ -70,9 +70,11 @@ nss, .333;       // 1/3
 end;
 
 # using c and n gives good results when true parameters are used as start
-varobs c n;  // experiment choosing one or two from y c n r w
+# using y and w is less good when true parameters are used as start
+# using y and r gives bad results when true parameters are used as start
+varobs c n;  // experiment choosing one or two from y c n r w k
 
 // computes only the posterior mode for demonstration. 
-estimation(datafile=dsgedata, nobs=160, order=2);
+estimation(datafile=dsgedata, nobs=160, order=1);
 
 

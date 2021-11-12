@@ -3,7 +3,7 @@
 # sample size
 using Econometrics, Distributions
 function main()
-n = 100
+n = 1000
 # random true parameters
 theta = [1.0,-1.0,0.0,1.0]
 b = theta[1:3]
@@ -18,7 +18,7 @@ thetahat, logL, junk = fminunc(obj, theta)
 logL = -logL
 # restricted ML
 R = [0 1 0 0]
-r = -1
+r = -1.5
 thetahatr, logLr, junk = fmincon(obj, theta, R, r)
 logLr = -logLr
 # LR rest
