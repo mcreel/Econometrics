@@ -16,9 +16,9 @@ function mleresults()
     βhat
 end
 
-function mleresults(model, θ, title="", names=""; vc=1)
+function mleresults(model, θ, title="", names=""; vc=1, diff="ForwardDiff")
     n = size(model(θ),1)
-    thetahat, objvalue, V, converged = mle(model, θ, vc)
+    thetahat, objvalue, V, converged = mle(model, θ, vc, diff)
     k = size(V,1)
     if names==""
         names = 1:k

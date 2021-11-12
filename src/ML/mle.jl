@@ -1,6 +1,6 @@
-using ForwardDiff
+using ForwardDiff, Calculus
 """
-    mle(model, θ, vc=" ")
+    mle(model, θ, vc=" ", diff="ForwardDiff")
 
 Maximum likelihood estimation.
 
@@ -8,19 +8,27 @@ Maximum likelihood estimation.
 the observations
 * θ is the parameter vector
 * vc is the method for computing the variance, default is sandwich
+* diff is the package for differentiation, default is ForwarDiff, alternative is Calculus
 * execute mleresults() for an example, or edit(mleresults,()) to see the code.
 
 """
 
-function mle(model, θ, vc=1)
+function mle(model, θ, vc=1, diff="ForwardDiff")
     avg_obj = θ -> -mean(vec(model(θ))) # average log likelihood
     thetahat, objvalue, converged = fminunc(avg_obj, θ) # do the minimization of -logL
     objvalue = -objvalue
     obj = θ -> vec(model(θ)) # unaveraged log likelihood
     n = size(obj(θ),1) # how many observations?
-    scorecontrib = ForwardDiff.jacobian(obj, vec(thetahat))
+    scorecontrib = 0.
+    J = 0.
+    if diff == "ForwardDiff"
+        scorecontrib = ForwardDiff.jacobian(obj, vec(thetahat))
+        J = ForwardDiff.hessian(avg_obj, vec(thetahat))
+    else    
+        scorecontrib = Calculus.jacobian(obj, vec(thetahat))
+        J = Calculus.hessian(avg_obj, vec(thetahat))
+    end    
     I = cov(scorecontrib)
-    J = ForwardDiff.hessian(avg_obj, vec(thetahat))
     Jinv = inv(J)
     if vc==2
         V = Jinv/n      # other possibilities
