@@ -1,4 +1,4 @@
-using Calculus
+using ForwardDiff
 """
     mle(model, θ, vc=" ")
 
@@ -12,17 +12,15 @@ the observations
 
 """
 
-function mle(model, θ; vc=1)
+function mle(model, θ, vc=1)
     avg_obj = θ -> -mean(vec(model(θ))) # average log likelihood
     thetahat, objvalue, converged = fminunc(avg_obj, θ) # do the minimization of -logL
     objvalue = -objvalue
     obj = θ -> vec(model(θ)) # unaveraged log likelihood
     n = size(obj(θ),1) # how many observations?
-    scorecontrib = 0.
-    J = 0.
-    scorecontrib = Calculus.jacobian(obj, vec(thetahat), :central)
-    J = Calculus.hessian(avg_obj, vec(thetahat), :central)
+    scorecontrib = ForwardDiff.jacobian(obj, vec(thetahat))
     I = cov(scorecontrib)
+    J = ForwardDiff.hessian(avg_obj, vec(thetahat))
     Jinv = inv(J)
     if vc==2
         V = Jinv/n      # other possibilities
