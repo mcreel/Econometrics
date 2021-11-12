@@ -13,7 +13,7 @@ the observations
 
 """
 
-function mle(model, θ, vc=1, diff="ForwardDiff")
+function mle(model, θ; vc=1, diffpkg="ForwardDiff")
     avg_obj = θ -> -mean(vec(model(θ))) # average log likelihood
     thetahat, objvalue, converged = fminunc(avg_obj, θ) # do the minimization of -logL
     objvalue = -objvalue
@@ -21,7 +21,7 @@ function mle(model, θ, vc=1, diff="ForwardDiff")
     n = size(obj(θ),1) # how many observations?
     scorecontrib = 0.
     J = 0.
-    if diff == "ForwardDiff"
+    if diffpkg == "ForwardDiff"
         scorecontrib = ForwardDiff.jacobian(obj, vec(thetahat))
         J = ForwardDiff.hessian(avg_obj, vec(thetahat))
     else    
