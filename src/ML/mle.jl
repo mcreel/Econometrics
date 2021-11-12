@@ -20,8 +20,8 @@ function mle(model, θ; vc=1)
     n = size(obj(θ),1) # how many observations?
     scorecontrib = 0.
     J = 0.
-    scorecontrib = Calculus.jacobian(obj, vec(thetahat))
-    J = Calculus.hessian(avg_obj, vec(thetahat))
+    scorecontrib = Calculus.jacobian(obj, vec(thetahat), :central)
+    J = Calculus.hessian(avg_obj, vec(thetahat), :central)
     I = cov(scorecontrib)
     Jinv = inv(J)
     if vc==2
