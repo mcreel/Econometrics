@@ -1,11 +1,13 @@
 # estimate GARCH(1,1) with AR(1) in mean
-using Statistics, DelimitedFiles, Econometrics
+using Statistics, DelimitedFiles, Econometrics, Calculus, LinearAlgebra
 
 # the likelihood function
 function garch11(θ, y)
     # dissect the parameter vector
     μ, ρ, ω, α, β = θ
-    ϵ = y[2:end] .- μ .- ρ*y[1:end-1]
+    ylag = y[1:end-1]
+    y = y[2:end]
+    ϵ = y .- μ .- ρ*ylag
     n = size(ϵ,1)
     h = zeros(n)
     # initialize variance; either of these next two are reasonable choices
@@ -17,7 +19,6 @@ function garch11(θ, y)
     logL = -log(sqrt(2.0*pi)) .- 0.5*log.(h) .- 0.5*(ϵ.^2.)./h
 end
 
-#function main()
 # weekly close price of NSYE, data provided with GRETL
 data = readdlm("nysewk.txt")
 # compute weekly percentage growth
@@ -26,14 +27,14 @@ y = 100.0 * log.(data[2:end] ./ data[1:end-1])
 # note that the objective has a minus sign in front, as fmincon
 # minimizes, but we want to maximize the logL
 # get constrained estimates to use as input for MLE
-thetastart = [mean(y); 0.0; var(y); 0.1; 0.1]
-obj = theta -> -sum(garch11(theta, y))
-thetahat, logL, junk  = fmincon(obj, thetastart, [], [], [-Inf, -1.0, 0.0, 0.0, 0.0], [Inf, 1.0, Inf, 1.0, 1.0])
-# now do MLE to see formatted results.
-# NOTE TO SELF: this won't work when the constraints are binding
-# should add a method to mle for constrained problems.
-model = θ -> garch11(θ, y)
-thetahat, logL, junk, converged = mleresults(model, thetahat, "GARCH(1,1) example")
-#return
-#end
-#main()
+θstart = [mean(y); 0.0; var(y); 0.1; 0.1]
+obj = θ -> -mean(garch11(θ, y))
+θhat, logL, junk  = fmincon(obj, θstart, [], [], [-Inf, -1.0, 0.0, 0.0, 0.0], [Inf, 1.0, Inf, 1.0, 1.0])
+J = -Calculus.hessian(obj, θhat, :central)
+obj = θ -> garch11(θ, y)
+scorecontribs = Calculus.jacobian(obj, θhat, :central)
+I = cov(scorecontribs)
+V = inv(J)*I*inv(J)/size(y,1)
+se = sqrt.(diag(V))
+t = θhat ./ se
+prettyprint([θhat se t], ["estimate", "se","t"],["μ", "ρ","ω","α","β"]) 
