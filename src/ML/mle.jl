@@ -1,4 +1,4 @@
-using ForwardDiff
+using ForwardDiff, Calculus
 """
     mle(model, θ, vc=" ")
 
@@ -18,9 +18,14 @@ function mle(model, θ, vc=1)
     objvalue = -objvalue
     obj = θ -> vec(model(θ)) # unaveraged log likelihood
     n = size(obj(θ),1) # how many observations?
-    scorecontrib = ForwardDiff.jacobian(obj, vec(thetahat))
+    try
+        scorecontrib = ForwardDiff.jacobian(obj, vec(thetahat))
+        J = ForwardDiff.hessian(avg_obj, vec(thetahat))
+    catch    
+        scorecontrib = Calculus.jacobian(obj, vec(thetahat), :central)
+        J = Calculus.hessian(avg_obj, vec(thetahat), :central)
+    end
     I = cov(scorecontrib)
-    J = ForwardDiff.hessian(avg_obj, vec(thetahat))
     Jinv = inv(J)
     if vc==2
         V = Jinv/n      # other possibilities
