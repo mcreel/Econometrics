@@ -30,11 +30,14 @@ y = 100.0 * log.(data[2:end] ./ data[1:end-1])
 θstart = [mean(y); 0.0; var(y); 0.1; 0.1]
 obj = θ -> -mean(garch11(θ, y))
 θhat, logL, junk  = fmincon(obj, θstart, [], [], [-Inf, -1.0, 0.0, 0.0, 0.0], [Inf, 1.0, Inf, 1.0, 1.0])
-J = -Calculus.hessian(obj, θhat, :central)
+model = θ -> garch11(θ, y) 
+mleresults(model, θhat, "Garch(1,1) results", ["μ", "ρ","ω","α","β"])
+#=J = -Calculus.hessian(obj, θhat, :central)
 obj = θ -> garch11(θ, y)
 scorecontribs = Calculus.jacobian(obj, θhat, :central)
 I = cov(scorecontribs)
 V = inv(J)*I*inv(J)/size(y,1)
 se = sqrt.(diag(V))
 t = θhat ./ se
-prettyprint([θhat se t], ["estimate", "se","t"],["μ", "ρ","ω","α","β"]) 
+prettyprint([θhat se t], ["estimate", "se","t"],["μ", "ρ","ω","α","β"])
+=#
