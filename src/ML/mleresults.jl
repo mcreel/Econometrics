@@ -32,7 +32,7 @@ function mleresults(model, θ, title="", names=""; vc=1)
     print("MLE Estimation Results    Convergence: ")
     printstyled(converged, color=:green)
     println()
-    println("Average Log-L: ", round(objvalue; digits=5), "   Observations: ", n)
+    println("Average log-ℒ: ", round(objvalue; digits=5), "   Observations: ", n)
     if vc==1
         println("Sandwich form covariance estimator")
     elseif vc==2

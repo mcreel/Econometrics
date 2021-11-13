@@ -19,6 +19,7 @@ function garch11(θ, y)
     logL = -log(sqrt(2.0*pi)) .- 0.5*log.(h) .- 0.5*(ϵ.^2.)./h
 end
 
+function main()
 # weekly close price of NSYE, data provided with GRETL
 data = readdlm("nysewk.txt")
 # compute weekly percentage growth
@@ -32,12 +33,6 @@ obj = θ -> -mean(garch11(θ, y))
 θhat, logL, junk  = fmincon(obj, θstart, [], [], [-Inf, -1.0, 0.0, 0.0, 0.0], [Inf, 1.0, Inf, 1.0, 1.0])
 model = θ -> garch11(θ, y) 
 mleresults(model, θhat, "Garch(1,1) results", ["μ", "ρ","ω","α","β"])
-#=J = -Calculus.hessian(obj, θhat, :central)
-obj = θ -> garch11(θ, y)
-scorecontribs = Calculus.jacobian(obj, θhat, :central)
-I = cov(scorecontribs)
-V = inv(J)*I*inv(J)/size(y,1)
-se = sqrt.(diag(V))
-t = θhat ./ se
-prettyprint([θhat se t], ["estimate", "se","t"],["μ", "ρ","ω","α","β"])
-=#
+nothing
+end
+main()
