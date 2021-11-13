@@ -7,12 +7,20 @@ students. I recommend learning to use Optim.jl rather than using this.
 fminunc() with no arguments will run an example, execute edit(fminunc,()) to see the code.
 """
 function fminunc(obj, x; tol = 1e-08)
-    results = Optim.optimize(obj, x, LBFGS(), 
+    results = try
+        Optim.optimize(obj, x, LBFGS(), 
+                            Optim.Options(
+                            g_tol = tol,
+                            x_tol=tol,
+                            f_tol=tol); autodiff=:forward)
+    catch
+        Optim.optimize(obj, x, LBFGS(), 
                             Optim.Options(
                             g_tol = tol,
                             x_tol=tol,
                             f_tol=tol))
-    return results.minimizer, results.minimum, Optim.converged(results)
+    end    
+return results.minimizer, results.minimum, Optim.converged(results)
     #xopt, objvalue, flag = fmincon(obj, x, tol=tol)
     #return xopt, objvalue, flag
 end
