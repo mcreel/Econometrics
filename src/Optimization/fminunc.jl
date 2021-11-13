@@ -11,7 +11,7 @@ function fminunc(obj, x; tol = 1e-08)
                             Optim.Options(
                             g_tol = tol,
                             x_tol=tol,
-                            f_tol=tol); autodiff=:forward)
+                            f_tol=tol))
     return results.minimizer, results.minimum, Optim.converged(results)
     #xopt, objvalue, flag = fmincon(obj, x, tol=tol)
     #return xopt, objvalue, flag
