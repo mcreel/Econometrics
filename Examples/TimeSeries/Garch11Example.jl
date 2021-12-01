@@ -1,5 +1,5 @@
 # estimate GARCH(1,1) with AR(1) in mean
-using Statistics, DelimitedFiles, Econometrics, Calculus, LinearAlgebra
+using Statistics, DelimitedFiles, Econometrics
 
 # the likelihood function
 function garch11(θ, y)
@@ -11,8 +11,8 @@ function garch11(θ, y)
     n = size(ϵ,1)
     h = zeros(n)
     # initialize variance; either of these next two are reasonable choices
-    h[1] = var(y[1:10])
-    #h[1] = var(y)
+    #h[1] = var(y[1:10])
+    h[1] = var(y)
     for t = 2:n
         h[t] = ω + α*(ϵ[t-1])^2. + β*h[t-1]
     end
@@ -31,7 +31,8 @@ y = 100.0 * log.(data[2:end] ./ data[1:end-1])
 θstart = [mean(y); 0.0; var(y); 0.1; 0.1]
 obj = θ -> -mean(garch11(θ, y))
 θhat, logL, junk  = fmincon(obj, θstart, [], [], [-Inf, -1.0, 0.0, 0.0, 0.0], [Inf, 1.0, Inf, 1.0, 1.0])
-model = θ -> garch11(θ, y) 
+# use this to report results. Only works because constaints not bining.
+model = θ -> garch11(θ, y)
 mleresults(model, θhat, "Garch(1,1) results", ["μ", "ρ","ω","α","β"])
 nothing
 end

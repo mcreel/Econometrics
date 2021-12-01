@@ -7,8 +7,8 @@ theta = 3
 
 # the distribution doesn't matter, what matters is
 # that the moments are correctly specified
-y = rand(Chisq(theta), n)
-#y = rand(Normal(theta, sqrt(2*theta)), n)
+#y = rand(Chisq(theta), n)
+y = rand(Normal(theta, sqrt(2*theta)), n)
 
 # a MM estimator
 thetahat = mean(y)

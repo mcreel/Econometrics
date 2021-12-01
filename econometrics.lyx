@@ -200,6 +200,10 @@ LatexCommand tableofcontents
 About this document
 \end_layout
 
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Section
 Prerequisites
 \end_layout
@@ -36031,6 +36035,10 @@ filename "Examples/MEPS-II/MixNegBin.out"
 It is worth noting that the mixture parameter is not significantly different
  from zero, but also note that the coefficients of public insurance and
  age, for example, differ quite a bit between the two latent classes.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -36054,9 +36062,15 @@ As seen above, a Poisson model can't be tested (using standard methods)
 \end_layout
 
 \begin_layout Standard
-The information criteria approach is one possibility.
+The 
+\emph on
+information criteria
+\emph default
+ approach is one possibility.
  Information criteria are functions of the log-likelihood, with a penalty
  for the number of parameters used.
+ The idea is to try to choose a model that fits well, but doesn't use an
+ excessive number of parameters to obtain the good fit.
  Three popular information criteria are the Akaike (AIC), Bayes (BIC) and
  consistent Akaike (CAIC).
  The formulae are
@@ -36069,13 +36083,38 @@ AIC & = & -2\ln L(\hat{\theta})+2k
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Itemize
+For a given criterion, the model that has the 
+\emph on
+lowest 
+\emph default
+value of the criterion is favored
+\end_layout
+
+\begin_layout Itemize
 It can be shown that the CAIC and BIC will select the correctly specified
  model from a group of models, asymptotically.
- This doesn't mean, of course, that the correct model is necessarily in
- the group.
- The AIC is not consistent, and will asymptotically favor an over-parameterized
+\end_layout
+
+\begin_layout Itemize
+This doesn't mean, of course, that the correct model is necessarily in the
+ group.
+ 
+\end_layout
+
+\begin_layout Itemize
+The AIC is not consistent, and will asymptotically favor an over-parameterized
  model over the correctly specified model.
- Here are information criteria values for the models we've seen, for OBDV.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+Here are information criteria values for the models we've seen, for OBDV.
 \begin_inset Float table
 placement htbp
 wide false
@@ -36381,11 +36420,21 @@ dynare CKml.mod
 \family default
 .
  Some output that can be obtained is:
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+using c and n:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename Examples/DSGE/ML/dsgeml.png
+	filename Examples/DSGE/ML/cn.png
 	width 15cm
 
 \end_inset
@@ -36393,17 +36442,34 @@ dynare CKml.mod
 
 \end_layout
 
-\begin_layout Itemize
-this is pretty good! And it only too 4s.
- However...
+\begin_layout Standard
+
+\series bold
+using y and w:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Examples/DSGE/ML/yw.png
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Estimation works when the parameters start values are close enough to their
- true values, but it doesn't work when less informative start values are
- tried: probably the objective function is nonconcave, so care must be taken
- to try enough start values.
- 
+the parameter estimates are pretty good.
+ However, the true values were used as start values, so in real life, it
+ may be more difficult.
+\end_layout
+
+\begin_layout Itemize
+note that the standard errors and t statistics change quite a bit depending
+ on which variables are used.
 \end_layout
 
 \begin_layout Itemize
@@ -36456,6 +36522,7 @@ stochastic singularity
  the likelihood function.
  The code lets you explore the choice.
  It seems to work best using c and n.
+ It won't work using y and r.
  For some choices, the true parameter values will be outside the confidence
  intervals.
  If interested, do a Google search for this term, along with DSGE, and you'll
@@ -37941,7 +38008,7 @@ The GMM estimator of the
 \end_inset
 
  -dimensional parameter vector 
-\begin_inset Formula $\theta_{0},$
+\begin_inset Formula $\theta^{0},$
 \end_inset
 
  
@@ -37969,7 +38036,7 @@ where
 \end_inset
 
  with 
-\begin_inset Formula $\mathcal{E}m(Z_{t},\theta_{0})=0,$
+\begin_inset Formula $\mathcal{E}m(Z_{t},\theta^{0})=0,$
 \end_inset
 
 
@@ -38336,9 +38403,9 @@ Define the
 
  matrix 
 \begin_inset Formula 
-\[
-D_{n}(\theta)\equiv\frac{\partial}{\partial\theta}\bar{m}_{n}^{\prime}\left(\theta\right),
-\]
+\begin{equation}
+D_{n}(\theta)\equiv\frac{\partial}{\partial\theta}\bar{m}_{n}^{\prime}\left(\theta\right),\label{eq:derivative of moments}
+\end{equation}
 
 \end_inset
 
@@ -38397,7 +38464,7 @@ To take second derivatives, let
  row vector, and 
 \begin_inset Formula 
 \[
-\frac{\partial}{\partial\theta_{i}}s(\theta)=2D_{i}(\theta)W\bar{m}\left(\theta\right)
+{\color{blue}\frac{\partial}{\partial\theta_{i}}s(\theta)}=2D_{i}(\theta)W\bar{m}\left(\theta\right)
 \]
 
 \end_inset
@@ -38406,7 +38473,8 @@ To take second derivatives, let
 \series bold
 is a scalar
 \series default
-, which is the 
+.
+ It element in the 
 \begin_inset Formula $i$
 \end_inset
 
@@ -38451,10 +38519,14 @@ reference "def: Product-rule.-Let"
 
 \end_inset
 
-), 
+), is the derivative of this real-valued function, with respect to 
+\begin_inset Formula $\theta^{\prime}:$
+\end_inset
+
+
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{\partial}{\partial\theta^{\prime}}\frac{\partial}{\partial\theta_{i}}s(\theta) & = & \frac{\partial}{\partial\theta^{\prime}}\left[2D_{i}(\theta)W\bar{m}\left(\theta\right)\right]\\
+\frac{\partial}{\partial\theta^{\prime}}{\color{blue}\frac{\partial}{\partial\theta_{i}}s(\theta)} & = & \frac{\partial}{\partial\theta^{\prime}}\left[2D_{i}(\theta)W\bar{m}\left(\theta\right)\right]\\
  & = & 2D_{i}WD^{\prime}+2\bar{m}^{\prime}W\left[\frac{\partial}{\partial\theta^{\prime}}D_{i}^{\prime}\right]
 \end{eqnarray*}
 
@@ -38466,6 +38538,17 @@ Note that the first term contains a
 
  which appears due to 
 \begin_inset Formula $\frac{\partial}{\partial\theta^{\prime}}\bar{m}_{n}\left(\theta\right)$
+\end_inset
+
+, which is the transpose of what we defined in eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:derivative of moments"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
 .
@@ -38647,7 +38730,11 @@ reference "Normality of ee"
 \begin_inset Formula $W_{n}.$
 \end_inset
 
- Note that for 
+ 
+\end_layout
+
+\begin_layout Itemize
+Note that for 
 \begin_inset Formula $J_{\infty}$
 \end_inset
 
@@ -38660,26 +38747,26 @@ reference "Normality of ee"
 \end_inset
 
 .
- This is related to identification.
- If the rows of 
-\begin_inset Formula $\bar{m}_{n}(\theta)$
-\end_inset
+ 
+\end_layout
 
- were not linearly independent of one another, then neither 
-\begin_inset Formula $D_{n}$
-\end_inset
+\begin_layout Itemize
+This is related to identification: we need that the parameters cause the
+ moments to change, and each parameter must cause a change that is separate
+ from the changes caused by the other parameters.
+\end_layout
 
- nor 
-\begin_inset Formula $D_{\infty}$
-\end_inset
-
- would have full row rank.
- Identification plus two times differentiability of the objective function
+\begin_layout Itemize
+Identification plus two times differentiability of the objective function
  lead to 
 \begin_inset Formula $J_{\infty}$
 \end_inset
 
  being positive definite.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -38724,6 +38811,7 @@ We would probably like to know how to choose both
 \end_inset
 
  so that the asymptotic variance is a small as possible.
+ That will be the topic of the next section.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -39296,7 +39384,7 @@ The obvious estimator of
 To see the effect of using an efficient weight matrix, consider the Julia
  script 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -39318,26 +39406,24 @@ htmladdnormallink{GMM/EfficientGMM.jl}{https://github.com/mcreel/Econometrics/bl
 \begin_inset Newline newline
 \end_inset
 
-1) based on an identity weight matrix
-\begin_inset Newline newline
-\end_inset
 
-2) using an estimated optimal weight matrix.
+\end_layout
+
+\begin_layout Itemize
+based on an identity weight matrix
+\end_layout
+
+\begin_layout Itemize
+using an estimated optimal weight matrix.
  The estimated efficient weight matrix is computed as the inverse of the
  estimated covariance of the moment conditions, using the inefficient estimator
  of the first step.
  See the next section for more on how to do this.
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Inefficient-and-Efficient"
-
-\end_inset
-
- shows the results, plotting densities for 1000 replications of 
+\begin_layout Itemize
+The following figure shows the results, plotting densities for 1000 replications
+ of 
 \begin_inset Formula $\sqrt{n}\left(\hat{\theta}-\theta^{0}\right)$
 \end_inset
 
@@ -39348,46 +39434,10 @@ reference "fig:Inefficient-and-Efficient"
  efficient weight matrix.
  This is not always so.
  See the next section.
-\end_layout
-
-\begin_layout Example
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Inefficient-and-Efficient"
-
-\end_inset
-
-Inefficient and Efficient GMM estimators, 
-\begin_inset Formula $\chi^{2}$
-\end_inset
-
- data, 
-\begin_inset Formula $n=30$
-\end_inset
-
-.
- 
-\end_layout
-
+\begin_inset Newline newline
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/GMM/Efficient.png
 	lyxscale 50
@@ -39398,16 +39448,10 @@ Inefficient and Efficient GMM estimators,
 
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
 
 \end_layout
 
@@ -39442,6 +39486,18 @@ In the case that we wish to use the optimal weighting matrix, we need an
 \end_inset
 
 .
+ Remember that 
+\begin_inset Formula $\bar{m}_{n}$
+\end_inset
+
+ is the average of the moment contributions, 
+\begin_inset Formula $m_{t}$
+\end_inset
+
+, and, by assumption, 
+\begin_inset Formula $E(m_{t}(\theta^{0})=0.$
+\end_inset
+
  In general, we expect that:
 \end_layout
 
@@ -39488,6 +39544,10 @@ Since we need to estimate so many components, it is unlikely that we would
 \end_inset
 
  
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -39612,6 +39672,16 @@ Recall that
 \end_inset
 
  in the denominator instead).
+ This is consistent because of the LLN, and the fact that 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is consistent for 
+\begin_inset Formula $\theta^{0}$
+\end_inset
+
+ (Slutky theorem).
+ 
 \begin_inset Newpage newpage
 \end_inset
 
@@ -39647,7 +39717,11 @@ On the other hand, supposing that
 \begin_inset Formula $\Gamma_{s}$
 \end_inset
 
- tends to zero sufficiently rapidly as 
+ tends to zero 
+\emph on
+sufficiently rapidly
+\emph default
+ as 
 \begin_inset Formula $s$
 \end_inset
 
@@ -39707,15 +39781,14 @@ A disadvantage of this estimator is that it may not be positive definite.
 \begin_inset Formula $\chi^{2}$
 \end_inset
 
- statistic, for example!
-\begin_inset Newpage newpage
-\end_inset
-
- 
+ statistic, for example! 
 \end_layout
 
 \end_deeper
 \begin_layout Subsection
+\begin_inset Newpage newpage
+\end_inset
+
 Newey-West covariance estimator
 \end_layout
 
@@ -39797,11 +39870,7 @@ literal "true"
 \end_layout
 
 \begin_layout Itemize
-A Julia implementation is in the 
-\family typewriter
-Econometrics
-\family default
- package, at 
+A Julia implementation is at 
 \begin_inset CommandInset href
 LatexCommand href
 name "NeweyWest.jl"
@@ -39810,25 +39879,25 @@ literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
-see Gretl User Manual additional information, and use Gretl for examples
- of both:
+
+\series bold
+in class: 
+\series default
+Use Gretl for examples of both:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-het: Nerlove model: do resid.
- plot, add square of log output.
- Test for HET
+het: Nerlove model: look at t stats with ordinary and White standard errors.
 \end_layout
 
 \begin_layout Itemize
-aut: NYSE data, square of log difference of closing price: test for AUT,
- estimate with and without HAC.
- Note how t-stat declines.
+aut: NYSE data, square of log difference of closing price.
+ Estimate an AR(4), with plain and NW standard errors.
 \end_layout
 
 \end_deeper
@@ -39887,8 +39956,8 @@ Based on this initial estimate,
 
 .
  The exact way to do this will depend upon the assumptions of the model.
- For example, if moment conditions are autocorrelated, one might use the
- Newey-West estimator.
+ For example, if moment conditions are suspected to be autocorrelated, one
+ might use the Newey-West estimator.
  Given the estimate, compute the efficient GMM estimator which minimizes
 \begin_inset Formula 
 \[
@@ -39915,11 +39984,21 @@ An example of this is given by running
 \family typewriter
 gmmresults()
 \family default
-, which is included in the 
-\family typewriter
-Econometrics
-\family default
- package.
+, using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{gmmresults.jl}{https://github.com/mcreel/Econometrics/blob/maste
+r/src/GMM/gmmresults.jl}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -39987,11 +40066,24 @@ An example of CUE estimation is given by running
 \family typewriter
 gmmresults()
 \family default
-, which is included in the 
-\family typewriter
-Econometrics
-\family default
- package.
+, using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{gmmresults.jl}{https://github.com/mcreel/Econometrics/blob/maste
+r/src/GMM/gmmresults.jl}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -40026,7 +40118,7 @@ Suppose that a random variable
 
 \begin_inset Formula 
 \[
-\mathcal{E}_{Y|X}Y=\int Yf(Y|X)dY=0
+\mathcal{E}_{Y|X}Y={\color{red}\int Yf(Y|X)dY}=0
 \]
 
 \end_inset
@@ -40079,7 +40171,7 @@ To see this, the unconditional expectation is
 , they can be pulled out of the integral 
 \begin_inset Formula 
 \[
-\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left(\int_{\mathcal{Y}}Yf(Y|X)dY\right)g(X)f(X)dX.
+\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left({\color{red}\int_{\mathcal{Y}}Yf(Y|X)dY}\right)g(X)f(X)dX.
 \]
 
 \end_inset
@@ -40101,140 +40193,144 @@ To see this, the unconditional expectation is
 
 \begin_layout Standard
 This is important from the point of view of constructing an econometric
- model, since economic models often imply restrictions on conditional moments.
+ model, since economic models often imply restrictions on 
+\emph on
+conditional
+\emph default
+ moments.
 \end_layout
 
 \begin_layout Itemize
 Suppose a model tells us that the function 
-\begin_inset Formula $K(y_{t},x_{t},\theta)$
+\begin_inset Formula $\epsilon(y_{t},x_{t},\theta^{0})$
 \end_inset
 
  has expectation, conditional on the information set 
 \begin_inset Formula $I_{t},$
 \end_inset
 
- equal to 
-\begin_inset Formula $k(x_{t},\theta),$
-\end_inset
-
-
+ equal to zero
 \begin_inset Formula 
 \[
-\mathcal{E}K(y_{t},x_{t},\theta)|I_{t}=k(x_{t},\theta).
+E\left(\epsilon(y_{t},x_{t},\theta^{0})|I_{t}\right)=0.
 \]
 
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-For example, in the context of the classical linear model 
-\begin_inset Formula $y_{t}=x_{t}^{\prime}\beta+\varepsilon_{t},$
-\end_inset
-
- we can set 
-\begin_inset Formula $K(y_{t},x_{t},\theta)=y_{t}$
-\end_inset
-
-.
- The information set includes the exogenous regressors 
-\begin_inset Formula $x_{t},$
-\end_inset
-
- so 
-\begin_inset Formula 
-\begin{align*}
-EK(y_{t},x_{t},\theta)|I_{t} & =E_{\theta}\left(x_{t}^{\prime}\beta+\varepsilon_{t}|x_{t}\right)=k(x_{t},\theta)=x_{t}^{\prime}\beta
-\end{align*}
-
-\end_inset
-
-.
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-In the case of the simultaneous equations model of equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:demand function"
-
-\end_inset
-
-, we have
-\begin_inset Formula 
-\[
-q_{t}=\alpha_{1}+\alpha_{2}p_{t}+\alpha_{3}m_{t}+\varepsilon_{1t}
-\]
-
-\end_inset
-
-The information set includes income 
-\begin_inset Formula $m_{t},$
-\end_inset
-
- because it is an exogenous variable.
- The endogenous variables are 
-\begin_inset Formula $y_{t}=(q_{t},p_{t})$
-\end_inset
-
- and the exogenous variable is 
-\begin_inset Formula $m_{t}$
-\end_inset
-
-.
- Set 
-\begin_inset Formula $K(y_{t},x_{t},\theta)=q_{t}-\alpha_{2}p_{t}$
-\end_inset
-
-.
- Then 
-\begin_inset Formula 
-\begin{align*}
-k(x_{t},\theta) & =E\left(q_{t}-\alpha_{2}p_{t}|m_{t}\right)\\
- & =E(\alpha_{1}+\alpha_{3}m_{t}+\epsilon_{1t}|m_{t})\\
- & =\alpha_{1}+\alpha_{3}m_{t}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
-If 
-\begin_inset Formula $k(x_{t},\theta)$
+
+\end_layout
+
+\begin_layout Standard
+For example, consider the demand equation of eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:demand function"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
- is the conditional expectation of 
-\begin_inset Formula $K(y_{t},x_{t},\theta),$
+: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $q_{t}=\alpha_{1}^{0}+\alpha_{2}^{0}p_{t}+\alpha_{3}^{0}y_{t}+\varepsilon_{1t}$
 \end_inset
 
- then the error function 
+ where income, 
+\begin_inset Formula $y_{t},$
+\end_inset
+
+ is exogenous, and 
+\begin_inset Formula $E(\epsilon|y)=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Set 
+\begin_inset Formula $\epsilon(y_{t},x_{t},\theta^{0})=$
+\end_inset
+
+
+\begin_inset Formula $q_{t}-\alpha_{1}^{0}-\alpha_{2}^{0}p_{t}-\alpha_{3}^{0}y_{t}=\varepsilon_{1t}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+So 
+\begin_inset Formula $\epsilon_{t}(\theta^{0})=\epsilon_{1t}$
+\end_inset
+
+, which has conditional expectation equal to zero, by assumption.
+ 
+\end_layout
+
+\begin_layout Itemize
+At other parameter values, 
+\begin_inset Formula $\epsilon_{t}(\theta)=q_{t}-\alpha_{1}+\alpha_{2}p_{t}+\alpha_{3}y_{t}\ne\epsilon_{1t},$
+\end_inset
+
+ and this will not have conditional expectation equal to zero.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+If identification holds, then we will have
 \begin_inset Formula 
 \[
-\epsilon_{t}(\theta)=K(y_{t},x_{t})-k(x_{t},\theta)
-\]
-
-\end_inset
-
-has conditional expectation equal to zero, by construction: 
-\begin_inset Formula 
-\[
-\mathcal{E}\epsilon_{t}(\theta)|I_{t}=0.
+\mathcal{E}\epsilon_{t}(\theta)|I_{t}\ne0,\,\theta\ne\theta^{0}.
 \]
 
 \end_inset
@@ -40300,6 +40396,9 @@ instrumental variables.
 \end_inset
 
  the necessary condition for identification holds.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -40370,6 +40469,9 @@ where
 
  This fits the previous treatment.
  
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Newpage newpage
 \end_inset
 
@@ -40398,7 +40500,7 @@ Let's look at the previous section's results in more detail, for the commonly
 n between regressors and errors: 
 \begin_inset Formula 
 \begin{eqnarray*}
-y_{t} & = & x_{t}^{\prime}\theta+\varepsilon_{t}\\
+y_{t} & = & x_{t}^{\prime}\theta^{0}+\varepsilon_{t}\\
 \mathcal{E}(x_{t}\varepsilon_{t}) & \neq & 0
 \end{eqnarray*}
 
@@ -40413,7 +40515,7 @@ Let's assume, just to keep things simple, that the errors are iid
 
 \begin_layout Itemize
 The model in matrix form is 
-\begin_inset Formula $y=X\theta+\epsilon$
+\begin_inset Formula $y=X\theta^{0}+\epsilon$
 \end_inset
 
 
@@ -40775,7 +40877,7 @@ With the definition of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\hat{\theta}_{IV}=(X^{\prime}P_{Z}X)^{-1}X^{\prime}P_{Z}y\label{eq:GIVestimator2}
+\hat{\theta}_{IV}=(X^{\prime}P_{Z}X)^{-1}X^{\prime}P_{Z}{\color{red}y}\label{eq:GIVestimator2}
 \end{equation}
 
 \end_inset
@@ -40783,7 +40885,7 @@ With the definition of
  from which we obtain 
 \begin_inset Formula 
 \begin{eqnarray*}
-\hat{\theta}_{IV} & = & (X^{\prime}P_{Z}X)^{-1}X^{\prime}P_{Z}(X\theta^{0}+\varepsilon)\\
+\hat{\theta}_{IV} & = & (X^{\prime}P_{Z}X)^{-1}X^{\prime}P_{Z}({\color{red}X\theta^{0}+\varepsilon})\\
  & = & \theta^{0}+(X^{\prime}P_{Z}X)^{-1}X^{\prime}P_{Z}\varepsilon
 \end{eqnarray*}
 
@@ -41254,7 +41356,7 @@ reference "exa:Measurement-error-in"
 
 .
  Using the GIV estimator, descriptive statistics for 1000 replications of
- are
+ the estimated parameters minus the true parameters are
 \begin_inset CommandInset include
 LatexCommand verbatiminput
 filename "Examples/GMM/MeasurementErrorIV.out"
@@ -41332,7 +41434,64 @@ GIV estimation results for
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\,$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+The linear simultaneous equation model 
+\series bold
+Klein's model 1
+\series default
+ (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Example:-Klein's-Model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is estimated by GMM in the following code examples: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
  
+\backslash
+htmladdnormallink{Simeq/KleinGMM.m}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/Simeq/KleinGMM.jl}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+htmladdnormallink{Simeq/KleinCUE.m}{https://github.com/mcreel/Econometrics/blob/ma
+ster/Examples/Simeq/KleinCUE.jl}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -41459,26 +41618,6 @@ reference "subsec:Example:-Klein's-Model"
 \end_inset
 
  for an example.
-\end_layout
-
-\begin_layout Itemize
-We can also estimate this same model using plain GMM estimation, this is
- done in 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-htmladdnormallink{Simeq/KleinGMM.m}{https://github.com/mcreel/Econometrics/blob/ma
-ster/Examples/Simeq/KleinGMM.jl}
-\end_layout
-
-\end_inset
-
-.
- This script shows the use of the Newey-West covariance estimator.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -43688,9 +43827,19 @@ w_{t} & = & \psi\eta_{t}c_{t}^{\gamma}\\
 
 \end_inset
 
-The real values of this shock are not observed, but, given a guess for the
- parameters and the data, the left hand side of the above equation can be
- calculated.
+The real values of this shock 
+\begin_inset Formula $\eta_{t}$
+\end_inset
+
+ are not observed, but, given a guess for the parameters 
+\begin_inset Formula $\psi$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, and the data, the left hand side of the above equation can be calculated.
  Also, we have
 \begin_inset Formula 
 \[
@@ -43862,7 +44011,7 @@ htmladdnormallink{dsgedata.txt}{https://github.com/mcreel/Econometrics/blob/mast
 \end_layout
 
 \begin_layout Standard
-A Julia function to compute the moment conditions discussed above, and others
+A Julia function to compute the moment conditions discussed above, and others,
  is at 
 \begin_inset ERT
 status open
@@ -59692,12 +59841,16 @@ Method of simulated moments (MSM)
 \end_layout
 
 \begin_layout Standard
-Suppose we have a DGP
+Suppose we have a data generating process DGP
 \begin_inset Formula $(y|x,\theta)$
 \end_inset
 
- which is simulable given 
+ which is simulable, given 
 \begin_inset Formula $\theta$
+\end_inset
+
+ and exogenous variables 
+\begin_inset Formula $x$
 \end_inset
 
 , but is such that the density of 
@@ -59722,58 +59875,65 @@ status collapsed
 \end_inset
 
 estimator which we have studied is based upon the moment conditions 
-\begin_inset Formula 
-\[
-m_{t}(\theta)=\left[K(y_{t},x_{t})-k(x_{t},\theta)\right]z_{t}
-\]
-
+\begin_inset Formula $m_{t}=z_{t}\epsilon_{t}(\theta)$
 \end_inset
 
- where 
+, where 
+\begin_inset Formula $\epsilon_{t}(\theta)$
+\end_inset
+
+ has conditional expectation equal to zero when evaluated at the true parameter
+ value.
+ Consider 
 \begin_inset Formula 
 \[
-k(x_{t},\theta)=\int K(y_{t},x_{t})p(y|x_{t},\theta)dy,
+\epsilon_{t}(\theta)=K(y_{t},x_{t})-k(x_{t},\theta)
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $z_{t}$
+\begin_inset Formula $k(x_{t},\theta)=E_{\theta}K(y_{t},x_{t}|I_{t})$
 \end_inset
 
- is a vector of instruments in the information set and 
-\begin_inset Formula $p(y|x_{t},\theta)$
+, where 
+\begin_inset Formula $I_{t}$
 \end_inset
 
- is the density of 
-\begin_inset Formula $y$
+ is the information set at time 
+\begin_inset Formula $t$
 \end_inset
 
- conditional on 
-\begin_inset Formula $x_{t}.$
+.
+ Then, at the true parameter 
+\begin_inset Formula $\theta^{0}$
 \end_inset
 
- Before, we assumed that the expectation that defines 
-\begin_inset Formula $k(x_{t},\theta)$
+ that generated the data, 
+\begin_inset Formula $E_{\theta^{0}}K(y_{t},x_{t}|I_{t})=k(x_{t},\theta^{0}).$
 \end_inset
 
- could be computed.
- However, if the density 
-\begin_inset Formula $p(y|x_{t},\theta)$
+ From this, we could base GMM estimation on 
+\begin_inset Formula $\text{\epsilon_{t}(\theta)},$
 \end_inset
 
- can't be computed, then it's unlikely that we can compute moments defined
- in terms of this density.
- So, when 
-\begin_inset Formula $k(x_{t},\theta)$
+ crossed with instrumental variables drawn from 
+\begin_inset Formula $I_{t}$
 \end_inset
 
- is unavailable, we can't do ordinary GMM.
- 
+.
 \end_layout
 
 \begin_layout Itemize
-However 
+However, assume that we can't compute 
+\begin_inset Formula $k(x_{t},\theta)=E_{\theta}K(y_{t},x_{t}|I_{t})$
+\end_inset
+
+, for some reason.
+\end_layout
+
+\begin_layout Itemize
+Nevertheless, 
 \begin_inset Formula $k(x_{t},\theta)$
 \end_inset
 
@@ -59789,29 +59949,32 @@ However
 
 \end_inset
 
+where 
+\begin_inset Formula $\widetilde{y}_{t}^{h}$
+\end_inset
 
+ is drawn from DGP
+\begin_inset Formula $(y|x,\theta)$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Itemize
-By the law of large numbers, 
+Note that 
+\begin_inset Formula $E_{\theta}K(\widetilde{y}_{t}^{h},x_{t}|I_{t})=k(x_{t},\theta)$
+\end_inset
+
+, and, by the law of large numbers, 
 \begin_inset Formula $\widetilde{k}\left(x_{t},\theta\right)\stackrel{a.s.}{\rightarrow}k\left(x_{t},\theta\right),$
 \end_inset
 
  as 
-\begin_inset Formula $H\rightarrow\infty,$
+\begin_inset Formula $H\rightarrow\infty.$
 \end_inset
 
- which provides a clear intuitive basis for the estimator, though in fact
- we obtain consistency even for 
-\begin_inset Formula $H$
-\end_inset
 
- finite, since a law of large numbers is also operating across the 
-\begin_inset Formula $n$
-\end_inset
-
- observations of real data, so errors introduced by simulation cancel themselves
- out.
 \end_layout
 
 \begin_layout Itemize

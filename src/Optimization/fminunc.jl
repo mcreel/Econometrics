@@ -20,9 +20,7 @@ function fminunc(obj, x; tol = 1e-08)
                             x_tol=tol,
                             f_tol=tol))
     end    
-return results.minimizer, results.minimum, Optim.converged(results)
-    #xopt, objvalue, flag = fmincon(obj, x, tol=tol)
-    #return xopt, objvalue, flag
+    return results.minimizer, results.minimum, Optim.converged(results)
 end
 
 function fminunc()

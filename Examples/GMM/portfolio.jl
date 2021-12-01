@@ -49,7 +49,8 @@ r = (p + d) ./ lag(p,1) .- 1.0
 c = c ./ lag(c,1); # ensure stationarity
 # choose maximal lag of instruments.
 max_lag = 1
-inst = [c r d p]
+inst = [c/10 10r d p/10] # chose from c, r, d, p
+dstats(inst)
 inst = lags(inst, max_lag)
 inst, junk, junk = stnorm(inst)
 inst = [ones(size(inst,1),1) inst]
@@ -61,16 +62,16 @@ moments = θ -> portfolio_moments(θ, data)
 weight = 1.0
 names = ["beta","gamma"]
 # initial consistent estimate
-theta = [0.9, 1]
-thetahat, obj_value, D, ms, convergence = gmm(moments, theta, weight)
+θstart  = [0.95, 0.5]
+θhat, obj_value, D, ms, convergence = gmm(moments, θstart , weight)
 # second step with efficient weight matrix
-omega = 50.0*cov(ms)
-weight = inv(omega)
+Ω  = cov(ms)
+weight = inv(Ω)
 title = "Two step GMM estimation of portfolio model"
-results = gmmresults(moments, thetahat, weight, title, names)
+results = gmmresults(moments, θhat, weight, title, names)
 # CUE GMM
 title = "CUE GMM estimation of portfolio model"
-gmmresults(moments, results[1], "", title, names)
+gmmresults(moments, θstart , "", title, names)
 return
 end
 main()
