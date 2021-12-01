@@ -10,11 +10,10 @@ function main()
     end    
     # OLS
     x = [ones(10,1) (1:10)]
-    Random.seed!(1)
-    y = rand(10,1)
+    y = [10.,9.,8.,7.,6.,5.,4.,3.,2.,1.]
     b = ols(y,x,silent=true)[1]
     @testset "ols" begin
-        @test b[1,1] / 0.07655377367377458 ≈ 1.0 atol=1e-5
+        @test b[1,1] / 11.0 ≈ 1.0 atol=1e-5
     end    
     # ML
     @testset "mle" begin
