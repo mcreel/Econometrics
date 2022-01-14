@@ -1,8 +1,7 @@
 # this is an experimental version that allocates less. It is 
-# about twice as fast, for a very simple likelihood, but the
-# time is so short that it's not really beneficial. It seems
-# likely that making the likelihood computation fast is more
-# important.
+# about 30% faster, for a very simple likelihood, but the
+# time is so short that it's not really important. For more complex
+# likelihoods, it seems likely that making the likelihood computation fast is more beneficial than making the sampler fast (?)
 using Distributions
 
 function Prior!(p, θ)
@@ -13,8 +12,8 @@ function lnL!(ll, θ, y)
     ll .= sum(logpdf.(Exponential(θ[1]), y))
 end
 
-function Proposal!(trial, current, tuning)
-    trial .= rand(LogNormal(log(current[1]),tuning))
+function Proposal!(θᵗ, θᶜ, tuning)
+    θᵗ .= rand(LogNormal(log(θᶜ[1]),tuning))
 end
 
 struct model
@@ -24,33 +23,38 @@ struct model
     proposal!::Function
 end    
 
-function mcmc(θ, model, reps, burnin)
+function mcmc(θᶜ, model, reps, burnin)
     tuning = 0.5
-    current = copy(θ)
-    trial = copy(θ)
-    chain = copy(θ)
-    lt = [-Inf]
-    lc = [-Inf]
-    model.lnL!(lc, current, model.data) # get initial likelihood
+    θᵗ = copy(θᶜ) # θᵗ params
+    chain = copy(θᶜ) # need defined at this scope
+    ℒᵗ = [-Inf]
+    ℒᶜ = [-Inf]
+    pt = [-Inf]
+    pc = [1.]
+    Prior!(pc, θᶜ)
+    model.lnL!(ℒᶜ, θᶜ, model.data) # get initial likelihood
     for i = 1:reps + burnin
-        model.proposal!(trial, current, tuning)
-        model.lnL!(lt, trial, model.data)
-        if rand() < exp(lt[1] - lc[1])   #### NEED TO ADD PRIOR RATIO
-            current .= trial
-            lc .= lt
+        model.proposal!(θᵗ, θᶜ, tuning)
+        model.lnL!(ℒᵗ, θᵗ, model.data)
+        Prior!(pt, θᵗ)
+        # if accepted, update the current quantities
+        if rand() < exp(ℒᵗ[1] - ℒᶜ[1])*pt[1]/pc[1]
+            θᶜ .= θᵗ
+            pc .= pt 
+            ℒᶜ .= ℒᵗ
         end
-        i == burnin + 1 ? chain = copy(current) : nothing
-        i > burnin + 1 ? push!(chain, current[1]) : nothing   
+        # if out of burning, push current to chain
+        i > burnin + 1 ? push!(chain, θᶜ[1]) : 
+            (i == burnin + 1 ? chain = copy(θᶜ) : nothing)
     end
-return chain
+    acceptance = (size(unique(chain)) ./ size(chain))[1]
+return chain, acceptance
 end
 
 function main()
 y = rand(Exponential(3.0),30)
 θ = [rand(LogNormal(1.0, 1.0))]   # initial value draw from prior
 m = model(y, Prior!, lnL!, Proposal!)
-chain = mcmc(θ, m, 100000, 10000)
-#display(chain)
+chain, acceptance = mcmc(θ, m, 100000, 10000)
 end
-# the main loop
 

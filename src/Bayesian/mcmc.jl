@@ -48,10 +48,10 @@ end
 @views function mcmc(θ, reps::Int64, burnin::Int64, Prior::Function, lnL::Function, Proposal::Function, report::Bool=true)
     reportevery = Int((reps+burnin)/10)
     lnLθ = lnL(θ)
-    chain = zeros(reps, size(θ,1)+1)
+    chain = zeros(reps, size(θ,1)+1)  #!!!!!! use a vector of vectors
     naccept = zeros(size(θ))
     for rep = 1:reps+burnin
-        θᵗ = Proposal(θ) # new trial value
+        θᵗ = Proposal(θ) # new trial value  # MAKE THIS non-allocating!
         if report
             changed = Int.(.!(θᵗ .== θ)) # find which changed
         end    
