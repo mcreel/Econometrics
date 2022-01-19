@@ -19,12 +19,12 @@ function mle(model, θ, vc=1)
     obj = θ -> vec(model(θ)) # unaveraged log likelihood
     n = size(obj(θ),1) # how many observations?
     scorecontrib = try
-        Calculus.ForwardDiff(obj, vec(thetahat))
+        ForwardDiff.jacobian(obj, vec(thetahat))
     catch
         Calculus.jacobian(obj, vec(thetahat), :central)
     end
     J = try
-        Calculus.ForwardDiff(avg_obj, vec(thetahat))
+        ForwardDiff.hessian(avg_obj, vec(thetahat))
     catch
         Calculus.hessian(avg_obj, vec(thetahat), :central)
     end    
