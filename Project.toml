@@ -1,7 +1,7 @@
 name = "EconometricsNotes"
 uuid = "4d6a76a9-bfbc-5492-8924-cf6ed7875f06"
 authors = ["Michael Creel <michael.creel@uab.es> and contributors"]
-version = "1.0"
+version = "0.1"
 
 
 [deps]
