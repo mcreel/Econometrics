@@ -59,8 +59,10 @@ f(x,y) = -(3.0 .* (1.0 .- x).^2.0 .* exp.(-(x.^2.0) .- (y.+1.0).^2.0)
  
 ##
 # let's explore it:
+#using Pkg
+#Pkg.add("PlotlyJS") # this one is not in the system image
 using Plots
-plotlyjs()
+plotlyjs() # use this backend for interactive plots
 x = range(-4, step=0.1, stop=4)
 y = x
 surface(x, y, f)
@@ -108,7 +110,9 @@ ForwardDiff.gradient(f, θstart)
 # will show that each of the 3 minimizers are found. Thus, if one defined
 # LBFGS with enough start values, the global minimizer would be found.
 # If you run the code enough times, you will see that the algorithm
-# occasionally goes off far away from the 3 local minimizers.
+# occasionally goes off far away from the 3 local minimizers. In that
+# region, the gradients are zero, as we see in the plots, and the algorithm
+# can't find better points.
 using Econometrics, Plots, Optim
 gr() # using the GR backend
 x = range(-4, step=0.1, stop=4)
