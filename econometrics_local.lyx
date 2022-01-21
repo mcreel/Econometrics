@@ -883,7 +883,7 @@ http://julialang.org/
 \end_layout
 
 \begin_layout Itemize
-tutorials:
+tutorials and resources:
 \end_layout
 
 \begin_deeper
@@ -903,14 +903,13 @@ https://github.com/PaulSoderlind/JuliaTutorial
 \end_layout
 
 \begin_layout Itemize
-More detailed.
- 
+Recommended! 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-http://ucidatascienceinitiative.github.io/IntroToJulia/
+https://julia.quantecon.org/intro.html
 \end_layout
 
 \end_inset
@@ -919,21 +918,6 @@ http://ucidatascienceinitiative.github.io/IntroToJulia/
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-Recommended! Quantitative Economics: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://lectures.quantecon.org/jl/index.html
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -1118,7 +1102,7 @@ Notebook interfaces
 
 \begin_layout Standard
 This is a nice way to interactively explore relatively simple code.
- I don't have much experience.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -1149,6 +1133,11 @@ https://github.com/fonsp/Pluto.jl
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Neptune notebooks.
+ A fork of Pluto that does not automatically update all cells when any changes.
 \end_layout
 
 \begin_layout Standard
