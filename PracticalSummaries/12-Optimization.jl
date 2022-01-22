@@ -53,9 +53,9 @@ eigen(H)
 # a problem. Let's look at another problem, which has multiple
 # minima, and see how to find the global minimizer
 # Here's another objective function
-f(x,y) = -(3.0 .* (1.0 .- x).^2.0 .* exp.(-(x.^2.0) .- (y.+1.0).^2.0)
-   - 6.0 .* (x./5.0 .- x.^3.0 .- y.^5.0) .* exp.(-x.^2.0 .- y.^2.0)
-- 1/3 .*exp.(-(x.+1.0).^2.0 .- y.^2.0) )
+f(x,y) = -(3*(1-x)^2 * exp(-(x^2) - (y+1)^2)
+    - 6*(x/5 - x^3 - y^5) * exp(-x^2 - y^2)
+    - 1/3 * exp(-(x+1)^2 - y^2))
  
 ##
 # let's explore it:
@@ -65,11 +65,11 @@ using Plots
 plotlyjs() # use this backend for interactive plots
 x = range(-4, step=0.1, stop=4)
 y = x
-surface(x, y, f)
+surface(x, y, (x,y)->f(x,y),c=:viridis)
 xlabel!("x")
 ylabel!("y")
 ##
-contour(x,y,f)
+contour(x,y,(x,y)->f(x,y),c=:viridis)
 
 ##
 # This function has 3 local min, and 2 local max.
@@ -117,7 +117,7 @@ using Econometrics, Plots, Optim
 gr() # using the GR backend
 x = range(-4, step=0.1, stop=4)
 y = x
-contour(x,y,f)
+contour(x,y,f,c=:viridis)
 θstart = 8.0 .* rand(2) .-4.0 
 tol = 1e-08
 results = Optim.optimize(f, θstart, LBFGS(), 
@@ -127,7 +127,7 @@ results = Optim.optimize(f, θstart, LBFGS(),
                             f_tol=tol); autodiff=:forward)
 
 θhat = results.minimizer
-scatter!([θhat[1]],[θhat[2]],legend=false)
+scatter!([θhat[1]],[θhat[2]],legend=false, markersize=10, c = :viridis)
 
 ##
 # A more robust algorithm is to use the known domain to define

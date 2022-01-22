@@ -1379,7 +1379,7 @@ A theoretical model is a key ingredient to assign causal relationships (which
 It turns out that the variables we're looking at are QUANTITY (q), PRICE
  (p), and INCOME (m), and the data were generated using 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 

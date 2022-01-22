@@ -3,6 +3,7 @@
 # q = β1 + β2*p +        e2
 using Econometrics, Plots, DelimitedFiles
 function main()
+    gr()
     # number of obsn
     n = 500
     # model parameters
@@ -31,10 +32,11 @@ function main()
     data = [q p m]
     data = sortbyc(data,3)
     nn = Int(n/4)
-    scatter(data[1:nn,2], data[1:nn,1], markersize=8, xlabel="price", ylabel="quantity", legend=false)
+    p = scatter(data[1:nn,2], data[1:nn,1], markersize=8, xlabel="price", ylabel="quantity", legend=false)
     for i = 2:4
         scatter!(data[(i-1)*nn+1:i*nn,2], data[(i-1)*nn:i*nn,1], markersize=8, show=true)
     end
+    display(p)
     #writedlm("data.txt", data)
 end
 main()
