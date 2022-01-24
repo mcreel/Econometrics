@@ -30,7 +30,7 @@ function npreg(bandwidth=-1)
     k = 1 # number of regressors
     Random.seed!(1) # set seed to 
     n = 1000
-    bandwidth = -1 ? bandwidth = 0.25*n^(-1.0/(4 + k)) : nothing
+    bandwidth == -1 ? bandwidth = 0.25*n^(-1.0/(4 + k)) : nothing
     neval = 100
     x = rand(n)*pi*2.0 # from 0 to 2π   
     xeval = collect(range(pi/2., stop=pi*1.5, length=neval)) # from π/2 to 3π/2  
