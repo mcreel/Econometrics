@@ -26,6 +26,7 @@ execute npreg() for an example
 using Random, Econometrics, Plots
 function npreg(bandwidth=-1)
     println("npreg(), with no arguments, runs a simple example")
+    println("npreg(bw) will run the example with your chosen bandwidth (Float64)")
     println("execute edit(npreg,()) to see the code")
     k = 1 # number of regressors
     Random.seed!(1) # set seed to 
@@ -42,7 +43,6 @@ function npreg(bandwidth=-1)
     ytrue = cos.(xeval) .+ 0.25.*cos.(3.0*xeval)
     weights = kernelweights(x, xeval, bandwidth, true, "knngaussian", 200)
     yhat, y50, y05, y95 = npreg(y, x, xeval, weights, order=1, do_median=true, do_ci=true)
-    println("true, mean, median, q05, q95")
     labels = ["true" "mean" "median" "0.05 quantile" "0.95 quantile"]
     title = "Kernel regression and quantiles"
     p = Plots.plot(xeval, [ytrue yhat y50 y05 y95], labels=labels, title=title)
