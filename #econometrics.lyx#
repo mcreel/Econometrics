@@ -23262,7 +23262,7 @@ status collapsed
 
 
 \backslash
-href{GridExample.jl}{./Examples/NonlinearOptimization/GridExample.jl} 
+href{./Examples/NonlinearOptimization/GridExample.jl}{GridExample.jl} 
 \end_layout
 
 \end_inset
@@ -24030,7 +24030,7 @@ status collapsed
 
 
 \backslash
-href{RosenbrockTrace.jl}{./Examples/NonlinearOptimization/RosenbrockTrace.jl}
+href{./Examples/NonlinearOptimization/RosenbrockTrace.jl}{RosenbrockTrace.jl}
  
 \end_layout
 
@@ -24670,7 +24670,7 @@ status open
 
 
 \backslash
-href{OLSviaSA.jl}{./Examples/NonlinearOptimization/OLSviaSA.jl} 
+href{./Examples/NonlinearOptimization/OLSviaSA.jl}{OLSviaSA.jl} 
 \end_layout
 
 \end_inset
@@ -24774,7 +24774,7 @@ status open
 
 
 \backslash
-href{EstimateRestrictedNerlove.jl}{./Examples/NonlinearOptimization/EstimateRestri
+href{./Examples/NonlinearOptimization/EstimateRestrictedNerlove.jl}{EstimateRestri
 ctedNerlove.jl} 
 \end_layout
 
@@ -24861,7 +24861,7 @@ status open
 
 
 \backslash
-href{MEPS health data file}{./Examples/Data/meps1996.data} 
+href{./Examples/Data/meps1996.data}{MEPS health data file} 
 \end_layout
 
 \end_inset
@@ -24927,7 +24927,7 @@ status open
 
 
 \backslash
-href{ExploreMEPS.jl}{./Examples/MEPS-I/ExploreMEPS.jl} 
+href{./Examples/MEPS-I/ExploreMEPS.jl}{ExploreMEPS.jl} 
 \end_layout
 
 \end_inset
@@ -25126,7 +25126,7 @@ status open
 
  
 \backslash
-href{EstimatePoisson.jl}{./Examples/MEPS-I/EstimatePoisson.jl}
+href{./Examples/MEPS-I/EstimatePoisson.jl}{EstimatePoisson.jl}
 \end_layout
 
 \end_inset
@@ -25164,7 +25164,7 @@ status open
 
  
 \backslash
-href{EstimatePoisson.jl}{./Examples/MEPS-I/EstimatePoisson.jl}
+href{./Examples/MEPS-I/EstimatePoisson.jl}{EstimatePoisson.jl}
 \end_layout
 
 \end_inset
@@ -25278,7 +25278,7 @@ status open
 
  
 \backslash
-href{FoggyMountain.jl}{./Examples/NonlinearOptimization/FoggyMountain.jl}
+href{./Examples/NonlinearOptimization/FoggyMountain.jl}{FoggyMountain.jl}
 \end_layout
 
 \end_inset
@@ -25374,7 +25374,7 @@ status open
 
 
 \backslash
-href{nerlove.data}{./Examples/Data/nerlove.data} 
+href{./Examples/Data/nerlove.data}{nerlove.data} 
 \end_layout
 
 \end_inset
@@ -25938,7 +25938,7 @@ status collapsed
 
 
 \backslash
-href{OLScontours.jl}{./Examples/NonlinearOptimization/OLScontours.jl} 
+href{./Examples/NonlinearOptimization/OLScontours.jl}{OLScontours.jl} 
 \end_layout
 
 \end_inset
@@ -30941,7 +30941,7 @@ status collapsed
 
  
 \backslash
-href{CK.txt}{./Examples/DSGE/GenData/CK.txt} 
+href{./Examples/DSGE/GenData/CK.txt}{CK.txt} 
 \end_layout
 
 \end_inset
@@ -30958,7 +30958,7 @@ status collapsed
 
  
 \backslash
-href{dsgedata.txt}{./Examples/DSGE/GenData/dsgedata.txt} 
+href{./Examples/DSGE/GenData/dsgedata.txt}{dsgedata.txt} 
 \end_layout
 
 \end_inset
@@ -30971,7 +30971,7 @@ status open
 
  
 \backslash
-href{GenData.jl}{./Examples/DSGE/GenData/GenData.jl} 
+href{./Examples/DSGE/GenData/GenData.jl}{GenData.jl} 
 \end_layout
 
 \end_inset
@@ -31764,7 +31764,7 @@ status open
 
  
 \backslash
-href{PlainLF.jl}{./Examples/MLE/PlainLF.jl} 
+href{./Examples/MLE/PlainLF.jl}{PlainLF.jl} 
 \end_layout
 
 \end_inset
@@ -32072,7 +32072,7 @@ status collapsed
 
  
 \backslash
-href{NormalExample.jl}{./Examples/MLE/NormalExample.jl} 
+href{./Examples/MLE/NormalExample.jl}{NormalExample.jl} 
 \end_layout
 
 \end_inset
@@ -32305,7 +32305,7 @@ status open
 
  
 \backslash
-href{NormalExample.jl}{./Examples/MLE/NormalExample.jl} 
+href{./Examples/MLE/NormalExample.jl}{NormalExample.jl} 
 \end_layout
 
 \end_inset
@@ -33657,7 +33657,7 @@ status open
 
  
 \backslash
-href{EstimatePoisson.jl}{./Examples/MEPS-I/EstimatePoisson.jl}
+href{./Examples/MEPS-I/EstimatePoisson.jl}{EstimatePoisson.jl}
 \end_layout
 
 \end_inset
@@ -33670,7 +33670,7 @@ status open
 
  
 \backslash
-href{mle.jl}{./src/ML/mle.jl}
+href{./src/ML/mle.jl}{mle.jl}
 \end_layout
 
 \end_inset
@@ -34413,7 +34413,7 @@ status collapsed
 
  
 \backslash
-href{LikelihoodRatioTest.jl}{./Examples/MLE/LikelihoodRatioTest.jl} 
+href{./Examples/MLE/LikelihoodRatioTest.jl}{LikelihoodRatioTest.jl} 
 \end_layout
 
 \end_inset
@@ -34528,7 +34528,7 @@ status open
 
  
 \backslash
-href{NerloveMLE.jl}{./Examples/MLE/NerloveMLE.jl} 
+href{./Examples/MLE/NerloveMLE.jl}{NerloveMLE.jl} 
 \end_layout
 
 \end_inset
@@ -34560,7 +34560,7 @@ status open
 
  
 \backslash
-href{Nerlove.jl}{./Examples/OLS/Nerlove.jl} 
+href{./Examples/OLS/Nerlove.jl}{Nerlove.jl} 
 \end_layout
 
 \end_inset
@@ -35140,7 +35140,7 @@ status open
 
 
 \backslash
-href{LogitDGP.jl}{./Examples/MLE/LogitDGP.jl} 
+href{./Examples/MLE/LogitDGP.jl}{LogitDGP.jl} 
 \end_layout
 
 \end_inset
@@ -35166,7 +35166,7 @@ status open
 
 
 \backslash
-href{EstimateLogit.jl}{./Examples/MLE/EstimateLogit.jl} 
+href{./Examples/MLE/EstimateLogit.jl}{EstimateLogit.jl} 
 \end_layout
 
 \end_inset
@@ -35246,7 +35246,7 @@ status open
 
  
 \backslash
-href{PoissonVariance.m}{./Examples/MEPS-I/PoissonVariance.m}
+href{./Examples/MEPS-I/PoissonVariance.m}{PoissonVariance.m}
 \end_layout
 
 \end_inset
@@ -35638,7 +35638,7 @@ status open
 
 
 \backslash
-href{This program}{./Examples/MEPS-II/EstimateNegBin.m} 
+href{./Examples/MEPS-II/EstimateNegBin.m}{This program} 
 \end_layout
 
 \end_inset
@@ -35962,7 +35962,7 @@ status open
 
 
 \backslash
-href{this program}{./Examples/MEPS-II/EstimateMixNegBin.m} 
+href{./Examples/MEPS-II/EstimateMixNegBin.m}{this program} 
 \end_layout
 
 \end_inset
@@ -36348,7 +36348,7 @@ status open
 
  
 \backslash
-href{CKml.mod}{./Examples/DSGE/ML/CKml.mod} 
+href{./Examples/DSGE/ML/CKml.mod}{CKml.mod} 
 \end_layout
 
 \end_inset
@@ -36899,7 +36899,7 @@ status collapsed
 
  
 \backslash
-href{Nerlove.jl}{./Examples/OLS/Nerlove.jl} 
+href{./Examples/OLS/Nerlove.jl}{Nerlove.jl} 
 \end_layout
 
 \end_inset
@@ -36957,7 +36957,7 @@ status open
 
 
 \backslash
-href{EstimateLogit.jl}{./Examples/NonlinearOptimization/EstimateLogit.jl} 
+href{./Examples/NonlinearOptimization/EstimateLogit.jl}{EstimateLogit.jl} 
 \end_layout
 
 \end_inset
@@ -37840,7 +37840,7 @@ status open
 
  
 \backslash
-href{GMM/chi2mm.jl}{./Examples/GMM/chi2mm.jl}
+href{./Examples/GMM/chi2mm.jl}{GMM/chi2mm.jl}
 \end_layout
 
 \end_inset
@@ -38062,7 +38062,7 @@ status open
 
  
 \backslash
-href{GMM/chi2gmm.jl}{./Examples/GMM/chi2gmm.jl}
+href{./Examples/GMM/chi2gmm.jl}{GMM/chi2gmm.jl}
 \end_layout
 
 \end_inset
@@ -38244,7 +38244,7 @@ status open
 
  
 \backslash
-href{GMM/chi2gmm.m}{./Examples/GMM/chi2gmm.m}
+href{./Examples/GMM/chi2gmm.m}{GMM/chi2gmm.m}
 \end_layout
 
 \end_inset
@@ -38772,7 +38772,7 @@ status open
 
  
 \backslash
-href{GMM/AsymptoticNormalityGMM.jl}{./Examples/GMM/AsymptoticNormalityGMM.jl}
+href{./Examples/GMM/AsymptoticNormalityGMM.jl}{GMM/AsymptoticNormalityGMM.jl}
 \end_layout
 
 \end_inset
@@ -39334,7 +39334,7 @@ status collapsed
 
  
 \backslash
-href{GMM/EfficientGMM.jl}{./Examples/GMM/EfficientGMM.jl}
+href{./Examples/GMM/EfficientGMM.jl}{GMM/EfficientGMM.jl}
 \end_layout
 
 \end_inset
@@ -39935,7 +39935,7 @@ status open
 
  
 \backslash
-href{gmmresults.jl}{./src/GMM/gmmresults.jl}
+href{./src/GMM/gmmresults.jl}{gmmresults.jl}
 \end_layout
 
 \end_inset
@@ -40016,7 +40016,7 @@ status open
 
  
 \backslash
-href{gmmresults.jl}{./src/GMM/gmmresults.jl}
+href{./src/GMM/gmmresults.jl}{gmmresults.jl}
 \end_layout
 
 \end_inset
@@ -41280,7 +41280,7 @@ status open
 
  
 \backslash
-href{GMM/MeasurementErrorIV.jl}{./Examples/GMM/MeasurementErrorIV.jl} 
+href{./Examples/GMM/MeasurementErrorIV.jl}{GMM/MeasurementErrorIV.jl} 
 \end_layout
 
 \end_inset
@@ -41407,7 +41407,7 @@ status open
 
  
 \backslash
-href{Simeq/KleinGMM.m}{./Examples/Simeq/KleinGMM.jl}
+href{./Examples/Simeq/KleinGMM.jl}{Simeq/KleinGMM.jl}
 \end_layout
 
 \end_inset
@@ -41420,7 +41420,7 @@ status open
 
  
 \backslash
-href{Simeq/KleinCUE.m}{./Examples/Simeq/KleinCUE.jl}
+href{./Examples/Simeq/KleinCUE.jl}{Simeq/KleinCUE.jl}
 \end_layout
 
 \end_inset
@@ -42025,7 +42025,7 @@ status open
 
  
 \backslash
-href{GMM/SpecTest.jl}{./Examples/GMM/SpecTest.jl} 
+href{./Examples/GMM/SpecTest.jl}{GMM/SpecTest.jl} 
 \end_layout
 
 \end_inset
@@ -42263,7 +42263,7 @@ status open
 
  
 \backslash
-href{TwoStepGMM.m}{./Examples/GMM/TwoStepGMM.m} 
+href{./Examples/GMM/TwoStepGMM.m}{TwoStepGMM.m} 
 \end_layout
 
 \end_inset
@@ -42345,7 +42345,7 @@ status open
 
  
 \backslash
-href{OLSvsIV.jl}{./Examples/GMM/Hausman/OLSvsIV.jl} 
+href{./Examples/GMM/Hausman/OLSvsIV.jl}{OLSvsIV.jl} 
 \end_layout
 
 \end_inset
@@ -42996,7 +42996,7 @@ status open
 
  
 \backslash
-href{hausman.m}{./Examples/GMM/Hausman/hausman.m} 
+href{./Examples/GMM/Hausman/hausman.m}{hausman.m} 
 \end_layout
 
 \end_inset
@@ -43563,7 +43563,7 @@ status open
 
 
 \backslash
-href{portfolio.jl}{./Examples/GMM/portfolio.jl}
+href{./Examples/GMM/portfolio.jl}{portfolio.jl}
 \end_layout
 
 \end_inset
@@ -43577,7 +43577,7 @@ status collapsed
 
 
 \backslash
-href{tauchen.data}{./Examples/GMM/tauchen.data}
+href{./Examples/GMM/tauchen.data}{tauchen.data}
 \end_layout
 
 \end_inset
@@ -43671,7 +43671,7 @@ status open
 
 
 \backslash
-href{HallGMM.m}{./Examples/GMM/HallGMM.m}
+href{./Examples/GMM/HallGMM.m}{HallGMM.m}
 \end_layout
 
 \end_inset
@@ -43930,7 +43930,7 @@ status open
 
 
 \backslash
-href{dsgedata.txt}{./Examples/DSGE/GenData/dsgedata.txt}
+href{./Examples/DSGE/GenData/dsgedata.txt}{dsgedata.txt}
 \end_layout
 
 \end_inset
@@ -43950,7 +43950,7 @@ status open
 
 
 \backslash
-href{DSGEmoments.jl}{./Examples/DSGE/GMM/DSGEmoments.jl}
+href{./Examples/DSGE/GMM/DSGEmoments.jl}{DSGEmoments.jl}
 \end_layout
 
 \end_inset
@@ -43968,7 +43968,7 @@ status open
 
 
 \backslash
-href{DoGMM.jl}{./Examples/DSGE/GMM/DoGMM.jl}
+href{./Examples/DSGE/GMM/DoGMM.jl}{DoGMM.jl}
 \end_layout
 
 \end_inset
@@ -44290,7 +44290,7 @@ status open
 
  
 \backslash
-href{meps.m}{./Examples/GMM/MEPS/meps.m} 
+href{./Examples/GMM/MEPS/meps.m}{meps.m} 
 \end_layout
 
 \end_inset
@@ -44330,7 +44330,7 @@ status open
 
  
 \backslash
-href{EstimateLogit.jl}{./Examples/NonlinearOptimization/EstimateLogit.jl} 
+href{./Examples/NonlinearOptimization/EstimateLogit.jl}{EstimateLogit.jl} 
 \end_layout
 
 \end_inset
@@ -44452,7 +44452,7 @@ status open
 
  
 \backslash
-href{GMM/chi2gmm.m}{./Examples/GMM/chi2gmm.jl}
+href{./Examples/GMM/chi2gmm.jl}{GMM/chi2gmm.jl}
 \end_layout
 
 \end_inset
@@ -44823,7 +44823,7 @@ status collapsed
 
  
 \backslash
-href{GMM/SpecTest.jl}{./Examples/GMM/SpecTest.jl} 
+href{./Examples/GMM/SpecTest.jl}{GMM/SpecTest.jl} 
 \end_layout
 
 \end_inset
@@ -45986,11 +45986,11 @@ status collapsed
 
 
 \backslash
-href{The data file}{./Examples/Data/us
+href{./Examples/Data/us
 \backslash
 _macro
 \backslash
-_quarterly.gdt} 
+_quarterly.gdt}{The data file} 
 \end_layout
 
 \end_inset
@@ -46004,11 +46004,11 @@ status collapsed
 
 
 \backslash
-href{The data description file.}{./Examples/Data/usmacro
+href{./Examples/Data/usmacro
 \backslash
 _quarterly
 \backslash
-_description.pdf} 
+_description.pdf}{The data description file.} 
 \end_layout
 
 \end_inset
@@ -46932,13 +46932,13 @@ status open
 
 
 \backslash
-href{S
-\backslash
-&W US quarterly macro data.}{./Examples/Data/us
+href{./Examples/Data/us
 \backslash
 _macro
 \backslash
-_quarterly.gdt} 
+_quarterly.gdt}{S
+\backslash
+&W US quarterly macro data.} 
 \end_layout
 
 \end_inset
@@ -47455,11 +47455,11 @@ status open
 
  
 \backslash
-href{Stock and Watson US quarterly macro data.}{./Examples/Data/us
+href{./Examples/Data/us
 \backslash
 _macro
 \backslash
-_quarterly.gdt} 
+_quarterly.gdt}{Stock and Watson US quarterly macro data.} 
 \end_layout
 
 \end_inset
@@ -47507,7 +47507,7 @@ status open
 
  
 \backslash
-href{example DSGE model}{./Examples/DSGE/GenData/dsgedata.gdt} 
+href{./Examples/DSGE/GenData/dsgedata.gdt}{example DSGE model} 
 \end_layout
 
 \end_inset
@@ -47635,7 +47635,7 @@ status open
 
  
 \backslash
-href{here}{./Examples/TimeSeries/MakePlots.jl} 
+href{./Examples/TimeSeries/MakePlots.jl}{here} 
 \end_layout
 
 \end_inset
@@ -48063,7 +48063,7 @@ status open
 
  
 \backslash
-href{Garch11Example.jl}{./Examples/TimeSeries/Garch11Example.jl} 
+href{./Examples/TimeSeries/Garch11Example.jl}{Garch11Example.jl} 
 \end_layout
 
 \end_inset
@@ -48305,7 +48305,7 @@ status open
 
  
 \backslash
-href{SimulatedNeuralMoments}{https://github.com/mcreel/SimulatedNeuralMoments.jl}
+href{https://github.com/mcreel/SimulatedNeuralMoments.jl}{SimulatedNeuralMoments}
 \end_layout
 
 \end_inset
@@ -48928,7 +48928,7 @@ status open
 
  
 \backslash
-href{RandomWalks.inp}{./Examples/TimeSeries/RandomWalks.inp} 
+href{./Examples/TimeSeries/RandomWalks.inp}{RandomWalks.inp} 
 \end_layout
 
 \end_inset
@@ -49543,7 +49543,7 @@ status open
 
  
 \backslash
-href{BayesExample1.jl}{./Examples/Bayesian/BayesExample1.jl} 
+href{./Examples/Bayesian/BayesExample1.jl}{BayesExample1.jl} 
 \end_layout
 
 \end_inset
@@ -49879,7 +49879,7 @@ status collapsed
 
  
 \backslash
-href{BayesExample1.m}{./Examples/Bayesian/BayesExample1.m} 
+href{./Examples/Bayesian/BayesExample1.jl}{BayesExample1.jl} 
 \end_layout
 
 \end_inset
@@ -50386,7 +50386,7 @@ status open
 
  
 \backslash
-href{BayesExample2.jl}{./Examples/Bayesian/BayesExample2.jl} 
+href{./Examples/Bayesian/BayesExample2.jl}{BayesExample2.jl} 
 \end_layout
 
 \end_inset
@@ -50535,9 +50535,9 @@ status open
 
  
 \backslash
-href{EstimateCGHK
+href{./Examples/DSGE/Bayesian/CKmcmc.mod}{EstimateCGHK
 \backslash
-_Bayes.m}{./Examples/DSGE/Bayesian/CKmcmc.mod} 
+_Bayes.m} 
 \end_layout
 
 \end_inset
@@ -50762,7 +50762,7 @@ status open
 
  
 \backslash
-href{DoMCMC.jl}{./Examples/DSGE/BayesianGMM/DoMCMC.jl} 
+href{./Examples/DSGE/BayesianGMM/DoMCMC.jl}{DoMCMC.jl} 
 \end_layout
 
 \end_inset
@@ -54815,6 +54815,23 @@ there is a variation known as leave-one-out cross validation, where each
 
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Example:
+\series default
+ from Julia, and after doing 
+\family typewriter
+using Econometrics
+\family default
+, run npreg().
+ Edit the code to see what's going on.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Neural nets
 \end_layout
@@ -55546,7 +55563,7 @@ status open
 
  
 \backslash
-href{ExampleKernelDensity.jl}{./Examples/Nonparametric/ExampleKernelDensity.jl}
+href{./Examples/Nonparametric/ExampleKernelDensity.jl}{ExampleKernelDensity.jl}
 \end_layout
 
 \end_inset
@@ -55601,7 +55618,7 @@ status open
 
 
 \backslash
-href{this link}{http://www.econ.duke.edu/~get/snp.html}
+href{http://www.econ.duke.edu/~get/snp.html}{this link}
 \end_layout
 
 \end_inset
@@ -55835,7 +55852,7 @@ status open
 
 
 \backslash
-href{MuPAD}{http://www.mupad.org}
+href{http://www.mupad.org}{MuPAD}
 \end_layout
 
 \end_inset
@@ -55857,7 +55874,7 @@ status open
 
 
 \backslash
-href{NegBinSNP.cc}{./MyOctaveFiles/OctFiles/NegBinSNP.cc}
+href{./Examples/Nonparametric/NegBinSNP.cc}{NegBinSNP.cc}
 \end_layout
 
 \end_inset
@@ -55987,6 +56004,25 @@ Here's a plot of true and the limiting SNP approximations (with the order
 Examples
 \end_layout
 
+\begin_layout Standard
+Some of these examples are old, using Octave code.
+ I may try to get around to translating them.
+ For Julia, basic examples of kernel regression and kernel density estimation
+ may be found by running
+\family typewriter
+ npreg()
+\family default
+ and 
+\family typewriter
+npdensity() 
+\family default
+from Julia, after doing 
+\family typewriter
+using Econometrics
+\family default
+.
+\end_layout
+
 \begin_layout Subsection
 MEPS health care usage data
 \end_layout
@@ -56010,7 +56046,7 @@ status open
 
 
 \backslash
-href{OBDVkernel.m}{./Examples/Nonparametric/OBDVkernel.m} 
+href{./Examples/Nonparametric/OBDVkernel.m}{OBDVkernel.m} 
 \end_layout
 
 \end_inset
@@ -56212,7 +56248,7 @@ status open
 
 
 \backslash
-href{rates}{./Examples/Nonparametric/SpotRate/rates}
+href{./Examples/Nonparametric/SpotRate/rates}{rates}
 \end_layout
 
 \end_inset
@@ -56232,7 +56268,7 @@ status open
 
 
 \backslash
-href{README}{./Examples/Nonparametric/SpotRate/README}
+href{./Examples/Nonparametric/SpotRate/README}{README}
 \end_layout
 
 \end_inset
@@ -56436,7 +56472,7 @@ status open
 
 
 \backslash
-href{kernelfit.m}{./Examples/Nonparametric/SpotRate/kernelfit.m}
+href{./Examples/Nonparametric/SpotRate/kernelfit.m}{kernelfit.m}
 \end_layout
 
 \end_inset
@@ -56581,15 +56617,15 @@ Additional kernel regression examples
 There is a basic example of kernel regression and kernel density estimation
  in 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-href{kernel
+href{./MyOctaveFiles/Econometrics/Kernel/kernel
 \backslash
-_example.m}{./MyOctaveFiles/Econometrics/Kernel/kernel
+_example.m}{kernel
 \backslash
 _example.m} 
 \end_layout
@@ -56604,19 +56640,19 @@ _example.m}
 There is another example of local constant and local linear kernel regression
  in 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-href{kernel
+href{./MyOctaveFiles/Econometrics/Kernel/kernel
 \backslash
 _local
 \backslash
 _linear
 \backslash
-_example.m}{./MyOctaveFiles/Econometrics/Kernel/kernel
+_example.m}{kernel
 \backslash
 _local
 \backslash

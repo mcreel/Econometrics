@@ -26,20 +26,26 @@ execute npreg() for an example
 function npreg()
     println("npreg(), with no arguments, runs a simple example")
     println("execute edit(npreg,()) to see the code")
-    #using Plots
-    k = 3 # number of regressors
+    k = 1 # number of regressors
     Random.seed!(1) # set seed to enable testing
     n = 10000
     bandwidth = 0.25*n^(-1.0/(4 + k))
     neval = 100
-    x = rand(n,k)*pi*2.0
-    xeval = [pi*ones(neval,k-1) range(pi/2., stop=pi*1.5, length=neval)]
-    y = cos.(sum(x,dims=2))
-    y = y + 0.1*randn(size(y))
-    ytrue = cos.(sum(xeval,dims=2))
+    x = rand(n)*pi*2.0
+    xeval = collect(range(pi/2., stop=pi*1.5, length=neval))
+    y = cos.(x) .+ 0.25 .* cos.(3.0.*xeval) + 0.1*randn(n)
+    # npreg wants args to be matrices, not vectors, so convert them
+    y = reshape(y,n,1)
+    x = reshape(x,n,1)
+    xeval = reshape(xeval,neval,1)
+    ytrue = cos.(xeval) .+ 0.25.*cos.(3.0*xeval)
     weights = kernelweights(x, xeval, bandwidth, true, "knngaussian", 200)
     yhat, y50, y05, y95 = npreg(y, x, xeval, weights, order=1, do_median=true, do_ci=true)
     println("true, mean, median, q05, q95")
+    labels = ["true" "mean" "median" "0.05 quantile" "0.95 quantile"]
+    title = "Kernel regression and quantiles"
+    p = plot(xeval, [ytrue yhat y50 y05 y95], labels=labels, title=title)
+    display(p)
     prettyprint([ytrue yhat y50 y05 y95])
     return yhat[1,1] # for testing
 end 
