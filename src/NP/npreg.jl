@@ -28,12 +28,12 @@ function npreg()
     println("execute edit(npreg,()) to see the code")
     k = 1 # number of regressors
     Random.seed!(1) # set seed to enable testing
-    n = 10000
+    n = 1000
     bandwidth = 0.25*n^(-1.0/(4 + k))
     neval = 100
-    x = rand(n)*pi*2.0
-    xeval = collect(range(pi/2., stop=pi*1.5, length=neval))
-    y = cos.(x) .+ 0.25 .* cos.(3.0.*xeval) + 0.1*randn(n)
+    x = rand(n)*pi*2.0 # from 0 to 2π   
+    xeval = collect(range(pi/2., stop=pi*1.5, length=neval)) # from π/2 to 3π/2  
+    y = cos.(x) .+ 0.25 .* cos.(3.0.*x) + 0.1*randn(n)
     # npreg wants args to be matrices, not vectors, so convert them
     y = reshape(y,n,1)
     x = reshape(x,n,1)
