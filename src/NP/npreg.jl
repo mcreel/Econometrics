@@ -24,13 +24,13 @@ execute npreg() for an example
 """
 
 using Random, Econometrics, Plots
-function npreg()
+function npreg(bandwidth=-1)
     println("npreg(), with no arguments, runs a simple example")
     println("execute edit(npreg,()) to see the code")
     k = 1 # number of regressors
-    Random.seed!(1) # set seed to enable testing
+    Random.seed!(1) # set seed to 
     n = 1000
-    bandwidth = 0.25*n^(-1.0/(4 + k))
+    bandwidth = -1 ? bandwidth = 0.25*n^(-1.0/(4 + k)) : nothing
     neval = 100
     x = rand(n)*pi*2.0 # from 0 to 2π   
     xeval = collect(range(pi/2., stop=pi*1.5, length=neval)) # from π/2 to 3π/2  
@@ -47,8 +47,7 @@ function npreg()
     title = "Kernel regression and quantiles"
     p = Plots.plot(xeval, [ytrue yhat y50 y05 y95], labels=labels, title=title)
     display(p)
-    prettyprint([ytrue yhat y50 y05 y95])
-    return yhat[1,1] # for testing
+    nothing
 end 
 
 function npreg(y, x, xeval, weights; order=1, do_median=false, do_ci=false)
