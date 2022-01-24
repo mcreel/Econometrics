@@ -1,22 +1,25 @@
 # Econometrics
-Graduate level econometrics notes with embedded examples using the Julia language.
+First year graduate level econometrics notes with embedded examples using the Julia language.
+
+The notes cover linear regression models in the first half, and move on to maximum likelihood and GMM estimation of potentially nonlinear models in the second half. After these core methods, there are several chapters which introduce more specialized topics such as panel data, quantile regression, nonparametric method, etc. 
+
+To simply view the notes, see the econometrics.pdf document. However, for the links to code that are in the pdf to work, you should download the whole repository, as is described below. Much of the material is presented with the expectation that the code will be examined, run, and experimented with.
 
 NEWS: there is a MakeSysimage.jl script that will precompile all of the packages and  some of the commonly used functions. If you use VS Code you need to edit the Julia extension settings to enable “use an existing custom sysimage when starting the REPL”.
 
-To get just the notes, click on econometrics.pdf, and then on Download, at the upper R of the page, which will download only the pdf. Links in the pdf point to files here on github, and will open in your browser.
 
-## To run the examples
-You need to install this repository as a Julia package. Do this as follows:
+## To make full use of the notes and examples
+You need to install this repository as a Julia project. Do this as follows:
 
-1. git clone this repo to some convenient place on your storage media
+1. Download a zip file, or git clone this repo, putting the contents at some convenient place on your storage media
 
-2. add the package to Julia by doing ```] add <path where you downloaded the repo>```, for example, if you cloned it into the git directory of your home directory, you would do ```] add ~/git/Econometrics```  This will install many supporting packages, so be patient.
+2. open a terminal, and change directories to the location of the Econometrics code
+3. start Julia, using ```julia --proj``` 
+4. do ```] instantiate```  This will install a last few packages.
 
-3. go to the location of the Econometrics code, start Julia, and do ```] activate .; instantiate```  This will install a last few packages.
+5. (optional, only if you're curious) basic testing of the package has been added. Do ```using Pkg; Pkg.test("Econometrics")```
 
-4. (optional, only if you're curious) basic testing of the package has been added. Do ```using Pkg; Pkg.test("Econometrics")```
-
-5. then do ```using Econometrics``` in Julia to use the package. You can see some examples by typing 
+6. then do ```using Econometrics``` in Julia to use the package. You can see some examples by typing 
    ```julia
    ols()
    mleresults()
@@ -27,9 +30,9 @@ You need to install this repository as a Julia package. Do this as follows:
    ```
   Running the script ```warmpup.jl``` will run these and other code bits, which will pre-compile many of the functions that are used in the examples. This will make the examples run more quickly. It is best to run the warmup script, and then keep the Julia session open, to run the examples when you like.
 
-6. To see the source code for those examples, type ```edit(ols,())```, to see the OLS source code.
+7. To see the source code for those examples, type ```edit(ols,())```, to see the OLS source code.
 
-7. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
+8. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
 
 ## There are a couple of unusual thing about these notes:
 - they are available in editable form (econometrics.lyx), so that you can modify them to suit your needs: see the first chapter for more information, and get LyX from  www.lyx.org. 
