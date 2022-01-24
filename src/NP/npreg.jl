@@ -45,7 +45,7 @@ function npreg()
     println("true, mean, median, q05, q95")
     labels = ["true" "mean" "median" "0.05 quantile" "0.95 quantile"]
     title = "Kernel regression and quantiles"
-    p = plot(xeval, [ytrue yhat y50 y05 y95], labels=labels, title=title)
+    p = Plots.plot(xeval, [ytrue yhat y50 y05 y95], labels=labels, title=title)
     display(p)
     prettyprint([ytrue yhat y50 y05 y95])
     return yhat[1,1] # for testing

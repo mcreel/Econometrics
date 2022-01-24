@@ -56011,20 +56011,6 @@ Examples
 \begin_layout Standard
 Some of these examples are old, using Octave code.
  I may try to get around to translating them.
- For Julia, basic examples of kernel regression and kernel density estimation
- may be found by running
-\family typewriter
- npreg()
-\family default
- and 
-\family typewriter
-npdensity() 
-\family default
-from Julia, after doing 
-\family typewriter
-using Econometrics
-\family default
-.
 \end_layout
 
 \begin_layout Subsection
@@ -56693,7 +56679,7 @@ status collapsed
 
 
 \backslash
-href{EstimateNBSNP.m}{./Examples/Nonparametric/EstimateNBSNP.m} 
+href{./Examples/Nonparametric/EstimateNBSNP.m}{EstimateNBSNP.m} 
 \end_layout
 
 \end_inset
@@ -56858,7 +56844,7 @@ status collapsed
 
 
 \backslash
-href{OBDVkernel.m}{./Examples/Nonparametric/OBDVkernel.m} 
+href{./Examples/Nonparametric/OBDVkernel.m}{OBDVkernel.m} 
 \end_layout
 
 \end_inset
@@ -57674,7 +57660,7 @@ status open
 
 
 \backslash
-href{quantile.gdt}{./Examples/Quantile/quantile.gdt} 
+href{./Examples/Quantile/quantile.gdt}{quantile.gdt} 
 \end_layout
 
 \end_inset
@@ -57925,7 +57911,7 @@ status open
 
 
 \backslash
-href{card.gdt}{./Examples/Data/card.gdt} 
+href{./Examples/Data/card.gdt}{card.gdt} 
 \end_layout
 
 \end_inset
@@ -58203,7 +58189,7 @@ status open
 
 
 \backslash
-href{QIVmodel.jl}{./Examples/Quantile/QIVmodel.jl} 
+href{./Examples/Quantile/QIVmodel.jl}{QIVmodel.jl} 
 \end_layout
 
 \end_inset
@@ -58216,7 +58202,7 @@ status open
 
 
 \backslash
-href{QIVbyMCMC}{./Examples/Quantile/QIVbyMCMC.jl} 
+href{./Examples/Quantile/QIVbyMCMC.jl}{QIVbyMCMC} 
 \end_layout
 
 \end_inset
@@ -58235,7 +58221,7 @@ status open
 
 
 \backslash
-href{PlayWithMCMC.jl}{./Examples/Quantile/PlayWithMCMC.jl} 
+href{./Examples/Quantile/PlayWithMCMC.jl}{PlayWithMCMC.jl} 
 \end_layout
 
 \end_inset
@@ -60499,7 +60485,7 @@ status collapsed
 
  
 \backslash
-href{EstimateSV.jl}{./Examples/SBEM/EstimateSV.jl}
+href{./Examples/SBEM/EstimateSV.jl}{EstimateSV.jl}
 \end_layout
 
 \end_inset
@@ -60537,7 +60523,7 @@ status open
 
  
 \backslash
-href{SVlib.jl}{./Examples/SBEM/SVlib.jl}
+href{./Examples/SBEM/SVlib.jl}{SVlib.jl}
 \end_layout
 
 \end_inset
@@ -60555,7 +60541,7 @@ status open
 
  
 \backslash
-href{the sample}{./Examples/TimeSeries/svdata.txt}
+href{./Examples/TimeSeries/svdata.txt}{the sample}
 \end_layout
 
 \end_inset
@@ -60734,9 +60720,9 @@ status open
 
  
 \backslash
-href{SV
+href{./Examples/SBEM/SV
 \backslash
-_MonteCarlo.jl}{./Examples/SBEM/SV
+_MonteCarlo.jl}{SV
 \backslash
 _MonteCarlo.jl}
 \end_layout
@@ -63515,7 +63501,7 @@ et.
  (2002).
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -63542,7 +63528,7 @@ href{tracetest.m}{./Examples/Parallel/montecarlo/tracetest.m}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
