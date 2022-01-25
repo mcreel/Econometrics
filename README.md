@@ -6,6 +6,9 @@ The notes cover linear regression models in the first half (about 30 hours of cl
 The notes are in the file econometrics.pdf. It is not recommended to use this file by itself, as one will not have access to the linked code and examples. The notes were prepared with the expectation that the example code will be examined, run, and experimented with. See below for how to make full use of the materials.
 
 ## To make full use of the notes and examples
+
+[![Installation video](https://img.youtube.com/vi/N_aWT7OiX4k/0.jpg)](https://www.youtube.com/watch?v=N_aWT7OiX4k)
+
 You need to install this repository as a Julia project. Do this as follows: 
 
 1. download the code:
