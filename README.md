@@ -31,7 +31,7 @@ You need to install this repository as a Julia project. Do this as follows:
    npreg()
    samin()
    ```
- when in Julia.
+   when in Julia.
 
 8. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
 
