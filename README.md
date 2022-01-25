@@ -37,7 +37,7 @@ You need to install this repository as a Julia project. Do this as follows:
 
 9. I recommend setting your operating system to open .jl files with your favorite editor,
    to make the links in econometrics.pdf open in that editor.
-10. To speed things up **a lot**, type ``ìnclude "MakeSysimage.jl"`` from Julia, having started Julia with ``julia --proj`` in the directory where you installed the notes. This will compile all of the packages, and keep the compiled images for re-use. If you do this, when you start Julia in the future, use ``julia --proj -J JuliaSysimage.so`` (*caveat*: I have only tried this using Linux. If you're a Windows or OSX user, please open an issue if these instructions don't work) 
+10. To speed things up **a lot**, type ``ìnclude("MakeSysimage.jl")`` from Julia, having started Julia with ``julia --proj`` in the directory where you installed the notes. This will compile all of the packages, and keep the compiled images for re-use. If you do this, when you start Julia in the future, use ``julia --proj -J JuliaSysimage.so`` (*caveat*: I have only tried this using Linux. If you're a Windows or OSX user, please open an issue if these instructions don't work) 
 
 ## There are a couple of unusual thing about these notes:
 - they are available in editable form (econometrics.lyx), so that you can modify them to suit your needs: see the first chapter for more information, and get LyX from  www.lyx.org. 
