@@ -1,25 +1,32 @@
 # Econometrics
 First year graduate level econometrics notes with embedded examples using the Julia language.
 
-The notes cover linear regression models in the first half, and move on to maximum likelihood and GMM estimation of potentially nonlinear models in the second half. After these core methods, there are several chapters which introduce more specialized topics such as panel data, quantile regression, nonparametric method, etc. 
+The notes cover linear regression models in the first half (about 30 hours of class time). The second half (another 30-40 hours of class time) moves on to nonlinear optimization, maximum likelihood and GMM estimation of potentially nonlinear models. After these core methods, there are several chapters which introduce more specialized topics such as panel data, quantile regression, nonparametric method, etc.
 
-To simply view the notes, see the econometrics.pdf document. However, for the links to code that are in the pdf to work, you should download the whole repository, as is described below. Much of the material is presented with the expectation that the code will be examined, run, and experimented with.
-
-NEWS: there is a MakeSysimage.jl script that will precompile all of the packages and  some of the commonly used functions. If you use VS Code you need to edit the Julia extension settings to enable “use an existing custom sysimage when starting the REPL”.
-
+The notes are in the file econometrics.pdf. It is not recommended to use this file by itself, as one will not have access to the linked code and examples. The notes were prepared with the expectation that the example code will be examined, run, an experimented with. See below for how to make full use of the materials.
 
 ## To make full use of the notes and examples
 You need to install this repository as a Julia project. Do this as follows:
 
-1. Download a zip file, or git clone this repo, putting the contents at some convenient place on your storage media
+1. download the code:
 
-2. open a terminal, and change directories to the location of the Econometrics code
-3. start Julia, using ```julia --proj``` 
-4. do ```] instantiate```  This will install a last few packages.
+(a) download a zip of the repo, and uncompress it in a convenient directory, or
 
-5. (optional, only if you're curious) basic testing of the package has been added. Do ```using Pkg; Pkg.test("Econometrics")```
+(b) git clone the repository to the desired location
 
-6. then do ```using Econometrics``` in Julia to use the package. You can see some examples by typing 
+2. Go to that directory and start Julia using ```julia --proj``` 
+
+3. In Julia, the first time you use the files, do ```using Pkg; Pkg.instantiate()``` This will take some time, as Econometrics relies on a number of other packages.
+
+4. then do ```using Econometrics``` in Julia to use the package. The first time you do this, it will take a **long** time, maybe 15 minutes or so. *Don't worry*, this is normal. All of the packages that were downloaded are being compiled for the first time. We will be able to make this go *much, much* faster when we want to use the code.
+
+5. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
+
+6. Once this is done, you can use the code at any time by repeating steps 2 and 4.
+7. To speed things up **a lot**, type ```ìnclude MakeSysimage.jl"``` from Julia, having started Julia with ```julia --proj``` in the directory where you installed the notes. This will compile all of the packages, and keep the compiled images for re-use. If you do this, when you start Julia in the future, use ```julia --proj -J JuliaSysimage.so```
+
+7. I recommend setting your operating system to open .jl files with your favorite editor. 
+8. You can see some examples by typing 
    ```julia
    ols()
    mleresults()
@@ -28,18 +35,14 @@ You need to install this repository as a Julia project. Do this as follows:
    npreg()
    samin()
    ```
-  Running the script ```warmpup.jl``` will run these and other code bits, which will pre-compile many of the functions that are used in the examples. This will make the examples run more quickly. It is best to run the warmup script, and then keep the Julia session open, to run the examples when you like.
-
-7. To see the source code for those examples, type ```edit(ols,())```, to see the OLS source code.
-
-8. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
+ when in Julia.
+ 
+9. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
 
 ## There are a couple of unusual thing about these notes:
 - they are available in editable form (econometrics.lyx), so that you can modify them to suit your needs: see the first chapter for more information, and get LyX from  www.lyx.org. 
 - they contain links that point to example programs using the Julia language. The examples show how to use the methods and illustrate properties of estimators. The example code can be modified to allow exploration.
 
-## To integrate the notes and the example files, so that links are ready to run
-- the file econometrics_local.lyx allows you to create a pdf version with links that open using the example files installed on your computer. See the search and replace information at the top of the document. If you configure your system to open .jl files in your favorite editor, then the links in the pdf will open with that editor. For example, on Linux, I set KDE Plasma file associations for .jl files to open using ```code -a ~/Mystuff/Econometrics -r %F```, where code is the VScode editor executable, and ~/Mystuff/Econometrics is the location where I have the archive installed. When I click a link in econometrics_local.pdf, the link opens in the editor, with the appropriate environment, ready to run.
 To get an idea of how this works, the following figure, on the R, shows an explanation in the pdf version of the notes, with a link to an example. The code of the example is visible in the upper L, and the output of running the example in Julia is at the lower L. The plot appears in the VScode plot frame.
 
 ![example](https://github.com/mcreel/Econometrics/blob/master/example.png)

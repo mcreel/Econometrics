@@ -200,26 +200,6 @@ LatexCommand tableofcontents
 About this document
 \end_layout
 
-\begin_layout Standard
-Note to self: 
-\end_layout
-
-\begin_layout Itemize
-For econometrics.pdf on the github page, save to econometrics.lyx, , replace
- all instances of 
-\family typewriter
-\color blue
-.
-
-\family default
-\color inherit
- with
-\family typewriter
- 
-\color blue
-https://github.com/mcreel/Econometrics/blob/master
-\end_layout
-
 \begin_layout Section
 Prerequisites
 \end_layout
@@ -352,11 +332,15 @@ Contents
 \begin_layout Standard
 With respect to contents, the emphasis is on estimation and inference within
  the world of stationary data.
- If you take a moment to read the licensing information in the next section,
- you'll see that you are free to copy and modify the document.
- If anyone would like to contribute material that expands the contents,
- it would be very welcome.
- Error corrections and other additions are also welcome.
+ The notes have been used to teach first year masters and pre-doctoral students,
+ in two 30-40 hour courses.
+ The first part covers linear regression, and the second part goes on to
+ cover ML and GMM estimation of potentially nonlinear models.
+ There are some topical chapters after this core material that give introduction
+s to more specialized methods.
+ Student with interest in quantitative methods go on to study this material
+ more deeply in elective courses, which is why the presentation here of
+ the later chapters is more broad than deep.
 \end_layout
 
 \begin_layout Standard
@@ -461,6 +445,7 @@ href{http://gretl.sourceforge.net}{Gretl}
  it comes with a lot of data ready to use.
  It runs on the major operating systems.
  Sometimes, simple is better.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -574,7 +559,9 @@ name "Picture of LyX"
 
 \end_inset
 
-
+.
+ The \SpecialChar LyX
+ source for the document is available on the web page.
 \end_layout
 
 \begin_layout Section
@@ -594,7 +581,7 @@ name "sec:Obtaining-the-materials"
 
 \end_inset
 
-Obtaining the materials
+Obtaining and using the materials
 \end_layout
 
 \begin_layout Standard
@@ -608,11 +595,6 @@ literal "false"
 \end_inset
 
 .
- In addition to the final product, which you're probably looking at in some
- form now, you can obtain the editable \SpecialChar LyX
- sources, which will allow you to
- create your own version, if you like, or send error corrections and contributio
-ns.
  To run the examples embedded in the document, you need to 
 \end_layout
 
@@ -644,89 +626,87 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
-git clone the repository or download a zip of the repo, and uncompress it
+download the code:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+download a zip of the repo, and uncompress it in a convenient directory,
+ or
 \end_layout
 
 \begin_layout Enumerate
-add the package to Julia by doing 
+git clone the repository to the desired location
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Go to that directory and start Julia 
 \family typewriter
-] add <path where you downloaded the repo>
+using 
+\color magenta
+julia --proj
 \family default
-, for example, if you cloned it into the git directory of your home directory,
- you would do 
-\family typewriter
-] add ~/git/Econometrics
+\color inherit
+ 
 \end_layout
 
 \begin_layout Enumerate
-then, after starting Julia in the directory where the econometrics.pdf file
- is located, do 
+In Julia, the first time you use the files, do 
 \family typewriter
-using Pkg; Pkg.activate(
-\begin_inset Quotes sld
-\end_inset
-
-.
-\begin_inset Quotes srd
-\end_inset
-
-); Pkg.instantiate()
+\color magenta
+using Pkg; Pkg.instantiate()
 \family default
- This may take some time, depending on what packages you have previously
- installed, as Econometrics relies on a number of other packages.
+\color inherit
+ This will take some time, as Econometrics relies on a number of other packages.
 \end_layout
 
 \begin_layout Enumerate
 then do 
 \family typewriter
+\color magenta
 using Econometrics
 \family default
+\color inherit
  in Julia to use the package.
- To run examples, cd into the relevant subdirectory of Econometrics/Examples,
+ The first time you do this, it will take a 
+\series bold
+long 
+\series default
+time, maybe 15 minutes or so.
+ 
+\emph on
+Don't worry
+\emph default
+, this is normal.
+ All of the packages that were downloaded are being compiled for the first
+ time.
+ We will be able to make this go
+\emph on
+ much, much faster
+\emph default
+ when we want to use the code.
+\end_layout
+
+\begin_layout Enumerate
+To run examples, cd into the relevant subdirectory of Econometrics/Examples,
  and then just include the script you would like to run.
 \end_layout
 
+\begin_layout Enumerate
+Once this is done, you can use the code at any time by repeating steps 2
+ and 4.
+\end_layout
+
+\begin_layout Enumerate
+I recommend setting your operating system to open .jl files with your favorite
+ editor.
+ 
+\end_layout
+
 \begin_layout Standard
-
-\series bold
-To make a local version of the pdf file
-\series default
-, so that the links open the example code from your hard drive, rather than
- from the github page:
-\end_layout
-
-\begin_layout Itemize
-install 
-\begin_inset CommandInset href
-LatexCommand href
-name " LyX"
-target "https://www.lyx.org/"
-literal "false"
-
-\end_inset
-
- on your computer
-\end_layout
-
-\begin_layout Itemize
-in the econometrics_local.lyx file, while editing using LyX, search for all
- instances of 
-\family typewriter
-.
-\family default
-, and replace them with 
-\family typewriter
-file:///<directory where the econometrics_local.lyx file is installed>
-\end_layout
-
-\begin_layout Itemize
-build a local pdf by executing, from the command prompt, 
-\family typewriter
-lyx -e pdf2 econometrics_local.lyx
-\end_layout
-
-\begin_layout Itemize
-the result will be an econometrics_local.pdf file
+Please see the web page for links to videos that explain the installation
+ and usage process, and for how to speed things up.
 \end_layout
 
 \begin_layout Standard
@@ -16549,7 +16529,20 @@ href{./Examples/Data/CO2.data}{CO2.data}
 \end_layout
 
 \begin_layout Standard
-If we fit the model 
+If we fit, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+href{./Examples/GLS/CO2Example.jl}{using this script} 
+\end_layout
+
+\end_inset
+
+, the model 
 \begin_inset Formula $CO2_{t}=\beta_{1}+\beta_{2}t+\epsilon_{t}$
 \end_inset
 
@@ -17510,7 +17503,7 @@ status open
 
  
 \backslash
-href{./Examples/GLS/AR1Errors.m}{GLS/AR1Errors.m}
+href{./Examples/GLS/AR1Errors.jl}{GLS/AR1Errors.jl}
 \end_layout
 
 \end_inset
@@ -17527,8 +17520,8 @@ reference "fig:Efficiency-of-OLS"
 \begin_inset Formula $x$
 \end_inset
 
- minus the true value.
- We can see that the GLS histogram is much more concentrated about 0, which
+ (the true value is 1) .
+ We can see that the GLS histogram is much more concentrated about 1, which
  is indicative of the efficiency of GLS relative to OLS.
 \end_layout
 
@@ -17561,64 +17554,9 @@ Efficiency of OLS and FGLS, AR1 errors
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/GLS/AR1ErrorsOLS.png
-	lyxscale 25
-	width 10cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-OLS
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Examples/GLS/AR1ErrorsGLS.png
-	lyxscale 25
-	width 10cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-GLS
-\end_layout
-
-\end_inset
-
-
-\end_layout
+	filename Examples/GLS/AR1errors_OLSvsGLS.png
+	width 15cm
 
 \end_inset
 
@@ -18416,7 +18354,7 @@ estimator is inconsistent in this case.
 \end_layout
 
 \begin_layout Standard
-The Octave script 
+The Octave (reminder to self: translate this?) script 
 \begin_inset ERT
 status open
 
