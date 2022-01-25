@@ -1,29 +1,29 @@
 # Econometrics
 First year graduate level econometrics notes with embedded examples using the Julia language.
 
-The notes cover linear regression models in the first half (about 30 hours of class time). The second half (another 30-40 hours of class time) moves on to nonlinear optimization, maximum likelihood and GMM estimation of potentially nonlinear models. After these core methods, there are several chapters which introduce more specialized topics such as panel data, quantile regression, nonparametric method, etc.
+The notes cover linear regression models in the first half (about 30 hours of class time). The second half (another 30-40 hours of class time) moves on to nonlinear optimization, maximum likelihood and GMM estimation of potentially nonlinear models. After these core methods, there are several chapters which introduce more specialized topics such as panel data, quantile regression, nonparametric methods, etc.
 
-The notes are in the file econometrics.pdf. It is not recommended to use this file by itself, as one will not have access to the linked code and examples. The notes were prepared with the expectation that the example code will be examined, run, an experimented with. See below for how to make full use of the materials.
+The notes are in the file econometrics.pdf. It is not recommended to use this file by itself, as one will not have access to the linked code and examples. The notes were prepared with the expectation that the example code will be examined, run, and experimented with. See below for how to make full use of the materials.
 
 ## To make full use of the notes and examples
-You need to install this repository as a Julia project. Do this as follows:
+You need to install this repository as a Julia project. Do this as follows: 
 
 1. download the code:
 
-(a) download a zip of the repo, and uncompress it in a convenient directory, or
+    (a) download a zip of the repo, and uncompress it in a convenient directory, or
 
-(b) git clone the repository to the desired location
+    (b) git clone the repository to the desired location
 
-2. Go to that directory and start Julia using ```julia --proj``` 
+2. Go to that directory and start Julia using ``julia --proj``
 
-3. In Julia, the first time you use the files, do ```using Pkg; Pkg.instantiate()``` This will take some time, as Econometrics relies on a number of other packages.
+3. In Julia, the first time you use the files, do ``using Pkg; Pkg.instantiate()`` This will take some time, as Econometrics relies on a number of other packages.
 
-4. then do ```using Econometrics``` in Julia to use the package. The first time you do this, it will take a **long** time, maybe 15 minutes or so. *Don't worry*, this is normal. All of the packages that were downloaded are being compiled for the first time. We will be able to make this go *much, much* faster when we want to use the code.
+4. then do ``using Econometrics`` in Julia to use the package. The first time you do this, it will take a **long** time, maybe 15 minutes or so. *Don't worry*, this is normal. All of the packages that were downloaded are being compiled for the first time. We will be able to make this go *much, much* faster when we want to use the code.
 
 5. To run examples, cd into the relevant subdirectory of Econometrics/Examples, and then just include the script you would like to run.
 
 6. Once this is done, you can use the code at any time by repeating steps 2 and 4.
-7. (*caveat*: I have only tried this using Linux. If you're a Windows or OSX user, please open an issue if these instructions don't work). To speed things up **a lot**, type ```ìnclude MakeSysimage.jl"``` from Julia, having started Julia with ```julia --proj``` in the directory where you installed the notes. This will compile all of the packages, and keep the compiled images for re-use. If you do this, when you start Julia in the future, use ```julia --proj -J JuliaSysimage.so```
+7. (*caveat*: I have only tried this using Linux. If you're a Windows or OSX user, please open an issue if these instructions don't work). To speed things up **a lot**, type ``ìnclude "MakeSysimage.jl"`` from Julia, having started Julia with ``julia --proj`` in the directory where you installed the notes. This will compile all of the packages, and keep the compiled images for re-use. If you do this, when you start Julia in the future, use ``julia --proj -J JuliaSysimage.so``
 
 8. I recommend setting your operating system to open .jl files with your favorite editor. 
 9. You can see some examples by typing 
