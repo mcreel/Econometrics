@@ -45,4 +45,4 @@ You need to install this repository as a Julia project. Do this as follows:
 
 To get an idea of how this works, the following figure, on the R, shows an explanation in the pdf version of the notes, with a link to an example. The code of the example is visible in the upper L, and the output of running the example in Julia is at the lower L. The plot appears in the VScode plot frame.
 
-![example](https://github.com/mcreel/Econometrics/blob/master/example.png)
+![example](https://github.com/mcreel/Econometrics/blob/main/example.png)
