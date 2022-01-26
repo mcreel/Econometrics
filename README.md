@@ -9,7 +9,7 @@ The notes are in the file econometrics.pdf. It is not recommended to use this fi
 
 ### Playlist of videos: CTRL-click the image to open the list in new tab.
 These videos go through the instructions, below, and then go on to show how to configure an editor, and then go on to run through some examples showing how to use the notes. 
-[![Instructional videos](https://img.youtube.com/vi/N_aWT7OiX4k/0.jpg)](https://www.youtube.com/playlist?list=PLA7k_EnUgZs2U2Wh0bxhcabfKrGQQOCyn) =250x250
+[![Instructional videos](https://img.youtube.com/vi/N_aWT7OiX4k/0.jpg)](https://www.youtube.com/playlist?list=PLA7k_EnUgZs2U2Wh0bxhcabfKrGQQOCyn = 250x250)
 
 ### Instructions:
 You need to install this repository as a Julia project. Do this as follows: 
