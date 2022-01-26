@@ -137,7 +137,7 @@ using Econometrics, Plots, Optim
 gr() # using the GR backend
 x = range(-4, step=0.1, stop=4)
 y = x
-contour(x,y,f)
+contour(x,y,f, c=:viridis)
 lower = [-4., -4.]
 upper = -lower
 θstart = 8.0 .* rand(2) .-4.0 
