@@ -148,7 +148,7 @@ results = Optim.optimize(f, lower, upper, θstart, Fminbox(LBFGS()),
                             x_tol=tol,
                             f_tol=tol); autodiff=:forward)
 θhat = results.minimizer
-scatter!([θhat[1]],[θhat[2]],legend=false)
+scatter!([θhat[1]],[θhat[2]],legend=false, markersize=10)
 
 ## 
 #

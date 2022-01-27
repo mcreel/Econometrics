@@ -153,6 +153,11 @@ Michael Creel
 \begin_layout Date
 
 \size small
+01/27/22
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Graphics
 	filename logoUAB.jpg
 	width 8cm
@@ -25021,23 +25026,12 @@ This ensures that the mean is positive, as is required for the Poisson model,
  Note that for this parameterization
 \begin_inset Formula 
 \[
-\frac{\partial\lambda}{\partial x_{j}}=\lambda\beta_{j}
+\frac{\partial\lambda}{\partial x_{j}}=\lambda\beta_{j},
 \]
 
 \end_inset
 
-so
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\beta_{j}x_{j}=\frac{\partial\lambda}{\partial x_{j}}\frac{x_{j}}{\lambda}=\eta_{x_{j}}^{\lambda},
-\]
-
-\end_inset
-
-the elasticity of the conditional mean of 
+so the elasticity of the conditional mean of 
 \begin_inset Formula $y$
 \end_inset
 
@@ -25045,7 +25039,19 @@ the elasticity of the conditional mean of
 \begin_inset Formula $j^{th}$
 \end_inset
 
- conditioning variable.
+ conditioning variable is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\lambda}{\partial x_{j}}\frac{x_{j}}{\lambda}=\beta_{j}x_{j}.
+\]
+
+\end_inset
+
+ Thus, the interpretation of the parameters is the same as for a semi-log
+ linear regression model.
 \end_layout
 
 \begin_layout Standard
@@ -25093,7 +25099,9 @@ Poor scaling of the data
 
 \begin_layout Standard
 When the data is scaled so that the magnitudes of the first and second derivativ
-es are of different orders, problems can easily result.
+es are of different orders, problems can easily result, because numerical
+ accuracy can be lost, so gradient-based directions of movement in iterations
+ can become very poor.
  If we comment the appropriate line in 
 \begin_inset ERT
 status open
@@ -25131,13 +25139,13 @@ reference "foggy mountain-1"
 
 \end_inset
 
-, but try to imagine the scene if the clouds were 2000m thicker.
+, panel (a), but try to imagine the scene if the clouds were 2000m thicker.
  A mathematical representation of a similar problem is in the second panel.
  You can go up until there's nowhere else to go up, but since you're in
  the fog you don't know if the true summit is across the gap that's at your
  feet.
- Do you claim victory and go home, or do you trudge down the gap and explore
- the other side? (example inspired by H.W.
+ Do you claim victory (convergence) and go home, or do you trudge down the
+ gap and explore the other side? (example inspired by H.W.
  Tilman 
 \emph on
 Snow on the Equator).
@@ -25159,7 +25167,25 @@ name "foggy mountain-1"
 
 \end_inset
 
-Mountains with low fog
+Multiple local maxima: Mountains with low fog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -25170,14 +25196,83 @@ Mountains with low fog
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/Figures/mountain.jpg
-	width 6in
+	width 4in
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/michael/Mystuff/Econometrics/Examples/NonlinearOptimization/FoggySurface.png
-	width 6in
+	width 4in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Examples/NonlinearOptimization/FMresults.png
+	width 15cm
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -25204,7 +25299,7 @@ e.g.,
 Let's try to find the true minimizer of minus 1 times the foggy mountain
  function (since the algorithms are set up to minimize).
  From the picture, you can see it's close to 
-\begin_inset Formula $(0,0)$
+\begin_inset Formula $(0.1,0.1)$
 \end_inset
 
 , but let's pretend there is fog, and that we don't know that.
@@ -25225,15 +25320,9 @@ href{./Examples/NonlinearOptimization/FoggyMountain.jl}{FoggyMountain.jl}
  It uses SA, which finds the true global minimum, and it shows that BFGS
  using a battery of random start values can also find the global minimum
  help.
- The output of one run is here: 
-\begin_inset CommandInset include
-LatexCommand verbatiminput
-filename "Examples/NonlinearOptimization/FoggyMountain.out"
-
-\end_inset
-
-In that run, the single BFGS run with bad start values converged to a point
- far from the true minimizer, while simulated annealing found the true minimizer.
+ The output of one run is in panel (c) of the figure: In that run, the single
+ BFGS run with bad start values converged to a point far from the true minimizer
+, while simulated annealing found the true minimizer.
  BFGS using multiple start values also gets the correct solution, and if
  you check, you'll find that it's faster than SA.
  The moral of the story is to be cautious and don't publish your results
@@ -25241,6 +25330,31 @@ In that run, the single BFGS run with bad start values converged to a point
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Practical Summary
+\end_layout
+
+\begin_layout Standard
+The practical summary for the Chapter is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./PracticalSummaries/12-Optimization.jl}{here}
+\end_layout
+
+\end_inset
+
+.
 \begin_inset Newpage newpage
 \end_inset
 
