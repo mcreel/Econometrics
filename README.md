@@ -7,7 +7,7 @@ The notes are in the file econometrics.pdf. It is not recommended to use this fi
 
 ## To make full use of the notes and examples
 
-### How to videos
+### How to videos (ctrl-click for new tab)
 1. [Introduction](https://youtu.be/I5lclHKlQnA)    
 2. [Installation](https://youtu.be/N_aWT7OiX4k)
 3. [Speed](https://youtu.be/a-_ZNTBeLCw)
