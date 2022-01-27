@@ -8,10 +8,10 @@ The notes are in the file econometrics.pdf. It is not recommended to use this fi
 ## To make full use of the notes and examples
 
 ### How to videos (ctrl-click for new tab)
-1. [Introduction](https://youtu.be/I5lclHKlQnA)    
-2. [Installation](https://youtu.be/N_aWT7OiX4k)
-3. [Speed](https://youtu.be/a-_ZNTBeLCw)
-4. [Comfort](https://youtu.be/Nbhmq4VWVJU)
+1. [Introduction](https://youtu.be/I5lclHKlQnA): short description of what's here
+2. [Installation](https://youtu.be/N_aWT7OiX4k): how to install this as a Julia project
+3. [Speed](https://youtu.be/a-_ZNTBeLCw): how to compile a system image to make it fast
+4. [Comfort](https://youtu.be/Nbhmq4VWVJU): how to set up VS Code for comfortable use
 
 ### Old School Instructions:
 You need to install this repository as a Julia project. Do this as follows: 
