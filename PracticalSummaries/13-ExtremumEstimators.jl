@@ -1,147 +1,144 @@
-### A Pluto.jl notebook ###
-# v0.14.0
+# Practical Review: Extremum Estimators (Ch. 13)
 
-using Markdown
-using InteractiveUtils
-
-# ╔═╡ bdaff406-79d0-11ec-10fb-afa2d67be4f2
-using Markdown
-
-# ╔═╡ dbd8ab1c-790d-11ec-05d2-4be402640123
+##
+#= 	Let's start with a simple problem, where we can get the the answers using
+	analytic methods. This will let us apply numeric methods, and we will be
+	able to verify that they give us the correct results. To start, let's
+	define some data, and do the basic OLS computations
+=#	
 using Econometrics
 n = 5
 x = [ones(n) 1:n]
 β = [10., -1.]
 ϵ = randn(n)
 y = x*β + ϵ
-ols(y,x)
+ols(y,x);
 
-# ╔═╡ 8427ef8a-790e-11ec-256f-25ac76ab14bb
-using Statistics
+##
+
+#= 	OK, now let's do this as we would if we did not have access to
+	the analytic results. First, we compute the extremum estimator
+	using numeric minimization.
+=#
+using Statistics, Optim
 objᵢ = β -> (y-x*β).^2.  	# iᵗʰ obs contrib to sum of squares
 obj = β -> mean(objᵢ(β))	# average objective
-fminunc(obj, zeros(2))
-
-# ╔═╡ 6da61ee8-790f-11ec-2354-afec042707f3
-using Optim
 tol = 1e-08
-results = Optim.optimize(obj, zeros(2), LBFGS(), 
-                            Optim.Options(
-                            g_tol = tol,
-                            x_tol=tol,
-                            f_tol=tol); autodiff=:forward)
+βhat = Optim.optimize(obj, zeros(2), LBFGS(), 
+        	Optim.Options(g_tol = tol,x_tol=tol,f_tol=tol);
+			autodiff=:forward).minimizer
 
+##
 
-# ╔═╡ 3f7f1f88-79cd-11ec-3986-05c4107fb826
+#=	How do we get the estimated standard errors, using extremum estimation
+	theory? We need estimators of ℐ, the covariance of the score 
+	contributions, and 𝒥, the Hessian matrix.
+=#
+
+# the calculations to get ℐ hat
+
+# first, we need the score contributions, the matrix that collects
+# the derivatives of each observation's contribution to the objective
+
+# Note to self: remember crtl-enter will evaluate a single line.
+
 using ForwardDiff
-H = ForwardDiff.hessian(obj, βhat)
+sc =  ForwardDiff.jacobian(objᵢ, βhat) # get the score contributions
+# from theory, we know that sc = -2x.*ϵhat. Let's use this verify
+# that the automatic differentiation worked.
+sc - (-2x.*(y - x*βhat))
 
-# ╔═╡ 30f867ee-7914-11ec-39f2-e1c8568f126b
-# the calculations to get I hat
-using ForwardDiff
-sc =  ForwardDiff.jacobian(objᵢ, βhat)
+##
 
-# ╔═╡ 8e6f67ee-7917-11ec-0f4d-45e17646b9b1
-using LinearAlgebra
-v∞ = inv(J)*I*inv(J) # this is the estimate of the limiting var of √N(β-β⁰) 
-t = sqrt.(diag(v∞/5.))   # to get small sample est. variance, divide by n
-
-# ╔═╡ a7517d2a-790c-11ec-1571-cfd030a3b758
-md"# Numeric Optimization"
-
-# ╔═╡ 85b85e6c-790d-11ec-1c31-35cbb8ae8f16
-md"## OLS"
-
-# ╔═╡ bcb2d442-790d-11ec-1ca2-931ae3840b28
-md"
-	Let's start with a simple problem, where we already know the answers. We will
-	apply numeric optimization methods and we will be able to verify that they
-	give use the correct results. To start, let's define some data, and do the
-	basic OLS computations"
-
-# ╔═╡ 61ed23b6-79ce-11ec-00db-97afd069cd8d
-md"## Minimization"
-
-# ╔═╡ 68b93128-790e-11ec-32e7-d18f5d26cd32
-md"
-	Let's see how to get these results using numeric minimization and extremum estimation theory..."
-
-# ╔═╡ 1a9a5c2a-790f-11ec-171c-5b94beb03e82
-md"
-	fminunc is just a frontend to the Optim.jl package's LBFGS unconstrained
-	minimizer routine. To call that directly, do"
-
-# ╔═╡ 16cec664-7910-11ec-1a97-7773f65b7042
-md"
-	The output has the function value and convergence information. To see the
-	value of the minimizer, do"
-
-# ╔═╡ 47d5f4e4-7910-11ec-3a4b-c5f3378c732c
-βhat = results.minimizer
-
-# ╔═╡ 1e385ae2-79cd-11ec-21d0-e721c0b36ab0
-md"
-	Let's check the definiteness of the Hessian, at the minimizer"
-
-# ╔═╡ b816cc40-79cd-11ec-16d6-d9201aa253db
-eigen(H)
-
-# ╔═╡ cb9d9b5a-79cd-11ec-36b9-6f154dab6c1b
-md"
-	Both eigenvalues are positive, so the Hessian is p.d. around the minimizer.
-	However, what if this is only a local minimizer? For the OLS case, the 
-	objective function is known to be globally convex, so this is not a problem. 		However, suppose we didn't know that. How could we check for other local
-	minima? We can look at two methods, multiple start values, and using a
-	global minimizer."
-
-# ╔═╡ e072bf66-79ce-11ec-0b78-7f8b43a1a8d3
-md"## Guarding against multiple local minima"
-
-# ╔═╡ f02dacd8-7913-11ec-0e6a-933ca7299a73
-md"
-	How do we get the estimated standard errors, using extremum estimation
-	theory? We need I, the covariance of the score contributions, and J, the
-	Hessian matrix."
-
-# ╔═╡ c1f571ea-79d4-11ec-2ddf-6bbdcbb76137
-# from theory, we know that sc = -2x.*ϵhat. Let's use this verify that the automatic differentiation worked.
--2x.*(y - x*βhat)
-
-# ╔═╡ aead5f9e-79d4-11ec-1821-e533126f6bcf
-I = zeros(2,2)
+# Next, we use the score contributions to estimate ℐ 
+ℐhat = zeros(2,2)
 for i = 1:n
-	I .+= sc[i,:]*sc[i,:]'
+	ℐhat .+= sc[i,:]*sc[i,:]'
 end
-
-@show
-I ./= n
+ℐhat ./= n
 # you could also use simply cov(sc), which converges to the same thing.
 
 
-# ╔═╡ 4be110ee-7917-11ec-03af-01be9183e472
-J = ForwardDiff.hessian(obj, βhat)
+##
 
-# ╔═╡ Cell order:
-# ╟─bdaff406-79d0-11ec-10fb-afa2d67be4f2
-# ╟─a7517d2a-790c-11ec-1571-cfd030a3b758
-# ╟─85b85e6c-790d-11ec-1c31-35cbb8ae8f16
-# ╟─bcb2d442-790d-11ec-1ca2-931ae3840b28
-# ╠═dbd8ab1c-790d-11ec-05d2-4be402640123
-# ╟─61ed23b6-79ce-11ec-00db-97afd069cd8d
-# ╟─68b93128-790e-11ec-32e7-d18f5d26cd32
-# ╠═8427ef8a-790e-11ec-256f-25ac76ab14bb
-# ╟─1a9a5c2a-790f-11ec-171c-5b94beb03e82
-# ╠═6da61ee8-790f-11ec-2354-afec042707f3
-# ╟─16cec664-7910-11ec-1a97-7773f65b7042
-# ╠═47d5f4e4-7910-11ec-3a4b-c5f3378c732c
-# ╟─1e385ae2-79cd-11ec-21d0-e721c0b36ab0
-# ╠═3f7f1f88-79cd-11ec-3986-05c4107fb826
-# ╠═b816cc40-79cd-11ec-16d6-d9201aa253db
-# ╟─cb9d9b5a-79cd-11ec-36b9-6f154dab6c1b
-# ╟─e072bf66-79ce-11ec-0b78-7f8b43a1a8d3
-# ╟─f02dacd8-7913-11ec-0e6a-933ca7299a73
-# ╠═30f867ee-7914-11ec-39f2-e1c8568f126b
-# ╠═c1f571ea-79d4-11ec-2ddf-6bbdcbb76137
-# ╠═aead5f9e-79d4-11ec-1821-e533126f6bcf
-# ╠═4be110ee-7917-11ec-03af-01be9183e472
-# ╠═8e6f67ee-7917-11ec-0f4d-45e17646b9b1
+# next, we need the estimate of the limiting Hessian, which is just
+# the Hessian of the objective function, at the estimate
+𝒥hat = ForwardDiff.hessian(obj, βhat)
+
+# We know that this should be 2x'x/n. Let's check:
+2x'x/n
+##
+
+# now, we can compute the t-statistics, to compare to what we saw
+# from the analytic results, above
+using LinearAlgebra
+v∞ = inv(𝒥hat)*ℐhat*inv(𝒥hat) # this is the estimate of the limiting var of √n(β-β⁰) 
+t = sqrt.(diag(v∞/n))   # to get small sample est. variance, divide by n
+
+##
+
+# the last problem is for a correctly specified model, Case I in the notes.
+# Let's look at an incorrectly specified model, Case III in the note, to
+# verify that the extremum theory works here, too.
+
+# Let's work with Problem 1, in the exercises at the end of Chapter 13.
+# In this problem, the true model is quadratic, but we erroneously estimate
+# a linear model. The problem asks for an analytic solution. Here, let's
+# approach it numerically.
+# generate data
+using Plots
+function dgp(n)
+	x = sort(rand(n))
+	y = 1. .- x.^2 + randn(n)
+	x,y
+end
+x,y = dgp(100)
+scatter(x,y, legend=false, title="y = 1 - x² + N(0,1)")
+
+##
+
+# Here's an OLS fit, just to have a look
+using Econometrics
+n = 100
+x,y = dgp(n)
+X = [ones(n) x] # define regressor matrix for linear approximation about 0
+b, junk = ols(y,X)
+fitted = X*b
+plot!(x,fitted)
+
+##
+
+# We know that the pseudo-true parameter values are 7/6 and -1. Let's verify
+# that the OLS estimates are asymptotically normally distributed about these
+# values. To do this, we will construct asymptotic 100x(1-α)% confidence intervals,
+# and verify that the pseudo-true values lie inside them approximately 100x(1-α)% of
+# the times we repeat the procedure, at least when n is large enough
+using LinearAlgebra, Statistics, Distributions
+n = 20 				# try small and large values here,
+					# to see accuracy of asymptotic approximation
+reps = 10000
+α = 0.05			# try out 90, 95 and 99% CIs
+crit = quantile(Normal(),1-α/2)
+β⁰ = [7/6; -1.]
+inci = zeros(reps, 2)
+for i = 1:reps
+	x,y = dgp(n)
+	X = [ones(n) x] # define regressor matrix for linear approximation about 0
+	βhat, vβhat, junk = ols(y, X, silent=true)
+	se = sqrt.(diag(vβhat))
+	inci[i,:] = (β⁰ .>= βhat .- 1.95996se) .& (β⁰ .<= βhat .+ 1.95996se)
+end
+
+ci = Int64(100(1-α))
+println("Coverage of $ci% CIs")
+mean(inci, dims=1) # these should be approximately 1-α, at least when n is large enough
+
+##
+
+# To conclude, this summary has shown that the extremum estimation theory is
+# working for two cases, a correctly specified model, and an incorrectly specified
+# model. We have seen how to get I and J, now to compute the asymptotic variance,
+# and how to verify that confidence intervals (which are computed using I and J)
+# have correct coverage, at least asymptotically.
+
+

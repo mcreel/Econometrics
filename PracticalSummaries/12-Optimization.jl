@@ -1,4 +1,4 @@
-# Practical Review: Numeric Optimization
+# Practical Review: Numeric Optimization (Ch. 12)
 
 ##
 # Let's start with a simple problem, where we already know the

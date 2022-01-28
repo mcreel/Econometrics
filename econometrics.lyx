@@ -28608,6 +28608,31 @@ reference "eq:asymp normality OLS"
 
 \end_layout
 
+\begin_layout Subsection
+Practical Summary
+\end_layout
+
+\begin_layout Standard
+The practical summary for the Chapter is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./PracticalSummaries/13-ExtremumEstimators.jl}{here}
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 
 \series bold
