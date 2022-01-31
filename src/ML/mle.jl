@@ -27,8 +27,14 @@ function mle(model, θ, vc=1)
         ForwardDiff.hessian(avg_obj, vec(thetahat))
     catch
         Calculus.hessian(avg_obj, vec(thetahat), :central)
-    end    
-    I = cov(scorecontrib)
+    end
+    k = size(θ,1)
+    I = zeros(k,k)
+    for i = 1:n
+    	I .+= sc[i,:]*sc[i,:]'
+    end
+    I ./= n
+    # I = cov(scorecontrib) # consistent, but less standard, so
     Jinv = inv(J)
     if vc==2
         V = Jinv/n      # other possibilities
