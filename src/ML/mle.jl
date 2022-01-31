@@ -31,7 +31,7 @@ function mle(model, θ, vc=1)
     k = size(θ,1)
     I = zeros(k,k)
     for i = 1:n
-    	I .+= sc[i,:]*sc[i,:]'
+    	I .+= scorecontrib[i,:]*scorecontrib[i,:]'
     end
     I ./= n
     # I = cov(scorecontrib) # consistent, but less standard, so
