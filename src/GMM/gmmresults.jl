@@ -17,11 +17,13 @@ end
 
 function gmmresults(moments, theta, weight="", title="", names="", efficient=true)
     n,g = size(moments(theta))
+    CUE = false
     if weight !="" # if weight provided, use it
         thetahat, objvalue, D, ms, converged = gmm(moments, theta, weight)
     else # do CUE
         thetahat, objvalue, D, ms, converged = gmm(moments, theta)
         weight = inv(NeweyWest(ms))
+        CUE=true
     end
     k,g = size(D)
     # estimate asymptotic variance
@@ -41,7 +43,7 @@ function gmmresults(moments, theta, weight="", title="", names="", efficient=tru
     PrintDivider()
     if title !="" printstyled(title, color=:yellow); println() end
     print("GMM Estimation Results    Convergence: ")
-    weight == "" ? printstyled("used CUE criterion", color=:green) : nothing
+    CUE ? printstyled("used CUE criterion", color=:cyan) : nothing
     printstyled(converged, color=:green)
     println()
     println("Observations: ", n)
