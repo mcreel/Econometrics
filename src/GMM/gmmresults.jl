@@ -15,7 +15,7 @@ function gmmresults()
     return
 end    
 
-function gmmresults(moments, theta, weight, title="", names="", efficient=true)
+function gmmresults(moments, theta, weight="", title="", names="", efficient=true)
     n,g = size(moments(theta))
     if weight !="" # if weight provided, use it
         thetahat, objvalue, D, ms, converged = gmm(moments, theta, weight)
@@ -41,6 +41,7 @@ function gmmresults(moments, theta, weight, title="", names="", efficient=true)
     PrintDivider()
     if title !="" printstyled(title, color=:yellow); println() end
     print("GMM Estimation Results    Convergence: ")
+    weight == "" ? printstyled("used CUE criterion", color=:green) : nothing
     printstyled(converged, color=:green)
     println()
     println("Observations: ", n)

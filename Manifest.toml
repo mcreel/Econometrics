@@ -309,9 +309,9 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[deps.Distributions]]
 deps = ["ChainRulesCore", "DensityInterface", "FillArrays", "LinearAlgebra", "PDMats", "Printf", "QuadGK", "Random", "SparseArrays", "SpecialFunctions", "Statistics", "StatsBase", "StatsFuns", "Test"]
-git-tree-sha1 = "0c8693f37a265b6c0e552861cad8bf4b13d65686"
+git-tree-sha1 = "38bcc22b6e358e88a7715ad0db446dfd3a4fea47"
 uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
-version = "0.25.42"
+version = "0.25.43"
 
 [[deps.DocStringExtensions]]
 deps = ["LibGit2"]
@@ -1370,9 +1370,9 @@ version = "0.9.6"
 
 [[deps.Transducers]]
 deps = ["Adapt", "ArgCheck", "BangBang", "Baselet", "CompositionsBase", "DefineSingletons", "Distributed", "InitialValues", "Logging", "Markdown", "MicroCollections", "Requires", "Setfield", "SplittablesBase", "Tables"]
-git-tree-sha1 = "3f0945b47207a41946baee6d1385e4ca738c25f7"
+git-tree-sha1 = "a34f53c9e14d131b0ce114f591d3c5d428431ba0"
 uuid = "28d57a85-8fef-5791-bfe6-a80928e7c999"
-version = "0.4.68"
+version = "0.4.69"
 
 [[deps.URIParser]]
 deps = ["Unicode"]
