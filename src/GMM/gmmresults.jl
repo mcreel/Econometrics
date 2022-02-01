@@ -43,8 +43,8 @@ function gmmresults(moments, theta, weight="", title="", names="", efficient=tru
     PrintDivider()
     if title !="" printstyled(title, color=:yellow); println() end
     print("GMM Estimation Results    Convergence: ")
-    CUE ? printstyled("used CUE criterion", color=:cyan) : nothing
     printstyled(converged, color=:green)
+    CUE ? printstyled("used CUE criterion", color=:cyan) : nothing
     println()
     println("Observations: ", n)
     println("Hansen-Sargan statistic: ", round(n*objvalue, digits=5))
