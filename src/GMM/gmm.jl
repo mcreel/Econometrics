@@ -4,47 +4,44 @@ using ForwardDiff, Calculus
 
 # ordinary GMM with provided weight matrix
 # weight should be gXg positive definite
-function gmm(moments, theta, weight)
+function gmm(moments, θ, weight)
     # average moments
-    m = theta -> vec(mean(moments(theta),dims=1)) # 1Xg
+    m = θ -> vec(mean(moments(θ),dims=1)) # 1Xg
     # moment contributions
-    momentcontrib = theta -> moments(theta) # nXg
     # GMM criterion
-    obj = theta -> ((m(theta))'weight*m(theta))
+    obj = θ -> dot(m(θ), weight, m(θ))
     # do minimization
-    thetahat, objvalue, converged = fminunc(obj, theta)
+    θhat, objvalue, converged = fminunc(obj, θ)
     # derivative of average moments
     D = try
-        ForwardDiff.jacobian(m, vec(thetahat))'
+        ForwardDiff.jacobian(m, vec(θhat))'
     catch    
-        Calculus.jacobian(m, vec(thetahat), :central)'
+        Calculus.jacobian(m, vec(θhat), :central)'
     end    
     # moment contributions at estimate
-    ms = momentcontrib(thetahat)
-    return thetahat, objvalue, D, ms, converged
+    ms = moments(θhat)
+    return θhat, objvalue, D, ms, converged
 end
 
 # CUE GMM, weight computed by NW
-function gmm(moments, theta)
+function gmm(moments, θ)
     # average moments
-    m = theta -> vec(mean(moments(theta),dims=1)) # 1Xg
-    # moment contributions
-    momentcontrib = theta -> moments(theta) # nXg
+    m = θ -> vec(mean(moments(θ),dims=1)) # 1Xg
     # weight
-    weight = theta -> inv(NeweyWest(momentcontrib(theta)))
+    Ωinv = θ -> inv(NeweyWest(moments(θ)))
     # objective
-    obj = theta -> m(theta)'*weight(theta)*m(theta)
+    obj = θ -> dot(m(θ),Ωinv(θ),m(θ))
     # do minimization
-    thetahat, objvalue, converged = fminunc(obj, theta)
+    θhat, objvalue, converged = fminunc(obj, θ)
     # derivative of average moments
     D = try
-        ForwardDiff.jacobian(m, vec(thetahat))' 
+        ForwardDiff.jacobian(m, vec(θhat))' 
     catch
-        Calculus.jacobian(m, vec(thetahat), :central)' 
+        Calculus.jacobian(m, vec(θhat), :central)' 
     end
     # moment contributions at estimate
-    ms = momentcontrib(thetahat)
-    return thetahat, objvalue, D, ms, converged
+    ms = moments(θhat)
+    return θhat, objvalue, D, ms, Ωinv(θhat), converged
 end
 
 

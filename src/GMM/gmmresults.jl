@@ -2,59 +2,54 @@ function gmmresults()
     # example of GMM: draws from N(0,1)
     y = randn(1000,1)
     # 3 moment conditions
-    moments = theta -> [y.-theta[1] (y.^2.0).-theta[2] (y.-theta[1]).^3.0]
+    moments = θ -> [y.-θ[1] (y.^2.0).-θ[2] (y.-θ[1]).^3.0]
     # first round consistent
     W = Matrix{Float64}(I,3,3)
-    theta = [0.0, 1.0]
-    thetahat, objvalue, D, ms, converged = gmm(moments, theta, W)
+    θ = [0.0, 1.0]
+    θhat, objvalue, D, ms, converged = gmm(moments, θ, W)
     # second round efficient
-    W = inv(cov(ms))
-    gmmresults(moments, thetahat, W, "GMM example, two step");
+    Ωinv = inv(cov(ms))
+    gmmresults(moments, θhat, Ωinv, "GMM example, two step")
     # CUE
-    gmmresults(moments, thetahat, "", "GMM example, CUE");
+    gmmresults(moments, θhat)
     return
 end    
 
-function gmmresults(moments, theta, weight="", title="", names="", efficient=true)
-    n,g = size(moments(theta))
+function gmmresults(moments, θ, weight="", title="", names="", efficient=true)
+    n,g = size(moments(θ))
     CUE = false
     if weight !="" # if weight provided, use it
-        thetahat, objvalue, D, ms, converged = gmm(moments, theta, weight)
+        θhat, objvalue, D, ms, converged = gmm(moments, θ, weight)
     else # do CUE
-        thetahat, objvalue, D, ms, converged = gmm(moments, theta)
-        weight = inv(NeweyWest(ms))
+        θhat, objvalue, D, ms, weight, converged = gmm(moments, θ)
         CUE=true
     end
     k,g = size(D)
-    # estimate asymptotic variance
-    V = inv(D*weight*D')
-    if !efficient
-        omega = NeweyWest(ms)
-        V = V*D*weight*omega*weight*D'*V
-    end
-    V = V/n # adapt to sample size, for inference
+    # estimate variance
+    efficient ? V = inv(D*weight*D')/n : V = V*D*weight*NeweyWest(ms)*weight*D'*V/n
     if names==""
         names = 1:k
         names = names'
     end
     se = sqrt.(diag(V))
-    t = thetahat ./ se
+    t = θhat ./ se
     p = 2.0 .- 2.0*cdf.(Ref(TDist(n-k)),abs.(t))
     PrintDivider()
     if title !="" printstyled(title, color=:yellow); println() end
     print("GMM Estimation Results    Convergence: ")
     printstyled(converged, color=:green)
-    CUE ? printstyled(" (CUE criterion)", color=:cyan) : nothing
+    CUE ? message=" (CUE)" : message=" (user weight matrix)"
+    printstyled(message, color=:cyan)
     println()
     println("Observations: ", n)
     println("Hansen-Sargan statistic: ", round(n*objvalue, digits=5))
     if g > k
         println("Hansen-Sargan p-value: ", round(1.0 - cdf(Chisq(g-k),n*objvalue), digits=5))
     end    
-    a =[thetahat se t p]
+    a =[θhat se t p]
     println("")
     PrintEstimationResults(a, names)
     println()
     PrintDivider()
-    return thetahat, objvalue, V, converged
+    return θhat, objvalue, V, D, weight, converged
 end    

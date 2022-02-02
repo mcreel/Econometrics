@@ -10,10 +10,11 @@ y = rand.(Poisson.(λ(β⁰)))
 
 ## ML, for reference
 using Econometrics, SpecialFunctions
-model = β -> -λ(β) + y.*x*β - loggamma.(y .+ 1.)
-mleresults(model, β⁰)
+model = β -> -λ(β) + y.*x*β - loggamma.(y .+ 1.)    # note: loggamma(y+1) = log(factorial(y))
+mleresults(model, β⁰)                               # but won't overflow
 
 ## GMM
+using Econometrics
 moments = β -> x.*(y - λ(β))
 gmmresults(moments, β⁰)
 # note that the GMM estimator is identical to the ML estimator. You should
@@ -22,14 +23,17 @@ gmmresults(moments, β⁰)
 # won't improve asymptotic efficiency, even if they're valid.
 
 ## Trying a different GMM estimator, based on E(y)=λ, so E(y/λ)=1
+using Econometrics
 moments = β -> x.* (y./λ(β) .- 1.) 
 gmmresults(moments, β⁰)
 
 ## Try out overidentified GMM estimator, using both sets of moments
+using Econometrics, ForwardDiff
 moments = β -> [x.*(y - λ(β)) x.*(y./λ(β) .- 1.)]
-gmmresults(moments, β⁰)
+βhat, objv, V, D, W, convergence = gmmresults(moments, β⁰)
+## how to get D and Omega (though gmmresults will also give them)
+avgmoments = β -> (1/n)*[x'*(y - λ(β)) x'*(y./λ(β) .- 1.)]
+D = ForwardDiff.jacobian(avgmoments,βhat)'
+m = moments(βhat) # the moment contributions, evaluated at estimate
+Ωhat = NeweyWest(m)
 
-# two step
-# getting D and st. errors
-# CUE
-# 
