@@ -25336,7 +25336,7 @@ href{./Examples/NonlinearOptimization/FoggyMountain.jl}{FoggyMountain.jl}
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Practical Summary
 \end_layout
 
@@ -28608,7 +28608,7 @@ reference "eq:asymp normality OLS"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Practical Summary
 \end_layout
 
@@ -36590,10 +36590,14 @@ The intention of presenting this example is to show that ML may be used
  This is very time-consuming, though.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
+
+\end_layout
+
+\begin_layout Section
 Practical Summary
 \end_layout
 
@@ -36606,7 +36610,7 @@ status open
 
 
 \backslash
-href{./PracticalSummaries/13-MaximumLikelihood.jl}{here}
+href{./PracticalSummaries/15-MaximumLikelihood.jl}{here}
 \end_layout
 
 \end_inset
@@ -42429,11 +42433,6 @@ href{./Examples/GMM/TwoStepGMM.m}{TwoStepGMM.m}
  Note that the GMM results are the same as what you get estimating by OLS.
 \end_layout
 
-\begin_layout Exercise
-Adapt the Matlab/Octave code for two step GMM for the Nerlove model to the
- Julia language.
-\end_layout
-
 \begin_layout Standard
 The simple Nerlove model can be estimated using GMM, as we've seen.
  So, OLS is a special case of GMM.
@@ -43176,6 +43175,133 @@ H2
 \end_layout
 
 \begin_layout Section
+Examples
+\end_layout
+
+\begin_layout Subsection
+Linear IV: The Card returns to schooling data
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "card1993using"
+literal "true"
+
+\end_inset
+
+ presents an analysis of returns to schooling using the data from the National
+ Longitudinal Survey of Young Men, for those interviewed in 1976.
+ Card presents OLS and instrumental variables estimates for a number of
+ specifications, using college proximity as an instrument for years of education
+, and age as an instrument for experience.
+ Here, we work with the simple model from column (1) of Card's Table 2.
+ The model is 
+\begin_inset Formula 
+\begin{align*}
+\ln W & =\beta_{0}+\beta_{EDUC}EDUC+\beta_{X}EXP+\beta_{EXP^{2}}\frac{EXP^{2}}{100}\\
+ & +\beta_{BLACK}BLACK+\beta_{SMSA}SMSA+\beta_{SOUTH}SOUTH+\epsilon
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+the dependent variable 
+\begin_inset Formula $\ln W$
+\end_inset
+
+ is log hourly earnings (in cents)
+\end_layout
+
+\begin_layout Itemize
+the regressors are years of education (EDUC), experience (EXP), experience
+ squared divided by 100, a black indicator (BLACK), a metropolitan area
+ indicator (SMSA), and a South indicator (SOUTH).
+\end_layout
+
+\begin_layout Itemize
+We explore estimation treating all variables as exogenous, or treating education
+ and experience as endogenous, and the others as exogenous.
+\end_layout
+
+\begin_layout Itemize
+When education and experience are treated as endogenous
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+we use proximity to an accredited four year college (NEARC4) as an instrumental
+ variable that should be correlated with EDUC 
+\end_layout
+
+\begin_layout Itemize
+EXPER is defined as EXPER = AGE-EDUC-6, so if EDUC is endogenous, so is
+ EXPER.
+ We use AGE as an instrument for EXPER.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Card data set is provided with the Wooldridge data set for GRETL, see
+ the GRETL web page.
+ A version prepared for the model used here is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./Examples/Data/card.gdt}{card.gdt} 
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+The data is also here: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./Examples/Data/card.csv}{card.csv} 
+\end_layout
+
+\end_inset
+
+, ready for use with Julia.
+\end_layout
+
+\begin_layout Itemize
+The effect of an additional year of education on earnings is about 7-8%,
+ all across the distribution.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Application:-Nonlinear-rational"
@@ -43701,14 +43827,14 @@ Empirical papers that use this approach often have serious problems in obtaining
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Empirical-example:-a"
 
 \end_inset
 
-Empirical example: a portfolio model
+Empirical example of a portfolio model
 \end_layout
 
 \begin_layout Standard
@@ -43859,7 +43985,7 @@ Translate the HallGMM.m code to run on Julia.
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:GMM-estimation-of"
@@ -44263,6 +44389,31 @@ noprefix "false"
 
 \end_deeper
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Practical Summary
+\end_layout
+
+\begin_layout Standard
+The practical summary for the Chapter is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./PracticalSummaries/16-GMM.jl}{here}
+\end_layout
+
+\end_inset
+
+.
 \begin_inset Newpage newpage
 \end_inset
 

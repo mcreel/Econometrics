@@ -6,13 +6,13 @@ students. I recommend learning to use Optim.jl rather than using this.
 
 fminunc() with no arguments will run an example, execute edit(fminunc,()) to see the code.
 """
-function fminunc(obj, x; tol = 1e-08)
+function fminunc(obj, x; xtol = 1e-08, gtol=1e-6, ftol=1e-12)
     results = try
         Optim.optimize(obj, x, LBFGS(), 
                             Optim.Options(
-                            g_tol = tol,
-                            x_tol=tol,
-                            f_tol=tol); autodiff=:forward)
+                            g_tol = gtol,
+                            x_tol=xtol,
+                            f_tol=ftol); autodiff=:forward)
     catch
         Optim.optimize(obj, x, LBFGS(), 
                             Optim.Options(
