@@ -31,9 +31,17 @@ gmmresults(moments2, β⁰)
 using Econometrics, ForwardDiff
 moments3 = β -> [moments1(β) moments2(β)]
 βhat, objv, V, D, W, convergence = gmmresults(moments3, β⁰)
+
 ## how to get D and Omega (though gmmresults will also give them)
 avgmoments = β -> (1/n)*[x'*(y - λ(β)) x'*(y./λ(β) .- 1.)]
 D = ForwardDiff.jacobian(avgmoments,βhat)'
 m = moments(βhat) # the moment contributions, evaluated at estimate
 Ωhat = NeweyWest(m)
+
+## let's see how the Hansen-Sargan test can detect 
+# incorrect moments
+η = 0.01 # if this is different from zero, moments4, and, thus moments5, will not be valid
+moments4 = β -> x.* (y./λ(β) .- 1.0 .+ η)
+moments5 = β -> [moments1(β) moments4(β)]
+gmmresults(moments5, β⁰)
 

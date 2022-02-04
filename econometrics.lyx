@@ -43222,13 +43222,30 @@ the regressors are years of education (EDUC), experience (EXP), experience
  indicator (SMSA), and a South indicator (SOUTH).
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 We explore estimation treating all variables as exogenous, or treating education
  and experience as endogenous, and the others as exogenous.
 \end_layout
 
 \begin_layout Itemize
-When education and experience are treated as endogenous
+If uncontrolled for factors that affect wages also affect education, then
+ education will be endogenous.
+\end_layout
+
+\begin_layout Itemize
+EXPER is defined as EXPER = AGE-EDUC-6.
+ So, if EDUC is endogenous, so is EXPER.
+\end_layout
+
+\begin_layout Itemize
+Instruments:
 \end_layout
 
 \begin_deeper
@@ -43238,10 +43255,7 @@ we use proximity to an accredited four year college (NEARC4) as an instrumental
 \end_layout
 
 \begin_layout Itemize
-EXPER is defined as EXPER = AGE-EDUC-6, so if EDUC is endogenous, so is
- EXPER.
- We use AGE as an instrument for EXPER.
- 
+We use AGE as an instrument for EXPER, and AGE squared for EXP squared.
 \end_layout
 
 \end_deeper
@@ -43281,7 +43295,7 @@ status open
 
 
 \backslash
-href{./Examples/Data/card.csv}{card.csv} 
+href{./Examples/Julia/cooked.csv}{cooked.csv} 
 \end_layout
 
 \end_inset
@@ -43290,8 +43304,24 @@ href{./Examples/Data/card.csv}{card.csv}
 \end_layout
 
 \begin_layout Itemize
-The effect of an additional year of education on earnings is about 7-8%,
- all across the distribution.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./Examples/GMM/Card.jl}{Card.jl} 
+\end_layout
+
+\end_inset
+
+ does OLS, GMM-CUE, and 2 step GMM.
+\end_layout
+
+\begin_layout Itemize
+The effect of an additional year of education on wages is about 7%, according
+ to OLS, and about 13%, according to IV.
 \end_layout
 
 \begin_layout Standard
@@ -44413,7 +44443,9 @@ href{./PracticalSummaries/16-GMM.jl}{here}
 
 \end_inset
 
-.
+, but the previous examples, especially the Card example, are important,
+ too, as those concepts are not repeated in this summary.
+ 
 \begin_inset Newpage newpage
 \end_inset
 
