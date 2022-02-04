@@ -8,6 +8,8 @@ The notes are in the file econometrics.pdf. It is not recommended to use this fi
 ## To make full use of the notes and examples
 
 ### How to videos (ctrl-click for new tab)
+[The playlist with all videos](https://www.youtube.com/watch?v=I5lclHKlQnA&list=PLA7k_EnUgZs2U2Wh0bxhcabfKrGQQOCyn)
+The basic introductory videos:
 1. [Introduction](https://youtu.be/I5lclHKlQnA): short description of what's here
 2. [Installation](https://youtu.be/N_aWT7OiX4k): how to install this as a Julia project
 3. [Speed](https://youtu.be/a-_ZNTBeLCw): how to compile a system image to make it fast
