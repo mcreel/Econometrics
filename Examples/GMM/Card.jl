@@ -24,13 +24,13 @@ w = [ones(size(w,1)) w]
 moments = θ -> w.*(y-x*θ)
 
 ## CUE
-βcue, junk, Vcue, junk =  gmmresults(moments, βols, "", "CUE GMM", names, true)
+βcue, junk, Vcue, junk =  gmmresults(moments, βols, "", "CUE GMM", names, true);
 
 ## two-step
 βgmm1, junk =  gmm(moments, βols, eye(7))
 ms = moments(βgmm1)
 W = inv(cov(ms))
-βgmm, junk =  gmmresults(moments, βgmm1, W, "two step GMM", names, true)
+βgmm, junk =  gmmresults(moments, βgmm1, W, "two step GMM", names, true);
 
 ## Note: this is all just identified, so the following should 
 # all be the same. Without the scaling instruments, step1 will 
