@@ -10,7 +10,7 @@ if rnames !=""
     end    
 end
 if cnames !=""
-    pretty_table(a; header=cnames; formatters=ft_printf("%12.5f"))
+    pretty_table(a; header=cnames, formatters=ft_printf("%12.5f"))
 else
     pretty_table(a; formatters=ft_printf("%12.5f"))
 end
