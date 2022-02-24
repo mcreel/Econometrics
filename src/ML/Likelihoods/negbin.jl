@@ -7,9 +7,9 @@ function  negbin(θ, y, x, nbtype)
     n, k = size(x)
     β = θ[1:k]
     eps = 1e-8
-    λ = exp.(eps .+ x*β)
-    α = exp(eps .+ θ[end])
-    nbtype == 1 ? r = λ/α : r = ones(n)/α
+    λ = eps .+ exp.(x*β)
+    α = eps .+ exp(θ[end])
+    nbtype == 1 ? r = α./λ : r = ones(n)/α
     p = r ./ (r + λ)
     r > zero(r) ? log.(pdf.(NegativeBinomial.(r, p),y)) : -Inf    
 end
