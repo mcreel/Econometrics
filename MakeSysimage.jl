@@ -5,9 +5,8 @@
 # once it's done, start Julia from the Econometrics directory with
 # julia --proj -JEconometricsSysimage.so"
 #
-# delete the .so file to return to normal.
-#
-# NOTE: this system image does not work with VS Code.
+# just start without the switch to return to normal. You will
+# need to re-do this if you update your packages.
 
 using Pkg, PackageCompiler
 Pkg.activate(".")

@@ -35367,7 +35367,7 @@ status open
 
  
 \backslash
-href{./Examples/MEPS-I/PoissonVariance.m}{PoissonVariance.m}
+href{./Examples/MEPS-I/PoissonVariance.m}{PoissonVariance.jl}
 \end_layout
 
 \end_inset

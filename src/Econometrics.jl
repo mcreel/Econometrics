@@ -53,6 +53,7 @@ include("ML/mleresults.jl")
 include("ML/Likelihoods/logit.jl")
 include("ML/Likelihoods/poisson.jl")
 include("ML/Likelihoods/normal.jl")
+include("ML/Likelihoods/negbin.jl")
 
 # GMM
 include("GMM/gmm.jl")
@@ -67,7 +68,7 @@ export npdensity, InteriorPoint
 #export TrainNet, AnalyzeNet
 export samin, fminunc, fmincon
 export mle, mleresults
-export logit, poisson, normal
+export logit, poisson, normal, negbin
 export gmm, gmmresults
 # export montecarlo
 end

@@ -12,9 +12,7 @@
 # 	Dental visits			5
 # 	Prescriptions			6
 #
-
-## load the data
-using Econometrics, DelimitedFiles
+using Econometrics, DelimitedFiles, Statistics
 which_dep = 1
 if (which_dep == 1) dep = "OBDV"   end
 if (which_dep == 2) dep = "OPV"    end
@@ -24,20 +22,21 @@ if (which_dep == 5) dep = "DV"     end
 if (which_dep == 6) dep = "PRESCR" end
 cd(@__DIR__)
 data = readdlm("../Data/meps1996.data")
-
-## create the regressors and dep var
 y = data[:,which_dep]
 x = data[:,7:12]
 n = size(x,1)
 x = [ones(n,1) x]
-
-## to check effects of poor scaling, try commenting the next line
+# to check effects of poor scaling, try commenting the next line
 x[:,end] = x[:,end]/1000.0 # put income in thousands
-
-## do ML
 names = ["constant", "pub. ins.","priv. ins.", "sex", "age","edu","inc"]
 title = "Poisson model, "*dep* ",  MEPS 1996 full data set"
 model = theta -> poisson(theta, y, x)
 θstart = zeros(size(x,2)) # start values for estimation
 # try adding the option vc=2 for "Hessian" or vc=3 for OPG
-θhat, objvalue, V, converged = mleresults(model, θstart, title, names, vc=1);
+θhat, objvalue, V, converged = mleresults(model, θstart, title, names, vc=1)
+
+λhat = exp.(x*θhat)
+mv = round(mean(λhat),digits=2)
+println("Estimated marginal variance: $mv")
+sv = round(var(y),digits=2)
+println("Sample marginal variance: $sv")

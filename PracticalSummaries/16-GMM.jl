@@ -35,7 +35,7 @@ moments3 = β -> [moments1(β) moments2(β)]
 ## how to get D and Omega (though gmmresults will also give them)
 avgmoments = β -> (1/n)*[x'*(y - λ(β)) x'*(y./λ(β) .- 1.)]
 D = ForwardDiff.jacobian(avgmoments,βhat)'
-m = moments(βhat) # the moment contributions, evaluated at estimate
+m = moments3(βhat) # the moment contributions, evaluated at estimate
 Ωhat = NeweyWest(m)
 
 ## let's see how the Hansen-Sargan test can detect 
