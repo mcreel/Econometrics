@@ -9,7 +9,7 @@ function  negbin(θ, y, x, nbtype)
     λ = exp.(x*β)
     α = exp(θ[end])
     nbtype == 1 ? ψ = λ/α : ψ = ones(n)/α
-    logdensity = log.(pdf.(NegativeBinomial.(ψ, λ./(ψ + λ),y)))    
+    logdensity = log.(pdf.(NegativeBinomial.(ψ, ψ./(ψ + λ)),y))    
 end
 
 
