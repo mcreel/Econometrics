@@ -10,7 +10,7 @@ function  negbin(θ, y, x, nbtype)
     α = exp(θ[end])
     nbtype == 1 ? r = α./λ : r = ones(n)/α
     p = r ./ (r + λ)
-    r > zero(r) ? log.(pdf.(NegativeBinomial.(r, p),y)) : -Inf    
+    ((r > zero(r)) & (p > zero(p)) & ((1.0 .-p) > zero(p))) ? log.(pdf.(NegativeBinomial.(r, p),y)) : -Inf    
 end
 
 
