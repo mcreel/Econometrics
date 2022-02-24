@@ -5,10 +5,11 @@
 using SpecialFunctions
 function  negbin(θ, y, x, nbtype)
     n, k = size(x)
-    λ = exp.(x*θ[1:k])
+    β = θ[1:k]
+    λ = exp.(x*β)
     α = exp(θ[end])
     nbtype == 1 ? ψ = λ/α : ψ = ones(n)/α
-    logdensity = loggamma.(y .+ ψ) - loggamma.(ψ) - loggamma.(y .+ 1)
+    logdensity = loggamma.(y .+ ψ) - loggamma.(ψ) - loggamma.(y .+ 1.0)
                 + ψ .* log.(ψ ./ (λ + ψ)) + y .* log.(λ ./(λ + ψ)) 
 end
 
