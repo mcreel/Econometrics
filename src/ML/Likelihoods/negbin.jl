@@ -11,7 +11,7 @@ function  negbin(θ, y, x, nbtype)
     α = exp(eps .+ θ[end])
     nbtype == 1 ? r = λ/α : r = ones(n)/α
     p = r ./ (r + λ)
-    logdensity = log.(pdf.(NegativeBinomial.(r, p),y))    
+    r > zero(r) ? log.(pdf.(NegativeBinomial.(r, p),y)) : -Inf    
 end
 
 

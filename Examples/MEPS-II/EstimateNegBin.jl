@@ -41,6 +41,6 @@ title = "Negative Binomial-$nbtype model, "*dep*",  MEPS 1996 full data set"
 model = θ  -> poisson(θ, y, x)
 βhat, junk = mle(model, zeros(size(x,2)))
 model = θ  -> negbin(θ, y, x, nbtype)
-θstart = [βhat; 1.] # start values for estimation
+θstart = [βhat; 0.] # start values for estimation
 # try adding the option vc=2 for "Hessian" or vc=3 for OPG
 θhat, objvalue, V, converged = mleresults(model, θstart, title, names, vc=1);
