@@ -35,7 +35,7 @@ x = [ones(n,1) x]
 x[:,end] = x[:,end]/1000.0 # put income in thousands
 
 ## do ML
-nbtype = 2
+nbtype = 1
 names = ["constant", "pub. ins.","priv. ins.", "sex", "age","edu","inc", "log(α)"]
 title = "Negative Binomial-$nbtype model, "*dep*",  MEPS 1996 full data set"
 model = θ  -> poisson(θ, y, x)
