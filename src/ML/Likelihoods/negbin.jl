@@ -6,8 +6,9 @@ using SpecialFunctions, Distributions
 function  negbin(θ, y, x, nbtype)
     n, k = size(x)
     β = θ[1:k]
-    λ = exp.(x*β)
-    α = exp(θ[end])
+    eps = 1e-8
+    λ = exp.(eps .+ x*β)
+    α = exp(eps .+ θ[end])
     nbtype == 1 ? ψ = λ/α : ψ = ones(n)/α
     logdensity = log.(pdf.(NegativeBinomial.(ψ, ψ./(ψ + λ)),y))    
 end
