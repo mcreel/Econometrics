@@ -9,8 +9,9 @@ function  negbin(θ, y, x, nbtype)
     eps = 1e-8
     λ = exp.(eps .+ x*β)
     α = exp(eps .+ θ[end])
-    nbtype == 1 ? ψ = λ/α : ψ = ones(n)/α
-    logdensity = log.(pdf.(NegativeBinomial.(ψ, ψ./(ψ + λ)),y))    
+    nbtype == 1 ? r = λ/α : r = ones(n)/α
+    p = ψ ./ (ψ + λ)
+    logdensity = log.(pdf.(NegativeBinomial.(r, p),y))    
 end
 
 
