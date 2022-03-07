@@ -24855,6 +24855,17 @@ The conditioning variables are public insurance (PUBLIC), private insurance
  person has access to public or private insurance coverage.
  SEX is also 0/1, where 1 indicates that the person is female.
  This data will be used in several examples in what follows.
+\end_layout
+
+\begin_layout Itemize
+Perhaps there may be common factors behind health care visits and the decision
+ to buy private insurance.
+ If there are common unobserved factors (perhaps, health), then private
+ insurace would be an endogenous variable.
+ We will ignore that at present, but come back to it later.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -28055,10 +28066,6 @@ Linear Approximation
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -28086,17 +28093,6 @@ Note that the true underlying parameter
  is not estimated consistently, either (it may be of a different dimension
  than the dimension of the parameter of the approximating model, which is
  2 in this example).
-\end_layout
-
-\begin_layout Itemize
-see Exercise 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ols"
-
-\end_inset
-
- in the list at the end of the chapter for a practical example.
 \end_layout
 
 \begin_layout Itemize
@@ -33803,7 +33799,7 @@ href{./src/ML/mle.jl}{mle.jl}
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Alternative-variance-computation"
+reference "fig:PoissonOBDV_results"
 plural "false"
 caps "false"
 noprefix "false"
@@ -33841,7 +33837,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Alternative-variance-computation"
+name "fig:PoissonOBDV_results"
 
 \end_inset
 
@@ -35604,6 +35600,7 @@ can
 \emph default
  be used directly, perhaps using numerical integration to evaluate the likelihoo
 d function.
+ Simulation-based approaches are another possibility.
  In some cases, though, the integral will have an analytic solution.
  For example, if 
 \begin_inset Formula $\nu$
@@ -35612,13 +35609,17 @@ d function.
  follows a certain one parameter gamma density, then 
 \begin_inset Formula 
 \begin{equation}
-f_{Y}(y|\lambda,\phi)=\frac{\Gamma(y+\psi)}{\Gamma(y+1)\Gamma(\psi)}\left(\frac{\psi}{\psi+\lambda}\right)^{\psi}\left(\frac{\lambda}{\psi+\lambda}\right)^{y}\label{eq:negbindensity}
+f_{Y}(y|\lambda,\phi)=\frac{\Gamma(y+r)}{\Gamma(y+1)\Gamma(r)}p^{r}(1-p)^{y}\label{eq:negbindensity}
 \end{equation}
 
 \end_inset
 
 where 
 \begin_inset Formula $\phi=(\lambda,\psi)$
+\end_inset
+
+ and 
+\begin_inset Formula $p=\frac{\psi}{\psi+\lambda}$
 \end_inset
 
 .
@@ -35658,10 +35659,6 @@ The variance depends upon how
 
  is parameterized.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -35687,7 +35684,7 @@ If
 \begin_inset Formula $\mathbf{x}$
 \end_inset
 
-, so that the variance is too.
+, so that the variance is, too.
  This is referred to as the NB-I model.
 \end_layout
 
@@ -35708,10 +35705,19 @@ If
  This is referred to as the NB-II model.
 \end_layout
 
+\begin_layout Itemize
+In both cases, the conditional mean is 
+\begin_inset Formula $E(y|\boldsymbol{x})=\lambda=\exp(\mathbf{x}'\beta)$
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 So both forms of the NB model allow for overdispersion, with the NB-II model
  allowing for a more radical form.
+ There are other parameterizations, but these two are the most widely-used.
 \end_layout
 
 \begin_layout Standard
@@ -35759,37 +35765,36 @@ status open
 
 
 \backslash
-href{./Examples/MEPS-II/EstimateNegBin.m}{This program} 
+href{./Examples/MEPS-II/EstimateNegBin.jl}{This program} 
 \end_layout
 
 \end_inset
 
- will do estimation using the NB model (I haven't bothered converting this
- to Julia, but it's easy to do, just program the NB likelihood function).
- 
-\end_layout
+ will do estimation using the NB model .
+ Results for NB-I and NB-II models are
+\begin_inset Newpage newpage
+\end_inset
 
-\begin_layout Standard
-\paragraph_spacing single
-\begin_inset CommandInset include
-LatexCommand verbatiminput
-filename "Examples/MEPS-II/NB-I.out"
+
+\begin_inset Graphics
+	filename Examples/MEPS-II/NB1results.png
+	width 20cm
 
 \end_inset
 
 
-\end_layout
+\begin_inset Newpage newpage
+\end_inset
 
-\begin_layout Standard
-Likewise, here are NB-II results:
-\end_layout
 
-\begin_layout Standard
-\paragraph_spacing single
-\begin_inset CommandInset include
-LatexCommand verbatiminput
-filename "Examples/MEPS-II/NB-II.out"
+\begin_inset Graphics
+	filename Examples/MEPS-II/NB2results.png
+	width 20cm
 
+\end_inset
+
+
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -35807,7 +35812,10 @@ Note that both versions of the NB model fit much better than does the Poisson
  model (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "PoissonOBDV_results"
+reference "fig:PoissonOBDV_results"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -35957,6 +35965,10 @@ For OBDV, the overdispersion problem is significantly better than in the
  Poisson case, but there is still some that is not captured.
  For ERV, the negative binomial model seems to capture the overdispersion
  adequately.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -35964,7 +35976,8 @@ Finite mixture models: the mixed negative binomial model
 \end_layout
 
 \begin_layout Standard
-The finite mixture approach to fitting health care demand was introduced
+Finite mixture models are quite widely used in statistical modeling.
+ The finite mixture approach to fitting health care demand was introduced
  by Deb and Trivedi (1997).
  The mixture approach has the intuitive appeal of allowing for subgroups
  of the population with different health status.
@@ -36427,7 +36440,32 @@ Pretty clearly, the NB models are better than the Poisson.
  with variances.
  With another sample, it may well be that the NB-I model would be favored,
  since the differences are so small.
- The MNB-II model is favored over the others, by all 3 information criteria.
+ The MNB-II model is favored over the others, by all 3 information criteria,
+ but it is less than 1% lower than the scores for the other NB models.
+ Perhaps the additional complexity is not worth the small improvement in
+ fit?
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To summarize:
+\end_layout
+
+\begin_layout Itemize
+the Poisson model is clearly not appropriate, as it can't deal with the
+ overdispersion that the data exhibits.
+\end_layout
+
+\begin_layout Itemize
+the NB variants all perform in the same ballpark
+\end_layout
+
+\begin_layout Itemize
+the issue of possible endogeneity of private insurance has been ignored.
+ We will return to that once we have some more tools.
 \end_layout
 
 \begin_layout Standard
@@ -65959,11 +65997,13 @@ filename "Examples/GMM/MEPS/meps.out"
 
 \begin_layout Standard
 Note how the Poisson QML results, estimated here using a GMM routine, are
- the same as were obtained using the ML estimation routine (see subsection
- 
+ the same as were obtained using the ML estimation routine (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "PoissonOBDV_results"
+reference "fig:PoissonOBDV_results"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
