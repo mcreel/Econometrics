@@ -319,7 +319,7 @@ Stock and Watson,
 \begin_inset CommandInset href
 LatexCommand href
 name "Introduction to Econometrics"
-target "https://www.pearson.com/us/higher-education/program/Stock-Introduction-to-Econometrics-Update-Plus-NEW-My-Lab-Economics-with-Pearson-e-Text-Access-Card-Package-3rd-Edition/PGM214413.html"
+target "https://ebookcentral.proquest.com/lib/uab/detail.action?docID=5174962#"
 literal "false"
 
 \end_inset
@@ -51587,7 +51587,7 @@ Introduction to panel data
 \end_layout
 
 \begin_layout Standard
-Reference: 
+References: 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "cameron2005microeconometrics"
@@ -51596,8 +51596,22 @@ literal "true"
 \end_inset
 
 , Part V, Chapters 21 and 22 (plus 23 if you have special interest in the
- topic).
+ topic) and a basic discussion in Stock and Watson, 
+\emph on
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Introduction to Econometrics"
+target "https://ebookcentral.proquest.com/lib/uab/detail.action?docID=5174962#"
+literal "false"
+
+\end_inset
+
+
+\emph default
+, Chapter 10.
  The GRETL manual also has two chapters, which are a nice reference.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -53737,6 +53751,54 @@ check the serial correlation of the residuals: if it exists, the instruments
 Exercises
 \end_layout
 
+\begin_layout Enumerate
+Stock and Watson, in their textbook 
+\begin_inset CommandInset href
+LatexCommand href
+name "“Introduction to Econometrics”, 3rd Edition"
+target "https://ebookcentral.proquest.com/lib/uab/detail.action?docID=5174962#"
+literal "false"
+
+\end_inset
+
+, discuss panel data, in Chapter 10.
+ They use the data set 
+\begin_inset CommandInset href
+LatexCommand href
+name "fatality.xlsx"
+target "https://wps.pearsoned.com/wps/media/objects/11422/11696965/datasets3e/datasets/fatality.xlsx"
+literal "false"
+
+\end_inset
+
+, which is explained in 
+\begin_inset CommandInset href
+LatexCommand href
+name "fatality.docx"
+target "https://wps.pearsoned.com/wps/media/objects/11422/11696965/datasets3e/datasets/fatality.docx"
+literal "false"
+
+\end_inset
+
+.
+ Using this data, and the software of your choice (hint: Gretl is easy)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+replicate the results in Eqn.
+ 10.2 and Figure 10.1.
+\end_layout
+
+\begin_layout Enumerate
+replicate the results in Eqn 10.8 and Figure 10.2.
+\end_layout
+
+\begin_layout Enumerate
+replicate the fixed effects panel data results in column 2 of Table 10.1.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 In the context of a dynamic model with fixed effects, why is the differencing
  used in the 
