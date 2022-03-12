@@ -53798,6 +53798,10 @@ replicate the results in Eqn 10.8 and Figure 10.2.
 replicate the fixed effects panel data results in column 2 of Table 10.1.
 \end_layout
 
+\begin_layout Enumerate
+give an economic interpretation of the results.
+\end_layout
+
 \end_deeper
 \begin_layout Enumerate
 In the context of a dynamic model with fixed effects, why is the differencing
