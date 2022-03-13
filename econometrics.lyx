@@ -50528,7 +50528,7 @@ Under some special circumstances, the integrals may have analytic solutions:
 When the dimension of the parameter is low, quadrature methods may be used.
  What was done in 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -51064,6 +51064,34 @@ reference "fig:Metropolis-Hastings-MCMC,-expone"
  rate.
  If you increase the sample size, you'll see how the posterior concentrates
  around the true value, 3.
+\end_layout
+
+\begin_layout Standard
+An example of estimating this same simple exponential model, but using a
+ specialized package (
+\begin_inset CommandInset href
+LatexCommand href
+name "Turing.jl"
+target "https://turing.ml/stable/"
+literal "false"
+
+\end_inset
+
+) and a more sophisticated sampling method (NUTS: no U-turn Hamiltonian
+ Monte Carlo) is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+href{./Examples/Bayesian/BayesExample3.jl}{ BayesExample3.jl} 
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
