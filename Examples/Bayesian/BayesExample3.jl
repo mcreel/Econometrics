@@ -10,9 +10,9 @@ y = rand(Exponential(3.0), 30)
     y ~ Exponential(θ)
 end    
 # get the chain
-Proposal = θ -> rand(LogNormal(log(θ),tuning))
 chain = sample(ExpModel(y), NUTS(200, 0.65), 10000)
 end
+## run it
 chain = main()
 # examine and plot chain
 display(chain)

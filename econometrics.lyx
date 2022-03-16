@@ -51078,7 +51078,7 @@ literal "false"
 \end_inset
 
 ) and a more sophisticated sampling method (NUTS: no U-turn Hamiltonian
- Monte Carlo) is 
+ Monte Carlo) that does not require that a proposal be specified is 
 \begin_inset ERT
 status open
 
@@ -59465,14 +59465,14 @@ status collapsed
 \end_inset
 
 is fully characterized by a parameter vector, so that simulated data can
- be generated, but the likelihood function and analytic moments of the observabl
-e variables are not calculable, so that MLE or GMM estimation is not possible.
+ be generated, but the likelihood function and/or analytic moments of the
+ observable variables are not calculable, so that ordinary MLE or GMM estimation
+ is not possible.
  
 \end_layout
 
 \begin_layout Itemize
-Many moderately complex models result in intractable likelihoods or moments,
- as we will see.
+Many moderately complex models result in intractable likelihoods or moments.
 \end_layout
 
 \begin_layout Itemize
@@ -59650,10 +59650,14 @@ So,
 
 \begin_layout Itemize
 Let 
-\begin_inset Formula $\theta=(\beta^{\prime},(vec^{*}\Omega)^{\prime})^{\prime}$
+\begin_inset Formula $\theta=(\beta^{\prime},\mathrm{vech}(\Omega)^{\prime})^{\prime}$
 \end_inset
 
- be the vector of parameters of the model.
+ be the vector of parameters of the model (
+\begin_inset Formula $\mathrm{vech}$
+\end_inset
+
+function vectorizes the lower triangle of a square matrix).
  The contribution of the 
 \begin_inset Formula $i^{th}$
 \end_inset
@@ -59687,6 +59691,10 @@ p_{i}(\theta)=\int_{A_{i}}\phi(y_{i}^{*}-X_{i}\beta,\Omega)dy_{i}^{*}
 
 \end_inset
 
+
+\begin_inset Newpage newpage
+\end_inset
+
  
 \end_layout
 
@@ -59716,19 +59724,12 @@ y infeasible when
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 The mapping 
 \begin_inset Formula $\tau(y^{*})$
 \end_inset
 
- has not been made specific so far.
+ has not been made specific.
  This setup is quite general:
 \begin_inset ERT
 status collapsed
@@ -59747,107 +59748,15 @@ for different choices of
  it nests the case of dynamic binary discrete choice models as well as the
  case of multinomial discrete choice (the choice of one out of a finite
  set of alternatives).
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Multinomial discrete choice is illustrated by a (very simple) job search
- model.
- We have cross sectional data on individuals' matching to a set of 
-\begin_inset Formula $m$
-\end_inset
-
- jobs that are available (one of which is unemployment).
- The utility of alternative 
-\begin_inset Formula $j$
-\end_inset
-
- is 
-\begin_inset Formula 
-\[
-u_{j}=X_{j}\beta+\varepsilon_{j}
-\]
-
-\end_inset
-
- Utilities of jobs, stacked in the vector 
-\begin_inset Formula $u_{i}$
-\end_inset
-
- are not observed.
- Rather, we observe the vector formed of elements 
-\begin_inset Formula 
-\[
-y_{j}=1\left[u_{j}>u_{k},\forall k\in m,k\neq j\right]
-\]
-
-\end_inset
-
- Only one of these elements is different than zero, and it indicates which
- of the jobs is selected.
+ See McFadden's paper for more details.
 \end_layout
 
 \begin_layout Itemize
-Dynamic binary discrete choice is illustrated by repeated choices over time
- between two alternatives.
- Let alternative 
-\begin_inset Formula $j$
-\end_inset
-
- have utility 
-\begin_inset Formula 
-\begin{eqnarray*}
-u_{jt} & = & W_{jt}\beta-\varepsilon_{jt},\\
-j & \in & \{1,2\}\\
-t & \in & \{1,2,...,m\}
-\end{eqnarray*}
-
-\end_inset
-
- Then 
-\begin_inset Formula 
-\begin{eqnarray*}
-y_{t}^{*} & = & u_{2t}-u_{1t}\\
- & = & (W_{2t}-W_{1t})\beta+\varepsilon_{2t}-\varepsilon_{1t}\\
- & \equiv & X_{t}\beta+v_{t}
-\end{eqnarray*}
-
-\end_inset
-
- Now the mapping is (element-by-element) 
-\begin_inset Formula 
-\[
-y=1\left[y^{*}>0\right],
-\]
-
-\end_inset
-
- that is 
-\begin_inset Formula $y_{it}=1$
-\end_inset
-
- if individual 
-\begin_inset Formula $i$
-\end_inset
-
- chooses the second alternative in period 
-\begin_inset Formula $t,$
-\end_inset
-
- zero otherwise.
- If the 
-\begin_inset Formula $v_{t}$
-\end_inset
-
- are not independent across time, then the choices across time are not independe
-nt of one another, either.
+The point here is that it is not too hard to come up with models for which
+ we can draw data, given parameters, but for which we can't compute the
+ likelihood function.
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -60261,12 +60170,12 @@ Nevertheless, the approximation shouldn't be too bad, especially if
 
  is small.
  For example, one could simulate the model at a frequency of 1 minute, saving
- every 1440th point on the path (60
+ every 1440th point on the path (there are 60
 \begin_inset Formula $\times$
 \end_inset
 
-24 = 1440), which would give a good approximation of the evolution of the
- daily observations.
+24 = 1440 minutes in a day), which would give a good approximation of the
+ evolution of the daily observations.
  The 
 \begin_inset Quotes sld
 \end_inset
@@ -60276,8 +60185,8 @@ Euler approximation
 \end_inset
 
  method for simulating such models is based upon this fact.
- There are other approximation schemes which are more accurate than this
- naive scheme.
+ There are other approximation schemes which are more accurate and faster
+ than this naive scheme.
  Given an approximation method that can be made very accurate, then simulation-b
 ased inference allows for direct inference on 
 \begin_inset Formula $\theta$
@@ -60294,6 +60203,10 @@ s prevent direct application of ML, GMM, etc.
  a parameter vector.
  This means that the model is simulable, conditional on the parameter vector.
  
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -61228,7 +61141,7 @@ SV model, typical data and density
 \begin_layout Standard
 The Julia script 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -61495,7 +61408,8 @@ noprefix "false"
 
 .
  In all cases, the true parameters are over-rejected, which is to say, the
- confidence intervals are tighter than they should be.
+ confidence intervals are tighter than they should be, and Type-I error
+ will occur more often than it should.
  This applies to both the extremum and Baysesian versions.
  The Bayesian version could perhaps be improved somewhat by more careful
  tuning of the MCMC algorithm (see below) but the extremum version does
@@ -61555,7 +61469,7 @@ CI coverage, SV model, MSM and Bayesian MSM
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Simulated Neural Moments
 \end_layout
 
@@ -61584,9 +61498,8 @@ noprefix "false"
 \end_inset
 
 .
- Note that when the neural statistics are used (column labeled Z), the coverage
- is correct (the same is true for 99 and 90% CIs - see the working paper
- mentioned on the package web site).
+ Note that when the neural statistics are used (columns labeled Z), the
+ coverage is statistically correct.
  The results using the original statistics, without the neural net (the
  column labeled W) are a little better than what's in the previous figure,
  but are still far from correct.
@@ -61598,6 +61511,20 @@ noprefix "false"
  The results, though, are qualitatively the same: without use of the neural
  net, the confidence intervals over-reject the true values, in some cases
  by serious margins.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "creel2021inference"
+literal "false"
+
+\end_inset
+
+ reports Monte Carlo results for other models which confirm that processing
+ using a neural net leads to correct coverage of confidence intervals.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -61616,7 +61543,7 @@ name "fig:95%-CI-coverage,"
 
 \end_inset
 
-95% CI coverage, SV model, using simulated neural moments
+90, 95 and 99% CI coverage, SV model, using simulated neural moments
 \end_layout
 
 \end_inset
@@ -61626,8 +61553,28 @@ name "fig:95%-CI-coverage,"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Examples/SBEM/snm.png
-	width 20cm
+	filename Examples/SBEM/90.png
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Examples/SBEM/95.png
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Examples/SBEM/99.png
+	width 15cm
 
 \end_inset
 

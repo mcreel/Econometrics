@@ -16,3 +16,4 @@ d = DataFrame(rand(2,2), :auto)
 CSV.write("/tmp/junk.csv", d)
 d = CSV.read("/tmp/junk.csv", DataFrame)
 clc()
+
