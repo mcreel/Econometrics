@@ -61425,6 +61425,7 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -61529,6 +61530,7 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -61554,7 +61556,7 @@ name "fig:95%-CI-coverage,"
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/SBEM/90.png
-	width 15cm
+	width 20cm
 
 \end_inset
 
@@ -61564,7 +61566,7 @@ name "fig:95%-CI-coverage,"
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/SBEM/95.png
-	width 15cm
+	width 20cm
 
 \end_inset
 
@@ -61574,7 +61576,7 @@ name "fig:95%-CI-coverage,"
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/SBEM/99.png
-	width 15cm
+	width 20cm
 
 \end_inset
 
