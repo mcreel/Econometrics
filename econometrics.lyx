@@ -59430,13 +59430,17 @@ performing estimation of models that are complex enough so that analytic
 very 
 \emph default
 complex models.
+ Keeping in mind that a model is used to extract the essential, interesting
+ features of a problem, we don't necessarily want to go too far in adding
+ complexity.
+ 
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 Simulation based estimation, especially the method of simulated moments,
  has become quite standard in applied research, so it is important to understand
- how it works
+ how it works.
 \end_layout
 
 \begin_layout Standard
@@ -59923,10 +59927,10 @@ estimation.
 \end_layout
 
 \begin_layout Itemize
-In this case, since there is only one latent variable, quadrature is probably
- a better choice.
- But with more random parameters, quadrature becomes too costly and/or inaccurat
-e.
+In this case, since there is only one latent variable, using numeric integration
+ methods (quadrature) is probably a better choice.
+ But with more random parameters, and thus more latent variable, quadrature
+ becomes too costly and/or inaccurate.
 \end_layout
 
 \begin_layout Standard
@@ -60044,9 +60048,9 @@ The function
 
 \end_layout
 
-\begin_layout Standard
-To estimate a model of this sort, we typically have data that are assumed
- to be observations of 
+\begin_layout Itemize
+To estimate a model of this sort, we typically have data that are observations
+ of 
 \begin_inset Formula $y_{t}$
 \end_inset
 
@@ -60065,7 +60069,17 @@ To estimate a model of this sort, we typically have data that are assumed
  is a continuous process, it is observed in discrete time.
  
 \emph on
-(make a drawing)
+(make a drawing).
+ 
+\end_layout
+
+\begin_layout Itemize
+financial data is often available at very high frequency, so that a continuous
+ time model is a natural framework.
+ However, we may want to estimate the model using data at a lower frequency,
+ to reduce the computational burden (which lets us get results in a reasonable
+ amount of time, which is necessary when trying to use models for trading
+ decisions).
 \end_layout
 
 \begin_layout Standard
@@ -60081,6 +60095,10 @@ To perform inference on
  This density is necessary to evaluate the likelihood function or to evaluate
  moment conditions (which are based upon expectations with respect to this
  density).
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -61059,6 +61077,114 @@ reference "simulated moments"
 
 \end_layout
 
+\begin_layout Subsection
+Numerical issues: 
+\begin_inset Quotes sld
+\end_inset
+
+Chatter
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When a function of interest is approximated with simulations, for example,
+ approximating 
+\begin_inset Formula $E_{\theta}K(y_{t},x_{t}|I_{t})$
+\end_inset
+
+ with the average of simulations 
+\begin_inset Formula $\frac{1}{H}\sum_{h=1}^{H}k(\widetilde{y}_{t}^{h},x_{t})$
+\end_inset
+
+, where each 
+\begin_inset Formula $\widetilde{y}_{t}^{h}$
+\end_inset
+
+ is drawn at 
+\begin_inset Formula $\theta$
+\end_inset
+
+, we need to recognize that if we repeat the simulation process, drawing
+ 
+\begin_inset Formula $H$
+\end_inset
+
+ new samples, the value of 
+\begin_inset Formula $\frac{1}{H}\sum_{h=1}^{H}k(\widetilde{y}_{t}^{h},x_{t})$
+\end_inset
+
+ will change, even if 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is held constant, unless special care is taken.
+ When the random elements of the simulation process are not held fixed for
+ the simulations, this function is everywhere discontinuous.
+ 
+\end_layout
+
+\begin_layout Itemize
+From a theoretical point of view, this is not a problem, as the function
+ will be stochastically equicontinuous, under reasonable assumptions, and
+ this still allows for consistency and asymptotic normality.
+ 
+\end_layout
+
+\begin_layout Itemize
+However, from the point of view of computing an extremum estimator, using
+ gradient-based optimization, or for computing a covariance matrix that
+ depends on taking derivatives, it is a problem.
+ 
+\end_layout
+
+\begin_layout Itemize
+In certain cases, when 
+\begin_inset Formula $K(y_{t},x_{t})$
+\end_inset
+
+ is a continuous function in 
+\begin_inset Formula $y$
+\end_inset
+
+, is is possible to control chatter by keeping the underlying random draws
+ of latent variables fixed across simulations, as 
+\begin_inset Formula $\theta$
+\end_inset
+
+ varies.
+ The example in the next section does this.
+\end_layout
+
+\begin_layout Itemize
+In other cases, this is harder.
+ For example, if 
+\begin_inset Formula $y$
+\end_inset
+
+ is a discrete random variable, then the function will be discontinuous
+ in 
+\begin_inset Formula $\theta$
+\end_inset
+
+, even if random draws of latent variables are held fixed.
+ In these cases, extremum estimators have been devised that rely on forms
+ of smoothing of the functions.
+ However, it is quite easy to move to a Bayesian perspective, where we don't
+ need to optimize, and this will also be easier to program, as we won't
+ need to keep draws of latent variable fixed.
+ The practical example at the end of the chapter gives an example.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Example: stochastic volatility
 \end_layout
@@ -61195,6 +61321,11 @@ href{./Examples/SBEM/SVlib.jl}{SVlib.jl}
 \end_layout
 
 \begin_layout Itemize
+Also in that file, see how latent variables are held fixed across simulations,
+ to eliminate chatter.
+\end_layout
+
+\begin_layout Itemize
 The results use 
 \begin_inset ERT
 status open
@@ -61223,6 +61354,10 @@ noprefix "false"
 
 \begin_layout Itemize
 check the script to see how to compute standard errors, etc.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -61645,6 +61780,34 @@ do the same, but computing a MSM estimator of the probit model.
 on of the probit model.
  Investigate how the number of simulations affect the two simulation-based
  estimators.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Practical summary
+\end_layout
+
+\begin_layout Standard
+The practical summary for the Chapter is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./PracticalSummaries/22-SimulationBased.jl}{here}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard

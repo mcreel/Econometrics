@@ -23,34 +23,37 @@ y = rand.(Poisson.(λ(x,θ₀)))
 ## the statistics, averaged over observations
 function k(x,y)
     vec(mean([y sqrt.(y) x.*y x.*sqrt.(y)], dims=1))
-end    
+end
 
 ## the simulated moments: S replications
 function simulated_moments(θ, S, x)
     [k(x, rand.(Poisson.(λ(x,θ)))) for _ = 1:S]
-end    
+end
 
 ## Define the MSM criterion 
 S = 20 # number of simulation replications
 m = θ -> k(x,y) - mean(simulated_moments(θ, S, x)) 
-obj = θ -> mean(abs2, m(θ)) # sums of squares of moments: corresponds to GMM with identity weight
+ # sums of squares of moments: corresponds to GMM with identity weight
+function obj(θ)
+    mean(abs2, m(θ))
+end    
+function obj(a,b) # a method for plots
+    obj([a,b])
+end
 
 ## profile the MSM objective function
-function plotobj(a,b)
-    obj([a,b])
-end    
 using Plots
 plotlyjs() # use this backend for interactive plots
 θ₁ = range(0.9, length=100, stop=1.1)
 θ₂ = θ₁
-p1 = surface(θ₁, θ₂, (θ₁,θ₂)->plotobj(θ₁,θ₂),c=:viridis)
+p1 = surface(θ₁, θ₂, (θ₁,θ₂)->obj(θ₁,θ₂),c=:viridis)
 xlabel!("x")
 ylabel!("y")
-p2 = contour(θ₁, θ₂, (θ₁,θ₂)->plotobj(θ₁,θ₂),c=:viridis)
+p2 = contour(θ₁, θ₂, (θ₁,θ₂)->obj(θ₁,θ₂),c=:viridis)
 plot(p1, p2)
 
 ## The objective function looks horrible!
-#  Nevertheless, let's attempt to do GMM
+#  Nevertheless, let's attempt to do gradient-based estimation
 using Econometrics
 fminunc(obj, zeros(2))
 # note that theta hat is same as start values, it didn't work
@@ -81,6 +84,7 @@ chain = sample(MSM(k_data, S, x),
     length; discard_initial=burnin)
 display(chain)
 plot(chain)
+corner(chain)
 c = Array(chain)
 acceptance = size(unique(c[:,1]),1)[1] / size(c,1)
 println("Acceptance rate: $acceptance")
