@@ -1,7 +1,6 @@
 using Econometrics, Plots, Statistics, Calculus, LinearAlgebra, DelimitedFiles
-
+cd(@__DIR__)
 include("SVlib.jl") # library of functions for the SV model
-
 # proposals for MCMC
 # uniform random walk in one dimension
 function proposal1(current, tuning)
@@ -90,7 +89,6 @@ for i = 1:3
     upper = quantile(chain[:,i],0.95)
     inci[i] = θtrue[i] >= lower && θtrue[i] <= upper
 end
-
 
 # Results
 p1 = npdensity(chain[:,1]) # example of posterior plot

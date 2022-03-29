@@ -1716,7 +1716,7 @@ qualitative information,
 signs of effects and so forth, but not the actual values in a given economy,
  not the magnitudes.
  So, theory by itself has some limitations, just as data by itself has limitatio
-n.
+ns.
 \end_layout
 
 \begin_layout Standard
@@ -1745,7 +1745,7 @@ q_{t} & =\beta_{1}+\beta_{2}p_{t}+\varepsilon_{t2}
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 The functions 
 \begin_inset Formula $s$
 \end_inset
@@ -1757,7 +1757,7 @@ The functions
  have been specified to be linear functions
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 The parameters (
 \begin_inset Formula $\alpha_{1},$
 \end_inset
@@ -1769,22 +1769,42 @@ The parameters (
  etc.) are constant over time.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 There is a single unobservable component in each equation, and it is additive.
 \end_layout
 
+\begin_layout Enumerate
+\begin_inset Formula $E(\epsilon_{tj})=0,\,j=1,2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E(m_{t}\epsilon_{tj})=0,\,j=1,2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E(p_{t}\epsilon_{t2})=0$
+\end_inset
+
+ 
+\end_layout
+
 \begin_layout Standard
-If we assume nothing about the error terms 
-\begin_inset Formula $\epsilon_{t1}$
-\end_inset
 
- and 
-\begin_inset Formula $\epsilon_{t2}$
-\end_inset
+\series bold
+\emph on
+Draw an assumptions block.
 
-, we can always write the last two equations, as the errors simply make
- up the difference between the true demand and supply functions and the
- assumed forms.
+\series default
+\emph default
+ With assumptions 1-3, we can always write the last two equations, as the
+ errors simply make up the difference between the true demand and supply
+ functions and the assumed forms.
  But in order for the 
 \begin_inset Formula $\beta$
 \end_inset
@@ -1794,35 +1814,18 @@ If we assume nothing about the error terms
 economic meaning
 \emph default
 , and in order to be able to use sample data to make reliable inferences
- about their values, we need to make additional assumptions.
- 
-\series bold
-\emph on
-Draw an assumptions block.
+ about their values, we need to make assumptions like those in 4-6.
 
-\emph default
+\series bold
  
 \series default
-Such assumptions might be something like:
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $E(\epsilon_{tj})=0,\,j=1,2$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $E(m_{t}\epsilon_{tj})=0,\,j=1,2$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 These are assertions that the errors have mean zero and are uncorrelated
- with income, and such assertions may or may not be reasonable.
+ with income, and that the second error is uncorrelated with price.
+ Such assertions 
+\bar under
+may or may not be
+\bar default
+ reasonable.
  Later we will see how such assumptions may be used and/or tested.
  
 \begin_inset Newpage newpage
@@ -1842,7 +1845,17 @@ Draw an econometric model block.
 \end_layout
 
 \begin_layout Itemize
-All of the last six bulleted points have 
+with assumptions 4 and 6, we could estimate the supply equation by OLS (try
+ it: and compare estimate with true parameter value)
+\end_layout
+
+\begin_layout Itemize
+with assumptions 4 and 5, we could estimate the supply equation by instrumental
+ variables (do it).
+\end_layout
+
+\begin_layout Itemize
+All of the above assumptions 1-6 above have 
 \series bold
 no theoretical basis
 \series default
@@ -1854,7 +1867,7 @@ no theoretical basis
 The validity of any econometric results we obtain using an econometric model
  will be contingent on these additional restrictions being at least approximatel
 y correct.
- 
+ Note that assumption 6 is invalid, as we will see in Chapter 11.
 \end_layout
 
 \begin_layout Itemize
@@ -1868,8 +1881,7 @@ specification testing
 
 \begin_layout Itemize
 Only when we are convinced that the model is at least approximately correct
- should we use it for economic analysis.
- 
+ should we use it for economic analysis, or for possibly rejecting theories
 \end_layout
 
 \begin_layout Standard
@@ -23019,7 +23031,11 @@ literal "false"
 \begin_inset Formula $\theta,$
 \end_inset
 
- e.g., 
+ 
+\emph on
+i.e
+\emph default
+., 
 \begin_inset Formula 
 \[
 s(\theta)=a+b^{\prime}\theta+\frac{1}{2}\theta^{\prime}C\theta,
@@ -23027,7 +23043,7 @@ s(\theta)=a+b^{\prime}\theta+\frac{1}{2}\theta^{\prime}C\theta,
 
 \end_inset
 
- the first order conditions would be linear:
+the first order conditions would be linear:
 \end_layout
 
 \begin_layout Standard
@@ -23038,7 +23054,7 @@ D_{\theta}s(\theta)=b+C\theta
 
 \end_inset
 
- so the maximizing (minimizing)
+so the maximizing (minimizing)
 \begin_inset ERT
 status collapsed
 
@@ -23638,6 +23654,7 @@ http://en.wikipedia.org/wiki/Rosenbrock_function
 \end_inset
 
 .
+ (note for lectures: click on the image in the web page to enlarge it)
 \begin_inset Newpage newpage
 \end_inset
 
@@ -24263,48 +24280,19 @@ Gradient based optimization methods are much more likely to be successful
 \end_inset
 
 
-\begin_inset Separator latexpar
+\begin_inset Formula 
+\begin{align*}
+s_{n}(\theta)= & \frac{1}{n}\sum_{t}\left(y_{t}-h(\alpha x_{t}+\beta z_{t})\right)^{2}\\
+D_{\alpha}s_{n}(\cdot)= & \frac{1}{n}\sum_{t}2\left(y_{t}-h(\alpha x_{t}+\beta z_{t})\right)g(\alpha x_{t}+\beta z_{t})x_{t}\\
+D_{\beta}s_{n}(\cdot)= & \frac{1}{n}\sum_{t}2\left(y_{t}-h(\alpha x_{t}+\beta z_{t})\right)g(\alpha x_{t}+\beta z_{t})z_{t}
+\end{align*}
+
 \end_inset
 
 
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-so, 
-\begin_inset Formula $s_{n}(\theta)=\frac{1}{n}\sum_{t}\left(y_{t}-h(\alpha x_{t}+\beta z_{t})\right)^{2}$
-\end_inset
-
- and
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $D_{\alpha}s_{n}(\cdot)=\frac{1}{n}\sum_{t}2\left(y_{t}-h(\alpha x_{t}+\beta z_{t})\right)g(\alpha x_{t}+\beta z_{t})x_{t}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $D_{\beta}s_{n}(\cdot)=\frac{1}{n}\sum_{t}2\left(y_{t}-h(\alpha x_{t}+\beta z_{t})\right)g(\alpha x_{t}+\beta z_{t})z_{t}$
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 suppose that 
 \begin_inset Formula $D_{\alpha}s_{n}(\cdot)=1000$
@@ -24314,12 +24302,7 @@ suppose that
 \begin_inset Formula $D_{\beta}s_{n}(\cdot)=0.001.$
 \end_inset
 
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-One could define 
+ One could define 
 \begin_inset Formula $\alpha^{\ast}=1000\alpha;$
 \end_inset
 
@@ -24334,15 +24317,17 @@ One could define
  
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 then 
-\begin_inset Formula $D_{\alpha^{*}}s_{n}(\cdot)=\frac{1}{n}\sum_{t}2\left(y_{t}-h(\alpha^{*}x_{t}^{*}+\beta^{*}z_{t}^{*})\right)g(\alpha^{*}x_{t}^{*}+\beta^{*}z_{t}^{*})x_{t}^{*}$
+\begin_inset Formula 
+\[
+D_{\alpha^{*}}s_{n}(\cdot)=\frac{1}{n}\sum_{t}2\left(y_{t}-h(\alpha^{*}x_{t}^{*}+\beta^{*}z_{t}^{*})\right)g(\alpha^{*}x_{t}^{*}+\beta^{*}z_{t}^{*})x_{t}^{*}
+\]
+
 \end_inset
 
-.
- Everything is the same as before, because the 1000s cancel out, except
- there is an 
+Everything is the same as before, because the 1000s cancel out, except there
+ is an 
 \begin_inset Formula $x_{t}^{*}$
 \end_inset
 
@@ -24424,23 +24409,6 @@ Calculus.hessian(rosenbrock, 2.0*ones(2))
 \begin_layout Example
 Look at the (2,2) element: the finite difference version is off by 6 orders
  of magnitude! The off diagonal elements are not too good, either.
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-There are algorithms (such as BFGS and DFP) that use the sequential gradient
- evaluations to build up an approximation to the Hessian.
- The iterations are faster because the actual Hessian isn't calculated,
- but more iterations usually are required for convergence.
- Versions of BFGS are probably the most widely used optimizers in econometrics.
-\end_layout
-
-\begin_layout Itemize
-Switching between algorithms during iterations is sometimes useful.
- 
 \begin_inset Newpage newpage
 \end_inset
 
@@ -24532,6 +24500,17 @@ literal "false"
 .
  Try experimenting by passing rt=0.9 or rt=0.25 as arguments, and see what
  happens.
+ NOTE: as of 22 March, 2022, the convergence message of SAMIN in Optim is
+ missleading.
+ Don't worry about a 
+\family typewriter
+* Status: failure
+\family default
+ message, if you see one, as long as you see
+\family typewriter
+ ==> Normal convergence <==.
+\family default
+
 \begin_inset listings
 inline false
 status open
@@ -25805,15 +25784,45 @@ Suppose there are
  
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-Our paradigm is that data are generated as a draw from the joint density
- 
+so, we have 
+\begin_inset Formula $n$
+\end_inset
+
+ observations on 
+\begin_inset Formula $p$
+\end_inset
+
+ variables.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+ could be a number of economic agents in a cross sectional sample, or the
+ number of time periods in a time series sample.
+\end_layout
+
+\begin_layout Itemize
+it's probably most natural to organize the data in a 
+\begin_inset Formula $n\times p$
+\end_inset
+
+ array, like what you would have in a spreadsheet.
+ That is not important here, but it may help to fix the ideas.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Our paradigm is that data are generated as a draw from a joint density 
 \begin_inset Formula $f_{Z_{n}}(z)$
 \end_inset
 
 .
  This density may not be known, but it exists in principle.
- 
+ It is multivariate, with high density.
 \end_layout
 
 \begin_layout Itemize
@@ -25923,7 +25932,7 @@ Because the data
 \end_inset
 
  or 
-\begin_inset Formula $s_{n}(\mathbf{Z}_{n}(\omega,\theta))$
+\begin_inset Formula $s_{n}(\mathbf{Z}_{n}(\omega),\theta)$
 \end_inset
 
 .
@@ -25933,15 +25942,12 @@ Because the data
 \end_layout
 
 \begin_layout Itemize
-A data set is 
-\begin_inset Formula $\mathbf{Z}_{n}(\omega)$
-\end_inset
-
- once 
+A data set, once 
 \begin_inset Formula $\omega$
 \end_inset
 
  has been drawn.
+ This is just the collection of numbers in your spreadsheet.
  At this point, 
 \begin_inset Formula $\mathbf{Z}_{n}(\omega)$
 \end_inset
@@ -25970,7 +25976,7 @@ s perform in repeated sampling, so we want to treat the sample as random.
 \end_inset
 
 , and how 
-\begin_inset Formula $s_{n}(\mathbf{Z}_{n}(\omega,\theta))$
+\begin_inset Formula $s_{n}(\mathbf{Z}_{n}(\omega),\theta)$
 \end_inset
 
  behaves with different samples.
@@ -26386,6 +26392,15 @@ We'll often write the objective function suppressing the dependence on
  However, the data is still in there, and because the data is randomly sampled,
  the objective function is random, too.
  
+\end_layout
+
+\begin_layout Itemize
+For lectures, 
+\color red
+jump to Ch.
+ 12 now
+\color inherit
+, and then come back here.
 \begin_inset Newpage newpage
 \end_inset
 
