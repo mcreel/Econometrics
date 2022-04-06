@@ -59,8 +59,8 @@ f(x,y) = -(3*(1-x)^2 * exp(-(x^2) - (y+1)^2)
  
 ##
 # let's explore it:
-#using Pkg
-#Pkg.add("PlotlyJS") # this one is not in the system image
+using Pkg
+Pkg.add("PlotlyJS") # this one is not in the system image
 using Plots
 plotlyjs() # use this backend for interactive plots
 x = range(-4, step=0.1, stop=4)

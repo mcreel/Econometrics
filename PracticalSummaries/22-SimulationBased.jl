@@ -43,6 +43,8 @@ end
 
 ## profile the MSM objective function
 using Plots
+using Pkg
+Pkg.add("PlotlyJS") # it's not is system image
 plotlyjs() # use this backend for interactive plots
 θ₁ = range(0.9, length=100, stop=1.1)
 θ₂ = θ₁
