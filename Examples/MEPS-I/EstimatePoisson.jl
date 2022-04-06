@@ -32,6 +32,9 @@ n = size(x,1)
 x = [ones(n,1) x]
 
 ## to check effects of poor scaling, try commenting the next line
+# Note: mle.jl now uses automatic differentiation by default, which
+# is not sensitive to scaling, in this case. So, you will not see a difference
+# for the OBDV data. Perhaps, for others, there will be a difference, haven't checked
 x[:,end] = x[:,end]/1000.0 # put income in thousands
 
 ## do ML

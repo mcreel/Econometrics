@@ -44,7 +44,7 @@ tol = 1e-08
 
 using ForwardDiff
 sc =  ForwardDiff.jacobian(objᵢ, βhat) # get the score contributions
-# from theory, we know that sc = -2x.*ϵhat. Let's use this verify
+# from theory, we know that sc = -2x.*ϵcat. Let's use this verify
 # that the automatic differentiation worked.
 sc - (-2x.*(y - x*βhat))
 
@@ -69,16 +69,16 @@ end
 2x'x/n
 ##
 
-# now, we can compute the t-statistics, to compare to what we saw
+# now, we can compute the estimated standard errors, to compare to what we saw
 # from the analytic results, above
 using LinearAlgebra
 v∞ = inv(𝒥hat)*ℐhat*inv(𝒥hat) # this is the estimate of the limiting var of √n(β-β⁰) 
-t = sqrt.(diag(v∞/n))   # to get small sample est. variance, divide by n
+se = sqrt.(diag(v∞/n))   # to get small sample est. variance, divide by n
 
 ##
 
 # the last problem is for a correctly specified model, Case I in the notes.
-# Let's look at an incorrectly specified model, Case III in the note, to
+# Let's look at an incorrectly specified model, Case III in the notes, to
 # verify that the extremum theory works here, too.
 
 # Let's work with Problem 1, in the exercises at the end of Chapter 13.
@@ -126,10 +126,9 @@ for i = 1:reps
 	X = [ones(n) x] # define regressor matrix for linear approximation about 0
 	βhat, vβhat, junk = ols(y, X, silent=true)
 	se = sqrt.(diag(vβhat))
-	inci[i,:] = (β⁰ .>= βhat .- 1.95996se) .& (β⁰ .<= βhat .+ 1.95996se)
+	inci[i,:] = (β⁰ .>= βhat .- crit*se) .& (β⁰ .<= βhat .+ crit*se)
 end
-
-ci = Int64(100(1-α))
+ci = Int64(100*(1-α))
 println("Coverage of $ci% CIs")
 mean(inci, dims=1) # these should be approximately 1-α, at least when n is large enough
 
