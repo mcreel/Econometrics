@@ -27515,9 +27515,9 @@ Now suppose that the density
  is the item of interest.
  When the DGP is parametric, the limiting objective function is 
 \begin_inset Formula 
-\[
-s_{\infty}(\theta)=\lim_{n\rightarrow\infty}\mathcal{E}s_{n}(Z_{n},\theta)=\lim_{n\rightarrow\infty}\int_{\mathcal{Z}_{n}}s_{n}(z,\theta){\color{red}f_{Z_{n}}(z;\rho^{0})}dz
-\]
+\begin{equation}
+s_{\infty}(\theta)=\lim_{n\rightarrow\infty}\mathcal{E}s_{n}(Z_{n},\theta)=\lim_{n\rightarrow\infty}\int_{\mathcal{Z}_{n}}s_{n}(z,\theta){\color{red}f_{Z_{n}}(z;\rho^{0})}dz\label{eq:parametric density of data}
+\end{equation}
 
 \end_inset
 
@@ -31335,7 +31335,19 @@ f_{YZ}(Y,Z,\psi_{0}).
 
 \end_inset
 
- This is the joint density of the sample.
+This is the joint density of the sample (note: it's the same as what we
+ see in eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:parametric density of data"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, except we're partitioning the data into two groups).
  The 
 \emph on
 likelihood
@@ -31395,6 +31407,28 @@ maximum likelihood estimator
 \end_inset
 
  that maximizes the likelihood function.
+\end_layout
+
+\begin_layout Standard
+So, when we're doing ML, we assume we're in the Case 1 of the discussion
+ around eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:parametric density of data"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Maybe we could call this estimator the maximum assumptions estimator, as
+ we assume everything about the data generating process is known, except
+ for the particular values of the parameter vector.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -31896,7 +31930,8 @@ to get a LLN to apply: LNNs apply to averages of terms, not products
 to avoid loss of precision on a digital computer: the likelihood function
  in product form will tend rapidly to zero when each term is between 0 and
  1.
- For a discrete r.v., this will be the case.
+ For a discrete r.v., this will be the case, and it's usually the case for
+ continuous R.V.s, too, unless they're highly concentrated.
  When this happens, then, as the sample size gets larger, the objective
  function gets smaller, and, before long, will dip below machine precision.
 \end_layout
