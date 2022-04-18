@@ -34234,7 +34234,7 @@ D_{\theta^{\prime}}\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}(\tilde{\theta}-
  we can write 
 \begin_inset Formula 
 \[
-{\color{green}\lim_{n\rightarrow\infty}\int\left(\tilde{\theta}-\theta\right)f(\theta)D_{\theta^{\prime}}\ln f(\theta)dy}+{\color{blue}\lim_{n\rightarrow\infty}\int f(Y,\theta)D_{\theta^{\prime}}\left(\tilde{\theta}-\theta\right)dy}=0.
+{\color{green}{\color{red}\lim_{n\rightarrow\infty}\int\left(\tilde{\theta}-\theta\right)f(\theta)D_{\theta^{\prime}}\ln f(\theta)dy}}+{\color{blue}\lim_{n\rightarrow\infty}\int f(Y,\theta)D_{\theta^{\prime}}\left(\tilde{\theta}-\theta\right)dy}=0.
 \]
 
 \end_inset
@@ -34250,7 +34250,7 @@ D_{\theta^{\prime}}\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}(\tilde{\theta}-
  With this we have 
 \begin_inset Formula 
 \[
-{\color{green}\lim_{n\rightarrow\infty}\int\left(\tilde{\theta}-\theta\right)f(\theta)D_{\theta^{\prime}}\ln f(\theta)dy}={\color{blue}I_{K}}.
+{\color{green}{\color{red}\lim_{n\rightarrow\infty}\int\left(\tilde{\theta}-\theta\right)f(\theta)D_{\theta^{\prime}}\ln f(\theta)dy}}={\color{blue}I_{K}}.
 \]
 
 \end_inset
@@ -34625,7 +34625,7 @@ LR\overset{a}{=}n\left(\tilde{\theta}-\hat{\theta}\right)^{\prime}\mathcal{I}_{\
  and the information matrix equality 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\overset{a}{=}{\color{green}\sqrt{n}\mathcal{I}_{\infty}(\theta_{0})^{-1}}{\color{magenta}I_{n}}{\color{red}g(\theta_{0})}.
+\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\overset{a}{=}{\color{green}{\color{blue}\sqrt{n}\mathcal{I}_{\infty}(\theta_{0})^{-1}}}{\color{magenta}I_{n}}{\color{red}g(\theta_{0})}.
 \]
 
 \end_inset
@@ -34647,7 +34647,7 @@ An analogous result for the restricted estimator is (this is unproven here,
 ): 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\tilde{\theta}-\theta_{0}\right)\overset{a}{=}{\color{green}\sqrt{n}\mathcal{I}_{\infty}(\theta_{0})^{-1}}{\color{magenta}\left(I_{n}-R^{\prime}\left(R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right)^{-1}R\mathcal{I}_{\infty}(\theta_{0})^{-1}\right)}{\color{red}g(\theta_{0})}.
+\sqrt{n}\left(\tilde{\theta}-\theta_{0}\right)\overset{a}{=}{\color{green}{\color{blue}\sqrt{n}\mathcal{I}_{\infty}(\theta_{0})^{-1}}}{\color{magenta}\left(I_{n}-R^{\prime}\left(R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right)^{-1}R\mathcal{I}_{\infty}(\theta_{0})^{-1}\right)}{\color{red}g(\theta_{0})}.
 \]
 
 \end_inset
@@ -34657,7 +34657,7 @@ Subtracting the penultimate equation from the last one, we get (the magenta
  last two lines, with the minus sign moved out to the front) 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\tilde{\theta}-\hat{\theta}\right)\overset{a}{=}-{\color{green}\sqrt{n}\mathcal{I}_{\infty}(\theta_{0})^{-1}}{\color{magenta}R^{\prime}\left(R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right)^{-1}R\mathcal{I}_{\infty}(\theta_{0})^{-1}}{\color{red}g(\theta_{0})}
+\sqrt{n}\left(\tilde{\theta}-\hat{\theta}\right)\overset{a}{=}-{\color{green}{\color{blue}\sqrt{n}\mathcal{I}_{\infty}(\theta_{0})^{-1}}}{\color{magenta}R^{\prime}\left(R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right)^{-1}R\mathcal{I}_{\infty}(\theta_{0})^{-1}}{\color{red}g(\theta_{0})}
 \]
 
 \end_inset
@@ -34694,7 +34694,15 @@ R\mathcal{I}_{\infty}(\theta_{0})^{-1}n^{1/2}g(\theta_{0})\overset{d}{\rightarro
 \end_inset
 
  We can see that LR is a quadratic form of this random variable, with the
- inverse of its variance in the middle, so, by the Continuous Mapping Theorem
+ inverse of its variance in the middle, so, by the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Continuous Mapping Theorem"
+target "https://en.wikipedia.org/wiki/Continuous_mapping_theorem"
+literal "false"
+
+\end_inset
+
  (also known as the Mann-Wald Theorem) (see 
 \begin_inset CommandInset citation
 LatexCommand citet
