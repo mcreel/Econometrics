@@ -66,13 +66,14 @@ rho1, 0.9;      // 0.9
 sigma1, 0.02;   // 0.02
 rho2, 0.7;      // 0.7
 sigma2, 0.01;   // 0.01
-nss, .333;       // 1/3
+nss, .333;      // 1/3
 end;
 
 # using c and n gives good results when true parameters are used as start
 # using y and w is less good when true parameters are used as start
 # using y and r gives bad results when true parameters are used as start
-varobs c n;  // experiment choosing one or two from y c n r w k
+# using w and r gives bad results when true parameters are used as start
+varobs c n;  // experiment choosing one or two from y c n r w
 
 // computes only the posterior mode for demonstration. 
 estimation(datafile=dsgedata, nobs=160, order=1);

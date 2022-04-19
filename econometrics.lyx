@@ -34669,10 +34669,14 @@ reference "eq:LR2"
 
 \end_inset
 
-] 
+] , we get some nice cancellations, which lead to (note:
+\emph on
+ renewing use of colors here
+\emph default
+)
 \begin_inset Formula 
 \[
-LR\overset{a}{=}\left[n^{1/2}g(\theta_{0})^{\prime}\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right]\left[R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right]^{-1}\left[R\mathcal{I}_{\infty}(\theta_{0})^{-1}n^{1/2}g(\theta_{0})\right]
+LR\overset{a}{=}\left[n^{1/2}g(\theta_{0})^{\prime}\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}\right]\left[{\color{brown}{\color{orange}{\color{blue}R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}}}}\right]^{-1}\left[{\color{blue}{\color{purple}R\mathcal{I}_{\infty}(\theta_{0})^{-1}n^{1/2}g(\theta_{0})}}\right]
 \]
 
 \end_inset
@@ -34688,7 +34692,7 @@ n^{1/2}g(\theta_{0})\overset{d}{\rightarrow}N\left(0,\mathcal{I}_{\infty}(\theta
  the linear function 
 \begin_inset Formula 
 \[
-R\mathcal{I}_{\infty}(\theta_{0})^{-1}n^{1/2}g(\theta_{0})\overset{d}{\rightarrow}N(0,R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}).
+{\color{blue}{\color{purple}R\mathcal{I}_{\infty}(\theta_{0})^{-1}n^{1/2}g(\theta_{0})}}\overset{d}{\rightarrow}N(0,{\color{brown}{\color{blue}R\mathcal{I}_{\infty}(\theta_{0})^{-1}R^{\prime}}}).
 \]
 
 \end_inset
