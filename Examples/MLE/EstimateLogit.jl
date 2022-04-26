@@ -7,14 +7,14 @@
 using Econometrics
 include("LogitDGP.jl")
 n = 30 # sample size
-theta = [0, 0.5] # true theta for generating data
-(y, x) = LogitDGP(n, theta) # generate the data
+θ  = [0, 0.5] # true theta for generating data
+(y, x) = LogitDGP(n, θ) # generate the data
 
 # now define things for estimation
-model = theta -> logit(theta, y, x)
-theta = zeros(size(x,2)) # start values for estimation
+model = θ -> logit(θ, y, x)
+θstart = zeros(size(x,2)) # start values for estimation
 
 # Perform the estimation - Make sure that you examine
 # the MLE estimation programs so that you see how this works
-thetahat, objvalue, V, converged = mleresults(model, theta, "estimate logit model");
+θhat, objvalue, V, converged = mleresults(model, θstart, "estimate logit model");
 

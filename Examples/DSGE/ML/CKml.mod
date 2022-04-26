@@ -66,7 +66,7 @@ rho1, 0.9;      // 0.9
 sigma1, 0.02;   // 0.02
 rho2, 0.7;      // 0.7
 sigma2, 0.01;   // 0.01
-nss, .333;      // 1/3
+nss, .3333;      // 1/3
 end;
 
 # using c and n gives good results when true parameters are used as start

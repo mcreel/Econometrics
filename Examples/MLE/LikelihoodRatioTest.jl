@@ -4,7 +4,7 @@
 
 ##
 using Econometrics, Distributions
-n = 1000
+n = 100
 # random true parameters
 theta = [1.0,-1.0,0.0,1.0]
 b = theta[1:3]

@@ -35479,13 +35479,13 @@ href{./Examples/MLE/LogitDGP.jl}{LogitDGP.jl}
 
 , which generates data according to the logit model, 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-href{logit.jl}{./Examples/MLE/logit.jl} 
+href{./src/ML/Likelihoods/logit.jl}{logit.jl} 
 \end_layout
 
 \end_inset
@@ -35533,11 +35533,11 @@ The estimation program is calling
 mleresults
 \family default
 .jl , which in turn calls other routines.
- See the source code 
+ See the 
 \begin_inset CommandInset href
 LatexCommand href
 name "source code"
-target "https://github.com/mcreel/Econometrics.jl/blob/master/src/ML/mleresults.jl"
+target "https://github.com/mcreel/Econometrics/blob/main/src/ML/mleresults.jl"
 literal "false"
 
 \end_inset
@@ -38271,6 +38271,18 @@ reference "eq:ExpectationScore"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Of course, you would need to know the density 
+\begin_inset Formula $f$
+\end_inset
+
+ to compute this, so could only use these moment conditions if you had enough
+ information to do ML estimation, so there wouldn't be much point in doing
+ GMM.
+ However, we gain the insight that the optimal moments would be the score
+ vector.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -38382,12 +38394,20 @@ set the moment condition equal to zero
 
 .
  Then the equation is solved for the estimator.
- In the case of OLS, this gives 
+ 
+\end_layout
+
+\begin_layout Itemize
+In the case of OLS, this gives 
 \begin_inset Formula $\sum_{t}x_{t}(y_{t}-x_{t}^{\prime}\hat{\beta})=0,$
 \end_inset
 
  which gives a solution that you should already know.
- For the chi-squared example, 
+ 
+\end_layout
+
+\begin_layout Itemize
+For the chi-squared example, 
 \begin_inset Formula 
 \[
 \bar{m}(\hat{\theta})=\bar{y}-\hat{\theta}=0
@@ -38592,14 +38612,23 @@ Note that the fact that the data has a chi-squared distribution is not used
  the MM estimators are consistent.
  So, we don't make use of distributional assumptions when doing method of
  moment estimation, we only rely on certain moments being correctly specified.
- In this way, method of moments estimation is 
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In this way, method of moments estimation is 
 \emph on
 more robust
 \emph default
  than is maximum likelihood estimation: we obtain a consistent estimator
  with fewer assumptions.
- There being no free lunch, we should expect to pay something for this,
- of course.
+ 
+\end_layout
+
+\begin_layout Itemize
+There being no free lunch, we should expect to pay something for this, of
+ course.
  The cost will be a loss of efficiency, in general.
 \begin_inset Newpage newpage
 \end_inset
@@ -38607,6 +38636,7 @@ more robust
 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 
 \series bold
@@ -38725,10 +38755,33 @@ robust with respect to distributional misspecification.
  the MLE estimator.
  Keep in mind that the true distribution is 
 \bar under
-not known
+not known,
 \bar default
- so if we erroneously specify a distribution and estimate by MLE, the estimator
- will be inconsistent in general (not always).
+ so if we erroneously specify a distribution and estimate by 
+\begin_inset Quotes sld
+\end_inset
+
+MLE
+\begin_inset Quotes srd
+\end_inset
+
+, the estimator will in fact be what is known as a 
+\emph on
+quasi-ML
+\emph default
+ or 
+\emph on
+pseudo-ML
+\emph default
+ estimator (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "gourieroux1984pseudo"
+literal "false"
+
+\end_inset
+
+), and it will be inconsistent in general (but not in some special cases).
  
 \end_layout
 
@@ -38910,6 +38963,57 @@ This and the assumption that
  is asymptotically identified.
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+an example is a MA(1) model 
+\begin_inset Formula $y_{t}=\epsilon_{t}+\theta\epsilon_{t-1}$
+\end_inset
+
+ where the 
+\begin_inset Formula $\epsilon_{t}$
+\end_inset
+
+ are i.i.d.
+ 
+\begin_inset Formula $N(0,1).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+The distribution of 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ (and thus, the moments of 
+\begin_inset Formula $y_{t})$
+\end_inset
+
+ is identical for 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta^{*}=1/\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If we restrict 
+\begin_inset Formula $\theta$
+\end_inset
+
+ to be in the 
+\begin_inset Formula $(-1,1)$
+\end_inset
+
+ interval, we eliminate the problem.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Note that asymptotic identification does not rule out the possibility of
  lack of identification for a given data set - there may be multiple minimizing
@@ -64961,10 +65065,7 @@ _example1.m}
 \end_inset
 
  is a script for serial and parallel kernel regression.
- Serial execution is obtained by setting the number of slaves equal to zero,
- in line 15.
- In line 17, a single slave is specified, so execution is in parallel on
- the master and slave nodes.
+ 
 \end_layout
 
 \begin_layout Standard

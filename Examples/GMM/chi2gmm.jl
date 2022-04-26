@@ -1,7 +1,7 @@
 # GMM estimation for a sample from Chi^2(theta)
 # compare to two method of moments estimators (see chi2mm.m)
 using Distributions
-n = 30
+n = 3000
 theta = 3.0
 y = rand(Chisq(theta), n)
 thetahat = mean(y)
