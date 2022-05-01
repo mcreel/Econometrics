@@ -38982,23 +38982,47 @@ an example is a MA(1) model
 \end_layout
 
 \begin_layout Itemize
-The distribution of 
+consider the MA(1) model 
+\begin_inset Formula $y_{t}=\epsilon_{t}+(1/\theta)\epsilon_{t-1}$
+\end_inset
+
+ with 
+\begin_inset Formula $\epsilon_{t}$
+\end_inset
+
+ are i.i.d.
+ 
+\begin_inset Formula $N(0,\theta^{2}).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+All of the moments of 
 \begin_inset Formula $y_{t}$
 \end_inset
 
- (and thus, the moments of 
-\begin_inset Formula $y_{t})$
+ are the same in the two cases.
+ For example, in the first case, 
+\begin_inset Formula $V(y_{t})=V(\epsilon_{t})+\theta^{2}V(\epsilon_{t-1})=1+\theta^{2}).$
 \end_inset
 
- is identical for 
-\begin_inset Formula $\theta$
+ For the second case, you can work out that the variance is the same.
+\end_layout
+
+\begin_layout Itemize
+So, a method of moments estimator can't distinguish between the two parameter
+ vales.
+ If 
+\begin_inset Formula $m_{\infty}(\theta)$
 \end_inset
 
- and 
-\begin_inset Formula $\theta^{*}=1/\theta$
+ is equal to zero, then so is 
+\begin_inset Formula $m_{\infty}(1/\theta).$
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Itemize
@@ -39011,6 +39035,11 @@ If we restrict
 \end_inset
 
  interval, we eliminate the problem.
+ This restriction makes the MA(1) model 
+\emph on
+invertible
+\emph default
+, which is useful for theoretical reasons.
 \end_layout
 
 \end_deeper
@@ -39271,6 +39300,32 @@ reference "def: Product-rule.-Let"
 
 \end_inset
 
+
+\series bold
+\emph on
+Note to self for lectures: 
+\series default
+\emph default
+
+\begin_inset Formula $D_{i}^{\prime}$
+\end_inset
+
+ is 
+\begin_inset Formula $g\times1,$
+\end_inset
+
+ so 
+\begin_inset Formula $\left[\frac{\partial}{\partial\theta^{\prime}}D_{i}^{\prime}\right]$
+\end_inset
+
+ is 
+\begin_inset Formula $g\times k$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
 Note that the first term contains a 
 \begin_inset Formula $D^{\prime},$
 \end_inset
@@ -39496,12 +39551,19 @@ This is related to identification: we need that the parameters cause the
 \end_layout
 
 \begin_layout Itemize
-Identification plus two times differentiability of the objective function
- lead to 
+Identification (
+\begin_inset Formula $D_{\infty}$
+\end_inset
+
+ being full rank) plus 
+\begin_inset Formula $W_{\infty}$
+\end_inset
+
+ being positive definite imply that 
 \begin_inset Formula $J_{\infty}$
 \end_inset
 
- being positive definite.
+ is positive definite.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -39558,6 +39620,11 @@ We would probably like to know how to choose both
 \end_layout
 
 \begin_layout Example
+
+\emph on
+Asymptotic normality of a GMM estimator.
+ 
+\emph default
 The Julia script 
 \begin_inset ERT
 status open
@@ -39838,7 +39905,7 @@ The generalized least square estimator minimizes the objective function
 \begin_layout Itemize
 The GLS optimal weighting matrix is seen to be the inverse of the covariance
  matrix of the errors.
- This result carries over to GMM
+ A similar result holds for GMM
 \begin_inset ERT
 status collapsed
 
@@ -40192,6 +40259,70 @@ The following figure shows the results, plotting densities for 1000 replications
 
 \end_layout
 
+\begin_layout Standard
+What's the intuition behind 
+\begin_inset Formula $\sqrt{n}\left(\hat{\theta}-\theta^{0}\right)\stackrel{d}{\rightarrow}N\left[0,\left(D_{\infty}\Omega_{\infty}^{-1}D_{\infty}^{\prime}\right)^{-1}\right]$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+More variability of the moment conditions (
+\begin_inset Formula $\Omega_{\infty}$
+\end_inset
+
+ 
+\begin_inset Quotes sld
+\end_inset
+
+large
+\begin_inset Quotes srd
+\end_inset
+
+) leads to a more variable estimator, other things equal.
+\end_layout
+
+\begin_layout Itemize
+The larger the magnitude of the elements of the Jacobian of the moment condition
+s, 
+\begin_inset Formula $D_{\infty}$
+\end_inset
+
+, the smaller the variance of the estimator.
+ Moment conditions which change more in response to changes in parameters
+ lead to more precise estimates.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+in 
+\emph default
+class
+\emph on
+: 
+\emph default
+make a figure, much like Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Effects-of-"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Estimation of the variance-covariance matrix
 \end_layout
@@ -40369,7 +40500,7 @@ Recall that
 \begin_inset Formula $\theta,$
 \end_inset
 
- so for now assume that we have some consistent estimator of 
+ so, for now, assume that we have some consistent estimator of 
 \begin_inset Formula $\theta^{0}$
 \end_inset
 
@@ -40678,7 +40809,7 @@ Based on this initial estimate,
 \begin_inset Formula $\hat{\theta}$
 \end_inset
 
-, say, compute the moment contributions 
+, compute the moment contributions 
 \begin_inset Formula $m_{t}(\hat{\theta}),\,t=1,2,...,n$
 \end_inset
 
@@ -40688,7 +40819,7 @@ Based on this initial estimate,
 \end_inset
 
  based on the moment contributions, say 
-\begin_inset Formula $\hat{\Omega}^{-1}$
+\begin_inset Formula $\hat{\Omega}$
 \end_inset
 
 .
@@ -40760,7 +40891,12 @@ literal "true"
 \end_inset
 
 ) solves a minimization problem where the efficient weight matrix is estimated
- at each iteration of the numeric optimization process.
+ at each iteration of the numeric optimization process, using the current
+ value of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
  The CUE estimator solves the minimization problem 
 \begin_inset Formula 
 \[
@@ -40886,7 +41022,7 @@ To see this, the unconditional expectation is
  Factor the joint density in to conditional and marginal:
 \begin_inset Formula 
 \[
-\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left(\int_{\mathcal{Y}}Yg(X)f(Y|X)f(X)dY\right)dX.
+\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left(\int_{\mathcal{Y}}Y{\color{blue}g(X)}f(Y|X){\color{blue}f(X)}dY\right)dX.
 \]
 
 \end_inset
@@ -40906,7 +41042,7 @@ To see this, the unconditional expectation is
 , they can be pulled out of the integral 
 \begin_inset Formula 
 \[
-\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left({\color{red}\int_{\mathcal{Y}}Yf(Y|X)dY}\right)g(X)f(X)dX.
+\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left({\color{red}\int_{\mathcal{Y}}Yf(Y|X)dY}\right){\color{blue}g(X)f(X)}dX.
 \]
 
 \end_inset
@@ -41756,7 +41892,7 @@ Assuming that the far right term satisfies a CLT, so that
 \end_layout
 
 \begin_layout Standard
-then we get (using some pleasing cancellations)
+then we get (using some pleasing cancelations)
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\hat{\theta}_{IV}-\theta^{0}\right)\overset{d}{\rightarrow}N\left(0,(Q_{XZ}Q_{ZZ}^{-1}Q_{XZ}^{\prime})^{-1}\sigma^{2}\right)
@@ -48917,13 +49053,13 @@ Journal of Econometrics
 \begin{align*}
 y_{t} & =\mu+\rho y_{t-1}+\epsilon_{t}\\
 \epsilon_{t} & =\sigma_{t}u_{t}\\
-\sigma_{t}^{2} & =\omega+\sum_{i=1}^{q}\alpha_{i}\epsilon_{t-i}^{2}{\color{green}+\sum_{i=1}^{p}\beta_{i}\sigma_{t-i}^{2}}
+\sigma_{t}^{2} & =\omega+\sum_{i=1}^{q}\alpha_{i}\epsilon_{t-i}^{2}{\color{green}{\color{blue}+\sum_{i=1}^{p}\beta_{i}\sigma_{t-i}^{2}}}
 \end{align*}
 
 \end_inset
 
 It's just an ARCH model, with an 
-\color green
+\color blue
 autoregressive part
 \color inherit
  added to the specification of the conditional variance.

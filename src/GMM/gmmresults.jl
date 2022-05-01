@@ -1,7 +1,8 @@
 function gmmresults()
-    # example of GMM: draws from N(0,1)
+    # example of GMM: draws from N(0,1). We estimate mean and variance.
     y = randn(1000,1)
-    # 3 moment conditions
+    # 3 moment conditions implied by drawing from N(0,σ²):
+    # mean = 0, variance = constant, skew = 0
     moments = θ -> [y.-θ[1] (y.^2.0).-θ[2] (y.-θ[1]).^3.0]
     # first round consistent
     W = Matrix{Float64}(I,3,3)
