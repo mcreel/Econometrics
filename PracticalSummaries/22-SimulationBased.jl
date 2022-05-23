@@ -43,16 +43,20 @@ end
 
 ## profile the MSM objective function
 using Plots
-using Pkg
-Pkg.add("PlotlyJS") # it's not is system image
-plotlyjs() # use this backend for interactive plots
+#using Pkg
+#Pkg.add("PlotlyJS") # it's not is system image
+#plotlyjs() # use this backend for interactive plots
+gr()
 θ₁ = range(0.9, length=100, stop=1.1)
 θ₂ = θ₁
-p1 = surface(θ₁, θ₂, (θ₁,θ₂)->obj(θ₁,θ₂),c=:viridis)
+#p1 = surface(θ₁, θ₂, (θ₁,θ₂)->obj(θ₁,θ₂),c=:viridis)
+#xlabel!("x")
+#ylabel!("y")
+p2 = contour(θ₁, θ₂, (θ₁,θ₂)->obj(θ₁,θ₂),c=:viridis)
+#plot(p1, p2)
+plot(p2)
 xlabel!("x")
 ylabel!("y")
-p2 = contour(θ₁, θ₂, (θ₁,θ₂)->obj(θ₁,θ₂),c=:viridis)
-plot(p1, p2)
 
 ## The objective function looks horrible!
 #  Nevertheless, let's attempt to do gradient-based estimation

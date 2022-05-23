@@ -10,7 +10,7 @@ n = 1000 # sample size
 
 # covariance of X, W, e
 cor_X_W = 0.2  # experiment with lowering or raising this: quality of instrument
-cor_X_e = 0.5
+cor_X_e = 0.5  # try setting this to zero to observe inefficiency of IV
 sig = [
       1.0       cor_X_W     cor_X_e;
       cor_X_W   1.0         0.0;

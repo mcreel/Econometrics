@@ -21,6 +21,7 @@ end
 
 function main()
 # weekly close price of NSYE, data provided with GRETL
+cd(@__DIR__)
 data = readdlm("nysewk.txt")
 # compute weekly percentage growth
 y = 100.0 * log.(data[2:end] ./ data[1:end-1])

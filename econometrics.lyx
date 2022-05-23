@@ -12090,7 +12090,7 @@ y_{t}=\alpha+\rho y_{t-1}+\beta x_{t}+\eta_{t}
 \eta_{t} & =y_{t}-\alpha-\rho y_{t-1}-\beta x_{t}\\
  & =y_{t}^{*}+\upsilon_{t}-\alpha-\rho y_{t-1}^{*}-\rho\upsilon_{t-1}-\beta x_{t}\\
  & =\alpha+\rho y_{t-1}^{*}+\beta x_{t}+\epsilon_{t}+\upsilon_{t}-\alpha-\rho y_{t-1}^{*}-\rho\upsilon_{t-1}-\beta x_{t}\\
- & =\epsilon_{t}+\upsilon_{t}-\rho\upsilon_{t-1}
+ & =\epsilon_{t}+\upsilon_{t}-\rho{\color{blue}\upsilon_{t-1}}
 \end{align*}
 
 \end_inset
@@ -12107,7 +12107,7 @@ y_{t-1}=\alpha+\rho y_{t-2}+\beta x_{t-1}+\eta_{t-1}
 and 
 \begin_inset Formula 
 \[
-\eta_{t-1}=\epsilon_{t-1}+\upsilon_{t-1}-\rho\upsilon_{t-2},
+\eta_{t-1}=\epsilon_{t-1}+{\color{blue}\upsilon}_{{\color{blue}t-1}}-\rho\upsilon_{t-2},
 \]
 
 \end_inset
@@ -40657,7 +40657,7 @@ A disadvantage of this estimator is that it may not be positive definite.
 \begin_inset Newpage newpage
 \end_inset
 
-Newey-West covariance estimator
+Heteroscedasticity and autocorrelation consistent covariance estimators
 \end_layout
 
 \begin_layout Standard
@@ -40776,11 +40776,11 @@ aut: NYSE data, square of log difference of closing price.
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Two step and continuously updated GMM estimators
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
 
 \series bold
 Two step GMM estimator:
@@ -40875,7 +40875,7 @@ href{./src/GMM/gmmresults.jl}{gmmresults.jl}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
 
 \series bold
 Continuously updated GMM estimator:
@@ -41182,7 +41182,11 @@ So
 \begin_inset Formula $\epsilon_{t}(\theta^{0})=\epsilon_{1t}$
 \end_inset
 
-, which has conditional expectation equal to zero, by assumption.
+, which has conditional expectation, given 
+\begin_inset Formula $y_{t},$
+\end_inset
+
+ equal to zero, by assumption.
  
 \end_layout
 
@@ -41269,6 +41273,19 @@ instrumental variables.
  the necessary condition for identification holds.
 \end_layout
 
+\begin_layout Itemize
+In the above demand function example, 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ is a variable in the information set.
+ We can create instruments by using functions of 
+\begin_inset Formula $y_{t}.$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -41338,11 +41355,17 @@ where
 \begin_inset Formula $Z_{n}.$
 \end_inset
 
- This fits the previous treatment.
  
 \end_layout
 
 \begin_layout Itemize
+This fits the previous treatment.
+ It is an example of how moment conditions may be defined from conditional
+ expectations and instrumental variables created using the conditioning
+ information.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -41575,6 +41598,8 @@ Verify that the efficient weight matrix is
 \end_inset
 
  (up to a constant).
+ Note, this would not hold if the errors were not i.i.d.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -41703,9 +41728,14 @@ P_{Z}X=Z(Z^{\prime}Z)^{-1}Z^{\prime}X
 \end_inset
 
  so it must be uncorrelated with 
-\begin_inset Formula $\varepsilon.$
+\begin_inset Formula $\varepsilon$
 \end_inset
 
+, because we initially assumed that 
+\begin_inset Formula $E(Z_{t}\epsilon_{t})=0$
+\end_inset
+
+.
  This implies that applying OLS to the model 
 \begin_inset Formula 
 \[
@@ -41900,12 +41930,18 @@ then we get (using some pleasing cancelations)
 
 \end_inset
 
-The adjustment for heteroscedastic or autocorrelated errors should be apparent.
- We just assume that 
+The adjustment for heteroscedastic or autocorrelated errors should be apparent:
+ we just assume that 
 \begin_inset Formula $\frac{Z^{\prime}\varepsilon}{\sqrt{n}}\overset{d}{\rightarrow}N(0,\Omega)$
 \end_inset
 
  and work out the algebra (also, see below, in the 2SLS section).
+ And, we estimate 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ appropriately, according to the cases of heteroscedastic and/or autocorrelated
+ errors.
 \end_layout
 
 \begin_layout Standard
@@ -42046,7 +42082,7 @@ An important point is that the asymptotic distribution of
 The choice of instruments influences the efficiency of the estimator
 \emph default
 .
- This point was made, above, when optimal instruments were discussed.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -42101,6 +42137,11 @@ estimator rises as the number of instruments increases.
 \end_inset
 
  itself as the number of instruments increases.
+ Remember, OLS gets a perfect fit when 
+\begin_inset Formula $k=n$
+\end_inset
+
+, 
 \begin_inset Newpage newpage
 \end_inset
 
@@ -42537,7 +42578,7 @@ Consider a Taylor expansion of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\bar{m}(\hat{\theta})=\bar{m}_{n}(\theta^{0})+D_{n}^{\prime}(\theta^{*})\left(\hat{\theta}-\theta^{0}\right)\label{TS expansion of moments}
+{\color{red}\bar{m}(\hat{\theta})}=\bar{m}_{n}(\theta^{0})+{\color{red}D_{n}^{\prime}(\theta^{*})}{\color{blue}\left(\hat{\theta}-\theta^{0}\right)}\label{TS expansion of moments}
 \end{equation}
 
 \end_inset
@@ -42582,7 +42623,7 @@ D(\hat{\theta})\hat{\Omega}^{-1}\bar{m}_{n}(\theta^{0})=-\left[D(\hat{\theta})\h
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\left(\hat{\theta}-\theta^{0}\right)=-\left(D(\hat{\theta})\hat{\Omega}^{-1}D(\theta^{*})^{\prime}\right)^{-1}D(\hat{\theta})\hat{\Omega}^{-1}\bar{m}_{n}(\theta^{0})
+{\color{blue}\left(\hat{\theta}-\theta^{0}\right)}=-{\color{purple}\left(D(\hat{\theta})\hat{\Omega}^{-1}D(\theta^{*})^{\prime}\right)^{-1}D(\hat{\theta})\hat{\Omega}^{-1}\bar{m}_{n}(\theta^{0})}
 \]
 
 \end_inset
@@ -42605,7 +42646,7 @@ reference "TS expansion of moments"
 , to get 
 \begin_inset Formula 
 \[
-\sqrt{n}\bar{m}_{n}(\hat{\theta})=\sqrt{n}\bar{m}_{n}(\theta^{0})-\sqrt{n}D_{n}^{\prime}(\theta^{*})\left(D(\hat{\theta})\hat{\Omega}^{-1}D(\theta^{*})^{\prime}\right)^{-1}D(\hat{\theta})\hat{\Omega}^{-1}\bar{m}_{n}(\theta^{0}).
+\sqrt{n}{\color{red}\bar{m}_{n}(\hat{\theta})}=\sqrt{n}\bar{m}_{n}(\theta^{0})-\sqrt{n}{\color{red}D_{n}^{\prime}(\theta^{*})}{\color{purple}\left(D(\hat{\theta})\hat{\Omega}^{-1}D(\theta^{*})^{\prime}\right)^{-1}D(\hat{\theta})\hat{\Omega}^{-1}\bar{m}_{n}(\theta^{0}).}
 \]
 
 \end_inset
@@ -42618,7 +42659,7 @@ reference "TS expansion of moments"
 
 \end_inset
 
-(verify it by multiplying out the last expression.
+(verify it by multiplying out the last expression).
  Also, a note: the matrix square root of a matrix 
 \begin_inset Formula $A$
 \end_inset
@@ -42632,7 +42673,51 @@ reference "TS expansion of moments"
 \end_inset
 
 .
- Any positive definite matrix has an invertible matrix square root.)
+ Any positive definite matrix has an invertible matrix square root.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Aside on matrix square root
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+using LinearAlgebra
+\end_layout
+
+\begin_layout Plain Layout
+
+a = randn(3,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+a = a'*a # make it PD, so it will have a matrix square root
+\end_layout
+
+\begin_layout Plain Layout
+
+s = sqrt(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+eigvals(s) # check that it's invertible
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -42827,7 +42912,7 @@ noprefix "false"
  must also have the same distribution, so we finally get
 \begin_inset Formula 
 \[
-\left(\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\hat{\theta})\right)^{\prime}\left(\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\hat{\theta})\right)=n\bar{m}_{n}(\hat{\theta})^{\prime}\hat{\Omega}^{-1}\bar{m}_{n}(\hat{\theta})\stackrel{d}{\rightarrow}\chi^{2}(g-K)
+\left(\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\hat{\theta})\right)^{\prime}\left(\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\hat{\theta})\right)=n{\color{blue}\bar{m}_{n}(\hat{\theta})^{\prime}\hat{\Omega}^{-1}\bar{m}_{n}(\hat{\theta})}\stackrel{d}{\rightarrow}\chi^{2}(g-K)
 \]
 
 \end_inset
@@ -42852,7 +42937,7 @@ Supposing that the moment conditions actually have expectation zero at the
  weight matrix, then
 \begin_inset Formula 
 \[
-n\cdot s_{n}(\hat{\theta})\stackrel{d}{\rightarrow}\chi^{2}(g-K).
+n\cdot{\color{blue}s_{n}(\hat{\theta})}\stackrel{d}{\rightarrow}\chi^{2}(g-K).
 \]
 
 \end_inset
@@ -42944,6 +43029,7 @@ minimum chi-square
 \end_inset
 
  distribution.
+ GMM minimizes it.
 \end_layout
 
 \begin_layout Standard
@@ -47485,7 +47571,7 @@ y_{t-p}
  or 
 \begin_inset Formula 
 \[
-Y_{t}=C+FY_{t-1}+E_{t}
+Y_{t}={\color{blue}C+FY_{t-1}+E_{t}}
 \]
 
 \end_inset
@@ -47498,8 +47584,8 @@ Y_{t}=C+FY_{t-1}+E_{t}
 \begin_inset Formula 
 \begin{eqnarray*}
 Y_{t+1} & = & C+FY_{t}+E_{t+1}\\
- & = & C+F\left(C+FY_{t-1}+E_{t}\right)+E_{t+1}\\
- & = & C+FC+F^{2}Y_{t-1}+FE_{t}+E_{t+1}
+ & = & C+F\left({\color{blue}C+FY_{t-1}+E_{t}}\right)+E_{t+1}\\
+ & = & {\color{red}C+FC+F^{2}Y_{t-1}+FE_{t}+E_{t+1}}
 \end{eqnarray*}
 
 \end_inset
@@ -47508,7 +47594,7 @@ Y_{t+1} & = & C+FY_{t}+E_{t+1}\\
 \begin_inset Formula 
 \begin{eqnarray*}
 Y_{t+2} & = & C+FY_{t+1}+E_{t+2}\\
- & = & C+F\left(C+FC+F^{2}Y_{t-1}+FE_{t}+E_{t+1}\right)+E_{t+2}\\
+ & = & C+F\left({\color{red}C+FC+F^{2}Y_{t-1}+FE_{t}+E_{t+1}}\right)+E_{t+2}\\
  & = & C+FC+F^{2}C+F^{3}Y_{t-1}+F^{2}E_{t}+FE_{t+1}+E_{t+2}
 \end{eqnarray*}
 
@@ -47912,8 +47998,8 @@ c=\mu-\phi_{1}\mu-...-\phi_{p}\mu
  so 
 \begin_inset Formula 
 \begin{eqnarray*}
-y_{t}-\mu & = & \mu-\phi_{1}\mu-...-\phi_{p}\mu+\phi_{1}y_{t-1}+\phi_{2}y_{t-2}+\cdots+\phi_{p}y_{t-p}+\varepsilon_{t}-\mu\\
- & = & \phi_{1}(y_{t-1}-\mu)+\phi_{2}(y_{t-2}-\mu)+...+\phi_{p}(y_{t-p}-\mu)+\varepsilon_{t}
+y_{t}-\mu & = & {\color{red}\mu}{\color{blue}-\phi_{1}\mu}-...-\phi_{p}\mu+{\color{blue}\phi_{1}y_{t-1}}+\phi_{2}y_{t-2}+\cdots+\phi_{p}y_{t-p}+\varepsilon_{t}{\color{red}-\mu}\\
+ & = & {\color{blue}\phi_{1}(y_{t-1}-\mu)}+\phi_{2}(y_{t-2}-\mu)+...+\phi_{p}(y_{t-p}-\mu)+\varepsilon_{t}
 \end{eqnarray*}
 
 \end_inset
@@ -47999,7 +48085,10 @@ An ARMA(
 
 .
  These are popular in applied time series analysis.
- A high order AR process 
+\end_layout
+
+\begin_layout Itemize
+A high order AR process 
 \emph on
 may
 \emph default
@@ -48009,9 +48098,16 @@ may
 may
 \emph default
  be well approximated by a low order AR process.
- By combining low order AR and MA processes in the same model, one can hope
+\end_layout
+
+\begin_layout Itemize
+By combining low order AR and MA processes in the same model, one can hope
  to fit a wide variety of time series using a parsimonious number of parameters.
- There is much literature on how to choose 
+ 
+\end_layout
+
+\begin_layout Itemize
+There is much literature on how to choose 
 \begin_inset Formula $p$
 \end_inset
 
@@ -48020,7 +48116,11 @@ may
 \end_inset
 
  which is outside the scope of this course.
- Estimation can be done using the Kalman filter, assuming that the errors
+ This involves comparing the ACF and PACFs.
+\end_layout
+
+\begin_layout Itemize
+Estimation can be done using the Kalman filter, assuming that the errors
  are normally distributed.
 \end_layout
 
@@ -48306,7 +48406,8 @@ C.
  Sims originally proposed reduced form VAR models as an alternative to structura
 l simultaneous equations models, which were perceived to require too many
  unrealistic assumptions for their identification.
- 
+ He showed that VARs often forecast better than structural models, which
+ cast doubt upon the identification restrictions of the structural model.
 \end_layout
 
 \begin_layout Itemize
@@ -48641,8 +48742,9 @@ href{./Examples/DSGE/GenData/dsgedata.gdt}{example DSGE model}
 \begin_inset Formula $R^{2}$
 \end_inset
 
- to the AR(1) model.Note that matching impulse response functions has sometimes
- been used for estimation of DSGE models.
+ to the VAR(1) model.
+ Note that matching impulse response functions has sometimes been used for
+ estimation of DSGE models.
  Perhaps we'll see this idea again.
 \end_layout
 
@@ -50028,8 +50130,30 @@ literal "false"
 
 \bar default
 .
- A Gretl script file which generates data following the random walk with
+ 
+\end_layout
+
+\begin_layout Itemize
+A Gretl script file which generates data following the random walk with
  drift example is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+href{./Examples/TimeSeries/Drift.inp}{Drift.inp} 
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+A similar script generates random walks without drift.
+ 
 \begin_inset ERT
 status open
 
@@ -50042,7 +50166,25 @@ href{./Examples/TimeSeries/RandomWalks.inp}{RandomWalks.inp}
 
 \end_inset
 
-.
+
+\end_layout
+
+\begin_layout Itemize
+There is also one for a deterministic time trend.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+href{./Examples/TimeSeries/Trend.inp}{Trend.inp} 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -50058,24 +50200,38 @@ do a time series plot of the y and x series
 run an OLS of y on x
 \end_layout
 
+\begin_layout Itemize
+Here's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+href{./Examples/Data/keeling_whorf_CO2.gdt}{Keeling and Whorf data} 
+\end_layout
+
+\end_inset
+
+ on 
+\begin_inset Formula $\mathrm{CO_{2}}$
+\end_inset
+
+ concentrations at Mona Loa.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Exercises
 \end_layout
 
 \begin_layout Enumerate
 Use Matlab/Octave to estimate the same GARCH(1,1) model as in the GarchExample.jl
- script provided above (hint: get version 1.0 of these notes: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/mcreel/Econometrics/tree/v1.0
-\end_layout
-
-\end_inset
-
-).
+ script provided above.
  Also, estimate an ARCH(4) model for the same data.
  If unconstrained estimation does not satisfy stationarity restrictions,
  then do contrained estimation.

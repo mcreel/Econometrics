@@ -1,11 +1,12 @@
 # Estimates the Klein consumption equation by GMM
-using DelimitedFiles, Statistics
+using Econometrics, DelimitedFiles, Statistics
 function KleinMoments(theta, y, x, z)
 	e = y - x*theta
 	m = e.*z
 end
 	
 function main()
+cd(@__DIR__)
 data = readdlm("klein.data")
 # construct missing lags, and drop first row that has missing data
 profits = data[:,3]

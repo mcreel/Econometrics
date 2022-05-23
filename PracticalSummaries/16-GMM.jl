@@ -7,12 +7,15 @@ x = [ones(n) rand(n)]
 β⁰ = [1., 2.]
 λ = β -> exp.(x*β)
 y = rand.(Poisson.(λ(β⁰)))
+# data for problem set 3
+#x = hcat(ones(10), [-1,-1,1,0,-1,-1,1,1,1,2])
+#y = [0,0,0,1,1,5,8,16,20,30]
+#β⁰ = [1.3, 1.0]  # use decent start values for the problem set data
 
 ## ML, for reference
 using Econometrics, SpecialFunctions
 model = β -> -λ(β) + y.*x*β - loggamma.(y .+ 1.)    # note: loggamma(y+1) = log(factorial(y))
 mleresults(model, β⁰);                               # but won't overflow
-
 ## GMM
 using Econometrics
 moments1 = β -> x.*(y - λ(β))
@@ -27,10 +30,12 @@ using Econometrics
 moments2 = β -> x.* (y./λ(β) .- 1.0) 
 gmmresults(moments2, β⁰);
 
+
 ## Try out overidentified GMM estimator, using both sets of moments
 using Econometrics, ForwardDiff
 moments3 = β -> [moments1(β) moments2(β)]
 βhat, objv, V, D, W, convergence = gmmresults(moments3, β⁰);
+
 
 ## how to get D and Omega (though gmmresults will also give them)
 avgmoments = β -> (1/n)*[x'*(y - λ(β)) x'*(y./λ(β) .- 1.)]

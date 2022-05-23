@@ -2,11 +2,12 @@
 # one of the 1000 data sets. Can be parallelized using
 # threads.
 using Econometrics, SolveDSGE, DelimitedFiles, Statistics, LinearAlgebra, ForwardDiff
+cd(@__DIR__)
 include("DSGEmoments.jl")  # computes errors
 include("CKlib.jl")
 
 function main()
-
+cd(@__DIR__)
 # using first line for the "true" data set, the second to generate new data
 data = readdlm("dsgedata.txt")
 #data = dgp(TrueParameters())
