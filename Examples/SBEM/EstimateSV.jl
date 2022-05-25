@@ -56,11 +56,11 @@ obj = θ -> InSupport(θ) ? -m(θ)'*W*m(θ) : Inf
 verbosity = true
 burnin = 100
 ChainLength = 1000
-# initial proposal moves one at a time
+# initial proposal moves one parameter at a time
 tuning = 0.2/sqrt(12.0)*(ub-lb) # two tenths of a standard. dev. of prior
 proposal = θ -> proposal1(θ, tuning)
 chain = mcmc(θhat, ChainLength, burnin, prior, obj, proposal, verbosity)
-# now use a MVN random walk proposal 
+# now use a MVN random walk proposal for better mixing
 Σ = NeweyWest(chain[:,1:3])
 tuning = 1.0
 for j = 1:5

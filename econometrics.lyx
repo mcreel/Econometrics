@@ -50585,9 +50585,10 @@ So far, this is pretty straightforward.
  The complications are mostly computational.
  To illustrate, the posterior mean is
 \begin_inset Formula 
-\[
-E(\theta|y)=\int_{\Theta}\theta f(\theta|y)d\theta=\frac{\int_{\Theta}\theta f(y|\theta)\pi(\theta)d\theta}{\int_{\Theta}f(y,\theta)d\theta}
-\]
+\begin{align*}
+E(\theta|y) & =\int_{\Theta}\theta f(\theta|y)d\theta\\
+ & =\frac{\int_{\Theta}\theta f(y|\theta)\pi(\theta)d\theta}{\int_{\Theta}f(y,\theta)d\theta}
+\end{align*}
 
 \end_inset
 
@@ -50596,6 +50597,14 @@ E(\theta|y)=\int_{\Theta}\theta f(\theta|y)d\theta=\frac{\int_{\Theta}\theta f(y
 
 \begin_layout Itemize
 One can see that a means of integrating will be needed.
+\end_layout
+
+\begin_layout Itemize
+note that 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is a vector, so that the integrals are multiple
 \end_layout
 
 \begin_layout Itemize
@@ -50786,15 +50795,15 @@ Suppose the prior for
 \end_inset
 
  is 
-\begin_inset Formula $\theta\sim$
+\begin_inset Formula $\theta\sim\mathrm{lognormal}(1,1)$
 \end_inset
 
-lognormal(1,1).
+.
  This means that the logarithm of 
 \begin_inset Formula $\theta$
 \end_inset
 
- is standard normal.
+ is normally distributed with mean 1 and standard deviation 1.
  We use a lognormal prior because it enforces the requirement that the parameter
  of the exponential density be positive.
 \end_layout
@@ -53214,7 +53223,7 @@ within
 \end_inset
 
  .
- The withing estimator  involves subtracting the time series average from
+ The within estimator  involves subtracting the time series average from
  each cross sectional unit.
  
 \begin_inset Formula 
@@ -53621,8 +53630,12 @@ random effects
 \begin_inset Quotes srd
 \end_inset
 
- is not a plausible assumption with most economic data, so use of this estimator
- is discouraged, even if your statistical package offers it as an option.
+ 
+\emph on
+is not a plausible assumption
+\emph default
+ with most economic data, so use of this estimator is discouraged, even
+ if your statistical package offers it as an option.
  Think carefully about whether the assumption is warranted before trusting
  the results of this estimator.
 \series bold
@@ -54001,7 +54014,7 @@ as long as the
  are not serially correlated
 \emph default
 , then 
-\begin_inset Formula $y_{i.t-2}$
+\begin_inset Formula $y_{i,t-2}$
 \end_inset
 
  is not correlated with 
@@ -54014,7 +54027,7 @@ as long as the
 
 \begin_layout Itemize
 We can also use additional lags 
-\begin_inset Formula $y_{i.t-s}$
+\begin_inset Formula $y_{i,t-s}$
 \end_inset
 
 , 
@@ -56184,7 +56197,28 @@ Example:
 using Econometrics
 \family default
 , run npreg().
+ It will give you a figure similar to 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Examples/Nonparametric/npreg.png
+	width 15cm
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+You see that the kernel regression mean and median are close to the true
+ function, and the 90% CI defined by nonparametric quantiles contains the
+ true function, everywhere, in this case.
  Edit the code to see what's going on.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -60096,7 +60130,7 @@ Simulation-based estimation methods open up the possibility to estimate
 \end_layout
 
 \begin_layout Itemize
-The desirability introducing a great deal of complexity may be an issue
+The desirability of introducing a great deal of complexity may be an issue
 \begin_inset Foot
 status collapsed
 
@@ -60502,7 +60536,7 @@ In some cases, this will have a closed-form solution (one can derive the
 \begin_inset Formula $\eta$
 \end_inset
 
- has an exponential distribution - see equation 
+ has a certain exponential distribution - see equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:negbindensity"
@@ -60532,305 +60566,53 @@ status collapsed
 \end_inset
 
 estimation.
- This would be an example of the Simulated Maximum Likelihood (SML) estimation.
- 
-\end_layout
-
-\begin_layout Itemize
-In this case, since there is only one latent variable, using numeric integration
- methods (quadrature) is probably a better choice.
- But with more random parameters, and thus more latent variable, quadrature
- becomes too costly and/or inaccurate.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Estimation of models specified in terms of stochastic differential equations
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:sim-baed estimation differential eqns"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-It is often convenient to formulate models in terms of continuous time using
- differential equations.
- An example was the jump-diffusion model discussed in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Diffusion-models"
-
-\end_inset
-
-.
- A realistic model should account for exogenous shocks to the system, which
- can be done by assuming a random component.
- This leads to a model that is expressed as a system of stochastic differential
- equations.
- Consider the process 
-\begin_inset Formula 
-\[
-dy_{t}=g(\theta,y_{t})dt+h(\theta,y_{t})dW_{t}
-\]
-
-\end_inset
-
- which is assumed to be stationary.
- 
-\begin_inset Formula $\{W_{t}\}$
-\end_inset
-
- is a standard Brownian motion (Weiner process), such that 
-\begin_inset Formula 
-\[
-W(T)=\int_{0}^{T}dW_{t}\sim N(0,T)
-\]
-
-\end_inset
-
- Brownian motion is a continuous-time stochastic process such that
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $W(0)=0$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\left[W(s)-W(t)\right]\sim N(0,s-t)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\left[W(s)-W(t)\right]$
-\end_inset
-
- and 
-\begin_inset Formula $\left[W(j)-W(k)\right]$
-\end_inset
-
- are independent for 
-\begin_inset Formula $s>t>j>k.$
-\end_inset
-
- That is, non-overlapping segments are independent.
- 
-\end_layout
-
-\begin_layout Standard
-One can think of Brownian motion the accumulation over time of independent
- normally distributed shocks, each with an infinitesimal variance.
-\end_layout
-
-\begin_layout Itemize
-The function 
-\begin_inset Formula $g(\theta,y_{t})$
-\end_inset
-
- is the deterministic part.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $h(\theta,y_{t})$
-\end_inset
-
- determines the instantaneous variance of the shocks.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-To estimate a model of this sort, we typically have data that are observations
- of 
-\begin_inset Formula $y_{t}$
-\end_inset
-
- at discrete points in time: 
-\begin_inset Formula $y_{1},$
-\end_inset
-
- 
-\begin_inset Formula $y_{2},...y_{T}.$
-\end_inset
-
- That is, although 
-\begin_inset Formula $y_{t}$
-\end_inset
-
- is a continuous process, it is observed in discrete time.
- 
-\emph on
-(make a drawing).
- 
-\end_layout
-
-\begin_layout Itemize
-financial data is often available at very high frequency, so that a continuous
- time model is a natural framework.
- However, we may want to estimate the model using data at a lower frequency,
- to reduce the computational burden (which lets us get results in a reasonable
- amount of time, which is necessary when trying to use models for trading
- decisions).
-\end_layout
-
-\begin_layout Standard
-To perform inference on 
-\begin_inset Formula $\theta,$
-\end_inset
-
- direct ML or GMM estimation is not usually feasible, because one cannot,
- in general, deduce the discrete time transition density 
-\begin_inset Formula $f(y_{t}|y_{t-1},\theta).$
-\end_inset
-
- This density is necessary to evaluate the likelihood function or to evaluate
- moment conditions (which are based upon expectations with respect to this
- density).
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-A typical solution is to 
-\begin_inset Quotes eld
-\end_inset
-
-discretize
-\begin_inset Quotes erd
-\end_inset
-
- the model, by which we mean to find a discrete time approximation to the
- model.
- The discretized version of the model is 
-\begin_inset Formula 
-\begin{eqnarray*}
-y_{t}-y_{t-\Delta} & = & \widetilde{g}(\phi,y_{t-1})\Delta+\sqrt{\Delta}\widetilde{h}(\phi,y_{t-1})\varepsilon_{t}\\
-\varepsilon_{t} & \sim & N(0,1)
-\end{eqnarray*}
-
-\end_inset
-
-where 
-\begin_inset Formula $\Delta$
-\end_inset
-
- is a discrete time interval
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-I have changed the parameter from 
-\begin_inset Formula $\theta$
+we draw 
+\begin_inset Formula $\eta$
 \end_inset
 
- to 
-\begin_inset Formula $\phi$
+ from its marginal distribution, then we draw 
+\begin_inset Formula $y$
 \end_inset
 
- to emphasize that this is an approximation, which will be more or less
- good depending on how small or large is 
-\begin_inset Formula $\Delta$
+ from its distribution conditional on 
+\begin_inset Formula $\eta$
 \end_inset
 
-.
- As such 
-\begin_inset Quotes eld
+ and 
+\begin_inset Formula $X$
 \end_inset
 
-ML
-\begin_inset Quotes erd
+, in this case the Poisson distribution.
+ We make a number of such draws, and average them.
+ That gives a simulated 
+\begin_inset Formula $\Pr(Y=y_{i}|X_{i})$
 \end_inset
 
- estimation of 
-\begin_inset Formula $\phi$
+, where 
+\begin_inset Formula $\eta$
 \end_inset
 
- is actually quasi-maximum likelihood estimation.
- When actual data is available on a daily, say, basis, then you could set
- 
-\begin_inset Formula $\Delta=1,$
-\end_inset
-
- and use the discretized model to do QML estimation.
- However, the time interval 
-\begin_inset Formula $\Delta$
-\end_inset
-
- may be too large to give an accurate approximation to the model, and if
- this is the case, the QML estimator could suffer from a large bias for
- estimation of the original parameter, 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
- 
+ has been marginalized out.
 \end_layout
 
 \begin_layout Itemize
-Nevertheless, the approximation shouldn't be too bad, especially if 
-\begin_inset Formula $\Delta$
-\end_inset
-
- is small.
- For example, one could simulate the model at a frequency of 1 minute, saving
- every 1440th point on the path (there are 60
-\begin_inset Formula $\times$
-\end_inset
-
-24 = 1440 minutes in a day), which would give a good approximation of the
- evolution of the daily observations.
- The 
-\begin_inset Quotes sld
-\end_inset
-
-Euler approximation
-\begin_inset Quotes srd
-\end_inset
-
- method for simulating such models is based upon this fact.
- There are other approximation schemes which are more accurate and faster
- than this naive scheme.
- Given an approximation method that can be made very accurate, then simulation-b
-ased inference allows for direct inference on 
-\begin_inset Formula $\theta$
-\end_inset
-
-, which is what we would like to do.
+This would be an example of the Simulated Maximum Likelihood (SML) estimation.
+ 
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-The important point about these three examples is that computational difficultie
-s prevent direct application of ML, GMM, etc.
- Nevertheless the model is fully specified in probabilistic terms up to
- a parameter vector.
- This means that the model is simulable, conditional on the parameter vector.
- 
+In this case, since there is only one latent variable, using numeric integration
+ methods (quadrature) is probably a better choice.
+ But with more random parameters, and thus more latent variables, quadrature
+ becomes too costly and/or inaccurate.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -61348,7 +61130,11 @@ If one doesn't use the optimal weighting matrix, the asymptotic varcov is
 \begin_inset Formula $1+1/H.$
 \end_inset
 
+ Even for moderate 
+\begin_inset Formula $H,$
+\end_inset
 
+ the variance inflation can be quite small.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -61363,7 +61149,19 @@ The above presentation is in terms of a specific set of moment conditions
 \end_layout
 
 \begin_layout Itemize
-A leading example is Indirect Inference, where we set 
+A leading example is 
+\series bold
+Indirect Inference
+\series default
+ (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "gourieroux2010indirect"
+literal "false"
+
+\end_inset
+
+) where we set 
 \begin_inset Formula $\widetilde{m}_{n}(\theta)=\text{\hat{\phi}-\ensuremath{\frac{1}{S}\sum\tilde{\phi^{s}}(\theta)}}$
 \end_inset
 
