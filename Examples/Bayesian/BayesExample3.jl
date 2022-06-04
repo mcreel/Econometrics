@@ -3,7 +3,7 @@
 using Distributions, Turing, StatsPlots
 function main()
 # sample is from exponential, prior is lognormal
-y = rand(Exponential(3.0), 30)
+y = rand(Exponential(3.0), 300)
 # the model: prior and likelihood
 @model function ExpModel(y)
     θ ~ LogNormal(1.,1.)
