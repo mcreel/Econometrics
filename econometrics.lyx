@@ -37998,26 +37998,12 @@ find the log-likelihood function
 \end_layout
 
 \begin_layout Enumerate
-find the score function
-\end_layout
-
-\begin_layout Enumerate
 write a Julia function that computes the log-likelihood function.
 \end_layout
 
 \begin_layout Enumerate
 use fminunc to find the ML estimator.
  You need to use an anonymous function for this.
-\end_layout
-
-\begin_layout Enumerate
-find the analytic expression for the ML estimator
-\end_layout
-
-\begin_layout Enumerate
-compute the ML estimator using your analytic expression.
- It should be very close to what you got using fminunc.
- Is it? If not, revise your code to make it work better.
 \end_layout
 
 \end_deeper
@@ -45472,6 +45458,78 @@ a proof that the estimator is consistent.
 \end_deeper
 \end_deeper
 \begin_layout Enumerate
+Consider the linear regression model 
+\begin_inset Formula $y_{i}=x_{i}^{\prime}\beta_{0}+\epsilon_{i}$
+\end_inset
+
+.
+ Suppose that the 
+\begin_inset Formula $n$
+\end_inset
+
+ observations satisfy all assumptions of the classical linear regression
+ model, except they are heteroscedastic, so that 
+\begin_inset Formula $V(\epsilon_{i}|x_{i})=\sigma_{i}^{2}$
+\end_inset
+
+.
+ Suppose that 
+\begin_inset Formula $\sigma_{i}^{2}$
+\end_inset
+
+ is 
+\series bold
+known
+\series default
+, for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ As such, we can compute the generalized least squares (GLS) estimator,
+ which can be expressed as 
+\begin_inset Formula $\hat{\beta}_{GLS}=\left(X^{\prime}\Sigma^{-1}X\right)^{-1}X^{\prime}\Sigma^{-1}y$
+\end_inset
+
+, where 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ is a diagonal matrix with 
+\begin_inset Formula $\sigma_{i}^{2}$
+\end_inset
+
+ in position 
+\begin_inset Formula $(i,i),$
+\end_inset
+
+ 
+\begin_inset Formula $i=1,2,...,n$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Define moment conditions which define a GMM estimator that is equivalent
+ to the GLS estimator.
+ Prove that the estimators are equivalent.
+\end_layout
+
+\begin_layout Enumerate
+Is your GMM estimator exactly identified, or overidentified? 
+\end_layout
+
+\begin_layout Enumerate
+For efficient estimation using the moment conditions which you have defined,
+ is single step GMM estimation using an identity matrix as the weight matrix
+ fully efficient, or will two step estimation be more efficient? Explain.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
 Do the exercises in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -45511,45 +45569,6 @@ reference "sec:Example:-Generalized-instrumental"
 
  that appear in the asymptotic distribution of the estimator, assuming that
  an efficient weight matrix is used.
-\end_layout
-
-\begin_layout Enumerate
-The Octave script 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-href{./Examples/GMM/MEPS/meps.m}{meps.m} 
-\end_layout
-
-\end_inset
-
- estimates a model for office-based doctpr visits (OBDV) using two different
- moment conditions, a Poisson QML approach and an IV approach.
- If all conditioning variables are exogenous, both approaches should be
- consistent.
- If the PRIV variable is endogenous, only the IV approach should be consistent.
- Neither of the two estimators is efficient in any case, since we already
- know that this data exhibits variability that exceeds what is implied by
- the Poisson model (e.g., negative binomial and other models fit much better).
- Test the exogeneity of the variable PRIV with a GMM-based Hausman-type
- test, using the Octave script 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
- 
-\backslash
-href{hausman.m}{./Examples/GMM/Hausman/hausman.m} 
-\end_layout
-
-\end_inset
-
- for hints about how to set up the test.
 \end_layout
 
 \begin_layout Enumerate
@@ -45614,7 +45633,7 @@ When working out the structure of
 \end_inset
 
 , show that 
-\begin_inset Formula $\mathcal{E}(m_{t}m_{t+s}^{\prime})=\Gamma_{v}^{\prime}.$
+\begin_inset Formula $\mathcal{E}(m_{t}m_{t+s}^{\prime})=\Gamma_{s}^{\prime}.$
 \end_inset
 
  
@@ -46711,6 +46730,147 @@ s you have proposed.
 \begin_layout Enumerate
 Discuss the results, and compare them to your ML estimates for the similar
  problem in the chapter on ML estimation.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Suppose that we have a rational expectations model.
+ At time 
+\begin_inset Formula $t,$
+\end_inset
+
+ the representative agent knows the values of all variables indexed 
+\begin_inset Formula $t-1$
+\end_inset
+
+ and earlier.
+ Suppose the production function is 
+\begin_inset Formula $y_{t}=k_{t}^{\alpha}n_{t}^{1-\alpha}\exp(\epsilon_{t})$
+\end_inset
+
+, where 
+\begin_inset Formula $y$
+\end_inset
+
+ is output, 
+\begin_inset Formula $k$
+\end_inset
+
+ is capital, 
+\begin_inset Formula $n$
+\end_inset
+
+ is labor, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is a white noise shock.
+ One of the first order conditions tells us that the wage rate, 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+, is equal to the marginal product of labor (recall: MPL=
+\begin_inset Formula $\partial y/\partial n$
+\end_inset
+
+).
+ The econometrician has a data set that includes only the variables 
+\begin_inset Formula $k_{t},$
+\end_inset
+
+
+\begin_inset Formula $n_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+.
+ The econometrician knows the correct specification of the production function,
+ except for the value of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, and also knows that 
+\begin_inset Formula $\epsilon_{t}$
+\end_inset
+
+ is a white noise shock.
+ At time 
+\begin_inset Formula $t$
+\end_inset
+
+, the agent observes the shock 
+\begin_inset Formula $\epsilon_{t},$
+\end_inset
+
+ and the capital level, 
+\begin_inset Formula $k_{t},$
+\end_inset
+
+ which is a non-stochastic function of variables that are pre-determined
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+, and then makes choices that determine the values of the variables 
+\begin_inset Formula $y_{t},$
+\end_inset
+
+
+\begin_inset Formula $n_{t},$
+\end_inset
+
+
+\begin_inset Formula $w_{t},$
+\end_inset
+
+
+\begin_inset Formula $r_{t}$
+\end_inset
+
+, among others, using the information that has been given, plus some other
+ unspecified equations.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Consider the linear regression 
+\begin_inset Formula $\log w_{t}=c+\alpha(\log k_{t}-\log w_{t})+\epsilon_{t}$
+\end_inset
+
+.
+ Will the OLS estimate of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ using this regression be consistent or not? Explain.
+\end_layout
+
+\begin_layout Enumerate
+Provide at least two moment conditions that can be used to consistently
+ estimate the parameter 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ by GMM.
+\end_layout
+
+\begin_layout Enumerate
+Explain why the proposed moment conditions have mean zero at the true parameter
+ value.
+\end_layout
+
+\begin_layout Enumerate
+Explain how you could estimate 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ using a two step efficient GMM estimator.
+ Give the explicit form of the optimal weight matrix, for your chosen moment
+ conditions.
 \end_layout
 
 \end_deeper
@@ -50301,6 +50461,89 @@ Use Gretl to estimate (by ML) the same Garch(1,1) model as in the previous
  Do you get the same parameter estimates?
 \end_layout
 
+\begin_layout Enumerate
+Consider the data generating process 
+\begin_inset Formula 
+\begin{align*}
+Y_{t} & =\alpha t+u_{t}\\
+X_{t} & =\gamma t+v_{t}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $t=1,2,...,T$
+\end_inset
+
+, and 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $v_{t}$
+\end_inset
+
+ are two independent 
+\begin_inset Formula $N(0,1)$
+\end_inset
+
+ white noise processes.
+ That is, both 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ follow time trends, each with a different white noise shock.
+ Consider the regression model 
+\emph on
+without constant
+\emph default
+ 
+\begin_inset Formula $Y_{t}=\beta X_{t}+\epsilon_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+To what value does the OLS estimator of 
+\begin_inset Formula $\beta$
+\end_inset
+
+ tend? Prove your result.
+ Hints: recall that 
+\begin_inset Formula $\frac{1}{T^{2}}\sum_{t=1}^{T}t\rightarrow\frac{1}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{1}{T^{3}}\sum_{t=1}^{T}t^{2}\rightarrow\frac{1}{3}.$
+\end_inset
+
+ Also, the formula for the OLS estimator when there is no constant is 
+\begin_inset Formula $\hat{\beta}=\frac{\sum_{t}Y_{t}X_{t}}{\sum_{t}X_{t}^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Does this regression model exhibit the 
+\emph on
+spurious regression
+\emph default
+ problem? Explain why or why not.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 Write a Matlab/Julia/your favorite package script that generates two independent
  random walks, 
