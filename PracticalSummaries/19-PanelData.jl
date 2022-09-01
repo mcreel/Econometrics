@@ -4,7 +4,6 @@
 ## packages
 using CSV, DataFrames, ShiftedArrays, Term, StatsPlots, FixedEffectModels
 
-
 ## read in the data
 cd(@__DIR__)
 ab = CSV.read("../Examples/Data/abdata.csv", DataFrame; missingstring="NA")
@@ -45,12 +44,15 @@ show(describe(ab))
 ## drop missings, to run the regression on the available observations
 dropmissing!(ab)
 
-
 ## DPD: time and firm fixed effects
 println()
 println(@green "DPD with year and firm effects")
 # add more instruments if desired, e.g., (nlag2+nlag3) 
 # or (nlag2+nlag3+nlag4)
+# Note: these results don't coincide with GRETL, because GRETL replaces missings with 0.
+# This code drops observations with missings. Also, the covariance estimator is not
+# the same, as the specialized DPD covariance estimator is not used, so standard errors
+# are different.
 display(reg(ab, @formula(Δn ~ (Δnlag ~ (nlag2)) + Δw + Δk + Δys + fe(YEAR) + fe(unit)), Vcov.cluster(:unit)))
 
 
