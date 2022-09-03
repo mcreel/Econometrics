@@ -153,7 +153,7 @@ Michael Creel
 \begin_layout Date
 
 \size small
-04/06/22
+03/09/22
 \begin_inset Newline newline
 \end_inset
 
@@ -52328,7 +52328,7 @@ Bayesian GMM for the DSGE model
 \end_layout
 
 \begin_layout Standard
-A script which show how to do Bayesian GMM as proposed by 
+A script which shows how to do Bayesian GMM as proposed by 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "ChernozhukovHong2003"
@@ -54672,6 +54672,35 @@ check the serial correlation of the residuals: if it exists, the instruments
  are not valid.
  Possible solution is to augment the AR order, but the sample size gets
  smaller with every additional lag.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Practical summary
+\end_layout
+
+\begin_layout Standard
+The practical summary for the Chapter is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./PracticalSummaries/19-PanelData.jl}{here}
+\end_layout
+
+\end_inset
+
+.
+ This does FE and DPD for the Arellano-Bond data, using Julia.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
