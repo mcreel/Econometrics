@@ -45,7 +45,7 @@ end
 ## Define the MSM criterion 
 # IMPORTANT: try running this with chatter, and without.
 S = 100 # number of simulation replications
-controlchatter = false
+controlchatter = true
 m = θ -> k(x,y) - mean(simulated_moments(θ, x, S, controlchatter)) 
  # sums of squares of moments: corresponds to GMM with identity weight
 function obj(θ)
@@ -76,13 +76,14 @@ println(@yellow "(Remember that the true parameters are $θ₀)")
 
 ## Now, let's do Bayesian MSM, as suggested by
 #  Chernozhukov and Hong (2003)
-using Turing, AdvancedMH, Term
+# This works even without controlling chatter
+using Turing, AdvancedMH, Term, Econometrics
 k_data = k(x,y) # stats from the real data
 #  Define the prior and asymptotic Gaussian likelihood of the moments
 @model function MSM(k_data, S, x)
     θ ~ arraydist([Normal() for _=1:2]) # the prior (note: it's biased)
     # sample from the model, at the trial parameter value, and compute statistics
-    ks = simulated_moments(θ, x, S, false)
+    ks = simulated_moments(θ, x, S, false) # NOTE: no control of chatter
     kbar = mean(ks) # mean of simulated statistics, over S replications
     Σ = cov(ks)  # estimated covariance of statistics
     k_data ~ MvNormal(kbar, Σ) # this corresponds to CUE GMM, but adding the determinant from the MVN 
@@ -97,7 +98,7 @@ length = 10000
 burnin = 1000
 chain = sample(MSM(k_data, S, x),
     MH(:θ => AdvancedMH.RandomWalkProposal(MvNormal(zeros(2), tuning*eye(2)))),
-    length; discard_initial=burnin)
+    length; init_params=zeros(2), discard_initial=burnin)
 display(chain)
 plot(chain)
 corner(chain)

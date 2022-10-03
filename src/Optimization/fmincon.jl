@@ -8,7 +8,7 @@ fminunc() uses NLopt.jl to do the actual minimization.
 
 """
 function fmincon(obj, startval, R=[], r=[], lb=[], ub=[]; tol = 1e-10, iterlim=0)
- e   # the objective is an anonymous function
+    # the objective is an anonymous function
     function objective_function(x::Vector{Float64}, grad::Vector{Float64})
         obj_func_value = obj(x)[1,1]
         return(obj_func_value)
