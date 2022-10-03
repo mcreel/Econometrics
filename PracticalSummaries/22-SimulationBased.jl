@@ -5,13 +5,13 @@
 #  difficult. It goes on to explore Bayesian
 #  MSM, which is pretty easy to implement.
 #  
-#  The second is for SML, and show how simulation
-#  can introduce discontinuities in the criterion.
-#  This can also be dealt with using the Bayesian
-#  approach.
+#  The second is for SML, and shows how chatter can
+#  be controlled, but that simulation can introduce
+#  discontinuities in the criterion. This can also
+#  be dealt with using the Bayesian approach.
 
 using Term
-
+println(@yellow "Start of MSM example")
 #  MSM exampl. We generate data that follows a Poisson
 #  distribution, and estimate using some
 #  simple simulated moments
@@ -66,7 +66,7 @@ println(@red "Bzzzt!")
 
 ## Now, let's do Bayesian MSM, as suggested by
 #  Chernozhukov and Hong (2003)
-using Turing, AdvancedMH
+using Turing, AdvancedMH, Term
 k_data = k(x,y) # stats from the real data
 #  Define the prior and asymptotic Gaussian likelihood of the moments
 @model function MSM(k_data, S, x)
@@ -94,19 +94,20 @@ corner(chain)
 c = Array(chain)
 acceptance = size(unique(c[:,1]),1)[1] / size(c,1)
 println("Acceptance rate: $acceptance")
+println(@cyan "End of MSM example")
 
 ## Now an SML example, using a simple Logit model,
 #  where there is no actual need for simulation. 
 #  However, it does show how simulation can introduce
-#  discontinuity.
-#  Normally, when doing extremum-based estimation,
-#  one would used fixed random draws, to eliminate
-#  the chatter problem, seen above. Here, I'm 
-#  ignoring that, so we have two problems affecting
-#  attempts at extremum-based estimatation, chatter 
-#  and discontinuity.
+#  discontinuity. This example controls random numbers,
+#  by re-setting the seed for each simulation, which 
+#  eliminates the chatter problem seen above. However,
+#  discontinuity still causes problems for extremum 
+#  estimators.
 
 ## generate the "true" data
+using Term
+println(@yellow "Start of SML example")
 using Distributions, Random
 n = 200
 x = randn(n,2)
@@ -119,7 +120,10 @@ y = response(θ₀,x)
 # define simulator of probabilities
 simulated_probs(θ, x, S) = mean([response(θ, x) for _ = 1:S])
 # define the simulated log likelihood
+# IMPORTANT: note how the seed is re-set before simulating
+# the choice probabilities. This eliminates chatter.
 function logit_simulated_loglikelihood(θ, y, x, S)
+    Random.seed!(1234)
     p = simulated_probs(θ, x, S) 
     y.*log.(p) .+ (log.(1.0 .- p)).*(1.0 .- y)
 end
@@ -128,7 +132,7 @@ S = 100
 function smlobj(θ)
     -mean(logit_simulated_loglikelihood(θ, y, x, S))
 end    
-function smlobj(a,b)
+function smlobj(a,b) # method for plots
     smlobj([a,b])
 end    
 
@@ -143,7 +147,7 @@ ylabel!("y")
 ## The objective function looks horrible!
 #  Nevertheless, let's attempt to do gradient-based estimation
 using Econometrics
-fminunc(smlobj, zeros(2))
+display(fminunc(smlobj, zeros(2)))
 println(@red "That didn't work!")
 
 ## Now, let's do Bayesian SML, again using 
@@ -174,3 +178,4 @@ corner(chain)
 c = Array(chain)
 acceptance = size(unique(c[:,1]),1)[1] / size(c,1)
 println("Acceptance rate: $acceptance")
+println(@cyan "End of SML example")
