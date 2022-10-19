@@ -32,7 +32,7 @@ y = rand.(Normal.(μ(x,θ₀),1.0))
 
 ## the statistics, averaged over observations
 function k(x,y)
-    vec(mean([y x.*y x.*(y.^2.0)], dims=1))
+    vec(mean([y x.*y x.*(y.^2.0) (x.^2.0).*y], dims=1))
 end
 
 ## the simulated moments: S replications
@@ -69,7 +69,7 @@ using Econometrics
 # run this next line repeatedly, using CTRL-enter. When chatter
 # is controlled, you always get the same result. When it's not,
 # the result changes every time.
-fminunc(obj, zeros(2))
+fminunc(obj, ones(2))
 println(@green "You should find that MSM works, when chatter is controlled")
 println(@yellow "(Remember that the true parameters are $θ₀)")
 # note that theta hat is same as start values, it didn't work
