@@ -16,6 +16,9 @@ The basic introductory videos:
 3. [Speed](https://youtu.be/a-_ZNTBeLCw): how to compile a system image to make it fast
 4. [Comfort](https://youtu.be/Nbhmq4VWVJU): how to set up VS Code for comfortable use
 
+Practical summary videos:
+1. [Ch. 12, Numerical Optimization](https://www.youtube.com/watch?v=u7XQOusjZ3c): explains
+   how to use the practical summaries, and does the summary for Ch. 12.
 ### Old School Instructions:
 You need to install this repository as a Julia project. Do this as follows: 
 

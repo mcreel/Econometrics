@@ -92,7 +92,7 @@ end
 #= 
 Another thing to check before doing optimization! Remember
 that gradient based methods will work better when the data
-are scaled to put the elements of the gradient one a common
+are scaled to put the elements of the gradient on a common
 order of magnitude. You can check this by examining the
 gradient at some points. Run this block a few times to check.
 =#

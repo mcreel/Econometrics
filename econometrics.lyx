@@ -153,7 +153,7 @@ Michael Creel
 \begin_layout Date
 
 \size small
-03/09/22
+09/11/22
 \begin_inset Newline newline
 \end_inset
 
@@ -590,6 +590,28 @@ Obtaining and using the materials
 \end_layout
 
 \begin_layout Standard
+
+\color black
+A video which explains the steps of this section
+\color inherit
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "is here"
+target "https://www.youtube.com/watch?v=N_aWT7OiX4k"
+literal "false"
+
+\end_inset
+
+.
+ I 
+\color red
+recommend
+\color inherit
+ that you look at the video one time before installing.
+\end_layout
+
+\begin_layout Standard
 The materials are available from a 
 \begin_inset CommandInset href
 LatexCommand href
@@ -628,7 +650,7 @@ literal "false"
 \end_inset
 
  as a Julia package.
- Do this as follows:
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -682,16 +704,32 @@ long
 time, maybe 15 minutes or so.
  
 \emph on
+\color magenta
 Don't worry
 \emph default
+\color inherit
 , this is normal.
  All of the packages that were downloaded are being compiled for the first
  time.
  We will be able to make this go
 \emph on
- much, much faster
+ 
+\color black
+much, much faster
 \emph default
- when we want to use the code.
+\color inherit
+ when we want to use the code, by following the steps explained in Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Using-a-system"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, below.
 \end_layout
 
 \begin_layout Enumerate
@@ -766,18 +804,22 @@ multi-platform: runs on all the popular operating systems.
 
 \begin_layout Itemize
 fast: speed of well-written code is close to C or Fortan.
- Code is relatively easy to write and to read, similar to Matlab or other
- matrix scripting languages
+ Code is relatively easy to write and to read, similar to Python, Matlab
+ or other matrix scripting languages
 \end_layout
 
 \begin_layout Itemize
-the above 3 considerations are essentially necessary for a language for
+reproducible: it is not difficult to control software versions exactly,
+ so that your results can be reproduced exactly.
+\end_layout
+
+\begin_layout Itemize
+the above 4 considerations are essentially necessary for a language for
  modern science, which requires accessibility, verifiability, and performance
 \end_layout
 
 \begin_layout Itemize
-also, it's fun: the ecosystem is still developing rapidly, plenty of room
- to contribute
+also, it's fun: the ecosystem is still developing, plenty of room to contribute
 \end_layout
 
 \begin_layout Standard
@@ -831,7 +873,7 @@ screen
 the speed is only needed if your work is computationally demanding.
  Dividing epsilon by 2 is not very important when epsilon is small.
  For getting fast results for linear models, you may prefer a more complete
- canned package, e.g., Stata, etc.
+ and specialized package, e.g., Stata, etc.
 \end_layout
 
 \begin_layout Itemize
@@ -1058,6 +1100,58 @@ using Econometrics
 
 \end_deeper
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Using-a-system"
+
+\end_inset
+
+Using a system image
+\end_layout
+
+\begin_layout Standard
+A system image is a file that contains precompiled images of functions that
+ one might want to access as quickly as possible.
+ The 
+\begin_inset Quotes sld
+\end_inset
+
+time to first plot
+\begin_inset Quotes srd
+\end_inset
+
+ (or first X) issue is the most common complaint about Julia of new users.
+ Using a precompiled system image solves this problem.
+ In the Econometrics code, the file MakeSysImage.jl
+\begin_inset CommandInset href
+LatexCommand href
+name "MakeSysImage.jl"
+target "https://github.com/mcreel/Econometrics/blob/main/MakeSysimage.jl"
+literal "false"
+
+\end_inset
+
+ will create a system image that contains the Econometrics functions, and
+ the packages upon which they depend.
+ Please see 
+\begin_inset CommandInset href
+LatexCommand href
+name "this video"
+target "https://www.youtube.com/watch?v=a-_ZNTBeLCw"
+literal "false"
+
+\end_inset
+
+ for instructions on how to make and use an image.
+ Remember that you will need to create a new system image if you update
+ the packages.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Running Julia and the work flow
 \end_layout
 
@@ -1117,6 +1211,18 @@ literal "false"
  and may be more what you're used to if coming from Matlab or RStudio, for
  example.
  This is what I use when teaching.
+ A video showing how to use VSCode with the Econometrics package
+\begin_inset CommandInset href
+LatexCommand href
+name " is here"
+target "https://www.youtube.com/watch?v=Nbhmq4VWVJU"
+literal "false"
+
+\end_inset
+
+.
+ I recommend that my students have a look at the video, to better follow
+ what I'm doing in class.
 \end_layout
 
 \begin_layout Subsection
@@ -10793,6 +10899,7 @@ I didn't do it!
 \end_inset
 
 .
+ This is like two regressors giving exactly the same information.
  How can we tell who broke the lamp?
 \end_layout
 
@@ -22997,8 +23104,8 @@ The next chapter introduces extremum estimators, which are minimizers or
  to find an extremum.
  This section gives a very brief introduction to what is a large literature
  on numeric optimization methods.
- We'll consider a few well-known techniques, and one fairly new technique
- that may allow one to solve difficult problems.
+ We'll consider a few well-known techniques, and one of the global optimization
+ methods that may allow one to solve difficult problems.
 \end_layout
 
 \begin_layout Standard
@@ -23620,6 +23727,8 @@ Conditional on
 
  is a scalar.
  But there are other methods that may be better (bisection, golden, etc.).
+ Optimization packages will generally do this well for you, so you usually
+ don't need to worry too much about it.
 \end_layout
 
 \begin_layout Itemize
@@ -24021,7 +24130,7 @@ GradientDescent()
 \begin_layout Standard
 Also, run the 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -24156,6 +24265,7 @@ ensure
  value.
  
 \series bold
+\color red
 THIS
 \begin_inset ERT
 status collapsed
@@ -24185,6 +24295,7 @@ status collapsed
 IMPORTANT in practice.
 
 \series default
+\color inherit
  More on this later.
 \end_layout
 
@@ -24224,7 +24335,8 @@ computing derivatives by hand: this works well, if you're able to do it,
 
 \begin_layout Itemize
 symbolic differentiation: Mathematica and many other similar packages can
- give analytic solutions, in many cases.
+ give analytic solutions, in many cases, and they can output the solution
+ in code form, to be pasted in to your programs.
 \end_layout
 
 \begin_layout Itemize
@@ -24412,7 +24524,8 @@ This is important in practice.
 It is easy to loose precision in calculation if you don't take care.
  In the future, if you start to do empirical work and get results that seem
  meaningless or crazy, try to remember this point.
- 
+ This is really a very common stumbling block, and many people have wasted
+ a lot of time due to forgetting about it.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -24462,6 +24575,8 @@ Calculus.hessian(rosenbrock, 2.0*ones(2))
 \begin_layout Example
 Look at the (2,2) element: the finite difference version is off by 6 orders
  of magnitude! The off diagonal elements are not too good, either.
+ If this were part of a larger program, the results that build on this would
+ be meaningless garbage!
 \begin_inset Newpage newpage
 \end_inset
 
@@ -25409,6 +25524,16 @@ status open
 \backslash
 href{./PracticalSummaries/12-Optimization.jl}{here}
 \end_layout
+
+\end_inset
+
+.
+ A video that works through the summary 
+\begin_inset CommandInset href
+LatexCommand href
+name "is here"
+target "https://www.youtube.com/watch?v=u7XQOusjZ3c"
+literal "false"
 
 \end_inset
 
