@@ -25,7 +25,7 @@ function bound(x, dx)
 # Fill vector with allowed step lengths
 # Replace with -x/dx for negative dx
     b = 1e20 .+ 0.0 .* x
-    for i = 1:length(dx)
+    for i ∈ axes(dx)
         if dx[i] < 0.0
             @inbounds b[i] = -x[i] / dx[i]
         end
@@ -111,7 +111,7 @@ for it = 1:max_it
         dy = AQtF\rhs
         dx = q .* (X*dy + xi - r - dxdz + dsdw)
         ds = -dx
-        for i = 1:length(dz)
+        for i ∈ axes(dz)
             dz[i] = mu * xinv[i] - z[i] - xinv[i] * z[i] * dx[i] - dxdz[i]
             dw[i] = mu * sinv[i] - w[i] - sinv[i] * w[i] * ds[i] - dsdw[i]
         end

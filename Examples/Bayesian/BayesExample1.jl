@@ -7,7 +7,7 @@
 # integrated to get posterior mean
 
 ## explore different sample sizes, different true θs
-using Distributions, Plots
+using Econometrics, Distributions, Plots
 
 ## the prior is lognormal(1,1)
 function prior(θ)
@@ -22,7 +22,7 @@ end
 # the likelihood function
 function likelihood(y, θ)
     dens = zeros(size(θ))
-    for i = 1:size(θ,1)
+    for i ∈ axes(θ,1)
         d = Exponential(θ[i])
         dens[i] = prod(pdf.(Ref(d), y))
     end
