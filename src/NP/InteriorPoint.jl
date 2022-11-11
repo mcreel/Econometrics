@@ -111,7 +111,7 @@ for it = 1:max_it
         dy = AQtF\rhs
         dx = q .* (X*dy + xi - r - dxdz + dsdw)
         ds = -dx
-        for i ∈ axes(dz)
+        for i ∈ axes(dz,1)
             dz[i] = mu * xinv[i] - z[i] - xinv[i] * z[i] * dx[i] - dxdz[i]
             dw[i] = mu * sinv[i] - w[i] - sinv[i] * w[i] * ds[i] - dsdw[i]
         end
