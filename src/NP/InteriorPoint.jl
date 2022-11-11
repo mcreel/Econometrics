@@ -25,7 +25,7 @@ function bound(x, dx)
 # Fill vector with allowed step lengths
 # Replace with -x/dx for negative dx
     b = 1e20 .+ 0.0 .* x
-    for i ∈ axes(dx)
+    for i ∈ axes(dx,1)
         if dx[i] < 0.0
             @inbounds b[i] = -x[i] / dx[i]
         end
