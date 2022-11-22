@@ -1,5 +1,14 @@
 using Econometrics, Test, Random
 function main()
+    # Utilities
+    # sortbyc
+    @testset "sortbyc" begin
+        @test sortbyc()
+    end    
+    # eye
+    @testset "eye" begin
+        @test eye()
+    end    
     # dstats
     @testset "dstats" begin
         @test dstats()
@@ -7,7 +16,8 @@ function main()
     # vech
     @testset "vech" begin
         @test vech()
-    end    
+    end
+    # LinearRegression
     # OLS
     x = [ones(10,1) (1:10)]
     y = [10.,9.,8.,7.,6.,5.,4.,3.,2.,1.]
