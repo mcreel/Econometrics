@@ -5,6 +5,6 @@ end
 
 function sortbyc()
     a = [1 2 3; 3 2 1]
-    sortbyc(a,3)[1,1] == 1
+    sortbyc(a,3)[1,1] == 3
 end    
 
