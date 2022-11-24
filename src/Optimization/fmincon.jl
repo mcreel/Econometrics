@@ -98,6 +98,8 @@ function fmincon()
     R = [1.0 1.0]
     r = 1.0
     results = fmincon(obj, x, R, r)
+    # check convergence
+    results[3] == :FTOL_REACHED
 end
 
 

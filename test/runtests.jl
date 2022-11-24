@@ -35,12 +35,21 @@ function main()
         b = gmm()
         @test b[1,1] / 0.4946717833359474 ≈ 1.0  atol = 1e-5
     end    
+    # Optimization
     # samin
     xopt, fopt = samin(1)
     @testset "samin" begin
-    @test xopt[1] ≈ 0.0 atol=1e-5
-    @test fopt ≈ 2.0 atol=1e-5
+        @test xopt[1] ≈ 0.0 atol=1e-5
+        @test fopt ≈ 2.0 atol=1e-5
     end
+    # fmincon
+    @testset "fmincon" begin
+        @test fmincon()
+    end    
+    # fminunc
+    @testset "fminunc" begin
+        @test fminunc()
+    end    
     #=
     # this is ill-advised, need to test with non-random data,
     # so it doesn't break when julia changes

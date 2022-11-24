@@ -31,6 +31,7 @@ function fminunc()
     # obj = x -> x'x # this would also work, as returns a Float64
     x = [2.0] # argument to objective function should be a vector, thus the brackets
     results = fminunc(obj, x)
+    return results[3] # convergence check, for testing
 end
 
 
