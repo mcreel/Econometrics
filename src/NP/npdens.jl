@@ -9,15 +9,21 @@ bandwidth and Gaussian kernel
 execute ndens() for an example
 """
 function npdens()
-    println("npdens(), with no arguments, runs a simple example")
-    println("execute edit(ndens,()) to see the code")
-    Random.seed!(1) # set seed to enable testing
-    bandwidth = 1.0
-    x = rand(Chisq(5),1000)
-    xeval, d = npdens(x)
-    dt = pdf.(Ref(Chisq(5)), xeval)
-    Plots.plot(xeval, d, label="kernel")
-    Plots.plot!(xeval, dt, label="true")
+    itworked = true
+    try
+        println("npdens(), with no arguments, runs a simple example")
+        println("execute edit(ndens,()) to see the code")
+        Random.seed!(1) # set seed to enable testing
+        bandwidth = 1.0
+        x = rand(Chisq(5),1000)
+        xeval, d = npdens(x)
+        dt = pdf.(Ref(Chisq(5)), xeval)
+        Plots.plot(xeval, d, label="kernel")
+        Plots.plot!(xeval, dt, label="true")
+    catch
+        itworked = false
+    end
+    itworked # return this for testing
 end 
 
 function npdens(x::Array{Float64,1}; points::Int=1000)
