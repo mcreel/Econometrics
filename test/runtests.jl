@@ -51,7 +51,7 @@ function main()
         @test fminunc()
     end
     # mcmc (also tests plots and npdensity
-    @testset "mcmc/plot/npdensity"
+    @testset "mcmc/plot/npdensity" begin
         @test mcmc()
     end    
     #=
