@@ -25,29 +25,34 @@ execute npreg() for an example
 
 using Random, Econometrics, Plots
 function npreg(bandwidth=-1)
-    println("npreg(), with no arguments, runs a simple example")
-    println("npreg(bw) will run the example with your chosen bandwidth (Float64)")
-    println("execute edit(npreg,()) to see the code")
-    k = 1 # number of regressors
-    Random.seed!(1) # set seed to 
-    n = 1000
-    bandwidth == -1 ? bandwidth = 0.25*n^(-1.0/(4 + k)) : nothing
-    neval = 100
-    x = rand(n)*pi*2.0 # from 0 to 2π   
-    xeval = collect(range(pi/2., stop=pi*1.5, length=neval)) # from π/2 to 3π/2  
-    y = cos.(x) .+ 0.25 .* cos.(3.0.*x) + 0.1*randn(n)
-    # npreg wants args to be matrices, not vectors, so convert them
-    y = reshape(y,n,1)
-    x = reshape(x,n,1)
-    xeval = reshape(xeval,neval,1)
-    ytrue = cos.(xeval) .+ 0.25.*cos.(3.0*xeval)
-    weights = kernelweights(x, xeval, bandwidth, true, "knngaussian", 200)
-    yhat, y50, y05, y95 = npreg(y, x, xeval, weights, order=1, do_median=true, do_ci=true)
-    labels = ["true" "mean" "median" "0.05 quantile" "0.95 quantile"]
-    title = "Kernel regression and quantiles"
-    p = Plots.plot(xeval, [ytrue yhat y50 y05 y95], labels=labels, title=title)
-    display(p)
-    nothing
+    itworked = true
+    try
+        println("npreg(), with no arguments, runs a simple example")
+        println("npreg(bw) will run the example with your chosen bandwidth (Float64)")
+        println("execute edit(npreg,()) to see the code")
+        k = 1 # number of regressors
+        Random.seed!(1) # set seed to 
+        n = 1000
+        bandwidth == -1 ? bandwidth = 0.25*n^(-1.0/(4 + k)) : nothing
+        neval = 100
+        x = rand(n)*pi*2.0 # from 0 to 2π   
+        xeval = collect(range(pi/2., stop=pi*1.5, length=neval)) # from π/2 to 3π/2  
+        y = cos.(x) .+ 0.25 .* cos.(3.0.*x) + 0.1*randn(n)
+        # npreg wants args to be matrices, not vectors, so convert them
+        y = reshape(y,n,1)
+        x = reshape(x,n,1)
+        xeval = reshape(xeval,neval,1)
+        ytrue = cos.(xeval) .+ 0.25.*cos.(3.0*xeval)
+        weights = kernelweights(x, xeval, bandwidth, true, "knngaussian", 200)
+        yhat, y50, y05, y95 = npreg(y, x, xeval, weights, order=1, do_median=true, do_ci=true)
+        labels = ["true" "mean" "median" "0.05 quantile" "0.95 quantile"]
+        title = "Kernel regression and quantiles"
+        p = Plots.plot(xeval, [ytrue yhat y50 y05 y95], labels=labels, title=title)
+        display(p)
+    catch
+        itworked = false
+    end
+    itworked # report this for testing
 end 
 
 function npreg(y, x, xeval, weights; order=1, do_median=false, do_ci=false)

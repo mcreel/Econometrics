@@ -54,15 +54,11 @@ function main()
     @testset "mcmc/plot/npdensity" begin
         @test mcmc()
     end    
-    #=
-    # this is ill-advised, need to test with non-random data,
-    # so it doesn't break when julia changes
+    # Nonparametric
     # npreg
     @testset "npreg" begin
-        yhat = npreg(1);
-        @test yhat[1,1] ≈ 0.02080984791302587
+        @test npreg(1)
     end
-    =#
 end
 main()
 
