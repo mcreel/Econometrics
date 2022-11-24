@@ -59,8 +59,8 @@ function main()
     @testset "npreg" begin
         @test npreg(1)
     end
-    @testset "ndens" begin
-        @test ndens()
+    @testset "npdens" begin
+        @test npdens()
     end
 end
 main()
