@@ -15,22 +15,27 @@
 
 """
 function mcmc()
-    println("mcmc(), called with no arguments, runs a simple example")
-    println("execute edit(mcmc,()) to see the code")
-    # sample is from exponential, prior is lognormal, proposal is random walk lognormal
-    y = rand(Exponential(3.0),30)
-    # set prior, likelihood and proposal
-    Prior = θ -> pdf.(Ref(LogNormal(1.0,1.0)), θ)
-    lnL = θ -> sum(logpdf.(Ref(Exponential(θ)), y))
-    tuning = 0.5
-    Proposal = θ -> rand(LogNormal(log(θ),tuning))
-    # get the chain, plot posterior, and descriptive stats
-    chain = mcmc(1.0, 100000, 10000, Prior, lnL, Proposal, true) # start value, chain length, and burnin 
-    p = npdensity(chain[:,1]) # nonparametric plot of posterior density 
-    plot!(p, title="posterior density, simple MCMC example: true value = 3.0", show=true) # add a title
-    display(p)
-    dstats(chain)
-    return
+    itworked = true
+    try
+        println("mcmc(), called with no arguments, runs a simple example")
+        println("execute edit(mcmc,()) to see the code")
+        # sample is from exponential, prior is lognormal, proposal is random walk lognormal
+        y = rand(Exponential(3.0),30)
+        # set prior, likelihood and proposal
+        Prior = θ -> pdf.(Ref(LogNormal(1.0,1.0)), θ)
+        lnL = θ -> sum(logpdf.(Ref(Exponential(θ)), y))
+        tuning = 0.5
+        Proposal = θ -> rand(LogNormal(log(θ),tuning))
+        # get the chain, plot posterior, and descriptive stats
+        chain = mcmc(1.0, 100000, 10000, Prior, lnL, Proposal, true) # start value, chain length, and burnin 
+        p = npdensity(chain[:,1]) # nonparametric plot of posterior density 
+        plot!(p, title="posterior density, simple MCMC example: true value = 3.0", show=true) # add a title
+        display(p)
+        dstats(chain)
+    catch
+        itworked = false
+    end    
+    itworked
 end
 
 # method using threads and symmetric proposal

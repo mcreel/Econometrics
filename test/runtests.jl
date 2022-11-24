@@ -49,6 +49,10 @@ function main()
     # fminunc
     @testset "fminunc" begin
         @test fminunc()
+    end
+    # mcmc (also tests plots and npdensity
+    @testset "mcmc/plot/npdensity"
+        @test mcmc()
     end    
     #=
     # this is ill-advised, need to test with non-random data,
