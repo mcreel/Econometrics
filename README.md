@@ -1,3 +1,5 @@
+[![testing](https://github.com/mcreel/Econometrics/actions/workflows/testing.yml/badge.svg)](https://github.com/mcreel/Econometrics/actions/workflows/testing.yml)
+
 # Econometrics
 First year graduate level econometrics notes with embedded examples using the Julia language.
 
