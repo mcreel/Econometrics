@@ -1,32 +1,17 @@
 name: testing
-on:
-  push:
-    branches:
-      - main
-    tags: '*'
-  pull_request:
+on: [push, pull_request]
 jobs:
   test:
-    name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        version:
-          - '1.8'
-        os:
-          - ubuntu-latest
-          - macOS-latest
-          - windows-latest
-        arch:
-          - x64
-    
+        julia-version: ['1.8']
+        julia-arch: [x64]
+        os: [ubuntu-latest] # [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       - uses: actions/checkout@v2
-      - uses: julia-actions/setup-julia@v1
+      - uses: julia-actions/setup-julia@latest
         with:
           version: ${{ matrix.julia-version }}
-          arch: ${{ matrix.julia-arch }}
-      - uses: julia-actions/julia-buildpkg@v1
-      - uses: julia-actions/julia-runtest@v1
-        with:
-          annotate: true
+      - uses: julia-actions/julia-buildpkg@latest
+      - uses: julia-actions/julia-runtest@latest
