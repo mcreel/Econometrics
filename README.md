@@ -1,4 +1,4 @@
-[![testing](https://github.com/mcreel/Econometrics/actions/workflows/testing.yml/badge.svg)](https://github.com/mcreel/Econometrics/actions/workflows/testing.yml)
+[![testing](https://github.com/mcreel/Econometrics/actions/workflows/testing.yml/badge.svg)](https://github.com/mcreel/Econometrics/actions/workflows/testing.yml) (testing is done on latest stable release of Julia, for Linux, Windows, and MacOS)
 
 # Econometrics
 First year graduate level econometrics notes with embedded examples using the Julia language.
