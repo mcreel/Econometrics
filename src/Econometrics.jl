@@ -60,6 +60,17 @@ include("ML/Likelihoods/negbin.jl")
 include("GMM/gmm.jl")
 include("GMM/gmmresults.jl")
 
+# precompiles
+precompile(ols,())
+precompile(dstats,())
+precompile(mle,())
+precompile(gmm,())
+precompile(mleresults,())
+precompile(gmmresults,())
+precompile(samin,())
+precompile(npreg,())
+precompile(mcmc,())
+
 export stnorm, ma, trim, prettyprint, eye, sortbyc, dstats, lag, lags, vech
 export clc, PrintDivider, PrintEstimationResults, BoundByQuantiles!
 export lsfit, ols, ridge, rsq, tsls, TestStatistics, NeweyWest

@@ -3,19 +3,19 @@ nulldata n --preserve
 set seed 1234
 # structural form parameters
 # demand
-a1 = 10
+a1 = 100
 a2 = -1
 a3 = 1
 # supply
-b1 = 1
+b1 = 20
 b2 = 1
 # structural errors
 sig11 = 1
 sig22 = 1
-sig12 = 0.5
+sig12 = 0.
 matrix Sig = {sig11, sig12; sig12, sig22}
 matrix P = cholesky(Sig)
-genr income = exp(normal()) # generate income (positive)
+genr income = exp(2 + 0.5*normal()) # generate income (positive)
 loop 1000 --progressive --quiet
     # generate errors with desired covariance        
     matrix U = mnormal(n, 2)

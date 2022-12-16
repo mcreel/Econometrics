@@ -153,7 +153,8 @@ Michael Creel
 \begin_layout Date
 
 \size small
-09/11/22
+12 Dec.
+ 2022
 \begin_inset Newline newline
 \end_inset
 
@@ -818,10 +819,6 @@ the above 4 considerations are essentially necessary for a language for
  modern science, which requires accessibility, verifiability, and performance
 \end_layout
 
-\begin_layout Itemize
-also, it's fun: the ecosystem is still developing, plenty of room to contribute
-\end_layout
-
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -835,7 +832,7 @@ Why not Julia?
 
 \begin_layout Itemize
 Julia code is compiled before it's run.
- This means that first calls to functions take a bit of time, as they are
+ This means that first calls to functions take a bit of time, as while are
  compiled.
  The second call will be much faster.
  So, interactive use may frustrate a bit, at least until you learn to work
@@ -844,7 +841,24 @@ Julia code is compiled before it's run.
 
 \begin_deeper
 \begin_layout Itemize
-this will get better over time, as support for pre-compilation improves
+one can use a system image to solve this problem.
+ See 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.youtube.com/watch?v=a-_ZNTBeLCw
+\end_layout
+
+\end_inset
+
+ for a video that shows how to do this for the code that accompanies these
+ notes.
+\end_layout
+
+\begin_layout Itemize
+this is getting better all the time, as support for pre-compilation improves
 \end_layout
 
 \begin_layout Itemize
@@ -877,12 +891,9 @@ the speed is only needed if your work is computationally demanding.
 \end_layout
 
 \begin_layout Itemize
-the ecosystem is still developing, though the basic language is now quite
- stable, and packages are getting more and more complete and mature every
- day.
- There are packages for GLM, deep learning, data frames, etc., etc.
- So, the newness of the language is only a problem for certain use cases.
- 
+there is a lot of existing code for languages like Matlab, Python, Fortran,
+ etc.
+ You may prefer to use that code, depending on your research.
 \end_layout
 
 \begin_layout Standard
@@ -1145,6 +1156,22 @@ literal "false"
  for instructions on how to make and use an image.
  Remember that you will need to create a new system image if you update
  the packages.
+ See 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.youtube.com/watch?v=a-_ZNTBeLCw
+\end_layout
+
+\end_inset
+
+ for a video that shows how to do this for the code that accompanies these
+ notes.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -1815,10 +1842,10 @@ We don't know the forms of the functions
 \end_inset
 
  and 
-\begin_inset Formula $d.$
+\begin_inset Formula $d$
 \end_inset
 
-
+ (unless we studied the script that genereted the data)
 \end_layout
 
 \begin_layout Itemize
@@ -1988,8 +2015,8 @@ Draw an econometric model block.
 \end_layout
 
 \begin_layout Itemize
-with assumptions 4 and 6, we could estimate the supply equation by OLS (try
- it: and compare estimate with true parameter value)
+with assumptions 4 and 6, we could estimate the supply equation by OLS (do
+ it with GRETL: and compare estimate with true parameter value)
 \end_layout
 
 \begin_layout Itemize
@@ -2010,11 +2037,21 @@ no theoretical basis
 The validity of any econometric results we obtain using an econometric model
  will be contingent on these additional restrictions being at least approximatel
 y correct.
- Note that assumption 6 is invalid, as we will see in Chapter 11.
+ If you study the script that generated the data, you will see that assumptions
+ 1-5 are in fact valid for the data set, but assumption 6 is not.
+ This data is an example of a 
+\emph on
+simultaneous equations 
+\emph default
+system
+\emph on
+, 
+\emph default
+and we will see more about that in Chapter 11.
 \end_layout
 
 \begin_layout Itemize
-For this reason, 
+Because validity of results depends on validity of assumptions, 
 \emph on
 specification testing
 \emph default
@@ -2040,8 +2077,8 @@ Given that we know the variable names of the above data, estimate the supply
  Compare the coefficient estimates with the values that generated the data.
  Note that the estimates are not bad, and get very close to the true values
  if you increase the sample size.
- This is because the model is correctly specified, and the 2SLS estimator
- is consistent in this case.
+ This is because the model is correctly specified when we use assumptions
+ 1-5, and the 2SLS estimator is consistent in this case.
 \end_layout
 
 \begin_layout Standard
