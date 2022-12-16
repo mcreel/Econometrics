@@ -14,8 +14,7 @@ n = 500
 
 ## make variables and shocks
 # exog var income
-m = randn(n,5)
-m = sum(m.*m,dims=2) # chi square df=5
+m = exp.(2.0 .+ 0.5*randn(n)) # income is log-normal
 # structural shocks
 ϵ1 = 1.0*randn(n)
 ϵ2 = 1.0*randn(n)
@@ -40,4 +39,5 @@ for i = 2:4
     scatter!(data[(i-1)*nn+1:i*nn,2], data[(i-1)*nn:i*nn,1], markersize=8, show=true)
 end
 display(p)
+#savefig("PriceQuantity.png")
 #writedlm("data.txt", data)
