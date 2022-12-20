@@ -1,4 +1,4 @@
-using Statistics, LinearAlgebra, SolveDSGE
+using Econometrics, Statistics, LinearAlgebra, SolveDSGE
 
 # solve model and simulate data
 function dgp(θ, dsge, reps, rndseed=1234)
@@ -84,19 +84,6 @@ function auxstat(data)
         Z = vcat(Z, m[:], s[:], varv)
     end
     Z
-end
-
-function vech(x)
-    k = size(x,1)
-    a = zeros(Int((k^2-k)/2 + k))
-    m = 1
-    for i = 1:k
-        for j = 1:i
-            a[m] = x[i,j]
-            m += 1
-        end
-    end
-    a
 end
 
 function TrueParameters()

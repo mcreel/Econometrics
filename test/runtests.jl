@@ -62,6 +62,12 @@ function main()
     @testset "npdens" begin
         @test npdens()
     end
+    # dsge
+    # GenData
+    @testset "dsge" begin
+        include("../Examples/DSGE/GenData/GenData.jl")
+        @test GenData()
+    end
 end
 main()
 
