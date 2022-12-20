@@ -19491,7 +19491,13 @@ Simultaneous equations is a different prospect.
 \end_inset
 
  is determined by some unrelated process.
- It's easy to see that we have correlation between regressors and errors.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+It's easy to see that we have correlation between regressors and errors.
  Solving for 
 \begin_inset Formula $p_{t}$
 \end_inset
@@ -19562,6 +19568,10 @@ href{./Examples/Simeq/simeq.inp}{Simeq/simeq.inp}
 .
  It does a Monte Carlo study which verifies that the OLS estimator is inconsiste
 nt, and that the IV estimator is consistent.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -19650,7 +19660,14 @@ columns
 \end_inset
 
 .
- We can stack all 
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+We can stack all 
 \begin_inset Formula $n$
 \end_inset
 
@@ -19659,7 +19676,7 @@ columns
 \begin{eqnarray*}
 Y\Gamma & = & XB+E\\
 \mathcal{E}(X^{\prime}E) & = & 0_{(K\times G)}\\
-vec(E) & \sim & N(0,\Psi)
+\mathrm{vec}(E) & \sim & N(0,\Psi)
 \end{eqnarray*}
 
 \end_inset
@@ -19711,7 +19728,12 @@ E_{n}^{\prime}
 \begin_inset Formula $n\times G.$
 \end_inset
 
+ Recall that the 
+\begin_inset Formula $\mathrm{vec(})$
+\end_inset
 
+ operator just stacks the columns of a matrix on top of one another into
+ a vector.
 \end_layout
 
 \begin_layout Itemize
@@ -19724,8 +19746,9 @@ complete
 
 \begin_layout Itemize
 There is a normality assumption.
- This isn't necessary, but allows us to consider the relationship between
- least squares and ML estimators.
+ This isn't necessary for obtaining consistent estimates, but, if it holds,
+ it allows us to consider the relationship between least squares and ML
+ estimators.
 \end_layout
 
 \begin_layout Itemize
@@ -19797,6 +19820,10 @@ reference "ass:Weakly-exogenous-regressors:"
  Endogenous regressors are those for which this assumption does not hold.
  As long as there is no autocorrelation, lagged endogenous variables are
  weakly exogenous.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -20504,16 +20531,20 @@ reference "eq:correlation between endogs and structural error"
 , the endogenous variables are correlated with the structural errors, so
  they don't satisfy weak exogeneity.
  So, 
-\begin_inset Formula $E(Z^{\prime}\epsilon)\ne$
+\color green
+
+\begin_inset Formula $E(Z^{\prime}\epsilon)\ne0$
 \end_inset
 
-0.
+
+\color inherit
+.
  What are the properties of the OLS estimator in this situation?
 \begin_inset Formula 
 \begin{eqnarray*}
 \hat{\delta} & = & \left(Z^{\prime}Z\right)^{-1}Z^{\prime}y\\
  & = & \left(Z^{\prime}Z\right)^{-1}Z^{\prime}\left(Z\delta^{0}+\varepsilon\right)\\
- & = & \delta^{0}+\left(Z^{\prime}Z\right)^{-1}Z^{\prime}\epsilon
+ & = & \delta^{0}+\left(Z^{\prime}Z\right)^{-1}{\color{green}Z^{\prime}\epsilon}
 \end{eqnarray*}
 
 \end_inset
@@ -20522,7 +20553,7 @@ It's clear that the OLS estimator is biased in general.
  Also, 
 \begin_inset Formula 
 \[
-\hat{\delta}-\delta^{0}=\left(\frac{Z^{\prime}Z}{n}\right)^{-1}\frac{Z^{\prime}\epsilon}{n}
+\hat{\delta}-\delta^{0}=\left(\frac{Z^{\prime}Z}{n}\right)^{-1}{\color{green}\frac{Z^{\prime}\epsilon}{n}}
 \]
 
 \end_inset
