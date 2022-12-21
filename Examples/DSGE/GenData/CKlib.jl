@@ -1,18 +1,14 @@
-using Statistics, LinearAlgebra, SolveDSGE
-
-# this block reads and processes the file, leave it be
-process_model("./CK.txt")
-const dsge = retrieve_processed_model("./CK_processed.txt")
+using Econometrics, Statistics, LinearAlgebra, SolveDSGE
 
 # solve model and simulate data
 function dgp(θ, dsge, reps, rndseed=1234)
     p, ss = ParamsAndSS(θ)
-    dsge = assign_parameters(dsge, p)
+    model = assign_parameters(dsge, p)
     scheme = PerturbationScheme(ss, 1.0, "third")
-    solution = solve_model(dsge, scheme)
+    solution = solve_model(model, scheme)
     burnin = 200
     nobs = 160
-    data = simulate(solution, ss[1:3], reps*(burnin+nobs); rndseed = rndseed)
+    data = simulate(solution, ss[1:3], reps*(burnin+nobs); seed=rndseed)
     # the next returns reps data sets, in an array of arrays
     data = [data[4:8, (nobs+burnin)*i-(nobs+burnin)+1+burnin:i*(nobs+burnin)]' for i = 1:reps]
 end
@@ -88,19 +84,6 @@ function auxstat(data)
         Z = vcat(Z, m[:], s[:], varv)
     end
     Z
-end
-
-function vech(x)
-    k = size(x,1)
-    a = zeros(Int((k^2-k)/2 + k))
-    m = 1
-    for i = 1:k
-        for j = 1:i
-            a[m] = x[i,j]
-            m += 1
-        end
-    end
-    a
 end
 
 function TrueParameters()

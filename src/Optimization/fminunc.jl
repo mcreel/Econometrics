@@ -23,9 +23,11 @@ function fminunc(obj, x; xtol = 1e-08, gtol=1e-6, ftol=1e-12)
     return results.minimizer, results.minimum, Optim.converged(results)
 end
 
-function fminunc()
-    println("with no arguments, fminunc() runs a simple example")
-    println("type edit(fminunc, ()) to see the example code")
+function fminunc(silent=false)
+    if !silent
+        println("with no arguments, fminunc() runs a simple example")
+        println("type edit(fminunc, ()) to see the example code")
+    end
     # return of objective should be real valued, thus the [1] to pull value out of 1-dim array
     obj = x -> (x.^2)[1]
     # obj = x -> x'x # this would also work, as returns a Float64

@@ -36,9 +36,11 @@ function fmincon(obj, startval, R=[], r=[], lb=[], ub=[]; tol = 1e-10, iterlim=0
     return xopt, objvalue, flag
 end
 
-function fmincon()
-    println("with no arguments, fmincon() runs a simple example")
-    println("type edit(fmincon, ()) to see the example code")
+function fmincon(silent=false)
+    if !silent
+        println("with no arguments, fmincon() runs a simple example")
+        println("type edit(fmincon, ()) to see the example code")
+    end
     # return of objective should be real valued, thus the [1] to pull value out of 1-dim array
     obj = x -> x'x
     x = [2.0, 2.0]

@@ -31,7 +31,7 @@ end
 # test dstats
 function dstats()
     a = [1;2;3]
-    b = dstats(a, silent=true)[:];
+    b = dstats(a; silent=true)[:];
     c = [2.0;2.0;1.0;1.0;1.0;3.0;1.1;2.9]
     b ≈ c
 end    
