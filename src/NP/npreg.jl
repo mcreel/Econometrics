@@ -24,12 +24,14 @@ execute npreg() for an example
 """
 
 using Random, Econometrics, Plots
-function npreg(bandwidth=-1)
+function npreg(bandwidth=-1, silent=false)
     itworked = true
     try
-        println("npreg(), with no arguments, runs a simple example")
-        println("npreg(bw) will run the example with your chosen bandwidth (Float64)")
-        println("execute edit(npreg,()) to see the code")
+        if !silent
+            println("npreg(), with no arguments, runs a simple example")
+            println("npreg(bw) will run the example with your chosen bandwidth (Float64)")
+            println("execute edit(npreg,()) to see the code")
+        end
         k = 1 # number of regressors
         Random.seed!(1) # set seed to 
         n = 1000

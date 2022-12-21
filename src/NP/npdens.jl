@@ -8,11 +8,13 @@ bandwidth and Gaussian kernel
 
 execute ndens() for an example
 """
-function npdens()
+function npdens(silent=false)
     itworked = true
     try
-        println("npdens(), with no arguments, runs a simple example")
-        println("execute edit(ndens,()) to see the code")
+        if !silent
+            println("npdens(), with no arguments, runs a simple example")
+            println("execute edit(ndens,()) to see the code")
+        end
         Random.seed!(1) # set seed to enable testing
         bandwidth = 1.0
         x = rand(Chisq(5),1000)

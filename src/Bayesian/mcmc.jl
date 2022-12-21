@@ -14,11 +14,9 @@
     (example code) mcmc(): runs a simple example. edit(mcmc,()) to see the code
 
 """
-function mcmc()
+function mcmc(silent=false)
     itworked = true
     try
-        println("mcmc(), called with no arguments, runs a simple example")
-        println("execute edit(mcmc,()) to see the code")
         # sample is from exponential, prior is lognormal, proposal is random walk lognormal
         y = rand(Exponential(3.0),30)
         # set prior, likelihood and proposal
@@ -27,11 +25,16 @@ function mcmc()
         tuning = 0.5
         Proposal = θ -> rand(LogNormal(log(θ),tuning))
         # get the chain, plot posterior, and descriptive stats
-        chain = mcmc(1.0, 100000, 10000, Prior, lnL, Proposal, true) # start value, chain length, and burnin 
+        report = !silent
+        chain = mcmc(1.0, 100000, 10000, Prior, lnL, Proposal, report) # start value, chain length, and burnin 
         p = npdensity(chain[:,1]) # nonparametric plot of posterior density 
-        plot!(p, title="posterior density, simple MCMC example: true value = 3.0", show=true) # add a title
-        display(p)
-        dstats(chain)
+        if !silent
+            println("mcmc(), called with no arguments, runs a simple example")
+            println("execute edit(mcmc,()) to see the code")
+            plot!(p, title="posterior density, simple MCMC example: true value = 3.0", show=true) # add a title
+            display(p)
+            dstats(chain)
+        end    
     catch
         itworked = false
     end    

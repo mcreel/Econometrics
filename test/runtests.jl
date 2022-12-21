@@ -1,4 +1,6 @@
 using Econometrics, Test, Random
+cd(@__DIR__)
+include("../Examples/DSGE/GenData/GenData.jl")
 function main()
     # Utilities
     # sortbyc
@@ -44,29 +46,28 @@ function main()
     end
     # fmincon
     @testset "fmincon" begin
-        @test fmincon()
+        @test fmincon(true)
     end    
     # fminunc
     @testset "fminunc" begin
-        @test fminunc()
+        @test fminunc(true)
     end
     # mcmc (also tests plots and npdensity
     @testset "mcmc/plot/npdensity" begin
-        @test mcmc()
+        @test mcmc(true)
     end    
     # Nonparametric
     # npreg
     @testset "npreg" begin
-        @test npreg(1)
+        @test npreg(1, true)
     end
     @testset "npdens" begin
-        @test npdens()
+        @test npdens(true)
     end
     # dsge
     # GenData
     @testset "dsge" begin
-        include("../Examples/DSGE/GenData/GenData.jl")
-        @test GenData()
+        @test GenData(true)
     end
 end
 main()
