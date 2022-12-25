@@ -51,6 +51,7 @@ function npreg(bandwidth=-1, silent=false)
         title = "Kernel regression and quantiles"
         p = Plots.plot(xeval, [ytrue yhat y50 y05 y95], labels=labels, title=title)
         display(p)
+        gui()
     catch
         itworked = false
     end

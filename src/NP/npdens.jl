@@ -22,6 +22,7 @@ function npdens(silent=false)
         dt = pdf.(Ref(Chisq(5)), xeval)
         Plots.plot(xeval, d, label="kernel")
         Plots.plot!(xeval, dt, label="true")
+        gui()
     catch
         itworked = false
     end
