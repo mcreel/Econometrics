@@ -5,7 +5,8 @@
 
 using CSV, DataFrames, StatsModels, Econometrics
 # prepare the data
-card = CSV.read("../Julia/cooked.csv", DataFrame)
+p = joinpath(@__DIR__,"../Julia/")
+card = CSV.read(p*"cooked.csv", DataFrame)
 display(card)
 
 y = card[:,1]

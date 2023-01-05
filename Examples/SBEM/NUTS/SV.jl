@@ -1,3 +1,7 @@
+# this is not working, it needs update to current version of DynamicHMC
+using Pkg
+cd(@__DIR__)
+Pkg.activate(".")
 # simple example of method of simulated moments estimated by
 # NUTS MCMC
 

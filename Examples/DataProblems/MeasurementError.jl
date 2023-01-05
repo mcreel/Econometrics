@@ -16,7 +16,7 @@ function wrapper(n, sig)
 	ystar = zeros(n)
 	# generate the dep var
 	for t = 2:n
-	  ystar[t,:] = 0.0 + 0.9*ystar[t-1] + 1.0*x[t] + e[t]
+	  ystar[t] = 0.0 + 0.9*ystar[t-1] + 1.0*x[t] + e[t]
 	end
     # add measurement error
 	y = ystar + sig*randn(n)
@@ -41,9 +41,9 @@ for rep = 1:reps
     bs[rep,:] = wrapper(n, sig)
 end
 # analyze results
-histogram(bs[:,2])
-sig != 0.0 ? savefig("ylag_n100.png") : savefig("ylag_n100_no_error.png")
-gui()
+p = histogram(bs[:,2])
+display(p)
+#sig != 0.0 ? savefig("ylag_n100.png") : savefig("ylag_n100_no_error.png")
 dstats(bs);
 return
 end
