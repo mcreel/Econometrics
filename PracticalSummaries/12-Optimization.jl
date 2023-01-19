@@ -40,11 +40,9 @@ results = Optim.optimize(obj, zeros(2), LBFGS(),
 
 ##
 # Let's check that the Hessian is p.d.
-using ForwardDiff
+using ForwardDiff, LinearAlgebra
 H = ForwardDiff.hessian(obj, βhat)
-##
-using LinearAlgebra
-eigen(H)
+eigen(H).values
 
 ##
 # The eigenvalues are all positive, so the Hessian is p.d. at

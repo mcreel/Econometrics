@@ -153,8 +153,20 @@ Michael Creel
 \begin_layout Date
 
 \size small
-12 Dec.
- 2022
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\size small
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
