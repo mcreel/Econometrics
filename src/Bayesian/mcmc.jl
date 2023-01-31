@@ -58,6 +58,7 @@ end
     reportevery = Int((reps+burnin)/10)
     lnLθ = lnL(θ)
     chain = zeros(reps, size(θ,1)+1)  #!!!!!! use a vector of vectors
+    chain2 = Vector{Vector{Float64}}(undef,reps)
     naccept = zeros(size(θ))
     for rep = 1:reps+burnin
         θᵗ = Proposal(θ) # new trial value  # MAKE THIS non-allocating!
@@ -84,7 +85,8 @@ end
             naccept = naccept - naccept
         end    
         if rep > burnin
-            chain[rep-burnin,:] = vcat(θ, accept)
+            @time chain[rep-burnin,:] = vcat(θ, accept)
+            @time chain2[rep] = vcat(θ, accept)
         end    
     end
     return chain
