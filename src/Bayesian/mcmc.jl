@@ -84,8 +84,7 @@ end
             naccept = naccept - naccept
         end    
         if rep > burnin
-            chain[rep-burnin,1:end-1] = θ[:]
-            chain[rep-burnin, end] = accept
+            chain[rep-burnin,:] = vcat(θ, accept)
         end    
     end
     return chain
