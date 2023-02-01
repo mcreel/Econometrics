@@ -15,7 +15,7 @@
 
 """
 
-using MCMCChains
+using MCMCChains, Distributions
 function mcmc(silent=false)
     itworked = true
     try
@@ -28,13 +28,13 @@ function mcmc(silent=false)
         Proposal = θ -> rand(LogNormal(log(θ),tuning))
         # get the chain, plot posterior, and descriptive stats
         report = !silent
-        chain = mcmc(1.0, 100000, 10000, Prior, lnL, Proposal, report) # start value, chain length, and burnin 
+        chain = mcmc(1.0, 1000, 100, Prior, lnL, Proposal, report) # start value, chain length, and burnin 
         chain = Chains(chain[:,1], ["θ"])
         p=plot(chain)
         if !silent
             println("mcmc(), called with no arguments, runs a simple example")
             println("execute edit(mcmc,()) to see the code")
-            plot!(p, title="posterior density, simple MCMC example: true value = 3.0", show=true) # add a title
+            plot!(p, title="          true value = 3.0", show=true) # add a title
             display(p)
             display(chain)
         end    
