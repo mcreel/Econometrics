@@ -52,8 +52,8 @@ function main()
     @testset "fminunc" begin
         @test fminunc(true)
     end
-    # mcmc (also tests plots and npdensity
-    @testset "mcmc/plot/npdensity" begin
+    # mcmc (also tests plots and use of MCMCChains
+    @testset "mcmc/plot/MCMCChains" begin
         @test mcmc(true)
     end    
     # Nonparametric
