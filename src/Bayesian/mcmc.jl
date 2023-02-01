@@ -14,6 +14,7 @@
     (example code) mcmc(): runs a simple example. edit(mcmc,()) to see the code
 
 """
+
 using MCMCChains
 function mcmc(silent=false)
     itworked = true
