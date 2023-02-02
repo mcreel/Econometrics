@@ -14,6 +14,8 @@
     (example code) mcmc(): runs a simple example. edit(mcmc,()) to see the code
 
 """
+
+using MCMCChains, Distributions
 function mcmc(silent=false)
     itworked = true
     try
@@ -26,14 +28,15 @@ function mcmc(silent=false)
         Proposal = θ -> rand(LogNormal(log(θ),tuning))
         # get the chain, plot posterior, and descriptive stats
         report = !silent
-        chain = mcmc(1.0, 100000, 10000, Prior, lnL, Proposal, report) # start value, chain length, and burnin 
-        p = npdensity(chain[:,1]) # nonparametric plot of posterior density 
+        chain = mcmc(1.0, 1000, 100, Prior, lnL, Proposal, report) # start value, chain length, and burnin 
+        chain = Chains(chain[:,1], ["θ"])
+        p=plot(chain)
         if !silent
             println("mcmc(), called with no arguments, runs a simple example")
             println("execute edit(mcmc,()) to see the code")
-            plot!(p, title="posterior density, simple MCMC example: true value = 3.0", show=true) # add a title
+            plot!(p, title="          true value = 3.0", show=true) # add a title
             display(p)
-            dstats(chain)
+            display(chain)
         end    
     catch
         itworked = false
@@ -57,10 +60,10 @@ end
 @views function mcmc(θ, reps::Int64, burnin::Int64, Prior::Function, lnL::Function, Proposal::Function, report::Bool=true)
     reportevery = Int((reps+burnin)/10)
     lnLθ = lnL(θ)
-    chain = zeros(reps, size(θ,1)+1)  #!!!!!! use a vector of vectors
+    chain = zeros(reps, size(θ,1)+1)
     naccept = zeros(size(θ))
     for rep = 1:reps+burnin
-        θᵗ = Proposal(θ) # new trial value  # MAKE THIS non-allocating!
+        θᵗ = Proposal(θ) # new trial value
         if report
             changed = Int.(.!(θᵗ .== θ)) # find which changed
         end    

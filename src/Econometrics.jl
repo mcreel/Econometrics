@@ -1,6 +1,6 @@
 module Econometrics
 using Statistics, LinearAlgebra, Printf, Test
-using Plots, GR, StatsPlots
+using Plots, StatsPlots
 using Optim, NLopt
 using Distributions, Distances, StatsBase, StatsFuns, StatsModels
 using SpecialFunctions

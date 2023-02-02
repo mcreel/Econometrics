@@ -157,11 +157,23 @@ using Econometrics
 # try setting rt=0.05, it will fail sometimes, because the 
 # search region is shrunk too quickly
 # rt=0.9 has worked every time I've tried it
-rt = 0.75
+gr() # using the GR backend
+x = range(-4, step=0.1, stop=4)
+y = x
+contour(x,y,f, c=:viridis)
+rt = 0.9
 lower = [-4., -4.]
 upper = -lower
-θstart = 8.0 .* rand(2) .-4.0 
-samin(f, θstart, lower, upper, rt=rt);
+θstart = [2.0, -3.9] # a pretty bad starting point
+trace = (samin(f, θstart, lower, upper, rt=rt)[4])[:,4:5]
+# plot the path take to the solution (run several times to see examples)
+for i = 1:size(trace,1)-1
+    display(scatter!([trace[i,1]], [trace[i,2]], labels=:none, color=:red, markersize=3))
+    sleep(0.05)
+end
+θhat = round.(trace[end,:], digits=5)
+display(scatter!([trace[end,1]], [trace[end,2]], legend=true, label="θhat=$θhat", color=:yellow, markershape=:star5, markersize=10))
+
 println("for reference, the global minimizer is (-0.00879, 1.58163)")
 println("with the function value -4.8611920055")
 
