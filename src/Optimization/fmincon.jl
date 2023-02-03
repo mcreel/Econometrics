@@ -1,10 +1,18 @@
 """
-    xopt, fopt, converged = fmincon(obj, startval)
+    xopt, fopt, converged = fmincon(obj, startval, R, r, lb, ub; tol=tol, iterlim=0)
 
-Minimize the function obj, starting at startval.
+Minimize the function obj subject to linear restraints
+Rb=r and box constraints defined by lower bounds lb 
+and upper bounds ub, starting at startval. 
 
-fminunc() with no arguments will run an example, execute edit(fminunc,()) to see the code.
-fminunc() uses NLopt.jl to do the actual minimization.
+R and r can both be empty, by passing []
+lb and/or ub can also be empty, by passing []
+
+function and parameter tolerance can be set using keyword tol (default is 1e-10)
+iteration limit can be set with keyword iterlim (default is no limit)
+
+fmincon() with no arguments will run an example, execute edit(fmincon,()) to see the code.
+fmincon() uses NLopt.jl to do the actual minimization.
 
 """
 function fmincon(obj, startval, R=[], r=[], lb=[], ub=[]; tol = 1e-10, iterlim=0)
