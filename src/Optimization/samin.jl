@@ -47,7 +47,7 @@ Usage details: x, obj, convergence, details = samin(f,
 Arguments:
 REQUIRED
 * f: objective function
-* x_init: starting value
+* x_init: vector of starting values
 * lb:  vector of lower bounds
 * ub: vector of upper bounds
 KEYWORDS
@@ -147,7 +147,9 @@ function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float
     f::Float64 = obj_fn(x)
     fopt::Float64 = copy(f) # give it something to compare to
     func_evals = 0 # total function evaluations (limited by maxeval)
-    details = [func_evals t fopt xopt']
+    details = zeros(maxevals, size(x,1)+3)
+    details_ind = 1
+    details[details_ind,:] = hcat(Float64(func_evals), t, fopt, xopt)
     bounds = ub - lb
     # check for out-of-bounds starting values
     for i = 1:n
@@ -197,7 +199,9 @@ function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float
                                 xopt = copy(xp)
                                 fopt = copy(fp)
                                 nnew +=1
-                                details = [details; [func_evals t fp xp']]
+                                details_ind +=1
+                                details[details_ind,:] = 
+                                    hcat(Float64(func_evals), t, fp, xp)
                             end
                         # If the point is higher, use the Metropolis criteria to decide on
                         # acceptance or rejection.
@@ -230,7 +234,7 @@ function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float
                                 PrintDivider()
                             end
                             converge = 0
-                            return xopt, fopt, converge, details
+                            return xopt, fopt, converge, details[1:details_ind,:]
                         end
                     end
                 end
@@ -344,5 +348,5 @@ function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float
             x = xopt
         end
     end
-    return xopt, fopt, converge, details
+    return xopt, fopt, converge, details[1:details_ind,:]
 end
