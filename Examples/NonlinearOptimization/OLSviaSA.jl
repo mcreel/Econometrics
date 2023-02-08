@@ -17,10 +17,10 @@ p = contour(b1,b2,(b1,b2)->s(b1,b2),fill=true, c=:viridis)
 scatter!([beta[1]],[beta[2]], markersize=10, label="true")
 scatter!([betahat[1]],[betahat[2]], markersize=10, label="estimated")
 # do OLS by simulated annealing, and plot the path
-lb = -4*ones(2,1)
+lb = -4*ones(2)
 ub = -lb
-thetastart = fill(-3.0, 2, 1)
-obj = theta-> (1/n)*sum((y - x*theta).^2)[1,1]
+thetastart = fill(-3.0, 2)
+obj = theta-> (1/n)*sum((y - x*theta).^2)
 results = samin(obj, thetastart, lb, ub, verbosity=2)
 path = results[4]
 plot!(path[:,4], path[:,5])
