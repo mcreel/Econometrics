@@ -94,19 +94,19 @@ function samin()
     ub = -lb
     # converge to global opt, see final parameters
     println("normal convergence, see only final results")
-    @time xtest, ftest, junk = samin(sse, x, lb, ub, verbosity=1)
+    @time xtest, ftest, junk, junk2 = samin(sse, x, lb, ub, verbosity=1)
     # no convergence within iteration limit
     println("no convergence within iter limit")
-    @time xopt = samin(sse, x, lb, ub, maxevals=10, verbosity=1)
+    @time samin(sse, x, lb, ub, maxevals=10, verbosity=1)
     # initial point out of bounds
     println("initial point out of bounds")
     lb = 0.5*ub
     x[1,1] = 0.2
-    xopt = samin(sse, x, lb, ub, verbosity=1)
+    samin(sse, x, lb, ub, verbosity=1)
     # optimum on bound of parameter space
     println("optimum on bounds of parameter space")
     x = 0.5 .+ 0.5*rand(k,1)
-    xopt = samin(sse, x, lb, ub, verbosity=1)
+    samin(sse, x, lb, ub, verbosity=1)
     # impose a constraint
     println("constraint")
     lb = -ones(k,1)
@@ -114,7 +114,7 @@ function samin()
     x[1] = 0.5
     lb[1] = 0.5
     ub[1] = 0.5
-    @time xopt = samin(sse, x, lb, ub, verbosity=1)
+    @time samin(sse, x, lb, ub, verbosity=1)
     return xtest, ftest
 end
 
@@ -122,9 +122,7 @@ function samin(x::Int64)
     # samin(), with a single integer arguments, runs the same code as first example,
     # but silently, for a test
     junk=2. # shows use of obj. fun. as a closure
-    function sse(x)
-        objvalue = junk + sum(x.*x)
-    end
+    sse = x -> junk + dot(x,x)
     k = 5
     Random.seed!(1)
     x = rand(k,1)
