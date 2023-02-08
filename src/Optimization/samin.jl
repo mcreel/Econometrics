@@ -85,10 +85,8 @@ Returns:
 function samin()
     println("samin(), with no arguments, runs an example of usage")
     println("execute edit(samin,()) to see the example")
-    junk=2. # shows use of obj. fun. as a closure
-    function sse(x)
-        objvalue = junk + sum(x.*x)
-    end
+    junk=2.0
+    sse = x -> junk + dot(x,x) # shows use of obj. fun. as a closure
     k = 5
     Random.seed!(1)
     x = rand(k,1)
