@@ -89,8 +89,8 @@ function samin()
     sse = x -> junk + dot(x,x) # shows use of obj. fun. as a closure
     k = 5
     Random.seed!(1)
-    x = rand(k,1)
-    lb = -ones(k,1)
+    x = rand(k)
+    lb = -ones(k)
     ub = -lb
     # converge to global opt, see final parameters
     println("normal convergence, see only final results")
@@ -101,15 +101,15 @@ function samin()
     # initial point out of bounds
     println("initial point out of bounds")
     lb = 0.5*ub
-    x[1,1] = 0.2
+    x[1] = 0.2
     samin(sse, x, lb, ub, verbosity=1)
     # optimum on bound of parameter space
     println("optimum on bounds of parameter space")
-    x = 0.5 .+ 0.5*rand(k,1)
+    x = 0.5 .+ 0.5*rand(k)
     samin(sse, x, lb, ub, verbosity=1)
     # impose a constraint
     println("constraint")
-    lb = -ones(k,1)
+    lb = -ones(k)
     ub = -lb
     x[1] = 0.5
     lb[1] = 0.5
@@ -125,8 +125,8 @@ function samin(x::Int64)
     sse = x -> junk + dot(x,x)
     k = 5
     Random.seed!(1)
-    x = rand(k,1)
-    lb = -ones(k,1)
+    x = rand(k)
+    lb = -ones(k)
     ub = -lb
     # converge to global opt, see final parameters
     #println("normal convergence, see only final results")
@@ -134,7 +134,7 @@ function samin(x::Int64)
     return xtest, ftest
 end
 
-function samin(obj_fn, x, lb, ub; nt=5, ns=5, rt=0.5, maxevals=1e6, neps=5, functol=1e-8, paramtol=1e-5, verbosity=1, coverage_ok=0)
+function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float64}; nt=5, ns=5, rt=0.5, maxevals=1e6, neps=5, functol=1e-8, paramtol=1e-5, verbosity=1, coverage_ok=0)
     n = size(x,1) # dimension of parameter
     #  Set initial values
     nacc = 0 # total accepted trials
