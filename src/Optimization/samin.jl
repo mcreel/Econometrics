@@ -134,7 +134,7 @@ function samin(x::Int64)
     return xtest, ftest
 end
 
-function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float64}; nt=5, ns=5, rt=0.5, maxevals=Int64(1e6), neps=5, functol=1e-8, paramtol=1e-5, verbosity=1, coverage_ok=0)
+function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float64}; nt=5, ns=5, rt=0.5, maxevals::Int64=Int64(1e6), neps=5, functol=1e-8, paramtol=1e-5, verbosity=1, coverage_ok=0)
     n = size(x,1) # dimension of parameter
     #  Set initial values
     nacc = 0 # total accepted trials
@@ -149,7 +149,7 @@ function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float
     func_evals = 0 # total function evaluations (limited by maxeval)
     details = zeros(maxevals, size(x,1)+3)
     details_ind = 1
-    details[details_ind,:] = hcat(Float64(func_evals), t, fopt, xopt)
+    details[details_ind,:] = vcat(Float64(func_evals), t, fopt, xopt)
     bounds = ub - lb
     # check for out-of-bounds starting values
     for i = 1:n
@@ -201,7 +201,7 @@ function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float
                                 nnew +=1
                                 details_ind +=1
                                 details[details_ind,:] = 
-                                    hcat(Float64(func_evals), t, fp, xp)
+                                    vcat(Float64(func_evals), t, fp, xp)
                             end
                         # If the point is higher, use the Metropolis criteria to decide on
                         # acceptance or rejection.
