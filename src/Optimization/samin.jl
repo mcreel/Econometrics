@@ -144,8 +144,8 @@ function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float
     fstar = typemax(Float64)*ones(neps)
     # Initial obj_value
     xopt = copy(x)
-    f = obj_fn(x)
-    fopt = copy(f) # give it something to compare to
+    f::Float64 = obj_fn(x)
+    fopt::Float64 = copy(f) # give it something to compare to
     func_evals = 0 # total function evaluations (limited by maxeval)
     details = [func_evals t fopt xopt']
     bounds = ub - lb
