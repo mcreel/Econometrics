@@ -47,7 +47,7 @@ Usage details: x, obj, convergence, details = samin(f,
 Arguments:
 REQUIRED
 * f: objective function
-* x_init: starting value
+* x_init: vector of starting values
 * lb:  vector of lower bounds
 * ub: vector of upper bounds
 KEYWORDS
@@ -85,38 +85,36 @@ Returns:
 function samin()
     println("samin(), with no arguments, runs an example of usage")
     println("execute edit(samin,()) to see the example")
-    junk=2. # shows use of obj. fun. as a closure
-    function sse(x)
-        objvalue = junk + sum(x.*x)
-    end
+    junk=2.0
+    sse = x -> junk + dot(x,x) # shows use of obj. fun. as a closure
     k = 5
     Random.seed!(1)
-    x = rand(k,1)
-    lb = -ones(k,1)
+    x = rand(k)
+    lb = -ones(k)
     ub = -lb
     # converge to global opt, see final parameters
     println("normal convergence, see only final results")
-    @time xtest, ftest, junk = samin(sse, x, lb, ub, verbosity=1)
+    @time xtest, ftest, conv, junk2 = samin(sse, x, lb, ub, verbosity=1)
     # no convergence within iteration limit
     println("no convergence within iter limit")
-    @time xopt = samin(sse, x, lb, ub, maxevals=10, verbosity=1)
+    @time samin(sse, x, lb, ub, maxevals=10, verbosity=1)
     # initial point out of bounds
     println("initial point out of bounds")
     lb = 0.5*ub
-    x[1,1] = 0.2
-    xopt = samin(sse, x, lb, ub, verbosity=1)
+    x[1] = 0.2
+    samin(sse, x, lb, ub, verbosity=1)
     # optimum on bound of parameter space
     println("optimum on bounds of parameter space")
-    x = 0.5 .+ 0.5*rand(k,1)
-    xopt = samin(sse, x, lb, ub, verbosity=1)
+    x = 0.5 .+ 0.5*rand(k)
+    samin(sse, x, lb, ub, verbosity=1)
     # impose a constraint
     println("constraint")
-    lb = -ones(k,1)
+    lb = -ones(k)
     ub = -lb
     x[1] = 0.5
     lb[1] = 0.5
     ub[1] = 0.5
-    @time xopt = samin(sse, x, lb, ub, verbosity=1)
+    @time samin(sse, x, lb, ub, verbosity=1)
     return xtest, ftest
 end
 
@@ -124,13 +122,11 @@ function samin(x::Int64)
     # samin(), with a single integer arguments, runs the same code as first example,
     # but silently, for a test
     junk=2. # shows use of obj. fun. as a closure
-    function sse(x)
-        objvalue = junk + sum(x.*x)
-    end
+    sse = x -> junk + dot(x,x)
     k = 5
     Random.seed!(1)
-    x = rand(k,1)
-    lb = -ones(k,1)
+    x = rand(k)
+    lb = -ones(k)
     ub = -lb
     # converge to global opt, see final parameters
     #println("normal convergence, see only final results")
@@ -138,7 +134,7 @@ function samin(x::Int64)
     return xtest, ftest
 end
 
-function samin(obj_fn, x, lb, ub; nt=5, ns=5, rt=0.5, maxevals=1e6, neps=5, functol=1e-8, paramtol=1e-5, verbosity=1, coverage_ok=0)
+function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float64}; nt=5, ns=5, rt=0.5, maxevals::Int64=Int64(1e6), neps=5, functol=1e-8, paramtol=1e-5, verbosity=1, coverage_ok=0)
     n = size(x,1) # dimension of parameter
     #  Set initial values
     nacc = 0 # total accepted trials
@@ -148,10 +144,12 @@ function samin(obj_fn, x, lb, ub; nt=5, ns=5, rt=0.5, maxevals=1e6, neps=5, func
     fstar = typemax(Float64)*ones(neps)
     # Initial obj_value
     xopt = copy(x)
-    f = obj_fn(x)
-    fopt = copy(f) # give it something to compare to
+    f::Float64 = obj_fn(x)
+    fopt::Float64 = copy(f) # give it something to compare to
     func_evals = 0 # total function evaluations (limited by maxeval)
-    details = [func_evals t fopt xopt']
+    details = zeros(maxevals, size(x,1)+3)
+    details_ind = 1
+    details[details_ind,:] = vcat(Float64(func_evals), t, fopt, xopt)
     bounds = ub - lb
     # check for out-of-bounds starting values
     for i = 1:n
@@ -201,7 +199,9 @@ function samin(obj_fn, x, lb, ub; nt=5, ns=5, rt=0.5, maxevals=1e6, neps=5, func
                                 xopt = copy(xp)
                                 fopt = copy(fp)
                                 nnew +=1
-                                details = [details; [func_evals t fp xp']]
+                                details_ind +=1
+                                details[details_ind,:] = 
+                                    vcat(Float64(func_evals), t, fp, xp)
                             end
                         # If the point is higher, use the Metropolis criteria to decide on
                         # acceptance or rejection.
@@ -234,7 +234,7 @@ function samin(obj_fn, x, lb, ub; nt=5, ns=5, rt=0.5, maxevals=1e6, neps=5, func
                                 PrintDivider()
                             end
                             converge = 0
-                            return xopt, fopt, converge, details
+                            return xopt, fopt, converge, details[1:details_ind,:]
                         end
                     end
                 end
@@ -348,5 +348,5 @@ function samin(obj_fn, x, lb, ub; nt=5, ns=5, rt=0.5, maxevals=1e6, neps=5, func
             x = xopt
         end
     end
-    return xopt, fopt, converge, details
+    return xopt, fopt, converge, details[1:details_ind,:]
 end
