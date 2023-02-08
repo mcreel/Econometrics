@@ -94,7 +94,7 @@ function samin()
     ub = -lb
     # converge to global opt, see final parameters
     println("normal convergence, see only final results")
-    @time xtest, ftest, junk, junk2 = samin(sse, x, lb, ub, verbosity=1)
+    @time xtest, ftest, conv, junk2 = samin(sse, x, lb, ub, verbosity=1)
     # no convergence within iteration limit
     println("no convergence within iter limit")
     @time samin(sse, x, lb, ub, maxevals=10, verbosity=1)
