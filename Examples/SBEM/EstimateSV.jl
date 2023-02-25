@@ -9,14 +9,14 @@ function proposal1(current, tuning)
     trial[i] += tuning[i].*randn()
     return trial
 end
-# MVN random walk, or occasional draw from prior
+# MVN random walk
 function proposal2(current, cholV)
     current + cholV'*randn(size(current))
 end
 
 function main()
 # setup
-θtrue = TrueParameters() # true param values, on param space
+θtrue = TrueParameters() # true param values
 lb, ub = PriorSupport()
 
 # generate a new data set, or load the example data
@@ -39,7 +39,7 @@ ms = θ -> m0' .- auxstat(θ, shocks_e, shocks_u)  # moment contributions: sampl
 W = eye(size(m0,1))
 m = θ -> vec(mean(ms(θ),dims=1)) # use average of moment contributions
 obj = θ -> InSupport(θ) ? m(θ)'*W*m(θ) : Inf
-θinit = (lb + ub)./2.0 
+θinit = (lb + ub)./2.0 # prior mean as start value
 θhat, objvalue, converged, details = samin(obj, θinit, lb, ub; ns = 5, verbosity = 3, rt = 0.5)
 # second step 
 W = inv((1.0 + 1.0/S).*cov(ms(θhat))) # get the optimal weight matrix
