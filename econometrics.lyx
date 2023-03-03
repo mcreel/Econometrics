@@ -158,7 +158,6 @@ status open
 
 \begin_layout Plain Layout
 
-\size small
 
 \backslash
 today
@@ -24664,16 +24663,28 @@ Look at the (2,2) element: the finite difference version is off by 6 orders
 \end_layout
 
 \begin_layout Section
-Global methods: simulated annealing
+Global methods
 \end_layout
 
 \begin_layout Standard
-Simulated annealing is an algorithm which can find an optimum in the presence
- of nonconcavities, discontinuities and multiple local minima/maxima.
- It is an example of a global optimization algorithm.
+Global optimization methods seek to find the global optimum, over a defined
+ parameter space.
+ They can (hopefully) find an optimum in the presence of nonconcavities,
+ discontinuities and multiple local minima/maxima.
+ There are methods backup up by theory that gives conditions under which
+ there is a guarantee of finding the global optimum (perhaps using an infeasible
+ amount of time), and there are so-called heuristic methods, which may perform
+ well, but which may offer no guarantees of working.
+ A well known and popular heuristic method is the Nelder-Mead (simplex)
+ method.
+\end_layout
+
+\begin_layout Standard
+Simulated annealing (SA) is an example of an algorithm which has theoretical
+ support.
  There are many others, so we'll just focus on this one to get the basic
  idea.
- Essentially, the algorithm 
+ Essentially, the SA algorithm 
 \end_layout
 
 \begin_layout Itemize
@@ -24700,6 +24711,15 @@ The algorithm relies on many evaluations, as in the search method, but focuses
  to the search method.
  It does not require derivatives to be evaluated.
  
+\end_layout
+
+\begin_layout Itemize
+The theoretical support for SA requires that the region being search contracts
+ very slowly, so slowly that it becomes impractical for most problems.
+ In practice, this is usually done more quickly than what theory asks for,
+ so the method as used is actually heuristic.
+ One can try to check that it is working by running it more than once, to
+ see if the same solution is found.
 \end_layout
 
 \begin_layout Itemize
