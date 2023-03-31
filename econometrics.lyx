@@ -40901,10 +40901,14 @@ A disadvantage of this estimator is that it may not be positive definite.
 \end_layout
 
 \end_deeper
-\begin_layout Subsection
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsection
 Heteroscedasticity and autocorrelation consistent covariance estimators
 \end_layout
 
