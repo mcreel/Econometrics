@@ -255,7 +255,7 @@ function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float
                     test += 1 # make sure coverage check passes for the fixed parameters
                 end
             end
-            nacp = 0 # set back to zero
+            nacp = zeros(n) # set back to zero
             # check if we cover parameter space, if we have yet to do so
             if (coverage_ok != 1) coverage_ok = (test == n) end
         end

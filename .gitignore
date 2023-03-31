@@ -3,3 +3,4 @@
 *.json
 Examples/Julia/oxfordmanrealizedvolatilityindices.csv
 ./.vscode/*
+Manifest.toml

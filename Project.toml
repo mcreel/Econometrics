@@ -4,7 +4,6 @@ authors = ["Michael Creel <michael.creel@uab.es> and contributors"]
 version = "1.0.0"
 
 [deps]
-AdvancedMH = "5b7e9947-ddc0-4b3f-9b55-0d8042f74170"
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 Calculus = "49dc2e85-a5d0-5ad3-a950-438e2897f1b9"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
@@ -28,7 +27,6 @@ PrettyTables = "08abe8d2-0d0c-5749-adfa-8a2ac140af0d"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 ShiftedArrays = "1277b4bf-5013-50f5-be3d-901d8477a67a"
-SnoopPrecompile = "66db9d55-30c0-4569-8b51-7e840670fc0c"
 SolveDSGE = "00bf1f32-23ad-54cc-bf6e-3216db8a43a2"
 SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
 Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
