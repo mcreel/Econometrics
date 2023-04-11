@@ -2,7 +2,7 @@
 # IDEA Econometrics II
 
 Prof: Michael Creel, office B3-1104, michael.creel@uab.cat
-TA: Jacek Barszczewski, jacek.barszczewski@gmail.com
+TA: Jacek Barszczewski, jacek.barszczewski@bse.eu
 
 ---
 ## Problem Sets
