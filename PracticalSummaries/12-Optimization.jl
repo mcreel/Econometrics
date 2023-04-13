@@ -68,7 +68,7 @@ ylabel!("y")
 contour(x,y,(x,y)->f(x,y),c=:viridis)
 
 ##
-# This function has 3 local min, and 2 local max.
+# This function has 3 local min, and 3 local max.
 # The global minimizer is near (0,1.6), with a function
 # value of -4.86. We will need some care to find the global
 # minimizer. The domain is (-4,4)×(-4,4), which may help us.
