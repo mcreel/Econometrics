@@ -27035,7 +27035,7 @@ s_{n_{m}}(\hat{\theta}_{n_{m}})\geq s_{n_{m}}(\theta^{0})
 
 \end_inset
 
- which holds in the limit, so 
+ which holds in the limit, so
 \begin_inset Formula 
 \[
 {\color{green}{\color{purple}\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})}}\geq{\color{blue}\lim_{m\rightarrow\infty}s_{n_{m}}(\theta^{0})}.
