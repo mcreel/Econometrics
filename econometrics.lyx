@@ -77,7 +77,7 @@ theorems-ams-extended
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 17
+\paperfontsize 20
 \spacing onehalf
 \use_hyperref true
 \pdf_bookmarks true
@@ -1856,7 +1856,7 @@ We don't know the forms of the functions
 \begin_inset Formula $d$
 \end_inset
 
- (unless we studied the script that genereted the data)
+ (unless we studied the script that generated the data)
 \end_layout
 
 \begin_layout Itemize
@@ -24951,11 +24951,22 @@ The Nerlove model via numeric minimization
 \end_layout
 
 \begin_layout Standard
-This is a linear model with linear restrictions, and one would not normally
- use an iterative optimization program to compute the solution, because
- an analytic solution is available.
- This is just an example, and if you're curious, try comparing with the
- analytic solution.
+The Nerlove model we studied previously (equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "simple nerlove model"
+
+\end_inset
+
+), when estimated by OLS, gives results that do not satisfy homogeneity
+ of degree one, and one of the estimated cost shares is negative.
+ Theory says those things should not happen.
+ Let's impose the restrictions (note, this is not a case of simple linear
+ restrictions, because the restriction that shares are in the 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ interval is not a linear equality restriction).
  Here's the code: 
 \begin_inset ERT
 status open
@@ -24971,14 +24982,7 @@ ctedNerlove.jl}
 \end_inset
 
  which shows how to use unconstrained and constrained minimization to estimate
- the simple Nerlove model (equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "simple nerlove model"
-
-\end_inset
-
-) with and without parameter restrictions.
+ the simple Nerlove model with and without parameter restrictions.
  You should use the objective function values to compute the 
 \begin_inset Formula $qF$
 \end_inset
@@ -25252,7 +25256,7 @@ All of the measures of use are count data, which means that they take on
  is
 \begin_inset Formula 
 \begin{eqnarray*}
-f_{Y}(y) & = & \frac{\exp(-\lambda)\lambda^{y}}{y!}.
+f_{Y}(y) & = & \frac{\exp(-\lambda)\lambda^{y}}{y!},\,y=0,1,2,....
 \end{eqnarray*}
 
 \end_inset
@@ -25262,7 +25266,9 @@ For this density,
 \end_inset
 
 .
- The Poisson average log-likelihood function is 
+ The Poisson average log-likelihood function (assuming the cross sectional
+ observations are independent of one another, so the joint density is the
+ product of the marginals) is 
 \begin_inset Formula 
 \[
 s_{n}(\theta)=\frac{1}{n}\sum_{i=1}^{n}\left(-\lambda_{i}+y_{i}\ln\lambda_{i}-\ln y_{i}!\right)
@@ -26115,7 +26121,7 @@ Our paradigm is that data are generated as a draw from a joint density
 
 .
  This density may not be known, but it exists in principle.
- It is multivariate, with high density.
+ It is multivariate, with high dimension.
 \end_layout
 
 \begin_layout Itemize
@@ -26796,7 +26802,7 @@ Assume
 \end_inset
 
  is an open bounded subset of Euclidean space 
-\begin_inset Formula $\Re^{K}.$
+\begin_inset Formula $\mathbb{R}^{K}.$
 \end_inset
 
  So, the closure of 
@@ -26867,6 +26873,9 @@ i.e.,
 \end_layout
 
 \begin_layout Theorem
+\begin_inset VSpace defskip
+\end_inset
+
 Then 
 \begin_inset Formula $\hat{\theta}_{n}\stackrel{a.s.}{\rightarrow}\theta^{0}.$
 \end_inset
@@ -27026,7 +27035,7 @@ s_{n_{m}}(\hat{\theta}_{n_{m}})\geq s_{n_{m}}(\theta^{0})
 
 \end_inset
 
- which holds in the limit, so 
+ which holds in the limit, so
 \begin_inset Formula 
 \[
 {\color{green}{\color{purple}\lim_{m\rightarrow\infty}s_{n_{m}}(\hat{\theta}_{n_{m}})}}\geq{\color{blue}\lim_{m\rightarrow\infty}s_{n_{m}}(\theta^{0})}.
@@ -27945,14 +27954,13 @@ You already know that the OLS estimator is inconsistent when relevant variables
 \end_inset
 
 , where 
-\begin_inset Formula $y_{t}=\beta_{0}x_{t}$
+\begin_inset Formula 
+\[
+y_{t}=\beta_{0}x_{t}+\varepsilon_{t}.
+\]
+
 \end_inset
 
- 
-\begin_inset Formula $+\varepsilon_{t}$
-\end_inset
-
-.
  
 \begin_inset Formula $\left(X,\varepsilon\right)$
 \end_inset
@@ -27984,14 +27992,13 @@ You already know that the OLS estimator is inconsistent when relevant variables
  are finite.
  However, the econometrician is unaware of the true DGP, and instead proposes
  the misspecified model 
-\begin_inset Formula $y_{t}=\gamma_{0}w_{t}$
+\begin_inset Formula 
+\[
+y_{t}=\gamma_{0}w_{t}+\eta_{t}.
+\]
+
 \end_inset
 
- 
-\begin_inset Formula $+\eta_{t}$
-\end_inset
-
-.
  Suppose that 
 \begin_inset Formula $E(W\epsilon)=0$
 \end_inset
@@ -28074,8 +28081,9 @@ The theorem for consistency is really quite intuitive.
  the value that maximizes the limit of the expectation of the objective
  function.
  Because the objective function may or may not make sense, depending on
- how good or poor is the model, we may or may not be estimating parameters
- of the DGP.
+ how good or poor is the econometric model, we may or may not be estimating
+ parameters of the DGP.
+ 
 \begin_inset Newpage newpage
 \end_inset
 
