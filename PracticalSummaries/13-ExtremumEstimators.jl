@@ -31,11 +31,11 @@ tol = 1e-08
 ##
 
 #=	How do we get the estimated standard errors, using extremum estimation
-	theory? We need estimators of ℐ, the covariance of the score 
-	contributions, and 𝒥, the Hessian matrix.
+	theory? We need estimators of I, the covariance of the score 
+	contributions, and J, the Hessian matrix.
 =#
 
-# the calculations to get ℐ hat
+# the calculations to get I hat
 
 # first, we need the score contributions, the matrix that collects
 # the derivatives of each observation's contribution to the objective
@@ -50,12 +50,12 @@ sc - (-2x.*(y - x*βhat))
 
 ##
 
-# Next, we use the score contributions to estimate ℐ 
-ℐhat = zeros(2,2)
+# Next, we use the score contributions to estimate I
+Ihat = zeros(2,2)
 for i = 1:n
-	ℐhat .+= sc[i,:]*sc[i,:]'
+	Ihat .+= sc[i,:]*sc[i,:]'
 end
-ℐhat ./= n
+Ihat ./= n
 # you could also use simply cov(sc), which converges to the same thing.
 
 
@@ -63,7 +63,7 @@ end
 
 # next, we need the estimate of the limiting Hessian, which is just
 # the Hessian of the objective function, at the estimate
-𝒥hat = ForwardDiff.hessian(obj, βhat)
+Jhat = ForwardDiff.hessian(obj, βhat)
 
 # We know that this should be 2x'x/n. Let's check:
 2x'x/n
@@ -72,7 +72,7 @@ end
 # now, we can compute the estimated standard errors, to compare to what we saw
 # from the analytic results, above
 using LinearAlgebra
-v∞ = inv(𝒥hat)*ℐhat*inv(𝒥hat) # this is the estimate of the limiting var of √n(β-β⁰) 
+v∞ = inv(Jhat)*Ihat*inv(Jhat) # this is the estimate of the limiting var of √n(β-β⁰) 
 se = sqrt.(diag(v∞/n))   # to get small sample est. variance, divide by n
 
 ##
@@ -124,7 +124,7 @@ inci = zeros(reps, 2)
 for i = 1:reps
 	x,y = dgp(n)
 	X = [ones(n) x] # define regressor matrix for linear approximation about 0
-	βhat, vβhat, junk = ols(y, X, silent=true)
+	βhat, vβhat, junk = ols(y, X, silent=true) # note: OLS uses the sandwich covariance estimator, by default
 	se = sqrt.(diag(vβhat))
 	inci[i,:] = (β⁰ .>= βhat .- crit*se) .& (β⁰ .<= βhat .+ crit*se)
 end
