@@ -1,4 +1,4 @@
-# this script will precompile some commonly used functions
+# this script will precompile somie commonly used functions
 using Econometrics, StatsPlots, CSV, DataFrames
 ols()
 mleresults()
@@ -13,6 +13,7 @@ plot(1:10)
 histogram(rand(100))
 scatter(1:10)
 d = DataFrame(rand(2,2), :auto)
-CSV.write("junk.csv", d)
-d = CSV.read("junk.csv", DataFrame)
+CSV.write(tempdir()*"/junk.csv", d)
+d = CSV.read(tempdir()*"/junk.csv", DataFrame)
+
 
