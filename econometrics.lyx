@@ -27087,11 +27087,11 @@ But by assumption (c), there is a unique global maximum of
 \begin_inset Formula $s_{\infty}(\hat{\theta})=s_{\infty}(\theta^{0}),$
 \end_inset
 
- and 
+ and, therefore, 
 \begin_inset Formula $\hat{\theta}=\theta^{0}$
 \end_inset
 
- , in the limit.
+.
 \end_layout
 
 \begin_layout Itemize
@@ -28685,7 +28685,7 @@ and
 \end_inset
 
  Also, 
-\begin_inset Formula $\left[\mathcal{J}_{\infty}(\theta^{0})+o_{s}(1)\right]\stackrel{a.s.}{\rightarrow}\mathcal{J}(\theta^{0}),$
+\begin_inset Formula $\left[\mathcal{J}_{\infty}(\theta^{0})+o_{s}(1)\right]\stackrel{a.s.}{\rightarrow}\mathcal{\mathcal{J}_{\infty}}(\theta^{0}),$
 \end_inset
 
  so 
@@ -32037,9 +32037,13 @@ Then, in the end, we have
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-L(Y|Z,\theta)=f(y_{n}|y_{1,}y_{2},\ldots y_{n-1},Z,\theta)f(y_{n-1}|y_{1,}y_{2},\ldots y_{n-2},Z,\theta)\cdots f(y_{2}|y_{1},Z,\theta)f(y_{1}|Z,\theta)
-\]
+\begin{align*}
+L(Y|Z,\theta) & =f(y_{n}|y_{1,}y_{2},\ldots y_{n-1},Z,\theta)\\
+ & \cdot f(y_{n-1}|y_{1,}y_{2},\ldots y_{n-2},Z,\theta)\\
+ & \cdots\\
+ & \cdot f(y_{2}|y_{1},Z,\theta)\\
+ & \cdot f(y_{1}|Z,\theta)
+\end{align*}
 
 \end_inset
 
@@ -32333,8 +32337,8 @@ So it's easy to calculate the MLE of
 \end_layout
 
 \begin_layout Itemize
-We also know that the sample mean converges to the true mean, from basic
- statistics.
+We also know that the sample mean converges almost surely to the true mean,
+ from basic statistics (LLN).
  
 \end_layout
 
@@ -33041,7 +33045,15 @@ E_{\theta}\left[g_{t}(\theta)|x_{t}\right] & = & \int[D_{\theta}\ln f(y_{t}|x_{t
 \end_inset
 
  we can switch the order of integration and differentiation, by the dominated
- convergence theorem.
+ convergence theorem (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "gallant1997introduction"
+literal "false"
+
+\end_inset
+
+, Theorem 2.8).
  This gives 
 \begin_inset Formula 
 \begin{eqnarray}
@@ -33283,7 +33295,7 @@ Re-arranging orders of limits and differentiation, which is legitimate given
 \begin_inset Formula 
 \begin{eqnarray*}
 \mathcal{J}_{\infty}(\theta_{0}) & = & D_{\theta}^{2}\lim_{n\rightarrow\infty}\mathcal{E}\left(s_{n}(\theta_{0})\right)\\
- & = & D_{\theta}^{2}s_{\infty}(\theta_{0},\theta_{0})
+ & = & D_{\theta}^{2}s_{\infty}(\theta_{0})
 \end{eqnarray*}
 
 \end_inset
@@ -33292,10 +33304,10 @@ Re-arranging orders of limits and differentiation, which is legitimate given
 \end_layout
 
 \begin_layout Standard
-We've already seen that
+From assumption (c) of the consistency proof,
 \begin_inset Formula 
 \[
-s_{\infty}(\theta,\theta_{0})<s_{\infty}(\theta_{0},\theta_{0})
+s_{\infty}(\theta)<s_{\infty}(\theta_{0})
 \]
 
 \end_inset
@@ -33318,8 +33330,19 @@ i.e.,
 \end_inset
 
  must be negative definite, and therefore of full rank.
- Therefore the previous inversion is justified, asymptotically, and we have
- 
+ When 
+\begin_inset Formula $n$
+\end_inset
+
+ is large enough so that we are close enough to 
+\begin_inset Formula $\theta_{0},$
+\end_inset
+
+the inversion of 
+\begin_inset Formula $\mathcal{J}(\theta^{*})$
+\end_inset
+
+ is justified, so we get 
 \begin_inset Formula 
 \begin{equation}
 \sqrt{n}\left(\hat{\theta}-\theta_{0}\right)=-\mathcal{J}(\theta^{*})^{-1}\sqrt{n}g(\theta_{0}).\label{anmle}
@@ -33395,8 +33418,8 @@ We've already seen that
 \end_layout
 
 \begin_layout Itemize
-Also, the elements of the sum are uncorrelated with one another (discussed
- below).
+Also, the elements of the sum are uncorrelated with one another (as was
+ discussed, above, and which will be proven, below).
 \end_layout
 
 \begin_layout Itemize
@@ -34478,10 +34501,10 @@ Proof: Since the estimator is CAN, it is asymptotically unbiased, so
 \end_inset
 
  Differentiate wrt 
-\begin_inset Formula $\theta^{\prime}:$
+\begin_inset Formula $\theta^{\prime}$
 \end_inset
 
-
+, and make liberal use of dominated convergence:
 \begin_inset Formula 
 \begin{eqnarray*}
 D_{\theta^{\prime}}\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}(\tilde{\theta}-\theta) & = & \lim_{n\rightarrow\infty}\int D_{\theta^{\prime}}\left[f(Y,\theta)\left(\tilde{\theta}-\theta\right)\right]dy\\
@@ -34492,6 +34515,11 @@ D_{\theta^{\prime}}\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}(\tilde{\theta}-
 
 (The RHS is zero, because we're differentiating something that is zero to
  start with).
+ 
+\end_layout
+
+\begin_layout Standard
+Now, take the RHS, and differentiate.
  Noting that 
 \begin_inset Formula $D_{\theta^{\prime}}f(Y,\theta)=f(\theta)D_{\theta^{\prime}}\ln f(\theta)$
 \end_inset
@@ -34529,7 +34557,7 @@ D_{\theta^{\prime}}\lim_{n\rightarrow\infty}\mathcal{E}_{\theta}(\tilde{\theta}-
 \begin_inset Formula $n$
 \end_inset
 
- we get 
+ on the LHS, we get 
 \begin_inset Formula 
 \begin{eqnarray*}
 \lim_{n\rightarrow\infty}\int\sqrt{n}\left(\tilde{\theta}-\theta\right){\color{purple}\sqrt{n}\underbrace{\frac{1}{n}\left[D_{\theta^{\prime}}\ln f(\theta)\right]}}f(\theta)dy & = & I_{K}
@@ -35847,7 +35875,7 @@ status open
 
  
 \backslash
-href{./Examples/MEPS-I/PoissonVariance.m}{PoissonVariance.jl}
+href{./Examples/MEPS-I/PoissonVariance.jl}{PoissonVariance.jl}
 \end_layout
 
 \end_inset
