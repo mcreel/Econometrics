@@ -7,7 +7,7 @@ TA: Jacek Barszczewski, jacek.barszczewski@bse.eu
 ---
 ## Problem Sets
 - [Problem Set 1](ProblemSet1.pdf) is due Wed. 26 April, turn it in to Jacek
-- [Problem Set 2](ProblemSet2.pdf)
+- [Problem Set 2](ProblemSet2.pdf) is due Wed. 10 May, turn it in to Jacek
 - [Problem Set 3](ProblemSet3.pdf)
 - [Problem Set 4](ProblemSet4.pdf)
 ---
