@@ -33780,7 +33780,7 @@ Next, the terms in the sum are i.i.d., so the expection of the sum is
 \uwave off
 \noun off
 \color none
- times the expectations of a representatiive term, so
+ times the expectation of a representatiive term, so
 \begin_inset Formula 
 \begin{align*}
 {\color{blue}\frac{1}{n}}{\color{purple}\mathcal{E}_{p_{0}}\sum_{t=1}^{n}\left(\frac{y_{t}-p_{0}}{p_{0}\left(1-p_{0}\right)}\right)^{2}} & ={\color{green}\frac{{\color{blue}1}}{{\color{blue}n}}}{\color{red}n}\mathcal{E}_{p_{0}}\left(\frac{y-p_{0}}{p_{0}\left(1-p_{0}\right)}\right)^{2}\\
@@ -33908,7 +33908,8 @@ Let
 \begin_inset Formula $f(y_{t}|x_{t},\theta)$
 \end_inset
 
-
+.
+ This is a density function, which integrates to 1, so:
 \begin_inset Formula 
 \begin{eqnarray*}
 1 & = & \int f_{t}(\theta)dy,\textrm{ so}\\
@@ -34203,8 +34204,11 @@ or the inverse of the outer product of the gradient:
 \end_layout
 
 \begin_layout Itemize
-This simplification is a special result for the MLE estimator - it doesn't
- apply to extremum estimators in general.
+This simplification is a special result for the MLE estimator - it 
+\series bold
+doesn't apply
+\series default
+ to extremum estimators in general.
 \end_layout
 
 \begin_layout Itemize
@@ -34252,7 +34256,8 @@ approximate
 
 \end_inset
 
- and this can be used to compute confidence intervals, etc.
+ and this can be used to compute confidence intervals, test hypotheses,
+ etc.
  
 \end_layout
 
@@ -35830,17 +35835,34 @@ The estimation program is calling
 \family typewriter
 mleresults
 \family default
-.jl , which in turn calls other routines.
- See the 
-\begin_inset CommandInset href
-LatexCommand href
-name "source code"
-target "https://github.com/mcreel/Econometrics/blob/main/src/ML/mleresults.jl"
-literal "false"
+.jl, which in turn calls other routines.
+ See 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./src/ML/mleresults.jl}{mleresults.jl}
+\end_layout
 
 \end_inset
 
- for more details.
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./src/ML/mle.jl}{mle.jl}
+\end_layout
+
+\end_inset
+
+ for the details.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -36568,7 +36590,7 @@ The properties of the mixture density follow in a straightforward way from
 \begin_layout Itemize
 Mixture densities may suffer from overparameterization, since the total
  number of parameters grows rapidly with the number of component densities.
- It is possible to constrained parameters across the mixtures.
+ It is possible to constrain parameters across the mixtures.
 \end_layout
 
 \begin_layout Itemize
