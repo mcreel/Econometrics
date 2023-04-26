@@ -33780,7 +33780,7 @@ Next, the terms in the sum are i.i.d., so the expection of the sum is
 \uwave off
 \noun off
 \color none
- times the expectations of a representatiive term, so
+ times the expectation of a representatiive term, so
 \begin_inset Formula 
 \begin{align*}
 {\color{blue}\frac{1}{n}}{\color{purple}\mathcal{E}_{p_{0}}\sum_{t=1}^{n}\left(\frac{y_{t}-p_{0}}{p_{0}\left(1-p_{0}\right)}\right)^{2}} & ={\color{green}\frac{{\color{blue}1}}{{\color{blue}n}}}{\color{red}n}\mathcal{E}_{p_{0}}\left(\frac{y-p_{0}}{p_{0}\left(1-p_{0}\right)}\right)^{2}\\
@@ -33908,7 +33908,8 @@ Let
 \begin_inset Formula $f(y_{t}|x_{t},\theta)$
 \end_inset
 
-
+.
+ This is a density function, which integrates to 1, so:
 \begin_inset Formula 
 \begin{eqnarray*}
 1 & = & \int f_{t}(\theta)dy,\textrm{ so}\\
@@ -33948,7 +33949,7 @@ Let
 
 \begin_inset Formula 
 \begin{equation}
-\mathcal{E}_{\theta}\frac{1}{n}\sum_{t=1}^{n}\left[\mathcal{J}_{t}(\theta)\right]=-\mathcal{E}_{\theta}\left[\frac{1}{n}\sum_{t=1}^{n}\left[g_{t}(\theta)\right]\left[g_{t}(\theta)\right]^{\prime}\right]\label{eq:outerproductsocrecontribs}
+\mathcal{E}_{\theta}\frac{1}{n}\sum_{t=1}^{n}\left[\mathcal{J}_{t}(\theta)\right]=\mathcal{E}_{\theta}\left[\mathcal{J}_{n}(\theta)\right]=-\mathcal{E}_{\theta}\left[\frac{1}{n}\sum_{t=1}^{n}\left[g_{t}(\theta)\right]\left[g_{t}(\theta)\right]^{\prime}\right]\label{eq:outerproductsocrecontribs}
 \end{equation}
 
 \end_inset
@@ -34007,12 +34008,54 @@ if the scores appear to be correlated one may question the specification
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\mathcal{E}_{\theta}\left[\mathcal{J}_{n}(\theta)\right]=-\mathcal{E}_{\theta}\left(n\left[g_{n}(\theta)\right]\left[g_{n}(\theta)\right]^{\prime}\right)
+\mathcal{E}_{\theta}\left[\mathcal{J}_{n}(\theta)\right]=-\mathcal{E}_{\theta}\left(n\left[g_{n}(\theta)\right]\left[g_{n}(\theta)\right]^{\prime}\right).
 \]
 
 \end_inset
 
- since all cross products between different periods expect to zero.
+To see that this is equal to the expression in eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:outerproductsocrecontribs"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, recall that the score vector is the average of the score contributions:
+ 
+\begin_inset Formula $g_{n}=\frac{1}{n}\sum_{t}g_{t}$
+\end_inset
+
+ (omitting the 
+\begin_inset Formula $\theta$
+\end_inset
+
+).
+ So, we have
+\begin_inset Formula 
+\begin{align*}
+-\mathcal{E}_{\theta}\left(n\left[g_{n}(\theta)\right]\left[g_{n}(\theta)\right]^{\prime}\right) & =-\mathcal{E}_{\theta}\frac{\left(\sum_{t}g_{t}\right)\left(\sum_{t}g_{t}^{\prime}\right)}{n}\\
+ & =-\mathcal{E}_{\theta}\frac{\left(g_{1}+g_{2}+...+g_{n}\right)\left(g_{1}^{\prime}+g_{2}^{\prime}+...+g_{n}^{\prime}\right)}{n}\\
+ & =-\mathcal{E}_{\theta}\left[\frac{1}{n}\sum_{t=1}^{n}\left[g_{t}(\theta)\right]\left[g_{t}(\theta)\right]^{\prime}\right],
+\end{align*}
+
+\end_inset
+
+which is the original expression in eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:outerproductsocrecontribs"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, because all cross products between different periods expect to zero.
  Finally take limits, we get 
 \begin_inset Formula 
 \begin{equation}
@@ -34203,8 +34246,11 @@ or the inverse of the outer product of the gradient:
 \end_layout
 
 \begin_layout Itemize
-This simplification is a special result for the MLE estimator - it doesn't
- apply to extremum estimators in general.
+This simplification is a special result for the MLE estimator - it 
+\series bold
+doesn't apply
+\series default
+ to extremum estimators in general.
 \end_layout
 
 \begin_layout Itemize
@@ -34252,7 +34298,8 @@ approximate
 
 \end_inset
 
- and this can be used to compute confidence intervals, etc.
+ and this can be used to compute confidence intervals, test hypotheses,
+ etc.
  
 \end_layout
 
@@ -34861,6 +34908,14 @@ LR\overset{d}{\rightarrow}\chi^{2}(q).
 \begin_inset Newpage newpage
 \end_inset
 
+
+\emph on
+The following sketch of a proof should be read carefully by students with
+ a special interest in econometric theory, but it can be scanned lightly
+ by most students.
+\end_layout
+
+\begin_layout Standard
 To show that it is asymptotically 
 \begin_inset Formula $\chi^{2},$
 \end_inset
@@ -35234,7 +35289,6 @@ Assume that
 \begin{eqnarray*}
 y^{*} & = & x^{\prime}\theta-\varepsilon\\
 y & = & 1(y^{*}>0)\\
-\varepsilon & \sim & N(0,1)
 \end{eqnarray*}
 
 \end_inset
@@ -35252,6 +35306,21 @@ Here,
 \end_inset
 
 is negative or positive.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\varepsilon\sim N(0,1)$
+\end_inset
+
  Then the 
 \emph on
 probit 
@@ -35269,13 +35338,9 @@ model results, where
 \end_inset
 
 is the standard normal distribution function.
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 The 
 \emph on
 logit 
@@ -35287,9 +35352,6 @@ model results if the errors
  are not normal, but rather have a logistic distribution.
  This distribution is similar to the standard normal, but has fatter tails.
  The probability, in this case, has the following parameterization
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 Pr(y=1|x)=\Lambda(x^{\prime}\theta)=\left(1+\exp(-x^{\prime}\theta)\right)^{-1}.
@@ -35300,7 +35362,7 @@ Pr(y=1|x)=\Lambda(x^{\prime}\theta)=\left(1+\exp(-x^{\prime}\theta)\right)^{-1}.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 In general, a binary response model will require that the choice probability
  be parameterized in some form which could be logit, probit, or something
  else.
@@ -35316,6 +35378,10 @@ Pr(y=1|x)=p(x,\theta)
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Itemize
 Again, if 
 \begin_inset Formula $p(x,\theta)=\Lambda(x^{\prime}\theta),$
 \end_inset
@@ -35330,6 +35396,9 @@ Again, if
 \end_inset
 
  is the standard normal distribution function, then we have a probit model.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -35339,8 +35408,9 @@ Again, if
 \begin_layout Standard
 
 \emph on
-The following is another verification of the information matrix equality,
- skip this in lectures.
+\color red
+The following, to the start of the next subsection, is another verification
+ of the information matrix equality, skip this in lectures.
 \end_layout
 
 \begin_layout Standard
@@ -35720,9 +35790,9 @@ A binary response is a variable that takes on only two values, customarily
  The model can be represented as 
 \begin_inset Formula 
 \begin{eqnarray*}
-y^{*} & = & g(x)-\varepsilon\\
+y^{*} & = & x^{\prime}\theta-\varepsilon\\
 y & = & 1(y^{*}>0)\\
-Pr(y=1) & = & F_{\varepsilon}[g(x)]\\
+Pr(y=1) & = & F_{\varepsilon}[x^{\prime}\theta]\\
  & \equiv & p(x,\theta)
 \end{eqnarray*}
 
@@ -35747,7 +35817,7 @@ s_{n}(\theta)=\frac{1}{n}\sum_{i=1}^{n}\left(y_{i}\ln p(x_{i},\theta)+(1-y_{i})\
 \end_layout
 
 \begin_layout Standard
-For the logit model, the probability has the specific form
+As above, for the logit model, the probability has the specific form
 \end_layout
 
 \begin_layout Standard
@@ -35830,17 +35900,34 @@ The estimation program is calling
 \family typewriter
 mleresults
 \family default
-.jl , which in turn calls other routines.
- See the 
-\begin_inset CommandInset href
-LatexCommand href
-name "source code"
-target "https://github.com/mcreel/Econometrics/blob/main/src/ML/mleresults.jl"
-literal "false"
+.jl, which in turn calls other routines.
+ See 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./src/ML/mleresults.jl}{mleresults.jl}
+\end_layout
 
 \end_inset
 
- for more details.
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./src/ML/mle.jl}{mle.jl}
+\end_layout
+
+\end_inset
+
+ for the details.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -35862,11 +35949,16 @@ reference "subsec:MEPS data"
 , where a Poisson model was estimated by maximum likelihood.
  To check the plausibility of the Poisson model for the MEPS data, we can
  compare the sample unconditional variance with the estimated unconditional
- variance according to the Poisson model: 
+ variance that is implied by the Poisson model: 
 \begin_inset Formula $\widehat{V(y)}=\frac{\sum_{t=1}^{n}\hat{\lambda}_{t}}{n}$
 \end_inset
 
 .
+ (remember that, for the Poisson model, the parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is both the mean and the variance).
  Using the program 
 \begin_inset ERT
 status open
@@ -36089,7 +36181,11 @@ where
 \noun default
 \color inherit
 .
- Now 
+ 
+\end_layout
+
+\begin_layout Itemize
+Now 
 \begin_inset Formula $\nu$
 \end_inset
 
@@ -36098,7 +36194,27 @@ where
 \begin_inset Formula $\nu$
 \end_inset
 
-, so we will need to marginalize it to get a usable density
+, so we will need to marginalize it to get a usable density.
+ 
+\end_layout
+
+\begin_layout Itemize
+Suppose that 
+\begin_inset Formula $f_{v}(z;\psi)$
+\end_inset
+
+ is the density of the latent term.
+ We will need to assume that this is known - it is part of the specification
+ of the econometric model.
+ 
+\end_layout
+
+\begin_layout Itemize
+Then, the marginal density of 
+\begin_inset Formula $Y$
+\end_inset
+
+ is
 \begin_inset Formula 
 \[
 f_{Y}(y|\lambda,\psi)=\int_{-\infty}^{\infty}\frac{\exp[-\lambda z]\left[\lambda z\right]^{y}}{y!}f_{v}(z;\psi)dz
@@ -36113,7 +36229,15 @@ can
  be used directly, perhaps using numerical integration to evaluate the likelihoo
 d function.
  Simulation-based approaches are another possibility.
- In some cases, though, the integral will have an analytic solution.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In some cases, though, the integral will have an analytic solution.
  For example, if 
 \begin_inset Formula $\nu$
 \end_inset
@@ -36161,7 +36285,7 @@ We usually parameterize
 \begin_inset Formula $\lambda=\exp(\mathbf{x}'\beta)$
 \end_inset
 
-, as before.
+, as before, for the Poisson model.
 \end_layout
 
 \begin_layout Itemize
@@ -36230,6 +36354,10 @@ In both cases, the conditional mean is
 So both forms of the NB model allow for overdispersion, with the NB-II model
  allowing for a more radical form.
  There are other parameterizations, but these two are the most widely-used.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -36244,15 +36372,25 @@ Testing reduction of a NB model to a Poisson model cannot be done by testing
 \end_inset
 
  is on the boundary of the parameter space.
- Without getting into details, suppose that the data were in fact Poisson,
+\end_layout
+
+\begin_layout Itemize
+Without getting into details, suppose that the data were in fact Poisson,
  so there is equidispersion and the true 
 \begin_inset Formula $\alpha=0$
 \end_inset
 
 .
- Then about half the time the sample data will be underdispersed, and about
+ 
+\end_layout
+
+\begin_layout Itemize
+Then about half the time the sample data will be underdispersed, and about
  half the time overdispersed.
- When the data is underdispersed, the MLE of 
+\end_layout
+
+\begin_layout Itemize
+When the data is underdispersed, the MLE of 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -36261,12 +36399,21 @@ Testing reduction of a NB model to a Poisson model cannot be done by testing
 \end_inset
 
 .
- Thus, under the null, there will be a probability spike in the asymptotic
+ 
+\end_layout
+
+\begin_layout Itemize
+Thus, under the null, there will be a probability spike in the asymptotic
  distribution of 
 \begin_inset Formula $\sqrt{n(}\hat{\alpha}-\alpha)=\sqrt{n}\hat{\alpha}$
 \end_inset
 
- at 0, so standard testing methods will not be valid.
+ at 0, so the asymptotic distribution will not be normal, and standard testing
+ methods will not be valid.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -36284,10 +36431,9 @@ href{./Examples/MEPS-II/EstimateNegBin.jl}{This program}
 
  will do estimation using the NB model .
  Results for NB-I and NB-II models are
-\begin_inset Newpage newpage
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Graphics
 	filename Examples/MEPS-II/NB1results.png
 	width 20cm
@@ -36568,7 +36714,7 @@ The properties of the mixture density follow in a straightforward way from
 \begin_layout Itemize
 Mixture densities may suffer from overparameterization, since the total
  number of parameters grows rapidly with the number of component densities.
- It is possible to constrained parameters across the mixtures.
+ It is possible to constrain parameters across the mixtures.
 \end_layout
 
 \begin_layout Itemize
@@ -36711,7 +36857,11 @@ The AIC is not consistent, and will asymptotically favor an over-parameterized
 \begin_inset Newpage newpage
 \end_inset
 
-Here are information criteria values for the models we've seen, for OBDV.
+Here are information criteria values, normalized by 
+\begin_inset Formula $n$
+\end_inset
+
+, for the models we've seen, for OBDV.
 \begin_inset Float table
 placement htbp
 wide false
@@ -36728,7 +36878,7 @@ name "cap:Information-Criteria,-OBDV"
 
 \end_inset
 
-Information Criteria, OBDV
+Average Information Criteria, OBDV
 \end_layout
 
 \end_inset
@@ -37178,9 +37328,14 @@ The intention of presenting this example is to show that ML may be used
  linearization throws information, so that estimation may be unreliable.
  A better solution is to try to actually do ML estimation for the true nonlinear
  model: see papers by Fernández-Villaverde and Rubio-Ramírez, which use
- particle filtering.
+ particle filterin
+\strikeout on
+g.
  You can also modify the script to do this, by setting order=2 in the code,
- as Dynare supports the particle filter option.
+ as Dynare supports the particle filter option
+\strikeout default
+ (this no longer works for this simple model, one would need to add measurement
+ error, which is a way of dealing with stochastic singularity).
  This is very time-consuming, though.
 \end_layout
 
