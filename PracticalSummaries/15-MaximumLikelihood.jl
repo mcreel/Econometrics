@@ -74,7 +74,7 @@ for i = 1:n
 end
 Ihat ./= n
 ## now the Hessian
-Jhat = Calculus.hessian(s, βhat, :central)
+Jhat = ForwardDiff.hessian(s, βhat)
 ## check that J=-I
 Ihat+Jhat # pretty close to zeros, as information matrix equality tells us
 

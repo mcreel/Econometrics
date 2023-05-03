@@ -38605,11 +38605,11 @@ moment contributions.
 \begin_inset Formula $t$
 \end_inset
 
-th moment contribution 
+-th moment contribution, 
 \begin_inset Formula $m_{t}$
 \end_inset
 
- is a function of the same observation's data.
+, is a function of the same observation's data.
  I'm casually using 
 \begin_inset Formula $m(Z_{t},\theta),$
 \end_inset
@@ -38782,7 +38782,7 @@ Then
 
 \end_inset
 
-We know that the 
+We know that 
 \begin_inset Formula $E(\bar{y})=\theta_{0}.$
 \end_inset
 
@@ -39069,13 +39069,16 @@ more robust
 There being no free lunch, we should expect to pay something for this, of
  course.
  The cost will be a loss of efficiency, in general.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 
 \series bold
@@ -39143,6 +39146,14 @@ where
 
  with 
 \begin_inset Formula $\mathcal{E}m(Z_{t},\theta^{0})=0,$
+\end_inset
+
+
+\begin_inset Formula $\mathcal{E}m(Z_{t},\theta)=0$
+\end_inset
+
+, 
+\begin_inset Formula $\forall\theta\ne\theta_{0}$
 \end_inset
 
 
@@ -39364,6 +39375,15 @@ Since
 \end_inset
 
  in order for asymptotic identification, we need that 
+\begin_inset Formula $s_{\infty}(\theta)>0$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta\ne\theta^{0}$
+\end_inset
+
+.
+ This requires that 
 \begin_inset Formula $m_{\infty}(\theta)\neq0$
 \end_inset
 
@@ -39402,9 +39422,15 @@ This and the assumption that
  is asymptotically identified.
 \end_layout
 
-\begin_deeper
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
-an example is a MA(1) model 
+an example of lack of identification is a MA(1) model 
 \begin_inset Formula $y_{t}=\epsilon_{t}+\theta\epsilon_{t-1}$
 \end_inset
 
@@ -39420,12 +39446,13 @@ an example is a MA(1) model
  
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-consider the MA(1) model 
+consider the alternative MA(1) model 
 \begin_inset Formula $y_{t}=\epsilon_{t}+(1/\theta)\epsilon_{t-1}$
 \end_inset
 
- with 
+ where the 
 \begin_inset Formula $\epsilon_{t}$
 \end_inset
 
@@ -39443,11 +39470,12 @@ All of the moments of
 \end_inset
 
  are the same in the two cases.
- For example, in the first case, 
+ For example, for the first model, 
 \begin_inset Formula $V(y_{t})=V(\epsilon_{t})+\theta^{2}V(\epsilon_{t-1})=1+\theta^{2}).$
 \end_inset
 
- For the second case, you can work out that the variance is the same.
+ For the alternative model, you can work out that the variance is the same.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -39465,11 +39493,7 @@ So, a method of moments estimator can't distinguish between the two parameter
 \end_layout
 
 \begin_layout Itemize
-If we restrict 
-\begin_inset Formula $\theta$
-\end_inset
-
- to be in the 
+If we restrict the parameter of the model to be in the 
 \begin_inset Formula $(-1,1)$
 \end_inset
 
@@ -39478,7 +39502,7 @@ If we restrict
 \emph on
 invertible
 \emph default
-, which is useful for theoretical reasons.
+, which is useful for theoretical reasons (more on this later).
 \end_layout
 
 \end_deeper
@@ -39506,7 +39530,7 @@ status open
 
  
 \backslash
-href{./Examples/GMM/chi2gmm.m}{GMM/chi2gmm.m}
+href{./Examples/GMM/chi2gmm.jl}{GMM/chi2gmm.jl}
 \end_layout
 
 \end_inset
@@ -39531,8 +39555,9 @@ reference "Normality of ee"
 \end_inset
 
  hold, so we will have asymptotic normality.
- However, we do need to find the structure of the asymptotic variance-covariance
- matrix of the estimator.
+ (Note that this implies that we are assuming that the moment conditions
+ are continuous and differentiable.) However, we do need to find the structure
+ of the asymptotic variance-covariance matrix of the estimator.
  From Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -39994,11 +40019,11 @@ Identification (
 \begin_inset Formula $D_{\infty}$
 \end_inset
 
- being full rank) plus 
+ being full row rank), plus 
 \begin_inset Formula $W_{\infty}$
 \end_inset
 
- being positive definite imply that 
+ being positive definite, imply that 
 \begin_inset Formula $J_{\infty}$
 \end_inset
 
@@ -40243,7 +40268,7 @@ Choosing the weighting matrix
 weighting matrix,
 \shape default
  which determines the relative importance of violations of the individual
- moment conditions.
+ moment conditions in the overall objective function.
  For example, if we are much more sure of the first moment condition, which
  is based upon the variance, than of the second, which is based upon the
  fourth moment, we could set 
@@ -40618,6 +40643,18 @@ The obvious estimator of
 \end_inset
 
  is not continuous.
+\end_layout
+
+\begin_layout Itemize
+Estimating 
+\begin_inset Formula $\Omega_{\infty}$
+\end_inset
+
+ is taken up below.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -40817,7 +40854,11 @@ In the case that we wish to use the optimal weighting matrix, we need an
 \end_inset
 
 ).
- Note that this autocovariance will not depend on 
+ Note that this autocovariance matrix, which is of dimension 
+\begin_inset Formula $g\times g,$
+\end_inset
+
+ will not depend on 
 \begin_inset Formula $t$
 \end_inset
 
@@ -40830,7 +40871,11 @@ contemporaneously correlated, since the individual moment contributions
 \begin_inset Formula $\mathcal{E}(m_{it}m_{jt})\neq0$
 \end_inset
 
-).
+), where 
+\begin_inset Formula $i,j\in\{1,2,...,k\}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -40957,6 +41002,7 @@ Recall that
 \begin{eqnarray*}
 \Omega_{n} & = & \mathcal{E}\left[n\bar{m}_{n}(\theta^{0})\bar{m}_{n}(\theta^{0})^{\prime}\right]=\mathcal{E}\left[n\left(1/n\sum_{t=1}^{n}m_{t}\right)\left(1/n\sum_{t=1}^{n}m_{t}^{\prime}\right)\right]\\
  & = & \mathcal{E}\left[1/n\left(\sum_{t=1}^{n}m_{t}\right)\left(\sum_{t=1}^{n}m_{t}^{\prime}\right)\right]\\
+ & = & \mathcal{E}\left[1/n\left(m_{1}+m_{2}+...+m_{n}\right)\left(m_{1}^{\prime}+m_{2}^{\prime}+...+m_{n}^{\prime}\right)\right]\\
  & = & \Gamma_{0}+\frac{n-1}{n}\left(\Gamma_{1}+\Gamma_{1}^{\prime}\right)+\frac{n-2}{n}\left(\Gamma_{2}+\Gamma_{2}^{\prime}\right)\cdots+\frac{1}{n}\left(\Gamma_{n-1}+\Gamma_{n-1}^{\prime}\right)
 \end{eqnarray*}
 
@@ -41064,14 +41110,16 @@ this will be consistent, provided that
 \begin_inset Formula $n\rightarrow\infty$
 \end_inset
 
-,
+, so that the higher order terms are eventually estimated, as the sample
+ size becomes large enough (control the bias)`
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $q(n)$
 \end_inset
 
- grows sufficiently slowly.
+ grows sufficiently slowly, so that we don't try to estimate terms unless
+ we have enough informations (control the variance)
 \end_layout
 
 \begin_layout Itemize
@@ -41207,8 +41255,8 @@ het: Nerlove model: look at t stats with ordinary and White standard errors.
 \end_layout
 
 \begin_layout Itemize
-aut: NYSE data, square of log difference of closing price.
- Estimate an AR(4), with plain and NW standard errors.
+aut: SP500 data (in Julia directory, load the csv file), rets and rets squared.
+ Estimate an AR(4), with plain and HAC standard errors.
 \end_layout
 
 \end_deeper
