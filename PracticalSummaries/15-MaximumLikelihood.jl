@@ -37,17 +37,18 @@ using ForwardDiff
 sc =  ForwardDiff.jacobian(logℒᵢ, θhat) # get the score contributions
 Ihat = mean(sc.^2.)
 Jhat = -ForwardDiff.hessian(s, θhat)
+1/θhat[1]^2
 # when you set n large (above), you should see that Ihat ⩬ -Jhat  
-# also, note that Jhat = 1/θhat², which is a result we can get analytically
+# also, note that Jhat = -1/θhat², which is a result we can get analytically
 
-# three forms of estimated variance
+## three forms of estimated variance
 V1 = inv(Ihat)/n
 se1 = sqrt(V1)
 V2 = inv(-Jhat)/n
 se2 = sqrt(V2)
 V3 =  inv(Jhat)*Ihat*inv(Jhat)/n
 se3 = sqrt(V3)
-[se1 se2 se3]   # note that the estimators are a little different from one another
+@show [se1 se2 se3]   # note that the estimators are a little different from one another
                 # the last one, sandwich, is what's reported in mleresults.
 ##
 
@@ -106,7 +107,7 @@ logℒᵢ = β -> [logpdf(Chisq(exp(x[i,:]'*β)),y[i]) for i = 1:n]
 sc =  ForwardDiff.jacobian(logℒᵢ, βhat); # get the score contributions
 Ihat = zeros(3,3)
 for i = 1:n
-	Ihat .+= sc[i,:]*sc[i,:]'
+	Ihat .+= sc[i,:]*sc[i,:]'I
 end
 Ihat ./= n
 Jhat = Calculus.hessian(s, βhat, :central)

@@ -33096,13 +33096,122 @@ This hold for all
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Law-of-iterated"
+
+\end_inset
+
+Law of iterated expectations.
+ Suppose that a random variable 
+\begin_inset Formula $Y$
+\end_inset
+
+ has zero expectation conditional on the random variable 
+\begin_inset Formula $X$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{E}_{Y|X}Y={\color{red}\int Yf(Y|X)dY}=0
+\]
+
+\end_inset
+
+ Then the unconditional expectation of the product of 
+\begin_inset Formula $Y$
+\end_inset
+
+ and a function 
+\begin_inset Formula $g(X)$
+\end_inset
+
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+ is also zero.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To see this, the unconditional expectation is 
+\begin_inset Formula 
+\[
+\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left(\int_{\mathcal{Y}}Yg(X)f(Y,X)dY\right)dX.
+\]
+
+\end_inset
+
+ Factor the joint density in to conditional and marginal:
+\begin_inset Formula 
+\[
+\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left(\int_{\mathcal{Y}}Y{\color{blue}g(X)}f(Y|X){\color{blue}f(X)}dY\right)dX.
+\]
+
+\end_inset
+
+ Because 
+\begin_inset Formula $f(X)$
+\end_inset
+
+ and 
+\begin_inset Formula $g(X)$
+\end_inset
+
+ don't depend on 
+\begin_inset Formula $Y$
+\end_inset
+
+, they can be pulled out of the integral 
+\begin_inset Formula 
+\[
+\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left({\color{red}\int_{\mathcal{Y}}Yf(Y|X)dY}\right){\color{blue}g(X)f(X)}dX.
+\]
+
+\end_inset
+
+ But the term in parentheses on the rhs is zero by assumption, so 
+\begin_inset Formula 
+\[
+\mathcal{E}\left(Yg(X)\right)=0
+\]
+
+\end_inset
+
+ as claimed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
-This result allows us to show that 
+This result implies that 
 \begin_inset Formula $E_{\theta}(g_{t}(y_{t}|x_{t},\theta)g_{t-s}(y_{t-s}|x_{t-s},\theta)^{\prime})=0_{k\times k}$
 \end_inset
 
-: the score contributions are uncorrelated.
- This comes from the fact that all random variables in 
+: the score contributions are uncorrelated with one another.
+\end_layout
+
+\begin_layout Itemize
+This comes from the fact that all random variables in 
 \begin_inset Formula $g_{t-s}(y_{t-s}|x_{t-s},\theta)$
 \end_inset
 
@@ -33110,15 +33219,24 @@ This result allows us to show that
 \begin_inset Formula $x_{t}$
 \end_inset
 
-.
- This concept is explained in detail in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Estimation-using-conditional"
+, and applying iterated expectations.
+\end_layout
+
+\begin_layout Itemize
+If one computes score contributions, and observes that they appear to be
+ correlated, this casts doubt on the correct specification of the model.
+ There are formal specification tests based on this result (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "WhiteMisspecifiedML1982"
+literal "false"
 
 \end_inset
 
-, for now let's just accept it.
+).
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -33418,8 +33536,8 @@ We've already seen that
 \end_layout
 
 \begin_layout Itemize
-Also, the elements of the sum are uncorrelated with one another (as was
- discussed, above, and which will be proven, below).
+Also, the elements of the sum are uncorrelated with one another (iterated
+ expectations, above)
 \end_layout
 
 \begin_layout Itemize
@@ -33970,38 +34088,17 @@ The scores
 \begin_inset Formula $t\neq s,$
 \end_inset
 
- since for 
-\begin_inset Formula $t>s,$
-\end_inset
-
- 
-\begin_inset Formula $f_{t}(y_{t}|y_{1},...,y_{t-1},\theta)$
-\end_inset
-
- has conditioned on prior information, so what was random in 
-\begin_inset Formula $s$
-\end_inset
-
- is fixed in 
-\begin_inset Formula $t$
-\end_inset
-
-.
- (This forms the basis for a specification test proposed by White:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
+ as we saw above (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Law-of-iterated"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-if the scores appear to be correlated one may question the specification
- of the model).
+).
  This allows us to write:
 \end_layout
 
@@ -34272,8 +34369,16 @@ White's
 \emph on
 Information matrix test
 \emph default
- (Econometrica, 1982) is based upon comparing the two ways to estimate the
- information matrix: outer product of gradient or negative of the Hessian.
+ (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "WhiteMisspecifiedML1982"
+literal "false"
+
+\end_inset
+
+) is based upon comparing the two ways to estimate the information matrix:
+ outer product of gradient or negative of the Hessian.
  If they differ by too much, this is evidence of misspecification of the
  model.
 \end_layout
@@ -41359,6 +41464,25 @@ href{./src/GMM/gmmresults.jl}{gmmresults.jl}
 .
 \end_layout
 
+\begin_layout Itemize
+Matlab/Octave code for GMM for Nerlove model.
+ Examine and run 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+href{./Examples/GMM/TwoStepGMM.m}{TwoStepGMM.m} 
+\end_layout
+
+\end_inset
+
+, which illustrates how to do two step GMM for the Nerlove data.
+ Note that the GMM results are the same as what you get estimating by OLS.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -41469,84 +41593,6 @@ So far, the moment conditions have been presented as unconditional expectations.
 \end_layout
 
 \begin_layout Standard
-Suppose that a random variable 
-\begin_inset Formula $Y$
-\end_inset
-
- has zero expectation conditional on the random variable 
-\begin_inset Formula $X$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\mathcal{E}_{Y|X}Y={\color{red}\int Yf(Y|X)dY}=0
-\]
-
-\end_inset
-
- Then the unconditional expectation of the product of 
-\begin_inset Formula $Y$
-\end_inset
-
- and a function 
-\begin_inset Formula $g(X)$
-\end_inset
-
- of 
-\begin_inset Formula $X$
-\end_inset
-
- is also zero.
- 
-\begin_inset Newpage newpage
-\end_inset
-
-To see this, the unconditional expectation is 
-\begin_inset Formula 
-\[
-\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left(\int_{\mathcal{Y}}Yg(X)f(Y,X)dY\right)dX.
-\]
-
-\end_inset
-
- Factor the joint density in to conditional and marginal:
-\begin_inset Formula 
-\[
-\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left(\int_{\mathcal{Y}}Y{\color{blue}g(X)}f(Y|X){\color{blue}f(X)}dY\right)dX.
-\]
-
-\end_inset
-
- Because 
-\begin_inset Formula $f(X)$
-\end_inset
-
- and 
-\begin_inset Formula $g(X)$
-\end_inset
-
- don't depend on 
-\begin_inset Formula $Y$
-\end_inset
-
-, they can be pulled out of the integral 
-\begin_inset Formula 
-\[
-\mathcal{E}\left(Yg(X)\right)=\int_{\mathcal{X}}\left({\color{red}\int_{\mathcal{Y}}Yf(Y|X)dY}\right){\color{blue}g(X)f(X)}dX.
-\]
-
-\end_inset
-
- But the term in parentheses on the rhs is zero by assumption, so 
-\begin_inset Formula 
-\[
-\mathcal{E}\left(Yg(X)\right)=0
-\]
-
-\end_inset
-
- as claimed.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -41590,7 +41636,7 @@ E\left(\epsilon(y_{t},x_{t},\theta^{0})|I_{t}\right)=0.
 \end_layout
 
 \begin_layout Standard
-For example, consider the demand equation of eqn.
+For example, consider the supply equation of eqn.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -41615,7 +41661,11 @@ noprefix "false"
 \noun off
 \color none
 
-\begin_inset Formula $q_{t}=\alpha_{1}^{0}+\alpha_{2}^{0}p_{t}+\alpha_{3}^{0}y_{t}+\varepsilon_{1t}$
+\begin_inset Formula 
+\[
+q_{t}=\beta_{1}^{0}+\beta{}_{2}^{0}p_{t}+\varepsilon_{2t}
+\]
+
 \end_inset
 
  where income, 
@@ -41649,7 +41699,7 @@ Set
 \end_inset
 
 
-\begin_inset Formula $q_{t}-\alpha_{1}^{0}-\alpha_{2}^{0}p_{t}-\alpha_{3}^{0}y_{t}=\varepsilon_{1t}$
+\begin_inset Formula $q_{t}-\beta_{1}^{0}-\beta_{2}^{0}p_{t}=\varepsilon_{2t}$
 \end_inset
 
  
@@ -41670,7 +41720,7 @@ Set
 \noun off
 \color none
 So 
-\begin_inset Formula $\epsilon_{t}(\theta^{0})=\epsilon_{1t}$
+\begin_inset Formula $\epsilon_{t}(\theta^{0})=\epsilon_{2t}$
 \end_inset
 
 , which has conditional expectation, given 
@@ -41683,7 +41733,7 @@ So
 
 \begin_layout Itemize
 At other parameter values, 
-\begin_inset Formula $\epsilon_{t}(\theta)=q_{t}-\alpha_{1}+\alpha_{2}p_{t}+\alpha_{3}y_{t}\ne\epsilon_{1t},$
+\begin_inset Formula $\epsilon_{t}(\theta)=q_{t}-\beta_{1}+\beta_{2}p_{t}\ne\epsilon_{2t},$
 \end_inset
 
  and this will not have conditional expectation equal to zero.
@@ -41693,7 +41743,7 @@ At other parameter values,
 \begin_inset Newpage newpage
 \end_inset
 
-If identification holds, then we will have
+Returning to the general case, if identification holds, then we will have
 \begin_inset Formula 
 \[
 \mathcal{E}\epsilon_{t}(\theta)|I_{t}\ne0,\,\theta\ne\theta^{0}.
@@ -41715,20 +41765,28 @@ This is a scalar moment condition, which isn't sufficient to identify a
 \end_inset
 
 .
- However, the above result allows us to form various unconditional expectations
- 
+ However, we can take any variables in the information set, say, 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+ (which may be vector-valued), and we may use tranformations of these variables,
+ say, 
+\begin_inset Formula $Z(w_{t}),$
+\end_inset
+
+to obtain the moment contributions 
 \begin_inset Formula 
 \[
-m_{t}(\theta)=Z(w_{t})\epsilon_{t}(\theta)
+m_{t}(\theta)=Z(w_{t})\epsilon_{t}(\theta).
 \]
 
 \end_inset
 
-where 
+Now, let 
 \begin_inset Formula $Z(w_{t})$
 \end_inset
 
- is a 
+ be a 
 \begin_inset Formula $g\times1$
 \end_inset
 
@@ -41762,10 +41820,37 @@ instrumental variables.
 \end_inset
 
  the necessary condition for identification holds.
+ 
 \end_layout
 
 \begin_layout Itemize
-In the above demand function example, 
+By the law of iterated expectation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Law-of-iterated"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), 
+\begin_inset Formula $E(m_{t}(\theta^{0})=0.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The other thing we need, for identification, is that 
+\begin_inset Formula $E(m_{t}(\theta)\ne0,\,\forall\theta\ne\theta⁰$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+In the above supply function example, 
 \begin_inset Formula $y_{t}$
 \end_inset
 
@@ -41774,9 +41859,35 @@ In the above demand function example,
 \begin_inset Formula $y_{t}.$
 \end_inset
 
+ Using only 
+\begin_inset Formula $y_{t}$
+\end_inset
 
+ itself, by the law of iterated expectations, 
+\begin_inset Formula $E\left(y_{t}\epsilon_{t}(\theta^{0})\right)=0.$
+\end_inset
+
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+In this example, we have only one moment condition, so far.
+ We would need additional instruments to identify the parameters.
+ We can use the constant as an instrument: 
+\begin_inset Formula $Z(y_{t}^{0})=1,\forall t$
+\end_inset
+
+.
+ Combining this with the previous instrument gives us two instruments, which
+ is enough to estimate the two 
+\begin_inset Formula $\beta$
+\end_inset
+
+ parameters.
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -41785,7 +41896,7 @@ In the above demand function example,
 \end_layout
 
 \begin_layout Standard
-One can form the 
+Following the idea, one can form the 
 \begin_inset Formula $n\times g$
 \end_inset
 
@@ -41881,8 +41992,9 @@ The IV estimator may appear a bit unusual at first, but it will grow on
 
 \begin_layout Standard
 Let's look at the previous section's results in more detail, for the commonly
- encountered special case of a linear model with iid errors, but with correlatio
-n between regressors and errors: 
+ encountered special case of a linear model with iid errors (the iid part
+ is easy to generalize), but with correlation between regressors and errors
+ (failure of weak exogeneity): 
 \begin_inset Formula 
 \begin{eqnarray*}
 y_{t} & = & x_{t}^{\prime}\theta^{0}+\varepsilon_{t}\\
@@ -41901,6 +42013,13 @@ Let's assume, just to keep things simple, that the errors are iid
 \begin_layout Itemize
 The model in matrix form is 
 \begin_inset Formula $y=X\theta^{0}+\epsilon$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -42972,7 +43091,7 @@ reference "eq:asvarGIV"
 
 \end_inset
 
-From this, we can write (allowing for possible HET/AUT)
+From this, we can write (now allowing for possible HET/AUT)
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\hat{\theta}_{IV}-\theta^{0}\right)\overset{d}{\rightarrow}N\left(0,(Q_{\hat{X}}^{-1}\Omega Q_{\hat{X}}^{-1}\right)
@@ -43189,7 +43308,7 @@ a = randn(3,3)
 
 \begin_layout Plain Layout
 
-a = a'*a # make it PD, so it will have a matrix square root
+a = transpose(a)*a # make it PD, so it will have a matrix square root
 \end_layout
 
 \begin_layout Plain Layout
@@ -43200,6 +43319,11 @@ s = sqrt(a)
 \begin_layout Plain Layout
 
 eigvals(s) # check that it's invertible
+\end_layout
+
+\begin_layout Plain Layout
+
+s*s - a # verify that it's the square root
 \end_layout
 
 \end_inset
@@ -43222,23 +43346,8 @@ Next, multiply by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\hat{\theta}) & =\left(I_{g}-\hat{\Omega}^{-1/2}D_{n}^{\prime}(\theta^{*})\left(D(\hat{\theta})\hat{\Omega}^{-1}D(\theta^{*})^{\prime}\right)^{-1}D(\hat{\theta})\hat{\Omega}^{-1/2}\right)\left(\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\theta^{0})\right)\equiv PX\label{eq:JtestIntermediate}
+{\color{purple}\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\hat{\theta})} & =\left({\color{red}I_{g}-\hat{\Omega}^{-1/2}D_{n}^{\prime}(\theta^{*})\left(D(\hat{\theta})\hat{\Omega}^{-1}D(\theta^{*})^{\prime}\right)^{-1}D(\hat{\theta})\hat{\Omega}^{-1/2}}\right)\left({\color{blue}\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\theta^{0})}\right)\equiv PX\label{eq:JtestIntermediate}
 \end{align}
-
-\end_inset
-
- Now, from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:CLT applied to moment conditions"
-
-\end_inset
-
- we have 
-\begin_inset Formula 
-\[
-X\equiv\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\theta^{0})\stackrel{d}{\rightarrow}N(0,I_{g})
-\]
 
 \end_inset
 
@@ -43259,7 +43368,7 @@ the big matrix
 \noun off
 \color none
 
-\begin_inset Formula $P=I_{g}-\hat{\Omega}^{-1/2}D_{n}^{\prime}(\theta^{*})\left(D(\hat{\theta})\hat{\Omega}^{-1}D(\theta^{*})^{\prime}\right)^{-1}D(\hat{\theta})\hat{\Omega}^{-1/2}$
+\begin_inset Formula ${\color{red}P=I_{g}-\hat{\Omega}^{-1/2}D_{n}^{\prime}(\theta^{*})\left(D(\hat{\theta})\hat{\Omega}^{-1}D(\theta^{*})^{\prime}\right)^{-1}D(\hat{\theta})\hat{\Omega}^{-1/2}}$
 \end_inset
 
  converges in probability to 
@@ -43296,15 +43405,40 @@ One can easily verify that
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $X=\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\theta^{0})$
+The far right term, 
+\begin_inset Formula $X={\color{blue}\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\theta^{0})}$
 \end_inset
 
  converges to a 
-\begin_inset Formula $G$
+\begin_inset Formula $g$
 \end_inset
 
  vector of i.i.d.
  standard normal random variables, by the LLN and the Slutsky theorem.
+ This is because 
+\begin_inset Formula $\sqrt{n}\bar{m}(\theta^{0})\stackrel{d}{\rightarrow}N(0,\Omega_{\infty})$
+\end_inset
+
+ (from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CLT applied to moment conditions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and we're multiplying by something that converges to 
+\begin_inset Formula $\Omega_{\infty}^{-1/2}$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $\Omega_{\infty}^{-1/2}\Omega_{\infty}\Omega_{\infty}^{-1/2}=I_{g}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -43403,7 +43537,7 @@ noprefix "false"
  must also have the same distribution, so we finally get
 \begin_inset Formula 
 \[
-\left(\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\hat{\theta})\right)^{\prime}\left(\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\hat{\theta})\right)=n{\color{blue}\bar{m}_{n}(\hat{\theta})^{\prime}\hat{\Omega}^{-1}\bar{m}_{n}(\hat{\theta})}\stackrel{d}{\rightarrow}\chi^{2}(g-K)
+\left({\color{purple}\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\hat{\theta})}\right)^{\prime}\left({\color{purple}\sqrt{n}\hat{\Omega}^{-1/2}\bar{m}_{n}(\hat{\theta})}\right)=n\bar{m}_{n}(\hat{\theta})^{\prime}\hat{\Omega}^{-1}\bar{m}_{n}(\hat{\theta})\stackrel{d}{\rightarrow}\chi^{2}(g-K)
 \]
 
 \end_inset
@@ -43839,6 +43973,13 @@ lagged values of the dependent variable are used as regressors and
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 To illustrate, the Julia program 
 \begin_inset ERT
 status open
@@ -43854,11 +43995,19 @@ href{./Examples/GMM/Hausman/OLSvsIV.jl}{OLSvsIV.jl}
 
  performs a Monte Carlo experiment where errors are correlated with regressors,
  and estimation is by OLS and IV.
- The true value of the slope coefficient used to generate the data is 
+ 
+\end_layout
+
+\begin_layout Itemize
+The true value of the slope coefficient used to generate the data is 
 \begin_inset Formula $\beta=2.$
 \end_inset
 
- Figure 
+ 
+\end_layout
+
+\begin_layout Itemize
+Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:OLS-and-IV"
@@ -43870,12 +44019,30 @@ noprefix "false"
 
  shows that the OLS estimator is quite biased and that the IV estimator
  is on average much closer to the true value.
- If you play with the program, increasing the sample size, you can see evidence
+ 
+\end_layout
+
+\begin_layout Itemize
+If you play with the program, increasing the sample size, you can see evidence
  that the OLS estimator is asymptotically biased, while the IV estimator
  is consistent.
- You can also play with the covariances of the instrument and regressor,
+ 
+\end_layout
+
+\begin_layout Itemize
+You can also play with the covariances of the instrument and regressor,
  and the covariance of the regressor and the error.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -43891,7 +44058,19 @@ name "fig:OLS-and-IV"
 
 \end_inset
 
-OLS and IV
+OLS and IV (
+\begin_inset Formula $n=1000,$
+\end_inset
+
+cov(X,
+\begin_inset Formula $\epsilon)=0.5,$
+\end_inset
+
+cov(W,
+\begin_inset Formula $\epsilon)=0.5$
+\end_inset
+
+)
 \end_layout
 
 \end_inset
@@ -43959,6 +44138,25 @@ Play with the above script to convince yourself of this point: make exogeneity
 When we have a more efficient estimator that relies on stronger assumptions
  (such as exogeneity) than the IV estimator, we might prefer to use it,
  unless we have evidence that the assumptions are false.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When exogeneity holds, OLS is better.
+ 
+\end_layout
+
+\begin_layout Itemize
+When exogeneity is sufficiently false, IV is better.
+ 
+\end_layout
+
+\begin_layout Itemize
+How do we choose, if we're not sure about whether or not exogeneity holds?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -44039,10 +44237,10 @@ reference "Cov. CAN and MLE score"
 V_{\infty}\left[\begin{array}{c}
 \sqrt{n}\left(\tilde{\theta}-\theta\right)\\
 \sqrt{n}g(\theta)
-\end{array}\right]=\left[\begin{array}{cc}
+\end{array}\right]={\color{blue}\left[\begin{array}{cc}
 V_{\infty}(\tilde{\theta}) & I_{K}\\
 I_{K} & \mathcal{I}_{\infty}(\theta)
-\end{array}\right].
+\end{array}\right]}.
 \]
 
 \end_inset
@@ -44050,9 +44248,9 @@ I_{K} & \mathcal{I}_{\infty}(\theta)
 These results imply that 
 \begin_inset Formula 
 \[
-\begin{bmatrix}I_{K} & 0_{K}\\
+{\color{purple}\begin{bmatrix}I_{K} & 0_{K}\\
 0_{K} & I_{\infty}(\theta)^{-1}
-\end{bmatrix}\left[\begin{array}{c}
+\end{bmatrix}}\left[\begin{array}{c}
 \sqrt{n}\left(\tilde{\theta}-\theta\right)\\
 \sqrt{n}g(\theta)
 \end{array}\right]\rightarrow^{d}\left[\begin{array}{c}
@@ -44063,28 +44261,21 @@ These results imply that
 
 \end_inset
 
-
-\begin_inset Formula 
-\[
-.
-\]
-
-\end_inset
-
- The asymptotic covariance of this is 
+ The asymptotic covariance of the RHS is the same as the asymptotic variance
+ of the LHS, so 
 \begin_inset Formula 
 \begin{eqnarray*}
 V_{\infty}\left[\begin{array}{c}
 \sqrt{n}\left(\tilde{\theta}-\theta\right)\\
 \sqrt{n}\left(\hat{\theta}-\theta\right)
-\end{array}\right] & = & \begin{bmatrix}I_{K} & 0_{K}\\
+\end{array}\right] & = & {\color{purple}\begin{bmatrix}I_{K} & 0_{K}\\
 0_{K} & I_{\infty}(\theta)^{-1}
-\end{bmatrix}\left[\begin{array}{cc}
+\end{bmatrix}}{\color{blue}\left[\begin{array}{cc}
 V_{\infty}(\tilde{\theta}) & I_{K}\\
 I_{K} & \mathcal{I}_{\infty}(\theta)
-\end{array}\right]\begin{bmatrix}I_{K} & 0_{K}\\
+\end{array}\right]}{\color{purple}\begin{bmatrix}I_{K} & 0_{K}\\
 0_{K} & I_{\infty}(\theta)^{-1}
-\end{bmatrix}\\
+\end{bmatrix}}\\
  & = & \left[\begin{array}{cc}
 V_{\infty}(\tilde{\theta}) & I_{\infty}(\theta)^{-1}\\
 I_{\infty}(\theta)^{-1} & I_{\infty}(\theta)^{-1}
@@ -44108,9 +44299,17 @@ I_{\infty}(\theta)^{-1} & V_{\infty}(\hat{\theta})
 
 \end_inset
 
-So, the asymptotic covariance between the MLE and any other CAN estimator
+The main point of interest here are the off diagonal entries.
+ So, the asymptotic covariance between the MLE and any other CAN estimator
  is equal to the MLE asymptotic variance (the inverse of the information
  matrix).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -44132,7 +44331,7 @@ MLE
 \end_inset
 
  is a maintained hypothesis).
- Under the null hypothesis that they are, we have
+ Under the null hypothesis that they are equal, we have
 \begin_inset Formula 
 \[
 \begin{bmatrix}I_{K} & -I_{K}\end{bmatrix}\left[\begin{array}{c}
@@ -44170,12 +44369,18 @@ where
  A statistic that has the same asymptotic distribution is
 \begin_inset Formula 
 \[
-\left(\tilde{\theta}-\hat{\theta}\right)^{\prime}\left(\hat{V}(\tilde{\theta})-\hat{V}(\hat{\theta})\right)^{-1}\left(\tilde{\theta}-\hat{\theta}\right)\overset{d}{\rightarrow}\chi^{2}(\rho).
+\left(\tilde{\theta}-\hat{\theta}\right)^{\prime}\left(\hat{V}(\tilde{\theta})-\hat{V}(\hat{\theta})\right)^{-1}\left(\tilde{\theta}-\hat{\theta}\right)\overset{d}{\rightarrow}\chi^{2}(\rho),
 \]
 
 \end_inset
 
-This is the Hausman test statistic, in its original form.
+where the 
+\begin_inset Formula $n$
+\end_inset
+
+ has disappeared because we are using the small sample estimates of the
+ covariances of the two estimators.
+ This is the Hausman test statistic, in its original form.
  The reason that this test has power under the alternative hypothesis is
  that in that case the 
 \begin_inset Quotes sld
@@ -44367,6 +44572,10 @@ W_{1} & \mathbf{0}_{\left(g_{1}\times g_{2}\right)}\\
 
 \end_inset
 
+The minimizer just gives the two separate GMM estimators.
+\end_layout
+
+\begin_layout Standard
 Suppose that the asymptotic covariance of the omnibus moment vector is
 \begin_inset Formula 
 \begin{eqnarray}
@@ -44514,6 +44723,149 @@ H2
 
  test in my paper), for a simple linear model, and compares to the standard
  Hausman test.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+More moments are better (?)
+\end_layout
+
+\begin_layout Standard
+A similar framework allows us to show that an overidentified GMM estimator
+ will be asymptotically efficient relative to a GMM estimator that only
+ uses a subset of moment conditions that still maintain identification.
+ Let 
+\begin_inset Formula $\bar{m}_{n}(\theta)$
+\end_inset
+
+ be partitioned as 
+\begin_inset Formula 
+\[
+\bar{m}_{n}(\theta)=\left[\begin{array}{c}
+\bar{m}_{n}^{1}(\theta)\\
+\bar{m}_{n}^{2}(\theta)
+\end{array}\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\bar{m}_{n}^{1}(\theta)$
+\end_inset
+
+ is a subset of moment conditions that still identifies the parameters.
+ Suppose that the limiting covariance of 
+\begin_inset Formula $\sqrt{n}\bar{m}_{n}(\theta)$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\Omega_{\infty}=\left[\begin{array}{cc}
+\Omega_{11} & \Omega_{12}\\
+\Omega_{12}^{\prime} & \Omega_{22}
+\end{array}\right].
+\]
+
+\end_inset
+
+The efficient weight matrix is something that converges to the inverse of
+ this.
+ The GMM estimator that uses only the subset of moment conditions, 
+\begin_inset Formula $\bar{m}_{n}^{1}(\theta)$
+\end_inset
+
+, is equivalent to a GMM estimator that uses all of the moment conditions,
+ but with the weight matrix being
+\begin_inset Formula 
+\[
+W=\left[\begin{array}{cc}
+\Omega_{11}^{-1} & 0\\
+0 & 0
+\end{array}\right],
+\]
+
+\end_inset
+
+where the zeros are appropriately sized matrices of zeros.
+ This is not the efficient weight matrix for the full set of moment conditions,
+ so this GMM estimator will not be efficient with respect to the efficiently
+ weighted GMM estimator that uses all of the moment conditions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+so, comparing two GMM estimators, A and B, where B uses a subset of the
+ moment conditions that A uses, and both are identified, A will be asymptoticall
+y efficient with respect to B.
+\end_layout
+
+\begin_layout Itemize
+however, the efficiency gain may be zero, or very little (recall that the
+ definition of 
+\begin_inset Quotes sld
+\end_inset
+
+efficient with respect to
+\begin_inset Quotes srd
+\end_inset
+
+ uses positive semi-definiteness).
+\end_layout
+
+\begin_layout Itemize
+the small sample bias of the GMM estimator tends to increase as the number
+ of moment conditions increase (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "donald2001choosing,DonaldImbensNewey2009"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+so, estimator A may have worse small sample performance than version B,
+ in spite of being relatively asymptotically efficient
+\end_layout
+
+\begin_layout Itemize
+experience has shown that using only reasonably informative moments, with
+ a small degree of overidentification, is usually better than the 
+\begin_inset Quotes sld
+\end_inset
+
+kitchen sink
+\begin_inset Quotes srd
+\end_inset
+
+ approach.
+ See the literature on weak instruments, etc.
+ How to select the good moments out of a large set of possible moments is
+ where artistry/alchemy enters the picture, 
+\begin_inset CommandInset href
+LatexCommand href
+name "something like this."
+target "https://render.fineartamerica.com/images/rendered/default/poster/8/10/break/images-medium-5/the-alchemist-andrew-farley.jpg"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -44782,11 +45134,12 @@ information set
 \begin_inset Formula $t,$
 \end_inset
 
- and includes the all realizations of all random variables indexed 
-\begin_inset Formula $t$
+ and includes the all realizations of all random variables that are known
+ at time 
+\begin_inset Formula $t.$
 \end_inset
 
- and earlier.
+
 \end_layout
 
 \begin_layout Itemize
@@ -44865,9 +45218,27 @@ Current wealth
 \end_inset
 
 .
+ At time 
+\begin_inset Formula $t,$
+\end_inset
+
+ the consumer observes 
+\begin_inset Formula $r_{t},$
+\end_inset
+
+ which determines wealth.
  So the problem is to allocate current wealth between current consumption
  and investment to finance future consumption: 
 \begin_inset Formula $w_{t}=c_{t}+i_{t}$
+\end_inset
+
+.
+ The choice variable can be taken as 
+\begin_inset Formula $c_{t},$
+\end_inset
+
+which determines 
+\begin_inset Formula $i_{t}$
 \end_inset
 
 .
@@ -44887,6 +45258,39 @@ not known
 \end_inset
 
 : the asset is risky.
+\end_layout
+
+\begin_layout Itemize
+The information set 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+ includes 
+\begin_inset Formula $r_{t},$
+\end_inset
+
+
+\begin_inset Formula $w_{t}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{r},$
+\end_inset
+
+
+\begin_inset Formula $d_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{t-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $i_{t-1}$
+\end_inset
+
+, as well as all lags of these variables.
+ 
 \begin_inset Newpage newpage
 \end_inset
 
@@ -45165,14 +45569,8 @@ s(\theta)=\bar{m}(\theta)^{\prime}\hat{\Omega}^{-1}\bar{m}(\theta).
 
 \begin_layout Itemize
 In principle, we could use a very large number of moment conditions in estimatio
-n, since 
-\emph on
-any current or lagged variable
-\emph default
- could be used in 
-\begin_inset Formula $\mathbf{x}_{t}.$
-\end_inset
-
+n, because we can use current period exogenous variables, and lags of endogenous
+ and exogenous variables.
  Since use of more moment conditions will lead to a more (asymptotically)
  efficient estimator, one might be tempted to use many instrumental variables.
  We will do a computer lab that will show that this may not be a good idea
@@ -45429,7 +45827,7 @@ The real values of this shock
 \begin_inset Formula $\gamma$
 \end_inset
 
-, and the data, the left hand side of the above equation can be calculated.
+, and the data, the right hand side of the above equation can be calculated.
  Also, we have
 \begin_inset Formula 
 \[

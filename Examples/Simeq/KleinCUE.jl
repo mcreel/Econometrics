@@ -6,6 +6,7 @@ function KleinMoments(θ, y, x, z)
 end
 	
 function main()
+cd(@__DIR__)
 data = readdlm("klein.data")
 # construct missing lags, and drop first row that has missing data
 profits = data[:,3]

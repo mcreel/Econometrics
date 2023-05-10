@@ -21,7 +21,8 @@ using Econometrics
 moments1 = β -> x.*(y - λ(β))
 gmmresults(moments1, β⁰);
 # note that the GMM estimator is identical to the ML estimator. You should
-# be able to prove that result analytically. Because this GMM estimator is
+# be able to prove that result analytically, by showing that the moment conditions
+# are the same as the ML score vector. Because this GMM estimator is
 # equivalent to ML, it is asymptotically efficient. Adding moment conditions
 # won't improve asymptotic efficiency, even if they're valid.
 

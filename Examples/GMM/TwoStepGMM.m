@@ -43,6 +43,7 @@ obj
 
 %% how to compute covariance of estimates
 % we're using the fact that moment contribs are independent here
+% to replicate with GRETL, set cov estimator to HC0
 D = -x'*x/n;
 Vhat = (1/n)*inv(D*inv(omega)*D');
 fprintf('estimated st. devs. of thetahat\n');

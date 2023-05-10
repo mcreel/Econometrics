@@ -38,6 +38,10 @@ W = inv(cov(ms))
 prettyprint([βcue βgmm1 βgmm], ["cue", "step1", "step2"])
 
 ## Are the instruments ok? Look at first stage regressions
+# we are regressing the 3 endogenous variables, educ, exper and exper^2
+# on the instruments, and testing that the outside instruments (nearc4, age, age^2)
+# are contributing to the fit, on top of what the included exogenous variables
+# account for.
 R = [zeros(3) eye(3) zeros(3,3)]
 r = zeros(3)
 y = Matrix{Float64}(@select(card, :educ))
@@ -51,13 +55,13 @@ prettyprint([F1 F2 F3],["educ", "age", "agesq"])
 println("according to the simple rule that F should be ≥ 10")
 println("there is concern that education is not well-instrumented")
 
-## Hausman test: compare CUE and OLS
+## Standard Hausman test: compare CUE and OLS
 # this is assuming that OLS is efficient, which
 # is a bit of a stretch (possible HET, at least)
 using LinearAlgebra, Distributions
 e = βcue-βols
 H = dot(e, inv(Vcue-Vols), e)
-df = size(e,1)
+df = rank(Vcue-Vols)
 pval = 1. - cdf(Chisq(df),H)
 println("Hausman test statistic: $H, degrees of freedom: $df, p-value: $pval")
 

@@ -1,3 +1,4 @@
+using Econometrics
 function gmmresults()
     # example of GMM: draws from N(0,1). We estimate mean and variance.
     y = randn(1000,1)
