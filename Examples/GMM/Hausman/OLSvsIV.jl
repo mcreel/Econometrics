@@ -9,12 +9,20 @@ betaiv = zeros(reps,2)
 n = 1000 # sample size
 
 # covariance of X, W, e
-cor_X_W = 0.2  # experiment with lowering or raising this: quality of instrument
+cor_X_W = 0.5  # experiment with lowering or raising this: quality of instrument
 cor_X_e = 0.5  # try setting this to zero to observe inefficiency of IV
+
 sig = [
       1.0       cor_X_W     cor_X_e;
       cor_X_W   1.0         0.0;
      cor_X_e    0.0         1.0]
+
+if isposdef(sig)
+	@info "parameters are ok, proceeding"
+else
+	@info "covariance not positive definite, try again with different settings"
+	return
+end	 
 truebeta = [1, 2] # true beta
 p = cholesky(sig).U
 for i = 1:reps
@@ -30,9 +38,11 @@ for i = 1:reps
 end
 
 p1 = npdensity(betaols[:,2])
+plot!(legend=:outerright)
 plot!(p1,title="OLS")
 p2 = npdensity(betaiv[:,2])
 plot!(p2,title="IV")
+plot!(legend=:outerright)
 p = plot(p1,p2,layout=(2,1))
 #savefig("olsiv.png")
 gui()

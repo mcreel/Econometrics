@@ -21,7 +21,8 @@ using Econometrics
 moments1 = β -> x.*(y - λ(β))
 gmmresults(moments1, β⁰);
 # note that the GMM estimator is identical to the ML estimator. You should
-# be able to prove that result analytically. Because this GMM estimator is
+# be able to prove that result analytically, by showing that the moment conditions
+# are the same as the ML score vector. Because this GMM estimator is
 # equivalent to ML, it is asymptotically efficient. Adding moment conditions
 # won't improve asymptotic efficiency, even if they're valid.
 
@@ -50,3 +51,7 @@ moments4 = β -> x.* (y./λ(β) .- 1.0 .+ η)
 moments5 = β -> [moments1(β) moments4(β)]
 gmmresults(moments5, β⁰);
 
+## Yet another version, using conditional mean = conditional variance
+using Econometrics, ForwardDiff
+moments6 = β -> x.*((y - λ(β)) .^2.0 - λ(β))
+βhat, objv, V, D, W, convergence = gmmresults(moments6, β⁰);

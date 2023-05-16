@@ -39,7 +39,8 @@ function portfolio_moments(theta, data)
 	m = e.*inst
 end
 
-function main()
+## read the data and form variables
+cd(@__DIR__)
 data = readdlm("../Data/tauchen.data")
 c = data[:,1]
 p = data[:,2]
@@ -47,17 +48,18 @@ d = data[:,3]
 # form net return and stationary consumption
 r = (p + d) ./ lag(p,1) .- 1.0
 c = c ./ lag(c,1); # ensure stationarity
-# choose maximal lag of instruments.
-max_lag = 1
-inst = [c/10 10r d p/10] # chose from c, r, d, p
-dstats(inst)
-inst = lags(inst, max_lag)
-inst, junk, junk = stnorm(inst)
-inst = [ones(size(inst,1),1) inst]
-# drop rows with missing values
-data = [c r inst]
-data = data[max_lag+1:end,:]
-# do estimation
+
+## choose the instruments
+inst = [lag(c,1) r d p]
+maxlag = 2
+inst = [inst lags(inst, maxlag)]
+inst = inst[maxlag+2:end,:]  # drop first two obs, due to two lags of c
+inst, junk, junk = stnorm(inst) # for numeric stability
+inst = [ones(size(inst,1),1) inst]  # add a constant
+# collect the data for the moments
+data = [c[maxlag+2:end] r[maxlag+2:end] inst]
+
+## do estimation
 moments = θ -> portfolio_moments(θ, data)
 weight = 1.0
 names = ["beta","gamma"]
@@ -69,9 +71,8 @@ names = ["beta","gamma"]
 weight = inv(Ω)
 title = "Two step GMM estimation of portfolio model"
 results = gmmresults(moments, θhat, weight, title, names)
-# CUE GMM
+
+## CUE GMM
 title = "CUE GMM estimation of portfolio model"
 gmmresults(moments, θstart , "", title, names)
-return
-end
-main()
+nothing

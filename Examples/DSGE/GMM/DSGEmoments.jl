@@ -10,13 +10,7 @@ function DSGEmoments(θ, data)
         # break out params    
         α = 0.33
         δ = 0.025
-        β = θ[1]
-        γ = θ[2]
-        ρ_z = θ[3]
-        σ_z = θ[4]
-        ρ_η = θ[5]
-        σ_η = θ[6]
-        nss = θ[7]
+        β, γ, ρ_z, σ_z, ρ_η, σ_η, nss = θ
         # recover ψ
         c1 = ((1.0/β + δ - 1.0)/α)^(1.0/(1.0-α))
         kss = nss/c1
@@ -28,10 +22,10 @@ function DSGEmoments(θ, data)
         η = log.(w) .- γ*log.(c) .- log.(ψ)
         u = (η[2:end]-η[1:end-1]*ρ_η)/σ_η
         e1 = η[1:end-1].*u
-        e2 = u.^2.0 .- 1.0
+        e2 = u.^2.0 .- 1.0 
         pref_shock = u
         # now the Euler eqn
-        e3 = (100*((1.0 .+ r .- δ).*β.*(c.^(-γ)) .- lag(c,1).^(-γ)))[2:end] 
+        e3 = 100.0*((1.0 .+ r .- δ).*β.*(c.^(-γ)) .- lag(c,1).^(-γ))[2:end]
         # recover K from MPK/MPL
         k = (α/(1.0-α))*n.*w./r
         # get z, the production shock, from the production function
@@ -41,8 +35,8 @@ function DSGEmoments(θ, data)
         e5 = u.^2.0 .- 1.0
         tech_shock = u
         # make moment conditions
-        data = log.(data)[1:end-1,:]
-        errors = [e1 e2 e3 e4 e5 pref_shock.*data tech_shock.*data data.*e3]
+        data, junk, junk = stnorm(log.(data)[1:end-1,:])
+        errors = [100.0*e1 e2 e3 10.0*e4 e5 e3.*data pref_shock.*data tech_shock.*data]
         return errors
 end
 
