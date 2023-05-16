@@ -31467,6 +31467,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-DSGE-data"
+
+\end_inset
+
 The DSGE data
 \end_layout
 
@@ -44852,17 +44858,7 @@ kitchen sink
 
  approach.
  See the literature on weak instruments, etc.
- How to select the good moments out of a large set of possible moments is
- where artistry/alchemy enters the picture, 
-\begin_inset CommandInset href
-LatexCommand href
-name "something like this."
-target "https://render.fineartamerica.com/images/rendered/default/poster/8/10/break/images-medium-5/the-alchemist-andrew-farley.jpg"
-literal "false"
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -45805,7 +45801,18 @@ MRS and wage
 \end_layout
 
 \begin_layout Standard
-From the first order conditions of the model, we have 
+From the first order conditions of the model (see eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Euler"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and following), we have 
 \begin_inset Formula 
 \begin{eqnarray*}
 w_{t} & = & \psi\eta_{t}c_{t}^{\gamma}\\
@@ -45994,7 +46001,17 @@ href{./Examples/DSGE/GenData/dsgedata.txt}{dsgedata.txt}
 
 .
  The columns are y, c, n, r, w.
- 
+ Have another look at the data, if you like: Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-DSGE-data"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -46031,7 +46048,7 @@ href{./Examples/DSGE/GMM/DoGMM.jl}{DoGMM.jl}
 \end_inset
 
  implements CUE-GMM estimation of the model, using the selected moment condition
-s, using simulated annealing to do the minimization
+s, using simulated annealing to do the minimization.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -46093,7 +46110,8 @@ reference "tab:True-parameters-and"
 
 \begin_layout Itemize
 care is needed to obtain a real global minimum.
- The attempt to use ordinary gradient-based minimization fails.
+ The attempt to use ordinary gradient-based minimization fails, as you will
+ see if you run the code.
  A person who tried these methods might conclude that the moments don't
  identify the parameters well, but this is not the case: it is possible
  to obtain good results using GMM.
@@ -46118,7 +46136,7 @@ The take home conclusions here are:
 \begin_deeper
 \begin_layout Itemize
 that GMM can give reliable estimates, but perhaps we should try to improve
- estimation of some parameters.
+ estimation of some parameters by looking for better moment conditions.
 \end_layout
 
 \begin_layout Itemize
@@ -47983,11 +48001,19 @@ one
 \end_layout
 
 \begin_layout Standard
-So a time series is a sample of size 
+So a time series is a sample of size 1 of 
 \begin_inset Formula $n$
 \end_inset
 
- from a stochastic process.
+ particular elements of a stochastic process.
+ Each of the 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ is sampled only once, for 
+\begin_inset Formula $t=1,2,...,n.$
+\end_inset
+
  It's important to keep in mind that conceptually, one could draw another
  sample, and that the values would be different.
 \end_layout
@@ -47998,11 +48024,11 @@ So a time series is a sample of size
 \end_inset
 
  autocovariance of a stochastic process is 
-\begin_inset Formula $\gamma_{jt}=\mathcal{E}(y_{t}-\mu_{t})(y_{t-j}-\mu_{t-j})$
+\begin_inset Formula $\gamma_{jt}=\mathcal{E}(Y_{t}-\mu_{t})(Y_{t-j}-\mu_{t-j})$
 \end_inset
 
  where 
-\begin_inset Formula $\mu_{t}=\mathcal{E}\left(y_{t}\right).$
+\begin_inset Formula $\mu_{t}=\mathcal{E}\left(Y_{t}\right).$
 \end_inset
 
 
@@ -48136,7 +48162,7 @@ A sufficient condition for ergodicity is that the autocovariances be absolutely
 \end_inset
 
 This implies that the autocovariances die off, so that the 
-\begin_inset Formula $y_{t}$
+\begin_inset Formula $Y_{t}$
 \end_inset
 
  are not so strongly dependent that they don't satisfy a LLN.
@@ -48631,7 +48657,9 @@ y_{t-p}
 
 \end_inset
 
- or 
+This is just the equation of the AR(p) process in the first row, and identities
+ in the remaining rows.
+ In matrix form: 
 \begin_inset Formula 
 \[
 Y_{t}={\color{blue}C+FY_{t-1}+E_{t}}
@@ -48640,6 +48668,37 @@ Y_{t}={\color{blue}C+FY_{t-1}+E_{t}}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+There are 
+\begin_inset Formula $p$
+\end_inset
+
+ variables in this set of 
+\begin_inset Formula $p$
+\end_inset
+
+ equations, so 
+\begin_inset Formula $C$
+\end_inset
+
+ is 
+\begin_inset Formula $p\times1,$
+\end_inset
+
+
+\begin_inset Formula $F$
+\end_inset
+
+ is 
+\begin_inset Formula $p\times p$
+\end_inset
+
+, etc.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -48666,7 +48725,7 @@ Y_{t+2} & = & C+FY_{t+1}+E_{t+2}\\
  or in general 
 \begin_inset Formula 
 \[
-Y_{t+j}=C+FC+\cdots+F^{j}C+F^{j+1}Y_{t-1}+F^{j}E_{t}+F^{j-1}E_{t+1}+\cdots+FE_{t+j-1}+E_{t+j}
+Y_{t+j}=C+FC+\cdots+F^{j}C+F^{j+1}Y_{t-1}+{\color{blue}\underbrace{F^{j}E_{t}}}+F^{j-1}E_{t+1}+\cdots+FE_{t+j-1}+E_{t+j}
 \]
 
 \end_inset
@@ -48683,7 +48742,12 @@ Y_{t+j}=C+FC+\cdots+F^{j}C+F^{j+1}Y_{t-1}+F^{j}E_{t}+F^{j-1}E_{t+1}+\cdots+FE_{t
 \begin_inset Formula $y_{t+j}.$
 \end_inset
 
- This is simply 
+ This is simply the partial of 
+\begin_inset Formula $Y_{t+j}$
+\end_inset
+
+ with respect to the (1,1) element of the shocks in the bracketed term of
+ the previous equation:
 \begin_inset Formula 
 \[
 \frac{\partial Y_{t+j}}{\partial E_{t}^{\prime}}_{(1,1)}=F_{(1,1)}^{j}
@@ -48971,21 +49035,8 @@ draw picture here
 \end_layout
 
 \begin_layout Itemize
-When there are roots on 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-the unit circle (unit roots) or outside the unit circle, we leave the world
- of stationary processes.
+When there are roots on the unit circle (unit roots) or outside the unit
+ circle, we leave the world of stationary processes.
 \end_layout
 
 \begin_layout Itemize

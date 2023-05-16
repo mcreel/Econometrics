@@ -2,7 +2,7 @@
 #  the well-known Card data on returns to schooling
 
 ##
-using Econometrics, CSV, DataFrames, DataFramesMeta, Statistics
+using Econometrics, CSV, DataFrames, DataFramesMeta, Statistics, Term
 cd(@__DIR__)
 card = CSV.read("../Julia/cooked.csv", DataFrame)   # this is the prepared data
                                                     # from the script BasicDataAnalysis.jl
@@ -27,14 +27,16 @@ moments = θ -> w.*(y-x*θ)
 βcue, junk, Vcue, junk =  gmmresults(moments, βols, "", "CUE GMM", names, true);
 
 ## two-step
-βgmm1, junk =  gmm(moments, βols, eye(7))
+βgmm1, objvalue, junk =  gmm(moments, βols, eye(7))
 ms = moments(βgmm1)
 W = inv(cov(ms))
 βgmm, junk =  gmmresults(moments, βgmm1, W, "two step GMM", names, true);
 
 ## Note: this is all just identified, so the following should 
 # all be the same. Without the scaling instruments, step1 will 
-# be different, which means it didn't actually find the minimizer
+# be different, which means it didn't actually find the minimizer,
+# or that the poor scaling causes lack of identification. How to
+# figure out which it is?
 prettyprint([βcue βgmm1 βgmm], ["cue", "step1", "step2"])
 
 ## Are the instruments ok? Look at first stage regressions
@@ -50,7 +52,9 @@ y = Matrix(@select(card, :exper))
 F2 = (TestStatistics(y, w, R, r)[1])
 y = Matrix(@select(card, :expsq))
 F3 = (TestStatistics(y, w, R, r)[1])
-println("F test of instrument strength for the 3 endog variables")
+println()
+PrintDivider()
+println(@green "F test of instrument strength for the 3 endog variables")
 prettyprint([F1 F2 F3],["educ", "age", "agesq"])
 println("according to the simple rule that F should be ≥ 10")
 println("there is concern that education is not well-instrumented")
@@ -63,7 +67,9 @@ e = βcue-βols
 H = dot(e, inv(Vcue-Vols), e)
 df = rank(Vcue-Vols)
 pval = 1. - cdf(Chisq(df),H)
-println("Hausman test statistic: $H, degrees of freedom: $df, p-value: $pval")
+PrintDivider()
+println(@green "Hausman test")
+println("statistic: $H, degrees of freedom: $df, p-value: $pval")
 
 ##
 # to summarize, given the weakness of the nearc4 instrument,

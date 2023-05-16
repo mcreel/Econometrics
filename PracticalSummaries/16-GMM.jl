@@ -51,3 +51,7 @@ moments4 = β -> x.* (y./λ(β) .- 1.0 .+ η)
 moments5 = β -> [moments1(β) moments4(β)]
 gmmresults(moments5, β⁰);
 
+## Yet another version, using conditional mean = conditional variance
+using Econometrics, ForwardDiff
+moments6 = β -> x.*((y - λ(β)) .^2.0 - λ(β))
+βhat, objv, V, D, W, convergence = gmmresults(moments6, β⁰);
