@@ -32151,9 +32151,9 @@ The log likelihood function
 The criterion function can be defined as the average log-likelihood function:
  
 \begin_inset Formula 
-\[
-s_{n}(\theta)=\frac{1}{n}\ln L(Y|Z;\theta)=\frac{1}{n}\sum_{t=1}^{n}\ln f(y_{t}|x_{t};\theta)
-\]
+\begin{equation}
+s_{n}(\theta)=\frac{1}{n}\ln L(Y|Z;\theta)=\frac{1}{n}\sum_{t=1}^{n}\ln f(y_{t}|x_{t};\theta)\label{eq:average log likelihood}
+\end{equation}
 
 \end_inset
 
@@ -48074,10 +48074,14 @@ As we've seen, this implies that
 \end_inset
 
 , e.g., 
-\begin_inset Formula $(Y_{t-j},Y_{t-k},...,Y_{t},...,Y_{t+l},Y_{t+m}\}$
+\begin_inset Formula 
+\[
+(Y_{t-j},Y_{t-k},...,Y_{t},...,Y_{t+l},Y_{t+m}\},
+\]
+
 \end_inset
 
-, doesn't depend on 
+ doesn't depend on 
 \begin_inset Formula $t.$
 \end_inset
 
@@ -48100,9 +48104,31 @@ How can we estimate the mean of
 \begin_inset Formula $Y_{t}?$
 \end_inset
 
- The time series is one sample from the stochastic process, and each of
- the random variables over the sample interval is sampled only once.
- One could think of 
+ 
+\end_layout
+
+\begin_layout Itemize
+Here's where we need stationarity.
+ Without it, each 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ will have a different mean, 
+\begin_inset Formula $\mu_{t},$
+\end_inset
+
+ and with a time series, we have only one observation to work with.
+ 
+\end_layout
+
+\begin_layout Itemize
+The time series is one sample from the stochastic process, and each of the
+ random variables over the sample interval is sampled only once.
+ 
+\end_layout
+
+\begin_layout Itemize
+One could think of 
 \begin_inset Formula $M$
 \end_inset
 
@@ -48124,8 +48150,21 @@ as
 \end_inset
 
  gets large.
- The problem is, we have only one sample to work with, since we can't go
- back in time and collect another.
+ We would need 
+\begin_inset Formula $M$
+\end_inset
+
+ universes, each observed at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+The problem is, we have only one sample to work with, since we can't go
+ back in time, or to another universe, and collect another.
  How can 
 \begin_inset Formula $\mathcal{E}(Y_{t})$
 \end_inset
@@ -48135,6 +48174,10 @@ as
 ergodicity
 \emph default
  is the needed property.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Definition
@@ -49302,10 +49345,6 @@ Great Moderation
  of the 1990's, and the return to volatility after the 2007 Great Recession.
 \end_layout
 
-\begin_layout Itemize
-restrict the estimation sample to before 1994, estimate, and forecast.
-\end_layout
-
 \end_deeper
 \begin_layout Itemize
 look at the BIC to help to decide which model to use
@@ -49851,12 +49890,12 @@ href{./Examples/DSGE/GenData/dsgedata.gdt}{example DSGE model}
 \end_inset
 
 2.
- Estimate an AR(1) model for output.
+ Estimate an AR(1) model for output (by using VAR, but only select output).
  Compare 
 \begin_inset Formula $R^{2}$
 \end_inset
 
- to the VAR(1) model.
+ and impulse-responses to the VAR(1) model.
  Note that matching impulse response functions has sometimes been used for
  estimation of DSGE models.
  Perhaps we'll see this idea again.
@@ -49943,7 +49982,20 @@ nysewk.gdt
 \begin_inset Quotes srd
 \end_inset
 
-, which is provided with Gretl, provides an example.
+, which is provided with Gretl, provides an example (or, use the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+href{./Examples/Data/sp500.csv}{SP500 data} 
+\end_layout
+
+\end_inset
+
+) .
  If we compute 100 times the growth rate of the series, using log differences,
  we can obtain the plots in Figure 
 \begin_inset CommandInset ref
@@ -49954,7 +50006,7 @@ reference "fig:Dow-Jones-close,"
 
  (Julia code for this is 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -51072,14 +51124,8 @@ This true density is unknown, however, so using it for ML estimation is
 \end_layout
 
 \begin_layout Itemize
-Consistent estimation of parameters is discussed in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:sim-baed estimation differential eqns"
-
-\end_inset
-
-, in the Chapter on simulation-based estimation.
+Estimation of parameters can be done using simulation-based estimation,
+ discussed in following chapter.
  A means of learning about spot volatility, 
 \begin_inset Formula $h_{t},$
 \end_inset
@@ -51110,54 +51156,6 @@ name "sec:State-space-models"
 \end_inset
 
 State space models
-\end_layout
-
-\begin_layout Standard
-For linear time series models with Gaussian shocks, it is often useful to
- put the model in state space form, as in this form, the Kalman filter provides
- a convenient way to compute the likelihood function.
- For example, with an MA model, we can compute the likelihood function using
- the joint density of the whole sample, 
-\begin_inset Formula $y\sim N(0,\Sigma$
-\end_inset
-
-) where 
-\begin_inset Formula $\Sigma$
-\end_inset
-
- is an 
-\begin_inset Formula $n\times n$
-\end_inset
-
- matrix that depends on 
-\begin_inset Formula $\sigma^{2}$
-\end_inset
-
- and 
-\begin_inset Formula $\phi$
-\end_inset
-
-,  The log likelihood is 
-\begin_inset Formula $f(y|\sigma^{2},\phi)$
-\end_inset
-
-, as in equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:MA1likelihood"
-
-\end_inset
-
-.
- That form of writing the likelihood uses a lot of computer memory, as the
- entire 
-\begin_inset Formula $\Sigma$
-\end_inset
-
- matrix must be stored.
- A more efficient method is to write the MA model as a linear Gaussian state-spa
-ce model, and to use Kalman filtering to compute the likelihood.
- 
 \end_layout
 
 \begin_layout Standard
@@ -51223,6 +51221,257 @@ literal "true"
  Papers by Fernández-Villaverde and Rubio-Ramírez provide interesting and
  reasonably accessible applications in the context of estimating macroeconomic
  (DSGE) models.
+\end_layout
+
+\begin_layout Standard
+Here's a document that gives a nice summary of Kalman filtering to compute
+ the likelihood function of a state space model: 
+\begin_inset CommandInset href
+LatexCommand href
+name "R.D. Peng time series."
+target "https://bookdown.org/rdpeng/timeseriesbook/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Linear models with Gaussian shocks can often be put into what is known as
+ state-space form.
+ A simple state-space model, using Peng's notation, is 
+\begin_inset Formula 
+\begin{align*}
+y_{t} & =A_{t}x_{t}+V_{t}\\
+x_{t} & =B_{t}x_{t-1}+W_{t}\\
+V_{t} & \sim N(0,S)\\
+W_{t} & \sim N(0,R)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The first equation is called the measurement equation, and the second is
+ the state equation.
+\end_layout
+
+\begin_layout Itemize
+The variables 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ are observed at time 
+\begin_inset Formula $t.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+The state variables may or may not be observed at time 
+\begin_inset Formula $t$
+\end_inset
+
+ (that is, some or all of them may be latent).
+ 
+\end_layout
+
+\begin_layout Itemize
+The shocks, 
+\begin_inset Formula $V_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ are vector white noise, and are uncorrelated with each other at all lags.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example: MA(1)
+\end_layout
+
+\begin_layout Standard
+As we saw above, for an MA model, we can compute the likelihood function
+ using eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:MA1likelihood"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ That form of writing the likelihood uses a lot of computer memory, as the
+ entire 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ matrix must be stored.
+ A more efficient method is to write the MA model as a linear Gaussian state-spa
+ce model, and to use Kalman filtering to compute the likelihood.
+ 
+\end_layout
+
+\begin_layout Standard
+The MA(1) model 
+\begin_inset Formula 
+\[
+y_{t}=\epsilon_{t}+\theta_{1}\epsilon_{t-1}
+\]
+
+\end_inset
+
+ can be put into state space form, using
+\begin_inset Formula 
+\[
+x_{t}=\left[\begin{array}{c}
+\epsilon_{t}\\
+\epsilon_{t-1}
+\end{array}\right],\,A_{t}=\left[\begin{array}{cc}
+1 & \theta_{1}\end{array}\right],\,W_{t}=0,\,B_{t}=\left[\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}\right],\,V_{t}=\left[\begin{array}{c}
+\epsilon_{t}\\
+0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+many more complicated linear models, including ARMA(p,q) models, for example,
+ can be put into this (or a slightly extended) form.
+ 
+\end_layout
+
+\begin_layout Itemize
+Adding exogenous variables is straightforward.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using Kalman filtering, one can compute the likelihood by computing it as
+ the product of the conditional densities of the observed variables:
+\begin_inset Formula 
+\[
+f(y_{t}|y_{t-1},y_{t-1},...,y_{1})
+\]
+
+\end_inset
+
+ starting with 
+\begin_inset Formula $f(y_{1}),$
+\end_inset
+
+ then 
+\begin_inset Formula $f(y_{2}|y_{1}),$
+\end_inset
+
+ and working forward to the last measurement observation, 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+It turns out that marginal and conditional densities for joint normal random
+ variables are also normal.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We use marginalization to get rid of the unobserved state variables
+\end_layout
+
+\begin_layout Itemize
+conditioning is used to update densities as information arrives in the form
+ of measurement variables
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+So, if we can keep track of conditional means and variances, we can compute
+ all of the conditional densities, starting with 
+\begin_inset Formula $f(y_{1}),$
+\end_inset
+
+then getting 
+\begin_inset Formula $f(y_{2}|y_{1}),$
+\end_inset
+
+ and working up to the last.
+\end_layout
+
+\begin_layout Itemize
+There are convenient formulae for updating conditional means and variances,
+ as new information (the measurement variables) arrives.
+\end_layout
+
+\begin_layout Itemize
+All of the densities depend on the parameters, of course.
+ We will estimate those by maximum likelihood.
+\end_layout
+
+\begin_layout Itemize
+See the other references for more information on how the recursive updating
+ works.
+\end_layout
+
+\begin_layout Itemize
+This is easy to program, and is fast, as all equations are closed form.
+ So, this is often the way that likelihoods are computed in practice, for
+ models that can be put into state space form.
+\end_layout
+
+\begin_layout Itemize
+For this to work, the model must be linear, and the shocks must be Gaussian.
+ Without these conditions, other methods, more complicated and computationally
+ demanding, must be used.
+ So, there is a natural tendency to try to fit models into the state-space
+ form, even if they don't actually fit exactly.
+ An example would be working with a linearized model.
+ That can lead to inconsistency, as we saw....
+ (harp, harp).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -51314,6 +51563,33 @@ do a time series plot of the y and x series
 run an OLS of y on x
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+CO
+\begin_inset Formula $_{2}$
+\end_inset
+
+ concentration over time.
+\end_layout
+
+\begin_layout Itemize
+search for 
+\begin_inset Quotes sld
+\end_inset
+
+Keeling-Whorf
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Here's 
 \begin_inset ERT
@@ -51333,12 +51609,34 @@ href{./Examples/Data/keeling_whorf_CO2.gdt}{Keeling and Whorf data}
 \end_inset
 
  concentrations at Mona Loa.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+run model with constant and trend, observe residuals
+\end_layout
+
+\begin_layout Itemize
+add monthly dummies for the seasonality: looks at fit and t-stats
+\end_layout
+
+\begin_layout Itemize
+form of 
+\begin_inset Formula $X^{\prime}X/T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+do model in differences
 \begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Exercises
 \end_layout
