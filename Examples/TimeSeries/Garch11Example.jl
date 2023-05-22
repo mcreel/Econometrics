@@ -32,7 +32,7 @@ y = 100.0 * log.(data[2:end] ./ data[1:end-1])
 θstart = [mean(y); 0.0; var(y); 0.1; 0.1]
 obj = θ -> -mean(garch11(θ, y))
 θhat, logL, junk  = fmincon(obj, θstart, [], [], [-Inf, -1.0, 0.0, 0.0, 0.0], [Inf, 1.0, Inf, 1.0, 1.0])
-# use this to report results. Only works because constaints not bining.
+# use this to report results. Only works because constaints not binding.
 model = θ -> garch11(θ, y)
 mleresults(model, θhat, "Garch(1,1) results", ["μ", "ρ","ω","α","β"])
 nothing

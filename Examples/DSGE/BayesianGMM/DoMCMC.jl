@@ -1,4 +1,4 @@
-using Econometrics, LinearAlgebra, Statistics, DelimitedFiles, SolveDSGE, MCMCChains, Plots
+using Econometrics, LinearAlgebra, Statistics, DelimitedFiles, SolveDSGE, MCMCChains, Plots, Distributions
 include("DSGEmoments.jl")
 include("DSGEmodel.jl") # defines prior and log-likelihood
 include("CKlib.jl")
@@ -15,21 +15,19 @@ function main()
     ChainLength = 10000
     # initial proposal moves one at a time
     Proposal = θ -> proposal1(θ, tuning)
-    tuning = [0.00001, 0.05, 0.005, 0.0005, 0.0005, 0.0005, 0.001]
+    tuning = [0.0001, 0.10, 0.05, 0.005, 0.005, 0.005, 0.01]
     chain = mcmc(θinit, ChainLength, burnin, Prior, lnL, Proposal, verbosity)
-    # now use a MVN random walk proposal 
-    Σ = NeweyWest(chain[:,1:7])
+    # now use a MVN random walk proposal, and adjust tuning in a loop 
+    Σ = cov(chain[:,1:7])
     tuning = 0.05
     for j = 1:5
-        P = (cholesky(Σ)).U
-        Proposal = θ -> proposal2(θ,tuning*P)
+        Proposal = θ -> rand(MvNormal(θ,tuning*Σ))
         θinit = vec(mean(chain[:,1:7],dims=1))
         if j == 5
             ChainLength = 100000
         end    
         chain = mcmc(θinit, ChainLength, burnin, Prior, lnL, Proposal, verbosity)
         accept = mean(chain[:,end])
-        #println("tuning: ", tuning, "  acceptance rate: ", accept)
         if accept > 0.3
             tuning *= 1.5
         elseif accept < 0.2

@@ -41400,7 +41400,7 @@ Set the weight matrix to some positive definite matrix.
 \end_inset
 
  Obtain the GMM estimator that minimizes 
-\begin_inset Formula $s_{n}(\theta)=m_{n}(\theta)^{\prime}Wm_{n}(\theta)$
+\begin_inset Formula $s_{n}(\theta)=\bar{m}_{n}(\theta)^{\prime}W\bar{m}_{n}(\theta)$
 \end_inset
 
 
@@ -41431,7 +41431,7 @@ Based on this initial estimate,
  Given the estimate, compute the efficient GMM estimator which minimizes
 \begin_inset Formula 
 \[
-s_{n}(\theta)=m_{n}(\theta)^{\prime}\hat{\Omega}^{-1}m_{n}(\theta).
+s_{n}(\theta)=\bar{m}_{n}(\theta)^{\prime}\hat{\Omega}^{-1}\bar{m}_{n}(\theta).
 \]
 
 \end_inset
@@ -41521,7 +41521,7 @@ literal "true"
  The CUE estimator solves the minimization problem 
 \begin_inset Formula 
 \[
-s_{n}(\theta)=m_{n}(\theta)^{\prime}\hat{\Omega}(\theta)^{-1}m_{n}(\theta).
+s_{n}(\theta)=\bar{m}_{n}(\theta)^{\prime}\hat{\Omega}(\theta)^{-1}\bar{m}_{n}(\theta).
 \]
 
 \end_inset
@@ -51891,12 +51891,20 @@ literal "true"
 \emph on
 ; 
 \emph default
-Gallant and Tauchen, 
-\begin_inset Quotes sld
+
+\begin_inset CommandInset citation
+LatexCommand citet
+key "emm"
+literal "false"
+
 \end_inset
 
-EMM: A program for efficient method of moments estimation
-\begin_inset Quotes srd
+,
+\begin_inset CommandInset citation
+LatexCommand citet
+key "gallant2002emm"
+literal "false"
+
 \end_inset
 
 ; Hoogerheide, van Dijk and van Oest (2007) 
@@ -52169,8 +52177,8 @@ exactly
  be viewed as a practical solution to the problem of using all the available
  information.
  Given that it's a summary, one may as well use a convenient form, as long
- as it's plausible and the results don't depend too exaggeratedly particular
- form used.
+ as it's plausible and the results don't depend too exaggeratedly upon particula
+r form used.
 \end_layout
 
 \begin_layout Standard
@@ -52224,7 +52232,8 @@ strong assumptions
 \end_layout
 
 \begin_layout Itemize
-There are Bayesian methods for choosing between models
+There are Bayesian methods for choosing between models, which we will not
+ get into.
 \end_layout
 
 \begin_layout Itemize
@@ -52454,7 +52463,14 @@ Theory
 \end_layout
 
 \begin_layout Standard
-Chernozhukov and Hong (2003) 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ChernozhukovHong2003"
+literal "false"
+
+\end_inset
+
+ 
 \begin_inset Quotes sld
 \end_inset
 
@@ -52633,8 +52649,9 @@ Note that both of the integrals are multiple integrals, with the dimension
 \end_layout
 
 \begin_layout Itemize
-Under some special circumstances, the integrals may have analytic solutions:
- e.g., Gaussian likelihood with a Gaussian prior leads to a Gaussian posterior.
+Under some special circumstances (conjugate priors), the integrals may have
+ analytic solutions: e.g., Gaussian likelihood with a Gaussian prior leads
+ to a Gaussian posterior.
  
 \end_layout
 
@@ -52972,7 +52989,7 @@ in principle, the prior is non-negotiable.
 \end_layout
 
 \begin_layout Itemize
-the likelihood function is what it is
+the likelihood function is what it is, it comes from the model
 \end_layout
 
 \begin_layout Itemize
