@@ -38,6 +38,6 @@ thetahat2, objvalue, converged = fmincon(obj, thetastart, [], [], lb, ub; iterli
 println("fmincon results. objective fn. value: ", objvalue)
 println("parameter values:")
 prettyprint(thetahat2)
-return DSGEmoments(thetahat, data)
+return thetahat
 end
-main()
+θhat = main()
