@@ -46061,6 +46061,13 @@ The final estimates, standard errors, and 95% CI bounds, are
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "DSGE GMM results"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename Examples/DSGE/GMM/gmm.png
 
@@ -52613,9 +52620,15 @@ e.
  optimization may be very difficult.
  However, Bayesian methods that use integration may be more tractable.
  This is the main motivation of CH's paper.
- Additional advantages include the benefits if an informative prior is available.
+ 
+\end_layout
+
+\begin_layout Itemize
+Additional advantages include the benefits if an informative prior is available.
  When this is the case, the Bayesian estimator can have better small sample
  performance than the maximum likelihood estimator.
+ The ML estimator uses only the information in the sample.
+ Adding outside information can help.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -52772,9 +52785,30 @@ convergence will be more rapid if the random draws are independent of one
 
 \end_deeper
 \begin_layout Standard
-Monte Carlo methods include importance sampling, Markov chain Monte Carlo
- (MCMC) and sequential Monte Carlo (SMC, also known as particle filtering).
- The great expansion of these methods over the years has caused Bayesian
+\begin_inset Newpage newpage
+\end_inset
+
+Monte Carlo methods include:
+\end_layout
+
+\begin_layout Itemize
+importance sampling
+\end_layout
+
+\begin_layout Itemize
+Markov chain Monte Carlo (MCMC)
+\end_layout
+
+\begin_layout Itemize
+sequential Monte Carlo (SMC, also known as particle filtering)
+\end_layout
+
+\begin_layout Itemize
+Hamiltonian Monte Carlo (HMC).
+\end_layout
+
+\begin_layout Itemize
+The great expansion of these methods over the years has caused Bayesian
  econometrics to become much more widely used than it was in the not so
  distant (for some of us) past.
  There is much literature - here we will only look at a basic example that
@@ -52818,8 +52852,17 @@ The American Statistician.
 \end_layout
 
 \begin_layout Standard
-Let's consider the basic Metropolis-Hastings MCMC algorithm.
- We will generate a long realization of a Markov chain process for 
+Let's consider the basic 
+\series bold
+Metropolis-Hastings MCMC
+\series default
+ algorithm.
+ This is good to get the basic idea of Monte Carlo methods, but it is often
+ not the best choice in practice.
+\end_layout
+
+\begin_layout Standard
+We will generate a long realization of a Markov chain process for 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -52895,15 +52938,17 @@ The other factor is the density associated with returning to
 \begin_inset Formula $\theta^{s}$
 \end_inset
 
- when starting at 
+ (where we are) when starting at 
 \begin_inset Formula $\theta^{*}$
 \end_inset
 
-, which has to do with the reversibility of the Markov chain.
+ (where we will be if the proposal is accepted), which has to do with the
+ reversibility of the Markov chain.
  If this is too low, acceptance is not favored.
  We don't want to jump to a new region if we will never get back, as we
  need to sample from the entire support of the posterior.
- 
+ Falling into a region we can never get out of will not let us explore the
+ whole support.
 \end_layout
 
 \begin_layout Itemize
@@ -53112,6 +53157,10 @@ the art of applying these methods consists of providing a good proposal
  should serve as a warning that getting this to work in practice is not
  necessarily a simple matter.
  If it were, there would be fewer papers on the topic.
+ A good proposal is one that looks like the posterior, because we are trying
+ to sample from the posterior.
+ However, we don't know the posterior, which is why we are doing MCMC in
+ the first place....
 \begin_inset Separator latexpar
 \end_inset
 
@@ -53134,6 +53183,16 @@ too low acceptance rate: this means that the steps are too large, and we
  The chain will become highly autocorrelated, as it stays in the same place
  due to rejections, so long periods convey little additional information
  relative to a subset of the values in the interval 
+\end_layout
+
+\begin_layout Itemize
+different ways to construct proposals forms a large part of the MCMC literature.
+\end_layout
+
+\begin_layout Itemize
+the newer Hamiltonian Monte Carlo method has the advantage that one does
+ not need to provide a proposal.
+ However, the likelihood has to be differentiable to use HMC.
 \end_layout
 
 \end_deeper
@@ -53408,8 +53467,18 @@ One still has the stochastic singularity problem, and the results that are
 \end_layout
 
 \begin_layout Itemize
-The GMM results are substantially closer to the true parameter values, for
- the parameters 
+The GMM results (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "DSGE GMM results"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) are substantially closer to the true parameter values, for the parameters
+ 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -53417,7 +53486,7 @@ The GMM results are substantially closer to the true parameter values, for
 \begin_inset Formula $\text{\ensuremath{\rho_{2}}}$
 \end_inset
 
-, but the standard error for 
+, but the estimated standard error for 
 \begin_inset Formula $\rho_{2}$
 \end_inset
 
@@ -53452,12 +53521,17 @@ name "fig:MCMC-results-for"
 \end_inset
 
 MCMC results for simple DSGE example model (two different runs using different
- observed variables)
+ observed variables), plus the GMM results for comparison
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+MCMC, ver.
+ 1
 \end_layout
 
 \begin_layout Plain Layout
@@ -53471,9 +53545,27 @@ MCMC results for simple DSGE example model (two different runs using different
 \end_layout
 
 \begin_layout Plain Layout
+MCMC, ver.
+ 2
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename Examples/DSGE/Bayesian/MCMC2.png
 	width 20cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+GMM
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Examples/DSGE/GMM/gmm.png
 
 \end_inset
 
@@ -53651,8 +53743,8 @@ e intervals, with
 \end_layout
 
 \begin_layout Standard
-For reference, here are the results from ordinary CUE-GMM (extremum estimator),
- from Section 
+For reference, the results from ordinary CUE-GMM (extremum estimator), from
+ Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:GMM-estimation-of"
@@ -53662,7 +53754,7 @@ noprefix "false"
 
 \end_inset
 
-.
+ are in the panel above.
  Note that the point estimates are very close to the Bayesian GMM point
  estimates, but the standard deviations and confidence intervals are quite
  different.
@@ -53671,20 +53763,6 @@ noprefix "false"
  Which of the two versions of confidence intervals are more accurate is
  still an open question.
  We will return to this issue later.
-\begin_inset VSpace defskip
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename Examples/DSGE/GMM/gmm.png
-	width 15cm
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -55802,6 +55880,10 @@ balanced
 \begin_layout Itemize
 taking care of this problem is annoying without using a well written panel
  data package.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -55852,6 +55934,10 @@ is there evidence of serial correlation of residuals? Run AR(1) on residuals:
 do nonparametric density plot of fixed effects: mean is 1, but significant
  variation across companies (different industries have different labor intensity
 )
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -55866,15 +55952,36 @@ run random effects (tradition, but not logic, demands that we do it)
 \begin_deeper
 \begin_layout Itemize
 Hausman test: rejects RE (unsurprisingly): we should favor FE.
- However, if errors are not normal, or if there is serial correlation, the
- test is not valid.
- Nevertheless, FE is probably favored on strictly theoretical grounds.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+However, if errors are not normal (they are not, according to test)
+\end_layout
+
+\begin_layout Itemize
+or if there is serial correlation (there is, according to AR1 fit)
+\end_layout
+
+\begin_layout Itemize
+then the test is not valid.
+ 
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Given that the residuals seem to be serially correlated, we need to introduce
- dynamic structure.
+Nevertheless, FE is probably favored on strictly theoretical grounds.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Given that the residuals seem to be serially correlated, we probably need
+ to introduce dynamic structure.
  For DPD, use the model 
 \begin_inset Formula 
 \[

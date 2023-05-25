@@ -18,8 +18,8 @@ function logL(θ, data)
     Σ = cov(gs)
     isposdef(Σ) || return -Inf
     Σinv = inv(Σ)
-    ghat = sqrt(160)*mean(gs,dims=1)[:]
-    lnL = - 0.5*dot(ghat, Σinv, ghat)
+    ghat = mean(gs,dims=1)[:]
+    lnL = - 0.5*n*dot(ghat, Σinv, ghat)
 end
 
 

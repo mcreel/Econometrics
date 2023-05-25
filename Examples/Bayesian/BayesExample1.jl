@@ -71,6 +71,7 @@ function main()
     plot(θs, [p post], label = ["prior" "posterior"])
     plot!([priormean, priormean], [0.0, 1.0], label = "prior mean")
     plot!([postmean, postmean], [0.0, 1.0], label = "posterior mean")
+    plot!([θ, θ], [0.0, 1.0], label = "θ₀")
 
 end
 
