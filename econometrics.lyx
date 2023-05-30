@@ -55575,7 +55575,7 @@ OLS estimation of this model will still be inconsistent, because
 \begin_inset Formula $y_{i,t-1}$
 \end_inset
 
-is clearly correlated with 
+ is clearly correlated with 
 \begin_inset Formula $\epsilon_{i,t-1}.$
 \end_inset
 
@@ -55591,7 +55591,7 @@ Note also that the error
 \begin_inset Formula $\epsilon_{it}$
 \end_inset
 
- are not.
+ are not, as it follows an MA(1) model.
  
 \end_layout
 
@@ -55630,15 +55630,19 @@ There is no problem of correlation between
 \end_inset
 
 How about using 
+\color blue
+
 \begin_inset Formula $y_{i.t-2}$
 \end_inset
 
+
+\color inherit
  as an instrument?
 \end_layout
 
 \begin_layout Itemize
 It is clearly correlated with 
-\begin_inset Formula $\Delta y_{i,t-1}=\left(y_{i,t-1}-y_{i,t-2}\right)$
+\begin_inset Formula $\Delta y_{i,t-1}=\left(y_{i,t-1}-{\color{blue}y_{i,t-2}}\right)$
 \end_inset
 
 
@@ -55820,12 +55824,20 @@ If
 \begin_inset Newpage newpage
 \end_inset
 
+
+\end_layout
+
+\begin_layout Itemize
 One should note that serial correlation of the 
 \begin_inset Formula $\epsilon_{it}$
 \end_inset
 
- will cause this estimator to be inconsistent.
- Serial correlation of the errors 
+ will cause this estimator to be inconsistent, as the instruments will not
+ be valid in this case.
+\end_layout
+
+\begin_layout Itemize
+Serial correlation of the errors 
 \emph on
 may 
 \emph default

@@ -49,10 +49,13 @@ println()
 println(@green "DPD with year and firm effects")
 # add more instruments if desired, e.g., (nlag2+nlag3) 
 # or (nlag2+nlag3+nlag4)
-# Note: these results don't coincide with GRETL, because GRETL replaces missings with 0.
-# This code drops observations with missings. Also, the covariance estimator is not
-# the same, as the specialized DPD covariance estimator is not used, so standard errors
-# are different.
+#=
+Note: these results don't coincide with GRETL, because GRETL replaces missings with 0.
+This code drops observations with missings. Thus, the number of observations is 
+considerably different. Also, the covariance estimator is not the same, as the
+specialized DPD covariance estimator is not used, so reported standard deviations
+are different.
+=#
 display(reg(ab, @formula(Δn ~ (Δnlag ~ (nlag2)) + Δw + Δk + Δys + fe(YEAR) + fe(unit)), Vcov.cluster(:unit)))
 
 
