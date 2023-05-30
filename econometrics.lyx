@@ -56146,8 +56146,7 @@ A video which shows how to do this is
 \begin_inset CommandInset href
 LatexCommand href
 name "here."
-target "./Examples/PanelData/PanelDataHOWTO.mp4"
-type "file:"
+target "https://youtu.be/1qdsiMg1ApU"
 literal "false"
 
 \end_inset
