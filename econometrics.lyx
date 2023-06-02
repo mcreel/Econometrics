@@ -8540,7 +8540,7 @@ Since CRTS is rejected, let's examine the possibilities more carefully.
 , etc.
  Define 
 \emph on
-dummy variables
+indicator variables
 \emph default
  
 \begin_inset Formula $D_{1},D_{2},...,D_{5}$
@@ -8575,7 +8575,7 @@ D_{5} & =\begin{cases}
 \end_inset
 
 Note that the first column of nerlove.data indicates this way of breaking
- up the sample, and provides and easy way of defining the dummy variables.
+ up the sample, and provides and easy way of defining the indicator variables.
  The new model may be written as
 \begin_inset Formula 
 \begin{equation}
@@ -10652,7 +10652,7 @@ Perfect collinearity is unusual, except in the case of an error in construction
 
 \begin_layout Standard
 Another case where perfect collinearity may be encountered is with models
- with dummy variables, if one is not careful.
+ with indicator variables, if one is not careful.
  Consider a model of rental price 
 \begin_inset Formula $(y_{i})$
 \end_inset
@@ -10711,27 +10711,27 @@ y_{i}=\beta_{1}+\beta_{2}B_{i}+\beta_{3}G_{i}+\beta_{4}T_{i}+\beta_{5}L_{i}+x_{i
 \end_layout
 
 \begin_layout Subsection
-A brief aside on dummy variables
+A brief aside on indicator variables
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-Dummy variable
+indicator variable
 \series default
-: A dummy variable is a binary-valued variable that indicates whether or
- not some condition is true.
+: A indicator variable is a binary-valued variable that indicates whether
+ or not some condition is true.
  It is customary to assign the value 1 if the condition is true, and 0 if
  the condition is false.
 \end_layout
 
 \begin_layout Standard
-Dummy variables are used essentially like any other regressor.
+indicator variables are used essentially like any other regressor.
  Use 
 \begin_inset Formula $d$
 \end_inset
 
- to indicate that a variable is a dummy, so that variables like 
+ to indicate that a variable is a indicator, so that variables like 
 \begin_inset Formula $d_{t}$
 \end_inset
 
@@ -10739,7 +10739,7 @@ Dummy variables are used essentially like any other regressor.
 \begin_inset Formula $d_{t2}$
 \end_inset
 
- are understood to be dummy variables.
+ are understood to be indicator variables.
  Variables like 
 \begin_inset Formula $x_{t}$
 \end_inset
@@ -10811,9 +10811,9 @@ y_{t}=\beta_{1}+\beta_{2}d_{t}+\beta_{3}x_{t}+\beta_{4}d_{t}x_{t}+\epsilon_{t}
 
 
 \series bold
-Multiple dummy variables: 
+Multiple indicator variables: 
 \series default
-we can use more than one dummy variable in a model.
+we can use more than one indicator variable in a model.
  We will study models of the form
 \begin_inset Formula 
 \[
@@ -10838,7 +10838,7 @@ y_{t}=\beta_{1}+\beta_{2}d_{t1}+\beta_{3}d_{t2}+\beta_{4}d_{t1}d_{t2}+\beta_{5}x
 Incorrect usage: 
 \series default
 You should understand why the following models are not correct usages of
- dummy variables:
+ indicator variables:
 \end_layout
 
 \begin_layout Enumerate
@@ -10865,7 +10865,8 @@ multiple values assigned to multiple categories.
 \end_inset
 
  if in the second, etc.
- (This is not strictly speaking a dummy variable, according to our definition).
+ (This is not strictly speaking a indicator variable, according to our definitio
+n).
  Why is the following model not a good one?
 \begin_inset Formula 
 \[
@@ -10884,7 +10885,7 @@ Multiple parameterizations.
  
 \series default
 To formulate a model that conditions on a given set of categorical information,
- there are multiple ways to use dummy variables.
+ there are multiple ways to use indicator variables.
  For example, the two models 
 \begin_inset Formula 
 \[
@@ -51624,7 +51625,7 @@ run model with constant and trend, observe residuals
 \end_layout
 
 \begin_layout Itemize
-add monthly dummies for the seasonality: looks at fit and t-stats
+add monthly indicators for the seasonality: looks at fit and t-stats
 \end_layout
 
 \begin_layout Itemize
@@ -53936,8 +53937,8 @@ The problem here is that there are more parameters than observations, so
  We need some restraint! The proper restrictions to use of course depend
  on the problem at hand, and a single model is unlikely to be appropriate
  for all situations.
- For example, one could have time and cross-sectional dummies, and slopes
- that are constant over time and across agents:
+ For example, one could have time and cross-sectional indicator variables,
+ and slopes that are constant over time and across agents:
 \begin_inset Formula 
 \[
 y_{it}=\alpha_{i}+\gamma_{t}+x_{it}\beta+\epsilon_{it}
@@ -53945,6 +53946,11 @@ y_{it}=\alpha_{i}+\gamma_{t}+x_{it}\beta+\epsilon_{it}
 
 \end_inset
 
+(in class, write out the form of the model in matrix notation).
+ 
+\end_layout
+
+\begin_layout Standard
 There is a lot of room for playing around here.
  We also need to consider whether or not 
 \begin_inset Formula $n$
@@ -54054,7 +54060,11 @@ The asymptotic results depend on how we do this, of course.
 \series bold
 Why bother using panel data, what are the benefits?
 \series default
- The model 
+ 
+\end_layout
+
+\begin_layout Standard
+The model 
 \begin_inset Formula 
 \[
 y_{it}=\alpha_{i}+x_{it}\beta+\epsilon_{it}
@@ -54093,12 +54103,20 @@ Because the restrictions that
 \end_inset
 
  is small.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 Another reason is that panel data allows us to estimate parameters that
  are not identified by cross sectional (time series) data.
- For example, if the model is 
+ 
+\end_layout
+
+\begin_layout Itemize
+For example, if the model is 
 \begin_inset Formula 
 \[
 y_{it}=\alpha_{i}+\gamma_{t}+x_{it}\beta+\epsilon_{it}
@@ -54111,7 +54129,11 @@ and we have only cross sectional data, we cannot estimate the
 \end_inset
 
 .
- If we have only time series data on a single cross sectional unit 
+ 
+\end_layout
+
+\begin_layout Itemize
+If we have only time series data on a single cross sectional unit 
 \begin_inset Formula $i=1$
 \end_inset
 
@@ -54120,7 +54142,11 @@ and we have only cross sectional data, we cannot estimate the
 \end_inset
 
 .
- Cross-sectional variation allows us to estimate parameters indexed by time,
+ 
+\end_layout
+
+\begin_layout Itemize
+Cross-sectional variation allows us to estimate parameters indexed by time,
  and time series variation allows us to estimate parameters indexed by cross-sec
 tional unit.
  Parameters indexed by both 
@@ -54163,13 +54189,13 @@ very important reason
  For example, suppose we have the model
 \begin_inset Formula 
 \begin{equation}
-y_{it}=\alpha+x_{it}\beta+z_{i}\gamma+\epsilon_{it}\label{eq:simple panel model}
+y_{it}=\alpha+x_{it}\beta+{\color{red}z_{i}}\gamma+\epsilon_{it}\label{eq:simple panel model}
 \end{equation}
 
 \end_inset
 
 where the variables in 
-\begin_inset Formula $z_{i}$
+\begin_inset Formula ${\color{red}z_{i}}$
 \end_inset
 
  are unobserved, but are
@@ -54177,8 +54203,15 @@ where the variables in
  constant over time
 \bar default
 .
- Assume that, as is usually the case, there is some correlation between
- the variables in 
+ 
+\end_layout
+
+\begin_layout Itemize
+Assume that, as is 
+\bar under
+usually the case
+\bar default
+, there is some correlation between the variables in 
 \begin_inset Formula $x_{it}$
 \end_inset
 
@@ -54385,13 +54418,16 @@ Potential for efficiency gains
 
 \begin_layout Itemize
 need to take care of it to obtain valid standard errors.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
-\end_deeper
 \begin_layout Section
 Static models and correlations between variables
 \end_layout
@@ -54449,7 +54485,7 @@ Define
 \end_inset
 
 , so 
-\begin_inset Formula $E(\alpha_{i}-\alpha)=0,$
+\begin_inset Formula $E({\color{blue}\alpha_{i}-\alpha})=0,$
 \end_inset
 
  where the expectation is with respect to the density that describes the
@@ -54466,7 +54502,7 @@ Define
 \begin_inset Formula 
 \begin{align*}
 y_{it} & =\alpha_{i}+x_{it}\beta+\epsilon_{it}\\
- & =\alpha+x_{it}\beta+(\alpha_{i}-\alpha+\epsilon_{it})\\
+ & =\alpha+x_{it}\beta+({\color{blue}\alpha_{i}-\alpha}+\epsilon_{it})\\
  & =\alpha+x_{it}\beta+\eta_{it}
 \end{align*}
 
@@ -54691,7 +54727,11 @@ effects
 \end_inset
 
  are correlated with the other regressors.
- In economics, it seems likely that the unobserved variable 
+ 
+\end_layout
+
+\begin_layout Itemize
+In economics, it seems likely that the unobserved variable 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -54701,7 +54741,10 @@ effects
 
  (this is simply the presence of collinearity between observed and unobserved
  variables, and collinearity is usually the rule rather than the exception).
- So, we expect that the 
+\end_layout
+
+\begin_layout Itemize
+So, we expect that the 
 \begin_inset Quotes sld
 \end_inset
 
@@ -54709,8 +54752,8 @@ fixed effects
 \begin_inset Quotes srd
 \end_inset
 
- model is probably the relevant one unless special circumstances imply that
- the 
+ model is probably the relevant one unless special circumstances (e.g., if
+ one were working with experimental data) imply that the 
 \begin_inset Formula $\alpha_{i}$
 \end_inset
 
@@ -54719,8 +54762,11 @@ fixed effects
 \end_inset
 
 .
-\series bold
+\end_layout
 
+\begin_layout Standard
+
+\series bold
 \begin_inset Newpage newpage
 \end_inset
 
@@ -54844,7 +54890,11 @@ where
 \end_inset
 
 .
- In this model, it is clear that 
+ 
+\end_layout
+
+\begin_layout Itemize
+In this model, it is clear that 
 \begin_inset Formula $x_{it}^{*}$
 \end_inset
 
@@ -54955,7 +55005,7 @@ y_{it}=\sum_{j=1}^{n}d_{j,it}\alpha_{j}+x_{it}\beta+\epsilon_{it}
 \begin_inset Formula $n$
 \end_inset
 
- dummy variables that take on the value 
+ indicator variables that take on the value 
 \begin_inset Formula $1$
 \end_inset
 
@@ -55052,7 +55102,7 @@ within
 
  estimator cannot estimate slope coefficients corresponding to variables
  that have no time variation.
- Such variables are perfectly collinear with the cross sectional dummies
+ Such variables are perfectly collinear with the cross sectional indicators
  
 \begin_inset Formula $d_{j}$
 \end_inset
@@ -55525,7 +55575,7 @@ OLS estimation of this model will still be inconsistent, because
 \begin_inset Formula $y_{i,t-1}$
 \end_inset
 
-is clearly correlated with 
+ is clearly correlated with 
 \begin_inset Formula $\epsilon_{i,t-1}.$
 \end_inset
 
@@ -55541,7 +55591,7 @@ Note also that the error
 \begin_inset Formula $\epsilon_{it}$
 \end_inset
 
- are not.
+ are not, as it follows an MA(1) model.
  
 \end_layout
 
@@ -55580,15 +55630,19 @@ There is no problem of correlation between
 \end_inset
 
 How about using 
+\color blue
+
 \begin_inset Formula $y_{i.t-2}$
 \end_inset
 
+
+\color inherit
  as an instrument?
 \end_layout
 
 \begin_layout Itemize
 It is clearly correlated with 
-\begin_inset Formula $\Delta y_{i,t-1}=\left(y_{i,t-1}-y_{i,t-2}\right)$
+\begin_inset Formula $\Delta y_{i,t-1}=\left(y_{i,t-1}-{\color{blue}y_{i,t-2}}\right)$
 \end_inset
 
 
@@ -55770,12 +55824,20 @@ If
 \begin_inset Newpage newpage
 \end_inset
 
+
+\end_layout
+
+\begin_layout Itemize
 One should note that serial correlation of the 
 \begin_inset Formula $\epsilon_{it}$
 \end_inset
 
- will cause this estimator to be inconsistent.
- Serial correlation of the errors 
+ will cause this estimator to be inconsistent, as the instruments will not
+ be valid in this case.
+\end_layout
+
+\begin_layout Itemize
+Serial correlation of the errors 
 \emph on
 may 
 \emph default
@@ -55839,7 +55901,11 @@ system
 \end_layout
 
 \begin_layout Section
-Example
+Examples
+\end_layout
+
+\begin_layout Subsection
+Arellano-Bond data
 \end_layout
 
 \begin_layout Standard
@@ -55897,7 +55963,7 @@ estimate fixed effects
 
 \begin_deeper
 \begin_layout Itemize
-note the pattern of the coefficients of the yearly dummies: the 
+note the pattern of the coefficients of the yearly indicators: the 
 \begin_inset Quotes sld
 \end_inset
 
@@ -56011,6 +56077,96 @@ check the serial correlation of the residuals: if it exists, the instruments
  are not valid.
  Possible solution is to augment the AR order, but the sample size gets
  smaller with every additional lag.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Stock and Watson Beer tax example
+\end_layout
+
+\begin_layout Standard
+Stock and Watson 
+\begin_inset Quotes eld
+\end_inset
+
+Introduction to Econometrics
+\begin_inset Quotes erd
+\end_inset
+
+, 3rd Edition, discuss panel data in Chapter 10.
+ The book is available from the UAB library 
+\begin_inset CommandInset href
+LatexCommand href
+name "as an e-text"
+target "https://ebookcentral.proquest.com/lib/uab/detail.action?docID=5174962#"
+literal "false"
+
+\end_inset
+
+ (if you happen to be at the UAB).
+ They use the data set 
+\begin_inset CommandInset href
+LatexCommand href
+name "fatality.xlsx"
+target "https://wps.pearsoned.com/wps/media/objects/11422/11696965/datasets3e/datasets/fatality.xlsx"
+literal "false"
+
+\end_inset
+
+, which is explained in 
+\begin_inset CommandInset href
+LatexCommand href
+name "fatality.docx"
+target "https://wps.pearsoned.com/wps/media/objects/11422/11696965/datasets3e/datasets/fatality.docx"
+literal "false"
+
+\end_inset
+
+.
+ The data is available as a GRETL file 
+\begin_inset CommandInset href
+LatexCommand href
+name "here."
+target "./Examples/PanelData/fatality.gdt"
+type "file:"
+literal "false"
+
+\end_inset
+
+ Using this data, and the software of your choice (hint: Gretl is easy)
+\end_layout
+
+\begin_layout Enumerate
+replicate the results in Stock and Watson, Ch.
+ 10, Eqn.
+ 10.2 and Figure 10.1
+\end_layout
+
+\begin_layout Enumerate
+replicate the results in Eqn 10.8 and Figure 10.2.
+\end_layout
+
+\begin_layout Enumerate
+replicate the fixed effects panel data results in column 2 of Table 10.1
+\end_layout
+
+\begin_layout Standard
+A video which shows how to do this is 
+\begin_inset CommandInset href
+LatexCommand href
+name "here."
+target "https://youtu.be/1qdsiMg1ApU"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -80151,7 +80307,7 @@ This is used since
 \begin_inset Formula $K(n)$
 \end_inset
 
- large enough when some dummy variables are included.
+ large enough when some indicator variables are included.
  
 \end_layout
 
