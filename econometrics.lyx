@@ -46464,6 +46464,134 @@ reference "sec:Example:-Generalized-instrumental"
 \end_layout
 
 \begin_layout Enumerate
+Consider the linear regression 
+\begin_inset Formula $y_{t}=\beta_{1}+\beta_{2}x_{t}+\epsilon_{t},$
+\end_inset
+
+ for which we have 
+\begin_inset Formula $n$
+\end_inset
+
+ observations.
+ Suppose that all variables are weakly stationary, with finite variances,
+ and that the error is Gaussian white noise with variance equal to 1: 
+\begin_inset Formula $\epsilon_{t}\sim N(0,1)\,\forall t$
+\end_inset
+
+.
+ However, weak exogeneity does not hold, so 
+\begin_inset Formula $E(\epsilon_{t}|x_{t})\ne0$
+\end_inset
+
+, and the OLS estimator is not consistent.
+ So, we will estimate using the method of instrumental variables.
+ Suppose we have a single instrumental variable, 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+, and we use it, along with the constant, to form the instrument matrix
+\begin_inset Formula 
+\[
+Z=\left[\begin{array}{cc}
+1 & z_{1}\\
+1 & z_{2}\\
+\vdots & \vdots\\
+1 & z_{n}
+\end{array}\right]
+\]
+
+\end_inset
+
+We contemplate estimation of 
+\begin_inset Formula $\theta=(\beta_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+) using GMM, using the moment conditions 
+\begin_inset Formula $\bar{m}_{n}(\theta)=\frac{1}{n}Z^{\prime}(y-X\beta).$
+\end_inset
+
+ A requirement for identification of the GMM estimator is that the matrix
+ 
+\begin_inset Formula $D_{n}=\frac{\partial\bar{m}_{n}^{\prime}(\theta)}{\partial\theta}$
+\end_inset
+
+ must converge to a matrix with full row rank.
+ Suppose that the chosen instrument is independent of the regressor, which
+ implies that 
+\begin_inset Formula $E(z_{t}x_{t})=E(z)E(x),$
+\end_inset
+
+
+\begin_inset Formula $\forall t$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+If we write the model in matrix form, 
+\begin_inset Formula $y=X\beta+\epsilon$
+\end_inset
+
+, carefully explain what is the form of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ (dimension, and an indication of the contents of each column).
+\end_layout
+
+\begin_layout Enumerate
+What is the number of parameters to estimate, 
+\begin_inset Formula $k$
+\end_inset
+
+? What is the number of moment conditions, 
+\begin_inset Formula $g?$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Write out carefully an expression for each element of the matrix 
+\begin_inset Formula $D_{n}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+What is the form of the limiting 
+\begin_inset Formula $D_{\infty},$
+\end_inset
+
+ the matrix to which 
+\begin_inset Formula $D_{n}$
+\end_inset
+
+ converges, almost surely?
+\end_layout
+
+\begin_layout Enumerate
+What is the rank of 
+\begin_inset Formula $D_{\infty}?$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Is the proposed GMM estimator consistent or not? Explain.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
 Using Julia, generate data from the logit dgp.
  The script 
 \begin_inset ERT
@@ -54665,11 +54793,11 @@ However, it is possible (but unlikely for economic data) that
 Fixed effects
 \series default
 : when 
-\begin_inset Formula $E(x_{it}$
+\begin_inset Formula $E($
 \end_inset
 
 
-\begin_inset Formula $\eta_{it})\ne$
+\begin_inset Formula $\eta_{it}|x_{it})\ne$
 \end_inset
 
 0, the model is called the 
@@ -54689,7 +54817,7 @@ fixed effects model
 Random effects
 \series default
 : when 
-\begin_inset Formula $E(x_{it}\eta_{it})=0,$
+\begin_inset Formula $E(\eta_{it}|x_{it})=0,$
 \end_inset
 
  the model is called the 
@@ -54915,7 +55043,7 @@ strongly
 \end_inset
 
  (
-\begin_inset Formula $E(x_{it}\epsilon_{is})=0,\,\forall t,s$
+\begin_inset Formula $E(\epsilon_{is}|x_{it})=0,\,\forall t,s$
 \end_inset
 
 ).
@@ -55223,7 +55351,7 @@ Under random effects, the
 \end_inset
 
  and 
-\begin_inset Formula $E(x_{it}\eta_{it})=0$
+\begin_inset Formula $E(\eta_{it}|x_{it})=0$
 \end_inset
 
 .

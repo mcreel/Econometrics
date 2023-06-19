@@ -25,23 +25,24 @@ sp500.rv = 10000.0 .* sp500.rv
 sp500.bv = 10000.0 .* sp500.bv
 
 ## select the date range
-sp500 = @subset(sp500, :Date .>= "2013-12-17") # these dates give 1000 obs.
-sp500 = @subset(sp500, :Date .<= "2017-12-05")
+# these are for the 2021 econometrics paper
+#sp500 = @subset(sp500, :Date .>= "2013-12-17") # these dates give 1000 obs.
+#sp500 = @subset(sp500, :Date .<= "2017-12-05")
 
 ## write out variables to plain text file
 data = sp500[:,[:Date, :rets, :rv, :bv]]
-#CSV.write("sp500.csv", data) # write as CSV
+CSV.write("sp500all.csv", data) # write as CSV
 
 ##
 # some plots
-plot(sp500.Date, sp500.rets, tickfontsize=5, legend=false)
+p0 = plot(sp500.close_price)
+p1 = plot(sp500.Date, sp500.rets, tickfontsize=5, legend=false)
 
 ##
-plot(sp500.Date, [sp500.rv, sp500.bv], tickfontsize=5, label=["rv" "bv"])
+p2 = plot(sp500.Date, [sp500.rv, sp500.bv], tickfontsize=5, label=["rv" "bv"])
 
 ##
 # the next plot shows that volatility is higher when
 # returns are in the tails of distribution, and that
 # the overall correlation is negative
 marginalkde(sp500.rets, sp500.bv)
-
