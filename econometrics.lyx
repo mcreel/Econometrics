@@ -3537,7 +3537,7 @@ Uncentered
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Figures/UncenteredRSquare.png
+	filename Examples/Figures/UncenteredRSquare.png
 	width 5in
 	height 4in
 	rotateOrigin center
@@ -7711,7 +7711,7 @@ Joint and Individual Confidence Regions
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Figures/JointConfidenceRegion.png
+	filename Examples/Figures/JointConfidenceRegion.png
 
 \end_inset
 
@@ -16949,7 +16949,7 @@ Autocorrelation induced by misspecification
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Figures/MisspecCausesAutcorrelation.png
+	filename Examples/Figures/MisspecCausesAutcorrelation.png
 
 \end_inset
 
@@ -25505,7 +25505,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/NonlinearOptimization/FoggySurface.png
+	filename Examples/NonlinearOptimization/FoggySurface.png
 	width 4in
 
 \end_inset
@@ -59630,7 +59630,7 @@ Dollar-Euro
 
 
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Nonparametric/dollar_euro_historgram.png
+	filename Examples/Nonparametric/dollar_euro_historgram.png
 	lyxscale 10
 	width 6cm
 
@@ -59638,7 +59638,7 @@ Dollar-Euro
 
 
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Nonparametric/dollar_euro_series.png
+	filename Examples/Nonparametric/dollar_euro_series.png
 	lyxscale 10
 	width 6cm
 
@@ -59675,7 +59675,7 @@ Dollar-Yen
 
 
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Nonparametric/dollar_yen_histogram.png
+	filename Examples/Nonparametric/dollar_yen_histogram.png
 	lyxscale 10
 	width 6cm
 
@@ -59683,7 +59683,7 @@ Dollar-Yen
 
 
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Nonparametric/dollar_yen_series.png
+	filename Examples/Nonparametric/dollar_yen_series.png
 	lyxscale 10
 	width 6cm
 
