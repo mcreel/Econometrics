@@ -48,6 +48,10 @@
     breakautoindent=true, %
     captionpos=b%
 }
+
+\usepackage{newunicodechar}
+% for OLS output of Nerlove example (nerlove.out)
+\newunicodechar{σ}{\ensuremath{\sigma}}
 \end_preamble
 \options authordate
 \use_default_options false
@@ -58,7 +62,7 @@ theorems-ams-extended
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
