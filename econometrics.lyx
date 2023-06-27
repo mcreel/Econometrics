@@ -5062,6 +5062,9 @@ What do you think about RTS?
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
 We will most often use Julia programs that more or less directly implement
  the theory we learn in examples in this document.
  This is because following such transparent programming statements is a
@@ -5136,12 +5139,20 @@ href{./Examples/Data/nerlove.gdt}{nerlove.gdt}
 \end_inset
 
 .
- Here the results of the Nerlove model from GRETL: 
+ Here the results of the Nerlove model from GRETL:
+\begin_inset Newline newline
+\end_inset
+
+ 
 \begin_inset Graphics
 	filename Examples/OLS/NerloveGretl.png
 	lyxscale 25
 	width 12cm
 
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 Fortunately, Gretl and my OLS program agree upon the results.
