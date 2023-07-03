@@ -6,16 +6,10 @@
 \origin unavailable
 \textclass extreport
 \begin_preamble
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\usepackage{graphicx}
-\usepackage{amsmath}
 \usepackage{dcolumn}
-%\usepackage[ps2pdf,pdftitle={Econometrics},urlcolor=blue,linktocpage,a4paper,colorlinks=true]{hyperref}
 \usepackage{listings}
 \usepackage{color}
-\usepackage{setspace}
 %
 \definecolor{hellgelb}{rgb}{1,1,0.8}
 \definecolor{colKeys}{rgb}{0,0,1}
