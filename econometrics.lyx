@@ -3000,10 +3000,6 @@ symmetric
 idempotent
 \emph default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7756,10 +7752,6 @@ The region is an ellipse, since the CI for an individual coefficient defines
 
 \begin_layout Itemize
 From the picture we can see that:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8801,10 +8793,6 @@ Using the Chow test on the Nerlove model, we reject that there is coefficient
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8871,10 +8859,6 @@ where the sample size is 30,
 
  and 
 \begin_inset Formula $\epsilon\sim IIN(0,1)$
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9314,10 +9298,6 @@ Summary: When
 \end_inset
 
  is normally distributed:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9484,10 +9464,6 @@ Summary: Under strongly exogenous regressors, with
 \end_inset
 
  has the properties:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -13155,10 +13131,6 @@ For the model
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14240,10 +14212,6 @@ formula
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14308,10 +14276,6 @@ iterated.
 \hat{\varepsilon}=y-X\hat{\theta}_{FGLS}
 \]
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14465,10 +14429,6 @@ y=(1-\alpha)X\beta+\alpha(Z\gamma)+\omega
  is zero.
  On the other hand, if the second model is correctly specified then 
 \begin_inset Formula $\alpha=1.$
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -18955,10 +18915,6 @@ href{./Examples/Data/nerlove.data}{nerlove.data}
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -18975,10 +18931,6 @@ Consider the model
 \ln C=\beta+\beta_{Q}\ln Q+\gamma_{Q}\left(\ln Q\right)^{2}+\beta_{L}\ln P_{L}+\beta_{F}\ln P_{F}+\beta_{K}\ln P_{K}+\epsilon
 \]
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -19064,10 +19016,6 @@ href{./Examples/Data/hall.gdt}{hall.gdt}
  The return on investment defines wealth in the next period, and the process
  repeats.
  For the moment, explore the properties of the variables.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -19158,10 +19106,6 @@ is a
 vector autoregressive
 \emph default
  model, of order 1 - commonly referred to as a VAR(1) model.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -19276,10 +19220,6 @@ where
 \end_inset
 
 ).
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -19317,10 +19257,6 @@ test for autocorrelation using the test of your choice
 
 \begin_layout Enumerate
 repeat the above steps 10000 times.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -20319,10 +20255,6 @@ OLS.
 \end_inset
 
  Using the rules
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -21347,10 +21279,6 @@ These results are valid assuming that the only identifying information comes
  restrictions, and through the use of a normalization.
  There are other sorts of identifying information that can be used.
  These include
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -22741,10 +22669,6 @@ assuming normality of the errors
 One can calculate the FIML estimator by iterating the 3SLS estimator, thus
  avoiding the use of a nonlinear optimizer.
  The steps are
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -31812,10 +31736,6 @@ reference "subsec:MEPS data"
 \end_inset
 
 ) 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -37650,10 +37570,6 @@ Suppose we have an independently and identically distributed sample of size
 
  follows this exponential distribution.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -37959,10 +37875,6 @@ For the Poisson model, the density
 
 .
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -38110,10 +38022,6 @@ Assume a d.g.p.
 
 .
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -38179,10 +38087,6 @@ href{./Examples/OLS/Nerlove.jl}{Nerlove.jl}
 
 \begin_layout Enumerate
 Using the fmincon routine in Econometrics
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -38525,10 +38429,6 @@ For the Poisson model, the density
 
 .
  The example EstimatePoisson.jl, in the notes, should be helpful
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -40641,10 +40541,6 @@ estimator that minimizes
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -41222,10 +41118,6 @@ sufficiently rapidly
 
 \begin_layout Itemize
 this will be consistent, provided that
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46263,10 +46155,6 @@ y_{i}=x_{i}^{\prime}\beta_{0}+\epsilon_{i}
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46280,10 +46168,6 @@ Suppose that
  Use this information to propose a GMM estimator that is equivalent to the
  OLS estimator.
  Your answer should include:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46317,10 +46201,6 @@ Now, suppose that
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46339,10 +46219,6 @@ Propose a consistent GMM estimator of the parameter vector
 
  that uses this information.
  Your answer should include:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46623,10 +46499,6 @@ href{./Examples/NonlinearOptimization/EstimateLogit.jl}{EstimateLogit.jl}
 
  should prove quite helpful.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46695,10 +46567,6 @@ Verify the missing steps needed to show that
 \begin_layout Enumerate
 For the portfolio example, experiment with the program using lags of 3 and
  4 periods to define instruments
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46948,10 +46816,6 @@ The variables
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47026,17 +46890,6 @@ p_{n}^{\prime}(\theta) & q_{n}^{\prime}(\theta)\end{array}\right]^{\prime}$
 \end_inset
 
  and the corresponding true optimal weight matrix.
-\family default
-\series default
-\shape default
-\size default
-\bar default
-\color inherit
-
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47160,10 +47013,6 @@ where
 
  is strictly exogenous: it is uncorrelated with the two epsilons at all
  time periods.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47431,10 +47280,6 @@ For the logit model, the probability
 \end_inset
 
  is the complement.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47720,10 +47565,6 @@ For the Poisson model, the density
 
 .
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47936,10 +47777,6 @@ where
 
 .
  This is a case of omitted relevant variables.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47978,10 +47815,6 @@ simulate data from the correct AR2 model, using
 \end_inset
 
  Use a sample size of 30 observations.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -50489,10 +50322,6 @@ autoregressive part
 \begin_layout Itemize
 the model also requires restrictions for positive variance and stationarity,
  which are:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -51934,10 +51763,6 @@ Write a Matlab/Julia/your favorite package script that generates two independent
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -52899,17 +52724,6 @@ trick is
 \noun off
 \color none
  when in general we can't compute the posterior.
-\family default
-\series default
-\shape default
-\size default
-\bar default
-\color inherit
-
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -53165,10 +52979,6 @@ From this, we see that the information needed to determine if a proposal
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -53232,10 +53042,6 @@ for
 \end_inset
 
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -53305,10 +53111,6 @@ the art of applying these methods consists of providing a good proposal
  to sample from the posterior.
  However, we don't know the posterior, which is why we are doing MCMC in
  the first place....
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -54733,10 +54535,6 @@ For example, if
 \end_inset
 
  are not independent.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -55468,10 +55266,6 @@ Evidence that the two estimators are converging to different limits is evidence
 A Hausman test statistic can be computed, using the difference between the
  two estimators.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -55850,10 +55644,6 @@ For
 \end_inset
 
  we cannot compute the moment conditions.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -56098,10 +55888,6 @@ taking care of this problem is annoying without using a well written panel
 \end_deeper
 \begin_layout Itemize
 estimate fixed effects
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -56152,10 +55938,6 @@ do nonparametric density plot of fixed effects: mean is 1, but significant
 \end_deeper
 \begin_layout Itemize
 run random effects (tradition, but not logic, demands that we do it)
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -56465,10 +56247,6 @@ reference "eq:simple linear panel random effects"
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -57713,10 +57491,6 @@ n\gamma_{n}^{k}V\left[\hat{h}(x)\right] & = & n\gamma_{n}^{k}\frac{1}{n^{2}}\sum
 
 \begin_layout Itemize
 By the representative term argument, this is
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -60120,10 +59894,6 @@ edit kernel_example
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -60155,10 +59925,6 @@ help kernel_regression
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -60819,10 +60585,6 @@ This is a generalization of what we get from the classical model with normality,
 \end_inset
 
 : 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -67501,10 +67263,6 @@ With the same data,
  scope of this course.
  Nevertheless, the improvement in the likelihood function is considerable.
  The parameter estimates are
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -80434,10 +80192,6 @@ Define
 \end_inset
 
  is the Moore-Penrose generalized inverse.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
