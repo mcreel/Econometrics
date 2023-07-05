@@ -18,31 +18,6 @@
 \definecolor{colString}{rgb}{0,0.5,0}
 \let\endtitlepage\relax
 
-\lstset{%
-   morekeywords={AND,ASC,avg,CHECK,COMMIT,count,DECODE,DESC,DISTINCT,%
-                 GROUP,IN,LIKE,NUMBER,ROLLBACK,SUBSTR,sum,VARCHAR2}%
-}
-\lstset{%
-    float=hbp,%
-    basicstyle=\ttfamily\small, %
-    identifierstyle=\color{colIdentifier}, %
-    keywordstyle=\color{colKeys}, %
-    stringstyle=\color{colString}, %
-    commentstyle=\color{colComments}, %
-    columns=flexible, %
-    tabsize=2, %
-    frame=single, %
-    extendedchars=true, %
-    showspaces=false, %
-    showstringspaces=false, %
-    numbers=left, %
-    numberstyle=\tiny, %
-    breaklines=true, %
-    backgroundcolor=\color{hellgelb}, %
-    breakautoindent=true, %
-    captionpos=b%
-}
-
 \usepackage{newunicodechar}
 % for OLS output of Nerlove example (nerlove.out)
 \newunicodechar{σ}{\ensuremath{\sigma}}
@@ -129,6 +104,7 @@ theorems-ams-extended
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\listings_params "morekeywords={AND,ASC,avg,CHECK,COMMIT,count,DECODE,DESC,DISTINCT,GROUP,IN,LIKE,NUMBER,ROLLBACK,SUBSTR,sum,VARCHAR2},float=hbp,basicstyle={\ttfamily\small},identifierstyle={\color{colIdentifier}},keywordstyle={\color{colKeys}},stringstyle={\color{colString}},commentstyle={\color{colComments}},columns=flexible,tabsize=2,frame=single,extendedchars=true,showspaces=false,showstringspaces=false,numbers=left,numberstyle={\tiny},breaklines=true,backgroundcolor={\color{hellgelb}},breakautoindent=true,captionpos=b"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
