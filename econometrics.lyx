@@ -6,16 +6,10 @@
 \origin unavailable
 \textclass extreport
 \begin_preamble
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\usepackage{graphicx}
-\usepackage{amsmath}
 \usepackage{dcolumn}
-%\usepackage[ps2pdf,pdftitle={Econometrics},urlcolor=blue,linktocpage,a4paper,colorlinks=true]{hyperref}
 \usepackage{listings}
 \usepackage{color}
-\usepackage{setspace}
 %
 \definecolor{hellgelb}{rgb}{1,1,0.8}
 \definecolor{colKeys}{rgb}{0,0,1}
@@ -24,30 +18,9 @@
 \definecolor{colString}{rgb}{0,0.5,0}
 \let\endtitlepage\relax
 
-\lstset{%
-   morekeywords={AND,ASC,avg,CHECK,COMMIT,count,DECODE,DESC,DISTINCT,%
-                 GROUP,IN,LIKE,NUMBER,ROLLBACK,SUBSTR,sum,VARCHAR2}%
-}
-\lstset{%
-    float=hbp,%
-    basicstyle=\ttfamily\small, %
-    identifierstyle=\color{colIdentifier}, %
-    keywordstyle=\color{colKeys}, %
-    stringstyle=\color{colString}, %
-    commentstyle=\color{colComments}, %
-    columns=flexible, %
-    tabsize=2, %
-    frame=single, %
-    extendedchars=true, %
-    showspaces=false, %
-    showstringspaces=false, %
-    numbers=left, %
-    numberstyle=\tiny, %
-    breaklines=true, %
-    backgroundcolor=\color{hellgelb}, %
-    breakautoindent=true, %
-    captionpos=b%
-}
+\usepackage{newunicodechar}
+% for OLS output of Nerlove example (nerlove.out)
+\newunicodechar{σ}{\ensuremath{\sigma}}
 \end_preamble
 \options authordate
 \use_default_options false
@@ -58,7 +31,7 @@ theorems-ams-extended
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -131,6 +104,7 @@ theorems-ams-extended
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
+\listings_params "morekeywords={AND,ASC,avg,CHECK,COMMIT,count,DECODE,DESC,DISTINCT,GROUP,IN,LIKE,NUMBER,ROLLBACK,SUBSTR,sum,VARCHAR2},float=hbp,basicstyle={\ttfamily\small},identifierstyle={\color{colIdentifier}},keywordstyle={\color{colKeys}},stringstyle={\color{colString}},commentstyle={\color{colComments}},columns=flexible,tabsize=2,frame=single,extendedchars=true,showspaces=false,showstringspaces=false,numbers=left,numberstyle={\tiny},breaklines=true,backgroundcolor={\color{hellgelb}},breakautoindent=true,captionpos=b"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -2996,10 +2970,6 @@ symmetric
 idempotent
 \emph default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3537,7 +3507,7 @@ Uncentered
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Figures/UncenteredRSquare.png
+	filename Examples/Figures/UncenteredRSquare.png
 	width 5in
 	height 4in
 	rotateOrigin center
@@ -4246,20 +4216,7 @@ Var(\hat{\beta}) & = & E\left\{ \left(\mathbf{\hat{\beta}-\beta}\right)\left(\ma
 \end_layout
 
 \begin_layout Standard
-The OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is a 
+The OLS estimator is a 
 \emph on
 linear estimator
 \emph default
@@ -4927,20 +4884,7 @@ COMPANY, COST
 
  
 \series bold
-PRICE
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-OF LABOR
+PRICE OF LABOR
 \series default
  
 \begin_inset Formula $(P_{L})$
@@ -4948,20 +4892,7 @@ OF LABOR
 
 , 
 \series bold
-PRICE OF
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-FUEL
+PRICE OF FUEL
 \series default
  
 \begin_inset Formula $(P_{F})$
@@ -4969,20 +4900,7 @@ FUEL
 
  and 
 \series bold
-PRICE OF
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-CAPITAL
+PRICE OF CAPITAL
 \series default
  
 \begin_inset Formula $(P_{K}).$
@@ -5147,21 +5065,9 @@ Fortunately, Gretl and my OLS program agree upon the results.
 
 \begin_layout Standard
 The previous properties hold for finite sample sizes.
- Before considering the asymptotic properties of the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator it is useful to review the MLE estimator, since under the assumption
- of normal errors the two estimators coincide.
+ Before considering the asymptotic properties of the OLS estimator it is
+ useful to review the MLE estimator, since under the assumption of normal
+ errors the two estimators coincide.
 \end_layout
 
 \begin_layout Section
@@ -5607,20 +5513,7 @@ The estimators are the same, under the present assumptions.
  Therefore, their properties are the same.
  
 \emph on
-In particular, under the classical assumptions with normality, the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator
+In particular, under the classical assumptions with normality, the OLS estimator
 \emph default
  
 \begin_inset Formula $\hat{\beta}$
@@ -7099,21 +6992,8 @@ Score-type tests are based upon the general principle that the gradient
  vector of the unrestricted model, evaluated at the restricted estimate,
  should be asymptotically normally distributed with mean zero, if the restrictio
 ns are true.
- The original development was for ML
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimation, but the principle is valid for a wide variety of estimation
- methods.
+ The original development was for ML estimation, but the principle is valid
+ for a wide variety of estimation methods.
  
 \end_layout
 
@@ -7251,20 +7131,8 @@ R^{\prime}\hat{\lambda}=X^{\prime}y-X^{\prime}X\hat{\beta}_{R}
 
 \end_inset
 
- and the rhs is simply the gradient (score)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-of the unrestricted model, evaluated at the restricted estimator.
+ and the rhs is simply the gradient (score) of the unrestricted model, evaluated
+ at the restricted estimator.
  The scores evaluated at the unrestricted estimate are identically zero.
  The logic behind the score test is that the scores evaluated at the restricted
  estimate should be approximately zero, if the restriction is true.
@@ -7711,7 +7579,7 @@ Joint and Individual Confidence Regions
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Figures/JointConfidenceRegion.png
+	filename Examples/Figures/JointConfidenceRegion.png
 
 \end_inset
 
@@ -7741,10 +7609,6 @@ The region is an ellipse, since the CI for an individual coefficient defines
 
 \begin_layout Itemize
 From the picture we can see that:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8704,20 +8568,8 @@ The restrictions are rejected at all conventional significance levels.
 \begin_layout Standard
 Since the restrictions are rejected, we should probably use the unrestricted
  model for analysis.
- What is the pattern of RTS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-as a function of the output group (small to large)? Figure 
+ What is the pattern of RTS as a function of the output group (small to
+ large)? Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Nerlove RTS"
@@ -8783,10 +8635,6 @@ Using the Chow test on the Nerlove model, we reject that there is coefficient
 \ln C=\sum_{j=1}^{5}\alpha_{j}D_{j}+\sum_{j=1}^{5}\gamma_{j}D_{j}\ln Q+\beta_{L}\ln P_{L}+\beta_{F}\ln P_{F}+\beta_{K}\ln P_{K}+\epsilon\label{Nerlove, favorite model}
 \end{equation}
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8856,10 +8704,6 @@ where the sample size is 30,
 
  and 
 \begin_inset Formula $\epsilon\sim IIN(0,1)$
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9299,10 +9143,6 @@ Summary: When
 \end_inset
 
  is normally distributed:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9357,20 +9197,7 @@ Case 2
 
 
 \emph on
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-nonnormally distributed, strongly exogenous regressors
+ nonnormally distributed, strongly exogenous regressors
 \end_layout
 
 \begin_layout Standard
@@ -9469,10 +9296,6 @@ Summary: Under strongly exogenous regressors, with
 \end_inset
 
  has the properties:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10574,20 +10397,7 @@ In the extreme, if there are exact linear relationships (every element of
 \begin_inset Formula $X^{\prime}X$
 \end_inset
 
- is not invertible and the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is not uniquely defined.
+ is not invertible and the OLS estimator is not uniquely defined.
  For example, if the model is 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -11239,21 +11049,9 @@ The last of these cases is collinearity.
 Intuitively, when there are strong linear relations between the regressors,
  it is difficult to determine the separate influence of the regressors on
  the dependent variable.
- This can be seen by comparing the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-objective function in the case of no correlation between regressors with
- the objective function with correlation between the regressors.
+ This can be seen by comparing the OLS objective function in the case of
+ no correlation between regressors with the objective function with correlation
+ between the regressors.
  See the figures nocollin.ps (no correlation) and collin.ps (correlation),
  available on the web site.
 \end_layout
@@ -11661,20 +11459,8 @@ kv
 \end_inset
 
  artificial observations have no weight in the objective function, so the
- estimator has the same limiting objective function as the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator, and is therefore consistent.
+ estimator has the same limiting objective function as the OLS estimator,
+ and is therefore consistent.
 \end_layout
 
 \begin_layout Standard
@@ -12146,21 +11932,8 @@ y_{t} & = & \left(x_{t}-v_{t}\right)^{\prime}\beta+\varepsilon_{t}\\
 
 \end_inset
 
- Because of this correlation, the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is biased and inconsistent, just as in the case of autocorrelated
- errors with lagged dependent variables.
+ Because of this correlation, the OLS estimator is biased and inconsistent,
+ just as in the case of autocorrelated errors with lagged dependent variables.
  In matrix notation, write the estimated model as 
 \begin_inset Formula 
 \[
@@ -12632,20 +12405,7 @@ y_{1}\\
 
 \end_inset
 
- Recall that the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-fonc are 
+ Recall that the OLS fonc are 
 \begin_inset Formula 
 \[
 X^{\prime}X\hat{\beta}=X^{\prime}y
@@ -12653,20 +12413,8 @@ X^{\prime}X\hat{\beta}=X^{\prime}y
 
 \end_inset
 
- so if we regressed using only the first (complete)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-observations, we would have 
+ so if we regressed using only the first (complete) observations, we would
+ have 
 \begin_inset Formula 
 \[
 X_{1}^{\prime}X_{1}\hat{\beta}_{1}=X_{1}^{\prime}y_{1.}
@@ -12674,20 +12422,8 @@ X_{1}^{\prime}X_{1}\hat{\beta}_{1}=X_{1}^{\prime}y_{1.}
 
 \end_inset
 
- Likewise, an OLS regression using only the second (filled in)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-observations would give 
+ Likewise, an OLS regression using only the second (filled in) observations
+ would give 
 \begin_inset Formula 
 \[
 X_{2}^{\prime}X_{2}\hat{\beta}_{2}=X_{2}^{\prime}\hat{y}_{2}.
@@ -12961,20 +12697,7 @@ X_{2}
 \end_inset
 
  then we are in the case of errors of observation.
- As before, this means that the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is biased when 
+ As before, this means that the OLS estimator is biased when 
 \begin_inset Formula $X_{2}^{*}$
 \end_inset
 
@@ -13137,10 +12860,6 @@ When this model is estimated by OLS, some coefficients are not significant.
 \begin_layout Enumerate
 For the model 
 \begin_inset Formula $y=\beta_{1}x_{1}+\beta_{2}x_{2}+\epsilon,$
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13965,20 +13684,8 @@ FGLS estimation of a translog model
 \end_layout
 
 \begin_layout Standard
-So, this model has heteroscedasticity and autocorrelation, so OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-won't be efficient.
+So, this model has heteroscedasticity and autocorrelation, so OLS won't
+ be efficient.
  The next question is: how do we estimate efficiently using FGLS? FGLS is
  based upon inverting the estimated error covariance 
 \begin_inset Formula $\hat{\Sigma}.$
@@ -14129,20 +13836,8 @@ y^{\ast}=X^{\ast}\theta+\varepsilon^{\ast}
 
 \end_inset
 
- This is a consistent estimator, following the consistency of OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-and applying a LLN.
+ This is a consistent estimator, following the consistency of OLS and applying
+ a LLN.
 \end_layout
 
 \begin_layout Enumerate
@@ -14169,33 +13864,8 @@ Next compute the Cholesky factorization
 \end_layout
 
 \begin_layout Enumerate
-Finally the FGLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator can be calculated by applying OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-to the transformed model 
+Finally the FGLS estimator can be calculated by applying OLS to the transformed
+ model 
 \begin_inset Formula 
 \[
 \hat{P}^{\prime}y^{\ast}=\hat{P}^{\prime}X^{\ast}\theta+\hat{\hat{P}^{\prime}}\varepsilon^{\ast}
@@ -14203,29 +13873,12 @@ to the transformed model
 
 \end_inset
 
- or by directly using the GLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-formula 
+ or by directly using the GLS formula 
 \begin_inset Formula 
 \[
 \hat{\theta}_{FGLS}=\left(X^{\ast\prime}\left(\hat{\Sigma}_{0}^{\ast}\right)^{-1}X^{\ast}\right)^{-1}X^{\ast\prime}\left(\hat{\Sigma}_{0}^{\ast}\right)^{-1}y^{\ast}
 \]
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14296,10 +13949,6 @@ iterated.
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14309,20 +13958,7 @@ These might be expected to lead to a better estimate than the estimator
 \begin_inset Formula $\hat{\theta}_{OLS},$
 \end_inset
 
- since FGLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-is asymptotically more efficient.
+ since FGLS is asymptotically more efficient.
  Then re-estimate 
 \begin_inset Formula $\theta$
 \end_inset
@@ -14450,10 +14086,6 @@ y=(1-\alpha)X\beta+\alpha(Z\gamma)+\omega
  is zero.
  On the other hand, if the second model is correctly specified then 
 \begin_inset Formula $\alpha=1.$
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15138,20 +14770,7 @@ V(\varepsilon^{*}) & = & I_{n}
 \end_inset
 
  satisfies the classical assumptions.
- The GLS estimator is simply OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-applied to the transformed model: 
+ The GLS estimator is simply OLS applied to the transformed model: 
 \begin_inset Formula 
 \begin{eqnarray*}
 \hat{\beta}_{GLS} & = & (X^{*\prime}X^{*})^{-1}X^{*\prime}y^{*}\\
@@ -15165,33 +14784,8 @@ applied to the transformed model:
 \end_layout
 
 \begin_layout Standard
-The GLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is unbiased in the same circumstances under which the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is unbiased.
+The GLS estimator is unbiased in the same circumstances under which the
+ OLS estimator is unbiased.
  For example, assuming 
 \begin_inset Formula $X$
 \end_inset
@@ -15261,33 +14855,7 @@ Tests are valid, using the previous formulas, as long as we substitute
 \end_layout
 
 \begin_layout Itemize
-The GLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is more efficient than the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator.
+The GLS estimator is more efficient than the OLS estimator.
  This is a consequence of the Gauss-Markov theorem, since the GLS estimator
  is based on a model that satisfies the classical assumptions but the OLS
  estimator is not.
@@ -15317,20 +14885,8 @@ where
 \end_layout
 
 \begin_layout Itemize
-As one can verify by calculating first order conditions, the GLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is the solution to the minimization problem 
+As one can verify by calculating first order conditions, the GLS estimator
+ is the solution to the minimization problem 
 \begin_inset Formula 
 \[
 \hat{\beta}_{GLS}=\arg\min(y-X\beta)^{\prime}\Sigma^{-1}(y-X\beta)
@@ -15476,20 +15032,7 @@ parameterize
 \begin_inset Formula $\widehat{\Sigma},$
 \end_inset
 
- we obtain the FGLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator.
+ we obtain the FGLS estimator.
  
 \series bold
 The FGLS estimator shares the same asymptotic properties as GLS.
@@ -15683,20 +15226,7 @@ OLS with heteroscedastic consistent varcov estimation
 \begin_layout Standard
 Eicker (1967) and White (1980) showed how to modify test statistics to account
  for heteroscedasticity of unknown form.
- The OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator has asymptotic distribution 
+ The OLS estimator has asymptotic distribution 
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\hat{\beta}-\beta\right)\overset{d}{\rightarrow}N\left(0,Q_{X}^{-1}\Omega Q_{X}^{-1}\right)
@@ -16115,20 +15645,8 @@ Perhaps a middle ground is to attempt to use GLS when severe HET is detected,
 
 \begin_layout Standard
 We'll consider two examples.
- Before this, let's consider the general nature of GLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-when there is heteroscedasticity.
+ Before this, let's consider the general nature of GLS when there is heterosceda
+sticity.
  When we have HET but no AUT, 
 \begin_inset Formula $\Sigma$
 \end_inset
@@ -16379,20 +15897,8 @@ y_{t}^{*}=x_{t}^{*\prime}\beta+\varepsilon_{t}^{*}.
 \end_layout
 
 \begin_layout Itemize
-This model is a bit complex in that NLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-is required to estimate the model of the variance.
+This model is a bit complex in that NLS is required to estimate the model
+ of the variance.
  A simpler version would be 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -16949,7 +16455,7 @@ Autocorrelation induced by misspecification
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Figures/MisspecCausesAutcorrelation.png
+	filename Examples/Figures/MisspecCausesAutcorrelation.png
 
 \end_inset
 
@@ -17521,20 +17027,7 @@ Again the covariance matrix has a simple structure that depends on only
 \begin_inset Formula $\phi$
 \end_inset
 
- using OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-on 
+ using OLS on 
 \begin_inset Formula 
 \[
 \hat{\varepsilon}_{t}=u_{t}+\phi u_{t-1}
@@ -17625,19 +17118,7 @@ To solve this problem, estimate the covariance of
 
 \begin_layout Itemize
 Now solve these two equations to obtain identified (and therefore consistent)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimators of both 
+ estimators of both 
 \begin_inset Formula $\phi$
 \end_inset
 
@@ -18178,20 +17659,8 @@ Finally, since
 \begin_inset Formula $\widehat{Q_{X}}=\frac{1}{n}X^{\prime}X$
 \end_inset
 
- to consistently estimate the limiting distribution of the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator under heteroscedasticity and autocorrelation of unknown form.
+ to consistently estimate the limiting distribution of the OLS estimator
+ under heteroscedasticity and autocorrelation of unknown form.
  With this, asymptotically valid tests are constructed in the usual way.
 \end_layout
 
@@ -18388,20 +17857,7 @@ reference "fig:Durbin-Watson-critical-values"
 \end_layout
 
 \begin_layout Itemize
-Note that DW
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-can be used to test for nonlinearity (add discussion).
+Note that DW can be used to test for nonlinearity (add discussion).
  
 \end_layout
 
@@ -18458,20 +17914,8 @@ Lagged dependent variables and autocorrelation
 \end_layout
 
 \begin_layout Standard
-We've seen that the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is consistent under autocorrelation, as long as 
+We've seen that the OLS estimator is consistent under autocorrelation, as
+ long as 
 \begin_inset Formula $plim\frac{X^{\prime}\varepsilon}{n}=0.$
 \end_inset
 
@@ -18545,20 +17989,7 @@ plim\hat{\beta}=\beta+plim\frac{X^{\prime}\varepsilon}{n}
 
 \end_inset
 
- the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is inconsistent in this case.
+ the OLS estimator is inconsistent in this case.
  One needs to estimate by instrumental variables (IV), which we'll get to
  later
 \end_layout
@@ -18940,10 +18371,6 @@ href{./Examples/Data/nerlove.data}{nerlove.data}
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -18960,10 +18387,6 @@ Consider the model
 \ln C=\beta+\beta_{Q}\ln Q+\gamma_{Q}\left(\ln Q\right)^{2}+\beta_{L}\ln P_{L}+\beta_{F}\ln P_{F}+\beta_{K}\ln P_{K}+\epsilon
 \]
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -19049,10 +18472,6 @@ href{./Examples/Data/hall.gdt}{hall.gdt}
  The return on investment defines wealth in the next period, and the process
  repeats.
  For the moment, explore the properties of the variables.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -19143,10 +18562,6 @@ is a
 vector autoregressive
 \emph default
  model, of order 1 - commonly referred to as a VAR(1) model.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -19261,10 +18676,6 @@ where
 \end_inset
 
 ).
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -19302,10 +18713,6 @@ test for autocorrelation using the test of your choice
 
 \begin_layout Enumerate
 repeat the above steps 10000 times.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -19545,20 +18952,8 @@ Now consider whether
 
 \end_inset
 
- Because of this correlation, weak exogeneity does not hold, and OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimation of the demand equation will be biased and inconsistent.
+ Because of this correlation, weak exogeneity does not hold, and OLS estimation
+ of the demand equation will be biased and inconsistent.
  The same applies to the supply equation, for the same reason.
 \end_layout
 
@@ -20141,20 +19536,8 @@ all
 \end_layout
 
 \begin_layout Standard
-It may seem odd that we use OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-on the reduced form, since the rf equations are correlated, because 
+It may seem odd that we use OLS on the reduced form, since the rf equations
+ are correlated, because 
 \begin_inset Formula $\Xi\equiv\left(\Gamma^{-1}\right)^{\prime}\Sigma\Gamma^{-1}$
 \end_inset
 
@@ -20304,10 +19687,6 @@ OLS.
 \end_inset
 
  Using the rules
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -21332,10 +20711,6 @@ These results are valid assuming that the only identifying information comes
  restrictions, and through the use of a normalization.
  There are other sorts of identifying information that can be used.
  These include
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -21634,20 +21009,7 @@ Important note: OLS on the transformed model can be used to calculate the
 the OLS covariance formula is not valid.
 
 \emph default
- We need to apply the IV
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-covariance formula already seen above.
+ We need to apply the IV covariance formula already seen above.
  
 \end_layout
 
@@ -21663,20 +21025,7 @@ Actually, there is also a simplification of the general IV variance formula.
 
 \end_inset
 
- The IV
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-covariance estimator would ordinarily be 
+ The IV covariance estimator would ordinarily be 
 \begin_inset Formula 
 \[
 \hat{V}(\hat{\delta})=\left(\hat{Z}^{\prime}Z\right)^{-1}\left(\hat{Z}^{\prime}\hat{Z}\right)\left(Z^{\prime}\hat{Z}\right)^{-1}\hat{\sigma}_{IV}^{2}
@@ -21790,21 +21139,8 @@ is part of the specification of the model
 \end_layout
 
 \begin_layout Standard
-The IV
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator can be calculated by applying OLS to the transformed model, so
- the IV objective function at the minimized value is 
+The IV estimator can be calculated by applying OLS to the transformed model,
+ so the IV objective function at the minimized value is 
 \begin_inset Formula 
 \[
 s(\hat{\beta}_{IV})=\left(y-X\hat{\beta}_{IV}\right)^{\prime}P_{W}\left(y-X\hat{\beta}_{IV}\right),
@@ -22367,20 +21703,8 @@ y=Z\delta+\varepsilon
 
 \end_inset
 
- The 3SLS estimator is just 2SLS combined with a GLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-correction that takes advantage of the structure of 
+ The 3SLS estimator is just 2SLS combined with a GLS correction that takes
+ advantage of the structure of 
 \begin_inset Formula $\Psi.$
 \end_inset
 
@@ -22468,20 +21792,7 @@ The 2SLS estimator would be
  as can be verified by simple multiplication, and noting that the inverse
  of a block-diagonal matrix is just the matrix with the inverses of the
  blocks on the main diagonal.
- This IV
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator still ignores the covariance information.
+ This IV estimator still ignores the covariance information.
  The natural extension is to add the GLS transformation, putting the inverse
  of the error covariance into the formula, which gives the 3SLS estimator
  
@@ -22580,20 +21891,7 @@ reference "eq:2sls varcov"
 
 \end_inset
 
-), combined with the GLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-correction.
+), combined with the GLS correction.
 \end_layout
 
 \begin_layout Itemize
@@ -22622,21 +21920,8 @@ name "subsec:FIML"
 
 \begin_layout Standard
 Full information maximum likelihood is an alternative estimation method.
- FIML will be asymptotically efficient, since ML
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimators based on a given information set are asymptotically efficient
- w.r.t.
+ FIML will be asymptotically efficient, since ML estimators based on a given
+ information set are asymptotically efficient w.r.t.
  all other estimators that use the same information set, and in the case
  of the full-information ML estimator we use the entire information set.
  The 2SLS and 3SLS estimators don't require distributional assumptions,
@@ -22726,10 +22011,6 @@ assuming normality of the errors
 One can calculate the FIML estimator by iterating the 3SLS estimator, thus
  avoiding the use of a nonlinear optimizer.
  The steps are
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -22819,20 +22100,7 @@ Repeat steps 2-4 until there is no change in the parameters.
 
 \end_deeper
 \begin_layout Itemize
-FIML is fully efficient, since it's an ML
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator that uses all information.
+FIML is fully efficient, since it's an ML estimator that uses all information.
  This implies that 3SLS is fully efficient 
 \emph on
 when the errors are normally distributed.
@@ -23278,20 +22546,7 @@ D_{\theta}s(\theta)=b+C\theta
 
 \end_inset
 
-so the maximizing (minimizing)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-element would be 
+so the maximizing (minimizing) element would be 
 \begin_inset Formula $\hat{\theta}=-C^{-1}b.$
 \end_inset
 
@@ -24150,20 +23405,7 @@ Another variation of quasi-Newton methods is to approximate the Hessian
  (in the dimension of the parameter vector) more costly than calculation
  of the gradient.
  They can be done to ensure that the approximation is p.d.
- DFP
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-and BFGS are two well-known examples.
+ DFP and BFGS are two well-known examples.
  
 \begin_inset Newpage newpage
 \end_inset
@@ -24346,33 +23588,7 @@ ensure
  
 \series bold
 \color red
-THIS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-IS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-IMPORTANT in practice.
+THIS IS IMPORTANT in practice.
 
 \series default
 \color inherit
@@ -25505,7 +24721,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/NonlinearOptimization/FoggySurface.png
+	filename Examples/NonlinearOptimization/FoggySurface.png
 	width 4in
 
 \end_inset
@@ -27573,20 +26789,7 @@ reference "Consistency of ee"
 
 \end_inset
 
- can be used to prove strong consistency of the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator.
+ can be used to prove strong consistency of the OLS estimator.
  There are easier ways to show this, of course - this is only an example
  of application of the theorem.
  
@@ -31797,10 +31000,6 @@ reference "subsec:MEPS data"
 \end_inset
 
 ) 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -33353,20 +32552,7 @@ Regularity conditions
  not become infinite.
  We don't assume any particular set here, since the appropriate assumptions
  will depend upon the particularities of a given model.
- However, we assume that a SLLN
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-applies.
+ However, we assume that a SLLN applies.
 \end_layout
 
 \begin_layout Standard
@@ -33552,20 +32738,7 @@ As long as the
 \begin_inset Formula $g_{t}$
 \end_inset
 
- have finite variances, a CLT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
- will apply.
+ have finite variances, a CLT  will apply.
  Checking this requires knowing what specific model we're working with,
  so for this general treatment, we will assume that the model satisfies
  this condition.
@@ -33635,20 +32808,7 @@ literal "false"
 
  
 \emph on
-The MLE
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is asymptotically normally distributed.
+The MLE estimator is asymptotically normally distributed.
 \end_layout
 
 \begin_layout Itemize
@@ -34749,20 +33909,7 @@ Now, take the RHS, and differentiate.
 \series bold
 any
 \series default
- CAN
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator, is an identity matrix.
+ CAN estimator, is an identity matrix.
  Using this, suppose the variance of 
 \begin_inset Formula $\sqrt{n}\left(\tilde{\theta}-\theta\right)$
 \end_inset
@@ -34873,20 +34020,7 @@ the individual variances of each
 \emph on
 lower bound
 \emph default
- for the asymptotic variance of a CAN
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator.
+ for the asymptotic variance of a CAN estimator.
 \end_layout
 
 \begin_layout Standard
@@ -37635,10 +36769,6 @@ Suppose we have an independently and identically distributed sample of size
 
  follows this exponential distribution.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -37944,10 +37074,6 @@ For the Poisson model, the density
 
 .
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -38095,10 +37221,6 @@ Assume a d.g.p.
 
 .
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -38164,10 +37286,6 @@ href{./Examples/OLS/Nerlove.jl}{Nerlove.jl}
 
 \begin_layout Enumerate
 Using the fmincon routine in Econometrics
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -38510,10 +37628,6 @@ For the Poisson model, the density
 
 .
  The example EstimatePoisson.jl, in the notes, should be helpful
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -39133,20 +38247,7 @@ overidentification,
 The idea behind GMM is to combine information from the two moment conditions
  to form a new estimator which will be
 \emph on
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-more efficient,
+ more efficient,
 \emph default
  in general (proof of this below).
 \end_layout
@@ -40428,20 +39529,7 @@ We have already seen that the choice of
 \begin_inset Formula $W$
 \end_inset
 
- matrix to make the GMM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator efficient 
+ matrix to make the GMM estimator efficient 
 \emph on
 within the class of GMM estimators
 \emph default
@@ -40481,20 +39569,7 @@ The generalized least square estimator minimizes the objective function
 \begin_layout Itemize
 The GLS optimal weighting matrix is seen to be the inverse of the covariance
  matrix of the errors.
- A similar result holds for GMM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimation.
+ A similar result holds for GMM estimation.
  
 \end_layout
 
@@ -40512,33 +39587,8 @@ status collapsed
 
 \end_inset
 
-this presentation of GLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-is not a GMM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator as defined above, because if we take the errors as 
+this presentation of GLS is not a GMM estimator as defined above, because
+ if we take the errors as 
 \begin_inset Quotes sld
 \end_inset
 
@@ -40559,20 +39609,7 @@ reference "GMM estimator (defn)"
 \end_inset
 
 .
- Later we'll see that GLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-can be expressed in the GMM framework.
+ Later we'll see that GLS can be expressed in the GMM framework.
  
 \begin_inset Newpage newpage
 \end_inset
@@ -40592,20 +39629,7 @@ If
 \begin_inset Formula $\hat{\theta}$
 \end_inset
 
- is a GMM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator that minimizes 
+ is a GMM estimator that minimizes 
 \begin_inset Formula $\bar{m}_{n}(\theta)^{\prime}W_{n}\bar{m}_{n}(\theta),$
 \end_inset
 
@@ -40623,10 +39647,6 @@ estimator that minimizes
 
  where 
 \begin_inset Formula $\Omega_{\infty}=\lim_{n\rightarrow\infty}\mathcal{E}\left[nm(\theta^{0})m(\theta^{0})^{\prime}\right].$
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -41207,10 +40227,6 @@ sufficiently rapidly
 
 \begin_layout Itemize
 this will be consistent, provided that
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -42629,20 +41645,7 @@ The formula used to estimate the variance of
 \begin_layout Standard
 
 \series bold
-The GIV
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is
+The GIV estimator is
 \end_layout
 
 \begin_layout Enumerate
@@ -42731,20 +41734,7 @@ When we have two sets of instruments,
 
 \begin_layout Itemize
 The penalty for indiscriminate use of instruments is that the small sample
- bias of the IV
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator rises as the number of instruments increases.
+ bias of the IV estimator rises as the number of instruments increases.
  The reason for this is that 
 \begin_inset Formula $P_{Z}X$
 \end_inset
@@ -43745,38 +42735,12 @@ In the introduction we argued that ML will in general be more efficient
 
  moment conditions may contain more information than others, since the moment
  conditions could be highly correlated.
- A GMM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator that chose an optimal set of 
+ A GMM estimator that chose an optimal set of 
 \begin_inset Formula $P$
 \end_inset
 
  moment conditions would be fully efficient.
- The optimal moment conditions are simply the scores of the ML
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator.
+ The optimal moment conditions are simply the scores of the ML estimator.
 \end_layout
 
 \begin_layout Standard
@@ -46248,10 +45212,6 @@ y_{i}=x_{i}^{\prime}\beta_{0}+\epsilon_{i}
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46265,10 +45225,6 @@ Suppose that
  Use this information to propose a GMM estimator that is equivalent to the
  OLS estimator.
  Your answer should include:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46302,10 +45258,6 @@ Now, suppose that
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46324,10 +45276,6 @@ Propose a consistent GMM estimator of the parameter vector
 
  that uses this information.
  Your answer should include:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46608,10 +45556,6 @@ href{./Examples/NonlinearOptimization/EstimateLogit.jl}{EstimateLogit.jl}
 
  should prove quite helpful.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46680,10 +45624,6 @@ Verify the missing steps needed to show that
 \begin_layout Enumerate
 For the portfolio example, experiment with the program using lags of 3 and
  4 periods to define instruments
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -46933,10 +45873,6 @@ The variables
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47011,17 +45947,6 @@ p_{n}^{\prime}(\theta) & q_{n}^{\prime}(\theta)\end{array}\right]^{\prime}$
 \end_inset
 
  and the corresponding true optimal weight matrix.
-\family default
-\series default
-\shape default
-\size default
-\bar default
-\color inherit
-
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47145,10 +46070,6 @@ where
 
  is strictly exogenous: it is uncorrelated with the two epsilons at all
  time periods.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47416,10 +46337,6 @@ For the logit model, the probability
 \end_inset
 
  is the complement.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47705,10 +46622,6 @@ For the Poisson model, the density
 
 .
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47921,10 +46834,6 @@ where
 
 .
  This is a case of omitted relevant variables.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -47963,10 +46872,6 @@ simulate data from the correct AR2 model, using
 \end_inset
 
  Use a sample size of 30 observations.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -50474,10 +49379,6 @@ autoregressive part
 \begin_layout Itemize
 the model also requires restrictions for positive variance and stationarity,
  which are:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -50702,7 +49603,7 @@ Mean dependent var   0.129001   S.D.
 
 \begin_layout Plain Layout
 
-Log-likelihood      −4396.923   Akaike criterion     8805.846
+Log-likelihood      -4396.923   Akaike criterion     8805.846
 \end_layout
 
 \begin_layout Plain Layout
@@ -51919,10 +50820,6 @@ Write a Matlab/Julia/your favorite package script that generates two independent
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -52884,17 +51781,6 @@ trick is
 \noun off
 \color none
  when in general we can't compute the posterior.
-\family default
-\series default
-\shape default
-\size default
-\bar default
-\color inherit
-
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -53150,10 +52036,6 @@ From this, we see that the information needed to determine if a proposal
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -53217,10 +52099,6 @@ for
 \end_inset
 
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -53290,10 +52168,6 @@ the art of applying these methods consists of providing a good proposal
  to sample from the posterior.
  However, we don't know the posterior, which is why we are doing MCMC in
  the first place....
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -54718,10 +53592,6 @@ For example, if
 \end_inset
 
  are not independent.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -55453,10 +54323,6 @@ Evidence that the two estimators are converging to different limits is evidence
 A Hausman test statistic can be computed, using the difference between the
  two estimators.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -55835,10 +54701,6 @@ For
 \end_inset
 
  we cannot compute the moment conditions.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -56083,10 +54945,6 @@ taking care of this problem is annoying without using a well written panel
 \end_deeper
 \begin_layout Itemize
 estimate fixed effects
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -56137,10 +54995,6 @@ do nonparametric density plot of fixed effects: mean is 1, but significant
 \end_deeper
 \begin_layout Itemize
 run random effects (tradition, but not logic, demands that we do it)
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -56450,10 +55304,6 @@ reference "eq:simple linear panel random effects"
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -57698,10 +56548,6 @@ n\gamma_{n}^{k}V\left[\hat{h}(x)\right] & = & n\gamma_{n}^{k}\frac{1}{n^{2}}\sum
 
 \begin_layout Itemize
 By the representative term argument, this is
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -59630,7 +58476,7 @@ Dollar-Euro
 
 
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Nonparametric/dollar_euro_historgram.png
+	filename Examples/Nonparametric/dollar_euro_historgram.png
 	lyxscale 10
 	width 6cm
 
@@ -59638,7 +58484,7 @@ Dollar-Euro
 
 
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Nonparametric/dollar_euro_series.png
+	filename Examples/Nonparametric/dollar_euro_series.png
 	lyxscale 10
 	width 6cm
 
@@ -59675,7 +58521,7 @@ Dollar-Yen
 
 
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Nonparametric/dollar_yen_histogram.png
+	filename Examples/Nonparametric/dollar_yen_histogram.png
 	lyxscale 10
 	width 6cm
 
@@ -59683,7 +58529,7 @@ Dollar-Yen
 
 
 \begin_inset Graphics
-	filename /home/michael/Mystuff/Econometrics/Examples/Nonparametric/dollar_yen_series.png
+	filename Examples/Nonparametric/dollar_yen_series.png
 	lyxscale 10
 	width 6cm
 
@@ -60105,10 +58951,6 @@ edit kernel_example
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -60140,10 +58982,6 @@ help kernel_regression
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -60804,10 +59642,6 @@ This is a generalization of what we get from the classical model with normality,
 \end_inset
 
 : 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -62031,23 +60865,10 @@ Motivation
 \end_layout
 
 \begin_layout Standard
-Simulation methods are of interest when the DGP
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-is fully characterized by a parameter vector, so that simulated data can
- be generated, but the likelihood function and/or analytic moments of the
- observable variables are not calculable, so that ordinary MLE or GMM estimation
- is not possible.
+Simulation methods are of interest when the DGP is fully characterized by
+ a parameter vector, so that simulated data can be generated, but the likelihood
+ function and/or analytic moments of the observable variables are not calculable
+, so that ordinary MLE or GMM estimation is not possible.
  
 \end_layout
 
@@ -62484,20 +61305,7 @@ Often this will not be possible.
 \begin_inset Formula $\Pr(Y=y_{i}|X_{i}),$
 \end_inset
 
- which is then used to do ML
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimation.
+ which is then used to do ML estimation.
 \end_layout
 
 \begin_deeper
@@ -62712,20 +61520,7 @@ literal "true"
 \end_layout
 
 \begin_layout Itemize
-This means that the SML
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is asymptotically biased if 
+This means that the SML estimator is asymptotically biased if 
 \begin_inset Formula $H$
 \end_inset
 
@@ -62785,20 +61580,8 @@ Suppose we have a data generating process DGP
 \end_layout
 
 \begin_layout Standard
-A formulation of the GMM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator which we have studied is based upon the moment conditions 
+A formulation of the GMM estimator which we have studied is based upon the
+ moment conditions 
 \begin_inset Formula $m_{t}=z_{t}\epsilon_{t}(\theta)$
 \end_inset
 
@@ -62948,20 +61731,8 @@ noprefix "false"
 \end_inset
 
 , to highlight that simulations are used.
- With this simple difference, we form the GMM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-criterion and estimate as usual.
+ With this simple difference, we form the GMM criterion and estimate as
+ usual.
  Note that the unbiased simulator 
 \begin_inset Formula $k(\widetilde{y}_{t}^{h},x_{t})$
 \end_inset
@@ -62997,20 +61768,8 @@ literal "true"
 
 \end_inset
 
- show that the asymptotic distribution of the MSM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is very similar to that of the infeasible GMM estimator.
+ show that the asymptotic distribution of the MSM estimator is very similar
+ to that of the infeasible GMM estimator.
  In particular, assuming that the optimal weighting matrix is used, and
  for 
 \begin_inset Formula $H$
@@ -63286,20 +62045,7 @@ E\ln(\tilde{p}_{i}(\beta,\Omega))\neq\ln(\mathcal{E}\tilde{p}_{i}(\beta,\Omega))
 \end_inset
 
  is a nonlinear transformation.
- The only way for the two to be equal (in the limit)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-is if 
+ The only way for the two to be equal (in the limit) is if 
 \begin_inset Formula $H$
 \end_inset
 
@@ -64882,20 +63628,7 @@ each
 \begin_inset Formula $Y=X\beta^{0}+\varepsilon,$
 \end_inset
 
- the OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator 
+ the OLS estimator 
 \begin_inset Formula $\hat{\beta}_{n}=\left(X^{\prime}X\right)^{-1}X^{\prime}Y,$
 \end_inset
 
@@ -65850,19 +64583,7 @@ The choice of which moments upon which to base a GMM estimator can have
 \begin_layout Itemize
 A poor choice of moment conditions may lead to very inefficient estimators,
  and can even cause identification problems (as we've seen with the GMM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-problem set).
+ problem set).
 \end_layout
 
 \begin_layout Itemize
@@ -66336,20 +65057,8 @@ Now, combining the results for the first and second terms,
  when the model is simulable.
  On the other hand, if the score generator is taken to be correctly specified,
  the ordinary estimator of the information matrix is consistent.
- Combining this with the result on the efficient GMM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-weighting matrix in Theorem 
+ Combining this with the result on the efficient GMM weighting matrix in
+ Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "efficient weighting matrix"
@@ -66375,21 +65084,8 @@ reference "efficient weighting matrix"
 If one has used the Gallant-Nychka ML estimator as the auxiliary model,
  the appropriate weighting matrix is simply the information matrix of the
  auxiliary model, since the scores are uncorrelated.
- (e.g., it really is ML
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimation asymptotically, since the score generator can approximate the
- unknown density arbitrarily well).
+ (e.g., it really is ML estimation asymptotically, since the score generator
+ can approximate the unknown density arbitrarily well).
  
 \end_layout
 
@@ -67364,20 +66060,7 @@ reference "cap:Life-expectancy-of"
 \end_inset
 
  presents fitted life expectancy (expected additional years of life) as
- a function of age, with 95%
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-confidence bands.
+ a function of age, with 95% confidence bands.
  The plot is accompanied by a nonparametric Kaplan-Meier estimate of life-expect
 ancy.
  This nonparametric estimator simply averages all spell lengths greater
@@ -67486,10 +66169,6 @@ With the same data,
  scope of this course.
  Nevertheless, the improvement in the likelihood function is considerable.
  The parameter estimates are
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -67973,20 +66652,7 @@ s_{n}(\theta) & = & \frac{1}{n}\sum_{t=1}^{n}\ln f_{t}(\mathbf{y}_{t}|\mathbf{Y}
 
 \end_inset
 
- and the QML
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-is 
+ and the QML is 
 \begin_inset Formula 
 \[
 \hat{\theta}_{n}=\arg\max_{\Theta}s_{n}(\theta)
@@ -68273,20 +66939,7 @@ D_{\theta}\mathcal{E}_{X}\mathcal{E}_{0}\ln f(y|x,\theta^{0})=\mathcal{E}_{X}\ma
 
 \end_inset
 
- The CLT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-implies that 
+ The CLT implies that 
 \begin_inset Formula 
 \[
 \frac{1}{\sqrt{n}}\sum_{t=1}^{n}D_{\theta}\ln f(y|x,\theta^{0})\stackrel{d}{\rightarrow}N(0,\mathcal{I}_{\infty}(\theta^{0})).
@@ -68932,19 +67585,7 @@ The
 
 \begin_layout Itemize
 This shows that an AR(p) process is representable as an infinite-order MA(q)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-process.
+ process.
 \end_layout
 
 \begin_layout Itemize
@@ -68982,20 +67623,7 @@ Y_{t}=F^{j+1}Y_{t-j-1}+F^{j}E_{t-j}+F^{j-1}E_{t-j+1}+\cdots+FE_{t-1}+E_{t}
 \begin_inset Formula $Y$
 \end_inset
 
- on the RHS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-drops out.
+ on the RHS drops out.
  The 
 \begin_inset Formula $E_{t-s}$
 \end_inset
@@ -69113,20 +67741,8 @@ c=\mu+\delta_{1}\mu+\delta_{2}\mu+...
 
 \end_inset
 
- So we see that an MA(q)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
+ So we see that an MA(q) has an infinite AR representation, as long as the
  
-\end_layout
-
-\end_inset
-
-has an infinite AR representation, as long as the 
 \begin_inset Formula $|\eta_{i}|<1,$
 \end_inset
 
@@ -69196,21 +67812,8 @@ observationally equivalent
 \end_layout
 
 \begin_layout Itemize
-For a given MA(q)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-process, it's always possible to manipulate the parameters to find an invertible
- representation (which is unique).
+For a given MA(q) process, it's always possible to manipulate the parameters
+ to find an invertible representation (which is unique).
 \end_layout
 
 \begin_layout Itemize
@@ -69246,20 +67849,7 @@ Why is invertibility important? The most important reason is that it provides
 \begin_inset Formula $\infty)$
 \end_inset
 
- processes have an AR(1)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-representation.
+ processes have an AR(1) representation.
  Likewise, some AR(
 \begin_inset Formula $\infty)$
 \end_inset
@@ -69380,20 +67970,8 @@ where we have defined
 \end_layout
 
 \begin_layout Standard
-The asymptotic normality theorem above says that the GMM
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator using the optimal weighting matrix is distributed as 
+The asymptotic normality theorem above says that the GMM estimator using
+ the optimal weighting matrix is distributed as 
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\hat{\theta}-\theta^{0}\right)\stackrel{d}{\rightarrow}N(0,V_{\infty})
@@ -77641,20 +76219,7 @@ s_{n}(\theta)=\frac{1}{n}\left[\mathbf{y}^{\prime}\mathbf{y}-2\mathbf{y}^{\prime
 \end_inset
 
  so the f.o.c.
- (with spherical errors)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-simplify to 
+ (with spherical errors) simplify to 
 \begin_inset Formula 
 \[
 \mathbf{X}^{\prime}\mathbf{y}-\mathbf{X}^{\prime}\mathbf{X}\beta=0,
@@ -77662,40 +76227,14 @@ simplify to
 
 \end_inset
 
- the usual 0LS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-f.o.c.
+ the usual 0LS f.o.c.
 \end_layout
 
 \begin_layout Standard
 We can interpret this geometrically: 
 \shape italic
-INSERT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-drawings of geometrical depiction of OLS and NLS (see Davidson and MacKinnon,
- pgs.
+INSERT drawings of geometrical depiction of OLS and NLS (see Davidson and
+ MacKinnon, pgs.
  8,13 and 46).
 \end_layout
 
@@ -78253,20 +76792,7 @@ s_{\infty}(\beta)=\mathcal{E}_{\mathbf{x}}\left(\exp(\mathbf{x}^{\prime}\beta^{0
 \begin_inset Formula $\beta=\beta^{0},$
 \end_inset
 
- so the NLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator is consistent as long as identification holds.
+ so the NLS estimator is consistent as long as identification holds.
 \end_layout
 
 \begin_layout Exercise
@@ -78432,20 +76958,7 @@ Note that one could estimate
 \begin_inset Formula $b$
 \end_inset
 
- simply by performing OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-on the above equation.
+ simply by performing OLS on the above equation.
 \end_layout
 
 \begin_layout Itemize
@@ -78476,20 +76989,7 @@ Given
 
 \begin_layout Standard
 To see why this might work, consider the above approximation, but evaluated
- at the NLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimator: 
+ at the NLS estimator: 
 \begin_inset Formula 
 \[
 \mathbf{y}=\mathbf{f}(\hat{\theta})+\mathbf{F}(\hat{\theta})\left(\theta-\hat{\theta}\right)+\omega
@@ -78497,20 +76997,7 @@ estimator:
 
 \end_inset
 
- The OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-estimate of 
+ The OLS estimate of 
 \begin_inset Formula $b\equiv\theta-\hat{\theta}$
 \end_inset
 
@@ -78583,34 +77070,8 @@ regressor matrix
 \end_inset
 
 ).
- In fact, a normal OLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-program will give the NLS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-varcov estimator directly, since it's just the OLS varcov estimator from
- the last iteration.
+ In fact, a normal OLS program will give the NLS varcov estimator directly,
+ since it's just the OLS varcov estimator from the last iteration.
 \end_layout
 
 \begin_layout Itemize
@@ -79912,20 +78373,7 @@ The estimation subspace
 \end_inset
 
  .
- A
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-set of subsets 
+ A set of subsets 
 \begin_inset Formula $\mathcal{A}_{a}$
 \end_inset
 
@@ -80419,10 +78867,6 @@ Define
 \end_inset
 
  is the Moore-Penrose generalized inverse.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
