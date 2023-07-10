@@ -5610,116 +5610,85 @@ Write an Octave program that generates a histogram for
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
 Consider the following regression model:
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{equation*} y_{i}=
-\backslash
-beta _{1}x_{1i}+
-\backslash
-beta _{2}x_{2i}+u_{i} 
-\backslash
-end{equation*}
-\end_layout
-
-\begin_layout Plain Layout
-
-where $E(x_{1i})=0,E(x_{2i})=0,Var(x_{1i})=
-\backslash
-sigma _{1}^{2},Var(x_{2i})=
-\backslash
-sigma _{2}^{2}$ 
-\backslash
- and $Cov(x_{1i},x_{2i}) $=$
-\backslash
-sigma _{12}.$ The model satisfies the basic OLS
-\backslash
- assumptions.
- However, a loose econometrician estimates the following model:
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{equation*} y_{i}=
-\backslash
-beta _{1}x_{1i}+v_{i} 
-\backslash
-end{equation*}
-\end_layout
-
-\begin_layout Plain Layout
-
-where $
-\backslash
-tilde{
-\backslash
-beta}_{1}$ is the estimator of the parameter $
-\backslash
-beta _{1}.$
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-a) Compute $plim(
-\backslash
-tilde{
-\backslash
-beta}_{1})$.
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-b) Compute the asymptotic bias of $
-\backslash
-tilde{
-\backslash
-beta}_{1}$ (i.e.
-  $plim(
-\backslash
-tilde{
-\backslash
-beta}_{1})-
-\backslash
-beta _{1}$).
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-c) Under which conditions is $
-\backslash
-tilde{
-\backslash
-beta}_{1}$ a consistent estimate of $
-\backslash
-beta _{1}$?
-\end_layout
+\begin_inset Formula 
+\[
+y_{i}=\beta_{1}x_{1i}+\beta_{2}x_{2i}+u_{i}
+\]
 
 \end_inset
 
+where 
+\begin_inset Formula $E(x_{1i})=0,E(x_{2i})=0,Var(x_{1i})=\sigma_{1}^{2},Var(x_{2i})=\sigma_{2}^{2}$
+\end_inset
 
+ 
+\begin_inset space \space{}
+\end_inset
+
+and 
+\begin_inset Formula $Cov(x_{1i},x_{2i})$
+\end_inset
+
+=
+\begin_inset Formula $\sigma_{12}.$
+\end_inset
+
+ The model satisfies the basic OLS
+\begin_inset space \space{}
+\end_inset
+
+assumptions.
+ However, a loose econometrician estimates the following model: 
+\begin_inset Formula 
+\[
+y_{i}=\beta_{1}x_{1i}+v_{i}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\beta}_{1}$
+\end_inset
+
+ is the estimator of the parameter 
+\begin_inset Formula $\beta_{1}.$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ a) Compute 
+\begin_inset Formula $plim(\tilde{\beta}_{1})$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+ b) Compute the asymptotic bias of 
+\begin_inset Formula $\tilde{\beta}_{1}$
+\end_inset
+
+ (i.e.
+ 
+\begin_inset Formula $plim(\tilde{\beta}_{1})-\beta_{1}$
+\end_inset
+
+).
+\begin_inset Newline newline
+\end_inset
+
+ c) Under which conditions is 
+\begin_inset Formula $\tilde{\beta}_{1}$
+\end_inset
+
+ a consistent estimate of 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+?
 \end_layout
 
 \begin_layout Standard
