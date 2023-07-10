@@ -65,14 +65,14 @@ theorems-ams-extended
 \pdf_quoted_options "colorlinks=true,allcolors=blue"
 \papersize a4paper
 \use_geometry true
-\use_package amsmath 2
-\use_package amssymb 2
+\use_package amsmath 1
+\use_package amssymb 1
 \use_package cancel 1
-\use_package esint 0
+\use_package esint 1
 \use_package mathdots 1
 \use_package mathtools 1
 \use_package mhchem 1
-\use_package stackrel 0
+\use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
 \cite_engine natbib
@@ -5155,22 +5155,6 @@ For the model with a constant and a single regressor,
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-newpage
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -5610,129 +5594,89 @@ Write an Octave program that generates a histogram for
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
 Consider the following regression model:
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{equation*} y_{i}=
-\backslash
-beta _{1}x_{1i}+
-\backslash
-beta _{2}x_{2i}+u_{i} 
-\backslash
-end{equation*}
-\end_layout
-
-\begin_layout Plain Layout
-
-where $E(x_{1i})=0,E(x_{2i})=0,Var(x_{1i})=
-\backslash
-sigma _{1}^{2},Var(x_{2i})=
-\backslash
-sigma _{2}^{2}$ 
-\backslash
- and $Cov(x_{1i},x_{2i}) $=$
-\backslash
-sigma _{12}.$ The model satisfies the basic OLS
-\backslash
- assumptions.
- However, a loose econometrician estimates the following model:
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{equation*} y_{i}=
-\backslash
-beta _{1}x_{1i}+v_{i} 
-\backslash
-end{equation*}
-\end_layout
-
-\begin_layout Plain Layout
-
-where $
-\backslash
-tilde{
-\backslash
-beta}_{1}$ is the estimator of the parameter $
-\backslash
-beta _{1}.$
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-a) Compute $plim(
-\backslash
-tilde{
-\backslash
-beta}_{1})$.
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-b) Compute the asymptotic bias of $
-\backslash
-tilde{
-\backslash
-beta}_{1}$ (i.e.
-  $plim(
-\backslash
-tilde{
-\backslash
-beta}_{1})-
-\backslash
-beta _{1}$).
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-c) Under which conditions is $
-\backslash
-tilde{
-\backslash
-beta}_{1}$ a consistent estimate of $
-\backslash
-beta _{1}$?
-\end_layout
+\begin_inset Formula 
+\[
+y_{i}=\beta_{1}x_{1i}+\beta_{2}x_{2i}+u_{i}
+\]
 
 \end_inset
 
+where 
+\begin_inset Formula $E(x_{1i})=0,E(x_{2i})=0,Var(x_{1i})=\sigma_{1}^{2},Var(x_{2i})=\sigma_{2}^{2}$
+\end_inset
 
+ 
+\begin_inset space \space{}
+\end_inset
+
+and 
+\begin_inset Formula $Cov(x_{1i},x_{2i})$
+\end_inset
+
+=
+\begin_inset Formula $\sigma_{12}.$
+\end_inset
+
+ The model satisfies the basic OLS
+\begin_inset space \space{}
+\end_inset
+
+assumptions.
+ However, a loose econometrician estimates the following model: 
+\begin_inset Formula 
+\[
+y_{i}=\beta_{1}x_{1i}+v_{i}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\beta}_{1}$
+\end_inset
+
+ is the estimator of the parameter 
+\begin_inset Formula $\beta_{1}.$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ a) Compute 
+\begin_inset Formula $plim(\tilde{\beta}_{1})$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+ b) Compute the asymptotic bias of 
+\begin_inset Formula $\tilde{\beta}_{1}$
+\end_inset
+
+ (i.e.
+ 
+\begin_inset Formula $plim(\tilde{\beta}_{1})-\beta_{1}$
+\end_inset
+
+).
+\begin_inset Newline newline
+\end_inset
+
+ c) Under which conditions is 
+\begin_inset Formula $\tilde{\beta}_{1}$
+\end_inset
+
+ a consistent estimate of 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+?
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-newpage
-\end_layout
-
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -9707,175 +9651,15 @@ Consider estimation results for several models:
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-%%% the following needs the amsmath LaTeX package
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{gather}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{split}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-widehat{
-\backslash
-rm chd} &= 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-underset{(58.939)}{334.914}
-\end_layout
-
-\begin_layout Plain Layout
-
-+
-\backslash
-underset{(5.156)}{5.41216}
-\backslash
-,
-\backslash
-mbox{cig}
-\end_layout
-
-\begin_layout Plain Layout
-
-+
-\backslash
-underset{(7.373)}{36.8783}
-\backslash
-,
-\backslash
-mbox{spirits}
-\end_layout
-
-\begin_layout Plain Layout
-
--
-\backslash
-underset{(1.2513)}{5.10365}
-\backslash
-,
-\backslash
-mbox{beer}
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-& +
-\backslash
-underset{(12.735)}{13.9764}
-\backslash
-,
-\backslash
-mbox{wine}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{split}
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-notag 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-T = 34 
-\backslash
-quad 
-\backslash
-bar{R}^2 = 0.5528 
-\backslash
-quad F(4,29) = 11.2 
-\backslash
-quad 
-\backslash
-hat{
-\backslash
-sigma} = 9.9945
-\backslash
-notag 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-centerline{(standard errors in parentheses)} 
-\backslash
-notag
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{gather}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
+\begin_inset Formula 
+\begin{gather*}
+\begin{split}\widehat{{\rm chd}} & =\underset{(58.939)}{334.914}+\underset{(5.156)}{5.41216}\,\mbox{cig}+\underset{(7.373)}{36.8783}\,\mbox{spirits}-\underset{(1.2513)}{5.10365}\,\mbox{beer}\\
+ & +\underset{(12.735)}{13.9764}\,\mbox{wine}
+\end{split}
+\\
+T=34\quad\bar{R}^{2}=0.5528\quad F(4,29)=11.2\quad\hat{\sigma}=9.9945\\
+\centerline{\text{(standard errors in parentheses)}}
+\end{gather*}
 
 \end_inset
 
@@ -9883,142 +9667,12 @@ end{gather}
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-%%% the following needs the amsmath LaTeX package
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{gather}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-widehat{
-\backslash
-rm chd} = 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-underset{(56.624)}{353.581}
-\end_layout
-
-\begin_layout Plain Layout
-
-+
-\backslash
-underset{(4.7523)}{3.17560}
-\backslash
-,
-\backslash
-mbox{cig}
-\end_layout
-
-\begin_layout Plain Layout
-
-+
-\backslash
-underset{(7.275)}{38.3481}
-\backslash
-,
-\backslash
-mbox{spirits}
-\end_layout
-
-\begin_layout Plain Layout
-
--
-\backslash
-underset{(1.0102)}{4.28816}
-\backslash
-,
-\backslash
-mbox{beer}
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-notag 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-T = 34 
-\backslash
-quad 
-\backslash
-bar{R}^2 = 0.5498 
-\backslash
-quad F(3,30) = 14.433 
-\backslash
-quad 
-\backslash
-hat{
-\backslash
-sigma} = 10.028
-\backslash
-notag 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-centerline{(standard errors in parentheses)} 
-\backslash
-notag
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{gather}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
+\begin_inset Formula 
+\begin{gather*}
+\widehat{{\rm chd}}=\underset{(56.624)}{353.581}+\underset{(4.7523)}{3.17560}\,\mbox{cig}+\underset{(7.275)}{38.3481}\,\mbox{spirits}-\underset{(1.0102)}{4.28816}\,\mbox{beer}\\
+T=34\quad\bar{R}^{2}=0.5498\quad F(3,30)=14.433\quad\hat{\sigma}=10.028\\
+\centerline{\text{(standard errors in parentheses)}}
+\end{gather*}
 
 \end_inset
 
@@ -10026,146 +9680,16 @@ end{gather}
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-%%% the following needs the amsmath LaTeX package
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{gather}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-widehat{
-\backslash
-rm chd} = 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-underset{(67.21)}{243.310}
-\end_layout
-
-\begin_layout Plain Layout
-
-+
-\backslash
-underset{(6.1508)}{10.7535}
-\backslash
-,
-\backslash
-mbox{cig}
-\end_layout
-
-\begin_layout Plain Layout
-
-+
-\backslash
-underset{(8.0359)}{22.8012}
-\backslash
-,
-\backslash
-mbox{spirits}
-\end_layout
-
-\begin_layout Plain Layout
-
--
-\backslash
-underset{(12.638)}{16.8689}
-\backslash
-,
-\backslash
-mbox{wine}
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-notag 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-T = 34 
-\backslash
-quad 
-\backslash
-bar{R}^2 = 0.3198 
-\backslash
-quad F(3,30) = 6.1709 
-\backslash
-quad 
-\backslash
-hat{
-\backslash
-sigma} = 12.327
-\backslash
-notag 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-centerline{(standard errors in parentheses)} 
-\backslash
-notag
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{gather}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather*}
+\widehat{{\rm chd}}=\underset{(67.21)}{243.310}+\underset{(6.1508)}{10.7535}\,\mbox{cig}+\underset{(8.0359)}{22.8012}\,\mbox{spirits}-\underset{(12.638)}{16.8689}\,\mbox{wine}\\
+T=34\quad\bar{R}^{2}=0.3198\quad F(3,30)=6.1709\quad\hat{\sigma}=12.327\\
+\centerline{\text{(standard errors in parentheses)}}
+\end{gather*}
 
 \end_inset
 
@@ -10173,131 +9697,12 @@ end{gather}
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-%%% the following needs the amsmath LaTeX package
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{gather}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-widehat{
-\backslash
-rm chd} = 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-underset{(49.119)}{181.219}
-\end_layout
-
-\begin_layout Plain Layout
-
-+
-\backslash
-underset{(4.4371)}{16.5146}
-\backslash
-,
-\backslash
-mbox{cig}
-\end_layout
-
-\begin_layout Plain Layout
-
-+
-\backslash
-underset{(6.2079)}{15.8672}
-\backslash
-,
-\backslash
-mbox{spirits}
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\backslash
-notag 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-T = 34 
-\backslash
-quad 
-\backslash
-bar{R}^2 = 0.3026 
-\backslash
-quad F(2,31) = 8.1598 
-\backslash
-quad 
-\backslash
-hat{
-\backslash
-sigma} = 12.481
-\backslash
-notag 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-centerline{(standard errors in parentheses)} 
-\backslash
-notag
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{gather}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
+\begin_inset Formula 
+\begin{gather*}
+\widehat{{\rm chd}}=\underset{(49.119)}{181.219}+\underset{(4.4371)}{16.5146}\,\mbox{cig}+\underset{(6.2079)}{15.8672}\,\mbox{spirits}\\
+T=34\quad\bar{R}^{2}=0.3026\quad F(2,31)=8.1598\quad\hat{\sigma}=12.481\\
+\centerline{\text{(standard errors in parentheses)}}
+\end{gather*}
 
 \end_inset
 
@@ -22384,16 +21789,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-newpage
-\end_layout
-
+\begin_inset Newpage newpage
 \end_inset
 
 
