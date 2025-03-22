@@ -1,6 +1,9 @@
-# This does estimation via simulated annealing, only want point estimates.
+# This does estimation via simulated annealing, only want point estimates to
+# check bias correction
+# Also, focussing only on gamma and rho_eta, as these are the only two with 
+# significant bias. This is to speed it up.
 
-using PrettyTables, Pkg, CSV, Distributions, LinearAlgebra, CUDA
+using Pkg, CSV, Distributions, LinearAlgebra, CUDA, Tables
 
 cd(@__DIR__)
 Pkg.activate(".")
@@ -9,12 +12,11 @@ include("Setup.jl")
 include("samin.jl")
 
 function main()
+outfile = "PointEstimationResults.txt"
+
 
 maxevals = 300
-reps = 100 # number of Monte Carlo reps
-# holders for results
-thetahat_nn = [zeros(7) for _=1:reps] 
-thetahat_sa = [zeros(7) for _=1:reps]
+reps = 6 # number of Monte Carlo reps
 
 net = load_trained()
 Flux.testmode!(net)
@@ -59,7 +61,6 @@ data |> gpu
 fit = net(data)
 ## This is the raw TCN estimate using the official data set
 θnn = UntransformParameters(fit)[:]
-thetahat_nn[rep] = θnn
 
 # get the net fit
 θnn  = Float64.(θnn)
@@ -68,25 +69,26 @@ thetahat_nn[rep] = θnn
 data = Float32.(MakeData(θnn, 1000, CKmodel))
 data |> gpu
 fit = net(data)
-m = UntransformParameters(fit)'
-c = Float64.(cov(m))
+m = Float64.(UntransformParameters(fit)')
+c = diagm(diag(cov(m)))
 Weight = inv(c)
 @show round.(Weight, digits = 4)
 # define objective
 S = 100  # number of simulations for moments
 obj = θ -> bmsmobjective(θ, θnn, Weight, S)
-lb, ub = PriorSupport()
-lb = Float64.(lb)
-ub = Float64.(ub)
-θhat, junk, junk, junk =  samin(obj, θnn, lb, ub, rt=0.8, nt=3, ns=1, maxevals=maxevals, functol=1e-5, paramtol=1e-3, coverage_ok=1, verbosity=3)
-thetahat_sa[rep] = θhat
-end
+ll, uu = PriorSupport()
+lb = copy(θnn)
+lb[2] = ll[2]
+lb[5] = ll[5]
+ub = copy(θnn)
+ub[2] = uu[2]
+ub[5] = uu[5]
 
-err_nn = [thetahat_nn[i] - TrueParameters() for i = 1:reps] 
-err_sa = [thetahat_sa[i] - TrueParameters() for i = 1:reps] 
-
-err_nn, err_sa, thetahat_nn, thetahat_sa
+θsa, junk, junk, junk =  samin(obj, θnn, lb, ub, rt=0.5, nt=3, ns=1, maxevals=maxevals, functol=1e-5, paramtol=1e-3, coverage_ok=1, verbosity=3)
+a = zeros(1,14)
+a[1,1:7] = θnn 
+a[1,8:14] = θsa 
+CSV.write(outfile, Tables.table(round.(a, digits=5)), writeheader=false, append=true) 
 end
-err_nn, err_sa, thetahat_nn, thetahat_sa = main()
-mean(err_nn)
-mean(err_sa)
+end
+main()

@@ -54172,14 +54172,25 @@ CI coverage,
 
 \end_layout
 
-\begin_layout Subsection
-Simulated Neural Moments
+\begin_layout Section
+Simulation-based estimation using neural nets
 \end_layout
 
 \begin_layout Standard
-A solution to this problem is to reduce the dimension of the statistics by passing them through a trained neural net.
- The following may not be a general solution,
- but it has worked well in all cases I have tried it.
+Neural nets can do amazing things when they are well trained.
+ Training a net well requires access to a lot of training data.
+ When the model is simulable,
+ we can generate as much training data as we would like.
+ Nets and simulation based estimation are tools that work very well together.
+\end_layout
+
+\begin_layout Subsection
+Simulated Neural Moments (SNM)
+\end_layout
+
+\begin_layout Standard
+A first example is what I call Simulated Neural Moments (SNM),
+ which is based upon a previously defined vector of statistics.
 \end_layout
 
 \begin_layout Itemize
@@ -54265,14 +54276,7 @@ nolink "false"
  Note that when the neural statistics are used (columns labeled Z),
  the coverage is statistically correct.
  The results using the original statistics,
- without the neural net (the column labeled W) are a little better than what's in the previous figure,
- but are still far from correct.
- There are some differences in the Monte Carlo design which may explain these differences.
- The main difference is that,
- for the results here,
- the criterion function was the continuous updating version of GMM,
- whereas the previous results used two step GMM.
- 
+ without the neural net (the column labeled W) are far from correct.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -54350,7 +54354,7 @@ name "fig:95%-CI-coverage,"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsubsection
 Simulated Neural Moments estimation of the DSGE model
 \end_layout
 
@@ -54369,6 +54373,19 @@ href{./Examples/DSGE/SimulatedNeuralMoments/Estimate.jl}{Estimate.jl}
 \end_inset
 
  allows you to estimate the simple example DSGE model using Simulated Neural Moments.
+ The statistics by the net as the input are the same statistics as were used for GMM estimation,
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:GMM-estimation-of"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -54401,8 +54418,7 @@ The NN fit tracks the parameters pretty well.
 \begin_layout Standard
 \begin_inset Graphics
 	filename Examples/DSGE/SimulatedNeuralMoments/nnfit.png
-	width 12cm
-	special height=15cm
+	scale 120
 
 \end_inset
 
@@ -54486,35 +54502,7 @@ the posterior mean or median point estimates are good,
 the 95% confidence intervals always contain the true parameter values.
  This is different,
  compared to what we've seen for ML and GMM.
- Tight standard errors and confidence intervals that don't over-reject true parameter values are something we have yet to see.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The chain follows.
- It is short,
- only 1000 draws.
- It seems to mix reasonably well,
- but in practice,
- one would like a longer chain to reduce the variance of the posterior,
- especially in the tails,
- in order to get reliable confidence intervals.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename Examples/DSGE/SimulatedNeuralMoments/chain.png
-	width 15cm
-
-\end_inset
-
-
+ Fairly low standard deviations and confidence intervals that don't over-reject true parameter values are something we have yet to see.
 \end_layout
 
 \begin_layout Standard
@@ -54525,7 +54513,7 @@ The chain follows.
 \end_layout
 
 \begin_layout Subsection
-Deep Simulated Moments
+Deep Simulated Moments (DSM)
 \end_layout
 
 \begin_layout Itemize
@@ -54554,14 +54542,14 @@ literal "false"
 
 \begin_deeper
 \begin_layout Itemize
-To capture the information in the sequence of observation in the sample,
+To capture the information in the sequence of observations in the sample,
  a more sophisticated net is required.
  The paper proposes temporal convolutional nets (TCNs) for this purpose.
  
 \end_layout
 
 \begin_layout Itemize
-This approach has been found to have lower RMSE than the maximum likelihood estimator,
+This approach has been found to lead tp lower RMSE than the maximum likelihood estimator,
  for several small test models,
  and to have lower RMSE that a neural moment estimator that uses summary statistics.
  
@@ -54569,7 +54557,8 @@ This approach has been found to have lower RMSE than the maximum likelihood esti
 
 \begin_layout Itemize
 This paper is certainly not the last word on the topic,
- but it does show that neural nets have much promise for improving the efficiency of simulated method of moments type estimators.
+ but it does show that neural nets have much promise for improving the efficiency of simulated method of moments type estimators,
+ or to at least get around possible problems due to a poor choice of initial statistics.
 \end_layout
 
 \end_deeper
@@ -54589,10 +54578,22 @@ href{./Examples/DSGE/SNM-TCN/Estimate.jl}{Estimate.jl}
 \end_inset
 
  and associated files.
+ 
+\end_layout
+
+\begin_layout Itemize
+Because the net is much more complex,
+ working with this code requires using a GPU,
+ with CUDA computing.
+ The programming is somewhat complex....
 \begin_inset Newpage newpage
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+DSM results for the DSGE model
 \end_layout
 
 \begin_layout Standard
@@ -54641,6 +54642,84 @@ The performance is better than the quasi ML estimator,
 \end_layout
 
 \begin_layout Standard
+There is some bias in the previous results,
+ for the 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+ parameters,
+ in particular.
+ To illustrate the bias correcting property of MSM estimation,
+ here is a small (100 replications) Monte Carlo study of the MSM point estimator,
+ computed using simulated annealing to minimize the usual MSM criterion,
+ where the moments are 
+\begin_inset Formula $\bar{m}_{n}(\theta)=\text{\ensuremath{\hat{\phi}}-\ensuremath{\frac{1}{H}\sum_{h=1}^{H}\tilde{\phi^{h}}(\theta)}}$
+\end_inset
+
+ and the statistic 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is the output of the trained deep temporal convolutional net.
+ To save time,
+ all 
+\begin_inset Formula $\theta$
+\end_inset
+
+ parameters were held at the TCN estimates using the real data,
+ except for the two parameter that exhibit significant bias,
+ 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+ .
+ Note how bias and RMSE decline.
+ In particular,
+ the estimator now has very low bias for all parameters,
+ and RMSE for 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ is lower than what we have seen using any other estimation method.
+ For the other parameters,
+ RMSE is similar to that obtained using SNM.
+ The SNM estimator can also be bias corrected in the same way we have done here,
+ results for that are in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "creel2021inference"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Examples/DSGE/SNM-TCN/ResultsSA.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Results for CUE-GMM using the typical data set we have used for all the methods,
  using the TCN fit as the simulated moments are
 \end_layout
@@ -54667,25 +54746,8 @@ the 95% CIs are tight,
 \end_layout
 
 \begin_layout Itemize
-in general,
- the results are very similar to the SNM (neural net with summary statistics) results,
- and better than what we have seen with the other estimators.
- 
-\end_layout
-
-\begin_layout Itemize
-The two neural net estimators have in common the use of Bayesian MSM,
- which can help to correct bias,
- and the use of a just-identifying statistic for the indirect inference 
-\begin_inset Quotes sld
-\end_inset
-
-likelihood
-\begin_inset Quotes srd
-\end_inset
-
-.
- This combination seems to work well.
+note that the Bayesian MSM version (last column) is closer to the true values than the raw net output (3rd) column,
+ further evidence of bias correction working.
 \end_layout
 
 \begin_layout Itemize
@@ -54702,27 +54764,6 @@ Deep Simulated Moments
  and essentially requires using GPUs,
  which could be a barrier for many people.
  
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-The chains follow.
- They look pretty good.
- It would be better to use longer chains,
- to smooth out the bumps in the marginal densities.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename Examples/DSGE/SNM-TCN/chain.png
-	width 20cm
-
-\end_inset
-
-
 \begin_inset Newpage newpage
 \end_inset
 
@@ -61420,7 +61461,7 @@ status open
 
 
 \backslash
-href{./PracticalSummaries/19-PanelData.jl}{here}
+href{./PracticalSummaries/20-PanelData.jl}{here}
 \end_layout
 
 \end_inset
