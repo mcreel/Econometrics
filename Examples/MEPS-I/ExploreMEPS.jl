@@ -1,6 +1,7 @@
 # Read in the data
 using Econometrics:dstats
 using DelimitedFiles
+cd(@__DIR__)
 data = readdlm("../Data/meps1996.data")
 
 #	The variables and their columns

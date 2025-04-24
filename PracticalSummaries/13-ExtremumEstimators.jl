@@ -74,6 +74,7 @@ all(isequal.(Jhat, 2x'x/n))
 using LinearAlgebra
 v∞ = inv(Jhat)*Ihat*inv(Jhat) # this is the estimate of the limiting var of √n(β-β⁰) 
 se = sqrt.(diag(v∞/n))   # to get small sample est. variance, divide by n
+ols(y,x)
 
 ##
 
@@ -110,14 +111,16 @@ plot!(x,fitted)
 
 # We know that the pseudo-true parameter values are 7/6 and -1. Let's verify
 # that the OLS estimates are asymptotically normally distributed about these
-# values. To do this, we will construct asymptotic 100x(1-α)% confidence intervals,
+# values, as the extremum estimation theory tells us they should be. 
+# 
+# To do this, we will construct asymptotic 100x(1-α)% confidence intervals,
 # and verify that the pseudo-true values lie inside them approximately 100x(1-α)% of
 # the times we repeat the procedure, at least when n is large enough
 using LinearAlgebra, Statistics, Distributions
-n = 20				# try small and large values here,
+n = 2000				# try small and large values here,
 					# to see accuracy of asymptotic approximation
 reps = 10000
-α = 0.05			# try out 90, 95 and 99% CIs
+α = 0.01			# try out 90, 95 and 99% CIs
 crit = quantile(Normal(),1-α/2)
 β⁰ = [7/6; -1.]
 inci = zeros(reps, 2)
@@ -126,13 +129,15 @@ for i = 1:reps
 	X = [ones(n) x] # define regressor matrix for linear approximation about 0
 	βhat, vβhat, junk = ols(y, X, silent=true) 
 	# note: OLS uses the extremum theory-based sandwich covariance estimator, by default.
-	# as we saw above
+	# as:wq we saw above
 	se = sqrt.(diag(vβhat))
 	inci[i,:] = (β⁰ .>= βhat .- crit*se) .& (β⁰ .<= βhat .+ crit*se)
 end
 ci = Int64(100*(1-α))
 coverage = mean(inci, dims=1)
-println("Coverage of $ci% CIs: ", coverage) # these should be approximately 1-α, at least when n is large enough
+println("proportion of times true value is inside $ci % confidence interval")
+println("intercept: ", coverage[1])
+println("slope: ", coverage[2])
 
 ##
 

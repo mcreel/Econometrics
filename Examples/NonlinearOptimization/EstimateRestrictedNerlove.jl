@@ -38,8 +38,6 @@ prettyprint(thetahat)
 
 println("Exercise: you should construct a qF test using the unrestricted and")
 println("restricted objective function values")
-println("Because of inequality restrictions, the asyptotic distribution of the test is complicated.
-Nevertheless, just using the critical value from the regular χ² distribution suggests that the
-restrictions are not rejected at conventional significance levels.")
+
 
 

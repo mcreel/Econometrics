@@ -26,6 +26,6 @@ lb = -4*ones(2)
 ub = -lb
 thetastart = fill(-3.0, 2)
 obj = theta-> (1/n)*sum((y - x*theta).^2)
-results = samin(obj, thetastart, lb, ub, verbosity=2, rt=0.99)
+results = samin(obj, thetastart, lb, ub, verbosity=2, nt=10, ns=10, rt=0.99)
 path = results[4]
 plot!(path[:,4], path[:,5])

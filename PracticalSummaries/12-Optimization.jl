@@ -24,9 +24,10 @@ obj = β -> mean(objᵢ(β))	# average objective
 
 ##
 # fminunc is just a frontend to the Optim.jl package's LBFGS unconstrained
-# minimizer routine. To call that directly, do
+# minimizer routine. To call that directly, which exposes more options, 
+# such as choosing the algorithm, do
 using Optim
-tol = 1e-08
+tol = 1e-08  # you want to use tight enough tolerances to ensure an accurate answer
 results = Optim.optimize(obj, zeros(2), LBFGS(), 
                             Optim.Options(
                             g_tol = tol,
@@ -43,25 +44,24 @@ results = Optim.optimize(obj, zeros(2), LBFGS(),
 using ForwardDiff, LinearAlgebra
 H = ForwardDiff.hessian(obj, βhat)
 eigen(H).values
-
-##
 # The eigenvalues are all positive, so the Hessian is p.d. at
 # the solution. For the OLS case, the objective function is
 # known to be globally convex, so multiple local optima are not
-# a problem. Let's look at another problem, which has multiple
+# a problem.
+
+## Let's look at another problem, which has multiple
 # minima, and see how to find the global minimizer
 # Here's another objective function
 f(x,y) = -(3*(1-x)^2 * exp(-(x^2) - (y+1)^2)
     - 6*(x/5 - x^3 - y^5) * exp(-x^2 - y^2)
     - 1/3 * exp(-(x+1)^2 - y^2))
- 
-##
 # let's explore it:
 using Plots
 plotly()
 x = range(-4, step=0.1, stop=4)
 y = x
 surface(x, y, (x,y)->f(x,y), color=:viridis)
+
 ##
 contour(x,y,(x,y)->f(x,y), c=:viridis)
 xlabel!("x")
@@ -109,6 +109,9 @@ ForwardDiff.gradient(f, θstart)
 # occasionally goes off far away from the 3 local minimizers. In that
 # region, the gradients are zero, as we see in the plots, and the algorithm
 # can't find better points.
+
+# NOTE: in class, split the plot pane out to a new window, to do multiple runs
+
 using Econometrics, Plots, Optim
 gr() # using the GR backend
 x = range(-4, step=0.1, stop=4)
@@ -163,12 +166,15 @@ using Econometrics, Plots
 # try setting rt=0.05, it will fail sometimes, because the 
 # search region is shrunk too quickly
 # rt=0.9 has worked every time I've tried it
-gr() # using the GR backend
+plotly() # using the GR backend
 x = range(-4, step=0.1, stop=4)
 y = x
 Plots.contour(x,y,f, c=:viridis)
 
-rt = 0.9
+rt = 0.8  # This controls the cooling schedule. 
+            # If close enough to 1, gives a good guarantee.
+            # Closer to 0 is faster, but more likely to miss the 
+            # global minimizer
 lower = [-4., -4.]
 upper = -lower
 θstart = [2.0, -3.9] # a pretty bad starting point
@@ -179,8 +185,7 @@ for i = 1:size(trace,1)-1
     sleep(0.05)
 end
 θhat = round.(trace[end,:], digits=5)
-display(scatter!([trace[end,1]], [trace[end,2]], legend=true, label="θhat=$θhat", color=:yellow, markershape=:star5, markersize=10))
-
+display(scatter!([trace[end,1]], [trace[end,2]], legend=true, label="θhat=$θhat", color=:yellow, markershape=:circle, markersize=5))
 println("for reference, the global minimizer is (-0.00879, 1.58163)")
 println("with the function value -4.8611920055")
 

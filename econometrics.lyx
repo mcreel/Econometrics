@@ -24864,7 +24864,7 @@ Trace of SA path to minimize sum of squared errors
 \end_layout
 
 \begin_layout Section
-Examples
+Example
 \end_layout
 
 \begin_layout Subsection
@@ -24918,439 +24918,6 @@ href{./Examples/NonlinearOptimization/EstimateRestrictedNerlove.jl}{EstimateRest
 \end_inset
 
  test.
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:MEPS data"
-
-\end_inset
-
-Maximum likelihood estimation using count data:
- The MEPS data and the Poisson model
-\end_layout
-
-\begin_layout Standard
-To show optimization methods in practice,
- using real economic data,
- this section presents maximum likelihood estimation results for a particular model using real data.
- The focus at present is simply on numeric optimization.
- Later,
- after studying maximum likelihood estimation,
- this section can be read again.
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Demand for health care is usually thought of a a derived demand:
- health care is an input to a home production function that produces health,
- and health is an argument of the utility function.
- Grossman (1972),
- for example,
- models health as a capital stock that is subject to depreciation (e.g.,
- the effects of ageing).
- Health care visits restore the stock.
- Under the home production framework,
- individuals decide when to make health care visits to maintain their health stock,
- or to deal with negative shocks to the stock in the form of accidents or illnesses.
- As such,
- individual demand will be a function of the parameters of the individuals' utility functions.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset CommandInset label
-LatexCommand label
-name "The-,-meps1996.data,"
-
-\end_inset
-
-The 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{./Examples/Data/meps1996.data}{MEPS health data file} 
-\end_layout
-
-\end_inset
-
-,
- 
-\family typewriter
-meps1996.data,
-
-\family default
- contains 4564 observations on six measures of health care usage.
- The data is from the 1996 Medical Expenditure Panel Survey (MEPS).
- There are now more than 20 years of data!
- You can get more information at 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.meps.ahrq.gov/
-\end_layout
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-The six measures of use are are
-\end_layout
-
-\begin_layout Itemize
-office-based visits (OBDV)
-\end_layout
-
-\begin_layout Itemize
-outpatient visits (OPV)
-\end_layout
-
-\begin_layout Itemize
-inpatient visits (hospitalizations) (IPV)
-\end_layout
-
-\begin_layout Itemize
-emergency room visits (ERV)
-\end_layout
-
-\begin_layout Itemize
-dental visits (DV)
-\end_layout
-
-\begin_layout Itemize
-and number of prescription drugs taken (PRESCR).
- These form columns 1 - 6 of 
-\family typewriter
-meps1996.data
-\family default
-.
- 
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The conditioning variables are 
-\end_layout
-
-\begin_layout Itemize
-public insurance (PUBLIC)
-\end_layout
-
-\begin_layout Itemize
-private insurance (PRIV)
-\end_layout
-
-\begin_layout Itemize
-sex (SEX)
-\end_layout
-
-\begin_layout Itemize
-age (AGE)
-\end_layout
-
-\begin_layout Itemize
-years of education (EDUC)
-\end_layout
-
-\begin_layout Itemize
-and income (INCOME).
-\end_layout
-
-\begin_layout Standard
-These form columns 7 - 12 of the file
-\family typewriter
-,
-
-\family default
- in the order given here.
- PRIV and PUBLIC are 0/1 binary variables,
- where a 1 indicates that the person has access to public or private insurance coverage.
- SEX is also 0/1,
- where 1 indicates that the person is female.
- This data will be used in several examples in what follows.
-\end_layout
-
-\begin_layout Itemize
-Perhaps there may be common factors behind health care visits and the decision to buy private insurance.
- If there are common unobserved factors (perhaps,
- health,
- for example),
- then private insurace would be an endogenous variable.
- We will ignore that at present,
- but come back to it later.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The program 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{./Examples/MEPS-I/ExploreMEPS.jl}{ExploreMEPS.jl} 
-\end_layout
-
-\end_inset
-
- shows how the data may be read in,
- and gives some descriptive information about variables,
- which follows:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-inline false
-status collapsed
-
-\begin_layout Plain Layout
-
-MEPS data,
- 1996,
- complete data set statistics
-\end_layout
-
-\begin_layout Plain Layout
-
-4564 observations
-\end_layout
-
-\begin_layout Plain Layout
-
-            mean    st.
- dev.
-         min         max  
-\end_layout
-
-\begin_layout Plain Layout
-
-OBDV       3.279       6.171       0.000     133.000
-\end_layout
-
-\begin_layout Plain Layout
-
-OPV        0.260       1.962       0.000      78.000
-\end_layout
-
-\begin_layout Plain Layout
-
-IPV        0.194       0.637       0.000      17.000
-\end_layout
-
-\begin_layout Plain Layout
-
-ERV        0.086       0.389       0.000       5.000
-\end_layout
-
-\begin_layout Plain Layout
-
-DV         1.054       1.875       0.000      32.000
-\end_layout
-
-\begin_layout Plain Layout
-
-RX         8.384      18.852       0.000     316.000
-\end_layout
-
-\begin_layout Plain Layout
-
-PUB        0.141       0.334       0.000       1.000
-\end_layout
-
-\begin_layout Plain Layout
-
-PRIV       0.674       0.449       0.000       1.000
-\end_layout
-
-\begin_layout Plain Layout
-
-SEX        0.517       0.500       0.000       1.000
-\end_layout
-
-\begin_layout Plain Layout
-
-AGE       39.354      12.198      18.000      65.000
-\end_layout
-
-\begin_layout Plain Layout
-
-EDUC      12.652       2.896       0.000      17.000
-\end_layout
-
-\begin_layout Plain Layout
-
-INC    42803.630   34108.362       0.000  250463.330
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-All of the measures of use are count data,
- which means that they take on the values 
-\begin_inset Formula ${0,1,2,...}$
-\end_inset
-
-.
- It might be reasonable to try to use this information by specifying the density as a count data density.
- One of the simplest count data densities is the Poisson density,
- which is
-\begin_inset Formula 
-\begin{eqnarray*}
-f_{Y}(y) & = & \frac{\exp(-\lambda)\lambda^{y}}{y!},\,y=0,1,2,....
-\end{eqnarray*}
-
-\end_inset
-
-
-\color blue
-For this density,
- 
-\begin_inset Formula $E(Y)=V(Y)=\lambda$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-The Poisson average log-likelihood function (assuming the cross sectional observations are independent of one another,
- so the joint density is the product of the marginals) is 
-\begin_inset Formula 
-\[
-s_{n}(\theta)=\frac{1}{n}\sum_{i=1}^{n}\left(-\lambda_{i}+y_{i}\ln\lambda_{i}-\ln y_{i}!\right)
-\]
-
-\end_inset
-
-We will parameterize the model as
-\begin_inset Formula 
-\begin{eqnarray}
-\lambda_{i} & = & \exp(\mathbf{x}_{i}^{\prime}\beta)\nonumber \\
-\mathbf{x}_{i} & = & [1\,\,PUBLIC\,\,PRIV\,\,SEX\,\,AGE\,\,EDUC\,\,INC]^{\prime}\label{eq:Poisson model OBDV}
-\end{eqnarray}
-
-\end_inset
-
-This ensures that the mean is positive,
- as is required for the Poisson model,
- and now the mean (and the variance) depend upon explanatory variables.
- Note that for this parameterization
-\begin_inset Formula 
-\[
-\frac{\partial\lambda}{\partial x_{j}}=\lambda\beta_{j},
-\]
-
-\end_inset
-
-so the elasticity of the conditional mean of 
-\begin_inset Formula $y$
-\end_inset
-
- with respect to the 
-\begin_inset Formula $j^{th}$
-\end_inset
-
- conditioning variable is
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\frac{\partial\lambda}{\partial x_{j}}\frac{x_{j}}{\lambda}=\beta_{j}x_{j}
-\]
-
-\end_inset
-
- Thus,
- the interpretation of the parameters is the same as for a semi-log linear regression model.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The program 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-href{./Examples/MEPS-I/EstimatePoisson.jl}{EstimatePoisson.jl}
-\end_layout
-
-\end_inset
-
- estimates a Poisson model using the full data set.
- The results of the estimation,
- using OBDV as the dependent variable are here:
- 
-\begin_inset CommandInset include
-LatexCommand verbatiminput
-filename "Examples/MEPS-I/PoissonOBDV.out"
-literal "true"
-
-\end_inset
-
-
 \begin_inset Newpage newpage
 \end_inset
 
@@ -26211,120 +25778,6 @@ extremum estimator
 \end_layout
 
 \begin_layout Standard
-Because the data 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-
-\begin_inset Formula $\mathbf{Z}_{n}(\omega)$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
- depends on 
-\begin_inset Formula $\omega$
-\end_inset
-
-,
- we can emphasize this by writing 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-
-\begin_inset Formula $s_{n}(\omega,\theta)$
-\end_inset
-
- or 
-\begin_inset Formula $s_{n}(\mathbf{Z}_{n}(\omega),\theta)$
-\end_inset
-
-.
- I'll be loose with notation and interchange when convenient,
- to emphasize what we're focusing on,
- at the moment.
- These points of view are:
-\end_layout
-
-\begin_layout Itemize
-A data set,
- once 
-\begin_inset Formula $\omega$
-\end_inset
-
- has been drawn.
- This is just the collection of numbers in your spreadsheet.
- At this point,
- 
-\begin_inset Formula $\mathbf{Z}_{n}(\omega)$
-\end_inset
-
- is no longer random,
- and we may as well write simply 
-\begin_inset Formula $\mathbf{Z}_{n}$
-\end_inset
-
-.
- When working with 
-\begin_inset Formula $s_{n}(\mathbf{Z}_{n},\theta)$
-\end_inset
-
-,
- which is not at this point a random function,
- we will be focused on how to maximize or minimize the function,
- to get the estimate,
- and how to compute estimated variances,
- 
-\emph on
-etc.
- 
-\emph default
-The emphasis is on 
-\emph on
-how
-\emph default
- to obtain concrete numerical results.
- We will jump back to the previous chapter for that.
-\end_layout
-
-\begin_layout Itemize
-For the purposes of theory,
- we need to be able to analyze how well our estimators perform in repeated sampling,
- so we want to treat the sample as random.
- This is when we need to think about 
-\begin_inset Formula $\mathbf{Z}_{n}(\omega)$
-\end_inset
-
-,
- and how 
-\begin_inset Formula $s_{n}(\mathbf{Z}_{n}(\omega),\theta)$
-\end_inset
-
- behaves with different samples.
- This lets us focus on 
-\emph on
-why
-\emph default
- we may think of using different estimators.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -26717,7 +26170,11 @@ computing
  as in the case of OLS,
  or if that is not possible,
  by employing algorithms for optimization of nonstochastic functions.
- How to do this is the topic of Chapter 
+ 
+\emph on
+How
+\emph default
+ to do this is the topic of Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:Numeric-optimization-methods"
@@ -26733,7 +26190,11 @@ When
 \emph on
 analyzing the properties
 \emph default
- of an extremum estimator,
+ of an extremum estimator and deciding 
+\emph on
+why 
+\emph default
+to use a particular extremum estimator,
  we need to investigate what happens throughout 
 \begin_inset Formula $\Omega$
 \end_inset
@@ -28455,7 +27916,12 @@ Note that
 \begin_inset Formula $\nu_{i}$
 \end_inset
 
- is no longer a classical error - its mean is not zero.
+ is no longer a classical error - it is not independent of 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ so weak exogeneity does not hold.
  We should expect problems.
 \end_layout
 
@@ -29397,7 +28863,7 @@ Suppose that
 \begin_inset Formula $\varepsilon_{i}$
 \end_inset
 
- is independently and identically distributed
+ is independently and identically distributed 
 \begin_inset Formula $N(0,\sigma^{2}).$
 \end_inset
 
@@ -35292,6 +34758,437 @@ approximate
 
 \end_layout
 
+\begin_layout Subsection
+Example:
+ Maximum likelihood estimation using count data:
+ The MEPS data and the Poisson model
+\end_layout
+
+\begin_layout Standard
+To show optimization methods in practice,
+ using real economic data,
+ this section presents maximum likelihood estimation results for a particular model using real data.
+ The focus at present is simply on numeric optimization.
+ Later,
+ after studying maximum likelihood estimation,
+ this section can be read again.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Demand for health care is usually thought of a a derived demand:
+ health care is an input to a home production function that produces health,
+ and health is an argument of the utility function.
+ Grossman (1972),
+ for example,
+ models health as a capital stock that is subject to depreciation (e.g.,
+ the effects of ageing).
+ Health care visits restore the stock.
+ Under the home production framework,
+ individuals decide when to make health care visits to maintain their health stock,
+ or to deal with negative shocks to the stock in the form of accidents or illnesses.
+ As such,
+ individual demand will be a function of the parameters of the individuals' utility functions.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset label
+LatexCommand label
+name "The-,-meps1996.data,"
+
+\end_inset
+
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./Examples/Data/meps1996.data}{MEPS health data file} 
+\end_layout
+
+\end_inset
+
+,
+ 
+\family typewriter
+meps1996.data,
+
+\family default
+ contains 4564 observations on six measures of health care usage.
+ The data is from the 1996 Medical Expenditure Panel Survey (MEPS).
+ There are now more than 20 years of data!
+ You can get more information at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.meps.ahrq.gov/
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The six measures of use are are
+\end_layout
+
+\begin_layout Itemize
+office-based visits (OBDV)
+\end_layout
+
+\begin_layout Itemize
+outpatient visits (OPV)
+\end_layout
+
+\begin_layout Itemize
+inpatient visits (hospitalizations) (IPV)
+\end_layout
+
+\begin_layout Itemize
+emergency room visits (ERV)
+\end_layout
+
+\begin_layout Itemize
+dental visits (DV)
+\end_layout
+
+\begin_layout Itemize
+and number of prescription drugs taken (PRESCR).
+ These form columns 1 - 6 of 
+\family typewriter
+meps1996.data
+\family default
+.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The conditioning variables are 
+\end_layout
+
+\begin_layout Itemize
+public insurance (PUBLIC)
+\end_layout
+
+\begin_layout Itemize
+private insurance (PRIV)
+\end_layout
+
+\begin_layout Itemize
+sex (SEX)
+\end_layout
+
+\begin_layout Itemize
+age (AGE)
+\end_layout
+
+\begin_layout Itemize
+years of education (EDUC)
+\end_layout
+
+\begin_layout Itemize
+and income (INCOME).
+\end_layout
+
+\begin_layout Standard
+These form columns 7 - 12 of the file
+\family typewriter
+,
+
+\family default
+ in the order given here.
+ PRIV and PUBLIC are 0/1 binary variables,
+ where a 1 indicates that the person has access to public or private insurance coverage.
+ SEX is also 0/1,
+ where 1 indicates that the person is female.
+ This data will be used in several examples in what follows.
+\end_layout
+
+\begin_layout Itemize
+Perhaps there may be common factors behind health care visits and the decision to buy private insurance.
+ If there are common unobserved factors (perhaps,
+ health,
+ for example),
+ then private insurace would be an endogenous variable.
+ We will ignore that at present,
+ but come back to it later.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The program 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./Examples/MEPS-I/ExploreMEPS.jl}{ExploreMEPS.jl} 
+\end_layout
+
+\end_inset
+
+ shows how the data may be read in,
+ and gives some descriptive information about variables,
+ which follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+MEPS data,
+ 1996,
+ complete data set statistics
+\end_layout
+
+\begin_layout Plain Layout
+
+4564 observations
+\end_layout
+
+\begin_layout Plain Layout
+
+            mean    st.
+ dev.
+         min         max  
+\end_layout
+
+\begin_layout Plain Layout
+
+OBDV       3.279       6.171       0.000     133.000
+\end_layout
+
+\begin_layout Plain Layout
+
+OPV        0.260       1.962       0.000      78.000
+\end_layout
+
+\begin_layout Plain Layout
+
+IPV        0.194       0.637       0.000      17.000
+\end_layout
+
+\begin_layout Plain Layout
+
+ERV        0.086       0.389       0.000       5.000
+\end_layout
+
+\begin_layout Plain Layout
+
+DV         1.054       1.875       0.000      32.000
+\end_layout
+
+\begin_layout Plain Layout
+
+RX         8.384      18.852       0.000     316.000
+\end_layout
+
+\begin_layout Plain Layout
+
+PUB        0.141       0.334       0.000       1.000
+\end_layout
+
+\begin_layout Plain Layout
+
+PRIV       0.674       0.449       0.000       1.000
+\end_layout
+
+\begin_layout Plain Layout
+
+SEX        0.517       0.500       0.000       1.000
+\end_layout
+
+\begin_layout Plain Layout
+
+AGE       39.354      12.198      18.000      65.000
+\end_layout
+
+\begin_layout Plain Layout
+
+EDUC      12.652       2.896       0.000      17.000
+\end_layout
+
+\begin_layout Plain Layout
+
+INC    42803.630   34108.362       0.000  250463.330
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All of the measures of use are count data,
+ which means that they take on the values 
+\begin_inset Formula ${0,1,2,...}$
+\end_inset
+
+.
+ It might be reasonable to try to use this information by specifying the density as a count data density.
+ One of the simplest count data densities is the Poisson density,
+ which is
+\begin_inset Formula 
+\begin{eqnarray*}
+f_{Y}(y) & = & \frac{\exp(-\lambda)\lambda^{y}}{y!},\,y=0,1,2,....
+\end{eqnarray*}
+
+\end_inset
+
+
+\color blue
+For this density,
+ 
+\begin_inset Formula $E(Y)=V(Y)=\lambda$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The Poisson average log-likelihood function (assuming the cross sectional observations are independent of one another,
+ so the joint density is the product of the marginals) is 
+\begin_inset Formula 
+\[
+s_{n}(\theta)=\frac{1}{n}\sum_{i=1}^{n}\left(-\lambda_{i}+y_{i}\ln\lambda_{i}-\ln y_{i}!\right)
+\]
+
+\end_inset
+
+We will parameterize the model as
+\begin_inset Formula 
+\begin{eqnarray}
+\lambda_{i} & = & \exp(\mathbf{x}_{i}^{\prime}\beta)\nonumber \\
+\mathbf{x}_{i} & = & [1\,\,PUBLIC\,\,PRIV\,\,SEX\,\,AGE\,\,EDUC\,\,INC]^{\prime}\label{eq:Poisson model OBDV}
+\end{eqnarray}
+
+\end_inset
+
+This ensures that the mean is positive,
+ as is required for the Poisson model,
+ and now the mean (and the variance) depend upon explanatory variables.
+ Note that for this parameterization
+\begin_inset Formula 
+\[
+\frac{\partial\lambda}{\partial x_{j}}=\lambda\beta_{j},
+\]
+
+\end_inset
+
+so the elasticity of the conditional mean of 
+\begin_inset Formula $y$
+\end_inset
+
+ with respect to the 
+\begin_inset Formula $j^{th}$
+\end_inset
+
+ conditioning variable is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\lambda}{\partial x_{j}}\frac{x_{j}}{\lambda}=\beta_{j}x_{j}
+\]
+
+\end_inset
+
+ Thus,
+ the interpretation of the parameters is the same as for a semi-log linear regression model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The program 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+href{./Examples/MEPS-I/EstimatePoisson.jl}{EstimatePoisson.jl}
+\end_layout
+
+\end_inset
+
+ estimates a Poisson model using the full data set.
+ The results of the estimation,
+ using OBDV as the dependent variable are here:
+ 
+\begin_inset CommandInset include
+LatexCommand verbatiminput
+filename "Examples/MEPS-I/PoissonOBDV.out"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Exercise
 Examine the code in 
 \begin_inset ERT
@@ -35356,10 +35253,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -35386,14 +35279,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-OPG 
+OPG
 \end_layout
 
 \end_inset
@@ -35411,10 +35300,6 @@ OPG
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -35427,10 +35312,6 @@ alignment document
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -35451,10 +35332,6 @@ Sandwich
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -36408,8 +36285,8 @@ This section extends the Bernoulli trial model to binary response models with co
 Assume that
 \begin_inset Formula 
 \begin{eqnarray*}
-y^{*} & = & x^{\prime}\theta-\varepsilon\\
-y & = & 1(y^{*}>0)\\
+y^{*} & = & x^{\prime}\theta-\epsilon\\
+y & = & 1(y^{*}>0)
 \end{eqnarray*}
 
 \end_inset
@@ -36437,6 +36314,56 @@ is negative or positive.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The variable 
+\begin_inset Formula $y$
+\end_inset
+
+ is a binary response is a variable that takes on only two values,
+ customarily 0 and 1,
+ which can be thought of as codes for whether or not a condition is satisfied.
+ For example,
+ 0=drive to work,
+ 1=take the bus.
+ 
+\end_layout
+
+\begin_layout Standard
+We have
+\begin_inset Formula 
+\begin{eqnarray*}
+Pr(y=1) & = & F_{\epsilon}[x^{\prime}\theta]\\
+ & \equiv & p(x,\theta).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The log-likelihood function is the Bernoulli:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+s_{n}(\theta)=\frac{1}{n}\sum_{i=1}^{n}\left(y_{i}\ln p(x_{i},\theta)+(1-y_{i})\ln\left[1-p(x_{i},\theta)\right]\right)
+\]
+
+\end_inset
+
+We need to parameterize the probability that 
+\begin_inset Formula $y=1,$
+\end_inset
+
+which will depend on the distribution of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Itemize
@@ -36529,369 +36456,11 @@ Again,
 
  is the standard normal distribution function,
  then we have a probit model.
+ These two models give very similar coefficient estimates,
+ apart from a scaling factor that is due to the fatter tails of the logistic distribution.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-\color red
-The following,
- to the start of the next subsection,
- is another verification of the information matrix equality,
- skip this in lectures.
-\end_layout
-
-\begin_layout Standard
-Regardless of the parameterization,
- we are dealing with a Bernoulli density,
- 
-\begin_inset Formula 
-\[
-f_{Y_{i}}(y_{i}|x_{i})=p(x_{i},\theta)^{y_{i}}(1-p(x,\theta))^{1-y_{i}}
-\]
-
-\end_inset
-
- so as long as the observations are independent,
- the maximum likelihood (ML) estimator,
- 
-\begin_inset Formula $\hat{\theta},$
-\end_inset
-
- is the maximizer of 
-\begin_inset Formula 
-\begin{eqnarray}
-s_{n}(\theta) & = & \frac{1}{n}\sum_{i=1}^{n}\left(y_{i}\ln p(x_{i},\theta)+(1-y_{i})\ln\left[1-p(x_{i},\theta)\right]\right)\nonumber \\
- & \equiv & \frac{1}{n}\sum_{i=1}^{n}s(y_{i},x_{i},\theta).\label{s(y,A...)}
-\end{eqnarray}
-
-\end_inset
-
- Following the above theoretical results,
- 
-\begin_inset Formula $\hat{\theta}$
-\end_inset
-
- tends in probability to the 
-\begin_inset Formula $\theta_{0}$
-\end_inset
-
- that maximizes the uniform almost sure limit of 
-\begin_inset Formula $s_{n}(\theta).$
-\end_inset
-
- Noting that 
-\begin_inset Formula $\mathcal{E}y_{i}=p(x_{i},\theta_{0}),$
-\end_inset
-
- and following a SLLN for i.i.d.
- processes,
- 
-\begin_inset Formula $s_{n}(\theta)$
-\end_inset
-
- converges almost surely to the expectation of a representative term 
-\begin_inset Formula $s(y,x,\theta).$
-\end_inset
-
- First one can take the expectation conditional on 
-\begin_inset Formula $x$
-\end_inset
-
- to get 
-\begin_inset Formula 
-\[
-\mathcal{E}_{y|x}\left\{ y\ln p(x,\theta)+(1-y)\ln\left[1-p(x,\theta)\right]\right\} =p(x,\theta_{0})\ln p(x,\theta)+\left[1-p(x,\theta_{0})\right]\ln\left[1-p(x,\theta)\right].
-\]
-
-\end_inset
-
- Next taking expectation over 
-\begin_inset Formula $x$
-\end_inset
-
- we get the limiting objective function 
-\begin_inset Formula 
-\begin{equation}
-s_{\infty}(\theta)=\int_{\mathcal{X}}\left\{ p(x,\theta_{0})\ln p(x,\theta)+\left[1-p(x,\theta_{0})\right]\ln\left[1-p(x,\theta)\right]\right\} \mu(x)dx,\label{QMLlimitingobjfun}
-\end{equation}
-
-\end_inset
-
- where 
-\begin_inset Formula $\mu(x)$
-\end_inset
-
- is the (joint - the integral is understood to be multiple,
- and 
-\begin_inset Formula $\mathcal{X}$
-\end_inset
-
- is the support of 
-\begin_inset Formula $x$
-\end_inset
-
-) density function of the explanatory variables 
-\begin_inset Formula $x$
-\end_inset
-
-.
- This is clearly continuous in 
-\begin_inset Formula $\theta,$
-\end_inset
-
- as long as 
-\begin_inset Formula $p(x,\theta)$
-\end_inset
-
- is continuous,
- and if the parameter space is compact we therefore have uniform almost sure convergence.
- Note that 
-\begin_inset Formula $p(x,\theta)$
-\end_inset
-
- is continuous for the logit and probit models,
- for example.
- The maximizing element of 
-\begin_inset Formula $s_{\infty}(\theta),$
-\end_inset
-
- 
-\begin_inset Formula $\theta^{*},$
-\end_inset
-
- solves the first order conditions 
-\begin_inset Formula 
-\[
-\int_{\mathcal{X}}\left\{ \frac{p(x,\theta_{0})}{p(x,\theta^{*})}\frac{\partial}{\partial\theta}p(x,\theta^{*})-\frac{1-p(x,\theta_{0})}{1-p(x,\theta^{*})}\frac{\partial}{\partial\theta}p(x,\theta^{*})\right\} \mu(x)dx=0
-\]
-
-\end_inset
-
- This is clearly solved by 
-\begin_inset Formula $\theta^{*}=\theta_{0}.$
-\end_inset
-
- Provided the solution is unique,
- 
-\begin_inset Formula $\hat{\theta}$
-\end_inset
-
- is consistent.
- Question:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-what's needed to ensure that the solution is unique?
-\end_layout
-
-\begin_layout Standard
-The asymptotic normality theorem tells us that
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\stackrel{d}{\rightarrow}N\left[0,\mathcal{J}_{\infty}(\theta_{0})^{-1}\mathcal{I}_{\infty}(\theta_{0})\mathcal{J}_{\infty}(\theta_{0})^{-1}\right].
-\]
-
-\end_inset
-
- In the case of i.i.d.
- observations 
-\begin_inset Formula $\mathcal{I}_{\infty}(\theta_{0})=\lim_{n\rightarrow\infty}Var\sqrt{n}D_{\theta}s_{n}(\theta_{0})$
-\end_inset
-
- is simply the expectation of a typical element of the outer product of the gradient.
-\end_layout
-
-\begin_layout Itemize
-There's no need to subtract the mean,
- since it's zero,
- following the f.o.c.
- in the consistency proof above and the fact that observations are i.i.d.
-\end_layout
-
-\begin_layout Itemize
-The terms in 
-\begin_inset Formula $n$
-\end_inset
-
- also drop out by the same argument:
- 
-\begin_inset Formula 
-\begin{eqnarray*}
-\lim_{n\rightarrow\infty}Var\sqrt{n}D_{\theta}s_{n}(\theta_{0}) & = & \lim_{n\rightarrow\infty}Var\sqrt{n}D_{\theta}\frac{1}{n}\sum_{t}s(\theta_{0})\\
- & = & \lim_{n\rightarrow\infty}Var\frac{1}{\sqrt{n}}D_{\theta}\sum_{t}s(\theta_{0})\\
- & = & \lim_{n\rightarrow\infty}\frac{1}{n}Var\sum_{t}D_{\theta}s(\theta_{0})\\
- & = & \lim_{n\rightarrow\infty}VarD_{\theta}s(\theta_{0})\\
- & = & VarD_{\theta}s(\theta_{0})
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-So we get 
-\begin_inset Formula 
-\[
-\mathcal{I}_{\infty}(\theta_{0})=\mathcal{E}\left\{ \frac{\partial}{\partial\theta}s(y,x,\theta_{0})\frac{\partial}{\partial\theta^{\prime}}s(y,x,\theta_{0})\right\} .
-\]
-
-\end_inset
-
- Likewise,
- 
-\begin_inset Formula 
-\[
-\mathcal{J}_{\infty}(\theta_{0})=\mathcal{E}\frac{\partial^{2}}{\partial\theta\partial\theta^{\prime}}s(y,x,\theta_{0}).
-\]
-
-\end_inset
-
- Expectations are jointly over 
-\begin_inset Formula $y$
-\end_inset
-
- and 
-\begin_inset Formula $x,$
-\end_inset
-
- or equivalently,
- first over 
-\begin_inset Formula $y$
-\end_inset
-
- conditional on 
-\begin_inset Formula $x,$
-\end_inset
-
- then over 
-\begin_inset Formula $x.$
-\end_inset
-
- From above,
- a typical element of the objective function is 
-\begin_inset Formula 
-\[
-s(y,x,\theta_{0})=y\ln p(x,\theta_{0})+(1-y)\ln\left[1-p(x,\theta_{0})\right].
-\]
-
-\end_inset
-
- Now suppose that we are dealing with a correctly specified logit model:
- 
-\begin_inset Formula 
-\[
-p(x,\theta)=\left(1+\exp(-\mathbf{x}^{\prime}\theta)\right)^{-1}.
-\]
-
-\end_inset
-
- We can simplify the above results in this case.
- We have that
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\frac{\partial}{\partial\theta}p(x,\theta) & = & \left(1+\exp(-\mathbf{x}^{\prime}\theta)\right)^{-2}\exp(-\mathbf{x}^{\prime}\theta)\mathbf{x}\\
- & = & \left(1+\exp(-\mathbf{x}^{\prime}\theta)\right)^{-1}\frac{\exp(-\mathbf{x}^{\prime}\theta)}{1+\exp(-\mathbf{x}^{\prime}\theta)}\mathbf{x}\\
- & = & p(x,\theta)\left(1-p(x,\theta)\right)\mathbf{x}\\
- & = & \left(p(x,\theta)-p(x,\theta)^{2}\right)\mathbf{x}.
-\end{eqnarray*}
-
-\end_inset
-
- So 
-\begin_inset Formula 
-\begin{eqnarray}
-\frac{\partial}{\partial\theta}s(y,x,\theta_{0}) & = & \left[y-p(x,\theta_{0})\right]\mathbf{x}\label{QMLgradient}\\
-\frac{\partial^{2}}{\partial\theta\partial\theta^{\prime}}s(\theta_{0}) & = & -\left[p(x,\theta_{0})-p(x,\theta_{0})^{2}\right]\mathbf{xx}^{\prime}.\nonumber 
-\end{eqnarray}
-
-\end_inset
-
- Taking expectations over 
-\begin_inset Formula $y$
-\end_inset
-
- then 
-\begin_inset Formula $\mathbf{x}$
-\end_inset
-
- gives 
-\begin_inset Formula 
-\begin{eqnarray}
-\mathcal{I}_{\infty}(\theta_{0}) & = & \int E_{Y}\left[y^{2}-2p(x,\theta_{0})p(x,\theta_{0})+p(x,\theta_{0})^{2}\right]\mathbf{xx}^{\prime}\mu(x)dx\label{I}\\
- & = & \int\left[p(x,\theta_{0})-p(x,\theta_{0})^{2}\right]\mathbf{xx}^{\prime}\mu(x)dx.
-\end{eqnarray}
-
-\end_inset
-
- where we use the fact that 
-\begin_inset Formula $E_{Y}(y)=E_{Y}(y^{2})=p(\mathbf{x},\theta_{0})$
-\end_inset
-
-.
- Likewise,
- 
-\begin_inset Formula 
-\begin{equation}
-\mathcal{J}_{\infty}(\theta_{0})=-\int\left[p(x,\theta_{0})-p(x,\theta_{0})^{2}\right]\mathbf{xx}^{\prime}\mu(x)dx.\label{J}
-\end{equation}
-
-\end_inset
-
- Note that we arrive at the expected result:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-the information matrix equality holds (that is,
- 
-\begin_inset Formula $\mathcal{J}_{\infty}(\theta_{0})=-\mathcal{I}_{\infty}(\theta_{0}))$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-On a final note,
- the logit and standard normal CDF's are very similar - the logit distribution is a bit more fat-tailed.
- While coefficients will vary slightly between the two models,
- functions of interest such as estimated probabilities 
-\begin_inset Formula $p(x,\hat{\theta})$
-\end_inset
-
- will be virtually identical for the two models.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -36911,64 +36480,6 @@ name "subsec:Discrete-Choice:logit model"
 
 \begin_layout Standard
 In this section we will consider maximum likelihood estimation of the logit model for binary 0/1 dependent variables.
-\end_layout
-
-\begin_layout Standard
-A binary response is a variable that takes on only two values,
- customarily 0 and 1,
- which can be thought of as codes for whether or not a condisiton is satisfied.
- For example,
- 0=drive to work,
- 1=take the bus.
- Often the observed binary variable,
- say 
-\begin_inset Formula $y$
-\end_inset
-
-,
- is related to an unobserved (latent) continuous varable,
- say 
-\begin_inset Formula $y^{*}$
-\end_inset
-
-.
- We would like to know the effect of covariates,
- 
-\begin_inset Formula $x$
-\end_inset
-
-,
- on 
-\begin_inset Formula $y.$
-\end_inset
-
- The model can be represented as 
-\begin_inset Formula 
-\begin{eqnarray*}
-y^{*} & = & x^{\prime}\theta-\varepsilon\\
-y & = & 1(y^{*}>0)\\
-Pr(y=1) & = & F_{\varepsilon}[x^{\prime}\theta]\\
- & \equiv & p(x,\theta)
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The log-likelihood function is
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-s_{n}(\theta)=\frac{1}{n}\sum_{i=1}^{n}\left(y_{i}\ln p(x_{i},\theta)+(1-y_{i})\ln\left[1-p(x_{i},\theta)\right]\right)
-\]
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

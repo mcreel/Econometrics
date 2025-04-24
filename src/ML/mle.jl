@@ -18,30 +18,33 @@ function mle(model, θ, vc=1)
     objvalue = -objvalue
     obj = θ -> vec(model(θ)) # unaveraged log likelihood
     n = size(obj(θ),1) # how many observations?
+    # derivatives, use automatic, with numeric as fallback
+    # information matrix
     scorecontrib = try
         ForwardDiff.jacobian(obj, vec(thetahat))
     catch
         Calculus.jacobian(obj, vec(thetahat), :central)
-    end
-    J = try
-        ForwardDiff.hessian(avg_obj, vec(thetahat))
-    catch
-        Calculus.hessian(avg_obj, vec(thetahat), :central)
-    end
+    end   
     k = size(θ,1)
     I = zeros(k,k)
     for i = 1:n
     	I .+= scorecontrib[i,:]*scorecontrib[i,:]'
     end
     I ./= n
-    # I = cov(scorecontrib) # consistent, but less standard, so
+    # Hessian
+    J = try
+        ForwardDiff.hessian(avg_obj, vec(thetahat))
+    catch
+        Calculus.hessian(avg_obj, vec(thetahat), :central)
+    end
     Jinv = inv(J)
+    # three ways of computing covariance estimates
     if vc==2
         V = Jinv/n      # other possibilities
     elseif vc==3
         V = inv(I)/n
     else
-        V= Jinv*I*Jinv/n # sandwich form is preferred
+        V = Jinv*I*Jinv/n # sandwich form is preferred, and is the default
     end
     return thetahat, objvalue, V, converged
 end
