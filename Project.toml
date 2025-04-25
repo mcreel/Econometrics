@@ -47,4 +47,4 @@ TimeSeries = "9e3dc215-6440-5c97-bce1-76c03772f85e"
 Turing = "fce5fe82-541a-59a6-adf8-730c64b5f9a0"
 
 [compat]
-Dynare = "0.7.2"
+Dynare = "0.9.12"

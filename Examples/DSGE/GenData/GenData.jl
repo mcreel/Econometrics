@@ -16,7 +16,7 @@ if !silent
 #    savefig("dsgedata.svg")
     display(df)
 end    
-CSV.write("dsgedata.csv", df)
+#CSV.write("dsgedata.csv", df)
 return true
 end
 

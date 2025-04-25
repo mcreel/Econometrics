@@ -11,14 +11,14 @@ function fminunc(obj, x; xtol = 1e-08, gtol=1e-6, ftol=1e-12)
         Optim.optimize(obj, x, LBFGS(), 
                             Optim.Options(
                             g_tol = gtol,
-                            x_tol = xtol,
-                            f_tol=ftol); autodiff=:forward)
+                            x_reltol = xtol,
+                            f_reltol=ftol); autodiff=:forward)
     catch
         Optim.optimize(obj, x, LBFGS(), 
                             Optim.Options(
                             g_tol = gtol,
-                            x_tol = xtol,
-                            f_tol = ftol))
+                            x_reltol = xtol,
+                            f_reltol = ftol))
     end    
     return results.minimizer, results.minimum, Optim.converged(results)
 end

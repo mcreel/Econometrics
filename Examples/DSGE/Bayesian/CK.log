@@ -1,42 +1,43 @@
 Dynare version: 0.9.12
-2024-06-01T09:59:22.812: Starting @dynare CK.mod
+2025-04-25T10:11:31.691: Starting @dynare CK.mod
 ["CK.mod", "language=julia", "json=compute"]
 Dynare preprocessor version: 6.4.0+0
-2024-06-01T09:59:22.820: End of preprocessing
-2024-06-01T09:59:22.827: Start parse_statements!
+2025-04-25T10:11:31.753: End of preprocessing
+2025-04-25T10:11:31.812: Start parse_statements!
+f_tol is deprecated. Use f_abstol or f_reltol instead. The provided value (1.0e-5) will be used as f_reltol.
  * Status: success
 
  * Candidate solution
-    Final objective value:     -9.217020e+02
+    Final objective value:     -1.228362e+03
 
  * Found with
     Algorithm:     BFGS
 
  * Convergence measures
-    |x - x'|               = 3.08e-03 ≰ 0.0e+00
-    |x - x'|/|x'|          = 1.15e-03 ≰ 0.0e+00
-    |f(x) - f(x')|         = 4.02e-05 ≰ 0.0e+00
-    |f(x) - f(x')|/|f(x')| = 4.37e-08 ≤ 1.0e-05
-    |g(x)|                 = 8.58e-02 ≰ 1.0e-08
+    |x - x'|               = 4.69e-04 ≰ 0.0e+00
+    |x - x'|/|x'|          = 1.97e-04 ≰ 0.0e+00
+    |f(x) - f(x')|         = 2.34e-05 ≰ 0.0e+00
+    |f(x) - f(x')|/|f(x')| = 1.91e-08 ≤ 1.0e-05
+    |g(x)|                 = 2.53e-02 ≰ 1.0e-08
 
  * Work counters
-    Seconds run:   1  (vs limit Inf)
-    Iterations:    13
-    f(x) calls:    39
-    ∇f(x) calls:   39
+    Seconds run:   0  (vs limit Inf)
+    Iterations:    11
+    f(x) calls:    30
+    ∇f(x) calls:   30
 
   Posterior mode
 
 ───────────┬──────────────────────────────────────────────────────────
  Parameter │ Estimated value  Standard error  80% confidence interval
 ──────────────────────────────────────────────────────────────────────
-     betta │           0.992          0.0015         0.9901 .. 0.9939
-       gam │          1.9146          0.1794          1.685 .. 2.1442
-      rho1 │          0.9207          0.0078         0.9107 .. 0.9308
-    sigma1 │          0.0216          0.0014         0.0198 .. 0.0233
-      rho2 │          0.5794          0.0697         0.4902 .. 0.6686
-    sigma2 │           0.009          0.0005         0.0083 .. 0.0097
-       nss │          0.3294          0.0022         0.3265 .. 0.3323
+     betta │          0.9909          0.0012         0.9894 .. 0.9924
+       gam │          1.9894          0.0607         1.9117 .. 2.0671
+      rho1 │          0.9055          0.0068         0.8968 .. 0.9141
+    sigma1 │          0.0206          0.0013         0.0189 .. 0.0223
+      rho2 │          0.6147          0.0603         0.5376 .. 0.6919
+    sigma2 │          0.0085          0.0006         0.0077 .. 0.0092
+       nss │          0.3322          0.0009          0.331 .. 0.3334
 ───────────┴──────────────────────────────────────────────────────────
 
 Chains MCMC chain (20000×8×1 Array{Float64, 3}):
@@ -51,25 +52,25 @@ Summary Statistics
   parameters      mean       std      mcse   ess_bulk   ess_tail      rhat   ess_per_sec
       Symbol   Float64   Float64   Float64    Float64    Float64   Float64       Missing
 
-       betta    0.9919    0.0001    0.0000    42.6577    69.6404    2.0742       missing
-         gam    1.9236    0.1384    0.0128   115.1382   421.7060    1.0545       missing
-        rho1    0.9188    0.0098    0.0014    51.0250    62.7307    1.0319       missing
-      sigma1    0.0207    0.0007    0.0001    44.3294    62.7245    1.0469       missing
-        rho2    0.5994    0.0592    0.0031   350.2670   647.3667    1.0032       missing
-      sigma2    0.0090    0.0002    0.0000    43.2730    65.2541    1.3036       missing
-         nss    0.3296    0.0007    0.0001    51.7295    85.7004    1.4124       missing
+       betta    0.9910    0.0001    0.0000    45.5352    70.4811    1.4409       missing
+         gam    2.0007    0.0635    0.0047   182.5413   656.6867    1.0422       missing
+        rho1    0.9061    0.0050    0.0006    66.6743   104.1737    1.2459       missing
+      sigma1    0.0210    0.0009    0.0001    42.3880    68.0647    1.7644       missing
+        rho2    0.6298    0.0495    0.0031   255.6276   415.1646    1.0004       missing
+      sigma2    0.0087    0.0001    0.0000    44.3987    63.3774    1.0700       missing
+         nss    0.3323    0.0005    0.0001    46.3929    56.8644    1.3633       missing
 
 Quantiles
   parameters      2.5%     25.0%     50.0%     75.0%     97.5%
       Symbol   Float64   Float64   Float64   Float64   Float64
 
-       betta    0.9917    0.9918    0.9919    0.9919    0.9920
-         gam    1.6781    1.8249    1.9155    2.0115    2.2162
-        rho1    0.9010    0.9113    0.9185    0.9258    0.9380
-      sigma1    0.0195    0.0201    0.0206    0.0212    0.0221
-        rho2    0.4818    0.5594    0.6016    0.6419    0.7075
-      sigma2    0.0087    0.0088    0.0089    0.0091    0.0094
-         nss    0.3283    0.3291    0.3296    0.3300    0.3310
+       betta    0.9908    0.9910    0.9910    0.9911    0.9912
+         gam    1.8795    1.9577    1.9996    2.0424    2.1291
+        rho1    0.8944    0.9031    0.9063    0.9096    0.9148
+      sigma1    0.0194    0.0204    0.0209    0.0217    0.0228
+        rho2    0.5280    0.5970    0.6326    0.6652    0.7181
+      sigma2    0.0084    0.0086    0.0087    0.0087    0.0089
+         nss    0.3312    0.3320    0.3323    0.3327    0.3335
 
-2024-06-01T09:59:39.931: End parse_statements!
-2024-06-01T09:59:39.931: End parser
+2025-04-25T10:12:11.057: End parse_statements!
+2025-04-25T10:12:11.057: End parser
