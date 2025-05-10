@@ -69,7 +69,7 @@ sigma2  ,   0.01    ,   uniform_pdf     ,   0.05    ,   0.02887;
 nss     ,   .3333   ,   uniform_pdf     ,   0.3125  ,    0.03608;  
 end;
 
-varobs c n;  // experiment choosing one or two from y c n r w
+varobs y n;  // experiment choosing one or two from y c n r w
 
 estimation(datafile='dsgedata.csv') ;
 

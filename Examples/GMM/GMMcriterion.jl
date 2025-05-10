@@ -3,7 +3,7 @@
 using Plots, LinearAlgebra
 
 function main(weight_on_first)
-    # the two separate moment conditions
+# the two separate moment conditions
 m1(θ) = 2 + 3θ
 m2(θ) = 5 -3θ + 0.1*θ^2 
 

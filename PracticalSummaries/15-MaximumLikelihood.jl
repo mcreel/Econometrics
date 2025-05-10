@@ -29,15 +29,15 @@ s = θ -> -mean(logℒᵢ(θ))  # negative average logℒ
 θhat = Optim.optimize(s, θstart, LBFGS(), 
                             Optim.Options(
                             g_tol = tol,
-                            x_tol=tol,
-                            f_tol=tol);autodiff=:forward).minimizer
+                            x_abstol=tol,
+                            f_abstol=tol);autodiff=:forward).minimizer
 
 ## Now get the t-stats, from Ihat and J hat.
 using ForwardDiff
 sc =  ForwardDiff.jacobian(logℒᵢ, θhat) # get the score contributions
-Ihat = mean(sc.^2.)
+Ihat = mean(sc.^2.)  # the score contribs are scalars here, no need for transpose
 Jhat = -ForwardDiff.hessian(s, θhat)
-1/θhat[1]^2
+-1/θhat[1]^2
 # when you set n large (above), you should see that Ihat ⩬ -Jhat  
 # also, note that Jhat = -1/θhat², which is a result we can get analytically
 

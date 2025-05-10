@@ -42311,15 +42311,20 @@ literal "true"
 
 .
  This earlier paper no doubt inspired the papers that came later.
+ 
 \end_layout
 
 \begin_layout Itemize
 A Julia implementation is at 
-\begin_inset CommandInset href
-LatexCommand href
-name "NeweyWest.jl"
-target "https://github.com/mcreel/Econometrics/blob/master/src/NP/NeweyWest.jl"
-literal "false"
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./src/NP/NeweyWest.jl}{NeweyWest.jl}
+\end_layout
 
 \end_inset
 
@@ -43111,7 +43116,13 @@ The model in matrix form is
 ,
  
 \color blue
-with is linear in the parameters
+which is linear in the parameters
+\end_layout
+
+\begin_layout Itemize
+when weak exogeneity fails,
+ we know that the OLS estimator will be inconsistent,
+ in general
 \end_layout
 
 \begin_layout Standard

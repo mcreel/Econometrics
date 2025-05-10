@@ -3,7 +3,7 @@
 # note that the two estimators are different from one another
 ##
 using Distributions, StatsPlots
-n = 100
+n = 10000
 theta = 3
 
 # the distribution doesn't matter, what matters is
