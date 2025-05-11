@@ -1,0 +1,5 @@
+Need to run this with julia v1.6
+
+to add it, do "juliaup add 1.6"
+
+to run it, do "julia +1.6 --proj"
