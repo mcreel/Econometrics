@@ -13,6 +13,7 @@ function DSGEmoments(θ, data)
         β, γ, ρ_z, σ_z, ρ_η, σ_η, nss = θ
         # recover ψ
         c1 = ((1.0/β + δ - 1.0)/α)^(1.0/(1.0-α))
+        # compute ψ
         kss = nss/c1
         iss = δ*kss
         yss = kss^α * nss^(1-α)

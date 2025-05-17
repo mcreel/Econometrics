@@ -40,18 +40,19 @@ W = inv(cov(ms))
 prettyprint([βcue βgmm1 βgmm], ["cue", "step1", "step2"])
 
 ## Are the instruments ok? Look at first stage regressions
-# we are regressing the 3 endogenous variables, educ, exper and exper^2
+# we are regressing the 3 endogenous variables (educ, exper and exper^2)
 # on the instruments, and testing that the outside instruments (nearc4, age, age^2)
 # are contributing to the fit, on top of what the included exogenous variables
-# account for.
+# account for. This is important: if they really made no contribution to fit, then the
+# purged regressors (X hat) would not be linearly independent
 R = [zeros(3) eye(3) zeros(3,3)]
 r = zeros(3)
 y = Matrix{Float64}(@select(card, :educ))
-F1 = (TestStatistics(y, w, R, r)[1]) # first return of TestStatistics is F
+F1 = (TestStatistics(y, w, R, r; silent=true)[1]) # first return of TestStatistics is F
 y = Matrix(@select(card, :exper))
-F2 = (TestStatistics(y, w, R, r)[1])
+F2 = (TestStatistics(y, w, R, r; silent = true)[1])
 y = Matrix(@select(card, :expsq))
-F3 = (TestStatistics(y, w, R, r)[1])
+F3 = (TestStatistics(y, w, R, r; silent=true)[1])
 println()
 PrintDivider()
 println(@green "F test of instrument strength for the 3 endog variables")
@@ -64,9 +65,9 @@ println("there is concern that education is not well-instrumented")
 # is a bit of a stretch (possible HET, at least)
 using LinearAlgebra, Distributions
 e = βcue-βols
-H = dot(e, inv(Vcue-Vols), e)
+H = round(dot(e, inv(Vcue-Vols), e),digits=4)
 df = rank(Vcue-Vols)
-pval = 1. - cdf(Chisq(df),H)
+pval = round(1. - cdf(Chisq(df),H), digits=4)
 PrintDivider()
 println(@green "Hausman test")
 println("statistic: $H, degrees of freedom: $df, p-value: $pval")

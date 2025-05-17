@@ -3,13 +3,13 @@
 # correlated with regressors, but that the IV estimator is consistent
 using Econometrics, Plots, LinearAlgebra
 function main()
-reps = 1000 # number of Monte Carlo reps.
+reps = 100 # number of Monte Carlo reps.
 betaols = zeros(reps,2)
 betaiv = zeros(reps,2)
 n = 1000 # sample size
 
 # covariance of X, W, e
-cor_X_W = 0.5  # experiment with lowering or raising this: quality of instrument
+cor_X_W = 0.2  # experiment with lowering or raising this: quality of instrument
 cor_X_e = 0.5  # try setting this to zero to observe inefficiency of IV
 
 sig = [

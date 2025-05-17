@@ -1,5 +1,9 @@
-Need to run this with julia v1.6
 
-to add it, do "juliaup add 1.6"
+This should be run with Jula v1.6.x
 
-to run it, do "julia +1.6 --proj"
+install with juliaup, do
+"juliaup add v1.6"
+
+To run it, get in the terminal, go to this directory, and do 
+"julia +1-6 --proj"
+

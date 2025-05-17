@@ -1,9 +1,13 @@
 
 This should be run with Jula v1.6.x
 
-install with juliaup add v1.6
+install with juliaup, do
+"juliaup add v1.6"
 
-run with 
-julia +1-6 --proj
+To run it, get in the terminal, go to this directory, and do 
+"julia +1-6 --proj"
 
-with uniform prior, max post is same as mle. So, need to extract the post. mode, and write to disk, following what is done with Bayesian for post mean.
+
+
+Econometric note: with uniform priors, max post is same as mle.
+So, need to extract the post. mode.

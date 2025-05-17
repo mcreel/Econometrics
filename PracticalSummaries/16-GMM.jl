@@ -5,8 +5,8 @@ using Distributions
 n = 30
 x = [ones(n) rand(n)]
 β⁰ = [1., 2.]
-λ = β -> exp.(x*β)
-y = rand.(Poisson.(λ(β⁰)))
+λ = β -> exp.(x*β)  # the usual Poisson parameterization
+y = rand.(Poisson.(λ(β⁰))) # draw the data
 # data for problem set 3
 # x = hcat(ones(10), [-1,-1,1,0,-1,-1,1,1,1,2])
 # y = [0,0,0,1,1,5,8,16,20,30]
@@ -14,8 +14,10 @@ y = rand.(Poisson.(λ(β⁰)))
 
 ## ML, for reference
 using Econometrics, SpecialFunctions
+# the log-likelihood
 model = β -> -λ(β) + y.*x*β - loggamma.(y .+ 1.)    # note: loggamma(y+1) = log(factorial(y))
 mleresults(model, β⁰);                               # but won't overflow
+
 ## GMM
 using Econometrics
 moments1 = β -> x.*(y - λ(β))
@@ -36,7 +38,7 @@ moments2 = β -> x.* (y./λ(β) .- 1.0)
 
 ## first two step
 using Econometrics, ForwardDiff
-moments3 = β -> [moments1(β) moments2(β)]
+moments3 = β -> [moments1(β) moments2(β)] # stacking them horizontally, so there are 4 moment conditions
 W = eye(4)
 βhat, objv, V, D, W, convergence = gmmresults(moments3, β⁰, W, "first step", "", false);
 W = inv(cov(moments3(βhat)))

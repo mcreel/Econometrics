@@ -37917,7 +37917,17 @@ literal "false"
 \end_inset
 
  Julia package.
- Note that Dynare is doing ML by first linearizing the model,
+ 
+\series bold
+PLEASE NOTE
+\series default
+:
+ this file should be run following the instructions in the README in the same directory.
+ 
+\end_layout
+
+\begin_layout Standard
+Note that Dynare is doing ML by first linearizing the model,
  then using Kalman filtering to compute the likelihood,
  and then is maximizing the Bayesian posterior likelihood (see Chapter 17 for more information).
  Because the priors are uniform,
@@ -44054,32 +44064,7 @@ nolink "false"
 \end_inset
 
 .
- Using the GIV estimator,
- descriptive statistics for 1000 replications of the estimated parameters minus the true parameters are
-\begin_inset CommandInset include
-LatexCommand verbatiminput
-filename "Examples/GMM/MeasurementErrorIV.out"
-literal "true"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-If you compare these with the results for the OLS estimator,
- you will see that the bias of the GIV estimator is much less for estimation of 
-\begin_inset Formula $\rho$
-\end_inset
-
-.
- If you increase the sample size,
- you will see that the GIV estimator is consistent,
- but that the OLS estimator is not.
-\end_layout
-
-\begin_layout Example
-A histogram for 
+ A histogram for 
 \begin_inset Formula $\hat{\rho}-\rho$
 \end_inset
 
@@ -44148,6 +44133,13 @@ GIV estimation results for
 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+note that the IV estimator has little bias,
+ but its variance is considerably larger that that of the inconsistent OLS estimator.
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -44193,14 +44185,16 @@ or
 
 \end_inset
 
-These are equivalent.
+These are numerically equivalent.
  So,
  the GIV estimator can be obtained by 
 \end_layout
 
 \begin_layout Enumerate
 first regressing the regressors on the instruments,
- and obtaining the predicted values
+ and obtaining the predicted values.
+ These are linear combinations of the instruments,
+ so they are uncorrelated with the error.
 \end_layout
 
 \begin_layout Enumerate
@@ -44253,7 +44247,7 @@ where
 \begin_layout Itemize
 this can be estimated using White's or Newey-West estimators,
  as appropriate,
- or simplified further (as above) if the classical assumption regarding homoscedasticity and no autocorrelation hold.
+ or simplified further (as above) if the classical assumptions regarding homoscedasticity and no autocorrelation hold.
 \end_layout
 
 \begin_layout Itemize
@@ -44639,8 +44633,8 @@ z_{t}(\beta_{1}^{0}+\beta_{2}^{0}x_{t}+\epsilon_{t}-\beta_{1}-\beta_{2}x_{t})
 \begin_inset Formula 
 \[
 \frac{\partial m_{t}^{\prime}(\beta)}{\partial\beta}=\left[\begin{array}{cc}
--z_{t-1} & -z_{t-1}x_{t}\\
--z_{t} & -z_{t}x_{t}
+-z_{t-1} & -z_{t}\\
+-z_{t-1}x_{t} & -z_{t}x_{t}
 \end{array}\right]
 \]
 
@@ -45227,7 +45221,7 @@ This won't work when the estimator is just identified.
  are 
 \begin_inset Formula 
 \[
-D_{\theta}s_{n}(\theta)=D\hat{\Omega}^{-1}\bar{m}_{n}(\hat{\theta})\equiv0.
+D_{\theta}s_{n}(\theta)=D_{n}\hat{\Omega}^{-1}\bar{m}_{n}(\hat{\theta})\equiv0.
 \]
 
 \end_inset
@@ -46488,12 +46482,14 @@ where
 \Omega_{\infty}=\left[\begin{array}{cc}
 \Omega_{11} & \Omega_{12}\\
 \Omega_{12}^{\prime} & \Omega_{22}
-\end{array}\right].
+\end{array}\right],.
 \]
 
 \end_inset
 
-The efficient weight matrix is something that converges to the inverse of this.
+which is just the ordinary asymptotic variance of the moment conditions,
+ partitioned in the same way as we partition the moment conditions.
+ The efficient weight matrix is something that converges to the inverse of this.
  The GMM estimator that uses only the subset of moment conditions,
  
 \begin_inset Formula $\bar{m}_{n}^{1}(\theta)$
@@ -46501,10 +46497,10 @@ The efficient weight matrix is something that converges to the inverse of this.
 
 ,
  is equivalent to a GMM estimator that uses all of the moment conditions,
- but with the weight matrix being
+ but with the weight matrix being something that converges to
 \begin_inset Formula 
 \[
-W=\left[\begin{array}{cc}
+\left[\begin{array}{cc}
 \Omega_{11}^{-1} & 0\\
 0 & 0
 \end{array}\right],
@@ -46548,7 +46544,8 @@ efficient with respect to
 \end_layout
 
 \begin_layout Itemize
-the small sample bias of the GMM estimator tends to increase as the number of moment conditions increase (
+the small sample bias of the GMM estimator tends to increase as the number of moment conditions increase,
+ and can be large (
 \begin_inset CommandInset citation
 LatexCommand citet
 key "donald2001choosing,DonaldImbensNewey2009"
@@ -46561,7 +46558,7 @@ literal "false"
 
 \begin_layout Itemize
 so,
- estimator A may have worse small sample performance than version B,
+ estimator A may very easily have worse small sample performance than version B,
  in spite of being relatively asymptotically efficient
 \end_layout
 
@@ -46870,6 +46867,8 @@ information set
 \end_inset
 
  or earlier.
+ NOTE:
+ you may need to be careful when preparing a data set to respect this convention.
 \end_layout
 
 \begin_layout Itemize
@@ -47337,7 +47336,7 @@ href{./Examples/GMM/HallGMM.m}{HallGMM.m}
 \begin_inset CommandInset href
 LatexCommand href
 name "Gretl Users Guide"
-target "http://ricardo.ecn.wfu.edu/pub/gretl/manual/en/gretl-guide-a4.pdf"
+target "https://gretl.sourceforge.net/gretl-help/gretl-guide.pdf"
 literal "false"
 
 \end_inset
@@ -51463,6 +51462,12 @@ href{./Examples/DSGE/Bayesian/Estimate.jl}{Estimate.jl}
  allows estimation of the same model using Bayesian methods,
  with Metropolis-Hastings MCMC.
  
+\series bold
+PLEASE NOTE
+\series default
+:
+ this file should be run following the instructions in the README in the same directory.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -51914,7 +51919,7 @@ name "chap:Models-for-time"
 
 \end_inset
 
-Simulation-based methods for estimation and inference
+Simulation-based methods
 \end_layout
 
 \begin_layout Standard
@@ -52109,7 +52114,7 @@ Simulation methods are of interest when the DGP is fully characterized by a para
 \end_layout
 
 \begin_layout Itemize
-Many moderately complex models result in intractable likelihoods or moments.
+Even only moderately complex models result in intractable likelihoods or moments.
 \end_layout
 
 \begin_deeper
@@ -52123,11 +52128,12 @@ literal "true"
 
  is a seminal paper in simulation-based methods.
  He pointed out that the likelihood of the multinomial probit model can't be computed when the number of alternatives is at all large.
+ 
 \end_layout
 
 \begin_layout Itemize
 another example are continuous time models with observations in discrete time.
- Computing the one step ahead transition density may be impossible,
+ Computing the one step ahead transition density for the observables may be impossible,
  ruling out maximum likelihood.
 \end_layout
 
@@ -53017,6 +53023,12 @@ Thus,
  trying to make the average of the simulated estimators as close as possible to the estimator generated by the real data will cause the MSM estimator to be consistent,
  given identification.
  
+\end_layout
+
+\begin_layout Itemize
+Note:
+ this form of moment conditions is actually more or less the same as the previous presentation,
+ we are just using enough error functions so that instruments are not explicitly needed.
 \begin_inset Newpage newpage
 \end_inset
 
@@ -53153,7 +53165,7 @@ this function is everywhere discontinuous in
 \begin_layout Itemize
 From a theoretical point of view,
  this is not a problem,
- as the function will be stochastically equicontinuous,
+ as the function will be stochastically equicontinuous (stochastically converging to a continuous function),
  under reasonable assumptions,
  and this still allows for consistency and asymptotic normality.
  
@@ -53210,7 +53222,7 @@ In other cases,
 
 \begin_layout Itemize
 In all of these cases,
- it is quite easy to move to a Bayesian perspective,
+ it is quite easy use Bayesian methods,
  where we don't need to optimize,
  and this will also be easier to program,
  as we won't need to keep draws of latent variable fixed.
@@ -53254,7 +53266,12 @@ h_{t} & =\rho h_{t-1}+\sigma u_{t}
 
 \end_inset
 
-Typical data and a nonparametric density plot looks like what we see in Figure 
+Typical data generated at the true parameter values 
+\begin_inset Formula $\phi=0.692,\,\rho=0.9,\,\sigma=0.363$
+\end_inset
+
+ (which are common values used in this literature to compare estimation methods),
+ and a nonparametric density plot looks like what we see in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SV-model,-typical-1"
@@ -54024,7 +54041,7 @@ the posterior mean or median point estimates are good,
 the 95% confidence intervals always contain the true parameter values.
  This is different,
  compared to what we've seen for ML and GMM.
- Fairly low standard deviations and confidence intervals that don't over-reject true parameter values are something we have yet to see.
+ Fairly low standard deviations and confidence intervals that don't over-reject true parameter values are something we have previously seen.
 \end_layout
 
 \begin_layout Standard
