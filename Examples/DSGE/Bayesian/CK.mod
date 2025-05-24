@@ -72,10 +72,10 @@ end;
 // try one or the other of the following. If you change variable
 // you may need to change mh_jscale to get good acceptance rate
 
-varobs c n;  // experiment choosing one or two from y c n r w
-estimation(order=1, datafile='dsgedata.csv', mh_replic=20000, mh_nblocks=4, mh_jscale=5.) ;
-
-//varobs y n;  // experiment choosing one or two from y c n r w
+//varobs c n;  // experiment choosing one or two from y c n r w
 //estimation(order=1, datafile='dsgedata.csv', mh_replic=20000, mh_nblocks=4, mh_jscale=5.) ;
+
+varobs y n;  // experiment choosing one or two from y c n r w
+estimation(order=1, datafile='dsgedata.csv', mh_replic=20000, mh_nblocks=4, mh_jscale=5.) ;
 
 

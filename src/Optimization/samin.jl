@@ -134,7 +134,10 @@ function samin(x::Int64)
     return xtest, ftest
 end
 
-function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float64}; nt=5, ns=5, rt=0.5, maxevals::Int64=Int64(1e6), neps=5, functol=1e-8, paramtol=1e-5, verbosity=1, coverage_ok=0)
+function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float64}; 
+        nt=5, ns=5, rt=0.5, maxevals::Int64=Int64(1e6), neps=5,
+        functol=1e-8, paramtol=1e-5, verbosity=1, coverage_ok=0)
+
     n = size(x,1) # dimension of parameter
     #  Set initial values
     nacc = 0 # total accepted trials
@@ -144,12 +147,12 @@ function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float
     fstar = typemax(Float64)*ones(neps)
     # Initial obj_value
     xopt = copy(x)
-    f::Float64 = obj_fn(x)
-    fopt::Float64 = copy(f) # give it something to compare to
+    f = obj_fn(x)
+    fopt = copy(f) # give it something to compare to
     func_evals = 0 # total function evaluations (limited by maxeval)
-    details = zeros(maxevals, size(x,1)+3)
+    details = zeros(maxevals, n+3)
     details_ind = 1
-    details[details_ind,:] = vcat(Float64(func_evals), t, fopt, xopt)
+    details[details_ind,:] = vcat(0.0, t, fopt, xopt)
     bounds = ub - lb
     # check for out-of-bounds starting values
     for i = 1:n
@@ -181,7 +184,7 @@ function samin(obj_fn, x::Vector{Float64}, lb::Vector{Float64}, ub::Vector{Float
                         xp = copy(x)
                         xp[h] += (2.0 * rand() - 1.0) * bounds[h]
                         if((xp[h] < lb[h]) || (xp[h] > ub[h]))
-                            xp[h] = lb[h] + (ub[h] - lb[h]) * rand()
+                            xp[h] = lb[h] + bounds[h] * rand()
                             lnobds += 1
                         end
                         # Evaluate function at new point

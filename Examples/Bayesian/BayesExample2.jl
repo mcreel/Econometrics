@@ -1,12 +1,9 @@
 ##
 using Distributions, Econometrics, Plots
-function main(n)
-# sample is from exponential, prior is lognormal, proposal is random walk lognormal
-y = rand(Exponential(3.0),n)
+function main(y, tuning)
 # set prior, likelihood and proposal
 Prior = θ -> pdf(LogNormal(1.0,1.0), θ)
 lnL = θ -> sum(logpdf.(Ref(Exponential(θ)),y)) # the log-likelihood (not averaged!)
-tuning = 0.7
 length = 10000 # length of the chain
 burnin = 1000 # drop this many, to get rid of startup bias
 Proposal = θ -> rand(LogNormal(log(θ),tuning))
@@ -21,7 +18,11 @@ end
 
 ##
 n = 100 # sample size
-p, p2 = main(n)
+# sample is from exponential, prior is lognormal, proposal is random walk lognormal
+y = rand(Exponential(3.0),n)
+# experiment with tuning, to see how acceptance changes
+tuning = 0.4
+p, p2 = main(y, tuning)
 
 ##
 display(p)

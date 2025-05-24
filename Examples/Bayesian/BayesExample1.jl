@@ -56,7 +56,7 @@ function posterior(y, θ)
     j = joint(y, θ)
     dens = j ./ m       # get the conditional density
     θs = range(0.01,stop=10,length=1000)
-    pmean = sum(dens.*θs.*0.01)
+    pmean = sum(dens.*θs.*0.01)  # crude sum rectangle integration
     return dens, pmean
 end
 

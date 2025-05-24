@@ -12,10 +12,10 @@
 
 
 ########################### MSM Example ###############################
-using Term, Pkg
+using Econometrics, Term, Pkg
+cd(@__DIR__)
 Pkg.activate("../")
 println(@yellow "Start of MSM example. We generate data that follows a Gaussian distribution, and estimate using some simple simulated moments")
-cd(@__DIR__)
 
 
 ## DATA
@@ -46,7 +46,7 @@ end
 # Define the and profile MSM criterion 
 # IMPORTANT: try running this with chatter, and without.
 S = 100 # number of simulation replications
-controlchatter = true # try setting this to false/true, and run this and the next block
+controlchatter = false # try setting this to false/true, and run this and the next block
 m = θ -> Z(x,y) - mean(simulated_moments(θ, x, S, controlchatter)) 
  # sums of squares of moments: corresponds to GMM with identity weight
 function obj(θ)
@@ -83,9 +83,9 @@ println(@yellow "(Remember that the true parameters are $θ₀)")
 #  Chernozhukov and Hong (2003)
 # This works even without controlling chatter
 using Turing, AdvancedMH, Term, Econometrics
-k_data = Z(x,y) # stats from the real data
+Z_data = Z(x,y) # stats from the real data
 #  Define the prior and approximate Gaussian likelihood of the moments
-@model function MSM(k_data, S, x)
+@model function MSM(Z_data, S, x)
     θ ~ arraydist([Normal() for _=1:2]) # the prior (note: it's biased)
     # sample from the model, at the trial parameter value, and compute statistics
     Zs = simulated_moments(θ, x, S, false) # NOTE: no control of chatter
@@ -185,8 +185,8 @@ end
 # the tuning to make acceptance around 0.25
 S = 200 # make this as large as possible, given computation time, when doing real research
 tuning = 0.1
-length = 2000
-burnin = 200
+length = 2500
+burnin = 500
 chain = sample(SML(y, x, S),
     MH(:θ => AdvancedMH.RandomWalkProposal(MvNormal(zeros(2), tuning*eye(2)))),
     length; discard_initial=burnin)

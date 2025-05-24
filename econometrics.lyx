@@ -52908,7 +52908,7 @@ literal "false"
 ) where we set 
 \begin_inset Formula 
 \[
-\bar{m}_{n}(\theta)=\text{\ensuremath{\hat{\phi}}-\ensuremath{\frac{1}{H}\sum_{h=1}^{H}\tilde{\phi^{h}}(\theta)}}
+\bar{m}_{n}(\theta)=\text{\ensuremath{\hat{\phi}} - \ensuremath{\frac{1}{H}\sum_{h=1}^{H}\tilde{\phi^{h}}(\theta)}}
 \]
 
 \end_inset
@@ -53054,7 +53054,7 @@ one can combine moment conditions using indirect inference-type moments with the
 \end_layout
 
 \begin_layout Itemize
-a potential drawback of the II estimator is that the auxiliary model must be computed many times,
+a potential drawback of the II estimator is that the auxiliary model may need to be computed many times,
  during the iterative process to find the MSM estimator.
  This is not a problem if it's a simple linear model or a vector of sample statistics,
  but it could be a problem if it's more complicated.
@@ -53980,11 +53980,6 @@ RMSE is low,
 \end_layout
 
 \begin_layout Itemize
-the results can be obtained very quickly,
- if a previously trained net is used
-\end_layout
-
-\begin_layout Itemize
 these can be computed essentially instantly,
  but we don't get any estimated standard deviations for the individual raw NN estimates.
  
@@ -54041,7 +54036,60 @@ the posterior mean or median point estimates are good,
 the 95% confidence intervals always contain the true parameter values.
  This is different,
  compared to what we've seen for ML and GMM.
- Fairly low standard deviations and confidence intervals that don't over-reject true parameter values are something we have previously seen.
+ Fairly low standard deviations and confidence intervals that don't over-reject true parameter values are something we have not previously seen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "creel2021inference"
+literal "false"
+
+\end_inset
+
+,
+ Bayesian MSM for the DSGE model,
+ using the SNM estimator as the statistic,
+ is done.
+ 
+\end_layout
+
+\begin_layout Itemize
+Similarly as was seen for the SV model,
+ this leads to reliable confidence intervals,
+ because the moment conditions are now exactly identifying (results in the paper).
+ 
+\end_layout
+
+\begin_layout Itemize
+The estimator is also precise;
+ RMSE over 500 Monte Carlo replication is in the following table,
+ in the lower block.
+ These results are better than for any of the previous methods.
+ For example,
+ RMSE for 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ is about half what it was for the ML and Bayesian estimators.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Examples/SBEM/dsge-rmse.png
+	width 15cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -54053,6 +54101,17 @@ the 95% confidence intervals always contain the true parameter values.
 
 \begin_layout Subsection
 Deep Simulated Moments (DSM)
+\end_layout
+
+\begin_layout Standard
+This uses another architecture for the net,
+ which is considerably more demanding to train.
+ The advantage is that it does not require that one specify statistics.
+ It can lead to even lower RMSE that the previous results.
+ It is presently so costly computationally that it is probably mostly of interest for research,
+ rather than practical use.
+ Here are some results,
+ in case anyone would like to investigate the idea further.
 \end_layout
 
 \begin_layout Itemize
@@ -57754,7 +57813,7 @@ This true density is unknown,
 
 \begin_layout Itemize
 Estimation of parameters can be done using simulation-based estimation,
- discussed in following chapter.
+ discussed in the previous chapter.
  A means of learning about spot volatility,
  
 \begin_inset Formula $h_{t},$
@@ -57936,7 +57995,7 @@ The shocks,
 \begin_inset Formula $W_{t}$
 \end_inset
 
- are vector white noise,
+ are vector Gaussian white noise,
  and are uncorrelated with each other at all lags.
 \begin_inset Newpage newpage
 \end_inset
@@ -58118,11 +58177,11 @@ For this to work,
  So,
  there is a natural tendency to try to fit models into the state-space form,
  even if they don't actually fit exactly.
- An example would be working with a linearized model.
+ An example would be linearizing a model,
+ and the estimate the parameters by ML,
+ computed using Kalman filtering.
  That can lead to inconsistency,
  as we saw....
- (harp,
- harp).
 \end_layout
 
 \begin_layout Standard
