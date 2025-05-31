@@ -1,0 +1,4 @@
+Start Julia using "julia --project=."
+
+then include("GenData.jl")
+

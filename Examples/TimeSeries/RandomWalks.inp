@@ -1,0 +1,8 @@
+nulldata 500
+setobs 12 1960:01 
+
+series y = 0
+genr y = y(-1) + randgen(N, 0, 1)
+
+series x = 0
+genr x = x(-1) + randgen(N, 0, 1)

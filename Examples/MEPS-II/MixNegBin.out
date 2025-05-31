@@ -1,0 +1,37 @@
+OBDV
+
+
+******************************************************
+Mixed Negative Binomial model, MEPS 1996 full data set
+
+MLE Estimation Results
+BFGS convergence: Normal convergence
+
+Average Log-L: -2.164783
+Observations: 4564
+
+              estimate     st. err      t-stat     p-value  
+constant         0.127       0.512       0.247       0.805
+pub. ins.        0.861       0.174       4.962       0.000
+priv. ins.       0.146       0.193       0.755       0.450
+sex              0.346       0.115       3.017       0.003
+age              0.024       0.004       6.117       0.000
+edu              0.025       0.016       1.590       0.112
+inc             -0.000       0.000      -0.214       0.831
+alpha            1.351       0.168       8.061       0.000
+constant         0.525       0.196       2.678       0.007
+pub. ins.        0.422       0.048       8.752       0.000
+priv. ins.       0.377       0.087       4.349       0.000
+sex              0.400       0.059       6.773       0.000
+age              0.296       0.036       8.178       0.000
+edu              0.111       0.042       2.634       0.008
+inc              0.014       0.051       0.274       0.784
+alpha            1.034       0.187       5.518       0.000
+Mix              0.257       0.162       1.582       0.114
+
+Information Criteria 
+CAIC : 19920.3807      Avg. CAIC:   4.3647
+ BIC : 19903.3807       Avg. BIC:   4.3610
+ AIC : 19794.1395       Avg. AIC:   4.3370
+******************************************************
+

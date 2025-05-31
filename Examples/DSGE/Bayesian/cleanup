@@ -1,0 +1,4 @@
+#!/bin/bash
+rm -R -f CK
+rm *.log
+

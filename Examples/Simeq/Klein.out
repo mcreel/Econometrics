@@ -1,0 +1,42 @@
+CONSUMPTION EQUATION
+**************************************************
+  OLS estimation, 21 observations
+  R^2: 0.981008   Sig^2: 1.051732
+  White's covariance estimator
+
+                coef        se         t         p
+         1    16.237     1.618    10.035     0.000
+         2     0.193     0.061     3.172     0.006
+         3     0.090     0.066     1.362     0.191
+         4     0.796     0.051    15.527     0.000
+**************************************************
+************************************************************
+Klein model 1 GMM example, plain covariance
+GMM Estimation Results
+BFGS convergence: Normal convergence
+Observations: 21
+Hansen-Sargan statistic: 6.74212
+Hansen-Sargan p-value: 0.15016
+
+            estimate   st. err    t-stat   p-value
+  Constant    14.310     1.127    12.702     0.000
+   Profits     0.085     0.099     0.858     0.403
+ Profits-1     0.158     0.087     1.808     0.088
+     Wages     0.859     0.037    23.441     0.000
+
+************************************************************
+************************************************************
+Klein model 1 GMM example, NW covariance
+GMM Estimation Results
+BFGS convergence: No convergence
+Observations: 21
+Hansen-Sargan statistic: 6.49607
+Hansen-Sargan p-value: 0.16504
+
+            estimate   st. err    t-stat   p-value
+  Constant    14.402     0.869    16.574     0.000
+   Profits     0.084     0.133     0.631     0.537
+ Profits-1     0.149     0.103     1.449     0.166
+     Wages     0.859     0.039    22.182     0.000
+
+************************************************************

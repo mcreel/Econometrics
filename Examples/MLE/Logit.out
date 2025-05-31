@@ -1,0 +1,19 @@
+julia> include("EstimateLogit.jl");
+******************************************************
+estimate logit model
+MLE Estimation Results
+BFGS convergence: Normal convergence
+Average Log-L: -0.62038
+Observations: 30
+
+        estimate st. err  t-stat p-value
+       1  -0.557   0.443  -1.258   0.219
+       2   0.944   0.503   1.876   0.071
+
+Information Criteria
+           Crit.Avg. Crit
+    CAIC  46.025   1.534
+     BIC  44.025   1.468
+     AIC  41.223   1.374
+******************************************************
+ 

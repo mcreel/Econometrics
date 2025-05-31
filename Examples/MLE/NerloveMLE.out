@@ -1,0 +1,21 @@
+************************************************************
+estimate Nerlove model by MLE
+MLE Estimation Results
+BFGS convergence: Normal convergence
+Average Log-L: -0.46581
+Observations: 145
+
+            estimate   st. err    t-stat   p-value
+  constant    -3.527     1.695    -2.081     0.039
+    output     0.720     0.032    22.413     0.000
+     labor     0.436     0.242     1.802     0.074
+      fuel     0.427     0.074     5.731     0.000
+   capital    -0.220     0.319    -0.689     0.492
+       sig     0.386     0.042     9.257     0.000
+
+Information Criteria
+               Crit.    Crit/n
+      CAIC   170.944     1.179
+       BIC   164.944     1.138
+       AIC   147.084     1.014
+************************************************************

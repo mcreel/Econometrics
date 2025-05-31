@@ -1,0 +1,90 @@
+
+   *----*    MuPAD 2.5.1 -- The Open Computer Algebra System
+  /|   /|
+ *----* |    Copyright (c)  1997 - 2002  by SciFace Software
+ | *--|-*                   All rights reserved.
+ |/   |/
+ *----*      Licensed to:   Dr. Michael Creel
+
+
+                       Negative Binomial SNP Density
+
+
+                        First define the NB density
+
+
+                                 /   a   \a /   b   \y
+                    gamma(a + y) | ----- |  | ----- |
+                                 \ a + b /  \ a + b /
+                    ----------------------------------
+                           gamma(a) gamma(y + 1)
+
+                         Verify that it sums to 1
+
+
+                                     1
+
+                              Define the MGF
+
+
+                                 /   a   \a
+                                 | ----- |
+                                 \ a + b /
+                           ---------------------
+                           / a + b - b exp(t) \a
+                           | ---------------- |
+                           \       a + b      /
+
+                        Print the MGF in TeX format
+
+
+"\\frac{\\frac{a}{\\left(a + b\\right)}^a}{\\frac{\\left(a + b - b\\, \\mb\
+ox{exp}\\left(t\\right)\\right)}{\\left(a + b\\right)}^a}"
+
+            Find the first moment (which we know is b (lambda))
+
+
+                                     b
+
+           Find the fifth moment (which we probably don't know)
+
+
+     5         4    4           5       2  3       3  2        2  4
+(24 b  + 60 a b  + a  b + 50 a b  + 50 a  b  + 15 a  b  + 110 a  b  +
+
+       3  3       4  2       2  5       3  4       4  3       3  5
+   75 a  b  + 15 a  b  + 35 a  b  + 60 a  b  + 25 a  b  + 10 a  b  +
+
+       4  4    4  5     4
+   10 a  b  + a  b ) / a
+
+          Print the fifth moment in fortran form, to program ln L
+
+
+"      t3 = a**-4*(b**5*24.0D0+60.0D0*a*b**4+a**4*b+50.0D0*a*b**5+50.0D0*\\
+n     ~(a*a)*b**3+15.0D0*a**3*(b*b)+110.0D0*(a*a)*b**4+75.0D0*a**3*b**3+1\\
+n     ~5.0D0*a**4*(b*b)+35.0D0*(a*a)*b**5+60.0D0*a**3*b**4+25.0D0*a**4*b*\\
+n     ~*3+10.0D0*a**3*b**5+10.0D0*a**4*b**4+a**4*b**5)"
+
+                    Print the fifth moment in TeX form
+
+
+"\\frac{24\\, b^5 + 60\\, a\\, b^4 + a^4\\, b + 50\\, a\\, b^5 + 50\\, a^2\
+\\, b^3 + 15\\, a^3\\, b^2 + 110\\, a^2\\, b^4 + 75\\, a^3\\, b^3 + 15\\, \
+a^4\\, b^2 + 35\\, a^2\\, b^5 + 60\\, a^3\\, b^4 + 25\\, a^4\\, b^3 + 10\\\
+, a^3\\, b^5 + 10\\, a^4\\, b^4 + a^4\\, b^5}{a^4}"
+
+         To get the normalizing factor, we need expressions of the
+
+
+                           form of the following
+
+
+a(0) b(0) m(0) + a(0) b(1) m(1) + b(0) a(1) m(1) + a(0) b(2) m(2) +
+
+   b(0) a(2) m(2) + a(1) b(1) m(2) + a(0) b(3) m(3) + b(0) a(3) m(3) +
+
+   a(1) b(2) m(3) + a(2) b(1) m(3) + a(1) b(3) m(4) + a(2) b(2) m(4) +
+
+   b(1) a(3) m(4) + a(2) b(3) m(5) + a(3) b(2) m(5) + a(3) b(3) m(6)
+>> quit

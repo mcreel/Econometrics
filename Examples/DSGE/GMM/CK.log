@@ -1,0 +1,4 @@
+Dynare version: 0.9.12
+2024-06-01T09:19:13.630: Starting @dynare CK.mod
+["CK.mod", "language=julia", "json=compute"]
+Dynare preprocessor version: 6.4.0+0

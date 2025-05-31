@@ -1,0 +1,305 @@
+This is TeX, Version 3.14159 (Web2C 7.4.5) (format=latex 2004.1.21)  22 JAN 2004 16:02
+**mgf.tex
+(./mgf.tex
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, ngerman, nohyphena
+tion, loaded.
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \\f
+       rac{24\\, b^5 + 60\\, a\\, b^4 + a^4\\, b + 50\\, a\\, b^5 + 50\\, a^2\
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \\f
+       rac{24\\, b^5 + 60\\, a\\, b^4 + a^4\\, b + 50\\, a\\, b^5 + 50\\, a^2\
+? 
+Missing character: There is no f in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no b in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1 \\frac{24\\, b^
+                   5 + 60\\, a\\, b^4 + a^4\\, b + 50\\, a\\, b^5 + 50\\, a^2\
+? 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 1.
+! Extra }, or forgotten $.
+l.4 , a^3\\, b^5 + 10\\, a^4\\, b^4 + a^4\\, b^5}
+                                                 {a^4}
+? 
+)
+*
+! Missing $ inserted.
+<inserted text> 
+                $
+<*> 
+    
+? 
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--0
+[] 
+ []
+
+
+Overfull \hbox (12.26393pt too wide) in paragraph at lines 1--0
+[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 60[] 
+ []
+
+
+Overfull \hbox (9.7303pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (9.77202pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 a[][] 
+ []
+
+
+Overfull \hbox (16.51387pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 50[] 
+ []
+
+
+Overfull \hbox (9.7303pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 50[] 
+ []
+
+
+Overfull \hbox (14.21643pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[][] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 15[] 
+ []
+
+
+Overfull \hbox (14.21643pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[][] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (15.00005pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 110[] 
+ []
+
+
+Overfull \hbox (14.21643pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[][] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 75[] 
+ []
+
+
+Overfull \hbox (14.21643pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[][] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 15[] 
+ []
+
+
+Overfull \hbox (14.21643pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ;  a[][] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 35[] 
+ []
+
+
+Overfull \hbox (14.21643pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[][] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 60[] 
+ []
+
+
+Overfull \hbox (14.21643pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[][] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 25[] 
+ []
+
+
+Overfull \hbox (14.21643pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[][] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 10[] 
+ []
+
+
+Overfull \hbox (14.21643pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[][] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 1--0
+\OT1/cmr/m/n/10 10[] 
+ []
+
+
+Overfull \hbox (14.21643pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; a[][] 
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (9.77202pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 a[][] 
+ []
+
+
+Overfull \hbox (22.99422pt too wide) in paragraph at lines 1--0
+\OML/cmm/m/it/10 ; b[][]$ 
+ []
+
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*\end
+
+*
+Runaway argument?
+! Paragraph ended before \end was complete.
+<to be read again> 
+                   \par 
+<*> 
+    
+? 
+(Please type a command or say `\end')
+*\end
+
+*\end
+! TeX capacity exceeded, sorry [input stack size=1500].
+\end #1->\csname end#1
+                      \endcsname \@checkend {#1}\expandafter \endgroup \if@e...
+<*> \end
+        
+If you really absolutely need more capacity,
+you can ask a wizard to enlarge me.
+
+ 
+Here is how much of TeX's memory you used:
+ 6 strings out of 95854
+ 54 string characters out of 1196101
+ 45491 words of memory out of 1000001
+ 3032 multiletter control sequences out of 10000+50000
+ 3640 words of font info for 14 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 1500i,2n,1500p,100b,72s stack positions out of 1500i,500n,5000p,200000b,5000s
+No pages of output.

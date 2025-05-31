@@ -1,0 +1,7 @@
+dsgedata.txt, in the GenData directory, is a data set of 160 observations drawn
+from the simple DSGE model at the true parameter values, in the second
+column of parameters.m
+
+To re-generate the data, go to the GenData directory, and GenData.jl
+
+

@@ -1,0 +1,26 @@
+rates is a text file that contains the growth rates (100\timeslog difference)
+of the daily spot $/euro and $/yen exchange rates at New York, noon. The sample
+period is January 04, 1999 to February 12, 2008. There are 2291 observations.
+
+There is no correction for calendar effects (weekends, holidays, etc). Rates are
+cacluated differencing the log of the raw series using all available observations.
+
+The raw exchange rate data was taken from
+http://www.federalreserve.gov/releases/h10/Hist/
+
+From that page:
+
+Historical Data
+The following exchange rates are certified by the Federal Reserve Bank of New York
+for customs purposes as required by section 522 of the amended Tariff Act of 1930.
+These rates are also those required by the SEC for the integrated disclosure system
+for foreign private issuers. The information is based on data collected by the Federal
+Reserve Bank of New York from a sample of market participants.
+
+The data are noon buying rates in New York for cable transfers payable in foreign currencies.
+
+Please note: Based on information we received from the Federal Reserve Bank of New York,
+revisions were applied in October 2004 to the exchange rate of the dollar against both
+the Hong Kong Dollar and the Chinese Yuan for several days between 1999 and 2003. Please
+refer to the following link for a list of these days and for the size of the revisions:
+http://www.newyorkfed.org/markets/fxrates/revisions.html.

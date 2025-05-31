@@ -1,0 +1,22 @@
+
+
+***********************************************
+Trial of MLE estimation of Logit model
+
+MLE Estimation Results
+BFGS convergence: Normal convergence
+
+Average Log-L: 0.607063
+Observations: 100
+
+          estimate   st. err    t-stat   p-value  
+constant    0.5400    0.2229    2.4224    0.0154
+slope       0.7566    0.2374    3.1863    0.0014
+
+Information Criteria 
+CAIC : 132.6230
+ BIC : 130.6230
+ AIC : 125.4127
+***********************************************
+
+

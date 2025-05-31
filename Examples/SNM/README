@@ -1,0 +1,21 @@
+This directory contains code related to the paper "Estimation of Dynamic Latent 
+Variable Models Using Simulated Nonparametric Moments"
+by Michael Creel and Dennis Kristensen.
+
+Each subdirectory contains code to replicate one of the four Monte Carlo
+examples in the paper. To replicate a given example, just open a terminal in the
+relevant directory, start Octave, and from Octave, type "mc".
+
+The mc.m scripts by default run serially. To run in parallel, edit mc.m and
+uncomment the lines at the bottom that contain MPI_Initialized and MPI_Finalized.
+Then, from the command prompt (not  the Octave prompt) type
+
+(note X should be the total number of cores in the cluster plus 1)
+mpirun -np X --hostfile /home/user/tmp/bhosts octave -q --eval mc
+
+For this to work, you need to set the cluster up beforehand, following the
+normal instructions for PelicanHPC.
+
+Note that the simulation length in all cases is S=10000. To see results faster,
+lower that number. This will lead to a loss of quality of the results, but will
+let you experiment more conveniently.

@@ -1,0 +1,8 @@
+Testing HOD1
+                Value     p-value  
+Wald test       6.161       0.013
+
+Testing CRTS
+                Value     p-value  
+Wald test      20.169       0.001
+

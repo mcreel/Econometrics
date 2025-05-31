@@ -1,0 +1,7 @@
+
+Run Estimate.jl to see how Bayesian MSM, using moments provided by a trained neural net,
+may be done.
+
+start julia with "julia --proj -t auto"  to use threads
+
+

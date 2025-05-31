@@ -1,0 +1,15 @@
+correlation between x2 and x3: 0.9
+descriptive statistics for 1000 OLS replications
+                mean       std      skew      kurt       min       max
+         1     0.997     0.188     0.073     0.176     0.190     1.606
+         2     1.017     0.436    -0.057     0.394    -0.638     2.599
+         3     0.995     0.437     0.031     0.379    -0.635     2.341
+descriptive statistics for 1000 OLS replications, dropping x3
+                mean       std      skew      kurt       min       max
+         1     0.999     0.199     0.088     0.196     0.123     1.598
+         2     1.912     0.208    -0.169     0.490     1.099     2.549
+descriptive statistics for 1000 Restricted OLS replications, b2=b3
+                mean       std      skew      kurt       min       max
+         1     0.999     0.186     0.083     0.189     0.188     1.626
+         2     1.007     0.098    -0.004     0.336     0.661     1.319
+         3     1.007     0.098    -0.004     0.336     0.661     1.319

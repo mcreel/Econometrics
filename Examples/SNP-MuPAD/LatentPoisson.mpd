@@ -1,0 +1,10 @@
+h := stats::gammaPDF(1,1);
+f := (x, e, a) -> exp(-a*e) * (a*e)^x / x! * h(e);
+g := (x,a) -> int(f(x,e,a), e=0..infinity);
+
+a := sum(g(x,2),x=0..10);
+float(%);
+quit;
+
+
+

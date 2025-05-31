@@ -1,0 +1,35 @@
+nulldata 1000
+set seed 1234
+loop 10000 --progressive --quiet
+
+    # generate data with heteroscedastic error
+    # note that x3 is not a relevant regressor
+    genr x2 = 5*uniform()
+    genr x3 = exp(normal()) 		# x3 is distributed log-normal
+    genr u = x3*normal()    		# error is heteroscedastic
+    genr y = 2 + 0.5*x2 + 0*x3 + u
+
+    # OLS estimator
+    set hc_version 1 # 3 works best
+    ols y const x2 x3 --robust
+    genr b2hat = $coeff(x2)
+
+    # is abs(t) greater than 5% critical value?
+    genr rejectH0 = abs($coeff(x3)/$stderr(x3)) > 2.012 
+    
+    # another estimator
+    genr ystar = y/x3
+    genr cstar = const/x3
+    genr x2star = x2/x3
+    genr x3star = x3/x3
+    ols ystar cstar x2star x3star
+    genr b2hat2 = $coeff(x2star)
+
+    # is abs(t) greater than 5% critical value?
+    genr rejectH0_2 = abs($coeff(x3star)/$stderr(x3star)) > 2.012
+    
+    # save the results
+    store HeteroscedasticityMonteCarlo.gdt b2hat b2hat2 rejectH0 rejectH0_2
+endloop    
+
+    

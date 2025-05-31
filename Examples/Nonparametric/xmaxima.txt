@@ -1,0 +1,6 @@
+f(x):=1+3*x7(2*%pi)-(x/(2*%pi))^2;
+h(a,b,x):=a+b*x;
+s(a,b):=integrate((f(x)-h(a,b,x))^2,x,0,2*%pi);
+foc1(a,b):=diff(s(a,b),a);
+foc2(a,b):=diff(s(a,b),b);
+solve(foc1(a,solve(foc2(a,b),b)),a); 

@@ -1,0 +1,53 @@
+
+**************************************************
+  OLS estimation, 145 observations
+  R²: 0.925955   σ²: 0.153943
+  White's covariance estimator
+
+                coef        se         t         p
+  constant    -3.527     1.689    -2.088     0.039
+    output     0.720     0.032    22.491     0.000
+     labor     0.436     0.241     1.808     0.073
+      fuel     0.427     0.074     5.751     0.000
+   capital    -0.220     0.318    -0.691     0.491
+**************************************************
+
+Imposing and testing HOD1
+
+**************************************************
+  Restricted LS estimation, 145 observations
+  R²: 0.925652   σ²: 0.155686
+  White's covariance estimator
+
+                coef        se         t         p
+  constant    -4.691     0.804    -5.838     0.000
+    output     0.721     0.032    22.516     0.000
+     labor     0.593     0.167     3.556     0.001
+      fuel     0.414     0.072     5.768     0.000
+   capital    -0.007     0.154    -0.048     0.962
+**************************************************
+               Value   p-value
+        qF     0.574     0.449
+      Wald     0.594     0.441
+        LR     0.593     0.441
+     Score     0.592     0.442
+
+Imposing and testing CRTS
+
+**************************************************
+  Restricted LS estimation, 145 observations
+  R²: 0.790420   σ²: 0.438861
+  White's covariance estimator
+
+                coef        se         t         p
+  constant    -7.530     2.919    -2.579     0.011
+    output     1.000     0.000       Inf     0.000
+     labor     0.020     0.376     0.052     0.959
+      fuel     0.715     0.159     4.490     0.000
+   capital     0.076     0.576     0.132     0.896
+**************************************************
+               Value   p-value
+        qF   256.262     0.000
+      Wald   265.414     0.000
+        LR   150.863     0.000
+     Score    93.771     0.000

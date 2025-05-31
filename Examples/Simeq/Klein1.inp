@@ -1,0 +1,56 @@
+
+open klein.gdt
+
+genr W = Wp + Wg
+
+genr A = t - 1931
+
+genr P1 = P(-1)
+
+genr X1 = X(-1)
+
+genr K1 = K(-1)
+
+# Equation-by-equation OLS
+
+ols C 0 P P1 W 
+
+ols I 0 P P1 K1
+
+ols Wp 0 X X1 A
+
+# Equation-by-equation TSLS
+
+tsls C 0 P P1 W ; 0 G T A Wg P1 K1 X1
+
+tsls I 0 P P1 K1 ; 0 G T A Wg P1 K1 X1
+
+tsls Wp 0 X X1 A ; 0 G T A Wg P1 K1 X1
+
+# Now set the model up as a system
+
+system name="Klein Model 1"
+
+ equation C 0 P P1 W 
+
+ equation I 0 P P1 K1
+
+ equation Wp 0 X X1 A
+
+ identity P = X - T - Wp
+
+ identity W = Wp + Wg
+
+ identity X = C + I + G
+
+ endog C I Wp P W X
+
+end system
+
+# and estimate it in various ways
+
+estimate "Klein Model 1" method=3sls
+
+estimate "Klein Model 1" method=fiml
+
+estimate "Klein Model 1" method=liml

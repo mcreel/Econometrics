@@ -1,0 +1,39 @@
+gretl: gui client for gretl version 1.3.1,
+copyright Allin Cottrell.
+This is free software with ABSOLUTELY NO WARRANTY.
+Current session: 2005/01/27 11:08
+Output from /home/mcreel/Econometrics/Include/OLS/Nerlove.gretl
+gretl version 1.3.1
+Current session: 2005/01/27 11:08
+? open /home/mcreel/Econometrics/Include/Data/nerlove.gdt
+? ols cost const output labor fuel capital
+
+Model 1: OLS estimates using the 145 observations 1-145
+Dependent variable: cost
+
+      VARIABLE      COEFFICIENT        STDERROR       T STAT   2Prob(t > |T|)
+
+   0)    const       -22.2210             6.58745      -3.373    0.000961 ***
+   3)   output         0.00639506         0.000162899  39.258   < 0.00001 ***
+   4)    labor         5.65518            2.17636       2.598    0.010366 **
+   5)     fuel         0.207840           0.0640999     3.242    0.001482 ***
+   6)  capital         0.0284415          0.0265049     1.073    0.285088
+
+  Mean of dependent variable = 12.9761
+  Standard deviation of dep. var. = 19.7946
+  Sum of squared residuals = 4358.19
+  Standard error of residuals = 5.57942
+  Unadjusted R-squared = 0.922758
+  Adjusted R-squared = 0.920551
+  F-statistic (4, 140) = 418.123 (p-value < 0.00001)
+  Akaike information criterion (AIC) = 914.939
+  Schwarz Bayesian criterion (BIC) = 929.822
+
+Excluding the constant, p-value was highest for variable 6 (capital)
+
+? genr lncost)=log(cost)
+Varname contains illegal character 0x29
+Use only letters, digits and underscore
+
+Error executing script: halting
+> genr lncost)=log(cost)

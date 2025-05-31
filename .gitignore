@@ -1,0 +1,6 @@
+# don't include julia precompiled sysimage files
+*.so
+*.json
+Examples/Julia/oxfordmanrealizedvolatilityindices.csv
+./.vscode/*
+Manifest.toml
