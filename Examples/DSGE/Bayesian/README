@@ -5,5 +5,5 @@ install with juliaup, do
 "juliaup add v1.6"
 
 To run it, get in the terminal, go to this directory, and do 
-"julia +1-6 -t 4 --proj"  NOTE: -t 4 uses 4 threads
+"julia +1.6 -t 4 --proj"  NOTE: -t 4 uses 4 threads
 
