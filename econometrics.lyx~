@@ -58685,6 +58685,63 @@ if the restrictions are correct
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Stock and Watson 
+\begin_inset Quotes eld
+\end_inset
+
+Introduction to Econometrics
+\begin_inset Quotes erd
+\end_inset
+
+,
+ 3rd Edition,
+ discuss panel data in Chapter 10.
+ The book is available from the UAB library 
+\begin_inset CommandInset href
+LatexCommand href
+name "as an e-text"
+target "https://ebookcentral.proquest.com/lib/uab/detail.action?docID=5174962#"
+literal "false"
+
+\end_inset
+
+ (if you happen to be at the UAB).
+ They use data which is available as a GRETL file 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{./Examples/PanelData/fatality.gdt}{here}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+open up the data and examine the structure
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The basic idea is to allow variables to have two indices,
  
 \begin_inset Formula $i=1,2,...,n$
