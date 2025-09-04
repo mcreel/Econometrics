@@ -18679,7 +18679,7 @@ placement document
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -18710,9 +18710,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Float figure
 placement document
 alignment document
@@ -18757,7 +18754,7 @@ placement document
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -22742,9 +22739,10 @@ E_{t} & \sim & N(0,\Sigma),\forall t\\
  Given the assumption of independence over time,
  the joint log-likelihood function is 
 \begin_inset Formula 
-\[
-\ln L(B,\Gamma,\Sigma)=-\frac{nG}{2}\ln(2\pi)+n\ln(|\det\Gamma|)-\frac{n}{2}\ln\det\Sigma^{-1}-\frac{1}{2}\sum_{t=1}^{n}\left(Y_{t}^{\prime}\Gamma-X_{t}^{\prime}B\right)\Sigma^{-1}\left(Y_{t}^{\prime}\Gamma-X_{t}^{\prime}B\right)^{\prime}
-\]
+\begin{align*}
+\ln L(B,\Gamma,\Sigma) & =-\frac{nG}{2}\ln(2\pi)+n\ln(|\det\Gamma|)-\frac{n}{2}\ln\det\Sigma^{-1}\\
+ & -\frac{1}{2}\sum_{t=1}^{n}\left(Y_{t}^{\prime}\Gamma-X_{t}^{\prime}B\right)\Sigma^{-1}\left(Y_{t}^{\prime}\Gamma-X_{t}^{\prime}B\right)^{\prime}
+\end{align*}
 
 \end_inset
 
@@ -25381,9 +25379,10 @@ The important part of this problem is to learn how to minimize a function that d
 Take the code from the previous problem,
  and modify it to estimate the model 
 \begin_inset Formula 
-\[
-\ln W=\beta_{0}+\beta_{EDUC}EDUC+\beta_{X}EXP+\beta_{EXP^{2}}\frac{EXP^{2}}{100}+\beta_{BLACK}BLACK+\beta_{SMSA}SMSA+\beta_{SOUTH}SOUTH+\epsilon
-\]
+\begin{align*}
+\ln W & =\beta_{0}+\beta_{EDUC}EDUC+\beta_{X}EXP+\beta_{EXP^{2}}\frac{EXP^{2}}{100}+\\
+ & \beta_{BLACK}BLACK+\beta_{SMSA}SMSA+\beta_{SOUTH}SOUTH+\epsilon
+\end{align*}
 
 \end_inset
 
@@ -34759,6 +34758,12 @@ approximate
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:MEPS data"
+
+\end_inset
+
 Example:
  Maximum likelihood estimation using count data:
  The MEPS data and the Poisson model
@@ -38869,10 +38874,24 @@ estimate the Nerlove model with the restriction that
 
 \begin_layout Enumerate
 test the restriction that 
-\begin_inset Formula $\beta_{Q}=\text{1 (the model exhibits constant returns to scale) using the LR test}$
+\begin_inset Formula $\beta_{Q}=1 $
 \end_inset
 
-.
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ (the model exhibits constant returns to scale) using the LR test.
 \end_layout
 
 \begin_layout Enumerate
@@ -48539,7 +48558,11 @@ nolink "false"
 
 ,
  prove that the matrix 
-\begin_inset Formula $P_{\infty}=I_{g}-\Omega_{\infty}^{-1/2}D_{\infty}^{\prime}\left(D_{\infty}\Omega_{\infty}^{-1}D_{\infty}^{\prime}\right)^{-1}D_{\infty}\Omega_{\infty}^{-1/2}$
+\begin_inset Formula 
+\[
+P_{\infty}=I_{g}-\Omega_{\infty}^{-1/2}D_{\infty}^{\prime}\left(D_{\infty}\Omega_{\infty}^{-1}D_{\infty}^{\prime}\right)^{-1}D_{\infty}\Omega_{\infty}^{-1/2}
+\]
+
 \end_inset
 
  is idempotent and that its rank is 
@@ -51843,8 +51866,11 @@ Here is a summary of the chain,
 \begin_inset Formula $\beta$
 \end_inset
 
-,
- the reason for which escapes me.
+.
+ Probably,
+ this is due to inefficient sampling,
+ or not enough sampling.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -51852,7 +51878,8 @@ Here is a summary of the chain,
 \begin_inset Graphics
 	filename Examples/DSGE/BayesianGMM/allparams.svg
 	lyxscale 75
-	width 12cm
+	width 10cm
+	rotateAngle 90
 
 \end_inset
 
@@ -65667,13 +65694,21 @@ The probit function
 \begin_inset Formula $\Phi^{-1}(\alpha)$
 \end_inset
 
- is tabulated (or can be found in Julia using 
+ is tabulated (or can be found in Julia using
+\begin_inset Newline newline
+\end_inset
+
+ 
 \family typewriter
 using Distributions;
  y = quantile.(Normal(),range(0.001,stop=0.999,length=200))
 \family default
 .
- It is plotted in Figure 
+ 
+\begin_inset Newline newline
+\end_inset
+
+It is plotted in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Inverse-CDF-for"
@@ -71741,9 +71776,10 @@ Multiply both sides by
  multiplying the polynomials on the LHS,
  we get
 \begin_inset Formula 
-\[
-\left(1+\phi L+\phi^{2}L^{2}+...+\phi^{j}L^{j}-\phi L-\phi^{2}L^{2}-...-\phi^{j}L^{j}-\phi^{j+1}L^{j+1}\right)y_{t}=\left(1+\phi L+\phi^{2}L^{2}+...+\phi^{j}L^{j}\right)\varepsilon_{t}
-\]
+\begin{align*}
+\left(1+\phi L+\phi^{2}L^{2}+...+\phi^{j}L^{j}-\phi L-\phi^{2}L^{2}-...-\phi^{j}L^{j}-\phi^{j+1}L^{j+1}\right)y_{t} & =\\
+ & \left(1+\phi L+\phi^{2}L^{2}+...+\phi^{j}L^{j}\right)\varepsilon_{t}
+\end{align*}
 
 \end_inset
 
