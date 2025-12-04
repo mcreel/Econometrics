@@ -1,7 +1,7 @@
 name = "Econometrics"
 uuid = "4d6a76a9-bfbc-5492-8924-cf6ed7875f06"
-authors = ["Michael Creel <michael.creel@uab.cat> and contributors"]
 version = "1.0.0"
+authors = ["Michael Creel <michael.creel@uab.cat> and contributors"]
 
 [deps]
 AdvancedMH = "5b7e9947-ddc0-4b3f-9b55-0d8042f74170"
@@ -45,3 +45,8 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 TimeSeries = "9e3dc215-6440-5c97-bce1-76c03772f85e"
 Turing = "fce5fe82-541a-59a6-adf8-730c64b5f9a0"
 
+[sources]
+SimulatedNeuralMoments = {rev = "main", url = "https://github.com/mcreel/SimulatedNeuralMoments.jl.git"}
+
+[compat]
+SolveDSGE = "^0.5"
