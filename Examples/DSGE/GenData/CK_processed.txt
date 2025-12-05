@@ -12,7 +12,17 @@ jumps_to_approximate = [4, 6]
  
 eqns_to_approximate = [7] 
  
-variables = OrderedCollections.OrderedDict("z" => 1, "η" => 2, "k" => 3, "y" => 4, "c" => 5, "n" => 6, "r" => 7, "w" => 8, "MUC" => 9, "MUL" => 10) 
+derivs_to_approximate_num = Int64[] 
+ 
+derivs_to_approximate_den = Int64[] 
+ 
+eqns_with_derivs = Int64[] 
+ 
+variables = OrderedDict("z" => 1, "η" => 2, "k" => 3, "y" => 4, "c" => 5, "n" => 6, "r" => 7, "w" => 8, "MUC" => 9, "MUL" => 10) 
+ 
+unassigned_parameters = ["β", "γ", "ρz", "σz", "ρη", "ση", "ψ"] 
+ 
+solvers = "Any" 
  
 function nlsolve_static_equations(f::Array{T,1},x::Array{T,1},p::Array{T1,1}) where {T<:Number,T1<:Real} 
  
@@ -273,6 +283,4 @@ function closure_piecewise_equations(variables,grid,state,integrals,p)
  
 end 
 
-unassigned_parameters = ["β", "γ", "ρz", "σz", "ρη", "ση", "ψ"] 
-
-solvers = "Any" 
+model = REModelFullDetail(nx,ny,ns,nv,ne,jumps_to_approximate,eqns_to_approximate,derivs_to_approximate_num,derivs_to_approximate_den,eqns_with_derivs,variables,nlsolve_static_equations,static_equations,dynamic_equations,individual_equations,closure_chebyshev_equations,closure_smolyak_equations,closure_hcross_equations,closure_piecewise_equations,unassigned_parameters,solvers)
