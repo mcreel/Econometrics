@@ -1,5 +1,7 @@
 [![testing](https://github.com/mcreel/Econometrics/actions/workflows/testing.yml/badge.svg)](https://github.com/mcreel/Econometrics/actions/workflows/testing.yml) (testing is done on latest stable release of Julia, for Linux, Windows, and MacOS)
 
+NOTE: THIS IS NO LONGER MAINTAINED. It will work correctly with Julia versions up to and including 1.11. 
+
 # Econometrics
 First year graduate level econometrics notes with embedded examples using the Julia language.
 
